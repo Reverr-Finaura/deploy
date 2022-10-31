@@ -1,0 +1,30 @@
+.expertise {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 4px solid rgba(42, 114, 222, 1);
+  border-radius: 0.5rem;
+  padding: 3rem 1rem;
+  color: black;
+  min-height: 10rem;
+  max-height: 12rem;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.img {
+  display: flex;
+  align-items: center;
+}
+
+.img > img {
+  width: 50%;
+  object-fit: contain;
+  margin: auto;
+}
+
+.description {
+  text-align: center;
+}

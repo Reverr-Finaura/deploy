@@ -1,0 +1,29 @@
+.mentor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #edebeb;
+  padding: 2rem 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.mentor > img {
+  width: 95%;
+  margin: auto;
+  object-fit: contain;
+}
+
+.name {
+  font-size: 18px;
+}
+.mentor:hover {
+  box-shadow: 0 0 20px #535353;
+  transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+  .name {
+    font-size: 16px;
+  }
+}

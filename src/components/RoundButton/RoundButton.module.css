@@ -1,0 +1,11 @@
+.round_btn {
+  background: #0077b7;
+  border-radius: 54px;
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+  width: 311px;
+  line-height: 36px;
+  outline: none;
+  border: none;
+}

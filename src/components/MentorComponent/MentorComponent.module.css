@@ -1,0 +1,28 @@
+.mentor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #d9d9d9;
+  max-width: fit-content;
+  border-radius: 1rem;
+  padding: 0 0 1rem 0;
+}
+
+.mentor > img {
+  width: 100%;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 60%;
+}
+
+.reviews {
+  color: rgba(43, 103, 246, 1);
+}
+
+.name {
+  margin: 0;
+}
