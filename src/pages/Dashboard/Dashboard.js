@@ -31,6 +31,8 @@ const user=useSelector((state)=>state.user)
   const[coursesArray,setCoursesArray]=useState([])
   const[meetingArray,setMeetingArray]=useState([])
   const[hasMeeting,setHasMeeting]=useState(false)
+  const[userImage,setUserImage]=useState("")
+  const[userName,setUserName]=useState("")
 
   const data = [];
   const blogData=[];
@@ -49,7 +51,30 @@ console.log("corses array include ",coursesArray)
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
   
+  console.log("user",user)
   
+// CHECK FOR USER PHOTO
+useEffect(()=>{
+  if(user?.user?.photoURL!==null){
+    setUserImage(user?.user?.photoURL)
+  }
+  else
+  {setUserImage("./images/carbon_user-avatar-filled.png")}
+  },[user])
+
+  // CHECK FOR USER NAME
+useEffect(()=>{
+  if(user?.user?.displayName!==null){
+    setUserName(user?.user?.displayName )
+  }
+  else{
+    // const newEmailArray=Array.from(user?.user?.email)
+    var idx = user?.user?.email.indexOf("@")
+    var name =user?.user?.email.slice(0,idx)
+    setUserName(name)
+  }
+  
+  },[user])
 
 //FETCH MENTOR DATA FROM FIREBASE
   useEffect(() => {
@@ -213,9 +238,9 @@ url:"/reaching-out-to-investor",
   <img className="handwave-img" src="./images/emojione_waving-hand.png" alt="handwave" />
   </div>
   <div className="usser-name-photo">
-    <img className="user-img" src={user?.user?.photoURL} alt="user-photo" />
+    <img className="user-img" src={userImage} alt="user-photo" />
     <div className="user-name-pos-cont">
-      <h4 className="userName">{user?.user?.displayName}</h4>
+      <h4 className="userName">{userName}</h4>
       {/* <p className="userPosition">Start-up Owner</p> */}
     </div>
   </div>

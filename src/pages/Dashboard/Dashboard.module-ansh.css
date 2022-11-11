@@ -67,6 +67,7 @@ color: #202020;
     line-height: 42px;
     color: #000000;
     margin: 0;
+    text-transform: capitalize;
 }
 .userPosition{
     font-family: 'Poppins';
