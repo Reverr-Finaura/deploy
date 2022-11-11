@@ -97,7 +97,6 @@ function App() {
     <>
       <Toaster />
       <Routes>
-        
         {!user && (
           <>
             <Route path="/" element={<Login />} />
