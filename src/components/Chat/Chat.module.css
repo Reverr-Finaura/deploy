@@ -109,8 +109,9 @@
 
 .chat-area h4 {
   padding: 10px;
-  border: 2px solid grey;
+  border: 1px solid rgba(42, 114, 222, 0.6);
   margin: 0.5rem 0rem;
+  font-style: italic;
 }
 
 .chat-area__message {
@@ -119,16 +120,16 @@
 }
 
 .mentor-h4 {
-  border-radius: 20px 20px 20px 0px;
-  background-color: #a5a5a5;
-  align-self: flex-start;
+  border-radius: 15px 15px 0px 15px;
+  background-color: rgba(42, 114, 222, 0.7);
+  align-self: flex-end;
   max-width: 200px;
 }
 
 .client-h4 {
-  border-radius: 20px 20px 0px 20px;
-  background-color: #535353;
-  align-self: flex-end;
+  border-radius: 15px 15px 15px 0px;
+  background-color: rgba(42, 114, 222, 0.1);
+  align-self: flex-start;
   max-width: 200px;
 }
 

@@ -40,15 +40,11 @@ const storage = getStorage(app);
 export { app, auth, db, analytics };
 
 export const getUserFromDatabase = async (email) => {
-  let User;
-  await (
-    await getDocs(
-      query(collection(db, "Users"), where("email", "==", `${email}`))
-    )
-  ).forEach((doc) => {
-    User = { ...doc.data() };
-  });
-  return User;
+  //let User;
+  const docRef = doc(db, "Users", email);
+  const docSnap = await getDoc(docRef);
+  //console.log(docSnap.data(), "docSnap");
+  return docSnap.data();
 };
 
 export const getMentorFromDatabase = async (email) => {

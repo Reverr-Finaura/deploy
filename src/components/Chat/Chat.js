@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import { toast, Toaster } from "react-hot-toast";
 
 const Chat = () => {
+  const userData = useSelector((state) => state.user.userData);
   const [mentors, setMentors] = useState([]);
   const [mentorZero, setMentorZero] = useState("");
   const [clientMsgs, setClientMsgs] = useState([]);
@@ -26,25 +27,22 @@ const Chat = () => {
   const msgEndRef = useRef();
 
   const [newMsg, setNewMsg] = useState([]);
-  const clientEmail = "mauricerana@gmail.com";
+  const clientEmail = userData.email;
 
   // console.log("Mentors - ", mentors);
   // console.log("Client Messages- ", clientMsgs);
-  console.log("Selected Mentor - ", selectedMentor);
+  //console.log(userData, "user");
 
   const fetchMentors = async () => {
     setMentorsLoading(true);
-    let result = await getUserFromDatabase(clientEmail);
-    if (result !== null || undefined) {
-      const results = [];
-      for (let i = 0; i < result.mentors.length; i++) {
-        let res = await getUserFromDatabase(result.mentors[i]);
-        results.push(res);
-      }
-      setMentors(results);
-      setMentorZero(results[0]);
-      setMentorsLoading(false);
+    const results = [];
+    for (let i = 0; i < userData.mentors.length; i++) {
+      let res = await getUserFromDatabase(userData.mentors[i]);
+      results.push(res);
     }
+    setMentors(results);
+    setMentorZero(results[0]);
+    setMentorsLoading(false);
   };
 
   const fetchClientMsgs = async () => {
@@ -260,6 +258,7 @@ const Chat = () => {
       });
     }
   }, [mentorZero]);
+  console.log(mentors, "mentors");
 
   return (
     <>
@@ -267,7 +266,7 @@ const Chat = () => {
         <div className={styles["users-section"]}>
           <div className={styles["top-bar-users"]}>
             <img
-              src="https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6"
+              src={userData && userData.image}
               alt="profile"
               className={styles["mentor-profile"]}
             />

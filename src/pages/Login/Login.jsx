@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import styles from "./Login.module.css";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 import {
   signInWithPopup,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { login } from "../../features/userSlice";
+import { login, setUserData } from "../../features/userSlice";
 import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../Footer/Footer";
 import { toast } from "react-hot-toast";
+import { doc, getDoc } from "firebase/firestore";
 
 function Auth() {
   const [email, setEmail] = useState("");
@@ -24,7 +25,7 @@ function Auth() {
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         dispatch(
           login({
             email: auth.currentUser.email,
@@ -43,7 +44,10 @@ function Auth() {
     e.preventDefault();
 
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
+        const docRef = doc(db, "Users", auth.currentUser.email);
+        const docSnap = await getDoc(docRef);
+        dispatch(setUserData(docSnap.data()));
         dispatch(
           login({
             email: auth.currentUser.email,
