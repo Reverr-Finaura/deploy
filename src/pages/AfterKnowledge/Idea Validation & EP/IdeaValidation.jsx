@@ -8,6 +8,9 @@ import Footer from "../../Footer/Footer";
 import Sidebar from "../../../components/Sidebar/Sidebar";
 import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
 import styles from "./Knowledge.module.css";
+import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
+import NavbarFinal from "../../../components/Navbar/NavBarFinal";
+import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 
 const IdeaValidation = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -26,11 +29,12 @@ const IdeaValidation = () => {
   };
 
   return (
-    <>
+    <> {width>=600?<><SidebarFinal /><NavbarFinal /></>:<><PhnSidebar />
+    <KnowledgeNavbar /></>}
       <div className={styles.knowledge}>
-        <KnowledgeNavbar />
+        {/* <KnowledgeNavbar /> */}
         <div className={styles.body}>
-        <Sidebar isVisible={width >= 600 ? true : false} />
+        {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
           <div className={styles.content}>
           <Hero imgUrl="ideavalidation.png" />
           <CourseIntro
@@ -42,7 +46,7 @@ const IdeaValidation = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -137,6 +137,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  margin-top: 10rem;
 }
 
 .sidebar {
@@ -183,7 +184,8 @@
 
 .content {
   width: 85%;
-  margin: auto 5rem auto 10rem;
+  /* margin: auto 5rem auto 10rem; */
+  margin: auto 3rem auto 12rem;
 }
 
 .search {
@@ -264,8 +266,15 @@
     font-size: 32px;
   }
 }
-
-@media (max-width: 600px) {
+@media(max-width:945px){
+  .content {
+    width: 75%;
+    /* margin: auto 5rem auto 10rem; */
+    margin: auto 3rem auto 12rem;
+  }
+  
+}
+@media (max-width: 599.99px) {
   /* .logo {
     display: none;
   } */
@@ -300,6 +309,7 @@
     width: 100%;
     flex-direction: column;
     align-items: center;
+    margin-top: 0;
   }
 
   .sidebar {

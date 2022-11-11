@@ -7,6 +7,8 @@ import styles from "./Knowledge.module.css";
 import "animate.css";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import KnowledgeNavbar from "../../components/KnowledgeNavbar/KnowledgeNavbar";
+import SidebarFinal from "../../components/Sidebar Final/SidebarFinal";
+import NavBarFinal from "../../components/Navbar/NavBarFinal";
 
 function Knowledge() {
   const [booksSelected, setBooksSeleceted] = useState(false);
@@ -42,11 +44,13 @@ function Knowledge() {
 
   return (
     <>
-      <PhnSidebar />
+  {width>=600?<><SidebarFinal /><NavBarFinal/></>:<><PhnSidebar />
+          <KnowledgeNavbar /></>}
+      {/* <PhnSidebar /> */}
       <div className={styles.knowledge}>
-        <KnowledgeNavbar />
+        {/* <KnowledgeNavbar /> */}
         <div className={styles.body}>
-          <Sidebar isVisible={width >= 600 ? true : false} />
+          {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
           <div className={styles.content}>
             {/* <div className={styles.search}>
               <img src="./images/searchicon.png" alt="search" />
@@ -174,8 +178,9 @@ function Knowledge() {
             </section>
           </div>
         </div>
+        {/* <div style={{width:"81%",marginLeft: "12.5rem"}}>  <Footer /></div> */}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

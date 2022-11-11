@@ -33,9 +33,14 @@
   color: #202020;
   line-height: 36px;
 }
-
+.cc_img{
+  display: flex;
+  align-items: center;
+  place-content: center;
+}
 .cc_img > img {
-  height: 20rem;
+  /* height: 20rem; */
+  width: 80%;
 }
 
 @media (max-width: 768px) {

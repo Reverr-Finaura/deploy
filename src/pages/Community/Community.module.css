@@ -16,6 +16,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 13rem;
 }
 
 #community__intro {
@@ -153,4 +154,11 @@
   margin: auto;
   display: block;
   max-width: 550px;
+}
+
+@media(max-width:600px){
+  .knowledge {
+    
+    margin-top: 0rem;
+  }
 }

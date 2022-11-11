@@ -1,0 +1,48 @@
+.blog-item-cont{
+    background: #FAFAFF;
+border-radius: 8px;
+padding: 16px 24px;
+display: flex;
+margin-bottom: 1rem;
+}
+.blog-item-cont-left-box{
+    width: 30%;
+    align-items: center;
+    display: flex;
+}
+.blog-item-left-cont-img{
+    width: 100%;
+    margin: auto;
+}
+.blog-item-cont-right-box{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+}
+.blog-item-date{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 18px;
+color: #202020;
+margin-bottom: .5rem;
+}
+.blog-item-title{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+color: #202020;
+margin-bottom: .5rem;
+}
+.blog-item-para{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+color: #202020;
+}

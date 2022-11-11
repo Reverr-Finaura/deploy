@@ -8,6 +8,9 @@ import Footer from "../../Footer/Footer";
 import styles from "./Knowledge.module.css";
 import Sidebar from "../../../components/Sidebar/Sidebar";
 import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
+import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
+import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
+import NavBarFinal from "../../../components/Navbar/NavBarFinal";
 
 const CompetitorAnalysis = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -26,10 +29,12 @@ const CompetitorAnalysis = () => {
   };
   return (
     <>
+   {width>=600?<><SidebarFinal /><NavBarFinal /></>:<><PhnSidebar />
+    <KnowledgeNavbar /></>}
       <div className={styles.knowledge}>
-        <KnowledgeNavbar />
+        {/* <KnowledgeNavbar /> */}
         <div className={styles.body}>
-          <Sidebar isVisible={width >= 600 ? true : false} />
+          {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
           <div className={styles.content}>
             <Hero
               imgUrl="competitor1.png"
@@ -41,7 +46,7 @@ const CompetitorAnalysis = () => {
             </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

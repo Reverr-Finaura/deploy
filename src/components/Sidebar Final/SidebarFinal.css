@@ -1,0 +1,75 @@
+#sidebar-final{
+    background-color: white;
+    width: 156px;
+    height: 100vh;
+    display: flex;
+    position:fixed;
+    top: 103px;
+    left: 0;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    padding-bottom: 1.5rem;
+    z-index: 1000;
+}
+.sidebar-final-brand-logo{
+    cursor: pointer;
+    width: 70%;
+    padding-top: 1.5rem;
+}
+.sidebar-final-icon-name-cont{
+    display: flex;
+    margin-top: 1.8rem;
+    cursor: pointer;
+}
+.sidebar-final-icon{
+    width: 20%;
+    margin-right: .5rem;
+}
+.sidebar-final-icon-name{
+    width: 80%;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 36px;
+color: #202020;
+}
+
+.sidebar-final-line{
+    border: 1px solid #2A72DE;
+    width: 133px;
+height: 0px;
+margin-top: 1.5rem;
+margin-bottom: .5rem;
+}
+.sidebar-final-icon-logout{
+    width: 20%;
+    margin-right: .5rem;
+    z-index: 1;
+    
+}
+.sidebar-final-logout-btn{
+    margin-top: 10rem;
+    padding: 8px 32px;
+    width: 150px;
+height: 40px;
+background-color:#2A72DE;
+border-radius: 32px;
+display: flex;
+flex-direction: row;
+align-items: center;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+cursor: pointer;
+
+color: #FFFFFF;
+border: none;
+}
+
+@media(max-width:701px){
+    #sidebar-final{
+         padding: 1.1rem;
+    }
+}

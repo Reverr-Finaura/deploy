@@ -285,7 +285,10 @@
     width: 6rem;
     object-fit: contain;
   } */
-
+  .body {
+    
+    margin-top: 0rem;
+  }
   .phnOptions {
     display: flex;
     gap: 3rem;

@@ -76,7 +76,13 @@
   background-color: #2a72de;
   color: #f6f6f6;
 }
-
+@media(max-width:670px){
+  .course_right {
+    border: 8px solid #2a72de;
+    padding: 1rem;
+    width: 330px;
+  }
+}
 @media (max-width: 768px) {
   .course_intro {
     flex-direction: column;

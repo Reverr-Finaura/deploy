@@ -20,11 +20,12 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  margin-top: 10rem;
 }
 
 .content {
   width: 85%;
-  margin: auto 5rem auto 10rem;
+  margin: auto 5rem auto 11.5rem;
 }
 
 .heading {
@@ -140,12 +141,26 @@
     max-width: 100%;
   }
 }
-
+@media(max-width:860px){
+  .content {
+    margin: auto 0 auto 11.5rem;
+  }
+  
+}
+@media(max-width:785px){
+  .content {
+    margin: auto 0 auto 13rem;
+  }
+  .test{
+    grid-template-columns: 100%;
+  }
+}
 @media (max-width: 600px) {
   .body {
     width: 100%;
     flex-direction: column;
     align-items: center;
+    margin-top: 0;
   }
 
   .content {

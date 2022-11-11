@@ -11,6 +11,7 @@ import Footer from "../Footer/Footer";
 import PhnSidebar from "../../components/PhnSidebar/PhnSidebar";
 import styles from "./Community.module.css";
 import KnowledgeNavbar from "../../components/KnowledgeNavbar/KnowledgeNavbar";
+import NavBarFinal from "../../components/Navbar/NavBarFinal";
 
 function Community() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -25,9 +26,12 @@ function Community() {
   }, []);
   return (
     <>
-      <PhnSidebar />
+    {width>=600?<><NavBarFinal/></>:<><PhnSidebar />
+          <KnowledgeNavbar /></>}
+   
+      {/* <PhnSidebar /> */}
       <div className={styles.knowledge}>
-        <KnowledgeNavbar />
+        {/* <KnowledgeNavbar /> */}
         <section id={styles.community__intro}>
           <div class={styles.community__main}>
             <div class={styles.community__main_left}>

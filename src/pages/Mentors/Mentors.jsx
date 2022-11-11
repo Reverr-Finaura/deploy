@@ -10,6 +10,8 @@ import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../firebase";
 import "animate.css";
 import Industry from "../../components/Industry/Industry";
+import SidebarFinal from "../../components/Sidebar Final/SidebarFinal";
+import NavBarFinal from "../../components/Navbar/NavBarFinal";
 
 function Mentors() {
   const mentorOfWeek = [
@@ -61,11 +63,13 @@ function Mentors() {
 
   return (
     <>
-      <PhnSidebar />
+   {width>=600?<><SidebarFinal /><NavBarFinal/></>:<><PhnSidebar />
+          <KnowledgeNavbar /></>}
+      {/* <PhnSidebar /> */}
       <div className={styles.knowledge} style={{marginBottom:'100px'}}>
-        <KnowledgeNavbar />
+        {/* <KnowledgeNavbar /> */}
         <div className={styles.body}>
-          <Sidebar isVisible={width >= 600 ? true : false} />
+          {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
           <div className={styles.content}>
             {/* <div className={styles.search}>
               <img src="./images/searchicon.png" alt="search" />
@@ -199,7 +203,7 @@ function Mentors() {
           </div>
         </div>
       </div>
-      <Footer  />
+      {/* <Footer  /> */}
     </>
   );
 }

@@ -1,23 +1,38 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import styles from "./MentorProfile.module.css";
 import PhnSidebar from "../../components/PhnSidebar/PhnSidebar";
 import KnowledgeNavbar from "../../components/KnowledgeNavbar/KnowledgeNavbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import SidebarFinal from "../../components/Sidebar Final/SidebarFinal";
+import NavBarFinal from "../../components/Navbar/NavBarFinal";
+
 
 const MentorProfile = () => {
   const [width, setWidth] = useState(window.innerWidth);
+
+  const updateWidth = () => {
+    setWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
+
   const {state} = useLocation();
 
   console.log(state.mentor.mobile)
   const navigate = useNavigate()
   return (
+<>
+{width>=600?<><SidebarFinal /><NavBarFinal /></>:<><PhnSidebar />
+    <KnowledgeNavbar /></>}
     <div style={{ backgroundColor: "#f6f6f6" }}>
-      <PhnSidebar />
+      {/* <PhnSidebar /> */}
       <div className={styles.knowledge}>
-        <KnowledgeNavbar />
+        {/* <KnowledgeNavbar /> */}
         <div className={styles.body}>
-          <Sidebar isVisible={width >= 600 ? true : false} />
+          {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
           <div className={styles.content}>
             {/* <div className={styles.search}>
               <img src="./images/searchicon.png" alt="search" />
@@ -108,6 +123,7 @@ const MentorProfile = () => {
         </div>
       </div> */}
     </div>
+    </>
   );
 };
 

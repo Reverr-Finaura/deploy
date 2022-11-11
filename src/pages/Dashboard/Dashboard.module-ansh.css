@@ -1,0 +1,471 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+.Dashboard_body__29oaw{
+    margin-bottom: 3rem;
+}
+.dashboard{
+    width: 80%;
+    min-height: 100vh;
+    margin-left: 14rem;
+    margin-top: 10rem;
+    margin-bottom: 3rem;
+
+}
+.dashboard-data-left-cont{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.dashboard-data-right-cont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.user-container{
+    width: 80%;
+    padding-left: 1rem;
+    margin-left: 3.5rem;
+}
+.user-container>div{
+    align-items: center;
+    display: flex;
+    
+}
+.greeting{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 28px;
+line-height: 42px;
+color: #202020;
+}
+.handwave-img{
+    width: 36px;
+    height: 36px;
+    margin-left: 1rem;
+}
+.usser-name-photo{
+    display: flex;
+    margin-top: 2rem;
+}
+.user-img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.user-name-pos-cont{
+    margin-left: 1rem;
+}
+.userName{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 42px;
+    color: #000000;
+    margin: 0;
+}
+.userPosition{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 27px;
+    color: #000000;
+    margin: 0;
+}
+
+
+#dashboard-data-cont{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    
+}
+/* QUOTATION CONTAINER */
+#quotation-cont{
+    width: 95%;
+height: max-content;
+position: relative;
+z-index: 1;
+margin: 2rem 0 2rem 3rem ;
+background-image: url("Rectangle 2931.png");
+background-repeat: no-repeat;
+background-size: cover;
+padding-top: 3rem;
+padding-bottom: 3rem;
+border-radius: 19px;
+}
+
+.quotation-cont{
+    
+    width: 60%;
+    margin: auto;
+}
+.quote-container-quote{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 28px;
+line-height: 42px;
+text-align: center;
+color: black;
+margin-bottom: 2rem;
+}
+.quote-container-author{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 32px;
+line-height: 48px;
+color: #000000;
+text-align: center;
+}
+
+
+
+/* COURSE CONTAINER */
+
+.courses-container{
+    background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+height: max-content;
+padding: 24px 32px;
+margin-right: 1rem;
+width: 80%;
+
+
+align-items: flex-start;
+display: flex;
+flex-direction: column;
+margin-top: 2rem;
+}
+.course-container-heading{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 30px;
+line-height: 30px;
+color: #000000;
+}
+.load-more-course-link{
+    background: #0077B7;
+border-radius: 10px;
+padding: 1rem;
+border: none;
+color: white;
+font-size: 1.1rem;
+cursor: pointer;
+margin: 1.5rem auto 0rem auto;
+
+}
+.load-more-course-btn-cont{
+    width: 100%;
+    align-items: center;
+    place-content: center;
+    display: flex;
+}
+
+
+/* MEETING CONTAINER */
+
+.meeting-container{
+    
+    display: flex;
+flex-direction: column;
+padding: 25px 32px;
+background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+margin-top: 2rem;
+margin-left: 1rem;
+width: 80%;
+}
+
+.meeting-container-titlee{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 48px;
+    color: #000C12;
+}
+.meeting-container-current-date{
+    text-align: center;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 48px;
+color: #000C12;
+}
+.no-meeting-schedule-msg{
+    text-align: center;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 48px;
+color: #000C12;
+margin-top: 1.5rem;
+}
+
+
+
+/* APPLY FOR FUNDING CONTAINER */
+
+.apply-for-funding-cont{
+    background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+padding: 25px 33px;
+margin-top: 1.5rem;
+margin-right: 1rem;
+width: 80%;
+
+}
+.apply-for-funding-img{
+    width: 100%;
+}
+.apply-for-funding-title{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 30px;
+color: #000000;
+margin: 1.5rem 0;
+}
+.apply-for-funding--btn{
+    padding: 12px 25px;
+width: 194px;
+height: 48px;
+background: #2A72DE;
+border-radius: 32px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+color: white;
+border: none;
+cursor:pointer;
+}
+
+
+/* JOIN OUR COMUNITY CONTAINER */
+
+.join-our-comunity-cont{
+    background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+padding: 25px 31px;
+margin-top: 1.5rem;
+margin-left: 1rem;
+width: 80%;
+
+}
+.join-our-comunity-img{
+    width: 100%;
+}
+.join-our-comunity-title{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 30px;
+color: #000000;
+margin: 1.5rem 0;
+}
+
+.join-our-comunity-btn{
+    padding: 12px 25px;
+    width: 225px;
+    height: 48px;
+    background: #2A72DE;
+    border-radius: 32px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: white;
+    border: none;
+    cursor:pointer;
+}
+
+
+/* BLOG CONTAINER */
+
+.blog-containerr{
+    padding: 32px 33px;
+    background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+margin-top: 1.5rem;
+margin-right: 1rem;
+width: 80%;
+
+}
+
+
+/* MENTORS CONTAINER */
+.mentors-containerr{
+    padding: 32px 31px;
+    background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+margin-top: 1.5rem;
+margin-left: 1rem;
+width: 80%;
+
+}
+.mentors-container-titlee{
+text-align: center;
+margin-bottom: 2.5rem;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 26px;
+line-height: 48px;
+}
+.load-more-mentor-btn-cont{
+    width: 100%;
+    align-items: center;
+    place-content: center;
+    display: flex;
+}
+.load-more-mentor-btn{
+    background: #0077B7;
+    border-radius: 10px;
+    padding: 1rem;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    
+}
+
+@media(max-width:1260px){
+    .meeting-container{
+        padding: 25px 13px;
+    }
+    .mentors-containerr{
+        padding:1rem;
+    }
+    .blog-containerr{
+        padding: 1rem;
+    }
+    .courses-container{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .apply-for-funding-cont{
+        padding: 25px 16px;
+    }
+    .join-our-comunity-cont{
+        padding: 25px 15px
+    }
+}
+@media(max-width:1135px)
+{
+    .dashboard{
+        margin-left: 12.5rem;
+    }
+}
+
+@media(max-width:1055){
+    .dashboard{
+        margin-left: 10rem!important;
+    }
+}
+@media(max-width:1030px){
+    .dashboard{
+        margin-left: 11rem;
+    }
+    .dashboard-data-right-cont{
+        align-items: flex-end;
+        margin-right: 16px;
+    }
+    .meeting-container,.join-our-comunity-cont,.mentors-containerr{
+        padding: 24px 22px;
+    }
+    
+    
+    #dashboard-data-cont{
+        grid-template-columns: 100%;
+        margin-bottom: 3rem;
+    }
+    .courses-container{
+        order: 1;
+    }
+    .meeting-container{
+        order: 2;
+    }
+    .mentors-containerr{
+        order: 3;
+    }
+    .apply-for-funding-cont{
+        order: 4;
+    }
+    .join-our-comunity-cont{
+        order: 5;
+    }
+    .blog-containerr{
+        order: 6;
+    }
+}
+@media(max-width:980px){
+    #dashboard-data-cont{
+        grid-template-columns: 100%;
+        margin-bottom: 3rem;
+    }
+    
+    .dashboard-data-left-cont{
+        margin-left: 16px;
+    }
+    .dashboard-data-right-cont{    
+       
+        margin-right: 1rem;
+    
+        }
+        .dashboard{
+            width: 70%;
+            margin-left: 25%;
+        }
+        .meeting-container,.join-our-comunity-cont,.mentors-containerr{
+            padding: 24px 15px;
+        }
+        .quote-container-quote,.quote-container-author{
+            font-size: 1.5rem;
+        }
+}
+
+@media(max-width:750px){
+    .dashboard{
+        width: 70%;
+        
+    }
+}
+@media(max-width:701px){
+    .dashboard{
+        width: 75%;
+        margin-left: 10rem;
+        
+    }
+}
+@media(max-width:656px){
+    .dashboard{
+        width: 75%;
+        margin-left: 9rem;
+        
+    }
+}
+@media(max-width:599px){
+    .dashboard{
+        width: 100%;
+        margin-left: 0; 
+    }
+    .dashboard-data-left-cont , .dashboard-data-right-cont {
+        align-items: center;
+    }
+        
+}
+

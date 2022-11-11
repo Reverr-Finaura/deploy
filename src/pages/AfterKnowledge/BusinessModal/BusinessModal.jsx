@@ -8,6 +8,9 @@ import Footer from "../../Footer/Footer";
 import styles from "./Knowledge.module.css";
 import Sidebar from "../../../components/Sidebar/Sidebar";
 import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
+import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
+import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
+import NavBarFinal from "../../../components/Navbar/NavBarFinal";
 
 const BusinessModal = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -25,11 +28,12 @@ const BusinessModal = () => {
     para: "Find out what a business model canvas is, what makes up its components, and why early-stage startup entrepreneurs should care.",
   };
   return (
-    <>
+    <>{width>=600?<><SidebarFinal /><NavBarFinal /></>:<><PhnSidebar />
+    <KnowledgeNavbar /></>}
       <div className={styles.knowledge}>
-        <KnowledgeNavbar />
+        {/* <KnowledgeNavbar /> */}
         <div className={styles.body}>
-          <Sidebar isVisible={width >= 600 ? true : false} />
+          {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
           <div className={styles.content}>
           <Hero
             imgUrl="businessmodal1.png"
@@ -41,7 +45,7 @@ const BusinessModal = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
