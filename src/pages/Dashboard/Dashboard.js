@@ -16,12 +16,17 @@ import BlogCard from "../Blog Card/BlogCard";
 import MentorCard from "../Mentor Card/MentorCard";
 import SidebarFinal from "../../components/Sidebar Final/SidebarFinal";
 import NavBarFinal from "../../components/Navbar/NavBarFinal";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { setUserDoc } from "../../features/userDocSlice";
+
 
 
 
 const Dashboard = () => {
+  const dispatch=useDispatch()
 const user=useSelector((state)=>state.user)
+const userDoc=useSelector((state)=>state.userDoc)
+console.log("userDocRedux",userDoc)
 
   const navigate = useNavigate();
   const [width, setWidth] = useState(window.innerWidth);
@@ -39,8 +44,9 @@ const user=useSelector((state)=>state.user)
   const courseData=[];
   const meetingData=[];
   const pureMentorData=[]
+ 
 
-console.log("corses array include ",coursesArray)
+// console.log("corses array include ",coursesArray)
 
   const updateWidth = () => {
     setWidth(window.innerWidth);
@@ -51,8 +57,26 @@ console.log("corses array include ",coursesArray)
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
   
-  console.log("user",user)
+  // console.log("user",user)
   
+// CHECK FOR USER DOC DATA
+useEffect(()=>{
+  async function fetchUserDocFromFirebase(){
+    const userDataRef = collection(db, "Users");
+    const q = query(userDataRef);
+    const querySnapshot = await getDocs(q);
+    
+    querySnapshot.forEach((doc) => {
+ 
+     if(doc.id===user?.user?.email){
+      dispatch(setUserDoc(doc.data()))
+     }
+    });
+  }
+fetchUserDocFromFirebase()
+},[user])
+
+
 // CHECK FOR USER PHOTO
 useEffect(()=>{
   if(user?.user?.photoURL!==null){
