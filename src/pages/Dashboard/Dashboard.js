@@ -4,7 +4,7 @@ import "./Dashboard.module-ansh.css"
 import PhnSidebar from "../../components/PhnSidebar/PhnSidebar";
 import KnowledgeNavbar from "../../components/KnowledgeNavbar/KnowledgeNavbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import { collection, getDocs, query } from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, query, setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import Chapter from "../../components/Chapter/Chapter";
@@ -18,6 +18,10 @@ import SidebarFinal from "../../components/Sidebar Final/SidebarFinal";
 import NavBarFinal from "../../components/Navbar/NavBarFinal";
 import { useSelector,useDispatch } from "react-redux";
 import { setUserDoc } from "../../features/userDocSlice";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 
 
@@ -27,6 +31,8 @@ const Dashboard = () => {
 const user=useSelector((state)=>state.user)
 const userDoc=useSelector((state)=>state.userDoc)
 console.log("userDocRedux",userDoc)
+
+
 
   const navigate = useNavigate();
   const [width, setWidth] = useState(window.innerWidth);
@@ -38,16 +44,20 @@ console.log("userDocRedux",userDoc)
   const[hasMeeting,setHasMeeting]=useState(false)
   const[userImage,setUserImage]=useState("")
   const[userName,setUserName]=useState("")
+  const[hasNoUserDoc,setHasNoUserDoc]=useState(false)
+  const[userDocId,setUserDocId]=useState([])
+  const[userDocInputFormInput,setUserDocInputFormInput]=useState({name:user?.user?.displayName,email:user?.user?.email,password:"",confirmPassword:"",phone:""})
+
 
   const data = [];
   const blogData=[];
   const courseData=[];
   const meetingData=[];
   const pureMentorData=[]
+  
  
-
-// console.log("corses array include ",coursesArray)
-
+  console.log("userId",userDocId)
+  
   const updateWidth = () => {
     setWidth(window.innerWidth);
   };
@@ -57,7 +67,8 @@ console.log("userDocRedux",userDoc)
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
   
-  // console.log("user",user)
+
+
   
 // CHECK FOR USER DOC DATA
 useEffect(()=>{
@@ -65,25 +76,41 @@ useEffect(()=>{
     const userDataRef = collection(db, "Users");
     const q = query(userDataRef);
     const querySnapshot = await getDocs(q);
-    
+   
     querySnapshot.forEach((doc) => {
- 
+      setUserDocId((prev)=>{
+        return [...prev,doc.id]
+      })
      if(doc.id===user?.user?.email){
-      dispatch(setUserDoc(doc.data()))
+      dispatch(setUserDoc(doc.data())); 
      }
-    });
+    }); 
   }
 fetchUserDocFromFirebase()
 },[user])
+
+
+// CHECK IF USER LOGGED IN HAS USERDOC
+
+useEffect(()=>{
+if(userDocId.length===0){setHasNoUserDoc(false);return}
+else if (userDocId.includes(user?.user?.email)){setHasNoUserDoc(false);return}
+else{setHasNoUserDoc(true);return}
+},[userDocId])
+
+
 
 
 // CHECK FOR USER PHOTO
 useEffect(()=>{
   if(user?.user?.photoURL!==null){
     setUserImage(user?.user?.photoURL)
+ 
   }
   else
-  {setUserImage("./images/carbon_user-avatar-filled.png")}
+  {setUserImage("./images/carbon_user-avatar-filled.png")
+  
+}
   },[user])
 
   // CHECK FOR USER NAME
@@ -92,7 +119,7 @@ useEffect(()=>{
     setUserName(user?.user?.displayName )
   }
   else{
-    // const newEmailArray=Array.from(user?.user?.email)
+    
     var idx = user?.user?.email.indexOf("@")
     var name =user?.user?.email.slice(0,idx)
     setUserName(name)
@@ -240,6 +267,59 @@ photo:"./images/reachingout.png",
 url:"/reaching-out-to-investor",
 }]
 
+//HANDLE USERDOC CREATION FORM INPUT
+function handleUserDocInputFormInputChange(e){
+  const{name,value}=e.target
+  setUserDocInputFormInput((prev)=>{
+    return {...prev,[name]:value}
+  })
+}
+
+
+//CREATE NEW USER DOC
+const handleUserDocInputForm=async()=>{
+  if(userDocInputFormInput.email===""||userDocInputFormInput.name===""||userDocInputFormInput.password===""||userDocInputFormInput.confirmPassword===""||userDocInputFormInput.phone==="")
+{toast.error("Kindly Fill data");return}
+else if (userDocInputFormInput.password!==userDocInputFormInput.confirmPassword){toast.error("Password and Confirm Password doesn't match");return;}
+toast("Processing Your Request")
+  try {
+   await  setDoc(
+      doc(db, "Users", user?.user?.email),
+      {Appointement_request: [],
+        saved: [],
+        rating: 0,
+        email: userDocInputFormInput.email,
+        name: userDocInputFormInput.name,
+        password: userDocInputFormInput.password,
+        about: '',
+        totalRating: 0,
+        userType: 'Individual',
+        notification: [],
+        experience: [{company: '', position: ''}],
+        education: [{school: '', from: '', to: ''}],
+        linkdinLink: '',
+        twitterLink: '',
+        image:
+          'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6',
+    
+        industry: '',
+        orders: [],
+        reviews: [],
+        phone: userDocInputFormInput.phone,
+        mentors: [],
+        events:[],
+        meeting:{}}
+    )
+
+    toast.success("Success")
+    setHasNoUserDoc(false)
+  } catch (error) {
+    toast.error(error.message)
+    console.log("error",error.message)
+  }
+ 
+}
+
 
   return (
     <>
@@ -248,6 +328,21 @@ url:"/reaching-out-to-investor",
         <KnowledgeNavbar />
         <div className={styles.body}>
           <Sidebar isVisible={width >= 600 ? true : false} /> */} 
+
+          
+{hasNoUserDoc?<>
+  <section  id="userDocFormModal">
+  <ToastContainer />
+  <div className="userDocFormModal">
+    <input onChange={handleUserDocInputFormInputChange} type="text" name="name" placeholder="Your Name" className="user-doc-input user-doc-input-name" value={userDocInputFormInput.name} />
+    <input onChange={handleUserDocInputFormInputChange} type="text" name="email" placeholder="Your Email" className="user-doc-input user-doc-input-email" value={userDocInputFormInput.email} />
+    <input onChange={handleUserDocInputFormInputChange} type="password" name="password" placeholder="Your Password" className="user-doc-input user-doc-input-pass" value={userDocInputFormInput.password} />
+    <input onChange={handleUserDocInputFormInputChange} type="password" name="confirmPassword" placeholder="Confirm Password" className="user-doc-input user-doc-input-pass" value={userDocInputFormInput.confirmPassword} />
+    <input onChange={handleUserDocInputFormInputChange} type="number" name="phone" placeholder="Your Phone Number" className="user-doc-input user-doc-input-phone" value={userDocInputFormInput.phone} />
+    <button onClick={handleUserDocInputForm} className="user-doc-input-submit-btn">Submit</button>
+  </div>
+</section>
+</>:null}
 
 
 {width>=600?<><SidebarFinal /><NavBarFinal/></>:<><PhnSidebar />
@@ -269,6 +364,7 @@ url:"/reaching-out-to-investor",
     </div>
   </div>
 </div>
+
 {/* QUOTATION DATA CONTAINER */}
 
 <section id="quotation-cont">

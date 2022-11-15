@@ -37,7 +37,7 @@ const auth = getAuth();
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-export { app, auth, db, analytics };
+export { app, auth, db, analytics,storage };
 
 export const getUserFromDatabase = async (email) => {
   //let User;

@@ -80,7 +80,7 @@ function Sidebar() {
           <p>Community</p>
         </div>
       </NavLink>
-      <NavLink className={styles.navlink} to="/myprofile">
+      <NavLink className={styles.navlink} to="/userprofile">
         <div className={styles.phnSidebarOption}>
           <img src="./images/myprofile.svg" alt="" />
           <p>My Profile</p>

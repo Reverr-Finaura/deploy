@@ -55,7 +55,7 @@ const SidebarFinal = () => {
 </NavLink>
 
       {/* <div className='sidebar-final-line'></div>
-<NavLink style={{textDecoration:"none"}} to="/myprofile">
+<NavLink style={{textDecoration:"none"}} to="/userprofile">
       <div className='sidebar-final-icon-name-cont'>
         <img className='sidebar-final-icon' src="./images/Vector4.png" alt="icon" />
         <p className='sidebar-final-icon-name'>Profile</p>

@@ -23,7 +23,7 @@ const NavBarFinal = () => {
               dispatch(showChat());
             }}  className='nabar-final-msg-cont' src="./images/Vector (2).png" alt="nav-icons" />
             <img className='nabar-final-setting-cont' src="./images/Vector (3).png" alt="nav-icons" />
-            <img className='nabar-final-userProfile-cont' src="./images/carbon_user-avatar-filled.png" alt="nav-icons" />
+            <img onClick={()=>navigate("/userprofile")} className='nabar-final-userProfile-cont' src="./images/carbon_user-avatar-filled.png" alt="nav-icons" />
         </div>
 
     </section>

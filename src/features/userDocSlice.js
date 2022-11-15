@@ -7,7 +7,7 @@ const userDocSlice=createSlice({
     initialState,
 reducers:{
     setUserDoc:(state,action)=>{
- return {...action.payload}
+ return action.payload
     },
     removeUserDoc:(state,action)=>{
 return{}
