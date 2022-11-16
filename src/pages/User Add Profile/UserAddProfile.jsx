@@ -6,15 +6,32 @@ import PhnSidebar from "../../components/PhnSidebar/PhnSidebar";
 import "./UserAddProfile.css"
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import { useSelector,useDispatch } from 'react-redux';
+import { db,storage } from '../../firebase';
+import { updateDoc,doc, collection, query, getDocs, setDoc } from 'firebase/firestore';
+import { getDownloadURL, listAll, ref, uploadBytes } from 'firebase/storage';
+import { setUserDoc } from '../../features/userDocSlice';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const UserAddProfile = () => {
+const dispatch=useDispatch()
+const navigate=useNavigate()
+
+    const user=useSelector((state)=>state.user)
+    const userDoc=useSelector((state)=>state.userDoc)
+
+console.log("userDoc",userDoc)
+
 
     const [width, setWidth] = useState(window.innerWidth);    
     const[imageUpload,setImageUpload]=useState(null)
+    const[tempImageURL,setTempImageURL]=useState(null)
+    
     const[startUpDocumentUpload,setStartUpDocumentUpload]=useState(null)
-    const[haveStartUp,setHaveStartUp]=useState(true)
 
-    console.log(startUpDocumentUpload)
+    const[haveStartUp,setHaveStartUp]=useState(true)
+const[imageUploadedUrl,setImageUploadedUrl]=useState('https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6')
+const[startupFilesUploadedUrl,setStartupFilesUploadedUrl]=useState("")
 
 const[generalProfileInfo,setGeneralProfileInfo]=useState({fullName:"",dOB:"",gender:"",stateOfUser:"",country:"",about:""})
 const[socialLinkInfo,setSocialLinkInfo]=useState({instaLink:"",facebookLink:"",twitterLink:"",linkedInLink:""})
@@ -28,15 +45,30 @@ const[yourIndustry,setYourIndustry]=useState("")
 
 const[startUpInfo,setStartUpInfo]=useState({startUpFullName:"",startUpProfessionalEmail:"",startUpMobile:"",startUpLinkedIn:""})
 
-
+console.log(startupFilesUploadedUrl)
     const updateWidth = () => {
         setWidth(window.innerWidth);
       };
-    
+      
       useEffect(() => {
         window.addEventListener("resize", updateWidth);
         return () => window.removeEventListener("resize", updateWidth);
       }, []);
+
+
+
+
+
+
+      //ON IMAGE CHANGE
+      function onImageChange(e){
+        setImageUpload(e.target.files[0])
+        const fileURL=(e.target.files[0])
+        if (fileURL){
+
+            setTempImageURL(URL.createObjectURL(fileURL))
+        }
+      }
 
     //   General Profile Info Input Change
 
@@ -74,6 +106,7 @@ function handleEducationFormInputChange(e){
 function addNewEducationFormInput(){
     if(educationInfo.degree===""||educationInfo.schoolOrCollege===""||educationInfo.startingDate===""||educationInfo.lastDate===""){toast.error("Kindly fill all slots");return}
 
+
     setEducationFormArray((prev)=>{
         return[...prev,{...educationInfo,id:new Date().getTime()}]
     })
@@ -84,7 +117,7 @@ function addNewEducationFormInput(){
 //DELETE EDUCATION FORM ICON CLICK
 
 function handleDeleteEducationFormIconClick(id){
-    const newEducationFormArray=educationFormArray.filter((item)=>{
+    const newEducationFormArray=educationFormArray?.filter((item)=>{
         return item.id!==id
     })
     setEducationFormArray(newEducationFormArray)
@@ -116,7 +149,7 @@ function addNewProfessionalFormInput(){
 //DELETE PROFFESSIONAL FORM ICON CLICK
 
 function handleDeleteProfessionalFormIconClick(id){
-    const newProfessionalFormArray=professionalFormArray.filter((item)=>{
+    const newProfessionalFormArray=professionalFormArray?.filter((item)=>{
         return item.id!==id
     })
     setProfessionalFormArray(newProfessionalFormArray)
@@ -132,6 +165,191 @@ function handleStartUpFormInputChange(e){
     })
 }
 
+// UPLOAD IMAGE TO FIREBASE
+
+const uploadImageToFireBase=async()=>{
+    if(imageUpload===null){updateUserDocInFirebase();return;}
+    else if(imageUpload!==null){
+    const imageReff=ref(storage,`Images/${imageUpload.name+user?.user?.email}`);
+    try {
+        await uploadBytes(imageReff,imageUpload).then(()=>{
+            toast("Successfully Uploaded image")
+        })
+       
+        fetchUrlOfUploadedImage()
+    } catch (error) {
+        toast.error(error.message)
+    }
+   
+    }  
+}
+
+// GET URL OF IMAGE UPLOADED IN FIREBASE
+const fetchUrlOfUploadedImage=async()=>{
+    const imagesListRef=ref(storage,"Images/")
+   
+try {
+   await listAll(imagesListRef).then((resp)=>{
+
+    resp.items.forEach((item)=>{
+        if(item._location.path_.includes(user?.user?.email)){
+          
+           getDownloadURL(item).then((url)=>{
+                setImageUploadedUrl(url)
+    
+            }).then(updateUserDocInFirebase())
+           
+        }
+       })
+   })
+
+} catch (error) {
+   toast.error(error.message) 
+}
+}
+// UPLOAD STARTUP RELEVANT FILE TO FIREBASE
+
+const uploadStartupRelevantFilesToFirebase=async()=>{
+    if(haveStartUp===false){return;}
+else if(haveStartUp===true&&startUpDocumentUpload===null){
+    toast.error("Upload Relevent Documents");
+    return;
+}
+else if(haveStartUp===true&&startUpDocumentUpload!==null)
+    {
+       if (startUpInfo.startUpFullName===""||startUpInfo.startUpLinkedIn===""||startUpInfo.startUpMobile===""||startUpInfo.startUpProfessionalEmail===""){toast.error("Kindly fill StartUp Form");return;}
+
+       else{
+        const fileReff=ref(storage,`FundingFiles/${startUpDocumentUpload.name+user?.user?.email}`);
+        try {
+            await uploadBytes(fileReff,startUpDocumentUpload).then(()=>{
+                toast("Successfully Uploaded Relevant Document")
+            })
+           
+            fetchUrlOfUploadedStartupFiles()
+        } catch (error) {
+            toast.error(error.message)
+        }
+
+       }
+    }
+    
+
+  
+    
+}
+
+// GET URL OF STARTUP FILES UPLOADED IN FIREBASE
+const fetchUrlOfUploadedStartupFiles=async()=>{
+    const fundingFilesListRef=ref(storage,"FundingFiles/")
+   
+try {
+   await listAll(fundingFilesListRef).then((resp)=>{
+    resp.items.forEach((item)=>{
+        if(item._location.path_.includes(user?.user?.email)){
+          
+            getDownloadURL(item).then((url)=>{
+                setStartupFilesUploadedUrl(url)
+    
+            }).then(uploadStartupDataToFirebase())
+            return;
+        }
+       })
+   })
+
+   
+   
+} catch (error) {
+   toast.error(error.message) 
+}
+}
+
+// UPLOAD STARTUP DATA TO FIREBASE
+
+const uploadStartupDataToFirebase=async()=>{
+  
+    await setDoc(
+        doc(db, "Funding", user?.user?.email),{
+ProfessionalEmail:startUpInfo.startUpProfessionalEmail,
+EntityDetail:"",
+Title:"",
+ContactNumber:startUpInfo.startUpMobile,
+Country:"",
+UploadedFileName:startUpDocumentUpload.name+user?.user?.email,
+UploadedFilePath:startupFilesUploadedUrl,
+industry:"",
+CompanyName:"",
+FounderName:startUpInfo.startUpFullName,
+Name:"",
+LinkedinLink:startUpInfo.startUpLinkedIn,
+website:"",
+
+        }
+        ).then(()=>{
+            toast("Successfully Uploaded StartUp Data")
+        })  
+}
+
+//UPDATE USERDOC IN FIREBASE
+
+const updateUserDocInFirebase=()=>{
+    let newEducationalArray;
+    let newExperienceArray;
+    if(professionalInfo.previousOrCurrentOrganisation===""&&professionalInfo.designation===""&&professionalInfo.durationOfYears===""&&professionalInfo.yourRole===""&&professionalFormArray.length===0){newExperienceArray=[]}
+    else if(professionalInfo.previousOrCurrentOrganisation===""&&professionalInfo.designation===""&&professionalInfo.durationOfYears===""&&professionalInfo.yourRole===""&&professionalFormArray.length!==0){newExperienceArray=[...professionalFormArray]}
+    else{
+        newExperienceArray= [...professionalFormArray,{...professionalInfo,id:new Date().getTime()}];
+    }
+    
+       if(educationInfo.degree===""&&educationInfo.lastDate===""&&educationInfo.schoolOrCollege===""&&educationInfo.startingDate===""&&educationFormArray.length===0){newEducationalArray=[]}
+       else if(educationInfo.degree===""&&educationInfo.lastDate===""&&educationInfo.schoolOrCollege===""&&educationInfo.startingDate===""&&educationFormArray.length!==0){
+        newEducationalArray=[...educationFormArray]
+       } 
+       else{
+        newEducationalArray=[...educationFormArray,{...educationInfo,id:new Date().getTime()}]
+       }
+    
+    
+    const userDocumentRef=doc(db,"Users",user?.user?.email)
+    
+    toast("Processing Your Request")
+    updateDoc(userDocumentRef,{
+        name: generalProfileInfo.fullName,
+        dob:generalProfileInfo.dOB,
+        state:generalProfileInfo.stateOfUser,
+        country:generalProfileInfo.country,
+        about: generalProfileInfo.about,
+        gender:generalProfileInfo.gender,
+        experience:newExperienceArray,
+        education: newEducationalArray,
+        linkedinLink:socialLinkInfo.linkedInLink,
+        twitterLink:socialLinkInfo.twitterLink,
+        facebookLink:socialLinkInfo.facebookLink,
+        instagramLink:socialLinkInfo.instaLink,
+        image:imageUploadedUrl,
+        industry:yourIndustry,
+        hasGeneralProfile:true,
+      }
+        ).then(()=>{
+        toast("Successfully Updated User Profile")
+        window.location.reload()
+    }).catch((error)=>{
+        toast.error(error.message)
+    })
+}
+
+// UPDATE USERDOC ADD NEW IMAGE CREATE FUNDING USER BTN CLICK
+
+function updateUserDocAddNewImageCreateFundingUser(){
+   
+if(generalProfileInfo.country===""||generalProfileInfo.dOB===""||generalProfileInfo.fullName===""||generalProfileInfo.gender===""||generalProfileInfo.stateOfUser===""){toast.error("Kindly fill general data");return;}
+
+
+uploadStartupRelevantFilesToFirebase()
+uploadImageToFireBase()
+
+}
+
   return (
    <>
 
@@ -144,24 +362,32 @@ function handleStartUpFormInputChange(e){
     <section className='profile-info-section'>
         <h1 className='profile-info-section-title'>Let’s get your profile done first!!</h1>
         <div className='imageUploadInputContainer'>
-        <input onChange={(e)=>{setImageUpload(e.target.files[0])}} type="file" name='imageUpload'/>
+        <input onChange={onImageChange} type="file" name='imageUpload'/>
+        {imageUpload!==null&&tempImageURL?<><img className="userUploadedImagePreview" src={tempImageURL} alt="user-uploaded-image" /></>:
+        <>
         <div className='imageUploadInputContainerImageContainer'>
-        <img className='imageUploadInputContainerImage' src="./images/UserCircle.png" alt="image-upload-btn" />
-        <p className='imageUploadInputContainerText'>{imageUpload!==null?imageUpload?.name:"Add Photo"}</p>
-        </div>
+       
+       <img className='imageUploadInputContainerImage' src="./images/Frame 6266715.png" alt="uplaod-image-icon" />
+
+       {/* <img className='imageUploadInputContainerImage' src="./images/UserCircle.png" alt="image-upload-btn" />
+       <p className='imageUploadInputContainerText'>{imageUpload!==null?imageUpload?.name:"Add Photo"}</p> */}
+       </div>
+        </>}
+        
+       
         </div>
 
 {/* ADD FORM INPUT FORM */}
 
         <div className='add-profile-info-form'>
-            <input onChange={handleGeneralProfileInfoInputChange} type="text" name='fullName' className='add-profile-input fullName-input' placeholder='Full Name' value={generalProfileInfo.fullName} />
+            <input onChange={handleGeneralProfileInfoInputChange} type="text" name='fullName' className='add-profile-input fullName-input' placeholder='Full Name*' value={generalProfileInfo.fullName} />
             <div className='add-profile-info-form-grid'>
-                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='dOB' className='add-profile-input DOB-input' placeholder='Date of Birth' value={generalProfileInfo.dOB} />
-                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='gender' className='add-profile-input Gender-input' placeholder='Gender' value={generalProfileInfo.gender} />
-                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='stateOfUser' className='add-profile-input state-input' placeholder='State' value={generalProfileInfo.stateOfUser} />
-                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='country' className='add-profile-input country-input' placeholder='Country' value={generalProfileInfo.country} />
+                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='dOB' className='add-profile-input DOB-input' placeholder='Date of Birth*' value={generalProfileInfo.dOB} />
+                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='gender' className='add-profile-input Gender-input' placeholder='Gender*' value={generalProfileInfo.gender} />
+                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='stateOfUser' className='add-profile-input state-input' placeholder='State*' value={generalProfileInfo.stateOfUser} />
+                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='country' className='add-profile-input country-input' placeholder='Country*' value={generalProfileInfo.country} />
             </div>
-            <textarea onChange={handleGeneralProfileInfoInputChange} name="about" className='add-profile-input about-input' rows="5" placeholder="About" value={generalProfileInfo.about}></textarea>
+            <textarea onChange={handleGeneralProfileInfoInputChange} name="about" className='about-input' rows="5" placeholder="About" value={generalProfileInfo.about}></textarea>
         </div>
 
 {/* HOW YOU WANT TO MEET PEOPLE */}
@@ -192,7 +418,7 @@ function handleStartUpFormInputChange(e){
 
         <section id='know-about-your-education'>
         <h1 className='know-about-your-education-title'>Let’s know about your Education!</h1>  
-{educationFormArray.map((item)=>{
+{educationFormArray?.map((item)=>{
     return <>
     <div className='know-about-your-education-form read-only-form' key={item.id} id={item.id}>
     <div className='education-form-input readOnlyInput' ><strong>Degree :</strong> {item.degree} </div>
@@ -222,7 +448,7 @@ function handleStartUpFormInputChange(e){
 
       <section id='professional-profile-section'>
         <h1 className='professional-profile-section-title'>Now let’s get your Professional Profile Done</h1>  
-{professionalFormArray.map((item)=>{
+{professionalFormArray?.map((item)=>{
     return <>
     <div className='professional-profile-section-form read-only-form' key={item.id} id={item.id}>
     <div className='professional-profile-form-input readOnlyInput' ><strong>Previous/Current Organisation :</strong> {item.previousOrCurrentOrganisation} </div>
@@ -235,7 +461,7 @@ function handleStartUpFormInputChange(e){
 })}
         <div className='professional-profile-section-form'>
         <ToastContainer />
-            <input onChange={handleProfessionalFormInputChange} type="text" name='previousOrCurrentOrganisation' className='professional-profile-form-input' placeholder='Previous Organisation you worked with' value={professionalInfo.previousOrCurrentOrganisation} />
+            <input onChange={handleProfessionalFormInputChange} type="text" name='previousOrCurrentOrganisation' className='professional-profile-form-input' placeholder='Previous/Current Organisation' value={professionalInfo.previousOrCurrentOrganisation} />
             <input onChange={handleProfessionalFormInputChange} type="text" name='designation' className='professional-profile-form-input' placeholder='Designation' value={professionalInfo.designation}  />
             <input onChange={handleProfessionalFormInputChange} type="text" name='durationOfYears' className='professional-profile-form-input' placeholder='Duration of years you worked' value={professionalInfo.durationOfYears} />
             <input onChange={handleProfessionalFormInputChange} type="text" name='yourRole' className='professional-profile-form-input' placeholder='Your Role' value={professionalInfo.yourRole} />
@@ -282,6 +508,7 @@ function handleStartUpFormInputChange(e){
                 <input id='startupDocumentUpload' onChange={(e)=>{setStartUpDocumentUpload(e.target.files[0])}} type="file" name='startupDocumentUpload'/>
                 <img src="./images/uploadDocument.svg" alt="uploadDocumentIcon" />
                 </div>
+                <p className='mentor-add-profile-page-submit-button-sub-text'>Create a Zip file of all documents and upload</p>
                     <p className='uploadDocumentFileName'>{startUpDocumentUpload?.name}</p>
 
                 <div className='doYouHaveAStartUp-verification-form'>
@@ -295,9 +522,9 @@ function handleStartUpFormInputChange(e){
 </>:null}
             
         </section>
-
+        
 <div style={{display:"flex",flexDirection:"column",width:"95%"}}> 
-<button className='mentor-add-profile-page-submit-button'>Submit</button>
+<button onClick={updateUserDocAddNewImageCreateFundingUser} className='mentor-add-profile-page-submit-button'>Submit</button>
         <p className='mentor-add-profile-page-submit-button-sub-text'>The provided information can be edited in future</p>
         </div>
        

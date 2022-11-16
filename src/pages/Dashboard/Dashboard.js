@@ -292,13 +292,19 @@ toast("Processing Your Request")
         name: userDocInputFormInput.name,
         password: userDocInputFormInput.password,
         about: '',
+        gender:"",
+        dob:"",
+        state:"",
+        country:"",
         totalRating: 0,
         userType: 'Individual',
         notification: [],
-        experience: [{company: '', position: ''}],
-        education: [{school: '', from: '', to: ''}],
-        linkdinLink: '',
+        experience: [],
+        education: [],
+        linkedinLink: '',
         twitterLink: '',
+        facebookLink:"",
+        instagramLink:"",
         image:
           'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6',
     
@@ -308,6 +314,7 @@ toast("Processing Your Request")
         phone: userDocInputFormInput.phone,
         mentors: [],
         events:[],
+        hasGeneralProfile:false,
         meeting:{}}
     )
 

@@ -45,6 +45,11 @@ input[name='imageUpload'] {
    position: absolute;
    cursor: pointer;
 }
+.userUploadedImagePreview{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+}
 .imageUploadInputContainerImageContainer{
     display: flex;
     flex-direction: column;
@@ -53,7 +58,7 @@ input[name='imageUpload'] {
    height: 50%;
     position: absolute;
     left: 25%;
-    top: 10%;
+    top: 20%;
 }
 .imageUploadInputContainerImage{
     width: 100%;
@@ -121,8 +126,16 @@ margin-bottom: 1rem;
     margin-left: 1rem;
 }
 .about-input{
-    width: 92%;
-    padding-right: 0;
+    width: auto!important;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    color: rgba(32, 32, 32, 0.5);
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-right: 21px;
 }
 
 /* HOW DO YOU WANT TO MEET NEW PEOPLE */
@@ -317,6 +330,7 @@ border: none;
 }
 .what-is-your-industry-input{
     width: 75%;
+    height: 36px;
     margin: auto;
     margin-top: 2rem;
 padding: 8px 21px;
@@ -444,7 +458,7 @@ border-radius: 6px;
 width: 5%;
 margin: auto;
 margin-top: 2rem;
-margin-bottom: 2rem;
+
 position: relative;
 
 }
@@ -456,7 +470,7 @@ font-weight: 400;
 font-size: 24px;
 line-height: 36px;
 color: rgba(32, 32, 32, 0.5);
-margin-top: 0rem;
+margin-top: 2rem;
 text-align: center;
 }
 .doYouHaveAStartUp-verification-form{
