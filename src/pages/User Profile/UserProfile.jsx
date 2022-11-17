@@ -38,7 +38,24 @@ const UserProfile = () => {
         return () => window.removeEventListener("resize", updateWidth);
       }, []);
 
-
+// CHECK FOR USER DOC DATA
+useEffect(()=>{
+    async function fetchUserDocFromFirebase(){
+      const userDataRef = collection(db, "Users");
+      const q = query(userDataRef);
+      const querySnapshot = await getDocs(q);
+     
+      querySnapshot.forEach((doc) => {
+        setUserDocId((prev)=>{
+          return [...prev,doc.id]
+        })
+       if(doc.id===user?.user?.email){
+        dispatch(setUserDoc(doc.data())); 
+       }
+      }); 
+    }
+  fetchUserDocFromFirebase()
+  },[user])
 
 // CHECK IF USER HAS FUNDING PROFILE
 
@@ -61,24 +78,7 @@ useEffect(()=>{
     
     },[userDoc])
 
-// CHECK FOR USER DOC DATA
-useEffect(()=>{
-    async function fetchUserDocFromFirebase(){
-      const userDataRef = collection(db, "Users");
-      const q = query(userDataRef);
-      const querySnapshot = await getDocs(q);
-     
-      querySnapshot.forEach((doc) => {
-        setUserDocId((prev)=>{
-          return [...prev,doc.id]
-        })
-       if(doc.id===user?.user?.email){
-        dispatch(setUserDoc(doc.data())); 
-       }
-      }); 
-    }
-  fetchUserDocFromFirebase()
-  },[user])
+
 
       useEffect(()=>{
         if(user&&userDoc){

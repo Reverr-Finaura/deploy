@@ -24,7 +24,7 @@ const navigate=useNavigate()
 
 console.log("userDoc",userDoc)
 console.log("userFundingDoc",userFundingDoc)
-console.log(userFundingDoc?.UploadedFileName)
+
 
     const [width, setWidth] = useState(window.innerWidth);    
     const[imageUpload,setImageUpload]=useState(null)
@@ -33,7 +33,7 @@ console.log(userFundingDoc?.UploadedFileName)
     const[startUpDocumentUpload,setStartUpDocumentUpload]=useState(null)
     const [userDefaultstartUpDocumentName,setUserDefaultStartUpDocumentName]=useState(userFundingDoc?.UploadedFileName)
     const [userDefaultstartUpDocumentURL,setUserDefaultStartUpDocumentURL]=useState(userFundingDoc?.UploadedFilePath)
-console.log("startUpDocumentUpload",startUpDocumentUpload)
+
    
     const[haveStartUpBtnClick,setHaveStartUpBtnClick]=useState(userDoc?.hasFundingProfile)
 
@@ -59,6 +59,25 @@ const[startUpInfo,setStartUpInfo]=useState({startUpFullName:userFundingDoc?.Foun
         return () => window.removeEventListener("resize", updateWidth);
       }, []);
 
+
+
+      // CHECK FOR USER DOC DATA
+      useEffect(()=>{
+        async function fetchUserDocFromFirebase(){
+          const userDataRef = collection(db, "Users");
+          const q = query(userDataRef);
+          const querySnapshot = await getDocs(q);
+         
+          querySnapshot.forEach((doc) => {
+           
+           if(doc.id===user?.user?.email){
+            dispatch(setUserDoc(doc.data())); 
+           }
+          }); 
+        }
+      fetchUserDocFromFirebase()
+      },[user])
+
 // CHECK IF USER HAS FUNDING PROFILE
 
 useEffect(()=>{
@@ -80,22 +99,6 @@ fetchUserFundingDocFromFirebase()
 
 },[userDoc])
 
-      // CHECK FOR USER DOC DATA
-useEffect(()=>{
-    async function fetchUserDocFromFirebase(){
-      const userDataRef = collection(db, "Users");
-      const q = query(userDataRef);
-      const querySnapshot = await getDocs(q);
-     
-      querySnapshot.forEach((doc) => {
-       
-       if(doc.id===user?.user?.email){
-        dispatch(setUserDoc(doc.data())); 
-       }
-      }); 
-    }
-  fetchUserDocFromFirebase()
-  },[user])
 
 
 
@@ -336,7 +339,7 @@ website:"",
 
 async function updateUserDocInFirebase(item){
     
-    console.log("imageURL",item)
+   
     let newEducationalArray;
     let newExperienceArray;
     if(professionalInfo.previousOrCurrentOrganisation===""&&professionalInfo.designation===""&&professionalInfo.durationOfYears===""&&professionalInfo.yourRole===""&&professionalFormArray.length===0){newExperienceArray=[]}
@@ -447,7 +450,7 @@ else if (haveStartUpBtnClick==="Yes"){
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='stateOfUser' className='add-profile-input state-input' placeholder='State*' value={generalProfileInfo.stateOfUser} />
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='country' className='add-profile-input country-input' placeholder='Country*' value={generalProfileInfo.country} />
             </div>
-            <textarea onChange={handleGeneralProfileInfoInputChange} name="about" className='about-input' rows="5" placeholder="About" value={generalProfileInfo.about}></textarea>
+            <textarea onChange={handleGeneralProfileInfoInputChange} name="about" className='about-input' rows="5" placeholder="About*" value={generalProfileInfo.about}></textarea>
         </div>
 
 {/* HOW YOU WANT TO MEET PEOPLE */}
@@ -477,7 +480,7 @@ else if (haveStartUpBtnClick==="Yes"){
 {/* KNOW ABOUT YOUR EDUCATION */}
 
         <section id='know-about-your-education'>
-        <h1 className='know-about-your-education-title'>Let’s know about your Education!</h1>  
+        <h1 className='know-about-your-education-title'>Let’s know about your Education!*</h1>  
 {educationFormArray?.map((item)=>{
     return <>
     <div className='know-about-your-education-form read-only-form' key={item.id} id={item.id}>
@@ -536,7 +539,7 @@ else if (haveStartUpBtnClick==="Yes"){
         {/* WHAT IS YOUR INDUSTRY SECTION */}
 
         <section id='what-is-your-industry-section'>
-        <h1 className='what-is-your-industry-title'>What is your Industry?</h1>
+        <h1 className='what-is-your-industry-title'>What is your Industry?*</h1>
             <div className='what-is-your-industry-input'>{yourIndustry===""?"Choose Your Industry":yourIndustry}</div>
 
             <div className='what-is-your-industry-options-cont'>
