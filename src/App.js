@@ -70,6 +70,7 @@ import ThinkingOfStartupSlide from "./pages/AfterKnowledge/ThinkingOfStartup/Thi
 import Dashboard from "./pages/Dashboard/Dashboard";
 import UserAddProfile from "./pages/User Add Profile/UserAddProfile";
 import UserProfile from "./pages/User Profile/UserProfile";
+import UserEditProfile from "./pages/User Edit Page/UserEditProfile";
 
 function App() {
   const user = useSelector(selectUser);
@@ -223,6 +224,7 @@ function App() {
           element={<SocialMediaSlides />}
         ></Route>
         <Route path="/userprofile" element={<UserProfile />}></Route>
+        <Route path="/user-edit-profile" element={<UserEditProfile />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </>

@@ -3,7 +3,7 @@ import KnowledgeNavbar from '../../components/KnowledgeNavbar/KnowledgeNavbar'
 import NavBarFinal from '../../components/Navbar/NavBarFinal'
 import SidebarFinal from '../../components/Sidebar Final/SidebarFinal'
 import PhnSidebar from "../../components/PhnSidebar/PhnSidebar";
-import "./UserAddProfile.css"
+import "./UserEditProfile.css"
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import { useSelector,useDispatch } from 'react-redux';
@@ -12,39 +12,42 @@ import { updateDoc,doc, collection, query, getDocs, setDoc } from 'firebase/fire
 import { getDownloadURL, listAll, ref, uploadBytes } from 'firebase/storage';
 import { setUserDoc } from '../../features/userDocSlice';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { setUserFundingDoc } from '../../features/userFundingDocSlice';
 
-const UserAddProfile = () => {
+const UserEditProfile = () => {
 const dispatch=useDispatch()
 const navigate=useNavigate()
 
     const user=useSelector((state)=>state.user)
     const userDoc=useSelector((state)=>state.userDoc)
+    const userFundingDoc=useSelector((state)=>state.userFundingDoc)
 
 console.log("userDoc",userDoc)
-
+console.log("userFundingDoc",userFundingDoc)
+console.log(userFundingDoc?.UploadedFileName)
 
     const [width, setWidth] = useState(window.innerWidth);    
     const[imageUpload,setImageUpload]=useState(null)
     const[tempImageURL,setTempImageURL]=useState(null)
-    
+    const[userDefaultImage,setUserDefaultImage]=useState(userDoc?.image)
     const[startUpDocumentUpload,setStartUpDocumentUpload]=useState(null)
+    const [userDefaultstartUpDocumentName,setUserDefaultStartUpDocumentName]=useState(userFundingDoc?.UploadedFileName)
+    const [userDefaultstartUpDocumentURL,setUserDefaultStartUpDocumentURL]=useState(userFundingDoc?.UploadedFilePath)
+console.log("startUpDocumentUpload",startUpDocumentUpload)
+   
+    const[haveStartUpBtnClick,setHaveStartUpBtnClick]=useState(userDoc?.hasFundingProfile)
 
-    const[haveStartUp,setHaveStartUp]=useState(true)
-    const[haveStartUpBtnClick,setHaveStartUpBtnClick]=useState("")
-const[imageUploadedUrl,setImageUploadedUrl]=useState('https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6')
-const[startupFilesUploadedUrl,setStartupFilesUploadedUrl]=useState("")
-
-const[generalProfileInfo,setGeneralProfileInfo]=useState({fullName:"",dOB:"",gender:"",stateOfUser:"",country:"",about:""})
-const[socialLinkInfo,setSocialLinkInfo]=useState({instaLink:"",facebookLink:"",twitterLink:"",linkedInLink:""})
+const[generalProfileInfo,setGeneralProfileInfo]=useState({fullName:userDoc?.name,dOB:userDoc?.dob,gender:userDoc?.gender,stateOfUser:userDoc?.state,country:userDoc?.country,about:userDoc?.about})
+const[socialLinkInfo,setSocialLinkInfo]=useState({instaLink:userDoc?.instagramLink,facebookLink:userDoc?.facebookLink,twitterLink:userDoc?.twitterLink,linkedInLink:userDoc?.linkedinLink})
 const[educationInfo,setEducationInfo]=useState({degree:"",schoolOrCollege:"",startingDate:"",lastDate:""})
-const[educationFormArray,setEducationFormArray]=useState([])
+const[educationFormArray,setEducationFormArray]=useState(userDoc?.education)
 
 const[professionalInfo,setProfessionalInfo]=useState({previousOrCurrentOrganisation:"",designation:"",durationOfYears:"",yourRole:""})
-const[professionalFormArray,setProfessionalFormArray]=useState([])
+const[professionalFormArray,setProfessionalFormArray]=useState(userDoc?.experience)
 
-const[yourIndustry,setYourIndustry]=useState("")
+const[yourIndustry,setYourIndustry]=useState(userDoc?.industry)
 
-const[startUpInfo,setStartUpInfo]=useState({startUpFullName:"",startUpProfessionalEmail:"",startUpMobile:"",startUpLinkedIn:""})
+const[startUpInfo,setStartUpInfo]=useState({startUpFullName:userFundingDoc?.FounderName,startUpProfessionalEmail:userFundingDoc?.ProfessionalEmail,startUpMobile:userFundingDoc?.ContactNumber,startUpLinkedIn:userFundingDoc?.LinkedinLink})
 
 
     const updateWidth = () => {
@@ -56,7 +59,43 @@ const[startUpInfo,setStartUpInfo]=useState({startUpFullName:"",startUpProfession
         return () => window.removeEventListener("resize", updateWidth);
       }, []);
 
+// CHECK IF USER HAS FUNDING PROFILE
 
+useEffect(()=>{
+if(userDoc?.hasFundingProfile==="No"){return;}
+async function fetchUserFundingDocFromFirebase(){
+    const userFundingDataRef = collection(db, "Funding");
+    const q = query(userFundingDataRef);
+    const querySnapshot = await getDocs(q);
+   
+    querySnapshot.forEach((doc) => {
+     
+     if(doc.id===user?.user?.email){
+      dispatch(setUserFundingDoc(doc.data())); 
+     }
+    }); 
+  }
+fetchUserFundingDocFromFirebase()
+
+
+},[userDoc])
+
+      // CHECK FOR USER DOC DATA
+useEffect(()=>{
+    async function fetchUserDocFromFirebase(){
+      const userDataRef = collection(db, "Users");
+      const q = query(userDataRef);
+      const querySnapshot = await getDocs(q);
+     
+      querySnapshot.forEach((doc) => {
+       
+       if(doc.id===user?.user?.email){
+        dispatch(setUserDoc(doc.data())); 
+       }
+      }); 
+    }
+  fetchUserDocFromFirebase()
+  },[user])
 
 
 
@@ -169,7 +208,7 @@ function handleStartUpFormInputChange(e){
 // UPLOAD IMAGE TO FIREBASE
 
 const uploadImageToFireBase=async()=>{
-    if(imageUpload===null){toast("Kindly Select Profile Image");return;}
+    if(imageUpload===null){updateUserDocInFirebase(userDefaultImage);return;}
     else if(imageUpload!==null){
     const imageReff=ref(storage,`Images/${imageUpload.name+user?.user?.email}`);
     try {
@@ -195,7 +234,7 @@ try {
         if(item._location.path_.includes(imageUpload.name+user?.user?.email)){
           
           getDownloadURL(item).then((url)=>{
-                setImageUploadedUrl(url)
+                // setImageUploadedUrl(url)
                 
                 updateUserDocInFirebase(url)
             })
@@ -251,7 +290,7 @@ try {
         if(item._location.path_.includes(startUpDocumentUpload.name+user?.user?.email)){
           
             getDownloadURL(item).then((url)=>{
-                setStartupFilesUploadedUrl(url)
+                // setStartupFilesUploadedUrl(url)
                 uploadStartupDataToFirebase(url,startUpDocumentUpload.name+user?.user?.email)
             })
             // .then(uploadStartupDataToFirebase())
@@ -297,7 +336,7 @@ website:"",
 
 async function updateUserDocInFirebase(item){
     
-  
+    console.log("imageURL",item)
     let newEducationalArray;
     let newExperienceArray;
     if(professionalInfo.previousOrCurrentOrganisation===""&&professionalInfo.designation===""&&professionalInfo.durationOfYears===""&&professionalInfo.yourRole===""&&professionalFormArray.length===0){newExperienceArray=[]}
@@ -338,7 +377,7 @@ async function updateUserDocInFirebase(item){
       }
         ).then(()=>{
         toast("Successfully Updated User Profile")
-        window.location.reload()
+        navigate("/userprofile")
     }).catch((error)=>{
         toast.error(error.message)
     })
@@ -348,17 +387,16 @@ async function updateUserDocInFirebase(item){
 
 async function updateUserDocAddNewImageCreateFundingUser(){
    
-if(generalProfileInfo.country===""||generalProfileInfo.dOB===""||generalProfileInfo.fullName===""||generalProfileInfo.gender===""||generalProfileInfo.stateOfUser===""||generalProfileInfo.about===""||yourIndustry===""){toast.error("Kindly fill Mandatory(*) Fields");return;}
-if(educationInfo.degree===""&&educationInfo.lastDate===""&&educationInfo.schoolOrCollege===""&&educationInfo.startingDate===""&&educationFormArray.length===0){
-    toast.error("Minimum One Education is Mandatory");
-    return
-}
-
+    if(generalProfileInfo.country===""||generalProfileInfo.dOB===""||generalProfileInfo.fullName===""||generalProfileInfo.gender===""||generalProfileInfo.stateOfUser===""||generalProfileInfo.about===""||yourIndustry===""){toast.error("Kindly fill Mandatory(*) Fields");return;}
+    if(educationInfo.degree===""&&educationInfo.lastDate===""&&educationInfo.schoolOrCollege===""&&educationInfo.startingDate===""&&educationFormArray.length===0){
+        toast.error("Minimum One Education is Mandatory");
+        return
+    }
 
 if(haveStartUpBtnClick===""){toast("Kindly select Yes Or No");return;}
 else if (haveStartUpBtnClick==="No"){toast("Processing Your Request");uploadImageToFireBase();return}
 else if (haveStartUpBtnClick==="Yes"){
-  if(startUpDocumentUpload===null){toast("Processing Your Request");uploadImageToFireBase();uploadStartupDataToFirebase("","");return}
+  if(startUpDocumentUpload===null){toast("Processing Your Request");uploadImageToFireBase();uploadStartupDataToFirebase(userDefaultstartUpDocumentURL,userDefaultstartUpDocumentName);return}
   else if(startUpDocumentUpload!==null){
     toast("Processing Your Request");
     uploadStartupRelevantFilesToFirebase();
@@ -387,9 +425,9 @@ else if (haveStartUpBtnClick==="Yes"){
         <input onChange={onImageChange} type="file" name='imageUpload'/>
         {imageUpload!==null&&tempImageURL?<><img className="userUploadedImagePreview" src={tempImageURL} alt="user-uploaded-image" /></>:
         <>
-        <div className='imageUploadInputContainerImageContainer'>
+        <div className=''>
        
-       <img className='imageUploadInputContainerImage' src="./images/Frame 6266715.png" alt="uplaod-image-icon" />
+       <img className='userUploadedImagePreview' src={userDefaultImage}alt="uplaod-image-icon" />
 
        {/* <img className='imageUploadInputContainerImage' src="./images/UserCircle.png" alt="image-upload-btn" />
        <p className='imageUploadInputContainerText'>{imageUpload!==null?imageUpload?.name:"Add Photo"}</p> */}
@@ -409,7 +447,7 @@ else if (haveStartUpBtnClick==="Yes"){
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='stateOfUser' className='add-profile-input state-input' placeholder='State*' value={generalProfileInfo.stateOfUser} />
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='country' className='add-profile-input country-input' placeholder='Country*' value={generalProfileInfo.country} />
             </div>
-            <textarea onChange={handleGeneralProfileInfoInputChange} name="about" className='about-input' rows="5" placeholder="About*" value={generalProfileInfo.about}></textarea>
+            <textarea onChange={handleGeneralProfileInfoInputChange} name="about" className='about-input' rows="5" placeholder="About" value={generalProfileInfo.about}></textarea>
         </div>
 
 {/* HOW YOU WANT TO MEET PEOPLE */}
@@ -439,7 +477,7 @@ else if (haveStartUpBtnClick==="Yes"){
 {/* KNOW ABOUT YOUR EDUCATION */}
 
         <section id='know-about-your-education'>
-        <h1 className='know-about-your-education-title'>Let’s know about your Education!*</h1>  
+        <h1 className='know-about-your-education-title'>Let’s know about your Education!</h1>  
 {educationFormArray?.map((item)=>{
     return <>
     <div className='know-about-your-education-form read-only-form' key={item.id} id={item.id}>
@@ -498,8 +536,8 @@ else if (haveStartUpBtnClick==="Yes"){
         {/* WHAT IS YOUR INDUSTRY SECTION */}
 
         <section id='what-is-your-industry-section'>
-        <h1 className='what-is-your-industry-title'>What is your Industry?*</h1>
-            <div className='what-is-your-industry-input'>{yourIndustry===""?"Choose Your Industry*":yourIndustry}</div>
+        <h1 className='what-is-your-industry-title'>What is your Industry?</h1>
+            <div className='what-is-your-industry-input'>{yourIndustry===""?"Choose Your Industry":yourIndustry}</div>
 
             <div className='what-is-your-industry-options-cont'>
                 <div onClick={()=>setYourIndustry("Fintech")} className='what-is-your-industry-options'>Fintech</div>
@@ -519,10 +557,10 @@ else if (haveStartUpBtnClick==="Yes"){
         <section id='doYouHaveAStartUp'>
             <h1 className='doYouHaveAStartUp-title'>Do you have a Start-Up?</h1>
             <div className='doYouHaveAStartUp-option-container '>
-                <button onClick={()=>{setHaveStartUp(true);setHaveStartUpBtnClick("Yes")}} className={haveStartUpBtnClick==="Yes"?'selected-option':'doYouHaveAStartUp-yes-option'}>Yes*</button>
-                <button onClick={()=>{setHaveStartUp(false);setHaveStartUpBtnClick("No")}} className={haveStartUpBtnClick==="No"?'selected-option':'doYouHaveAStartUp-no-option'}>No*</button>
+                <button onClick={()=>{setHaveStartUpBtnClick("Yes")}} className={haveStartUpBtnClick==="Yes"?'selected-option':'doYouHaveAStartUp-yes-option'}>Yes*</button>
+                <button onClick={()=>{setHaveStartUpBtnClick("No")}} className={haveStartUpBtnClick==="No"?'selected-option':'doYouHaveAStartUp-no-option'}>No*</button>
             </div>
-{haveStartUp?<>
+{haveStartUpBtnClick==="Yes"?<>
     <div className='doYouHaveAStartUp-verification-container'>
     <ToastContainer />
                 <h1 className='doYouHaveAStartUp-verification-container-title'>Start Up Verification</h1>
@@ -533,7 +571,7 @@ else if (haveStartUpBtnClick==="Yes"){
                 </div>
                 <p className='mentor-add-profile-page-submit-button-sub-text'>Create a Zip file of all documents and upload</p>
                     <p className='uploadDocumentFileName'>{startUpDocumentUpload?.name}</p>
-
+{userDefaultstartUpDocumentName!==""||userDefaultstartUpDocumentName!==undefined||userDefaultstartUpDocumentName!==null?<p className='uploadDocumentFileName'>{userDefaultstartUpDocumentName}</p>:null}
                 <div className='doYouHaveAStartUp-verification-form'>
                     <input onChange={handleStartUpFormInputChange} type="text" name='startUpFullName' className='doYouHaveAStartUp-verification-form-input' placeholder='Full Name' value={startUpInfo.startUpFullName} />
                     <input onChange={handleStartUpFormInputChange} type="text" name='startUpProfessionalEmail' className='doYouHaveAStartUp-verification-form-input' placeholder='Professional Email' value={startUpInfo.startUpProfessionalEmail} />
@@ -559,4 +597,4 @@ else if (haveStartUpBtnClick==="Yes"){
   )
 }
 
-export default UserAddProfile
+export default UserEditProfile

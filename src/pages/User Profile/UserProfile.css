@@ -13,6 +13,24 @@
     margin: auto;
     
 }
+.user-edit-profile-button{
+    background: #2A72DE;
+border-radius: 10px;
+padding: 8px 32px;
+gap: 10px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 36px;
+text-align: center;
+color: #FFFFFF;
+margin: auto;
+border: none;
+margin-top: 2rem;
+margin-bottom: 3rem;
+cursor: pointer;
+}
 
 /* USER GENERAL INFO  */
 

@@ -20,6 +20,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { setUserDoc } from "../../features/userDocSlice";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { setUserFundingDoc } from "../../features/userFundingDocSlice";
 
 
 
@@ -30,6 +31,8 @@ const Dashboard = () => {
   const dispatch=useDispatch()
 const user=useSelector((state)=>state.user)
 const userDoc=useSelector((state)=>state.userDoc)
+const userFundingDoc=useSelector((state)=>state.userFundingDoc)
+console.log("userFundingDoc",userFundingDoc)
 console.log("userDocRedux",userDoc)
 
 
@@ -67,7 +70,26 @@ console.log("userDocRedux",userDoc)
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
   
+// CHECK IF USER HAS FUNDING PROFILE
 
+useEffect(()=>{
+  if(userDoc?.hasFundingProfile==="No"){return;}
+  async function fetchUserFundingDocFromFirebase(){
+      const userFundingDataRef = collection(db, "Funding");
+      const q = query(userFundingDataRef);
+      const querySnapshot = await getDocs(q);
+     
+      querySnapshot.forEach((doc) => {
+       
+       if(doc.id===user?.user?.email){
+        dispatch(setUserFundingDoc(doc.data())); 
+       }
+      }); 
+    }
+  fetchUserFundingDocFromFirebase()
+  
+  
+  },[userDoc])
 
   
 // CHECK FOR USER DOC DATA
@@ -105,11 +127,11 @@ else{setHasNoUserDoc(true);return}
 useEffect(()=>{
   if(user?.user?.photoURL!==null){
     setUserImage(user?.user?.photoURL)
- 
+ return;
   }
   else
   {setUserImage("./images/carbon_user-avatar-filled.png")
-  
+  return
 }
   },[user])
 
@@ -315,6 +337,7 @@ toast("Processing Your Request")
         mentors: [],
         events:[],
         hasGeneralProfile:false,
+        hasFundingProfile:"",
         meeting:{}}
     )
 

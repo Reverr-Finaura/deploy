@@ -6,6 +6,7 @@ import sidebarReducer from "../features/sidebarSlice";
 import phnSidebarReducer from "../features/phnSidebarSlice";
 import chatReducer from "../features/chatSlice";
 import userDocReducer from "../features/userDocSlice"
+import userFundingDocReducer from "../features/userFundingDocSlice"
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
     sidebar: sidebarReducer,
     phnSidebar: phnSidebarReducer,
     chat: chatReducer,
-    userDoc:userDocReducer
+    userDoc:userDocReducer,
+    userFundingDoc:userFundingDocReducer,
   },
 });

@@ -12,12 +12,19 @@ import { useSelector,useDispatch } from 'react-redux'
 import { collection, getDocs, query } from 'firebase/firestore'
 import { db } from '../../firebase'
 import { setUserDoc } from '../../features/userDocSlice'
+import { useNavigate } from 'react-router-dom'
+import { setUserFundingDoc } from '../../features/userFundingDocSlice'
 
 const UserProfile = () => {
+    const navigate=useNavigate()
     const dispatch=useDispatch()
     const user=useSelector((state)=>state.user)
     const userDoc=useSelector((state)=>state.userDoc)
-console.log(userDoc)
+    const userFundingDoc=useSelector((state)=>state.userFundingDoc)
+
+    console.log("userDoc",userDoc)
+    console.log("userFundingDoc",userFundingDoc)
+    
     const[hasUserProfile,setHasUserProfile]=useState(true)
     const[userDocId,setUserDocId]=useState([])
     const [width, setWidth] = useState(window.innerWidth);   
@@ -31,6 +38,28 @@ console.log(userDoc)
         return () => window.removeEventListener("resize", updateWidth);
       }, []);
 
+
+
+// CHECK IF USER HAS FUNDING PROFILE
+
+useEffect(()=>{
+    if(userDoc?.hasFundingProfile==="No"){return;}
+    async function fetchUserFundingDocFromFirebase(){
+        const userFundingDataRef = collection(db, "Funding");
+        const q = query(userFundingDataRef);
+        const querySnapshot = await getDocs(q);
+       
+        querySnapshot.forEach((doc) => {
+         
+         if(doc.id===user?.user?.email){
+          dispatch(setUserFundingDoc(doc.data())); 
+         }
+        }); 
+      }
+    fetchUserFundingDocFromFirebase()
+    
+    
+    },[userDoc])
 
 // CHECK FOR USER DOC DATA
 useEffect(()=>{
@@ -73,7 +102,14 @@ useEffect(()=>{
     <div className='user-profile-page-user-info'>
        <h1 className='user-profile-page-user-info-title'>Profile</h1> 
        <img className='user-profile-page-user-info-img' src={userDoc?.image} alt="user-profile-img" />
+
+       <button className='user-edit-profile-button' onClick={()=>navigate("/user-edit-profile")}>Edit Profile</button>
+
     </div>
+
+ 
+
+    
     <div className='user-general-info'>
 
     <div className='user-general-info-user-cont'>
@@ -139,6 +175,8 @@ useEffect(()=>{
 <h3 className='user-experience-info-company-role-company-name'>{item.previousOrCurrentOrganisation}</h3>
 <ul>
     <li className='user-experience-info-company-role-job-profile'>{item.designation}</li>
+    <li className='user-experience-info-company-role-job-profile'>{item.yourRole}</li>
+    <li className='user-experience-info-company-role-job-profile'>{item.durationOfYears}</li>
     
 </ul>
     </div>

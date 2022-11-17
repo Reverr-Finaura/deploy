@@ -10,6 +10,7 @@ import { auth } from "../../firebase";
 import { selectChat, showChat } from "../../features/chatSlice";
 import Chat from "../Chat/Chat";
 import { removeUserDoc } from '../../features/userDocSlice';
+import { removeUserFundingDoc } from '../../features/userFundingDocSlice';
 
 const SidebarFinal = () => {
 
@@ -86,7 +87,7 @@ const SidebarFinal = () => {
         <img className='sidebar-final-icon' src="./images/bx_log-out.png" alt="icon" />
         <p className='sidebar-final-icon-name'>Log Out</p>
       </div> */}
-      <button onClick={user ? () => signOut(auth).then(() => {dispatch(logout());dispatch(remove());dispatch(removeUserDoc())})
+      <button onClick={user ? () => signOut(auth).then(() => {dispatch(logout());dispatch(remove());dispatch(removeUserDoc());dispatch(removeUserFundingDoc())})
                     .then(() => {
                       toast.success("Sucessfully logged out");
                       navigate("/");
