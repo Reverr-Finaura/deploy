@@ -30,8 +30,12 @@ margin: auto;
 }
 .user-profile-page-user-info-img{
     width: 200px;
+    height: 200px;
+    border-radius: 50%;
     margin: auto;
     margin-top: 1.5rem;
+    margin-bottom: 2rem;
+
 }
 
 .user-general-info{

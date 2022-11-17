@@ -30,6 +30,7 @@ console.log("userDoc",userDoc)
     const[startUpDocumentUpload,setStartUpDocumentUpload]=useState(null)
 
     const[haveStartUp,setHaveStartUp]=useState(true)
+    const[haveStartUpBtnClick,setHaveStartUpBtnClick]=useState("")
 const[imageUploadedUrl,setImageUploadedUrl]=useState('https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6')
 const[startupFilesUploadedUrl,setStartupFilesUploadedUrl]=useState("")
 
@@ -45,7 +46,7 @@ const[yourIndustry,setYourIndustry]=useState("")
 
 const[startUpInfo,setStartUpInfo]=useState({startUpFullName:"",startUpProfessionalEmail:"",startUpMobile:"",startUpLinkedIn:""})
 
-console.log(startupFilesUploadedUrl)
+
     const updateWidth = () => {
         setWidth(window.innerWidth);
       };
@@ -168,14 +169,12 @@ function handleStartUpFormInputChange(e){
 // UPLOAD IMAGE TO FIREBASE
 
 const uploadImageToFireBase=async()=>{
-    if(imageUpload===null){updateUserDocInFirebase();return;}
+    if(imageUpload===null){toast("Kindly Select Profile Image");return;}
     else if(imageUpload!==null){
     const imageReff=ref(storage,`Images/${imageUpload.name+user?.user?.email}`);
     try {
-        await uploadBytes(imageReff,imageUpload).then(()=>{
-            toast("Successfully Uploaded image")
-        })
-       
+        await uploadBytes(imageReff,imageUpload)
+        // toast("Successfully Uploaded image")
         fetchUrlOfUploadedImage()
     } catch (error) {
         toast.error(error.message)
@@ -186,18 +185,21 @@ const uploadImageToFireBase=async()=>{
 
 // GET URL OF IMAGE UPLOADED IN FIREBASE
 const fetchUrlOfUploadedImage=async()=>{
+ 
     const imagesListRef=ref(storage,"Images/")
-   
+
 try {
    await listAll(imagesListRef).then((resp)=>{
 
     resp.items.forEach((item)=>{
-        if(item._location.path_.includes(user?.user?.email)){
+        if(item._location.path_.includes(imageUpload.name+user?.user?.email)){
           
-           getDownloadURL(item).then((url)=>{
+          getDownloadURL(item).then((url)=>{
                 setImageUploadedUrl(url)
-    
-            }).then(updateUserDocInFirebase())
+                
+                updateUserDocInFirebase(url)
+            })
+            // .then(updateUserDocInFirebase())
            
         }
        })
@@ -210,20 +212,20 @@ try {
 // UPLOAD STARTUP RELEVANT FILE TO FIREBASE
 
 const uploadStartupRelevantFilesToFirebase=async()=>{
-    if(haveStartUp===false){return;}
-else if(haveStartUp===true&&startUpDocumentUpload===null){
-    toast.error("Upload Relevent Documents");
-    return;
-}
-else if(haveStartUp===true&&startUpDocumentUpload!==null)
-    {
-       if (startUpInfo.startUpFullName===""||startUpInfo.startUpLinkedIn===""||startUpInfo.startUpMobile===""||startUpInfo.startUpProfessionalEmail===""){toast.error("Kindly fill StartUp Form");return;}
-
-       else{
-        const fileReff=ref(storage,`FundingFiles/${startUpDocumentUpload.name+user?.user?.email}`);
+//     if(haveStartUp===false){return;}
+// else if(haveStartUp===true&&startUpDocumentUpload===null){
+//     toast.error("Upload Relevent Documents");
+//     return;
+// }
+//  if(haveStartUp===true&&startUpDocumentUpload!==null)
+//     {
+//        if (startUpInfo.startUpFullName===""||startUpInfo.startUpLinkedIn===""||startUpInfo.startUpMobile===""||startUpInfo.startUpProfessionalEmail===""){toast.error("Kindly fill StartUp Form");return;}
+//     }
+     
+    const fileReff=ref(storage,`FundingFiles/${startUpDocumentUpload.name+user?.user?.email}`);
         try {
             await uploadBytes(fileReff,startUpDocumentUpload).then(()=>{
-                toast("Successfully Uploaded Relevant Document")
+                // toast("Successfully Uploaded Relevant Document")
             })
            
             fetchUrlOfUploadedStartupFiles()
@@ -231,13 +233,13 @@ else if(haveStartUp===true&&startUpDocumentUpload!==null)
             toast.error(error.message)
         }
 
-       }
+       
     }
     
 
   
     
-}
+
 
 // GET URL OF STARTUP FILES UPLOADED IN FIREBASE
 const fetchUrlOfUploadedStartupFiles=async()=>{
@@ -246,12 +248,13 @@ const fetchUrlOfUploadedStartupFiles=async()=>{
 try {
    await listAll(fundingFilesListRef).then((resp)=>{
     resp.items.forEach((item)=>{
-        if(item._location.path_.includes(user?.user?.email)){
+        if(item._location.path_.includes(startUpDocumentUpload.name+user?.user?.email)){
           
             getDownloadURL(item).then((url)=>{
                 setStartupFilesUploadedUrl(url)
-    
-            }).then(uploadStartupDataToFirebase())
+                uploadStartupDataToFirebase(url,startUpDocumentUpload.name+user?.user?.email)
+            })
+            // .then(uploadStartupDataToFirebase())
             return;
         }
        })
@@ -266,7 +269,7 @@ try {
 
 // UPLOAD STARTUP DATA TO FIREBASE
 
-const uploadStartupDataToFirebase=async()=>{
+async function uploadStartupDataToFirebase(item,itemName){
   
     await setDoc(
         doc(db, "Funding", user?.user?.email),{
@@ -275,8 +278,8 @@ EntityDetail:"",
 Title:"",
 ContactNumber:startUpInfo.startUpMobile,
 Country:"",
-UploadedFileName:startUpDocumentUpload.name+user?.user?.email,
-UploadedFilePath:startupFilesUploadedUrl,
+UploadedFileName:itemName,
+UploadedFilePath:item,
 industry:"",
 CompanyName:"",
 FounderName:startUpInfo.startUpFullName,
@@ -292,7 +295,9 @@ website:"",
 
 //UPDATE USERDOC IN FIREBASE
 
-const updateUserDocInFirebase=()=>{
+async function updateUserDocInFirebase(item){
+    
+    console.log("imageURL",item)
     let newEducationalArray;
     let newExperienceArray;
     if(professionalInfo.previousOrCurrentOrganisation===""&&professionalInfo.designation===""&&professionalInfo.durationOfYears===""&&professionalInfo.yourRole===""&&professionalFormArray.length===0){newExperienceArray=[]}
@@ -313,7 +318,7 @@ const updateUserDocInFirebase=()=>{
     const userDocumentRef=doc(db,"Users",user?.user?.email)
     
     toast("Processing Your Request")
-    updateDoc(userDocumentRef,{
+   await updateDoc(userDocumentRef,{
         name: generalProfileInfo.fullName,
         dob:generalProfileInfo.dOB,
         state:generalProfileInfo.stateOfUser,
@@ -326,7 +331,7 @@ const updateUserDocInFirebase=()=>{
         twitterLink:socialLinkInfo.twitterLink,
         facebookLink:socialLinkInfo.facebookLink,
         instagramLink:socialLinkInfo.instaLink,
-        image:imageUploadedUrl,
+        image:item,
         industry:yourIndustry,
         hasGeneralProfile:true,
       }
@@ -340,13 +345,25 @@ const updateUserDocInFirebase=()=>{
 
 // UPDATE USERDOC ADD NEW IMAGE CREATE FUNDING USER BTN CLICK
 
-function updateUserDocAddNewImageCreateFundingUser(){
+async function updateUserDocAddNewImageCreateFundingUser(){
    
-if(generalProfileInfo.country===""||generalProfileInfo.dOB===""||generalProfileInfo.fullName===""||generalProfileInfo.gender===""||generalProfileInfo.stateOfUser===""){toast.error("Kindly fill general data");return;}
+if(generalProfileInfo.country===""||generalProfileInfo.dOB===""||generalProfileInfo.fullName===""||generalProfileInfo.gender===""||generalProfileInfo.stateOfUser===""){toast.error("Kindly fill Mandatory(*) Fields");return;}
 
 
-uploadStartupRelevantFilesToFirebase()
-uploadImageToFireBase()
+if(haveStartUpBtnClick===""){toast("Kindly select Yes Or No");return;}
+else if (haveStartUpBtnClick==="No"){toast("Processing Your Request");uploadImageToFireBase();return}
+else if (haveStartUpBtnClick==="Yes"){
+  if(startUpDocumentUpload===null){toast("Processing Your Request");uploadImageToFireBase();uploadStartupDataToFirebase("","");return}
+  else if(startUpDocumentUpload!==null){
+    toast("Processing Your Request");
+    uploadStartupRelevantFilesToFirebase();
+    uploadImageToFireBase()
+  }
+} 
+
+
+// await uploadStartupRelevantFilesToFirebase()
+// await uploadImageToFireBase()
 
 }
 
@@ -496,12 +513,13 @@ uploadImageToFireBase()
 
         <section id='doYouHaveAStartUp'>
             <h1 className='doYouHaveAStartUp-title'>Do you have a Start-Up?</h1>
-            <div className='doYouHaveAStartUp-option-container'>
-                <button onClick={()=>setHaveStartUp(true)} className='doYouHaveAStartUp-yes-option'>Yes</button>
-                <button onClick={()=>setHaveStartUp(false)} className='doYouHaveAStartUp-no-option'>No</button>
+            <div className='doYouHaveAStartUp-option-container '>
+                <button onClick={()=>{setHaveStartUp(true);setHaveStartUpBtnClick("Yes")}} className={haveStartUpBtnClick==="Yes"?'selected-option':'doYouHaveAStartUp-yes-option'}>Yes*</button>
+                <button onClick={()=>{setHaveStartUp(false);setHaveStartUpBtnClick("No")}} className={haveStartUpBtnClick==="No"?'selected-option':'doYouHaveAStartUp-no-option'}>No*</button>
             </div>
 {haveStartUp?<>
     <div className='doYouHaveAStartUp-verification-container'>
+    <ToastContainer />
                 <h1 className='doYouHaveAStartUp-verification-container-title'>Start Up Verification</h1>
                 <p className='doYouHaveAStartUp-verification-container-sub-text'>Upload comapany documents</p>
                 <div className='doYouHaveAStartUp-verification-upload-document-cont'>

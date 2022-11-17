@@ -402,6 +402,21 @@ color: #202020;
 .doYouHaveAStartUp-yes-option,.doYouHaveAStartUp-no-option{
    width: 20%;
     gap: 10px;
+border-radius: 6px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 28px;
+line-height: 42px;
+    background: #F6F6F6 ;
+    color: #0077B7 ;
+border: 2px solid #0077B7;
+margin: auto;
+cursor: pointer;
+}
+.selected-option{
+    width: 20%;
+    gap: 10px;
     background: #0077B7;
 border-radius: 6px;
 font-family: 'Poppins';
@@ -412,7 +427,7 @@ line-height: 42px;
 color: #F6F6F6;
 border: none;
 margin: auto;
-cursor: pointer;
+cursor: pointer; 
 }
 .doYouHaveAStartUp-verification-container{
     width: 100%;
