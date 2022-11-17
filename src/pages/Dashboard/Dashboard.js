@@ -125,33 +125,34 @@ useEffect(()=>{
 
  
 //CHECK FOR USER PROFILE PROGRESS BAR
-useEffect(()=>{
-if(userDoc?.about!==""){setUserDocHasAbout(8.33)}
+// useEffect(()=>{
+  
+// if(userDoc?.about!==""){setUserDocHasAbout(8.33)}
 
-if(userDoc?.country!==""){setUserDocHasCountry(8.33)}
+// if(userDoc?.country!==""){setUserDocHasCountry(8.33)}
 
-if (userDoc?.dob!==""){setUserDocHasdob(8.33)}
+// if (userDoc?.dob!==""){setUserDocHasdob(8.33)}
 
-if (userDoc?.education?.length!==0){setUserDocHaseducation(8.33)}
+// if (userDoc?.education?.length!==0){setUserDocHaseducation(8.33)}
 
-if(userDoc?.experience?.length!==0){setUserDocHasexperience(8.33)}
+// if(userDoc?.experience?.length!==0){setUserDocHasexperience(8.33)}
 
-if(userDoc?.facebookLink!==""||userDoc?.instagramLink!==""||userDoc?.linkedinLink!==""||userDoc?.twitterLink!==""){setUserDocHassocialLinks(8.33)}
+// if(userDoc?.facebookLink!==""||userDoc?.instagramLink!==""||userDoc?.linkedinLink!==""||userDoc?.twitterLink!==""){setUserDocHassocialLinks(8.33)}
 
-if(userDoc?.gender!==""){setUserDocHasgender(8.33)}
+// if(userDoc?.gender!==""){setUserDocHasgender(8.33)}
 
-if(userDoc?.image!==""){setUserDocHasimage(8.33)}
+// if(userDoc?.image!==""){setUserDocHasimage(8.33)}
 
-if(userDoc?.industry!==""){setUserDocHasindustry(8.33)}
+// if(userDoc?.industry!==""){setUserDocHasindustry(8.33)}
 
-if(userDoc?.name!==""){setUserDocHasname(8.33)}
+// if(userDoc?.name!==""){setUserDocHasname(8.33)}
 
-if(userDoc?.phone!==""){setUserDocHasphone(8.33)}
+// if(userDoc?.phone!==""){setUserDocHasphone(8.33)}
 
-if(userDoc?.state!==""){setUserDocHasState(8.33)}
+// if(userDoc?.state!==""){setUserDocHasState(8.33)}
 
-setProfileCompletionProgress(UserDocHasAbout+UserDocHasCountry+UserDocHasdob+UserDocHaseducation+UserDocHasState+UserDocHasexperience+UserDocHassocialLinks+UserDocHasgender+UserDocHasimage+UserDocHasindustry+UserDocHasname+UserDocHasphone)
-},[userDoc])
+// setProfileCompletionProgress(UserDocHasAbout+UserDocHasCountry+UserDocHasdob+UserDocHaseducation+UserDocHasState+UserDocHasexperience+UserDocHassocialLinks+UserDocHasgender+UserDocHasimage+UserDocHasindustry+UserDocHasname+UserDocHasphone)
+// },[userDoc])
 
 
 
@@ -439,7 +440,7 @@ toast("Processing Your Request")
       {/* <p className="userPosition">Start-up Owner</p> */}
     </div>
 <div className="userProfileCompletionIndicatorContainerAndButtonCont">
-    <div class="userProfileCompletionIndicatorContainer">
+    {/* <div class="userProfileCompletionIndicatorContainer">
     <div className="userProfileCompletionIndicatorContainer-outer">
       <div className="userProfileCompletionIndicatorContainer-inner">
       <p className="userProfileCompletionIndicator-first">Profile</p>
@@ -447,14 +448,8 @@ toast("Processing Your Request")
         <p className="userProfileCompletionIndicator-third">Complete</p>
       </div>
     </div>
-  {/* <div class="progress" id="progress">
-    <div class="inner">
-    <p className="userProfileCompletionIndicator-first">Profile</p>
-        <p className="userProfileCompletionIndicator-second">{profileCompletionProgress}%</p>
-        <p className="userProfileCompletionIndicator-third">Complete</p>
-    </div>
-  </div> */}
-</div>
+  
+</div> */}
 <button onClick={()=>navigate("/user-edit-profile")} className="Complete-userProfileButton">Complete Now</button>
 </div>
 
