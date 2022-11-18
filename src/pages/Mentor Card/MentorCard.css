@@ -6,8 +6,9 @@
 }
 .mentor-item-image{
     width: 90%;
-    height: 90%;
+    
     border-radius: 50%;
+    margin: auto;
 }
 .mentor-item-name-designation{
     display: flex;

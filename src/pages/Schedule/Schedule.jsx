@@ -15,6 +15,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
+import SidebarFinal from "../../components/Sidebar Final/SidebarFinal";
+import NavBarFinal from "../../components/Navbar/NavBarFinal";
 
 function Schedule() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -90,11 +92,13 @@ function Schedule() {
   }, []);
   return (
     <>
-      <PhnSidebar />
+    {width>=600?<><SidebarFinal /><NavBarFinal/></>:<><PhnSidebar />
+          <KnowledgeNavbar /></>}
+      {/* <PhnSidebar /> */}
       <div className={styles.schedule}>
-        <KnowledgeNavbar />
+        {/* <KnowledgeNavbar /> */}
         <div className={styles.body}>
-          <Sidebar isVisible={width >= 600 ? true : false} />
+          {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
           <div
             className={`animate__animated animate__fadeInUp ${styles.content}`}
           >
@@ -130,7 +134,7 @@ function Schedule() {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

@@ -69,7 +69,7 @@ console.log(UserDocHasAbout,UserDocHasCountry,UserDocHasdob,UserDocHaseducation,
   const meetingData=[];
   const pureMentorData=[]
   
-
+console.log("mentor data",mentorArray)
   // console.log("userId",userDocId)
   
   const updateWidth = () => {
@@ -177,7 +177,7 @@ useEffect(()=>{
  return;
   }
   else
-  {setUserImage("./images/carbon_user-avatar-filled.png")
+  {setUserImage("https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6")
   return
 }
   },[user])
@@ -439,8 +439,8 @@ toast("Processing Your Request")
       <h4 className="userName">{userName}</h4>
       {/* <p className="userPosition">Start-up Owner</p> */}
     </div>
-<div className="userProfileCompletionIndicatorContainerAndButtonCont">
-    {/* <div class="userProfileCompletionIndicatorContainer">
+{/* <div className="userProfileCompletionIndicatorContainerAndButtonCont">
+    <div class="userProfileCompletionIndicatorContainer">
     <div className="userProfileCompletionIndicatorContainer-outer">
       <div className="userProfileCompletionIndicatorContainer-inner">
       <p className="userProfileCompletionIndicator-first">Profile</p>
@@ -449,9 +449,9 @@ toast("Processing Your Request")
       </div>
     </div>
   
-</div> */}
-<button onClick={()=>navigate("/user-edit-profile")} className="Complete-userProfileButton">Complete Now</button>
 </div>
+<button onClick={()=>navigate("/user-edit-profile")} className="Complete-userProfileButton">Complete Now</button>
+</div> */}
 
   </div>
 </div>

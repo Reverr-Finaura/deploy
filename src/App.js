@@ -23,6 +23,7 @@ import Verification from "./pages/AfterSignUp/Verification/Verification";
 import { Toaster } from "react-hot-toast";
 import Knowledge from "./pages/Knowledge/Knowledge";
 import Mentors from "./pages/Mentors/Mentors";
+import MentorsNew from "./pages/Mentors/MentorsNew";
 import BetaTesting from "./pages/AfterKnowledge/BetaTesting/BetaTesting";
 import IdeaValidation from "./pages/AfterKnowledge/Idea Validation & EP/IdeaValidation";
 import BusinessPlanning from "./pages/AfterKnowledge/BusinessPlanning/BusinessPlanning";
@@ -71,6 +72,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import UserAddProfile from "./pages/User Add Profile/UserAddProfile";
 import UserProfile from "./pages/User Profile/UserProfile";
 import UserEditProfile from "./pages/User Edit Page/UserEditProfile";
+import ChangePassword from "./pages/Change Password/ChangePassword";
 
 function App() {
   const user = useSelector(selectUser);
@@ -127,7 +129,7 @@ function App() {
         <Route path="/" element={<Dashboard />} />
         <Route path="/knowledge" element={<Knowledge />}></Route>
         {/* <Route path="/com" element={<BusinessPlanningSlides />}></Route> */}
-        <Route path="/mentors" element={<Mentors />}></Route>
+        <Route path="/mentors" element={<MentorsNew />}></Route>
         <Route path="/mentor" element={<Mentor />}></Route>
         <Route path="/mentorform" element={<MentorForm />}></Route>
         <Route path="/mentordetails" element={<MentorMoreDetails />}></Route>
@@ -225,6 +227,7 @@ function App() {
         ></Route>
         <Route path="/userprofile" element={<UserProfile />}></Route>
         <Route path="/user-edit-profile" element={<UserEditProfile />}></Route>
+        <Route path="/change-user-password" element={<ChangePassword />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </>
