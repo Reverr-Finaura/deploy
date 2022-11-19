@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Mentors_Module_Ansh_New.css"
+import "./MentorsNew_Module_Ansh_New.css"
 import SkillIcon from './skillIcon'
 import { useNavigate } from 'react-router-dom'
 
@@ -14,11 +14,11 @@ const MentorProfileCard = ({item,index}) => {
     <div className='mentor-cardd-top-part-left-col'>
     <div className='mentor-cardd-top-part-left-col-name-icon-cont'>
     <h4 className='mentor-cardd-top-part-left-col-title'>{item?.name}</h4> 
-  
+    <a className='MentorslinkedInSocialLink' href={item?.linkedin}><img src="./images/linkedinIcon.svg" alt="social-icon" /></a>
     </div>
        
         <p className='mentor-cardd-top-part-left-col-sub-title'>{item?.designation}</p>
-        <a href={item?.linkedin}><img src="./images/linkedinIcon.svg" alt="social-icon" /></a>
+        
     </div>
     <div className='mentor-cardd-top-part-right-col'>
         <img className='mentor-cardd-top-part-right-col-image' src={item?.image} alt="mentor-profile" />
@@ -43,7 +43,7 @@ const MentorProfileCard = ({item,index}) => {
 
 <div className='mentor-cardd-bottom-part'>
     <div className='mentor-cardd-bottom-part-left-col'>
-<h3 className='mentor-cardd-bottom-part-left-col-price-cont'>&#8377; {item?.plans[0]} <span className='mentor-cardd-bottom-part-left-col-per-time'>/ 30 min</span></h3>
+<h3 className='mentor-cardd-bottom-part-left-col-price-cont'>&#8377; {(item?.plans[0]/2)} <span className='mentor-cardd-bottom-part-left-col-per-time'>/ 30 min</span></h3>
     </div>
     <div className='mentor-cardd-bottom-part-right-col'>
         <button onClick={()=>navigate('/schedule', {state:{mentor:item}})}className='mentor-cardd-bottom-part-right-col-schedule-btn'>Schedule</button>

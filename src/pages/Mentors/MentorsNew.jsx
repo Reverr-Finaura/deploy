@@ -4,10 +4,11 @@ import KnowledgeNavbar from '../../components/KnowledgeNavbar/KnowledgeNavbar';
 import NavBarFinal from '../../components/Navbar/NavBarFinal';
 import SidebarFinal from '../../components/Sidebar Final/SidebarFinal';
 import PhnSidebar from "../../components/PhnSidebar/PhnSidebar";
-import SkillIcon from "./skillIcon"
 import { db } from '../../firebase';
-import "./Mentors_Module_Ansh_New.css"
+import "./MentorsNew_Module_Ansh_New.css"
 import MentorProfileCard from './MentorProfileCard';
+import LoadingMentorCard from './LoadingMentorCard';
+// const MentorProfileCard=React.lazy(()=>import('./MentorProfileCard'))
 
 
 const MentorsNew = () => {
@@ -62,11 +63,21 @@ useEffect(() => {
 {width>=600?<><SidebarFinal /><NavBarFinal/></>:<><PhnSidebar />
           <KnowledgeNavbar /></>}
           <h1 className='find-best-mentor-heading'>Find the Best Mentor</h1>
+          {/* <div className='loadingAnimationContainer'>
+<LoadingMentorCard />
+<LoadingMentorCard />
+<LoadingMentorCard />
+<LoadingMentorCard />
+</div> */}
 <section id='mentors-page-new'>
 
 <div className='mentors-page-card-container'>
+
+
 {mentorArray?.map((item,index)=>{
-    return <MentorProfileCard key={index} item={item} index={index}/>
+    return <>
+    <MentorProfileCard key={index} item={item} index={index}/>
+    </>
 })}
 
 
