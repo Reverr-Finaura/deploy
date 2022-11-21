@@ -21,6 +21,7 @@ import { setUserDoc } from "../../features/userDocSlice";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { setUserFundingDoc } from "../../features/userFundingDocSlice";
+import UserProfileCompletedStatusBar from "../../components/User Profile Completed Status Bar/UserProfileCompletedStatusBar";
 let ProgressBar = require('progressbar.js')
 
 
@@ -32,21 +33,9 @@ const userFundingDoc=useSelector((state)=>state.userFundingDoc)
 
 // console.log("userFundingDoc",userFundingDoc)
 console.log("userDocRedux",userDoc)
+console.log("user",user)
 
 
-const[UserDocHasAbout,setUserDocHasAbout]=useState(0)
-const[UserDocHasCountry,setUserDocHasCountry]=useState(0)
-const[UserDocHasdob,setUserDocHasdob]=useState(0)
-const[UserDocHaseducation,setUserDocHaseducation]=useState(0)
-const[UserDocHasState,setUserDocHasState]=useState(0)
-const[UserDocHasexperience,setUserDocHasexperience]=useState(0)
-const[UserDocHassocialLinks,setUserDocHassocialLinks]=useState(0)
-const[UserDocHasgender,setUserDocHasgender]=useState(0)
-const[UserDocHasimage,setUserDocHasimage]=useState(0)
-const[UserDocHasindustry,setUserDocHasindustry]=useState(0)
-const[UserDocHasname,setUserDocHasname]=useState(0)
-const[UserDocHasphone,setUserDocHasphone]=useState(0)
-const [profileCompletionProgress,setProfileCompletionProgress]=useState(57)
   const navigate = useNavigate();
   const [width, setWidth] = useState(window.innerWidth);
   const [mentorArray, setMentorArray] = useState([]);
@@ -61,7 +50,7 @@ const [profileCompletionProgress,setProfileCompletionProgress]=useState(57)
   const[userDocId,setUserDocId]=useState([])
   const[userDocInputFormInput,setUserDocInputFormInput]=useState({name:user?.user?.displayName,email:user?.user?.email,password:"",confirmPassword:"",phone:""})
 
-console.log(UserDocHasAbout,UserDocHasCountry,UserDocHasdob,UserDocHaseducation,UserDocHasState,UserDocHasexperience,UserDocHassocialLinks,UserDocHasgender,UserDocHasimage,UserDocHasindustry,UserDocHasname,UserDocHasphone)
+
 
   const data = [];
   const blogData=[];
@@ -124,36 +113,6 @@ useEffect(()=>{
   },[userDoc])
 
  
-//CHECK FOR USER PROFILE PROGRESS BAR
-// useEffect(()=>{
-  
-// if(userDoc?.about!==""){setUserDocHasAbout(8.33)}
-
-// if(userDoc?.country!==""){setUserDocHasCountry(8.33)}
-
-// if (userDoc?.dob!==""){setUserDocHasdob(8.33)}
-
-// if (userDoc?.education?.length!==0){setUserDocHaseducation(8.33)}
-
-// if(userDoc?.experience?.length!==0){setUserDocHasexperience(8.33)}
-
-// if(userDoc?.facebookLink!==""||userDoc?.instagramLink!==""||userDoc?.linkedinLink!==""||userDoc?.twitterLink!==""){setUserDocHassocialLinks(8.33)}
-
-// if(userDoc?.gender!==""){setUserDocHasgender(8.33)}
-
-// if(userDoc?.image!==""){setUserDocHasimage(8.33)}
-
-// if(userDoc?.industry!==""){setUserDocHasindustry(8.33)}
-
-// if(userDoc?.name!==""){setUserDocHasname(8.33)}
-
-// if(userDoc?.phone!==""){setUserDocHasphone(8.33)}
-
-// if(userDoc?.state!==""){setUserDocHasState(8.33)}
-
-// setProfileCompletionProgress(UserDocHasAbout+UserDocHasCountry+UserDocHasdob+UserDocHaseducation+UserDocHasState+UserDocHasexperience+UserDocHassocialLinks+UserDocHasgender+UserDocHasimage+UserDocHasindustry+UserDocHasname+UserDocHasphone)
-// },[userDoc])
-
 
 
 
@@ -439,20 +398,10 @@ toast("Processing Your Request")
       <h4 className="userName">{userName}</h4>
       {/* <p className="userPosition">Start-up Owner</p> */}
     </div>
-{/* <div className="userProfileCompletionIndicatorContainerAndButtonCont">
-    <div class="userProfileCompletionIndicatorContainer">
-    <div className="userProfileCompletionIndicatorContainer-outer">
-      <div className="userProfileCompletionIndicatorContainer-inner">
-      <p className="userProfileCompletionIndicator-first">Profile</p>
-        <p className="userProfileCompletionIndicator-second">{profileCompletionProgress}%</p>
-        <p className="userProfileCompletionIndicator-third">Complete</p>
-      </div>
-    </div>
-  
-</div>
-<button onClick={()=>navigate("/user-edit-profile")} className="Complete-userProfileButton">Complete Now</button>
-</div> */}
+    <div className="dshboard-user-profile-status-cont">
 
+    <UserProfileCompletedStatusBar />
+    </div>
   </div>
 </div>
 
