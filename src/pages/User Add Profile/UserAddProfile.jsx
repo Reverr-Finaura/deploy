@@ -30,7 +30,7 @@ console.log("userDoc",userDoc)
     const[startUpDocumentUpload,setStartUpDocumentUpload]=useState(null)
 
     const[haveStartUp,setHaveStartUp]=useState(true)
-    const[haveStartUpBtnClick,setHaveStartUpBtnClick]=useState("")
+    const[haveStartUpBtnClick,setHaveStartUpBtnClick]=useState("No")
 const[imageUploadedUrl,setImageUploadedUrl]=useState('https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6')
 const[startupFilesUploadedUrl,setStartupFilesUploadedUrl]=useState("")
 
@@ -169,7 +169,7 @@ function handleStartUpFormInputChange(e){
 // UPLOAD IMAGE TO FIREBASE
 
 const uploadImageToFireBase=async()=>{
-    if(imageUpload===null){toast("Kindly Select Profile Image");return;}
+    if(imageUpload===null){updateUserDocInFirebase("https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6");return;}
     else if(imageUpload!==null){
     const imageReff=ref(storage,`Images/${imageUpload.name+user?.user?.email}`);
     try {
@@ -212,16 +212,7 @@ try {
 // UPLOAD STARTUP RELEVANT FILE TO FIREBASE
 
 const uploadStartupRelevantFilesToFirebase=async()=>{
-//     if(haveStartUp===false){return;}
-// else if(haveStartUp===true&&startUpDocumentUpload===null){
-//     toast.error("Upload Relevent Documents");
-//     return;
-// }
-//  if(haveStartUp===true&&startUpDocumentUpload!==null)
-//     {
-//        if (startUpInfo.startUpFullName===""||startUpInfo.startUpLinkedIn===""||startUpInfo.startUpMobile===""||startUpInfo.startUpProfessionalEmail===""){toast.error("Kindly fill StartUp Form");return;}
-//     }
-     
+
     const fileReff=ref(storage,`FundingFiles/${startUpDocumentUpload.name+user?.user?.email}`);
         try {
             await uploadBytes(fileReff,startUpDocumentUpload).then(()=>{
@@ -338,7 +329,10 @@ async function updateUserDocInFirebase(item){
       }
         ).then(()=>{
         toast("Successfully Updated User Profile")
-        window.location.reload()
+        setTimeout(()=>{
+            window.location.reload()
+        },1500)
+       
     }).catch((error)=>{
         toast.error(error.message)
     })
@@ -347,28 +341,26 @@ async function updateUserDocInFirebase(item){
 // UPDATE USERDOC ADD NEW IMAGE CREATE FUNDING USER BTN CLICK
 
 async function updateUserDocAddNewImageCreateFundingUser(){
-   
-if(generalProfileInfo.country===""||generalProfileInfo.dOB===""||generalProfileInfo.fullName===""||generalProfileInfo.gender===""||generalProfileInfo.stateOfUser===""||generalProfileInfo.about===""||yourIndustry===""){toast.error("Kindly fill Mandatory(*) Fields");return;}
-if(educationInfo.degree===""&&educationInfo.lastDate===""&&educationInfo.schoolOrCollege===""&&educationInfo.startingDate===""&&educationFormArray.length===0){
-    toast.error("Minimum One Education is Mandatory");
-    return
-}
+   toast("Processing Your Request")
+   uploadImageToFireBase()
+// if(generalProfileInfo.country===""||generalProfileInfo.dOB===""||generalProfileInfo.fullName===""||generalProfileInfo.gender===""||generalProfileInfo.stateOfUser===""||generalProfileInfo.about===""||yourIndustry===""){toast.error("Kindly fill Mandatory(*) Fields");return;}
+// if(educationInfo.degree===""&&educationInfo.lastDate===""&&educationInfo.schoolOrCollege===""&&educationInfo.startingDate===""&&educationFormArray.length===0){
+//     toast.error("Minimum One Education is Mandatory");
+//     return
+// }
 
 
-if(haveStartUpBtnClick===""){toast("Kindly select Yes Or No");return;}
-else if (haveStartUpBtnClick==="No"){toast("Processing Your Request");uploadImageToFireBase();return}
-else if (haveStartUpBtnClick==="Yes"){
-  if(startUpDocumentUpload===null){toast("Processing Your Request");uploadImageToFireBase();uploadStartupDataToFirebase("","");return}
-  else if(startUpDocumentUpload!==null){
-    toast("Processing Your Request");
-    uploadStartupRelevantFilesToFirebase();
-    uploadImageToFireBase()
-  }
-} 
+// if(haveStartUpBtnClick===""){toast("Kindly select Yes Or No");return;}
+// else if (haveStartUpBtnClick==="No"){toast("Processing Your Request");uploadImageToFireBase();return}
+// else if (haveStartUpBtnClick==="Yes"){
+//   if(startUpDocumentUpload===null){toast("Processing Your Request");uploadImageToFireBase();uploadStartupDataToFirebase("","");return}
+//   else if(startUpDocumentUpload!==null){
+//     toast("Processing Your Request");
+//     uploadStartupRelevantFilesToFirebase();
+//     uploadImageToFireBase()
+//   }
+// } 
 
-
-// await uploadStartupRelevantFilesToFirebase()
-// await uploadImageToFireBase()
 
 }
 
@@ -382,7 +374,7 @@ else if (haveStartUpBtnClick==="Yes"){
 <section id='mentor-add-profile-page'>
 
     <section className='profile-info-section'>
-        <h1 className='profile-info-section-title'>Let’s get your profile done first!!*</h1>
+        <h1 className='profile-info-section-title'>Let’s get your profile done first!!</h1>
         <div className='imageUploadInputContainer'>
         <input onChange={onImageChange} type="file" name='imageUpload'/>
         {imageUpload!==null&&tempImageURL?<><img className="userUploadedImagePreview" src={tempImageURL} alt="user-uploaded-image" /></>:
@@ -402,14 +394,14 @@ else if (haveStartUpBtnClick==="Yes"){
 {/* ADD FORM INPUT FORM */}
 
         <div className='add-profile-info-form'>
-            <input onChange={handleGeneralProfileInfoInputChange} type="text" name='fullName' className='add-profile-input fullName-input' placeholder='Full Name*' value={generalProfileInfo.fullName} />
+            <input onChange={handleGeneralProfileInfoInputChange} type="text" name='fullName' className='add-profile-input fullName-input' placeholder='Full Name' value={generalProfileInfo.fullName} />
             <div className='add-profile-info-form-grid'>
-                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='dOB' className='add-profile-input DOB-input' placeholder='Date of Birth*' value={generalProfileInfo.dOB} />
-                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='gender' className='add-profile-input Gender-input' placeholder='Gender*' value={generalProfileInfo.gender} />
-                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='stateOfUser' className='add-profile-input state-input' placeholder='State*' value={generalProfileInfo.stateOfUser} />
-                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='country' className='add-profile-input country-input' placeholder='Country*' value={generalProfileInfo.country} />
+                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='dOB' className='add-profile-input DOB-input' placeholder='Date of Birth' value={generalProfileInfo.dOB} />
+                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='gender' className='add-profile-input Gender-input' placeholder='Gender' value={generalProfileInfo.gender} />
+                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='stateOfUser' className='add-profile-input state-input' placeholder='State' value={generalProfileInfo.stateOfUser} />
+                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='country' className='add-profile-input country-input' placeholder='Country' value={generalProfileInfo.country} />
             </div>
-            <textarea onChange={handleGeneralProfileInfoInputChange} name="about" className='about-input' rows="5" placeholder="About*" value={generalProfileInfo.about}></textarea>
+            <textarea onChange={handleGeneralProfileInfoInputChange} name="about" className='about-input' rows="4" placeholder="About" value={generalProfileInfo.about}></textarea>
         </div>
 
 {/* HOW YOU WANT TO MEET PEOPLE */}
@@ -439,7 +431,7 @@ else if (haveStartUpBtnClick==="Yes"){
 {/* KNOW ABOUT YOUR EDUCATION */}
 
         <section id='know-about-your-education'>
-        <h1 className='know-about-your-education-title'>Let’s know about your Education!*</h1>  
+        <h1 className='know-about-your-education-title'>Let’s know about your Education!</h1>  
 {educationFormArray?.map((item)=>{
     return <>
     <div className='know-about-your-education-form read-only-form' key={item.id} id={item.id}>
@@ -498,7 +490,7 @@ else if (haveStartUpBtnClick==="Yes"){
         {/* WHAT IS YOUR INDUSTRY SECTION */}
 
         <section id='what-is-your-industry-section'>
-        <h1 className='what-is-your-industry-title'>What is your Industry?*</h1>
+        <h1 className='what-is-your-industry-title'>What is your Industry?</h1>
             <div className='what-is-your-industry-input'>{yourIndustry===""?"Choose Your Industry*":yourIndustry}</div>
 
             <div className='what-is-your-industry-options-cont'>
@@ -516,7 +508,7 @@ else if (haveStartUpBtnClick==="Yes"){
         </section>
 
 
-        <section id='doYouHaveAStartUp'>
+        {/* <section id='doYouHaveAStartUp'>
             <h1 className='doYouHaveAStartUp-title'>Do you have a Start-Up?</h1>
             <div className='doYouHaveAStartUp-option-container '>
                 <button onClick={()=>{setHaveStartUp(true);setHaveStartUpBtnClick("Yes")}} className={haveStartUpBtnClick==="Yes"?'selected-option':'doYouHaveAStartUp-yes-option'}>Yes*</button>
@@ -544,7 +536,7 @@ else if (haveStartUpBtnClick==="Yes"){
 
 </>:null}
             
-        </section>
+        </section> */}
         
 <div style={{display:"flex",flexDirection:"column",width:"95%"}}> 
 <button onClick={updateUserDocAddNewImageCreateFundingUser} className='mentor-add-profile-page-submit-button'>Submit</button>

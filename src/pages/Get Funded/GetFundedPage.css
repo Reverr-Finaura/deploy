@@ -1,0 +1,110 @@
+#getFundingPage{
+    min-height: 100vh;
+    width: 73%;
+    margin-left: 14.5rem;
+    margin-top: 7.2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    
+}
+.getFundingPageTitle{
+    width: 100%;
+    text-align: center;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 48px;
+    color: #000C12;
+}
+
+.getFundingPageForm{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-left:auto ;
+    margin-right: auto;
+    margin-top: 2rem
+}
+
+.getFundingPageFormInput{
+    width: 60%;
+    margin: auto;
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    background: rgba(95, 95, 95, 0.2);
+    border: none;
+    font-family: 'Poppins';
+    font-size: 18px;
+}
+.getFundingPageFormInput:focus{
+    outline: none;
+}
+
+.uploadPitchDeckContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+}
+
+.pitchDeckUploadButton{
+position: absolute;
+right: 17%;
+top: 33.5%;
+font-size: 16px !important;
+background-color: #a1a3a6 !important;
+    padding: 12px 21px;
+    font-weight: 600;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    border: none;
+    cursor: pointer;
+}
+
+.getFundedPageApplyButton{
+    
+    padding: 0.5rem 5rem;
+    cursor: pointer;
+    color: #fff;
+    font-size: 24px;
+    border: none;
+    background: #2a72de;
+    box-shadow: 0px 4px 4px rgb(255 255 255 / 25%);
+    border-radius: 4px;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+@media(max-width:875px){
+    #getFundingPage{
+        width: 65%;
+    }
+    .getFundingPageForm{
+        width: 90%;
+    }
+}
+@media(max-width:680px){
+    #getFundingPage{
+        margin-left: 11rem;
+    }
+    .getFundingPageForm{
+        width: 95%;
+    }
+}
+@media(max-width:600px){
+    #getFundingPage{
+     margin: auto;
+    } 
+    .getFundingPageForm{
+        width: 101%;
+    }
+    .pitchDeckUploadButton{
+        right: 12%;
+    }
+}

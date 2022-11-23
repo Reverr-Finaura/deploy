@@ -16,9 +16,9 @@ const userDoc=useSelector((state)=>state.userDoc)
 
 console.log("userDoc",userDoc)
 
-    const [profileCompletionProgress,setProfileCompletionProgress]=useState(10)
+    const [profileCompletionProgress,setProfileCompletionProgress]=useState(0)
 
-
+console.log("profileComplete",profileCompletionProgress)
 
 // CHECK FOR USER PROFILE PROGRESS BAR
 useEffect(()=>{

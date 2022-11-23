@@ -36,12 +36,13 @@ const SidebarFinal = () => {
         <p className='sidebar-final-icon-name'>Knowledge</p>
       </div>
 </NavLink>
-<a style={{textDecoration:"none"}} href="https://reverrapp.com/fundingform" target="_blank">
+{/* href="https://reverrapp.com/fundingform" target="_blank" */}
+<NavLink style={{textDecoration:"none"}} to="/funding-page" >
       <div className='sidebar-final-icon-name-cont'>
         <img className='sidebar-final-icon' src="./images/bx_money.png" alt="icon" />
         <p className='sidebar-final-icon-name'>Funding</p>
       </div>
-</a>
+</NavLink>
 <NavLink style={{textDecoration:"none"}} to="/mentors">
       <div className='sidebar-final-icon-name-cont'>
         <img className='sidebar-final-icon' src="./images/cil_education.png" alt="icon" />

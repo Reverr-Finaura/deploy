@@ -43,7 +43,7 @@ const MentorProfileCard = ({item,index}) => {
 
 <div className='mentor-cardd-bottom-part'>
     <div className='mentor-cardd-bottom-part-left-col'>
-<h3 className='mentor-cardd-bottom-part-left-col-price-cont'>&#8377; {(item?.plans[0]/2)} <span className='mentor-cardd-bottom-part-left-col-per-time'>/ 30 min</span></h3>
+<h3 className='mentor-cardd-bottom-part-left-col-price-cont'>&#8377; {(item?.plans[0]/2)<=500?500:(item?.plans[0]/2)>500&&(item?.plans[0]/2)<=750?750:(item?.plans[0]/2)>750&&(item?.plans[0]/2)<=1000?1000:(item?.plans[0]/2)>1000&&(item?.plans[0]/2)<=1500?1500:item?.plans[0]/2} <span className='mentor-cardd-bottom-part-left-col-per-time'>/ 30 min</span></h3>
     </div>
     <div className='mentor-cardd-bottom-part-right-col'>
         <button onClick={()=>navigate('/schedule', {state:{mentor:item}})}className='mentor-cardd-bottom-part-right-col-schedule-btn'>Schedule</button>

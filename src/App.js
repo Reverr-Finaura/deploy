@@ -73,6 +73,8 @@ import UserAddProfile from "./pages/User Add Profile/UserAddProfile";
 import UserProfile from "./pages/User Profile/UserProfile";
 import UserEditProfile from "./pages/User Edit Page/UserEditProfile";
 import ChangePassword from "./pages/Change Password/ChangePassword";
+import GetFundedPage from "./pages/Get Funded/GetFundedPage";
+import CommunityNew from "./pages/Community/CommunityNew";
 
 function App() {
   const user = useSelector(selectUser);
@@ -136,7 +138,7 @@ function App() {
         <Route path="/funding" element={<Funding />}></Route>
         <Route path="/fundingform" element={<FundingForm />}></Route>
         <Route path="/mentor-profile" element={<MentorProfile />}></Route>
-        <Route path="/community" element={<Community />}></Route>
+        <Route path="/community" element={<CommunityNew />}></Route>
         <Route path="/schedule" element={<Schedule />}></Route>
         <Route path="/betaslide" element={<BetaSlide />}></Route>
         <Route path="/eeslides" element={<EESlides />}></Route>
@@ -228,6 +230,7 @@ function App() {
         <Route path="/userprofile" element={<UserProfile />}></Route>
         <Route path="/user-edit-profile" element={<UserEditProfile />}></Route>
         <Route path="/change-user-password" element={<ChangePassword />}></Route>
+        <Route path="/funding-page" element={<GetFundedPage/>}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </>

@@ -74,7 +74,7 @@ margin-top: 1rem;
     align-items: center;
 }
 .user-container{
-    width: 80%;
+    width: 92%;
     padding-left: 1rem;
     margin-left: 3.5rem;
     margin-bottom: 3rem;
@@ -468,16 +468,16 @@ line-height: 48px;
         grid-template-columns: 100%;
         margin-bottom: 3rem;
     }
-    .dshboard-user-profile-status-cont{
+    /* .dshboard-user-profile-status-cont{
         margin: auto;
         margin-top: 2rem;
-    }
-    .userName{
+    } */
+    /* .userName{
         margin-top: 1rem;
-    }
-    .usser-name-photo{
+    } */
+    /* .usser-name-photo{
         flex-direction: column;
-    }
+    } */
     
     .dashboard-data-left-cont{
         margin-left: 16px;
@@ -514,6 +514,19 @@ line-height: 48px;
         margin-left: 10rem;
         
     }
+       .dshboard-user-profile-status-cont{
+        margin: auto;
+        margin-top: 2rem;
+    }
+    .userName{
+        margin-top: 1rem;
+    }
+    .usser-name-photo{
+        flex-direction: column;
+    }
+    .user-container{
+        width: 80%;
+    }
 }
 @media(max-width:656px){
     .dashboard{
@@ -531,5 +544,22 @@ line-height: 48px;
         align-items: center;
     }
         
+    .dshboard-user-profile-status-cont{
+        margin-right: 0;
+        margin-top: 2rem;
+    }
+    .userName{
+        margin-top: 0rem;
+    }
+    .usser-name-photo{
+        flex-direction: row;
+    }
+    .user-container{
+        width: 80%;
+    }
+    #quotation-cont{
+        width: 88%;
+    }
+
 }
 

@@ -343,7 +343,8 @@ toast("Processing Your Request")
         mentors: [],
         events:[],
         hasGeneralProfile:false,
-        hasFundingProfile:"",
+        hasFundingProfile:"No",
+        applyForFundingId:null,
         meeting:{}}
     )
 

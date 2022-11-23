@@ -1,6 +1,6 @@
 #mentor-add-profile-page{
    
-    margin-top: 10rem;
+    margin-top: 8rem;
     margin-left: 14rem;
     width: 80%;
     min-height: 100vh;
@@ -26,28 +26,28 @@ width:fit-content;
 margin: auto;
 }
 .imageUploadInputContainer{
-    width: 180px;
-    height: 180px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     border: 4px solid #2A72DE;
     z-index: 1;
     background: transparent;
     position: relative;
     margin: auto;
-    margin-top: 5rem;
+    margin-top: 2rem;
 }
 input[name='imageUpload'] {
    opacity: 0;
    z-index: 10;
-   width: 180px;
-   height: 180px;
+   width: 140px;
+   height: 140px;
    border-radius: 50%;
    position: absolute;
    cursor: pointer;
 }
 .userUploadedImagePreview{
-    width: 180px;
-    height: 180px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
 }
 .imageUploadInputContainerImageContainer{
@@ -84,7 +84,7 @@ text-align: center;
     flex-direction: column;
     width: 50%;
     margin: auto;
-    margin-top: 5rem;
+    margin-top: 2rem;
 }
 
 .how-you-want-to-meet-people-title{
@@ -99,7 +99,7 @@ margin-bottom: 4rem;
 }
 
 .add-profile-input{
-    padding: 8px 21px;
+    padding: 1px 21px;
     gap: 140px;  
 background: #F6F6F6;
 border: 2px solid #2A72DE;
@@ -107,7 +107,7 @@ border-radius: 8px;
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 400;
-font-size: 24px;
+font-size: 20px;
 line-height: 36px;
 color: rgba(32, 32, 32, 0.5);
 margin-bottom: 1rem;
@@ -130,12 +130,13 @@ margin-bottom: 1rem;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 36px;
     color: rgba(32, 32, 32, 0.5);
     margin-left: 0px;
     margin-right: 0px;
     padding-right: 21px;
+    height: 20vh!important;
 }
 
 /* HOW DO YOU WANT TO MEET NEW PEOPLE */
