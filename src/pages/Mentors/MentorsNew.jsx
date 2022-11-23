@@ -30,11 +30,10 @@ const[isFilterByExpertiseOptionClick,setIsFilterByExpertiseOptionClick]=useState
 const[arrayToBeMapped,setArrayToBeMapped]=useState([])
 const[isFiltered,setIsFiltered]=useState(false)
 const data = [];
-console.log("price",NewFilteredMentorArrayPriceWise)
-console.log("expertise",NewFilteredMentorArrayExpertieWise)
-console.log("both",NewFilteredMentorArrayExpertieWiseAfterPriceWise)
 
-// console.log("mentor array",mentorArray)
+
+
+console.log("mentor array",mentorArray)
 
     const updateWidth = () => {
         setWidth(window.innerWidth);

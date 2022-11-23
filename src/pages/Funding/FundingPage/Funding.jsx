@@ -7,7 +7,13 @@ import Footer from "../../Footer/Footer";
 import "animate.css";
 import "../FundingPage/funding.module.css";
 import PhnSidebarSlice from "../../../features/phnSidebarSlice";
+import { useNavigate } from "react-router-dom";
+
+import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
+import NavBarFinal from "../../../components/Navbar/NavBarFinal";
+
 function Funding() {
+  const navigate=useNavigate()
   const [width, setWidth] = useState(window.innerWidth);
 
   const updateWidth = () => {
@@ -20,11 +26,14 @@ function Funding() {
   }, []);
   return (
     <>
-      <PhnSidebar />
+            
+{width>=600?<><SidebarFinal /><NavBarFinal/></>:<><PhnSidebar />
+          <KnowledgeNavbar /></>}
+      {/* <PhnSidebar /> */}
       <div className={styles.knowledge}>
-        <KnowledgeNavbar />
+        {/* <KnowledgeNavbar /> */}
         <div className={styles.body}>
-          <Sidebar isVisible={width >= 600 ? true : false} />
+          {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
           <div className={styles.content}>
             <div className={styles.search}>
               <img src="./images/searchicon.png" alt="search" />
@@ -47,12 +56,12 @@ function Funding() {
                   start fundings privately
                 </span>
               </div>
-              <button className={styles.funding__btn}>Apply Now</button>
+              <button onClick={()=>navigate("/funding-page")} className={styles.funding__btn}>Apply Now</button>
             </div>
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
