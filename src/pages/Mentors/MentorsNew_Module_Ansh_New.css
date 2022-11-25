@@ -310,6 +310,7 @@ font-family: 'Poppins';
     align-items: center;
     background: white;
     border-radius: 11px;
+    padding: 1rem;
 }
 /* .price-filter-optionss{
     display: flex;
@@ -318,9 +319,7 @@ font-family: 'Poppins';
     align-items: center;
 } */
 .price-filter-optionsselecteddd{
-    padding: .1rem;
-    padding-left: .2rem;
-    padding-right: 1rem;
+    padding: 1rem;
     color: black;
     font-size: 16px;
     border: none;

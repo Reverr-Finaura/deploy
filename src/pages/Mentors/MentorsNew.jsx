@@ -440,7 +440,7 @@ setArrayToBeMapped(mentorArray)
   <div className='saveChangesAndResetButtonCont'>
   {(selectedPriceOption.length===0&&selectedExpertiseOption.length===0)?null:
   <button onClick={handleFilterSearchButtonClick} className='saveNewFilterChanges'>Save Changes</button>}
-  <button style={{marginLeft:"auto"}} onClick={handleResetFilterButtonClick} className='resetFilter'>Reset</button>
+  <button style={{marginLeft:"auto"}} onClick={handleResetFilterButtonClick} className='resetFilter'>Clear</button>
   </div>
 </section>
 

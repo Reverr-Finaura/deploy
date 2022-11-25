@@ -4,6 +4,7 @@ border-radius: 8px;
 padding: 16px 24px;
 display: flex;
 margin-bottom: 1rem;
+cursor: pointer;
 }
 .blog-item-cont-left-box{
     width: 30%;

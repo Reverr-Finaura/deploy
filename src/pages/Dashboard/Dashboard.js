@@ -27,6 +27,7 @@ let ProgressBar = require('progressbar.js')
 
 const Dashboard = () => {
   const dispatch=useDispatch()
+
 const user=useSelector((state)=>state.user)
 const userDoc=useSelector((state)=>state.userDoc)
 const userFundingDoc=useSelector((state)=>state.userFundingDoc)
@@ -50,6 +51,7 @@ console.log("user",user)
   const[userDocId,setUserDocId]=useState([])
   const[userDocInputFormInput,setUserDocInputFormInput]=useState({name:user?.user?.displayName,email:user?.user?.email,password:"",confirmPassword:"",phone:""})
 
+  console.log("blogarray",blogArray)
 
 
   const data = [];
@@ -485,7 +487,7 @@ toast("Processing Your Request")
 
 <section className="mentors-containerr">
 <h2 className="mentors-container-titlee">Mentors</h2>
-{mentorArray.slice(0,4).map((item)=>{
+{mentorArray.slice(0,8).map((item)=>{
   return <MentorCard key={item.email} item={item}  />
 })}
 <div className="load-more-mentor-btn-cont">
