@@ -21,7 +21,7 @@ const UserProfile = () => {
     const user=useSelector((state)=>state.user)
     const userDoc=useSelector((state)=>state.userDoc)
     const userFundingDoc=useSelector((state)=>state.userFundingDoc)
-
+   
     console.log("userDoc",userDoc)
     console.log("userFundingDoc",userFundingDoc)
     
@@ -37,6 +37,10 @@ const UserProfile = () => {
         window.addEventListener("resize", updateWidth);
         return () => window.removeEventListener("resize", updateWidth);
       }, []);
+
+
+
+
 
 // CHECK FOR USER DOC DATA
 useEffect(()=>{
@@ -101,7 +105,7 @@ useEffect(()=>{
 <section id='userProfilePage'>
     <div className='user-profile-page-user-info'>
        <h1 className='user-profile-page-user-info-title'>Profile</h1> 
-       <img className='user-profile-page-user-info-img' src={userDoc?.image} alt="user-profile-img" />
+       <img className='user-profile-page-user-info-img' src={userDoc?.image?userDoc.image:"https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"} alt="user-profile-img" />
 
        <button className='user-edit-profile-button' onClick={()=>navigate("/user-edit-profile")}>Edit Profile</button>
 

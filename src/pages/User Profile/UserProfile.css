@@ -1,5 +1,5 @@
 #userProfilePage{
-    margin-top: 10rem;
+    margin-top: 8rem;
     margin-left: 14rem;
     width: 80%;
     min-height: 100vh;
@@ -15,21 +15,19 @@
 }
 .user-edit-profile-button{
     background: #2A72DE;
-border-radius: 10px;
-padding: 8px 32px;
-gap: 10px;
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 500;
-font-size: 24px;
-line-height: 36px;
-text-align: center;
-color: #FFFFFF;
-margin: auto;
-border: none;
-margin-top: 2rem;
-margin-bottom: 3rem;
-cursor: pointer;
+    border-radius: 10px;
+    padding: 5px 10px;
+    gap: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    color: #FFFFFF;
+    margin: auto;
+    border: none;
+    margin-top: 0rem;
+    margin-bottom: 3rem;
+    cursor: pointer;
 }
 
 /* USER GENERAL INFO  */
@@ -39,7 +37,7 @@ cursor: pointer;
     font-family: 'Poppins';
 font-style: normal;
 font-weight: 700;
-font-size: 50px;
+font-size: 30px;
 line-height: 75px;
 text-align: center;
 color: #202020;
@@ -47,8 +45,8 @@ width: fit-content;
 margin: auto;
 }
 .user-profile-page-user-info-img{
-    width: 200px;
-    height: 200px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     margin: auto;
     margin-top: 1.5rem;
@@ -61,13 +59,13 @@ margin: auto;
     display: flex;
     flex-direction: column;
     margin: auto;
-    margin-top: 4rem;
+    margin-top: 1rem;
     margin-right: 5rem;
 }
 .user-general-info-user-cont{
     display: grid;
     grid-template-columns: 40% 60%;
-    margin-bottom: 2rem;
+    margin-bottom: 1.1rem;
 }
 .user-general-profile-about-cont{
     display: flex;
@@ -78,14 +76,14 @@ margin: auto;
 font-family: 'Inter';
 font-style: normal;
 font-weight: 700;
-font-size: 30px;
+font-size: 20px;
 line-height: 36px;
 color: #202020;
 
 }
 .user-general-profile-about-cont-user-name{
     margin-top: 1rem;
-    font-size: 20px!important;
+    font-size: 18px!important;
     line-height: 32px!important;
 }
 .user-general-info-user{
@@ -93,7 +91,7 @@ color: #202020;
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 500;
-font-size: 25px;
+font-size: 18px;
 line-height: 45px;
 color: rgba(32, 32, 32, 0.75);
 text-transform: capitalize;
@@ -117,14 +115,14 @@ text-transform: capitalize;
     display: flex;
     flex-direction: column;
     margin: auto;
-    margin-top: 4rem;
+    margin-top: 2rem;
     margin-right: 5rem;
 }
 .user-experience-info-title{
     font-family: 'Inter';
 font-style: normal;
 font-weight: 700;
-font-size: 30px;
+font-size: 20px;
 line-height: 36px;
 color: #202020;
 }
@@ -142,7 +140,7 @@ color: #202020;
     font-family: 'Poppins';
 font-style: normal;
 font-weight: 600;
-font-size: 24px;
+font-size: 18px;
 line-height: 36px;
 color: #303030;
 text-transform: capitalize;
@@ -151,7 +149,7 @@ text-transform: capitalize;
     font-family: 'Poppins';
 font-style: normal;
 font-weight: 500;
-font-size: 20px;
+font-size: 18px;
 line-height: 30px;
 color: rgba(32, 32, 32, 0.75);
 text-transform: capitalize;
@@ -176,14 +174,14 @@ ul li::before{
     display: flex;
     flex-direction: column;
     margin: auto;
-    margin-top: 4rem; 
+    margin-top: 2rem; 
     margin-right: 5rem;
 }
 .user-education-info-title{
     font-family: 'Inter';
 font-style: normal;
 font-weight: 700;
-font-size: 30px;
+font-size: 20px;
 line-height: 36px;
 color: #202020;  
 }
@@ -196,14 +194,14 @@ color: #202020;
 .user-education-info-specific-degree{
     display: flex;
     flex-direction: column;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 .user-education-info-institute-name{
     
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 500;
-font-size: 24px;
+font-size: 18px;
 line-height: 36px;
 color: #202020;
 text-transform: capitalize;
@@ -213,7 +211,7 @@ text-transform: capitalize;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 30px;
     
     color: rgba(32, 32, 32, 0.75);
@@ -227,14 +225,14 @@ text-transform: capitalize;
     display: flex;
     flex-direction: column;
     margin: auto;
-    margin-top: 4rem;
+    margin-top: 2rem;
     margin-right: 5rem;
 }
 .user-how-can-we-meet-title{
     font-family: 'Inter';
 font-style: normal;
 font-weight: 700;
-font-size: 26px;
+font-size: 20px;
 line-height: 31px;
 
 color: #202020;
@@ -244,7 +242,7 @@ color: #202020;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-    font-size: 25px;
+    font-size: 18px;
    
     color: rgba(32, 32, 32, 0.75);
 }

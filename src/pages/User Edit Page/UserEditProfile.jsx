@@ -490,7 +490,7 @@ uploadImageToFireBase()
         </div>
 
         <div onClick={addNewEducationFormInput} className='add-more-form-image-container'>
-            <img src="./images/addMorePlusIcon.png" alt="add-more-icon" />
+            <img className='add-more-form-image-container-image' src="./images/addMorePlusIcon.png" alt="add-more-icon" />
         </div>
         </section>
 
@@ -520,7 +520,7 @@ uploadImageToFireBase()
         </div>
 
         <div onClick={addNewProfessionalFormInput} className='add-more-form-image-container'>
-            <img src="./images/addMorePlusIcon.png" alt="add-more-icon" />
+            <img className='add-more-form-image-container-image' src="./images/addMorePlusIcon.png" alt="add-more-icon" />
         </div>
         </section>
 

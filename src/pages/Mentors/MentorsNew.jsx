@@ -19,7 +19,8 @@ const MentorsNew = () => {
     const [width, setWidth] = useState(window.innerWidth);
   const[expertiseArray,setExpertiseArray]=useState([])
 const uniqueExpertiseArray=[...new Set(expertiseArray)].sort((a,b)=>{if(a<b){return -1}})
-const[selectedPriceOption,setSelectedPriceOption]=useState("")
+
+const[selectedPriceOption,setSelectedPriceOption]=useState([])
 const[selectedExpertiseOption,setSelectedExpertiseOption]=useState([])
 const [NewFilteredMentorArrayPriceWise,setNewFilteredMentorArrayPriceWise]=useState([])
 const [NewFilteredMentorArrayExpertieWise,setNewFilteredMentorArrayExpertieWise]=useState([])
@@ -32,8 +33,8 @@ const[isFiltered,setIsFiltered]=useState(false)
 const data = [];
 
 
-
-console.log("mentor array",mentorArray)
+console.log(selectedPriceOption)
+// console.log("mentor array",mentorArray)
 
     const updateWidth = () => {
         setWidth(window.innerWidth);
@@ -89,21 +90,23 @@ setExpertiseArray((prev)=>{
 
 function handlePriceOptionClick(e){
 
-// if(selectedPriceOption.includes(e.target.id)){
-//   const newPriceOptionArray=selectedPriceOption.filter((item)=>{
-//     return item!==e.target.id
-//   })
-//   setSelectedPriceOption(newPriceOptionArray)
-//   return;
-// }
-if(selectedPriceOption===e.target.id){
-  setSelectedPriceOption("")
+if(selectedPriceOption.includes(e.target.id)){
+  const newPriceOptionArray=selectedPriceOption.filter((item)=>{
+    return item!==e.target.id
+  })
+  setSelectedPriceOption(newPriceOptionArray)
   return;
 }
-setSelectedPriceOption(e.target.id)
-  // setSelectedPriceOption((prev)=>{
-  //   return [e.target.id]
-  // })
+
+  setSelectedPriceOption((prev)=>{
+    return [...prev,e.target.id]
+  })
+
+  // if(selectedPriceOption===e.target.id){
+  //   setSelectedPriceOption("")
+  //   return;
+  // }
+  // setSelectedPriceOption(e.target.id)
 }
 
 //HANDLE EXPERTISE FILTER OPTION CLICK
@@ -170,67 +173,66 @@ setNewFilteredMentorArrayExpertieWise((prev)=>{
   setIsFilterOptionClick(false)
 setIsFilterByPriceOptionClick(false)
 setIsFilterByExpertiseOptionClick(false)
-  setSelectedExpertiseOption([])
 }
 
 //FILTER ARRAY FOR PRICE OPTIONS
 
 function filterMentorArrayForPriceOption(){
-if(selectedPriceOption===("500")){
-  const newMentors=  mentorArray.filter((itemss)=>{
-    return (itemss.plans[0]/2<=500)
+selectedPriceOption.map((items)=>{
+  if(items===("500Exact")){
+    const newMentors=  mentorArray.filter((itemss)=>{
+      return (itemss.plans[0]/2<=500)
+            })
+            // setNewFilteredMentorArrayPriceWise(newMentors)
+            setNewFilteredMentorArrayPriceWise((prev)=>{
+              return [...prev,...newMentors]
+            })
+           
+            return;
+  }
+  if(items===('501-750')){
+    const newMentors=  mentorArray.filter((itemss)=>{
+      return (itemss.plans[0]/2>500&&itemss.plans[0]/2<=750)
+            })
+            // setNewFilteredMentorArrayPriceWise(newMentors)
+            setNewFilteredMentorArrayPriceWise((prev)=>{
+              return [...prev,...newMentors]
+            })
+     
+            return;
+  }
+  if(items===('751-1000')){
+    const newMentors=  mentorArray.filter((itemss)=>{
+      return (itemss.plans[0]/2>750&&itemss.plans[0]/2<=1000)
+            })
+            // setNewFilteredMentorArrayPriceWise(newMentors)
+            setNewFilteredMentorArrayPriceWise((prev)=>{
+              return [...prev,...newMentors]
+            })
+  }
+  if(items===('1001-1500')){
+    const newMentors=  mentorArray.filter((itemss)=>{
+      return (itemss.plans[0]/2>1000&&itemss.plans[0]/2<=1500)
+            })
+           // setNewFilteredMentorArrayPriceWise(newMentors)
+           setNewFilteredMentorArrayPriceWise((prev)=>{
+            return [...prev,...newMentors]
           })
-          setNewFilteredMentorArrayPriceWise(newMentors)
-          setSelectedPriceOption("")
-          setIsFilterOptionClick(false)
+  }
+  if(items===("1500+")){
+    const newMentors=  mentorArray.filter((itemss)=>{
+      return (itemss.plans[0]/2>1500)
+            })
+            // setNewFilteredMentorArrayPriceWise(newMentors)
+            setNewFilteredMentorArrayPriceWise((prev)=>{
+              return [...prev,...newMentors]
+            })
+  }
+})
+
+setIsFilterOptionClick(false)
 setIsFilterByPriceOptionClick(false)
 setIsFilterByExpertiseOptionClick(false)
-          return;
-}
-if(selectedPriceOption===('501-750')){
-  const newMentors=  mentorArray.filter((itemss)=>{
-    return (itemss.plans[0]/2>500&&itemss.plans[0]/2<=750)
-          })
-          setNewFilteredMentorArrayPriceWise(newMentors)
-           setSelectedPriceOption("")
-           setIsFilterOptionClick(false)
-setIsFilterByPriceOptionClick(false)
-setIsFilterByExpertiseOptionClick(false)
-          return;
-}
-if(selectedPriceOption===('751-1000')){
-  const newMentors=  mentorArray.filter((itemss)=>{
-    return (itemss.plans[0]/2>750&&itemss.plans[0]/2<=1000)
-          })
-          setNewFilteredMentorArrayPriceWise(newMentors)
-           setSelectedPriceOption("")
-           setIsFilterOptionClick(false)
-setIsFilterByPriceOptionClick(false)
-setIsFilterByExpertiseOptionClick(false)
-          return;
-}
-if(selectedPriceOption===('1001-1500')){
-  const newMentors=  mentorArray.filter((itemss)=>{
-    return (itemss.plans[0]/2>1000&&itemss.plans[0]/2<=1500)
-          })
-          setNewFilteredMentorArrayPriceWise(newMentors)
-           setSelectedPriceOption("")
-           setIsFilterOptionClick(false)
-setIsFilterByPriceOptionClick(false)
-setIsFilterByExpertiseOptionClick(false)
-          return;
-}
-if(selectedPriceOption===("1500+")){
-  const newMentors=  mentorArray.filter((itemss)=>{
-    return (itemss.plans[0]/2>1500)
-          })
-          setNewFilteredMentorArrayPriceWise(newMentors)
-           setSelectedPriceOption("")
-           setIsFilterOptionClick(false)
-setIsFilterByPriceOptionClick(false)
-setIsFilterByExpertiseOptionClick(false)
-          return;
-}
   
 //   const NewFilterMentorArray=selectedPriceOption.map((item)=>{
 //     if(item==="500"){
@@ -246,41 +248,45 @@ setIsFilterByExpertiseOptionClick(false)
 
 //FILTER ARRAY FOR BOTH OPTIONS
 function filterMentorArrayForBothOptions(){
-  if(selectedPriceOption===("500")){
+let finalNewMentors=[]
+selectedPriceOption.map((items)=>{
+  if(items===("500Exact")){
     const newMentors=  mentorArray.filter((itemss)=>{
       return (itemss.plans[0]/2<=500)
             })
-            filterMentorArrayForExpertiseOptionAfterPricing(newMentors)
+            finalNewMentors.push(...newMentors)
             return;
   }
-  if(selectedPriceOption===('501-750')){
+  if(items===('501-750')){
     const newMentors=  mentorArray.filter((itemss)=>{
       return (itemss.plans[0]/2>500&&itemss.plans[0]/2<=750)
             })
-            filterMentorArrayForExpertiseOptionAfterPricing(newMentors)
+            finalNewMentors.push(...newMentors)
             return;
   }
-  if(selectedPriceOption===('751-1000')){
+  if(items===('751-1000')){
     const newMentors=  mentorArray.filter((itemss)=>{
       return (itemss.plans[0]/2>750&&itemss.plans[0]/2<=1000)
             })
-            filterMentorArrayForExpertiseOptionAfterPricing(newMentors)
+            finalNewMentors.push(...newMentors)
             return;
   }
-  if(selectedPriceOption===('1001-1500')){
+  if(items===('1001-1500')){
     const newMentors=  mentorArray.filter((itemss)=>{
       return (itemss.plans[0]/2>1000&&itemss.plans[0]/2<=1500)
             })
-            filterMentorArrayForExpertiseOptionAfterPricing(newMentors)
+            finalNewMentors.push(...newMentors)
             return;
   }
-  if(selectedPriceOption===("1500+")){
+  if(items===("1500+")){
     const newMentors=  mentorArray.filter((itemss)=>{
       return (itemss.plans[0]/2>1500)
             })
-            filterMentorArrayForExpertiseOptionAfterPricing(newMentors)
+            finalNewMentors.push(...newMentors)
             return;
   }
+})
+filterMentorArrayForExpertiseOptionAfterPricing(finalNewMentors)
 }
 
 //FILTER ARRAY FOR EXPERTISE OPTIONS AFTER PRICING IS CHECKED
@@ -300,8 +306,7 @@ array.push(itemss)
  
 
 if(array.length===0){toast("No Result Found"); return}
-  setSelectedExpertiseOption([])
-  setSelectedPriceOption("")
+ 
   setIsFilterOptionClick(false)
 setIsFilterByPriceOptionClick(false)
 setIsFilterByExpertiseOptionClick(false)
@@ -342,6 +347,31 @@ useEffect(()=>{
 },[isFiltered])
 
 
+//HANDLE PRICE OPTION CLICK AFTER FILTERING IS DONE
+
+function handleDeletePriceFilterOptionClick(item){
+  if(selectedPriceOption.includes(item)){
+    const newPriceoption= selectedPriceOption.filter((name)=>{
+       return name!==item
+     })
+     setSelectedPriceOption(newPriceoption)
+     return;
+   }
+}
+
+//HANDLE RESET FILTER BUTTON CLICK
+
+function handleResetFilterButtonClick(){
+  setSelectedPriceOption([])
+setSelectedExpertiseOption([])
+setNewFilteredMentorArrayPriceWise([])
+setNewFilteredMentorArrayExpertieWise([])
+setNewFilteredMentorArrayExpertieWiseAfterPriceWise([])
+setIsFilterOptionClick(false)
+setIsFilterByPriceOptionClick(false)
+setIsFilterByExpertiseOptionClick(false)
+setArrayToBeMapped(mentorArray)
+}
 
 
   return (
@@ -352,46 +382,70 @@ useEffect(()=>{
           <ToastContainer />
           <h1 className='find-best-mentor-heading'>Find the Best Mentor</h1>
           <div className='mentorFilterCardCont'>
-          <button onClick={()=>setIsFilterOptionClick(current=>!current)} className='MentorsFilterButton'>FILTER</button>
+          {isFilterOptionClick?null:<button onClick={()=>setIsFilterOptionClick(current=>!current)} className='MentorsFilterButton'>FILTER</button>}  
           </div>
+          
+{isFilterOptionClick?<>   
+<div className='priceAndExpertiseFilterCont'>
+<div className='sortContainer'>
+<div className='ByPriceFilterCont'>
+<div onClick={()=>setIsFilterByPriceOptionClick(current=>!current)} className='ByPriceFilter'>Sort : By Price <img className='down-triangle-image' src="./images/down-filled-triangular-arrow.png" alt="down-triangle" /></div>
+{isFilterByPriceOptionClick?
+<div className='price-filter-option-cont'>
+<h1 onClick={handlePriceOptionClick} className={selectedPriceOption.includes("500Exact")?"price-filter-option-selected":'price-filter-option'} id="500Exact">₹500</h1>
+<h1 onClick={handlePriceOptionClick} className={selectedPriceOption.includes('501-750')?"price-filter-option-selected":'price-filter-option'} id='501-750'>₹501 - ₹750</h1>
+<h1 onClick={handlePriceOptionClick} className={selectedPriceOption.includes('751-1000')?"price-filter-option-selected":'price-filter-option'} id='751-1000'>₹751 - ₹1000</h1>
+<h1 onClick={handlePriceOptionClick} className={selectedPriceOption.includes('1001-1500')?"price-filter-option-selected":'price-filter-option'} id='1001-1500'>₹1001 - ₹1500</h1>
+<h1 onClick={handlePriceOptionClick} className={selectedPriceOption.includes('1500+')?"price-filter-option-selected":'price-filter-option'} id='1500+'>₹1500 +</h1>
+</div>
+:null}
+</div>
+<div className='ByExpertiseFilterCont'>
+<div onClick={()=>setIsFilterByExpertiseOptionClick(current=>!current)} className='ByExpertiseFilter'>Sort : By Expertise <img className='down-triangle-image-expertise' src="./images/down-filled-triangular-arrow.png" alt="down-triangle" /></div>
+{isFilterByExpertiseOptionClick?
+<div className='expertise-filter-option-cont'>
+{uniqueExpertiseArray.map((item,index)=>{
+  return   <div onClick={()=>handleExpertiseOptionClick(item)} className={selectedExpertiseOption.includes(item)?"expertise-filter-option-selected":'expertise-filter-option'} key={index}>{item}</div>
+})}
+</div>
+:null}
+</div>
+</div>
+  <button onClick={handleFilterSearchButtonClick} className='mentorsSearchFilter'>Filter Search</button>
+</div>
+</>:null}
           </div>
-        {isFilterOptionClick?<>
-
         
-          <div className='priceAndExpertiseFilterCont'>
-          <div className='sortContainer'>
-          <div className='ByPriceFilterCont'>
-          <div onClick={()=>setIsFilterByPriceOptionClick(current=>!current)} className='ByPriceFilter'>Sort : By Price <img className='down-triangle-image' src="./images/down-filled-triangular-arrow.png" alt="down-triangle" /></div>
-          {isFilterByPriceOptionClick?
-          <div className='price-filter-option-cont'>
-          <h1 onClick={handlePriceOptionClick} className={selectedPriceOption==="500"?"price-filter-option-selected":'price-filter-option'} id="500">₹500</h1>
-          <h1 onClick={handlePriceOptionClick} className={selectedPriceOption===('501-750')?"price-filter-option-selected":'price-filter-option'} id='501-750'>₹501 - ₹750</h1>
-          <h1 onClick={handlePriceOptionClick} className={selectedPriceOption===('751-1000')?"price-filter-option-selected":'price-filter-option'} id='751-1000'>₹751 - ₹1000</h1>
-          <h1 onClick={handlePriceOptionClick} className={selectedPriceOption===('1001-1500')?"price-filter-option-selected":'price-filter-option'} id='1001-1500'>₹1001 - ₹1500</h1>
-          <h1 onClick={handlePriceOptionClick} className={selectedPriceOption===('1500+')?"price-filter-option-selected":'price-filter-option'} id='1500+'>₹1500 +</h1>
-          </div>
-          :null}
-          </div>
-          <div className='ByExpertiseFilterCont'>
-          <div onClick={()=>setIsFilterByExpertiseOptionClick(current=>!current)} className='ByExpertiseFilter'>Sort : By Expertise <img className='down-triangle-image-expertise' src="./images/down-filled-triangular-arrow.png" alt="down-triangle" /></div>
-          {isFilterByExpertiseOptionClick?
-          <div className='expertise-filter-option-cont'>
-          {uniqueExpertiseArray.map((item,index)=>{
-            return   <div onClick={()=>handleExpertiseOptionClick(item)} className={selectedExpertiseOption.includes(item)?"expertise-filter-option-selected":'expertise-filter-option'} key={index}>{item}</div>
-          })}
-          </div>
-          :null}
-          </div>
-          </div>
-            <button onClick={handleFilterSearchButtonClick} className='mentorsSearchFilter'>Filter Search</button>
-          </div>
-          </>:null}
           {/* <div className='loadingAnimationContainer'>
 <LoadingMentorCard />
 <LoadingMentorCard />
 <LoadingMentorCard />
 <LoadingMentorCard />
 </div> */}
+{(NewFilteredMentorArrayExpertieWise.length!==0||NewFilteredMentorArrayPriceWise.length!==0||NewFilteredMentorArrayExpertieWiseAfterPriceWise.length!==0)?<>
+  <section className='filterOptionsShowCont'>
+  <div className='priceAndExpertiseOptionCont'>
+  {/* <div className='price-filter-optionss'> */}
+  {selectedPriceOption.map((items)=>{
+    return <div> <p onClick={()=>handleDeletePriceFilterOptionClick(items)} className='price-filter-optionsselecteddd'>{items==="500Exact"?"500":items} <span className='deleteFilterOption'> X</span></p></div>
+  })}
+  {/* </div> */}
+  {/* <div className='expertise-filter-optionss'> */}
+  {selectedExpertiseOption.map((items)=>{
+    return <div>
+    <p onClick={()=>handleExpertiseOptionClick(items)} className='price-filter-optionsselecteddd'>{items} <span className='deleteFilterOption'> X</span></p></div>
+  })}
+  {/* </div> */}
+  </div>
+  <div className='saveChangesAndResetButtonCont'>
+  {(selectedPriceOption.length===0&&selectedExpertiseOption.length===0)?null:
+  <button onClick={handleFilterSearchButtonClick} className='saveNewFilterChanges'>Save Changes</button>}
+  <button style={{marginLeft:"auto"}} onClick={handleResetFilterButtonClick} className='resetFilter'>Reset</button>
+  </div>
+</section>
+
+</>:null}
+
 <section id='mentors-page-new'>
 
 <div className='mentors-page-card-container'>
