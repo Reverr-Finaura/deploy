@@ -23,7 +23,7 @@ const PostCard = ({postsData,setPostsData,item,index,handleEditPostButtonClick})
 
 const[postedByUserDoc,setPostedByUserDoc]=useState({})
 
-// const[commentedByUserDoc,setCommentedByUserDoc]=useState({})
+const[commentedByUserDoc,setCommentedByUserDoc]=useState([])
  
 
 
@@ -225,19 +225,24 @@ useEffect(()=>{
 
 //GET USER DATA FROM REFERENCE LINK WHO HAS COMMENTED
 
-// useEffect(()=>{
-//  item.comments.map((event)=>{
-//     getUserDocByRef(event.commentedby).then((res)=>{
-//         console.log("res",res)
-//         setCommentedByUserDoc(res)
-//     })  
-//  })
+useEffect(()=>{
+ item.comments.map((event)=>{
+    getUserDocByRef(event.commentedby).then((res)=>{
+        setCommentedByUserDoc((prev)=>{
+            return [...prev,res]
+        })
+    })  
+ })
 
-// },[item])
+},[item])
+
+
+
 
   return (
    <section className='PostCardContainer' id={index}>
     <div className='postAuthorDetails'>
+    <img style={{width:"40px",height:"40px",borderRadius:"50%",marginRight:"1rem"}} src={postedByUserDoc?.image} alt="" />
         <h3 className='postAuthorName'>{postedByUserDoc?.name}</h3>
         <div className='threeDotsContainer'>
        {user?.user?.email===item?.postedby?.id? <img onClick={()=>setIsThreeDotsClicked(current=>!current)} className='threeDotsPost' src="./images/dots.png" alt="3dots" />:null}
@@ -276,7 +281,10 @@ useEffect(()=>{
             return (<>
             <div className='commentedByAndComment' key={list.commentid}>
             <div className='commented-by-and-edit-cont'>
-            <p className='commented-by'>{list?.commentedby?.id}</p>
+            <img style={{width:"20px",marginRight:"1rem"}} src={commentedByUserDoc?.filter((it)=>{
+        return it.email===list?.commentedby?.id})[0]?.image} alt="CommentedUserPhoto" />
+            <p className='commented-by'>{commentedByUserDoc?.filter((it)=>{
+        return it.email===list?.commentedby?.id})[0]?.name}</p>
             {list?.commentedby?.id===user?.user?.email?
                 <><i onClick={()=>handleEditCommentClick(list.commentid,list)} className='fas fa-edit editIconComment'></i><p onClick={()=>handleDeleteCommentClick(list.commentid,item,item.id)} style={{marginLeft:"1rem",color:"red",fontWeight:"bold",cursor:"pointer"}}>X</p></>:null}
              
