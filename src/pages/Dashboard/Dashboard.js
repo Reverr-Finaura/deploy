@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Dashboard.module.css";
+// import styles from "./Dashboard.module.css";
 import "./Dashboard.module-ansh.css"
 import PhnSidebar from "../../components/PhnSidebar/PhnSidebar";
 import KnowledgeNavbar from "../../components/KnowledgeNavbar/KnowledgeNavbar";
-import Sidebar from "../../components/Sidebar/Sidebar";
+// import Sidebar from "../../components/Sidebar/Sidebar";
 import { addDoc, collection, doc, getDocs, query, setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-import Chapter from "../../components/Chapter/Chapter";
-import { async } from "@firebase/util";
+// import Chapter from "../../components/Chapter/Chapter";
+// import { async } from "@firebase/util";
 import { Link } from "react-router-dom";
 import EventCard from "../Event Card/EventCard";
 import CoursesCard from "../Courses Card/CoursesCard"
@@ -22,7 +22,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { setUserFundingDoc } from "../../features/userFundingDocSlice";
 import UserProfileCompletedStatusBar from "../../components/User Profile Completed Status Bar/UserProfileCompletedStatusBar";
-let ProgressBar = require('progressbar.js')
+
 
 
 const Dashboard = () => {
@@ -30,7 +30,7 @@ const Dashboard = () => {
 
 const user=useSelector((state)=>state.user)
 const userDoc=useSelector((state)=>state.userDoc)
-const userFundingDoc=useSelector((state)=>state.userFundingDoc)
+// const userFundingDoc=useSelector((state)=>state.userFundingDoc)
 
 // console.log("userFundingDoc",userFundingDoc)
 console.log("userDocRedux",userDoc)

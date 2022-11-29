@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { DocumentReference, getFirestore } from "firebase/firestore";
 import {
   doc,
   getDocs,
@@ -46,6 +46,13 @@ export const getUserFromDatabase = async (email) => {
   //console.log(docSnap.data(), "docSnap");
   return docSnap.data();
 };
+
+export const getUserDocByRef = async (DocumentReference) => {
+  const userDocSnapshot = await getDoc(DocumentReference);
+  return userDocSnapshot.data();
+}
+
+
 
 export const getMentorFromDatabase = async (email) => {
   let Mentor;

@@ -1,0 +1,79 @@
+#communityFinalPage{
+    min-height: 100vh;
+    width: 80%;
+    margin-left: 14.5rem;
+    margin-top: 7.2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.loading-card-container,.posts-containerr{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    
+}
+.loading-card-container{
+    width: 80%;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    background-color: white;
+    padding: 1rem;
+}
+#postTextContainer{
+    position: relative;
+    }
+.uploadPostContainer{
+    width: 90%;
+    display: flex;
+}
+.communityPostImage-cont{
+    width: 40%;
+    margin-right: 1rem;
+    display: flex;
+    z-index: 1;
+}
+
+.communityPostImage{
+    width: 100%;
+    margin: auto;
+    border-radius: 11px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:1180px){
+    #communityFinalPage{
+        width: 72%;
+    }
+}
+
+@media(max-width:847px){
+    #communityFinalPage{
+        width: 65%;
+    }
+}
+@media(max-width:730px){
+    #communityFinalPage{
+        margin-left: 12rem;
+    }
+}
+@media(max-width:600px){
+    #communityFinalPage{
+        margin: auto;
+        width: 88%;
+    }
+}

@@ -1,0 +1,133 @@
+.PostCardContainer{
+    height: max-content;
+    width: 400px;
+    margin: auto;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 19px;
+}
+.postAuthorDetails{
+    display: flex;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+/* .postAuthorName{
+    text-transform: capitalize;
+} */
+.threeDotsContainer{
+    margin-left: auto;
+    width: fit-content;
+    position: relative;
+}
+.threeDotsPost{
+    width: 30px;
+    cursor: pointer;
+}
+.threeDotsOptions{
+    width: 100px;
+    height: 100px;
+    background-color: #fafafa;
+    border-radius: 7px;
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;  
+}
+.threeDotsDeletePostOption{
+    color: red;
+    margin: auto;
+    cursor: pointer;
+}
+.threeDotsEditPostOption{
+    margin: auto;
+    cursor: pointer;
+}
+.postImageContainer{
+    width: 100%;
+    margin: auto;
+    display: flex;
+}
+.postImage{
+    width: 90%;
+    margin: auto;
+}
+.postTextContainer{
+    width: 100%;
+word-break: break-all;
+margin-top: 1rem;
+font-size: 1rem;
+text-align: center;
+}
+.postLikesAndCommentContainer{
+    display: flex;
+    margin-top: 1rem;
+}
+.postLikesContainer{
+    display: flex;
+}
+
+.heartPostLiked{
+    font-size: 30px;
+    color: red;
+    margin-right: .5rem;
+    cursor: pointer;
+}
+.heartPostNotLiked{
+    font-size: 30px;
+    color: rgb(50.2, 50.2, 50.2,.2);
+    margin-right: .5rem;
+    cursor: pointer;
+}
+.postCommentContainer{
+    display: flex;
+    margin-left: 2rem;
+}
+.commentPost{
+    font-size: 30px;
+    margin-right: .5rem;
+    cursor: pointer;
+}
+.commentContainer{
+    position: relative;
+}
+.comment-box{
+    width: 400px;
+    height: fit-content;
+    background-color: white;
+    border-radius: 11px;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    
+}
+.closeCommentBox{
+    font-size: 2rem;
+    position: absolute;
+    right: 1.5rem;
+    top: 0rem;
+    cursor: pointer;
+}
+.commentedByAndComment{
+    margin-bottom: 1rem;
+}
+.commented-by{
+    margin-right: 1rem;
+}
+.commented-by-and-edit-cont{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+}
+.editIconComment{
+    display: flex;
+
+}
+.newCommentBox{
+    display: flex;
+}

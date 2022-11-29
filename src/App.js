@@ -75,6 +75,7 @@ import UserEditProfile from "./pages/User Edit Page/UserEditProfile";
 import ChangePassword from "./pages/Change Password/ChangePassword";
 import GetFundedPage from "./pages/Get Funded/GetFundedPage";
 import CommunityNew from "./pages/Community/CommunityNew";
+import CommunityFinal from "./pages/Community/CommunityFinal";
 
 function App() {
   const user = useSelector(selectUser);
@@ -231,6 +232,7 @@ function App() {
         <Route path="/user-edit-profile" element={<UserEditProfile />}></Route>
         <Route path="/change-user-password" element={<ChangePassword />}></Route>
         <Route path="/funding-page" element={<GetFundedPage/>}></Route>
+        <Route path="/community-final" element={<CommunityFinal />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </>
