@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const MentorCard = ({item}) => {
+  console.log("mentorItem",item)
     const navigate = useNavigate();
   return (
     <>
@@ -11,7 +12,7 @@ const MentorCard = ({item}) => {
   <img className="mentor-item-image" src={item?.image} alt="mentor-img" />
   <div className="mentor-item-name-designation">
     <h4 className="mentor-item-name">{item?.name}</h4>
-    <p className="mentor-item-designation">{item?.userType}</p>
+    <p className="mentor-item-designation">{item?.designation}</p>
   </div>
   <button onClick={() =>
                   navigate(`/mentor-profile`, {

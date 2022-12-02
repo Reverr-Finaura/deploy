@@ -61,18 +61,20 @@ cursor: pointer;
     padding: 1rem;
 }
 .setting-dropdown-button{
-    width: 75%;
+    width: 77%;
     margin: auto;
    padding-top: .75rem;
    padding-bottom: .75rem;
-gap: 10px;
+   padding-left: .3rem;
+   padding-right: .3rem;
+
 background: #2A72DE;
 border-radius: 6px;
-font-family: 'Gilroy';
+font-family: 'Poppins';
 font-style: normal;
 font-weight: 600;
-font-size: 1rem;
-color:white;
+font-size: 14px;
+color: white;
 border: none;
 cursor: pointer;
 }

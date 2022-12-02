@@ -14,11 +14,13 @@ const UserProfileCompletedStatusBar = () => {
     const user=useSelector((state)=>state.user)
 const userDoc=useSelector((state)=>state.userDoc)
 
-console.log("userDoc",userDoc)
+
 
     const [profileCompletionProgress,setProfileCompletionProgress]=useState(0)
 
 console.log("profileComplete",profileCompletionProgress)
+
+
 
 // CHECK FOR USER PROFILE PROGRESS BAR
 useEffect(()=>{
@@ -32,7 +34,7 @@ let educationPerc=9.09
 let experiencePerc=9.09
 let socialLinkPerc=9.09
 let genderPerc=9.09
-let imagePerc=9.
+let imagePerc=9.09
 let industryPerc=9.09
 let statePerc=9.09
 let namePerc=9.09
@@ -65,7 +67,9 @@ let percentComplete=0
 }
 checkForUserProfileProgress()
 },[userDoc])
-
+useEffect(()=>{
+  setProfileCompletionProgress(0)
+},[])
 
 
 // CHECK FOR USER DOC DATA
