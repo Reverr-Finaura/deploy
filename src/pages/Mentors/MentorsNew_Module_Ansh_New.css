@@ -243,7 +243,7 @@
 }
 .mentor-cardd-skill-part-skill-cont-skill-tag{
     width: .7rem;
-    margin-right: .5rem;
+    margin-right: .7rem;
    padding-top: .05rem;
     
 }
@@ -254,6 +254,7 @@
     color: hsl(221, 18%, 49%);
     margin: auto;
 }
+
 
 .mentor-cardd-bottom-part-left-col-price-cont{
     font-family: 'Poppins';

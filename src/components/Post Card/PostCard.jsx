@@ -1,30 +1,33 @@
-import { collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc } from 'firebase/firestore'
+import { deleteDoc, doc, updateDoc } from 'firebase/firestore'
 import React,{ useState } from 'react'
 import { useSelector } from 'react-redux'
 import { db } from '../../firebase'
 import "./PostCard.css"
-import { useNavigate } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react'
 import { getUserDocByRef } from '../../firebase'
 
 const PostCard = ({postsData,setPostsData,item,index,handleEditPostButtonClick}) => {
     const userDoc=useSelector((state)=>state.userDoc) 
-
  const[isThreeDotsClicked,setIsThreeDotsClicked]=useState(false) 
+ const[isCommentThreeDotsClicked,setIsCommentThreeDotsClicked]=useState(false) 
  const[newComment,setNewComment]=useState("")
  const[commentIconClick,setCommentIconClick]=useState(false)
  const [editCommentButtonIsClick,setEditCommentButtonIsClick]=useState(false)
  const [newEdittedComment,setNewEdittedComment]=useState("")
  const[editCommentId,setEditCommentId]=useState(null)
-  
+  const[threeDotsClickCommentId,setThreeDotsClickCommentId]=useState(null)
  const user=useSelector((state)=>state.user)
 
 const[postedByUserDoc,setPostedByUserDoc]=useState({})
 
 const[commentedByUserDoc,setCommentedByUserDoc]=useState([])
+const[showMorePostTextClick,setShowMorePostTextClick]=useState(false)
+const[newCommentTextAreaClick,setNewCommentTextAreaClick]=useState(false)
  
+
+
 
 
 //CHECK IF POST LIKES CONTAIN USER OR NOT
@@ -83,6 +86,8 @@ setPostsData(postsData.map((item)=>{
    }))
 updateCommentInFirebase(newCommentArray,id)
 setNewComment("")
+setNewCommentTextAreaClick(false)
+
 
 }
 //UPDATE NEWCOMMENT IN FIREBASE
@@ -126,7 +131,7 @@ setPostsData(postsData.map((item)=>{
   
     else return item
 }))
-
+setNewCommentTextAreaClick(false)
 updateEdittedCommentInFirebase(newEditCommentArray,itemId)
 }
 
@@ -151,7 +156,8 @@ setEditCommentId(null)
 
 // HANDLE DELETE POST BUTTON CLICK
 const handleDeletePostButtonClick=async(itemId)=>{
-
+toast("Processing Your Request")
+setIsThreeDotsClicked(false)
 const postsRef=doc(db,"Posts",itemId)
 await deleteDoc(postsRef)
 
@@ -240,6 +246,7 @@ useEffect(()=>{
 
 
   return (
+    <>
    <section className='PostCardContainer' id={index}>
     <div className='postAuthorDetails'>
     <img style={{width:"40px",height:"40px",borderRadius:"50%",marginRight:"1rem"}} src={postedByUserDoc?.image} alt="" />
@@ -251,7 +258,7 @@ useEffect(()=>{
             <div onClick={()=>handleDeletePostButtonClick(item.id)} className='threeDotsDeletePostOption'>
                 Delete Post
             </div>
-            <a style={{textDecoration:"none",color:"black",margin:"auto"}} href="#EditPostHeading"><div onClick={()=>{handleEditPostButtonClick(item,item.id);setIsThreeDotsClicked(false)}} className='threeDotsEditPostOption'>
+            <a style={{textDecoration:"none",color:"black",margin:"auto"}} href="#"><div onClick={()=>{handleEditPostButtonClick(item,item.id);setIsThreeDotsClicked(false)}} className='threeDotsEditPostOption'>
                 Edit Post
             </div>
             </a>
@@ -260,12 +267,16 @@ useEffect(()=>{
         </div>
         
     </div>
+    <div className='postTextContainer'>
+    {item?.text.length>100?<h3 className='postText'>{showMorePostTextClick?item?.text:<>{item?.text.slice(0,100)}<span onClick={()=>setShowMorePostTextClick(true)} className='morePostTextButton'>...continue</span> </>}</h3>
+    :<h3 className='postText'>{item?.text}</h3>}
+        
+        
+    </div>
     {item?.image? <div className='postImageContainer'>
         <img className='postImage' src={item?.image} alt="postImage" />
     </div>:null}
-    <div className='postTextContainer'>
-        <h3 className='postText'>{item?.text}</h3>
-    </div>
+    
     <div className='postLikesAndCommentContainer'>
         <div className='postLikesContainer'>
         <i onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className={"fa fa-heart "+ (item?.likes.includes(user?.user?.email)?"heartPostLiked":"heartPostNotLiked")}></i>
@@ -273,41 +284,80 @@ useEffect(()=>{
         </div>
         <div className='postCommentContainer'>
         <div className='commentContainer'>
-        <i onClick={()=>setCommentIconClick(current=>!current)} className='far fa-comment commentPost'></i>
-       
-        {commentIconClick?<div className='comment-box'>
-        <h1 onClick={()=>setCommentIconClick(false)} className='closeCommentBox'>X</h1>
-           {item?.comments.map((list)=>{
-            return (<>
-            <div className='commentedByAndComment' key={list.commentid}>
-            <div className='commented-by-and-edit-cont'>
-            <img style={{width:"20px",marginRight:"1rem"}} src={commentedByUserDoc?.filter((it)=>{
-        return it.email===list?.commentedby?.id})[0]?.image} alt="CommentedUserPhoto" />
-            <p className='commented-by'>{commentedByUserDoc?.filter((it)=>{
-        return it.email===list?.commentedby?.id})[0]?.name}</p>
-            {list?.commentedby?.id===user?.user?.email?
-                <><i onClick={()=>handleEditCommentClick(list.commentid,list)} className='fas fa-edit editIconComment'></i><p onClick={()=>handleDeleteCommentClick(list.commentid,item,item.id)} style={{marginLeft:"1rem",color:"red",fontWeight:"bold",cursor:"pointer"}}>X</p></>:null}
-             
-            </div>
-                <p className='commented-by-comment'>{list.comment}</p>
-            </div></>)
-           }) }
-           {editCommentButtonIsClick?
-            <div className='newCommentBox'>
-           <input onChange={(e)=>setNewEdittedComment(e.target.value)} type="text" name='newEditComment' value={newEdittedComment}  />
-           <button onClick={()=>handleEditCommentonPost(item,item.id)}>Edit</button>
-           </div>
-           :<div className='newCommentBox'>
-           <input onChange={(e)=>setNewComment(e.target.value)} type="text" name='newComment' value={newComment}  />
-           <button onClick={()=>handleNewCommentonPost(item,item.id)}>Comment</button>
-           </div>}
-         
-        </div>:null}
+        <i onClick={()=>{setCommentIconClick(current=>!current);(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus()}} className='far fa-comment commentPost'></i>
         </div>
             <h3 className='postCommentCount'>{item?.comments.length}</h3>
         </div>
     </div>
    </section>
+
+   {/* NEW COMMENT SECTION */}
+
+   <section className='newCommentOnPostSection'>
+   {editCommentButtonIsClick?
+    <section className='uploadPostContainerrrrSection'>
+          <div className='newCommentContainerrrr'>
+            <img className='community-newComment-cont-userImage' src={userDoc?.image?userDoc.image:"https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"} alt="userImage" />
+            <div className='textAreaUploadContainer'>
+            <div>
+            <textarea onChange={(e)=>setNewEdittedComment(e.target.value)} name="newEditComment" id="postCommentContainerExpanded" rows="3" placeholder="Share Your Thoughts" value={newEdittedComment}></textarea>
+            <div className='addImageandUploadPostIcon newCommentAddImageAndUpload'>
+              <button onClick={()=>handleEditCommentonPost(item,item.id)} className='uploadPostIconButton'>Edit</button>
+            </div>
+            </div>
+            </div>
+          </div>
+          </section>:
+
+   <section className='uploadPostContainerrrrSection'>
+          <div className='newCommentContainerrrr'>
+            <img className='community-newComment-cont-userImage' src={userDoc?.image?userDoc.image:"https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"} alt="userImage" />
+            <div className='textAreaUploadContainer'>
+            <textarea className={item?.id} onClick={()=>setNewCommentTextAreaClick(true)} onChange={(e)=>setNewComment(e.target.value)} name="newComment" id={newCommentTextAreaClick?"postCommentContainerExpanded":"postCommentContainer"} rows="3" placeholder="Share Your Thoughts" value={newComment}></textarea>
+            <img onClick={()=>setNewCommentTextAreaClick(current=>!current)} className={newCommentTextAreaClick?"expandTextAreaIconExpanded":'expandTextAreaIcon'} src="./images/addExpandTextArea.png" alt="expandTextarea" />
+            {newCommentTextAreaClick?
+            <div className='addImageandUploadPostIcon newCommentAddImageAndUpload'>
+              <button onClick={()=>handleNewCommentonPost(item,item.id)} className='uploadPostIconButton'>Comment</button>
+            </div>:null}
+            </div>
+          </div>
+          </section>
+        }
+
+{/* OLD COMMENT SECTION */}
+{commentIconClick?
+<section className={item?.comments.length!==0?'oldCommentSection':"oldCommentSectionNothing"}>
+{item?.comments.map((list)=>{
+            return (<>
+            <div className='commentedByAndComment' key={list.commentid}>
+            <div className='commented-by-and-edit-cont'>
+            <img className='commentedUserImage' src={commentedByUserDoc?.filter((it)=>{
+        return it.email===list?.commentedby?.id})[0]?.image} alt="CommentedUserPhoto" />
+            <p className='commented-by'>{commentedByUserDoc?.filter((it)=>{
+        return it.email===list?.commentedby?.id})[0]?.name}</p>
+            {list?.commentedby?.id===user?.user?.email?
+                <img onClick={()=>{setIsCommentThreeDotsClicked(current=>!current);setThreeDotsClickCommentId(list?.commentid)}} className='threeDotsPost commentThreeDotsPost' src="./images/dots.png" alt="3dots" />
+                :null}
+             {isCommentThreeDotsClicked&&list?.commentedby?.id===user?.user?.email&&threeDotsClickCommentId===list?.commentid?
+                <>
+                <div className='threeDotsOptions commentThreeDotsOption'>
+            <div onClick={()=>handleDeleteCommentClick(list.commentid,item,item.id)} className='threeDotsDeletePostOption'>
+                Delete
+            </div>
+            <a style={{textDecoration:"none",color:"black",margin:"auto"}} href="#"><div onClick={()=>{handleEditCommentClick(list.commentid,list);setIsCommentThreeDotsClicked(false)}} className='threeDotsEditPostOption'>
+                Edit
+            </div>
+            </a>
+        </div></>
+        :null}
+            </div>
+                <p className='commented-by-comment'>{list.comment}</p>
+            </div></>)
+           }) } 
+</section>:null}
+
+   </section>
+   </>
   )
 }
 

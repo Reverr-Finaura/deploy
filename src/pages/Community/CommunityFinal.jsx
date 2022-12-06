@@ -1,20 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react'
 import "./CommunityFinal.css"
 import KnowledgeNavbar from '../../components/KnowledgeNavbar/KnowledgeNavbar'
-import NavBarFinal from '../../components/Navbar/NavBarFinal'
+import CommunityNavbar from '../../components/Community Navbar/CommunityNavbar'
 import SidebarFinal from '../../components/Sidebar Final/SidebarFinal'
 import PhnSidebar from "../../components/PhnSidebar/PhnSidebar";
-import { addDoc, collection, doc, getDocs, query, setDoc, updateDoc } from 'firebase/firestore'
+import { collection, doc, getDocs, query, setDoc, updateDoc } from 'firebase/firestore'
 import { db, storage } from '../../firebase'
-import BlogCard from "../Blog Card/BlogCard"
 import InfiniteScroll from 'react-infinite-scroll-component';
-import LoadingMentorsCard from "../Mentors/LoadingMentorCard"
 import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from 'firebase/storage'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PostCard from '../../components/Post Card/PostCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUserDoc } from '../../features/userDocSlice'
+import PostSkeleton from '../../components/Post Skeleton/PostSkeleton'
+
 
 const CommunityFinal = () => {
     const dispatch =useDispatch()
@@ -31,10 +31,17 @@ const CommunityFinal = () => {
     const[editPostButtonClick,setEditPostButtonClick]=useState(false)
     const [newEditText,setNewEditText]=useState("")
     const [editPostId,setEditPostId]=useState(null)
+    const [textAreaIsClick,setTextAreaIsClick]=useState(false)
+    const[scroll,setScroll]=useState(0)
+    const[navbarPostButtonClick,setNavbarPostButtonClick]=useState(false)
 
+    
+    window.onscroll = () => {
+        setScroll(window.scrollY)
+    }
  
 console.log("userDoc",userDoc)
-
+console.log("user",user)
     const updateWidth = () => {
         setWidth(window.innerWidth);
       };
@@ -80,7 +87,7 @@ useEffect(()=>{
           querySnapshot.forEach((doc) => { 
             postData.push({...doc.data(),id:doc.id});
           });
-          setPostsData(postData)
+          setPostsData(postData.sort((a,b)=>{return b.id-a.id}))
     }
         fetchBlogsFromDb()
       },[])
@@ -89,14 +96,14 @@ useEffect(()=>{
 
 //Pagination
 const[pageNumber,setPageNumber]=useState(0)
-const notesPerPage=6;
-const pagesVisited=pageNumber*notesPerPage
-const displayPosts=postsData.slice(0,pagesVisited+notesPerPage)
+const postsPerPage=6;
+const pagesVisited=pageNumber*postsPerPage
+const displayPosts=postsData.slice(0,pagesVisited+postsPerPage)
 // const pageCount=Math.ceil(postsData.length/notesPerPage)
 const fetchMorePosts=()=>{
     setTimeout(()=>{
         setPageNumber(pageNumber+1)
-    },800)
+    },1000)
   }
 
   
@@ -230,7 +237,7 @@ const EditPostInDatabase=async(imageURLL)=>{
     try {
         await updateDoc(postRef,{image:imageURLL,text:newEditText})
      
-        toast("Sucessfully Editted")
+        toast("Sucessfully Saved")
 
         setTimeout(()=>{
 window.location.reload()
@@ -243,50 +250,118 @@ window.location.reload()
 
   return (
     <>
-        {width>=600?<><SidebarFinal /><NavBarFinal/></>:<><PhnSidebar />
+        {width>=600?<><SidebarFinal /><CommunityNavbar setNavbarPostButtonClick={setNavbarPostButtonClick}/></>:<><PhnSidebar />
           <KnowledgeNavbar /></>}
 
           <section id='communityFinalPage'>
           <ToastContainer/>
           <input onChange={onImageChange} ref={chooseFileRef} type="file" hidden className='postImageUpload' />
-          {editPostButtonClick?
-            <>
-          <h2 id='EditPostHeading'>Edit Post</h2>
-          <section className='uploadPostContainer'>
-          {tempImageURL?<div className='communityPostImage-cont'>
-          <img className='communityPostImage' src={tempImageURL} alt="postFile" />
-          </div>:null}
-            <textarea onChange={(e)=>setNewEditText(e.target.value)} name="postText" id="postTextContainer" rows="3" value={newEditText}></textarea>
-          </section>
-          </>
-          :
-          <>
-          <h2>Upload New Post</h2>
-          <section className='uploadPostContainer'>
-          {tempImageURL?<div className='communityPostImage-cont'>
-          <img className='communityPostImage' src={tempImageURL} alt="postFile" />
-          </div>:null}
-            <textarea onChange={(e)=>setNewPostText(e.target.value)} name="postText" id="postTextContainer" rows="3" value={newPostText}></textarea>
-          </section>
-          </>}
-          <button onClick={chooseFile}>Choose Image</button>
-          {editPostButtonClick?
-          <button onClick={EditPost}>Edit</button>
-          :
-          <button onClick={uploadImageToFireBase}>Upload</button>
-          }
 
-          <InfiniteScroll dataLength={displayPosts.length} next={fetchMorePosts} hasMore={displayPosts.length!==postsData.length} loader={<div className='loading-card-container'><LoadingMentorsCard /><LoadingMentorsCard /></div>}>
+{/* NAVBAR POST BUTTON CLICK SECTION */}
+{navbarPostButtonClick?
+<section className='editPostContainerrrr'>
+<ToastContainer />
+  <div className='editPostContainer-edit-container'>
+  <div onClick={()=>{setNavbarPostButtonClick(false);setTempImageURL(null);setImageUpload(null)}} className='closeContainerButton'>X</div>
+  <section className='uploadPostContainerrrrSection'>
+          <div className='EdituploadPostContainerrrr'>
+            <img className='community-upload-cont-userImage' src={userDoc?.image?userDoc.image:"https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"} alt="userImage" />
+            <div className='textAreaUploadContainer'>
+            <div className='navbarUploadPostOuterBoxContainer'>
+            <textarea className='navbarUploadPostContainerTextArea' onChange={(e)=>setNewPostText(e.target.value)} name="postText" id="postTextContainerExpanded" rows="3" value={newPostText} placeholder="What Would You Like To Post?"></textarea>
+            {tempImageURL?<div className='edit-communityPostImage-cont'>
+          <img className='edit-communityPostImage' src={tempImageURL} alt="postFile" />
+          </div>:null}
+            <div className='addImageandUploadPostIcon'>
+              <img onClick={chooseFile} className='addImageInCommunityIcon' src="./images/add-image-icon.png" alt="addImageIcon" />
+              <button onClick={uploadImageToFireBase} className='uploadPostIconButton'>Post</button>
+            </div>
+            </div>
+            </div>
+          </div>
+          </section>
+  </div>
+</section>:null}
+
+          {/* EDIT OLD POST SECTION */}
+
+          {editPostButtonClick?
+          <>
+<section className='editPostContainerrrr'>
+<ToastContainer />
+  <div className='editPostContainer-edit-container'>
+  <div onClick={()=>{setEditPostButtonClick(false);setTempImageURL(null);setImageUpload(null)}} className='closeContainerButton'>X</div>
+  <section className='uploadPostContainerrrrSection'>
+          <div className='EdituploadPostContainerrrr'>
+            <img className='community-upload-cont-userImage' src={userDoc?.image?userDoc.image:"https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"} alt="userImage" />
+            <div className='textAreaUploadContainer'>
+            <div className='navbarUploadPostOuterBoxContainer'>
+            <textarea onChange={(e)=>setNewEditText(e.target.value)} name="postText" className='editOldPostTextArea' id="postTextContainerExpanded" rows="3" value={newEditText} placeholder="What Would You Like To Edit?"></textarea>
+            {tempImageURL?<div className='edit-communityPostImage-cont'>
+          <img className='edit-communityPostImage' src={tempImageURL} alt="postFile" />
+          <button onClick={chooseFile} className='changePhotoIconButton'>Change</button>
+          </div>:null}
+            <div className='addImageandUploadPostIcon'>
+              {/* <img onClick={chooseFile} className='addImageInCommunityIcon' src="./images/add-image-icon.png" alt="addImageIcon" /> */}
+              
+              <button onClick={EditPost} className='uploadPostIconButton'>Save Changes</button>
+            </div>
+            </div>
+            </div>
+          </div>
+         
+          </section>
+  </div>
+</section>
+          </>
+          :null}
+          
+          {/* UPLOAD NEW POST SECTION */}
+
+          <div className='reverrCommunityUploadContainerrr'>
+          <div className='reverrCommunityHeadingAndPostUploadIcon'>
+          <h2 className='reverrCommunityHeading'>Reverr Community</h2>
+          {width<600?<div onClick={()=>setTextAreaIsClick(current=>!current)} id='postUploaddSquareCont' className='postUploaddSquareCont'><img className='postUploaddSquareContAddImg' src="./images/add.png" alt="addIcon" /></div>:
+          scroll>150?null:
+          <div onClick={()=>setTextAreaIsClick(current=>!current)} id='postUploaddSquareCont' className='postUploaddSquareCont'><img className='postUploaddSquareContAddImg' src="./images/add.png" alt="addIcon" /></div>}
+          </div>
+          
+          <section className='uploadPostContainerrrrSection'>
+          <div className='uploadPostContainerrrr'>
+            <img className='community-upload-cont-userImage' src={userDoc?.image?userDoc.image:"https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"} alt="userImage" />
+            <div className='textAreaUploadContainer'>
+            <div className={textAreaIsClick?'navbarUploadPostOuterBoxContainer':'UploadPostOuterBoxContainerNotExpanded'}>
+            <textarea onClick={()=>setTextAreaIsClick(true)} onChange={(e)=>setNewPostText(e.target.value)} name="postText" id={textAreaIsClick?"postTextContainerExpanded":"postTextContainer"} rows="3" value={newPostText} placeholder="What Would You Like To Post?"></textarea>
+            <img onClick={()=>setTextAreaIsClick(current=>!current)} className={textAreaIsClick?"expandTextAreaIconExpanded":'expandTextAreaIcon'} src="./images/addExpandTextArea.png" alt="expandTextarea" />
+            {tempImageURL?<div className='communityPostImage-cont'>
+          <img className='communityPostImage' src={tempImageURL} alt="postFile" />
+          </div>:null}
+            {textAreaIsClick?
+            <div className='addImageandUploadPostIcon uploadNewPostaddImageandUploadPostIcon'>
+              <img onClick={chooseFile} className='addImageInCommunityIcon' src="./images/add-image-icon.png" alt="addImageIcon" />
+              <button onClick={uploadImageToFireBase} className='uploadPostIconButton'>Post</button>
+            </div>:null}
+            </div>
+            </div>
+          </div>
+          
+          </section>
+          </div>
+        
+      {/* POST SECTION */}
+
+<div className='infiniteScrollOuterDiv'>
+          <InfiniteScroll dataLength={displayPosts.length} next={fetchMorePosts} hasMore={displayPosts.length!==postsData.length} loader={<div><PostSkeleton cards={2} /></div>}>
           
           <section className="posts-containerr">
-          <h4 style={{marginBottom:"2rem",marginTop:"2rem",width:"80%"}} className="course-container-heading">Posts</h4>
-          {displayPosts.length===0&&<div className='loading-card-container'><LoadingMentorsCard /><LoadingMentorsCard /></div>}
+          {displayPosts.length===0&&<div><PostSkeleton cards={2} /></div>}
 
   {displayPosts.map((item,index)=>{
     return <PostCard postsData={postsData} setPostsData={setPostsData} item={item} key={index} handleEditPostButtonClick={handleEditPostButtonClick} />
   })}
 </section>
           </InfiniteScroll>
+          </div>
    
    
           </section>

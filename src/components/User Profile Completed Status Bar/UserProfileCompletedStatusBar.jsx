@@ -18,7 +18,6 @@ const userDoc=useSelector((state)=>state.userDoc)
 
     const [profileCompletionProgress,setProfileCompletionProgress]=useState(0)
 
-console.log("profileComplete",profileCompletionProgress)
 
 
 

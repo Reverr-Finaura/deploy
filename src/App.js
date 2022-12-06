@@ -139,7 +139,7 @@ function App() {
         <Route path="/funding" element={<Funding />}></Route>
         <Route path="/fundingform" element={<FundingForm />}></Route>
         <Route path="/mentor-profile" element={<MentorProfile />}></Route>
-        <Route path="/community" element={<CommunityNew />}></Route>
+        <Route path="/community" element={<CommunityFinal />}></Route>
         <Route path="/schedule" element={<Schedule />}></Route>
         <Route path="/betaslide" element={<BetaSlide />}></Route>
         <Route path="/eeslides" element={<EESlides />}></Route>

@@ -51,7 +51,6 @@ console.log("user",user)
   const[userDocId,setUserDocId]=useState([])
   const[userDocInputFormInput,setUserDocInputFormInput]=useState({name:user?.user?.displayName,email:user?.user?.email,password:"",confirmPassword:"",phone:""})
 
-  console.log("blogarray",blogArray)
 
 
   const data = [];
@@ -60,8 +59,6 @@ console.log("user",user)
   const meetingData=[];
   const pureMentorData=[]
   
-console.log("mentor data",mentorArray)
-  // console.log("userId",userDocId)
   
   const updateWidth = () => {
     setWidth(window.innerWidth);
@@ -354,7 +351,7 @@ toast("Processing Your Request")
     setHasNoUserDoc(false)
   } catch (error) {
     toast.error(error.message)
-    console.log("error",error.message)
+    
   }
  
 }
