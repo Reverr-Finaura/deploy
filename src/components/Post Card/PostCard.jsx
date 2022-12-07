@@ -258,7 +258,7 @@ useEffect(()=>{
             <div onClick={()=>handleDeletePostButtonClick(item.id)} className='threeDotsDeletePostOption'>
                 Delete Post
             </div>
-            <a style={{textDecoration:"none",color:"black",margin:"auto"}} href="#"><div onClick={()=>{handleEditPostButtonClick(item,item.id);setIsThreeDotsClicked(false)}} className='threeDotsEditPostOption'>
+            <a style={{textDecoration:"none",color:"black",margin:"auto"}}><div onClick={()=>{handleEditPostButtonClick(item,item.id);setIsThreeDotsClicked(false)}} className='threeDotsEditPostOption'>
                 Edit Post
             </div>
             </a>
@@ -284,7 +284,7 @@ useEffect(()=>{
         </div>
         <div className='postCommentContainer'>
         <div className='commentContainer'>
-        <i onClick={()=>{setCommentIconClick(current=>!current);(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus()}} className='far fa-comment commentPost'></i>
+        <img src='./images/postCommentIcon.png' alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current);(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus()}} className='commentPostIcon'/>
         </div>
             <h3 className='postCommentCount'>{item?.comments.length}</h3>
         </div>
@@ -313,7 +313,7 @@ useEffect(()=>{
           <div className='newCommentContainerrrr'>
             <img className='community-newComment-cont-userImage' src={userDoc?.image?userDoc.image:"https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"} alt="userImage" />
             <div className='textAreaUploadContainer'>
-            <textarea className={item?.id} onClick={()=>setNewCommentTextAreaClick(true)} onChange={(e)=>setNewComment(e.target.value)} name="newComment" id={newCommentTextAreaClick?"postCommentContainerExpanded":"postCommentContainer"} rows="3" placeholder="Share Your Thoughts" value={newComment}></textarea>
+            <textarea className={item?.id} onClick={()=>{setNewCommentTextAreaClick(true);setCommentIconClick(true)}} onChange={(e)=>setNewComment(e.target.value)} name="newComment" id={newCommentTextAreaClick?"postCommentContainerExpanded":"postCommentContainer"} rows="3" placeholder="Share Your Thoughts" value={newComment}></textarea>
             <img onClick={()=>setNewCommentTextAreaClick(current=>!current)} className={newCommentTextAreaClick?"expandTextAreaIconExpanded":'expandTextAreaIcon'} src="./images/addExpandTextArea.png" alt="expandTextarea" />
             {newCommentTextAreaClick?
             <div className='addImageandUploadPostIcon newCommentAddImageAndUpload'>
@@ -344,7 +344,7 @@ useEffect(()=>{
             <div onClick={()=>handleDeleteCommentClick(list.commentid,item,item.id)} className='threeDotsDeletePostOption'>
                 Delete
             </div>
-            <a style={{textDecoration:"none",color:"black",margin:"auto"}} href="#"><div onClick={()=>{handleEditCommentClick(list.commentid,list);setIsCommentThreeDotsClicked(false)}} className='threeDotsEditPostOption'>
+            <a style={{textDecoration:"none",color:"black",margin:"auto"}}><div onClick={()=>{handleEditCommentClick(list.commentid,list);setIsCommentThreeDotsClicked(false)}} className='threeDotsEditPostOption'>
                 Edit
             </div>
             </a>

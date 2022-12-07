@@ -40,8 +40,8 @@ const CommunityFinal = () => {
         setScroll(window.scrollY)
     }
  
-console.log("userDoc",userDoc)
-console.log("user",user)
+// console.log("userDoc",userDoc)
+// console.log("user",user)
     const updateWidth = () => {
         setWidth(window.innerWidth);
       };
@@ -252,7 +252,7 @@ window.location.reload()
     <>
         {width>=600?<><SidebarFinal /><CommunityNavbar setNavbarPostButtonClick={setNavbarPostButtonClick}/></>:<><PhnSidebar />
           <KnowledgeNavbar /></>}
-
+<section id='communityFinalPageOuterSection'>
           <section id='communityFinalPage'>
           <ToastContainer/>
           <input onChange={onImageChange} ref={chooseFileRef} type="file" hidden className='postImageUpload' />
@@ -298,8 +298,12 @@ window.location.reload()
             <div className='navbarUploadPostOuterBoxContainer'>
             <textarea onChange={(e)=>setNewEditText(e.target.value)} name="postText" className='editOldPostTextArea' id="postTextContainerExpanded" rows="3" value={newEditText} placeholder="What Would You Like To Edit?"></textarea>
             {tempImageURL?<div className='edit-communityPostImage-cont'>
+            <div className='editImageOverLayContainerImageContainer'>
+            <div className='editImageOverLayContainer'></div>
           <img className='edit-communityPostImage' src={tempImageURL} alt="postFile" />
           <button onClick={chooseFile} className='changePhotoIconButton'>Change</button>
+          </div>
+          
           </div>:null}
             <div className='addImageandUploadPostIcon'>
               {/* <img onClick={chooseFile} className='addImageInCommunityIcon' src="./images/add-image-icon.png" alt="addImageIcon" /> */}
@@ -331,7 +335,7 @@ window.location.reload()
             <img className='community-upload-cont-userImage' src={userDoc?.image?userDoc.image:"https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"} alt="userImage" />
             <div className='textAreaUploadContainer'>
             <div className={textAreaIsClick?'navbarUploadPostOuterBoxContainer':'UploadPostOuterBoxContainerNotExpanded'}>
-            <textarea onClick={()=>setTextAreaIsClick(true)} onChange={(e)=>setNewPostText(e.target.value)} name="postText" id={textAreaIsClick?"postTextContainerExpanded":"postTextContainer"} rows="3" value={newPostText} placeholder="What Would You Like To Post?"></textarea>
+            <textarea style={{background:"white"}} onClick={()=>setTextAreaIsClick(true)} onChange={(e)=>setNewPostText(e.target.value)} name="postText" id={textAreaIsClick?"postTextContainerExpanded":"postTextContainer"} rows="3" value={newPostText} placeholder="What Would You Like To Post?"></textarea>
             <img onClick={()=>setTextAreaIsClick(current=>!current)} className={textAreaIsClick?"expandTextAreaIconExpanded":'expandTextAreaIcon'} src="./images/addExpandTextArea.png" alt="expandTextarea" />
             {tempImageURL?<div className='communityPostImage-cont'>
           <img className='communityPostImage' src={tempImageURL} alt="postFile" />
@@ -362,8 +366,7 @@ window.location.reload()
 </section>
           </InfiniteScroll>
           </div>
-   
-   
+          </section>
           </section>
     </>
 

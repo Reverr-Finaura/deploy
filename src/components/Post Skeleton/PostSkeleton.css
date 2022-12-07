@@ -8,6 +8,7 @@
     background-color: white;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
 }
 .post-skeleton-card-top{
     display: flex;
@@ -27,11 +28,12 @@
 .post-skeleton-card-bottom{
     width: 90%;
     margin: auto;
-    background-color: #e6e4e4dc;
+    background-color: white;
     display: flex;
     flex-direction: column;
     padding: 1rem;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px; 
     margin-bottom: 2rem;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
 }

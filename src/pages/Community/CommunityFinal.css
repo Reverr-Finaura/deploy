@@ -1,24 +1,34 @@
 .infiniteScrollOuterDiv{
-    width: 68%;
+    width: 87%;
     margin-left: 5rem;
     margin-top: 4rem;
 }
+#communityFinalPageOuterSection{
+    margin-left: 14rem;
+    margin-top: 6.5rem;
+    margin-bottom: 3rem;
+    min-height: 100vh;
+    max-width: 87%;
+    background-color: white; 
+}
 #communityFinalPage{
     min-height: 100vh;
-    width: 80%;
-    margin-left: 14.5rem;
-    margin-top: 7.2rem;
-    margin-bottom: 3rem;
+    width: 65%;
     display: flex;
     flex-direction: column;
     font-family: 'Poppins';
 font-style: normal;
+background-color: #DAEAF1;
+padding: 1rem;
+padding-right: 4.5rem;
+
 }
 .UploadPostOuterBoxContainerNotExpanded{
     border: none;
+    
 }
 .reverrCommunityUploadContainerrr{
-    width: 68%;
+    width: 90%;
     margin-left: 5rem;
 }
 .uploadPostContainerrrrSection{
@@ -155,10 +165,10 @@ font-size: 18px;
 color: white;
 border: none;
 cursor: pointer;
-z-index: 1;
+z-index: 10;
 position: absolute;
-right: 45%;
-bottom: 40%;
+left: 25%;
+bottom: 41%;
 
 }
 
@@ -231,6 +241,7 @@ bottom: 40%;
     padding: 1rem;
     display: flex;
     flex-direction: column;
+    padding-bottom: 2rem;
 }
 .edit-communityPostImage-cont{
     width: 96.6%;
@@ -243,14 +254,31 @@ bottom: 40%;
 }
 .edit-communityPostImage{
     width: 209px;
+    height: 150px;
     margin: auto;
     margin-bottom: 1rem;
+}
+.editImageOverLayContainerImageContainer{
+    position: relative;
+    margin: auto;
+    width: fit-content;
+    height: 150px;
+}
+.editImageOverLayContainer{
+    width: 209px;
+    height: 147px;
+    margin: auto;
+    z-index: 5;
+    background-color: rgb(0, 0, 0,.6);
+   position: absolute;
+    
 }
 .navbarUploadPostOuterBoxContainer{
     border: 2px solid #2a72de;
     border-radius: 8px;
     width: 90%;
     z-index: 10;
+    background-color: white;
 }
 .navbarUploadPostContainerTextArea{
     background-color: white;
@@ -290,7 +318,7 @@ bottom: 40%;
 
 @media(max-width:1180px){
     #communityFinalPage{
-        width: 72%;
+        width: 82%;
     }
     #postCommentContainer{
         width: 75%!important;
@@ -302,13 +330,19 @@ bottom: 40%;
         width: 89%!important;
     }
 }
+@media(max-width:960px){
+    #communityFinalPage {
+        width: 90%;
+    padding-right: 1rem;
+    }
+}
 @media(max-width:847px){
     #communityFinalPage{
-        width: 65%;
+        width: 85%;
     }
 }
 @media(max-width:730px){
-    #communityFinalPage{
+    #communityFinalPageOuterSection{
         margin-left: 12rem;
     }
     #postTextContainer{
@@ -319,9 +353,12 @@ bottom: 40%;
     }
 }
 @media(max-width:600px){
-    #communityFinalPage{
+    #communityFinalPageOuterSection{
         margin: auto;
-        width: 88%;
+        max-width: 95%;
+    }
+    #communityFinalPage{
+        width: 94%;
     }
     .editPostContainerrrr {
         width: 100%;
