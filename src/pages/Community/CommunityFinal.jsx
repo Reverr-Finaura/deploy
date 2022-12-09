@@ -14,6 +14,7 @@ import PostCard from '../../components/Post Card/PostCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUserDoc } from '../../features/userDocSlice'
 import PostSkeleton from '../../components/Post Skeleton/PostSkeleton'
+import CommunityUserProfilePopup from '../../components/Community User Profile Popup/CommunityUserProfilePopup'
 
 
 const CommunityFinal = () => {
@@ -34,7 +35,8 @@ const CommunityFinal = () => {
     const [textAreaIsClick,setTextAreaIsClick]=useState(false)
     const[scroll,setScroll]=useState(0)
     const[navbarPostButtonClick,setNavbarPostButtonClick]=useState(false)
-
+    const[postsAuthorIsClick,setPostsAuthorIsClick]=useState(false)
+    const[postsAuthorInfo,setPostsAuthorInfo]=useState(null)
     
     window.onscroll = () => {
         setScroll(window.scrollY)
@@ -361,13 +363,15 @@ window.location.reload()
           {displayPosts.length===0&&<div><PostSkeleton cards={2} /></div>}
 
   {displayPosts.map((item,index)=>{
-    return <PostCard postsData={postsData} setPostsData={setPostsData} item={item} key={index} handleEditPostButtonClick={handleEditPostButtonClick} />
+    return <PostCard postsData={postsData} setPostsData={setPostsData} item={item} key={index} handleEditPostButtonClick={handleEditPostButtonClick} setPostsAuthorIsClick={setPostsAuthorIsClick}
+setPostsAuthorInfo={setPostsAuthorInfo} />
   })}
 </section>
           </InfiniteScroll>
           </div>
           </section>
           </section>
+          <CommunityUserProfilePopup setPostsAuthorIsClick={setPostsAuthorIsClick} postsAuthorInfo={postsAuthorInfo} postsAuthorIsClick={postsAuthorIsClick}/>
     </>
 
   )

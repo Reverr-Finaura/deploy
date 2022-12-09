@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react'
 import { getUserDocByRef } from '../../firebase'
 
-const PostCard = ({postsData,setPostsData,item,index,handleEditPostButtonClick}) => {
+const PostCard = ({postsData,setPostsData,item,index,handleEditPostButtonClick,setPostsAuthorIsClick,setPostsAuthorInfo}) => {
     const userDoc=useSelector((state)=>state.userDoc) 
  const[isThreeDotsClicked,setIsThreeDotsClicked]=useState(false) 
  const[isCommentThreeDotsClicked,setIsCommentThreeDotsClicked]=useState(false) 
@@ -249,8 +249,8 @@ useEffect(()=>{
     <>
    <section className='PostCardContainer' id={index}>
     <div className='postAuthorDetails'>
-    <img style={{width:"40px",height:"40px",borderRadius:"50%",marginRight:"1rem"}} src={postedByUserDoc?.image} alt="" />
-        <h3 className='postAuthorName'>{postedByUserDoc?.name}</h3>
+    <img onClick={()=>{setPostsAuthorIsClick(true);setPostsAuthorInfo(postedByUserDoc)}} style={{width:"40px",height:"40px",borderRadius:"50%",marginRight:"1rem"}} src={postedByUserDoc?.image} alt="" />
+        <h3 onClick={()=>{setPostsAuthorIsClick(true);setPostsAuthorInfo(postedByUserDoc)}} className='postAuthorName'>{postedByUserDoc?.name}</h3>
         <div className='threeDotsContainer'>
        {user?.user?.email===item?.postedby?.id? <img onClick={()=>setIsThreeDotsClicked(current=>!current)} className='threeDotsPost' src="./images/dots.png" alt="3dots" />:null}
        {isThreeDotsClicked?

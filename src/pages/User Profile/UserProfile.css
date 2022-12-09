@@ -128,13 +128,16 @@ color: #202020;
 }
 .user-experience-info-experince{
     display: grid;
-    grid-template-columns: 40% 60%;
-    margin-top: 1rem;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 20px;
+    /* margin-top: 1rem; */
 }
 .user-experience-info-company-role{
     display: flex;
     flex-direction: column;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
+    padding: 1rem;
+    padding-bottom: 0;
 }
 .user-experience-info-company-role-company-name{
     font-family: 'Poppins';
@@ -188,13 +191,15 @@ color: #202020;
 
 .user-education-info-degree-cont{
     display: grid;
-    grid-template-columns: 40% 60%;
-    margin-bottom: 1rem;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 20px;
+    /* margin-bottom: 1rem; */
 }
 .user-education-info-specific-degree{
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
+    
 }
 .user-education-info-institute-name{
     

@@ -1,0 +1,208 @@
+.communityUserProfilePopup{
+    width: 100vw;
+    min-height: 100vh;
+    z-index: 1000000;
+    background-color: rgba(0, 0, 0, .4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(1520px);
+    transition: transform .6s ease; 
+    
+
+}
+.closePopUpContainer{
+    width: 38%;
+    min-height: 100vh;
+    z-index:1000001 ;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    
+}
+.UserProfilePopup{
+    width: 60%;
+    min-height: 100vh;
+    z-index:1000001 ;
+    background-color: white;
+    padding: 1rem;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transform: translateX(950px);
+    transition: transform 1s ease; 
+    
+}
+.overFlowContainer{
+    position: absolute;
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 2rem;
+    left: 0;
+}
+.UserProfilePopupTop{
+    height: 50px;
+    width: 100%;
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+}
+.closePopupIcon{
+    cursor: pointer;
+}
+.userInformationConatiner{
+    display: flex;
+    width: fit-content;
+    margin-left: 4rem;
+    
+}
+.userImage{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.userNameDesignationContainer{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+
+}
+.userName{
+    margin-bottom: .5rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 42px;
+color: black;
+}
+.userDesignation{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 27px;
+}
+.followChatButtonContainer{
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+.followButton{
+    background: #2A72DE;
+    border-radius: 10px;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+padding: 4px 14px;
+color:white;
+border:none;
+cursor: pointer;
+}
+.editProfileButton{
+    background: #2A72DE;
+    border-radius: 10px;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+padding: 4px 14px;
+color:white;
+border:none;
+cursor: pointer;
+
+}
+.chatButton{
+    background: #2A72DE;
+    border-radius: 10px;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+padding: 4px 14px;
+color:white;
+cursor: pointer;
+border:none;
+margin-left: 1rem;
+}
+.userPostFollowerInfoCont{
+    display: flex;
+    margin-top: 1rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+}
+.postsInfo,.followersInfo{
+    margin-right: .5rem;
+}
+.followersInfo,.followingInfo{
+    margin-left: .5rem;
+}
+
+.userGeneralInfo{
+    width: 90%;
+    min-height: 60%;
+    background: #F6F6F6;
+    margin-top: 3rem;
+    
+    padding: 2rem;
+    padding-left: 4rem;
+}
+.aboutMeCont{
+    width: 98%;
+}
+.aboutMeContHeading{
+    margin-bottom: .7rem;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 19px;
+line-height: 24px;
+color: #202020;
+    
+}
+.aboutMeContInfo{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+}
+.socialLinkContainer{
+    margin-top: 2rem;
+}
+.noSocialLinkAvailableMessage{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+}
+.experienceInfoCont{
+    margin-top: 2rem;
+}
+.educationInfoCont{
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+@media(max-width:860px){
+    .closePopUpContainer{
+        width: 10%;
+    }
+    .UserProfilePopup {
+        width: 89%;
+    }
+}
+@media(max-width:600px){
+    .closePopUpContainer{
+        width: 1%;
+    }
+    .UserProfilePopup {
+        width: 95%;
+    }
+}
