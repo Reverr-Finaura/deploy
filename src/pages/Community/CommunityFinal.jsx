@@ -15,6 +15,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setUserDoc } from '../../features/userDocSlice'
 import PostSkeleton from '../../components/Post Skeleton/PostSkeleton'
 import CommunityUserProfilePopup from '../../components/Community User Profile Popup/CommunityUserProfilePopup'
+import { Outlet } from 'react-router-dom'
+import CommunitySidebar from '../../components/Community Sidebar/CommunitySidebar'
+import expandTextAreaIcon from "../../images/addExpandTextArea.png"
+
 
 
 const CommunityFinal = () => {
@@ -37,7 +41,9 @@ const CommunityFinal = () => {
     const[navbarPostButtonClick,setNavbarPostButtonClick]=useState(false)
     const[postsAuthorIsClick,setPostsAuthorIsClick]=useState(false)
     const[postsAuthorInfo,setPostsAuthorInfo]=useState(null)
-    
+    const [sortOptionSelected,setSortOptionSelected]=useState("Newest")
+    const[postIdExist,setPostIdExist]=useState("")
+    console.log("postId",postIdExist)
     window.onscroll = () => {
         setScroll(window.scrollY)
     }
@@ -53,8 +59,17 @@ const CommunityFinal = () => {
         return () => window.removeEventListener("resize", updateWidth);
       }, []);
 
+//GET SITE URL
+useEffect(()=>{
+  function getCurrentURL () {
+    return window.location.href
+  }
+  const url = getCurrentURL()
+  const subUrl=url.indexOf("y")
+  setPostIdExist(url.slice(subUrl+2))
 
- 
+},[])
+
 // CHECK FOR USER DOC DATA
 useEffect(()=>{
     async function fetchUserDocFromFirebase(){
@@ -82,17 +97,21 @@ if(userDoc?.posts){setNewPostDataId(userDoc?.posts);return}
 //FETCH POSTS DATA FROM FIREBASE
 
 useEffect(()=>{
-    async function fetchBlogsFromDb(){
+    async function fetchPostsFromDb(){
       const postRef = collection(db, "Posts");
       const q = query(postRef);
           const querySnapshot = await getDocs(q);
           querySnapshot.forEach((doc) => { 
             postData.push({...doc.data(),id:doc.id});
           });
-          setPostsData(postData.sort((a,b)=>{return b.id-a.id}))
+          if(sortOptionSelected===""){setPostsData(postData.sort((a,b)=>{return b.id-a.id}))}
+          if(sortOptionSelected==="Popular Now"){setPostsData(postData.sort((a,b)=>{return b.likes.length-a.likes.length}))}
+if(sortOptionSelected==="Newest"){setPostsData(postData.sort((a,b)=>{return b.id-a.id}))}
+if(sortOptionSelected==="Oldest"){setPostsData(postData)}
+          // setPostsData(postData.sort((a,b)=>{return b.id-a.id}))
     }
-        fetchBlogsFromDb()
-      },[])
+        fetchPostsFromDb()
+      },[sortOptionSelected])
 
 
 
@@ -252,9 +271,10 @@ window.location.reload()
 
   return (
     <>
-        {width>=600?<><SidebarFinal /><CommunityNavbar setNavbarPostButtonClick={setNavbarPostButtonClick}/></>:<><PhnSidebar />
+    
+        {width>=600?<><CommunitySidebar /><CommunityNavbar setNavbarPostButtonClick={setNavbarPostButtonClick}/></>:<><PhnSidebar />
           <KnowledgeNavbar /></>}
-<section id='communityFinalPageOuterSection'>
+<section style={{position:postsAuthorIsClick||postIdExist!==""?"fixed":""}} id='communityFinalPageOuterSection'>
           <section id='communityFinalPage'>
           <ToastContainer/>
           <input onChange={onImageChange} ref={chooseFileRef} type="file" hidden className='postImageUpload' />
@@ -326,7 +346,12 @@ window.location.reload()
 
           <div className='reverrCommunityUploadContainerrr'>
           <div className='reverrCommunityHeadingAndPostUploadIcon'>
+          <div>
           <h2 className='reverrCommunityHeading'>Reverr Community</h2>
+          <p className='reverrCommunitySubbHeading'>The community where future entrepreneurs come to learn, execute and grow.
+</p>
+          </div>
+          
           {width<600?<div onClick={()=>setTextAreaIsClick(current=>!current)} id='postUploaddSquareCont' className='postUploaddSquareCont'><img className='postUploaddSquareContAddImg' src="./images/add.png" alt="addIcon" /></div>:
           scroll>150?null:
           <div onClick={()=>setTextAreaIsClick(current=>!current)} id='postUploaddSquareCont' className='postUploaddSquareCont'><img className='postUploaddSquareContAddImg' src="./images/add.png" alt="addIcon" /></div>}
@@ -337,8 +362,8 @@ window.location.reload()
             <img className='community-upload-cont-userImage' src={userDoc?.image?userDoc.image:"https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"} alt="userImage" />
             <div className='textAreaUploadContainer'>
             <div className={textAreaIsClick?'navbarUploadPostOuterBoxContainer':'UploadPostOuterBoxContainerNotExpanded'}>
-            <textarea style={{background:"white"}} onClick={()=>setTextAreaIsClick(true)} onChange={(e)=>setNewPostText(e.target.value)} name="postText" id={textAreaIsClick?"postTextContainerExpanded":"postTextContainer"} rows="3" value={newPostText} placeholder="What Would You Like To Post?"></textarea>
-            <img onClick={()=>setTextAreaIsClick(current=>!current)} className={textAreaIsClick?"expandTextAreaIconExpanded":'expandTextAreaIcon'} src="./images/addExpandTextArea.png" alt="expandTextarea" />
+            <textarea style={{background:"rgba(255,255,255,.25)"}} onClick={()=>setTextAreaIsClick(true)} onChange={(e)=>setNewPostText(e.target.value)} name="postText" id={textAreaIsClick?"postTextContainerExpanded":"postTextContainer"} rows="3" value={newPostText} placeholder="What Would You Like To Post?"></textarea>
+            <img onClick={()=>setTextAreaIsClick(current=>!current)} className={textAreaIsClick?"expandTextAreaIconExpanded":'expandTextAreaIcon'} src={expandTextAreaIcon} alt="expandTextarea" />
             {tempImageURL?<div className='communityPostImage-cont'>
           <img className='communityPostImage' src={tempImageURL} alt="postFile" />
           </div>:null}
@@ -354,6 +379,17 @@ window.location.reload()
           </section>
           </div>
         
+{/* SORT POST SECTION */}
+
+<section id='sortPostSection'>
+  <h2 className='sortPostSectionHeading'>Sorted By: <span className='sortPostSectionHeadingItemName'>{sortOptionSelected!==""?sortOptionSelected:"None"}</span> </h2>
+  <div className='sortPostSectionOptionContainer'>
+<button onClick={()=>{setSortOptionSelected("Popular Now")}} className={sortOptionSelected==="Popular Now"?"sortPostSectionOptionSelected":'sortPostSectionOption'}>Popular Now</button>
+<button onClick={()=>{setSortOptionSelected("Newest")}} className={sortOptionSelected==="Newest"?"sortPostSectionOptionSelected":'sortPostSectionOption'}>Newest</button>
+<button onClick={()=>{setSortOptionSelected("Oldest")}} className={sortOptionSelected==="Oldest"?"sortPostSectionOptionSelected":'sortPostSectionOption'}>Oldest</button>
+  </div>
+</section>
+
       {/* POST SECTION */}
 
 <div className='infiniteScrollOuterDiv'>
@@ -371,7 +407,10 @@ setPostsAuthorInfo={setPostsAuthorInfo} />
           </div>
           </section>
           </section>
-          <CommunityUserProfilePopup setPostsAuthorIsClick={setPostsAuthorIsClick} postsAuthorInfo={postsAuthorInfo} postsAuthorIsClick={postsAuthorIsClick}/>
+
+          <CommunityUserProfilePopup setPostsAuthorIsClick={setPostsAuthorIsClick} postsAuthorInfo={postsAuthorInfo} postsAuthorIsClick={postsAuthorIsClick} postsData={postsData} setPostsData={setPostsData} handleEditPostButtonClick={handleEditPostButtonClick}/>
+
+          <Outlet/>
     </>
 
   )

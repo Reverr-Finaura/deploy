@@ -3,12 +3,15 @@ import React,{ useState } from 'react'
 import { useSelector } from 'react-redux'
 import { db } from '../../firebase'
 import "./PostCard.css"
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react'
 import { getUserDocByRef } from '../../firebase'
+import LikeIcon from '../Like And Liked Icon/LikeIcon'
+import LikedIcon from '../Like And Liked Icon/LikedIcon'
+import commentIcon from "../../images/postCommentIcon.png"
 
-const PostCard = ({postsData,setPostsData,item,index,handleEditPostButtonClick,setPostsAuthorIsClick,setPostsAuthorInfo}) => {
+const PostCard = ({postsData,setPostsData,item,handleEditPostButtonClick,setPostsAuthorIsClick,setPostsAuthorInfo}) => {
     const userDoc=useSelector((state)=>state.userDoc) 
  const[isThreeDotsClicked,setIsThreeDotsClicked]=useState(false) 
  const[isCommentThreeDotsClicked,setIsCommentThreeDotsClicked]=useState(false) 
@@ -25,9 +28,8 @@ const[postedByUserDoc,setPostedByUserDoc]=useState({})
 const[commentedByUserDoc,setCommentedByUserDoc]=useState([])
 const[showMorePostTextClick,setShowMorePostTextClick]=useState(false)
 const[newCommentTextAreaClick,setNewCommentTextAreaClick]=useState(false)
+const[postTime,setPostTime]=useState("")
  
-
-
 
 
 //CHECK IF POST LIKES CONTAIN USER OR NOT
@@ -242,30 +244,44 @@ useEffect(()=>{
 
 },[item])
 
+// HANDLE POST SEND CLICK
+
+const handleSendPostLinkClick=(id)=>{
+    var tempUrl=window.location.href
+    var url = `${tempUrl}/${id}`;
+navigator.clipboard.writeText(url).then(function() {
+  toast("Link Copied To ClipBoard");
+}, function(err) {
+  console.error('Could not copy text: ', err);
+});
+}
 
 
+//GET TIME OF POST
+useEffect(()=>{
+    setPostTime(new Date(item?.createdAt.seconds*1000))
+},[item])
 
   return (
     <>
-   <section className='PostCardContainer' id={index}>
-    <div className='postAuthorDetails'>
+   <section className='PostCardContainer' id={item.id}>
+    <div style={{alignItems:"center"}} className='postAuthorDetails'>
     <img onClick={()=>{setPostsAuthorIsClick(true);setPostsAuthorInfo(postedByUserDoc)}} style={{width:"40px",height:"40px",borderRadius:"50%",marginRight:"1rem"}} src={postedByUserDoc?.image} alt="" />
-        <h3 onClick={()=>{setPostsAuthorIsClick(true);setPostsAuthorInfo(postedByUserDoc)}} className='postAuthorName'>{postedByUserDoc?.name}</h3>
-        <div className='threeDotsContainer'>
-       {user?.user?.email===item?.postedby?.id? <img onClick={()=>setIsThreeDotsClicked(current=>!current)} className='threeDotsPost' src="./images/dots.png" alt="3dots" />:null}
-       {isThreeDotsClicked?
-       <div className='threeDotsOptions'>
-            <div onClick={()=>handleDeletePostButtonClick(item.id)} className='threeDotsDeletePostOption'>
-                Delete Post
-            </div>
-            <a style={{textDecoration:"none",color:"black",margin:"auto"}}><div onClick={()=>{handleEditPostButtonClick(item,item.id);setIsThreeDotsClicked(false)}} className='threeDotsEditPostOption'>
-                Edit Post
-            </div>
-            </a>
-        </div>
-        :null} 
-        </div>
+    <div className='postAuthorNameAndDesignationCont'>
+    <h3 onClick={()=>{setPostsAuthorIsClick(true);setPostsAuthorInfo(postedByUserDoc)}} className='postAuthorName'>{postedByUserDoc?.name}</h3>
+    <p className='postAuthorDesignation'>{postedByUserDoc?.designation?postedByUserDoc?.designation:""}</p>
+    </div>
         
+        <div className='postUploadDateContainer'>{
+        new Date(postTime)?.getFullYear()!==new Date().getFullYear()?((new Date().getFullYear()- new Date(postTime)?.getFullYear())+" Year ago"):
+        postTime?.getMonth()+1!==new Date().getMonth()+1?(((new Date().getMonth()+1)-(postTime?.getMonth()+1))+" Month ago"):
+        postTime?.getDate()!==new Date().getDate()?((new Date().getDate()-postTime?.getDate())+" Day ago"):
+        new Date(postTime).getHours()!==new Date().getHours()?(new Date().getHours()-
+        new Date(postTime).getHours())+" Hour Ago":
+        new Date(postTime).getMinutes()!==new Date().getMinutes()?(new Date().getMinutes()-
+        new Date(postTime).getMinutes())+" Minute Ago":
+        new Date(postTime).getSeconds()!==new Date().getSeconds()?(new Date().getSeconds()-
+        new Date(postTime).getSeconds())+" Second Ago":""}</div>
     </div>
     <div className='postTextContainer'>
     {item?.text.length>100?<h3 className='postText'>{showMorePostTextClick?item?.text:<>{item?.text.slice(0,100)}<span onClick={()=>setShowMorePostTextClick(true)} className='morePostTextButton'>...continue</span> </>}</h3>
@@ -279,14 +295,43 @@ useEffect(()=>{
     
     <div className='postLikesAndCommentContainer'>
         <div className='postLikesContainer'>
-        <i onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className={"fa fa-heart "+ (item?.likes.includes(user?.user?.email)?"heartPostLiked":"heartPostNotLiked")}></i>
+        <div onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className='postLikesContainerLikeIcon'>{item?.likes.includes(user?.user?.email)?<LikedIcon/>:<LikeIcon/>}</div>
+        {/* <i onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className={"fa fa-heart "+ (item?.likes.includes(user?.user?.email)?"heartPostLiked":"heartPostNotLiked")}></i> */}
             <h3 className='postLikeCount'>{item?.likes.length}</h3>
         </div>
         <div className='postCommentContainer'>
         <div className='commentContainer'>
-        <img src='./images/postCommentIcon.png' alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current);(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus()}} className='commentPostIcon'/>
+        <img src={commentIcon} alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current);(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus()}} className='commentPostIcon'/>
         </div>
             <h3 className='postCommentCount'>{item?.comments.length}</h3>
+        </div>
+        <div onClick={()=>handleSendPostLinkClick(item.id)} className='postSendLinkContainer'>
+<div className='postSendCont'>
+    <div className='postSendIcon'>
+        <img style={{width:"100%",height:"100%"}} src="./images/paper-plane.png" alt="sendIcon" />
+    </div>
+    <h3 className='postSendText'>Send</h3>
+</div>
+        </div>
+        <div className='threeDotsMainCont'>
+        <div className='threeDotsContainer'>
+        <img onClick={()=>setIsThreeDotsClicked(current=>!current)} className='threeDotsPost' src="./images/dots.png" alt="3dots" />
+       {isThreeDotsClicked?
+       <div className={user?.user?.email===item?.postedby?.id?'threeDotsOptions':"standardThreeDotsOption"}>
+       
+            {user?.user?.email===item?.postedby?.id?<div onClick={()=>handleDeletePostButtonClick(item.id)} className='threeDotsDeletePostOption'>
+                Delete Post
+            </div>:null}
+            {user?.user?.email===item?.postedby?.id?<a style={{textDecoration:"none",color:"black",margin:"auto"}}><div onClick={()=>{handleEditPostButtonClick(item,item.id);setIsThreeDotsClicked(false)}} className='threeDotsEditPostOption'>
+                Edit Post
+            </div>
+            </a>:null}
+            <div className='threeDotsReportPostOption'>
+                Report Post
+            </div>
+        </div>
+        :null} 
+        </div>
         </div>
     </div>
    </section>
@@ -300,7 +345,7 @@ useEffect(()=>{
             <img className='community-newComment-cont-userImage' src={userDoc?.image?userDoc.image:"https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"} alt="userImage" />
             <div className='textAreaUploadContainer'>
             <div>
-            <textarea onChange={(e)=>setNewEdittedComment(e.target.value)} name="newEditComment" id="postCommentContainerExpanded" rows="3" placeholder="Share Your Thoughts" value={newEdittedComment}></textarea>
+            <textarea autoFocus onChange={(e)=>setNewEdittedComment(e.target.value)} name="newEditComment" id="postCommentContainerExpanded" rows="3" placeholder="Share Your Thoughts" value={newEdittedComment}></textarea>
             <div className='addImageandUploadPostIcon newCommentAddImageAndUpload'>
               <button onClick={()=>handleEditCommentonPost(item,item.id)} className='uploadPostIconButton'>Edit</button>
             </div>
@@ -309,11 +354,11 @@ useEffect(()=>{
           </div>
           </section>:
 
-   <section className='uploadPostContainerrrrSection'>
+   <section style={{display:commentIconClick?"":"none"}} className='uploadPostContainerrrrSection'>
           <div className='newCommentContainerrrr'>
             <img className='community-newComment-cont-userImage' src={userDoc?.image?userDoc.image:"https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"} alt="userImage" />
             <div className='textAreaUploadContainer'>
-            <textarea className={item?.id} onClick={()=>{setNewCommentTextAreaClick(true);setCommentIconClick(true)}} onChange={(e)=>setNewComment(e.target.value)} name="newComment" id={newCommentTextAreaClick?"postCommentContainerExpanded":"postCommentContainer"} rows="3" placeholder="Share Your Thoughts" value={newComment}></textarea>
+            <textarea onBlur={()=>setCommentIconClick(false)} autoFocus className={item?.id} onClick={()=>{setNewCommentTextAreaClick(true);setCommentIconClick(true)}} onChange={(e)=>setNewComment(e.target.value)} name="newComment" id={newCommentTextAreaClick?"postCommentContainerExpanded":"postCommentContainer"} rows="3" placeholder="Share Your Thoughts" value={newComment}></textarea>
             <img onClick={()=>setNewCommentTextAreaClick(current=>!current)} className={newCommentTextAreaClick?"expandTextAreaIconExpanded":'expandTextAreaIcon'} src="./images/addExpandTextArea.png" alt="expandTextarea" />
             {newCommentTextAreaClick?
             <div className='addImageandUploadPostIcon newCommentAddImageAndUpload'>

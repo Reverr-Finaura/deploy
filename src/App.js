@@ -76,11 +76,13 @@ import ChangePassword from "./pages/Change Password/ChangePassword";
 import GetFundedPage from "./pages/Get Funded/GetFundedPage";
 import CommunityNew from "./pages/Community/CommunityNew";
 import CommunityFinal from "./pages/Community/CommunityFinal";
+import SharedCommunityPost from "./pages/Shared Community Post/SharedCommunityPost";
 
 function App() {
   const user = useSelector(selectUser);
   const newUser = useSelector(selectNewUser);
   const dispatch = useDispatch();
+ 
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -139,7 +141,9 @@ function App() {
         <Route path="/funding" element={<Funding />}></Route>
         <Route path="/fundingform" element={<FundingForm />}></Route>
         <Route path="/mentor-profile" element={<MentorProfile />}></Route>
-        <Route path="/community" element={<CommunityFinal />}></Route>
+        <Route path="/community" element={<CommunityFinal />}>
+        <Route path=":postId" element={<SharedCommunityPost />}></Route>
+        </Route>
         <Route path="/schedule" element={<Schedule />}></Route>
         <Route path="/betaslide" element={<BetaSlide />}></Route>
         <Route path="/eeslides" element={<EESlides />}></Route>
@@ -232,7 +236,7 @@ function App() {
         <Route path="/user-edit-profile" element={<UserEditProfile />}></Route>
         <Route path="/change-user-password" element={<ChangePassword />}></Route>
         <Route path="/funding-page" element={<GetFundedPage/>}></Route>
-        <Route path="/community-final" element={<CommunityFinal />}></Route>
+        
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </>

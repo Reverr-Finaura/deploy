@@ -1,24 +1,41 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import styles from "./CommunityUserProfilePopup.module.css"
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
+// import CommunityUserPostCard from './Community User Post Card/CommunityUserPostCard'
 
-const CommunityUserProfilePopup = ({setPostsAuthorIsClick,postsAuthorInfo,postsAuthorIsClick}) => {
+
+
+const CommunityUserProfilePopup = ({setPostsAuthorIsClick,postsAuthorInfo,postsAuthorIsClick,postsData,setPostsData,handleEditPostButtonClick}) => {
     
     const navigate=useNavigate()
     const user=useSelector((state)=>state.user)
-console.log(postsAuthorInfo)
-console.log(user)
+    const[choiceButtonClick,setChoiceButtonClick]=useState("Info")
+    const[selectedUserPostsArray,setSelectedUserPostsArray]=useState(null)
+
+    console.log("selectedUserPostsArray",selectedUserPostsArray)
+
+const fetchSelectedUserPosts=(postArray)=>{
+    let SelectedUserPostData=[]
+ postsData.map((item)=>{
+        if(postArray.includes(item.id)){
+            SelectedUserPostData.push(item)
+        }
+    })
+    setSelectedUserPostsArray(SelectedUserPostData)
+}
 
   return (
     <>
         <section style={{transform:postsAuthorIsClick?"translateX(-0)":null}} className={styles.communityUserProfilePopup}>
-        <section onClick={()=>setPostsAuthorIsClick(false)} className={styles.closePopUpContainer}></section>
+        <section onClick={()=>{setPostsAuthorIsClick(false);setChoiceButtonClick("Info");
+setSelectedUserPostsArray(null)}} className={styles.closePopUpContainer}></section>
             <section style={{transform:postsAuthorIsClick?"translateX(-0)":null}} className={styles.UserProfilePopup}>
             <div className={styles.overFlowContainer}>
                 <div className={styles.UserProfilePopupTop}>
-                    <img onClick={()=>setPostsAuthorIsClick(false)} className={styles.closePopupIcon} src="./images/icons8-cancel-48.png" alt="closePopupIcon" />
+                    <img onClick={()=>{setPostsAuthorIsClick(false);setChoiceButtonClick("Info");
+setSelectedUserPostsArray(null)}} className={styles.closePopupIcon} src="./images/icons8-cancel-48.png" alt="closePopupIcon" />
                 </div>
                 <div className={styles.userInformationConatiner}>
                     <img className={styles.userImage} src={postsAuthorInfo?.image} alt="userPhoto" />
@@ -42,9 +59,17 @@ console.log(user)
                     </div>
                 </div>
 
-
+{/* <div className={styles.postsAndInfoChoiceContainer}>
+    <div className={styles.infoChoiceContainer}>
+        <button onClick={()=>setChoiceButtonClick("Info")} className={choiceButtonClick==="Info"?styles.selectedChoiceButton:styles.infoChoiceButton}>Info</button>
+    </div>
+    <div className={styles.postsChoiceContainer}>
+    <button onClick={()=>{setChoiceButtonClick("Posts");fetchSelectedUserPosts(postsAuthorInfo.posts)}} className={choiceButtonClick==="Posts"?styles.selectedChoiceButton:styles.infoChoiceButton}>Posts</button>
+    </div>
+</div> */}
 
                 {/* GENERAL INFO OF USER START*/}
+                {choiceButtonClick==="Info"?
                 <div className={styles.userGeneralInfo}>
 
                 {/* ABOUT SECTION */}
@@ -127,7 +152,22 @@ console.log(user)
 
 
 
-         </div>
+         </div>:null}
+
+         {/* POST SECTION */}
+
+         {/* {choiceButtonClick==="Posts"?
+         <section className={styles.postsDisplayContainer}>
+        {selectedUserPostsArray?.map((item,index)=>{
+            return <>
+                <section className={styles.postsCardContainer}>
+                    <CommunityUserPostCard handleEditPostButtonClick={handleEditPostButtonClick} postsData={postsData} setPostsData={setPostsData} item={item} key={index}/>
+                </section>
+            </>
+        })}
+        </section>:null} */}
+
+
          </div>
         </section>
         </section>

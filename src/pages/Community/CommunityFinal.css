@@ -9,7 +9,7 @@
     margin-bottom: 3rem;
     min-height: 100vh;
     max-width: 87%;
-    background-color: white; 
+    background-color: rgba(255,255,255,.25); 
 }
 #communityFinalPage{
     min-height: 100vh;
@@ -18,10 +18,17 @@
     flex-direction: column;
     font-family: 'Poppins';
 font-style: normal;
-background-color: #DAEAF1;
+background-color: rgba(255,255,255,.25);
 padding: 1rem;
 padding-right: 4.5rem;
 
+}
+.reverrCommunitySubbHeading{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+color: #202020;
 }
 .UploadPostOuterBoxContainerNotExpanded{
     border: none;
@@ -73,6 +80,69 @@ padding-right: 4.5rem;
     position: relative;
     width: 90%;
 }
+
+
+/* SORT POST SECTION */
+
+#sortPostSection{
+    width: 84%;
+    height: 100px;
+    margin: auto;
+    margin-top: 2rem;
+    padding-left: 3rem;
+
+}
+.sortPostSectionHeading{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 30px;
+}
+.sortPostSectionHeadingItemName{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #202020; 
+}
+.sortPostSectionOptionContainer{
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+.sortPostSectionOption{
+   
+    margin: auto;
+    padding: .5rem;
+    border: 1px solid #2A72DE;
+    background-color: transparent;
+    border-radius: 4px;
+    font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        cursor: pointer;
+        color: #2A72DE;
+}
+
+.sortPostSectionOptionSelected{
+    margin: auto;
+    padding: .5rem;
+    border: none;
+    background-color: #2A72DE;
+    border-radius: 4px;
+    font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        cursor: pointer;
+        color: white;
+}
+
+/* SORT POST SECTION ENDS*/
+
 #postTextContainer{
     height: 32px;
     width: 84%;
@@ -91,6 +161,7 @@ padding-right: 4.5rem;
         margin-bottom: 0;
         padding-bottom: 0;
         border: none;
+
         }
         .editPostTextarea{
             font-family: "Poppins";
@@ -278,7 +349,7 @@ bottom: 41%;
     border-radius: 8px;
     width: 90%;
     z-index: 10;
-    background-color: white;
+    /* background-color: white; */
 }
 .navbarUploadPostContainerTextArea{
     background-color: white;

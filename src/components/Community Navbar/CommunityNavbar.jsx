@@ -11,6 +11,7 @@ import { remove } from '../../features/newUserSlice';
 import { removeUserDoc } from '../../features/userDocSlice';
 import { removeUserFundingDoc } from '../../features/userFundingDocSlice';
 import toast from 'react-hot-toast';
+import brandImg from "../../images/Frame 6266720.png"
 
 
 const CommunityNavbar = ({setNavbarPostButtonClick}) => {
@@ -31,7 +32,7 @@ const[isSettingButtonClick,setIsSettingbuttonClick]=useState(false)
     <>
     <section id='navbar-final'>
         <div onClick={()=>navigate("/")} className='navbar-brand-logo-img-cont'>
-        <img className='navbar-final-brand-logo-img' src="./images/Frame 6266720.png" alt="brand-logo"/>
+        <img className='navbar-final-brand-logo-img' src={brandImg} alt="brand-logo"/>
         </div>
         <div className='navbar-icons-cont'>
         {scroll>150?
