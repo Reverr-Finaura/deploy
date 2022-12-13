@@ -251,6 +251,7 @@ const handleSendPostLinkClick=(id)=>{
     var url = `${tempUrl}/${id}`;
 navigator.clipboard.writeText(url).then(function() {
   toast("Link Copied To ClipBoard");
+  toast("Link Copied To ClipBoard");
 }, function(err) {
   console.error('Could not copy text: ', err);
 });
@@ -301,7 +302,8 @@ useEffect(()=>{
         </div>
         <div className='postCommentContainer'>
         <div className='commentContainer'>
-        <img src={commentIcon} alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current);(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus()}} className='commentPostIcon'/>
+        <img src={commentIcon} alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIcon'/>
+        {/* ;(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus() */}
         </div>
             <h3 className='postCommentCount'>{item?.comments.length}</h3>
         </div>
@@ -358,7 +360,7 @@ useEffect(()=>{
           <div className='newCommentContainerrrr'>
             <img className='community-newComment-cont-userImage' src={userDoc?.image?userDoc.image:"https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"} alt="userImage" />
             <div className='textAreaUploadContainer'>
-            <textarea onBlur={()=>setCommentIconClick(false)} autoFocus className={item?.id} onClick={()=>{setNewCommentTextAreaClick(true);setCommentIconClick(true)}} onChange={(e)=>setNewComment(e.target.value)} name="newComment" id={newCommentTextAreaClick?"postCommentContainerExpanded":"postCommentContainer"} rows="3" placeholder="Share Your Thoughts" value={newComment}></textarea>
+            <textarea autoFocus className={item?.id} onClick={()=>{setNewCommentTextAreaClick(true)}} onChange={(e)=>setNewComment(e.target.value)} name="newComment" id={newCommentTextAreaClick?"postCommentContainerExpanded":"postCommentContainer"} rows="3" placeholder="Share Your Thoughts" value={newComment}></textarea>
             <img onClick={()=>setNewCommentTextAreaClick(current=>!current)} className={newCommentTextAreaClick?"expandTextAreaIconExpanded":'expandTextAreaIcon'} src="./images/addExpandTextArea.png" alt="expandTextarea" />
             {newCommentTextAreaClick?
             <div className='addImageandUploadPostIcon newCommentAddImageAndUpload'>

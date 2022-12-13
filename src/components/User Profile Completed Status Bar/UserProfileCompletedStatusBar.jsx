@@ -26,22 +26,24 @@ useEffect(()=>{
 
 
 function checkForUserProfileProgress(){
-let aboutPerc=9.09
-let countryPerc=9.09
-let dobPerc=9.09
-let educationPerc=9.09
-let experiencePerc=9.09
-let socialLinkPerc=9.09
-let genderPerc=9.09
-let imagePerc=9.09
-let industryPerc=9.09
-let statePerc=9.09
-let namePerc=9.09
+let aboutPerc=8.33
+let countryPerc=8.33
+let desgPerc=8.33
+let dobPerc=8.33
+let educationPerc=8.33
+let experiencePerc=8.33
+let socialLinkPerc=8.33
+let genderPerc=8.33
+let imagePerc=8.33
+let industryPerc=8.33
+let statePerc=8.33
+let namePerc=8.33
 let percentComplete=0
     
     if(userDoc?.about?.length!==0){percentComplete+=aboutPerc}
     
     if(userDoc?.country?.length!==0){percentComplete+=countryPerc}
+    if (userDoc?.designation?.length!==0){percentComplete+=desgPerc}
     
     if (userDoc?.dob?.length!==0){percentComplete+=dobPerc}
     

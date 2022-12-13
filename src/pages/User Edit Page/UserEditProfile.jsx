@@ -37,7 +37,7 @@ console.log("userFundingDoc",userFundingDoc)
    
     const[haveStartUpBtnClick,setHaveStartUpBtnClick]=useState(userDoc?.hasFundingProfile)
 
-const[generalProfileInfo,setGeneralProfileInfo]=useState({fullName:userDoc?.name,dOB:userDoc?.dob,gender:userDoc?.gender,stateOfUser:userDoc?.state,country:userDoc?.country,about:userDoc?.about})
+const[generalProfileInfo,setGeneralProfileInfo]=useState({fullName:userDoc?.name,dOB:userDoc?.dob,gender:userDoc?.gender,stateOfUser:userDoc?.state,country:userDoc?.country,designation:userDoc?.designation,about:userDoc?.about})
 const[socialLinkInfo,setSocialLinkInfo]=useState({instaLink:userDoc?.instagramLink,facebookLink:userDoc?.facebookLink,twitterLink:userDoc?.twitterLink,linkedInLink:userDoc?.linkedinLink})
 const[educationInfo,setEducationInfo]=useState({degree:"",schoolOrCollege:"",startingDate:"",lastDate:""})
 const[educationFormArray,setEducationFormArray]=useState(userDoc?.education)
@@ -357,6 +357,7 @@ async function updateUserDocInFirebase(item){
         dob:generalProfileInfo.dOB,
         state:generalProfileInfo.stateOfUser,
         country:generalProfileInfo.country,
+        designation:generalProfileInfo.designation,
         about: generalProfileInfo.about,
         gender:generalProfileInfo.gender,
         experience:newExperienceArray,
@@ -438,7 +439,9 @@ uploadImageToFireBase()
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='gender' className='add-profile-input Gender-input' placeholder='Gender' value={generalProfileInfo.gender} />
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='stateOfUser' className='add-profile-input state-input' placeholder='State' value={generalProfileInfo.stateOfUser} />
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='country' className='add-profile-input country-input' placeholder='Country' value={generalProfileInfo.country} />
+                
             </div>
+            <input onChange={handleGeneralProfileInfoInputChange} type="text" name='designation' className='add-profile-input fullName-input designation-input' placeholder='Designation' value={generalProfileInfo.designation} />
             <textarea onChange={handleGeneralProfileInfoInputChange} name="about" className='about-input' rows="4" placeholder="About" value={generalProfileInfo.about}></textarea>
         </div>
 

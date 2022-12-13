@@ -34,7 +34,7 @@ console.log("userDoc",userDoc)
 const[imageUploadedUrl,setImageUploadedUrl]=useState('https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6')
 const[startupFilesUploadedUrl,setStartupFilesUploadedUrl]=useState("")
 
-const[generalProfileInfo,setGeneralProfileInfo]=useState({fullName:"",dOB:"",gender:"",stateOfUser:"",country:"",about:""})
+const[generalProfileInfo,setGeneralProfileInfo]=useState({fullName:"",dOB:"",gender:"",stateOfUser:"",country:"",designation:"",about:""})
 const[socialLinkInfo,setSocialLinkInfo]=useState({instaLink:"",facebookLink:"",twitterLink:"",linkedInLink:""})
 const[educationInfo,setEducationInfo]=useState({degree:"",schoolOrCollege:"",startingDate:"",lastDate:""})
 const[educationFormArray,setEducationFormArray]=useState([])
@@ -314,6 +314,7 @@ async function updateUserDocInFirebase(item){
         dob:generalProfileInfo.dOB,
         state:generalProfileInfo.stateOfUser,
         country:generalProfileInfo.country,
+        designation:generalProfileInfo.designation,
         about: generalProfileInfo.about,
         gender:generalProfileInfo.gender,
         experience:newExperienceArray,
@@ -400,7 +401,9 @@ async function updateUserDocAddNewImageCreateFundingUser(){
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='gender' className='add-profile-input Gender-input' placeholder='Gender' value={generalProfileInfo.gender} />
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='stateOfUser' className='add-profile-input state-input' placeholder='State' value={generalProfileInfo.stateOfUser} />
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='country' className='add-profile-input country-input' placeholder='Country' value={generalProfileInfo.country} />
+                
             </div>
+            <input onChange={handleGeneralProfileInfoInputChange} type="text" name='designation' className='add-profile-input fullName-input designation-input' placeholder='Designation' value={generalProfileInfo.designation} />
             <textarea onChange={handleGeneralProfileInfoInputChange} name="about" className='about-input' rows="4" placeholder="About" value={generalProfileInfo.about}></textarea>
         </div>
 

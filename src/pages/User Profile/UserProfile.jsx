@@ -136,6 +136,10 @@ useEffect(()=>{
         <p className='user-general-info-user-name'>Country</p>
         <p className='user-general-info-user'>{userDoc?.country}</p>
     </div>
+    <div className='user-general-info-user-cont'>
+        <p className='user-general-info-user-name'>Designation</p>
+        <p className='user-general-info-user'>{userDoc?.designation===""?"Not Available":userDoc?.designation}</p>
+    </div>
     <div className='user-general-info-user-cont user-general-profile-about-cont'>
         <p className='user-general-info-user-name'>About</p>
         <p className='user-general-info-user user-general-profile-about-cont-user-name'>{userDoc?.about===""?"Not Available":userDoc?.about} </p>

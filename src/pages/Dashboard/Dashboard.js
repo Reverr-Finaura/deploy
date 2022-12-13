@@ -318,6 +318,7 @@ toast("Processing Your Request")
         email: userDocInputFormInput.email,
         name: userDocInputFormInput.name,
         password: userDocInputFormInput.password,
+        designation:"",
         about: '',
         gender:"",
         dob:"",
