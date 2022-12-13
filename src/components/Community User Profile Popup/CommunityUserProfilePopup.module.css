@@ -6,7 +6,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    transform: translateX(1520px);
+    transform: translateX(2520px);
     transition: transform .6s ease; 
     
 
@@ -30,7 +30,7 @@
     position: fixed;
     right: 0;
     top: 0;
-    transform: translateX(950px);
+    transform: translateX(1950px);
     transition: transform 1s ease; 
     
 }
