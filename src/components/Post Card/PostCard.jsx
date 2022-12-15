@@ -230,6 +230,16 @@ useEffect(()=>{
 
 
 },[item])
+useEffect(()=>{
+ 
+    getUserDocByRef(item?.postedby).then((res)=>{
+        
+        setPostedByUserDoc(res)
+    })  
+
+
+},[userDoc])
+
 
 //GET USER DATA FROM REFERENCE LINK WHO HAS COMMENTED
 

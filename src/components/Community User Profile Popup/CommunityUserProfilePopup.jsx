@@ -1,20 +1,27 @@
 import React,{ useState } from 'react'
 import styles from "./CommunityUserProfilePopup.module.css"
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { doc, updateDoc } from 'firebase/firestore'
+import { db } from '../../firebase'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { setUserDoc } from '../../features/userDocSlice'
 
 // import CommunityUserPostCard from './Community User Post Card/CommunityUserPostCard'
 
 
 
-const CommunityUserProfilePopup = ({setPostsAuthorIsClick,postsAuthorInfo,postsAuthorIsClick,postsData,setPostsData,handleEditPostButtonClick}) => {
+const CommunityUserProfilePopup = ({setPostsAuthorIsClick,postsAuthorInfo,setPostsAuthorInfo,postsAuthorIsClick,postsData,setPostsData,handleEditPostButtonClick}) => {
     
     const navigate=useNavigate()
+    const dispatch=useDispatch()
     const user=useSelector((state)=>state.user)
+    const userDoc=useSelector((state)=>state.userDoc)
     const[choiceButtonClick,setChoiceButtonClick]=useState("Info")
     const[selectedUserPostsArray,setSelectedUserPostsArray]=useState(null)
 
-    console.log("selectedUserPostsArray",selectedUserPostsArray)
+    
 
 const fetchSelectedUserPosts=(postArray)=>{
     let SelectedUserPostData=[]
@@ -26,6 +33,87 @@ const fetchSelectedUserPosts=(postArray)=>{
     setSelectedUserPostsArray(SelectedUserPostData)
 }
 
+//UPDATE LOGGEDIN USER FOLLOW REQUEST ARRAY
+const updateUserSendRequestArray=async()=>{
+    let userRequestArray
+    if(!userDoc.sendRequests.includes(postsAuthorInfo.email)){userRequestArray=userDoc.sendRequests.concat([postsAuthorInfo.email])}
+    else{userRequestArray=userDoc.sendRequests.filter((item)=>{
+        return item!==postsAuthorInfo.email
+    }) }
+    const userDocumentRef=doc(db,"Users",user?.user?.email)
+    const updatedUserDoc={...userDoc,sendRequests:userRequestArray}
+    
+    try {
+        await updateDoc(userDocumentRef,{sendRequests:userRequestArray})
+        dispatch(setUserDoc(updatedUserDoc))
+    } catch (error) {
+       toast(error.message) 
+    }
+}
+
+//HANDLE FOLLOW REQUEST CLICK
+
+const handleFollowUserClick=async()=>{
+const userRequestArray=postsAuthorInfo.receivedRequests.concat([user?.user?.email])
+
+const userDocumentRef=doc(db,"Users",postsAuthorInfo.email)
+
+try {
+    await updateDoc(userDocumentRef,{receivedRequests:userRequestArray})
+    
+        toast("Follow Request Send ")
+        setPostsAuthorInfo((prev)=>{
+            return {...prev,receivedRequests:userRequestArray}
+        })
+        updateUserSendRequestArray()
+} catch (error) {
+   toast(error.message) 
+}
+
+}
+
+//HANDLE STOP FOLLOW REQUEST CLICK
+
+const handleStopFollowRequestClick=async()=>{
+    const userRequestArray=postsAuthorInfo.receivedRequests.filter((item)=>{
+        return item!==user?.user?.email
+    }) 
+    const userDocumentRef=doc(db,"Users",postsAuthorInfo.email)
+    try {
+        await updateDoc(userDocumentRef,{receivedRequests:userRequestArray})
+        
+            toast("Follow Request Revoked ")
+            setPostsAuthorInfo((prev)=>{
+                return {...prev,receivedRequests:userRequestArray}
+            })
+             updateUserSendRequestArray()
+    } catch (error) {
+       toast(error.message) 
+    }
+}
+
+//UNFOLLOW REQUEST CLICK
+
+const handleUnfollowRequestClick=async()=>{
+const userWhoUnfollowNetworkArray=userDoc.network.filter((item)=>{
+    return item!==postsAuthorInfo.email})
+const userWhoseUnfollowNetworkArray=postsAuthorInfo.network.filter((item)=>{
+    return item!==user?.user?.email})
+const userWhoUnfollowDocumentRef=doc(db,"Users",user?.user?.email)
+const userWhoseUnfollowDocumentRef=doc(db,"Users",postsAuthorInfo.email)
+const updatedUserDoc={...userDoc,network:userWhoUnfollowNetworkArray}
+try {
+    await updateDoc(userWhoUnfollowDocumentRef,{network:userWhoUnfollowNetworkArray})
+    await updateDoc(userWhoseUnfollowDocumentRef,{network:userWhoseUnfollowNetworkArray})
+    toast("Sucessfully Unfollowed ")
+    dispatch(setUserDoc(updatedUserDoc))
+
+} catch (error) {
+    toast(error.message)
+}
+
+}
+
   return (
     <>
         <section style={{transform:postsAuthorIsClick?"translateX(-0)":null}} className={styles.communityUserProfilePopup}>
@@ -33,6 +121,7 @@ const fetchSelectedUserPosts=(postArray)=>{
 setSelectedUserPostsArray(null)}} className={styles.closePopUpContainer}></section>
             <section style={{transform:postsAuthorIsClick?"translateX(-0)":null}} className={styles.UserProfilePopup}>
             <div className={styles.overFlowContainer}>
+            <ToastContainer/>
                 <div className={styles.UserProfilePopupTop}>
                     <img onClick={()=>{setPostsAuthorIsClick(false);setChoiceButtonClick("Info");
 setSelectedUserPostsArray(null)}} className={styles.closePopupIcon} src="./images/icons8-cancel-48.png" alt="closePopupIcon" />
@@ -43,8 +132,14 @@ setSelectedUserPostsArray(null)}} className={styles.closePopupIcon} src="./image
                         <h1 className={styles.userName}>{postsAuthorInfo?.name}</h1>
                         <p className={styles.userDesignation}>{postsAuthorInfo?.designation}</p>
                         <div className={styles.followChatButtonContainer}>
-                        {postsAuthorInfo?.email!==user?.user?.email?
-                         <button className={styles.followButton}>Follow</button>:null}
+                        {postsAuthorInfo?.email!==user?.user?.email&&!(postsAuthorInfo?.receivedRequests?.includes(user?.user?.email))&&!(postsAuthorInfo?.network?.includes(user?.user?.email))&&!(userDoc?.receivedRequests?.includes(postsAuthorInfo?.email))?
+                         <button onClick={handleFollowUserClick} className={styles.followButton}>Follow</button>:null}
+                         {postsAuthorInfo?.email!==user?.user?.email&&postsAuthorInfo?.receivedRequests?.includes(user?.user?.email)?
+                         <button onClick={handleStopFollowRequestClick} className={styles.followButton}>Requested</button>:null}
+                         {postsAuthorInfo?.email!==user?.user?.email&&userDoc?.network?.includes(postsAuthorInfo?.email)?
+                         <button onClick={handleUnfollowRequestClick} className={styles.followButton}>Following</button>:null}
+                         {postsAuthorInfo?.email!==user?.user?.email&&userDoc?.receivedRequests?.includes(postsAuthorInfo?.email)?
+                         <button className={styles.followButton}>Received Request</button>:null}
                         {postsAuthorInfo?.email===user?.user?.email?
                             <button className={styles.editProfileButton} onClick={()=>navigate("/user-edit-profile")}>Edit Profile</button>:null}
                         {/* <button className={styles.chatButton}>Chat</button> */}
@@ -52,9 +147,9 @@ setSelectedUserPostsArray(null)}} className={styles.closePopupIcon} src="./image
                         <div className={styles.userPostFollowerInfoCont}>
                     <p className={styles.postsInfo}>{postsAuthorInfo?.posts?.length===0?0:postsAuthorInfo?.posts?.length} Posts</p>
                     <p>.</p>
-                    <p className={styles.followersInfo}>{postsAuthorInfo?.followers?.length?postsAuthorInfo?.followers?.length:0} Followers</p>
-                    <p>.</p>
-                    <p className={styles.followingInfo}>{postsAuthorInfo?.following?.length?postsAuthorInfo?.following?.length:0} Following</p>
+                    <p className={styles.followersInfo}>{postsAuthorInfo?.network?.length?postsAuthorInfo?.network?.length:0} Networks</p>
+                    {/* <p>.</p> */}
+                    {/* <p className={styles.followingInfo}>{postsAuthorInfo?.following?.length?postsAuthorInfo?.following?.length:0} Following</p> */}
                 </div>
                     </div>
                 </div>

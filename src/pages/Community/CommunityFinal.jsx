@@ -408,7 +408,7 @@ setPostsAuthorInfo={setPostsAuthorInfo} />
           </section>
           </section>
 
-          <CommunityUserProfilePopup setPostsAuthorIsClick={setPostsAuthorIsClick} postsAuthorInfo={postsAuthorInfo} postsAuthorIsClick={postsAuthorIsClick} postsData={postsData} setPostsData={setPostsData} handleEditPostButtonClick={handleEditPostButtonClick}/>
+          <CommunityUserProfilePopup setPostsAuthorIsClick={setPostsAuthorIsClick} postsAuthorInfo={postsAuthorInfo} setPostsAuthorInfo={setPostsAuthorInfo} postsAuthorIsClick={postsAuthorIsClick} postsData={postsData} setPostsData={setPostsData} handleEditPostButtonClick={handleEditPostButtonClick}/>
 
           <Outlet/>
     </>
