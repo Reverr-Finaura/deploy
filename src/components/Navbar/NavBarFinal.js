@@ -13,6 +13,7 @@ import { removeUserFundingDoc } from '../../features/userFundingDocSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { collection, doc, getDocs, query, updateDoc } from 'firebase/firestore';
+import { useEffect } from 'react';
 
 
 const NavBarFinal = () => {
@@ -24,7 +25,26 @@ const[isRequestsButtonClick,setRequestsbuttonClick]=useState(false)
     const dispatch = useDispatch();
     const chat = useSelector(selectChat);
     const userDoc=useSelector((state)=>state.userDoc)
+    const [userDocList,setUserDocList]=useState([])
 
+
+// CHECK FOR USER DOC LIST WHO HAS REQUESTED FOLLOW
+useEffect(()=>{
+  async function fetchUserDocListFromFirebase(){
+    const userDataRef = collection(db, "Users");
+    const q = query(userDataRef);
+    const querySnapshot = await getDocs(q);
+   
+    querySnapshot.forEach((doc) => {
+      if(userDoc?.receivedRequests.includes(doc.id))
+      setUserDocList((prev)=>{
+        return [...prev,{...doc.data(),id:doc.id}]
+      })
+    }); 
+   
+  }
+fetchUserDocListFromFirebase()
+},[isRequestsButtonClick])
 
 //HANDLE ACCEPT FOLLOW REQUEST
 const handleAcceptFollowRequest=async(id)=>{
@@ -124,7 +144,10 @@ const rejectFollowRequest=async (id,userData)=>{
            { userDoc?.receivedRequests?.map((item)=>{
             return <>
             <p className='notifiction-dropdown-Request-Cont' key={item}>
-            <span className='notifiction-dropdown-Request-name'>{item}</span> wants to follow you <span onClick={()=>handleAcceptFollowRequest(item)} className='notifiction-dropdown-Request-accept'>✅</span>
+            <span style={{height:"fit-content"}}><img className='notifiction-dropdown-Request-image' src={userDocList?.filter((e)=>{
+              return e.id===item})[0]?.image} alt="requestUsrImg" /></span>
+            <span className='notifiction-dropdown-Request-name'>{userDocList?.filter((e)=>{
+              return e.id===item})[0]?.name}</span> wants to follow you <span onClick={()=>handleAcceptFollowRequest(item)} className='notifiction-dropdown-Request-accept'>✅</span>
             <span onClick={()=>handleRejectFollowRequest(item)} className='notifiction-dropdown-Request-reject'>❌</span></p>
             </>
            })}

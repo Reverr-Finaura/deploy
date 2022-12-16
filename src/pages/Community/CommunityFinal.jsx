@@ -41,15 +41,18 @@ const CommunityFinal = () => {
     const[navbarPostButtonClick,setNavbarPostButtonClick]=useState(false)
     const[postsAuthorIsClick,setPostsAuthorIsClick]=useState(false)
     const[postsAuthorInfo,setPostsAuthorInfo]=useState(null)
-    const [sortOptionSelected,setSortOptionSelected]=useState("Newest")
+    const [sortOptionSelected,setSortOptionSelected]=useState({time:"Newest",whose:"Everything"})
+    const[sortOptionClick,setSortOptionClick]=useState(false)
+    const[furtherSortOptionClick,setfurtherSortOptionClick]=useState(false)
+    
     const[postIdExist,setPostIdExist]=useState("")
-    console.log("postId",postIdExist)
+    
     window.onscroll = () => {
         setScroll(window.scrollY)
     }
  
-// console.log("userDoc",userDoc)
-// console.log("user",user)
+    console.log("postsData",postsData)
+
     const updateWidth = () => {
         setWidth(window.innerWidth);
       };
@@ -104,15 +107,23 @@ useEffect(()=>{
           querySnapshot.forEach((doc) => { 
             postData.push({...doc.data(),id:doc.id});
           });
-          if(sortOptionSelected===""){setPostsData(postData.sort((a,b)=>{return b.id-a.id}))}
-          if(sortOptionSelected==="Popular Now"){setPostsData(postData.sort((a,b)=>{return b.likes.length-a.likes.length}))}
-if(sortOptionSelected==="Newest"){setPostsData(postData.sort((a,b)=>{return b.id-a.id}))}
-if(sortOptionSelected==="Oldest"){setPostsData(postData)}
-          // setPostsData(postData.sort((a,b)=>{return b.id-a.id}))
+          if(sortOptionSelected.time===""){setPostsData(postData.sort((a,b)=>{return b.createdAt.seconds-a.createdAt.seconds}));furtherSortPost()}
+          if(sortOptionSelected.time==="Popular Now"){setPostsData(postData.sort((a,b)=>{return b.likes.length-a.likes.length}));furtherSortPost()}
+if(sortOptionSelected.time==="Newest"){setPostsData(postData.sort((a,b)=>{return b.createdAt.seconds-a.createdAt.seconds}));furtherSortPost()}
+if(sortOptionSelected.time==="Oldest"){setPostsData(postData.sort((a,b)=>{return a.createdAt.seconds-b.createdAt.seconds}));furtherSortPost()}
+        
     }
         fetchPostsFromDb()
       },[sortOptionSelected])
 
+//FURTHER SORT POST AFTER INITIAL SORT
+const furtherSortPost=()=>{
+if(sortOptionSelected.whose==="Everything"){setPostsData(postData);return}
+if(sortOptionSelected.whose==="People You Follow"){
+  const newData=postData.filter((item)=>{return userDoc.network.includes(item.postedby.id) })
+  setPostsData(newData)
+}
+}
 
 
 //Pagination
@@ -378,17 +389,38 @@ window.location.reload()
           
           </section>
           </div>
-        
+
+
+   <section className='sortOptionBigContainer'>
+
+{/* FURTHER SORT POST SECTION */}
+
+<section id='sortPostSection'>
+  <h2 onClick={()=>setfurtherSortOptionClick(e=>!e)} className='sortPostSectionHeading'>Showing: <span className='sortPostSectionHeadingItemName'>{sortOptionSelected.whose!==""?sortOptionSelected.whose:"None"}</span> <span style={{display:"flex"}}><img className='downarrorwSortImg' src="./images/down-filled-triangular-arrow.png" alt="downArrow" /></span> </h2>
+  {furtherSortOptionClick?<div className='furtherSortPostSectionOptionContainer'>
+<button onClick={()=>{setSortOptionSelected((prev)=>{
+  return {...prev,whose:"Everything"}});setfurtherSortOptionClick(false)}} className={sortOptionSelected.whose==="Everything"?"furtherSortPostSectionOptionSelected":'furtherSortPostSectionOption'}>Everything</button>
+<button onClick={()=>{setSortOptionSelected((prev)=>{
+  return {...prev,whose:"People You Follow"}});setfurtherSortOptionClick(false)}} className={sortOptionSelected.whose==="People You Follow"?"furtherSortPostSectionOptionSelected":'furtherSortPostSectionOption'}>People You Follow</button>
+  </div>:null}
+</section>
+
 {/* SORT POST SECTION */}
 
 <section id='sortPostSection'>
-  <h2 className='sortPostSectionHeading'>Sorted By: <span className='sortPostSectionHeadingItemName'>{sortOptionSelected!==""?sortOptionSelected:"None"}</span> </h2>
-  <div className='sortPostSectionOptionContainer'>
-<button onClick={()=>{setSortOptionSelected("Popular Now")}} className={sortOptionSelected==="Popular Now"?"sortPostSectionOptionSelected":'sortPostSectionOption'}>Popular Now</button>
-<button onClick={()=>{setSortOptionSelected("Newest")}} className={sortOptionSelected==="Newest"?"sortPostSectionOptionSelected":'sortPostSectionOption'}>Newest</button>
-<button onClick={()=>{setSortOptionSelected("Oldest")}} className={sortOptionSelected==="Oldest"?"sortPostSectionOptionSelected":'sortPostSectionOption'}>Oldest</button>
-  </div>
+
+  <h2 onClick={()=>setSortOptionClick(e=>!e)} className='sortPostSectionHeading'>Sorted By: <span className='sortPostSectionHeadingItemName'>{sortOptionSelected.time!==""?sortOptionSelected.time:"None"}</span> <span style={{display:"flex"}}><img className='downarrorwSortImg' src="./images/down-filled-triangular-arrow.png" alt="downArrow" /></span></h2>
+  {sortOptionClick?<div className='sortPostSectionOptionContainer'>
+<button onClick={()=>{setSortOptionSelected((prev)=>{
+  return {...prev,time:"Popular Now"}});setSortOptionClick(false)}} className={sortOptionSelected.time==="Popular Now"?"sortPostSectionOptionSelected":'sortPostSectionOption'}>Popular Now</button>
+<button onClick={()=>{setSortOptionSelected((prev)=>{
+  return {...prev,time:"Newest"}});setSortOptionClick(false)}} className={sortOptionSelected.time==="Newest"?"sortPostSectionOptionSelected":'sortPostSectionOption'}>Newest</button>
+<button onClick={()=>{setSortOptionSelected((prev)=>{
+  return {...prev,time:"Oldest"}});setSortOptionClick(false)}} className={sortOptionSelected.time==="Oldest"?"sortPostSectionOptionSelected":'sortPostSectionOption'}>Oldest</button>
+  </div>:null}
 </section>
+
+ </section>
 
       {/* POST SECTION */}
 

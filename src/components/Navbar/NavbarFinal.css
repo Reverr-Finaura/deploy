@@ -87,11 +87,21 @@ cursor: pointer;
     background: #FAFAFF;;
     padding: .5rem;
     border-radius: 4px;
+    display: flex;
+    align-items: center;
 }
 
 .notifiction-dropdown-Request-name{
     font-size: 17px;
-    font-weight: bold;  
+    font-weight: bold;
+    margin-right: .5rem;  
+}
+.notifiction-dropdown-Request-image{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-top: .3rem;
+    margin-right: .5rem;
 }
 .notifiction-dropdown-Request-accept,.notifiction-dropdown-Request-reject{
     cursor: pointer;

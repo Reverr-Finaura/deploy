@@ -225,6 +225,9 @@ color: #202020;
     font-size: 16px;
     line-height: 21px;
 }
+.locationInfoCont{
+    margin-top: 2rem;
+}
 .experienceInfoCont{
     margin-top: 2rem;
 }

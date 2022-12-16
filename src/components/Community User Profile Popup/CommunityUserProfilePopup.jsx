@@ -7,6 +7,7 @@ import { db } from '../../firebase'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { setUserDoc } from '../../features/userDocSlice'
+import { useEffect } from 'react'
 
 // import CommunityUserPostCard from './Community User Post Card/CommunityUserPostCard'
 
@@ -21,7 +22,7 @@ const CommunityUserProfilePopup = ({setPostsAuthorIsClick,postsAuthorInfo,setPos
     const[choiceButtonClick,setChoiceButtonClick]=useState("Info")
     const[selectedUserPostsArray,setSelectedUserPostsArray]=useState(null)
 
-    
+  console.log(postsAuthorInfo,"postsAuthorInfo")  
 
 const fetchSelectedUserPosts=(postArray)=>{
     let SelectedUserPostData=[]
@@ -42,7 +43,7 @@ const updateUserSendRequestArray=async()=>{
     }) }
     const userDocumentRef=doc(db,"Users",user?.user?.email)
     const updatedUserDoc={...userDoc,sendRequests:userRequestArray}
-    
+   
     try {
         await updateDoc(userDocumentRef,{sendRequests:userRequestArray})
         dispatch(setUserDoc(updatedUserDoc))
@@ -106,6 +107,9 @@ try {
     await updateDoc(userWhoUnfollowDocumentRef,{network:userWhoUnfollowNetworkArray})
     await updateDoc(userWhoseUnfollowDocumentRef,{network:userWhoseUnfollowNetworkArray})
     toast("Sucessfully Unfollowed ")
+    setPostsAuthorInfo((prev)=>{
+        return {...prev,network:userWhoseUnfollowNetworkArray}
+    })
     dispatch(setUserDoc(updatedUserDoc))
 
 } catch (error) {
@@ -113,6 +117,7 @@ try {
 }
 
 }
+
 
   return (
     <>
@@ -179,6 +184,7 @@ setSelectedUserPostsArray(null)}} className={styles.closePopupIcon} src="./image
             <div className={styles.socialLinkContainer}>
              <h3 className={styles.aboutMeContHeading}>How Can We Meet</h3>
              {postsAuthorInfo?.instagramLink===""&&postsAuthorInfo?.facebookLink===""&&postsAuthorInfo?.twitterLink===""&&postsAuthorInfo?.linkedinLink===""?<p className={styles.noSocialLinkAvailableMessage}>No Social Link Available</p>:null}
+             {/* {postsAuthorInfo?.instagramLink===undefined&&postsAuthorInfo?.facebookLink===undefined&&postsAuthorInfo?.twitterLink===undefined&&postsAuthorInfo?.linkedinLink===undefined?<p className={styles.noSocialLinkAvailableMessage}>No Social Link Available</p>:null} */}
                     <div className='user-how-can-we-meet-social-icon-cont'>
         {postsAuthorInfo?.instagramLink===""?null:<div className='user-how-can-we-meet-social-icon'>
             <a href={postsAuthorInfo?.instagramLink}><img src="./images/instaIcon.svg" alt="social-icon" /></a>
