@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slide from "./../../../components/After knowledge/Slide Format/Slide";
-
+import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
+import NavBarFinal from "../../../components/Navbar/NavBarFinal";
+import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
+import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
+import styles from "./Knowledge.module.css";
 const CompetitorAnalysisSlides = () => {
   const obj = [
     {
@@ -89,32 +93,27 @@ const CompetitorAnalysisSlides = () => {
       img: "es17.svg",
     },
     {
-      title:
-        "Do Not Race to Bottom",
+      title: "Do Not Race to Bottom",
       para: "Make your stand on quality with your unique offerings. You may need to teach your customers why you deserve more money, but do not rush to beat another team for a price. Running downhill can damage your company for a long time. Hold yourself accountable by respecting your competitor's pricing strategy. People will respect you for it.",
       img: "es18.svg",
     },
     {
-      title:
-        "Learn About Your Market  ",
+      title: "Learn About Your Market  ",
       para: "Because you believe that your competitor is of low quality, it may not be. The market determines quality, and if it likes a competitor, that is an opportunity for you to learn why. You will probably understand the marketing angle they use or the feature they use in a different way that attracts customers to them. Use your competition to learn more about your market, and move around accordingly.",
       img: "es18.svg",
     },
     {
-      title:
-        "Polish Your Brand",
+      title: "Polish Your Brand",
       para: "You have invested in your products. Your staff is top notch. Also, you are really ready to enter the market. But remember: The most important client for your product itself. Create an engaging story that truly builds product balance within your customer base. Feel for them. They understand. Add value to them all the time. Never take them for granted. This is the story you want to share, and that should lead to flexible pricing strategies.",
       img: "es18.svg",
     },
     {
-      title:
-        "Have Depth and Wide Scope",
+      title: "Have Depth and Wide Scope",
       para: "We do SEO with wider scope and great depth. You have to prove yourself better first to set a higher price than your competition. Then you can differentiate yourself by right marketing and messaging. If you are struggling to find a reason why you are better, you may need to revisit your business strategy and point out where you are offering the most value.",
       img: "es18.svg",
     },
     {
-      title:
-        "Provide a Better Customer experience   ",
+      title: "Provide a Better Customer experience   ",
       para: "At the end of the day, it's about bringing in a better first impression than your competitor. If someone hits your site for the first time, give them exactly what they need and eliminate any distractions. If your competition uses text and images, create a white board or animated video to explain the benefits of your product. Short story short, make it as easy as possible for your audience.",
       img: "es18.svg",
     },
@@ -122,22 +121,48 @@ const CompetitorAnalysisSlides = () => {
 
   var totalLen = Object.keys(obj).length;
   const [currIndex, setCurrIndex] = useState(0);
+  const [width, setWidth] = useState(window.innerWidth);
 
+  const updateWidth = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
   return (
     <>
-      {obj.map((slide, index) => (
-        <div
-          key={index}
-          style={{ display: currIndex === index ? "block" : "none" }}
-        >
-          <Slide
-            content={slide}
-            setCurrIndex={setCurrIndex}
-            currIndex={currIndex}
-            size={totalLen}
-          />
+      {" "}
+      {width >= 600 ? (
+        <>
+          <SidebarFinal />
+          <NavBarFinal />
+        </>
+      ) : (
+        <>
+          <PhnSidebar />
+          <KnowledgeNavbar />
+        </>
+      )}
+      <div className={styles.knowledge}>
+        <div className={styles.body}>
+          {obj.map((slide, index) => (
+            <div
+              key={index}
+              style={{ display: currIndex === index ? "block" : "none" }}
+              className={styles.content}
+            >
+              <Slide
+                content={slide}
+                setCurrIndex={setCurrIndex}
+                currIndex={currIndex}
+                size={totalLen}
+              />
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </>
   );
 };

@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slide from "./../../../components/After knowledge/Slide Format/Slide";
-
+import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
+import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
+import NavBarFinal from "../../../components/Navbar/NavBarFinal";
+import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
+import styles from "./Knowledge.module.css";
 const ProductDevelopmentSlide = () => {
   const obj = [
     {
@@ -49,8 +53,8 @@ const ProductDevelopmentSlide = () => {
       img: "es9.svg",
     },
     {
-        title: "Common Pitfalls",
-        para: "So you've concluded that spending 13 months constructing a solution is acceptable. You then exhibited it to your target potential clients, who discovered that your solution does not solve their problem. Okay, you gathered feedback and corrected your MVP in two months. Then, over the course of a year, you repeated the release-receive feedback cycle a few times to get a few people interested in using your solution. So, simply to get started, it'll take at least two years.",
+      title: "Common Pitfalls",
+      para: "So you've concluded that spending 13 months constructing a solution is acceptable. You then exhibited it to your target potential clients, who discovered that your solution does not solve their problem. Okay, you gathered feedback and corrected your MVP in two months. Then, over the course of a year, you repeated the release-receive feedback cycle a few times to get a few people interested in using your solution. So, simply to get started, it'll take at least two years.",
       img: "es10.svg",
     },
     {
@@ -59,83 +63,84 @@ const ProductDevelopmentSlide = () => {
       img: "es11.svg",
     },
     {
-        title: "Potential Costs",
+      title: "Potential Costs",
       para: "When an MVP is used correctly, a team can drastically alter a product that they give to their clients or drop the product altogether based on customer feedback. MVP encourages teams to undertake the least amount of effort possible to get relevant feedback, which helps them avoid working on a product that no one wants.",
       img: "es12.svg",
     },
     {
-        title: "Designing 1. Decide that reaching a diverse audience is important to you.",
+      title:
+        "Designing 1. Decide that reaching a diverse audience is important to you.",
       para: "Making a conscious decision to prioritize diversity and inclusion as an individual or as an organization is the first and most important action you can take. There's a common misconception that if we all look and think alike, business culture — the pinnacle of the startup sector — will be 'easier.' So make the decision. Build it as a part of your company’s essential values. Discuss about it over a meeting or so. But you can’t let it stop there.",
       img: "es13.svg",
     },
     {
-        title: "Step 2. User Interviews and User Persona Creation ",
+      title: "Step 2. User Interviews and User Persona Creation ",
       para: "User research is another crucial phase in the product design process for companies. Because your customers are at the heart of your product decision, user interviews are critical for gathering their feedback. You can effectively assess the interests of your user base if you do it right.Make sure the questions are well-thought-out and prepared before the interview. An interview's conclusions can be tainted by poor phrasing or bias.",
       img: "es14.svg",
-    }
-    ,
+    },
     {
-        title: "Step 3. Competitor Research",
+      title: "Step 3. Competitor Research",
       para: "In order to establish a product design for a startup, you must perform competitive research in addition to user research. Examine the market performance of your immediate competitors' offerings. Analyzing the competitor's strategy will assist you in determining its efficacy and exploitable loopholes. To distinguish yourself from the competition, figure out what your product's unique selling proposition is.",
       img: "es14.svg",
     },
     {
-        title: "Step 4. User Journey Mapping",
+      title: "Step 4. User Journey Mapping",
       para: "Create a user journey map to better understand the potential interactions between the user and your product. This map depicts the actions a user must take to address a certain problem. It might be as simple as a series of stages or it can branch out into several directions. The more paths you can anticipate the user taking, the better you'll be able to predict how they'll engage with your product. However, complex user path maps can frequently make the process more difficult.",
       img: "es14.svg",
     },
     {
-        title: "Step 5. Sketching and Wireframing ",
+      title: "Step 5. Sketching and Wireframing ",
       para: "The ideas for the user interface are visualized via sketching and wireframing. Sketching focuses on the concept representation itself, allowing the designer to experiment with different choices before deciding on the best one Wireframing is concerned with the element structure, page structure, and interactions between them. Because it acts as the product's backbone, the wireframe must be well-structured. They are less engaging, though, and should not be deployed for testing. Always check that the wireframes are the right size for the device that the product will be used on.",
       img: "es14.svg",
     },
     {
-        title: "Step 6. Prototyping",
+      title: "Step 6. Prototyping",
       para: "A prototype is a representation of a concept before it is turned into a finished product. Prototyping should be quick and easy to use, with enough functionality to allow for thorough testing. They typically begin small and expand as new features and concepts become integrated into the product. You can experiment with ideas and visualize alterations while working on the prototype. The prototype, on the other hand, can act as a specification for developers.",
       img: "es14.svg",
     },
     {
-        title: "Step7. Testing with the Product Team",
+      title: "Step7. Testing with the Product Team",
       para: "terative testing is an important part of the design process since it allows us to find and correct defects and inconsistencies that were missed during earlier stages. You can also come up with new concepts and acquire information about the product's potential success. A technique that does not necessitate a lot of resources is product testing with your team. However, with input from your specialized team, it enables you to weed out important flows before the launch.",
       img: "es14.svg",
     },
     {
-        title: "HOW TO CREATE A MOBILE APP THAT PEOPLE WOULD LOVE | Foster a pool of qualified users",
+      title:
+        "HOW TO CREATE A MOBILE APP THAT PEOPLE WOULD LOVE | Foster a pool of qualified users",
       para: "Find people who are enthusiastic about your product or service and rely on them heavily. Allow them to provide comments, include them in decision-making, and keep them informed about new developments. These are the folks who will be your initial clients and prospective investors.",
       img: "es14.svg",
     },
     {
-        title: "Get advice from strangers",
+      title: "Get advice from strangers",
       para: "Find your target audience and use them as a proving ground for your ideas. It's crucial to remember that you should build what people genuinely want, not what you believe they want.",
       img: "es14.svg",
     },
     {
-        title: "Grow your team",
+      title: "Grow your team",
       para: "Before you start constructing your app, take the time to identify the right people and assemble a fantastic squad. It will save you time later and guarantee that you are involving the appropriate individuals for the correct reasons.",
       img: "es14.svg",
     },
     {
-        title: "Code with someone you trust",
+      title: "Code with someone you trust",
       para: "App design is a significant investment that you want to get right. Make sure the designers are individuals you can trust to complete the project to your specifications.",
       img: "es14.svg",
     },
     {
-        title: "Functionality > Looks",
+      title: "Functionality > Looks",
       para: "It's preferable to have an unattractive software that functions well than a beautiful app that doesn't accomplish what it's supposed to. Prioritize the functionality first, then devote work to the design later.",
       img: "es14.svg",
     },
     {
-        title: "Pay attention to analytics",
+      title: "Pay attention to analytics",
       para: "Another wonderful technique to see where users are having issues is to employ this method. Perhaps something in your coding is erroneous, or the instructions are difficult to follow. Sifting through the stats will help you figure out where consumers have stopped using the app and find any issues.",
       img: "es14.svg",
     },
     {
-        title: "Create a landing page",
+      title: "Create a landing page",
       para: "If you need assistance creating a landing page, consider using Launchrock's services. This will drive traffic to your website and allow them to discover more about your products or services.",
       img: "es14.svg",
     },
     {
-        title: "Build by example",
+      title: "Build by example",
       para: "Find apps that run on similar platforms to yours and research how they evolved as businesses. While it isn't infallible, following their marketing strategy and improving as you go can be beneficial.",
       img: "es14.svg",
     },
@@ -143,22 +148,47 @@ const ProductDevelopmentSlide = () => {
 
   var totalLen = Object.keys(obj).length;
   const [currIndex, setCurrIndex] = useState(0);
+  const [width, setWidth] = useState(window.innerWidth);
 
+  const updateWidth = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
   return (
     <>
-      {obj.map((slide, index) => (
-        <div
-          key={index}
-          style={{ display: currIndex === index ? "block" : "none" }}
-        >
-          <Slide
-            content={slide}
-            setCurrIndex={setCurrIndex}
-            currIndex={currIndex}
-            size={totalLen}
-          />
+      {width >= 600 ? (
+        <>
+          <SidebarFinal />
+          <NavBarFinal />
+        </>
+      ) : (
+        <>
+          <PhnSidebar />
+          <KnowledgeNavbar />
+        </>
+      )}
+      <div className={styles.knowledge}>
+        <div className={styles.body}>
+          {obj.map((slide, index) => (
+            <div
+              key={index}
+              style={{ display: currIndex === index ? "block" : "none" }}
+              className={styles.content}
+            >
+              <Slide
+                content={slide}
+                setCurrIndex={setCurrIndex}
+                currIndex={currIndex}
+                size={totalLen}
+              />
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </>
   );
 };
