@@ -1,7 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slide from "../../../components/After knowledge/Slide Format/Slide";
 
+import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
+import NavbarFinal from "../../../components/Navbar/NavBarFinal";
+import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
+import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
+import './IV_Slides.css'
 const IV_Slides = () => {
+
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const updateWidth = () => {
+    setWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
+  
   const research_plan = [
     {
       title: "INTRODUCTION",
@@ -192,6 +208,18 @@ const IV_Slides = () => {
 
   return (
     <>
+      {width >= 600 ? (
+        <>
+          <SidebarFinal />
+          <NavbarFinal />
+        </>
+      ) : (
+        <>
+          <PhnSidebar />
+          <KnowledgeNavbar />
+        </>
+      )}
+      <div className="course-container">
       {research_plan.map((slide, index) => (
         <div
           key={index}
@@ -205,6 +233,7 @@ const IV_Slides = () => {
           />
         </div>
       ))}
+      </div>
     </>
   );
 };

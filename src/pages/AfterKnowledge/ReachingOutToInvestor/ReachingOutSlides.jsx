@@ -1,7 +1,23 @@
 import React, { useState } from "react";
 import Slide from "../../../components/After knowledge/Slide Format/Slide";
 
+import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
+import NavbarFinal from "../../../components/Navbar/NavBarFinal";
+import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
+import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
+import './ReachingOutSlides.css'
+import { useEffect } from "react";
 const ReachingOutSlides = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const updateWidth = () => {
+    setWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
+  
   const obj = [
     {
       title: "How the Pitch Process Works",
@@ -81,19 +97,33 @@ const ReachingOutSlides = () => {
 
   return (
     <>
-      {obj.map((slide, index) => (
-        <div
-          key={index}
-          style={{ display: currIndex === index ? "block" : "none" }}
-        >
-          <Slide
-            content={slide}
-            setCurrIndex={setCurrIndex}
-            currIndex={currIndex}
-            size={totalLen}
-          />
-        </div>
-      ))}
+      {width >= 600 ? (
+        <>
+          <SidebarFinal />
+          <NavbarFinal />
+        </>
+      ) : (
+        <>
+          <PhnSidebar />
+          <KnowledgeNavbar />
+        </>
+      )}
+
+      <div className="course-container">
+        {obj.map((slide, index) => (
+          <div
+            key={index}
+            style={{ display: currIndex === index ? "block" : "none" }}
+          >
+            <Slide
+              content={slide}
+              setCurrIndex={setCurrIndex}
+              currIndex={currIndex}
+              size={totalLen}
+            />
+          </div>
+        ))}
+      </div>
     </>
   );
 };

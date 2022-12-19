@@ -61,7 +61,7 @@ import SocialMediaSlides from "./pages/AfterKnowledge/SocialMedia/SocialMediaSli
 import SocialMedia from "./pages/AfterKnowledge/SocialMedia/SocialMedia";
 import NotFound from "./pages/NotFound/NotFound";
 import BuildAudienceSlides from "./pages/AfterKnowledge/BuildAudience/BuildAudienceSlides";
-import BusinessModalSlides from "./pages/AfterKnowledge/BuildAudience/BuildAudienceSlides";
+import BusinessModalSlides from "./pages/AfterKnowledge/BusinessModal/BusinessModalSlides";
 import CompetitorAnalysis from "./pages/AfterKnowledge/CompetitorAnalysis/CompetitorAnalysis";
 import CompetitorAnalysisSlides from "./pages/AfterKnowledge/CompetitorAnalysis/CompetitorAnalysisSlides";
 import ProductDevelopment from "./pages/AfterKnowledge/ProductDevelopment/ProductDevelopment";

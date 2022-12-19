@@ -1,7 +1,23 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Slide from "./../../../components/After knowledge/Slide Format/Slide";
 
+import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
+import NavbarFinal from "../../../components/Navbar/NavBarFinal";
+import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
+import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
+import "./BusinessModalSlides.css";
+
 const BusinessModalSlides = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const updateWidth = () => {
+    setWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
+
   const obj = [
     {
       title: "What is it",
@@ -84,12 +100,14 @@ const BusinessModalSlides = () => {
       img: "es16.svg",
     },
     {
-      title: "How is a business model canvas different from a traditional business plan?",
+      title:
+        "How is a business model canvas different from a traditional business plan?",
       para: "A typical business plan can take months to create and can run up to 100 pages. It's about making a map of all the possible scenarios for your business, from the weather for your five-year profit to income, table of goods, market size, product, solution ... You get an idea ... It is a consistent document designed to assure entrepreneurs and investors that the company will succeed.",
       img: "es17.svg",
     },
     {
-      title: "How is a business model canvas different from a traditional business plan?",
+      title:
+        "How is a business model canvas different from a traditional business plan?",
       para: "A business model canvas, on the other hand, can be created in a day. It is intended to be a flexible document that helps to provide structure in the beginning, with the understanding that it is just the beginning. It fits well with the first soft model because it is about finding a model that is created quickly for entrepreneurs to start exploring their thinking and hypothesis. A soft start is focused on moving fast and navigating as often as necessary, which a typical business model does not allow you to do.",
       img: "es18.svg",
     },
@@ -103,16 +121,18 @@ const BusinessModalSlides = () => {
       title: "How does it help",
       para: "Strong business models can give you a competitive edge in your industry because they can help you make more profit than your competitors. By adopting a different business model, your company can find a market name that creates interest among consumers and encourages them to buy for the first time",
       img: "es18.svg",
-    }, {
+    },
+    {
       title: "How does it help",
       para: "Creating value for both customers and the business must be an ongoing strategy for a successful business model. Therefore, even established companies need to constantly evaluate and refine their business models.",
       img: "es18.svg",
     },
- {
+    {
       title: "How does it help",
       para: "The way a company creates value is defined by its business model. Business power can melt in its simple essence through this process. An effective business model answers questions about what the business will solve, how it will solve it, and market opportunity.",
       img: "es18.svg",
-    }, {
+    },
+    {
       title: "How does it help",
       para: "Value is created by the development and management of business models. Based on key elements of stakeholder theory, it provides a framework based on stakeholder vision for generating a number of participants.",
       img: "es18.svg",
@@ -124,19 +144,32 @@ const BusinessModalSlides = () => {
 
   return (
     <>
-      {obj.map((slide, index) => (
-        <div
-          key={index}
-          style={{ display: currIndex === index ? "block" : "none" }}
-        >
-          <Slide
-            content={slide}
-            setCurrIndex={setCurrIndex}
-            currIndex={currIndex}
-            size={totalLen}
-          />
-        </div>
-      ))}
+      {width >= 600 ? (
+        <>
+          <SidebarFinal />
+          <NavbarFinal />
+        </>
+      ) : (
+        <>
+          <PhnSidebar />
+          <KnowledgeNavbar />
+        </>
+      )}
+      <div className="course-container">
+        {obj.map((slide, index) => (
+          <div
+            key={index}
+            style={{ display: currIndex === index ? "block" : "none" }}
+          >
+            <Slide
+              content={slide}
+              setCurrIndex={setCurrIndex}
+              currIndex={currIndex}
+              size={totalLen}
+            />
+          </div>
+        ))}
+      </div>
     </>
   );
 };
