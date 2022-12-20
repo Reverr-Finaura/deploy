@@ -1,523 +1,507 @@
-.infiniteScrollOuterDiv{
-    width: 87%;
-    margin-left: 5rem;
-    margin-top: 4rem;
+.infiniteScrollOuterDiv {
+  width: 87%;
+  margin-left: 5rem;
+  margin-top: 4rem;
 }
-#communityFinalPageOuterSection{
-    margin-left: 14rem;
-    margin-top: 6.5rem;
-    margin-bottom: 3rem;
-    min-height: 100vh;
-    max-width: 87%;
-    background-color: rgba(255,255,255,.25); 
+#communityFinalPageOuterSection {
+  margin-left: 14rem;
+  margin-top: 6.5rem;
+  margin-bottom: 3rem;
+  min-height: 100vh;
+  max-width: 87%;
+  background-color: rgba(255, 255, 255, 0.25);
 }
-#communityFinalPage{
-    min-height: 100vh;
-    width: 65%;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Poppins';
-font-style: normal;
-background-color: rgba(255,255,255,.25);
-padding: 1rem;
-padding-right: 4.5rem;
-
+#communityFinalPage {
+  min-height: 100vh;
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins";
+  font-style: normal;
+  background-color: rgba(255, 255, 255, 0.25);
+  padding: 1rem;
+  padding-right: 4.5rem;
 }
-.reverrCommunitySubbHeading{
-    font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-color: #202020;
+.reverrCommunitySubbHeading {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #202020;
 }
-.UploadPostOuterBoxContainerNotExpanded{
-    border: none;
-    
+.UploadPostOuterBoxContainerNotExpanded {
+  border: none;
 }
-.reverrCommunityUploadContainerrr{
-    width: 90%;
-    margin-left: 5rem;
+.reverrCommunityUploadContainerrr {
+  width: 90%;
+  margin-left: 5rem;
 }
-.uploadPostContainerrrrSection{
-    display: flex;
-    flex-direction: column;
+.uploadPostContainerrrrSection {
+  display: flex;
+  flex-direction: column;
 }
-.reverrCommunityHeadingAndPostUploadIcon{
-    display: flex;
-    align-items: center;
+.reverrCommunityHeadingAndPostUploadIcon {
+  display: flex;
+  align-items: center;
 }
-.reverrCommunityHeading{
-    font-size: 2rem;
-    
+.reverrCommunityHeading {
+  font-size: 2rem;
 }
-.postUploaddSquareCont{
-    margin-left: auto;
-    background-color: #2A72DE;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 7px;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
+.postUploaddSquareCont {
+  margin-left: auto;
+  background-color: #2a72de;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
 }
-.postUploaddSquareContAddImg{
-    width: 19px;
+.postUploaddSquareContAddImg {
+  width: 19px;
 }
-.uploadPostContainerrrr{
-    display: flex;
-    margin-top: 1rem;
-    
+.uploadPostContainerrrr {
+  display: flex;
+  margin-top: 1rem;
 }
-.community-upload-cont-userImage{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-top: 1rem;
-    margin-right: 1rem;
+.community-upload-cont-userImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-top: 1rem;
+  margin-right: 1rem;
 }
-.textAreaUploadContainer{
-    position: relative;
-    width: 90%;
+.textAreaUploadContainer {
+  position: relative;
+  width: 90%;
 }
 
-.sortOptionBigContainer{
-    display: flex;
-    margin: auto;
-    margin-top: 2rem;
-    width: 80%;
+.sortOptionBigContainer {
+  display: flex;
+  margin: auto;
+  margin-top: 2rem;
+  width: 80%;
 }
 /* SORT POST SECTION */
 
-#sortPostSection{
-    /* width: 84%;
+#sortPostSection {
+  /* width: 84%;
     height: 100px; */
-    margin: auto;
-    position: relative;
-
+  margin: auto;
+  position: relative;
 }
-.sortPostSectionHeading{
-    font-family: 'Poppins';
-font-style: normal;
-font-weight: 600;
-font-size: 20px;
-line-height: 30px;
-width: fit-content;
-padding: .5rem;
-background-color: white;
-box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-cursor: pointer;
-display: flex;
-align-items: center;
-/* margin: auto; */
+.sortPostSectionHeading {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  width: fit-content;
+  padding: 0.5rem;
+  background-color: white;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  /* margin: auto; */
 }
-.sortPostSectionHeadingItemName{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
-    color: #202020; 
-    margin-left: .5rem;
+.sortPostSectionHeadingItemName {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #202020;
+  margin-left: 0.5rem;
 }
-.sortPostSectionOptionContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 1rem;
-    width: fit-content;
-    z-index: 1;
-    background-color: white;
-    padding: 1rem;
-    position: absolute;
+.sortPostSectionOptionContainer {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  width: fit-content;
+  z-index: 1;
+  background-color: white;
+  padding: 1rem;
+  position: absolute;
 }
 
-.sortPostSectionOption{
-   
-    margin: auto;
-    padding: .5rem;
-    border: 1px solid #2A72DE;
-    background-color: transparent;
-    border-radius: 4px;
-    font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 20px;
-        cursor: pointer;
-        color: #2A72DE;
-        margin-bottom: 1rem;
+.sortPostSectionOption {
+  margin: auto;
+  padding: 0.5rem;
+  border: 1px solid #2a72de;
+  background-color: transparent;
+  border-radius: 4px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+  color: #2a72de;
+  margin-bottom: 1rem;
+  white-space: nowrap;
 }
 
-.sortPostSectionOptionSelected{
-    margin: auto;
-    padding: .5rem;
-    border: none;
-    background-color: #2A72DE;
-    border-radius: 4px;
-    font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 20px;
-        cursor: pointer;
-        color: white;
-        margin-bottom: 1rem;
+.sortPostSectionOptionSelected {
+  margin: auto;
+  padding: 0.5rem;
+  border: none;
+  background-color: #2a72de;
+  border-radius: 4px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  margin-bottom: 1rem;
+  white-space: nowrap;
 }
 
-.furtherSortPostSectionOptionContainer{
-    display: flex;
-    align-items: center;
-    margin-top: 1rem;
-    width: fit-content;
-    position: absolute;
-    z-index: 1;
-    background-color: white;
-    padding: 1rem;
-    width: max-content;  
+.furtherSortPostSectionOptionContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  width: fit-content;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  padding: 1rem;
+  width: max-content;
 }
-.furtherSortPostSectionOption{
-   
-    margin: auto;
-    padding: .5rem;
-    border: 1px solid #2A72DE;
-    background-color: transparent;
-    border-radius: 4px;
-    font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 20px;
-        cursor: pointer;
-        color: #2A72DE;
-        margin-bottom: 1rem;
-        margin-right: 1rem;
+.furtherSortPostSectionOption {
+  margin: auto;
+  padding: 0.5rem;
+  border: 1px solid #2a72de;
+  background-color: transparent;
+  border-radius: 4px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+  color: #2a72de;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
 }
 
-.furtherSortPostSectionOptionSelected{
-    margin: auto;
-    padding: .5rem;
-    border: none;
-    background-color: #2A72DE;
-    border-radius: 4px;
-    font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 20px;
-        cursor: pointer;
-        color: white;
-        margin-bottom: 1rem;
-        margin-right: 1rem;
+.furtherSortPostSectionOptionSelected {
+  margin: auto;
+  padding: 0.5rem;
+  border: none;
+  background-color: #2a72de;
+  border-radius: 4px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
 }
-.downarrorwSortImg{
-    width: 20px;
-    margin-left: 1rem;
+.downarrorwSortImg {
+  width: 20px;
+  margin-left: 1rem;
 }
 
 /* SORT POST SECTION ENDS*/
 
-#postTextContainer{
-    height: 32px;
-    width: 84%;
-    padding-left: 3rem;
-    font-size: 20px;
-    
-    }
-    #postTextContainerExpanded{
-        height:fit-content;
-        width: 92.5%;
-        padding-left: .5rem;
-        font-size: 18px;
-        border-bottom-left-radius:0 ;
-        border-bottom-right-radius:0 ;
-        border-bottom: none;          
-        margin-bottom: 0;
-        padding-bottom: 0;
-        border: none;
-
-        }
-        .editPostTextarea{
-            font-family: "Poppins";
-    background: #f6f6f6;
-    border: 2px solid #2a72de;
-    border-radius: 8px;
-    outline: none;
-    padding: 0.4rem 1rem;
-    font-size: 24px;
-    resize: none;
-    width: 95%;
-    height: auto;
-    margin: 1rem auto;
-        }
-    
-.expandTextAreaIcon{
-    width: 22px;
-    height: 22px;
-    position: absolute;
-    left: 1rem;
-    top: 33%;
-    cursor: pointer;
+#postTextContainer {
+  height: 32px;
+  width: 84%;
+  padding-left: 3rem;
+  font-size: 20px;
 }
-.expandTextAreaIconExpanded{
-    display: none;
+#postTextContainerExpanded {
+  height: fit-content;
+  width: 92.5%;
+  padding-left: 0.5rem;
+  font-size: 18px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border: none;
 }
-.uploadNewPostaddImageandUploadPostIcon{
-    width: 93.6%!important;
-}
-.addImageandUploadPostIcon{
-    display: flex;
-    width: 93.9%;
-    align-items: center;
-    margin-bottom: 0rem;
-    padding-bottom: .7rem;
-    border: none;
-    border-top: none;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 1rem;
-    margin-top: -6px;
-}
-.addImageInCommunityIcon{
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
-.uploadPostIconButton{
-    margin-left: auto;
-    background: #2A72DE;
-border-radius: 10px;
-padding: 2px 16px;
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 500;
-font-size: 18px;
-color: white;
-border: none;
-cursor: pointer;
-
-}
-.changePhotoIconButton{
-    background: #2A72DE;
-border-radius: 10px;
-padding: 2px 16px;
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 500;
-font-size: 18px;
-color: white;
-border: none;
-cursor: pointer;
-z-index: 10;
-position: absolute;
-left: 25%;
-bottom: 41%;
-
+.editPostTextarea {
+  font-family: "Poppins";
+  background: #f6f6f6;
+  border: 2px solid #2a72de;
+  border-radius: 8px;
+  outline: none;
+  padding: 0.4rem 1rem;
+  font-size: 24px;
+  resize: none;
+  width: 95%;
+  height: auto;
+  margin: 1rem auto;
 }
 
-.loading-card-container,.posts-containerr{
-    width: 100%;
-    height: 100%;
-  
+.expandTextAreaIcon {
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  left: 1rem;
+  top: 33%;
+  cursor: pointer;
 }
-.loading-card-container{
-    width: 80%;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    background-color: white;
-    padding: 1rem;
+.expandTextAreaIconExpanded {
+  display: none;
+}
+.uploadNewPostaddImageandUploadPostIcon {
+  width: 93.6% !important;
+}
+.addImageandUploadPostIcon {
+  display: flex;
+  width: 93.9%;
+  align-items: center;
+  margin-bottom: 0rem;
+  padding-bottom: 0.7rem;
+  border: none;
+  border-top: none;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 1rem;
+  margin-top: -6px;
+}
+.addImageInCommunityIcon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.uploadPostIconButton {
+  margin-left: auto;
+  background: #2a72de;
+  border-radius: 10px;
+  padding: 2px 16px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.changePhotoIconButton {
+  background: #2a72de;
+  border-radius: 10px;
+  padding: 2px 16px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  position: absolute;
+  left: 25%;
+  bottom: 41%;
 }
 
-.uploadPostContainer{
-    width: 90%;
-    display: flex;
+.loading-card-container,
+.posts-containerr {
+  width: 100%;
+  height: 100%;
 }
-.communityPostImage-cont{
-   width: 94.7%;
-  
-   padding-left: 0.5rem;
-   border: none;
-   border-bottom: 0;
-   border-top: 0;
-   margin-top: -10px;
-   display: flex;
+.loading-card-container {
+  width: 80%;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: white;
+  padding: 1rem;
 }
 
-.communityPostImage{
-    width: 40%;
-    margin: auto;
-    margin-bottom: 1rem;
-   
+.uploadPostContainer {
+  width: 90%;
+  display: flex;
+}
+.communityPostImage-cont {
+  width: 94.7%;
+
+  padding-left: 0.5rem;
+  border: none;
+  border-bottom: 0;
+  border-top: 0;
+  margin-top: -10px;
+  display: flex;
 }
 
+.communityPostImage {
+  width: 40%;
+  margin: auto;
+  margin-bottom: 1rem;
+}
 
 /* EDIT POST CONTAINER */
-.closeContainerButton{
-    margin-left: auto;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
+.closeContainerButton {
+  margin-left: auto;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
 }
-.EdituploadPostContainerrrr{
-    display: flex;
-    
+.EdituploadPostContainerrrr {
+  display: flex;
 }
-.editOldPostTextArea{
-    background-color: white;
-    width: 92.6%;
+.editOldPostTextArea {
+  background-color: white;
+  width: 92.6%;
 }
-.editPostContainerrrr{
-    width: 100%;
-    height: 100vh;
-    background-color: rgb(0, 0, 0,.6);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10000;
-    display: flex;
+.editPostContainerrrr {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  display: flex;
 }
-.editPostContainer-edit-container{
-    width: 50%;
-    height: max-content;
-    background-color: white;
-    border-radius: 11px;
-    margin: auto;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 2rem;
+.editPostContainer-edit-container {
+  width: 50%;
+  height: max-content;
+  background-color: white;
+  border-radius: 11px;
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
 }
-.edit-communityPostImage-cont{
-    width: 96.6%;
-   border: none;
-   border-bottom: 0;
-   border-top: 0;
-   margin-top: -10px;
-   display: flex;
-    
+.edit-communityPostImage-cont {
+  width: 96.6%;
+  border: none;
+  border-bottom: 0;
+  border-top: 0;
+  margin-top: -10px;
+  display: flex;
 }
-.edit-communityPostImage{
-    width: 209px;
-    height: 150px;
-    margin: auto;
-    margin-bottom: 1rem;
+.edit-communityPostImage {
+  width: 209px;
+  height: 150px;
+  margin: auto;
+  margin-bottom: 1rem;
 }
-.editImageOverLayContainerImageContainer{
-    position: relative;
-    margin: auto;
-    width: fit-content;
-    height: 150px;
+.editImageOverLayContainerImageContainer {
+  position: relative;
+  margin: auto;
+  width: fit-content;
+  height: 150px;
 }
-.editImageOverLayContainer{
-    width: 209px;
-    height: 157px;
-    margin: auto;
-    z-index: 5;
-    background-color: rgb(0, 0, 0,.6);
-   position: absolute;
-    
+.editImageOverLayContainer {
+  width: 209px;
+  height: 157px;
+  margin: auto;
+  z-index: 5;
+  background-color: rgb(0, 0, 0, 0.6);
+  position: absolute;
 }
-.navbarUploadPostOuterBoxContainer{
-    border: 2px solid #2a72de;
-    border-radius: 8px;
+.navbarUploadPostOuterBoxContainer {
+  border: 2px solid #2a72de;
+  border-radius: 8px;
+  width: 90%;
+  z-index: 10;
+  /* background-color: white; */
+}
+.navbarUploadPostContainerTextArea {
+  background-color: white;
+}
+
+@media (max-width: 1180px) {
+  #communityFinalPage {
+    width: 82%;
+  }
+  #postCommentContainer {
+    width: 75% !important;
+  }
+}
+@media (max-width: 1000px) {
+  .navbarUploadPostContainerTextArea,
+  .editOldPostTextArea {
+    width: 89% !important;
+  }
+  .sortPostSectionHeading {
+    padding: 0.35rem;
+    margin-right: 1rem;
+  }
+}
+@media (max-width: 960px) {
+  #communityFinalPage {
     width: 90%;
-    z-index: 10;
-    /* background-color: white; */
-}
-.navbarUploadPostContainerTextArea{
-    background-color: white;
-}
-
-
-@media(max-width:1180px){
-    #communityFinalPage{
-        width: 82%;
-    }
-    #postCommentContainer{
-        width: 75%!important;
-        
-    }
-}
-@media(max-width:1000px){
-    .navbarUploadPostContainerTextArea,.editOldPostTextArea{
-        width: 89%!important;
-    }
-    .sortPostSectionHeading {
-        padding: .35rem;
-        margin-right: 1rem;
-    }
-}
-@media(max-width:960px){
-    #communityFinalPage {
-        width: 90%;
     padding-right: 1rem;
-    }
+  }
 }
-@media(max-width:890px){
-    .sortOptionBigContainer{
-        width: 101%;
-    }
+@media (max-width: 890px) {
+  .sortOptionBigContainer {
+    width: 101%;
+  }
 }
-@media(max-width:850px){
-    .reverrCommunityUploadContainerrr,.infiniteScrollOuterDiv {
-        margin-left: 2rem;
-        width: 90%!important;
-    }
-    .editPostContainer-edit-container{
-        margin-left: 3rem;
-        width: 68%;
-    }
-    #communityFinalPage{
-        width: 85%;
-    }
-    .sortPostSectionHeading {
-        padding: .35rem;
-        margin-right: 1rem;
-    }
+@media (max-width: 850px) {
+  .reverrCommunityUploadContainerrr,
+  .infiniteScrollOuterDiv {
+    margin-left: 2rem;
+    width: 90% !important;
+  }
+  .editPostContainer-edit-container {
+    margin-left: 3rem;
+    width: 68%;
+  }
+  #communityFinalPage {
+    width: 85%;
+  }
+  .sortPostSectionHeading {
+    padding: 0.35rem;
+    margin-right: 1rem;
+  }
 }
 
-@media(max-width:730px){
-    #communityFinalPageOuterSection{
-        margin-left: 12rem;
-    }
-    #postTextContainer{
-        height: 64px;
-    }
-    #postTextContainerExpanded{
-        width: 90%;
-    }
+@media (max-width: 730px) {
+  #communityFinalPageOuterSection {
+    margin-left: 12rem;
+  }
+  #postTextContainer {
+    height: 64px;
+  }
+  #postTextContainerExpanded {
+    width: 90%;
+  }
 }
-@media(max-width:600px){
-    #communityFinalPageOuterSection{
-        margin: auto;
-        max-width: 95%;
-    }
-    #communityFinalPage{
-        width: 94%;
-    }
-    .editPostContainerrrr {
-        width: 100%;
-        left: 0;
-    }
-    .editPostContainer-edit-container{
-        width: 85%;
-    }
-    .reverrCommunityUploadContainerrr {
-        margin:auto;
-        
-    }
-    .infiniteScrollOuterDiv{
-        margin: auto;
-        margin-top: 2.5rem;
-    }  
-    .editPostContainer-edit-container{
-        margin: auto;
-        width: 68%;
-    } 
-    .sortPostSectionHeading {
-        padding: .35rem;
-        margin-right: 1rem;
-        margin-bottom: 1.5rem;
-    }
-    .sortOptionBigContainer{
-        flex-direction: column;
-    }
+@media (max-width: 600px) {
+  #communityFinalPageOuterSection {
+    margin: auto;
+    max-width: 95%;
+  }
+  #communityFinalPage {
+    width: 94%;
+  }
+  .editPostContainerrrr {
+    width: 100%;
+    left: 0;
+  }
+  .editPostContainer-edit-container {
+    width: 85%;
+  }
+  .reverrCommunityUploadContainerrr {
+    margin: auto;
+  }
+  .infiniteScrollOuterDiv {
+    margin: auto;
+    margin-top: 2.5rem;
+  }
+  .editPostContainer-edit-container {
+    margin: auto;
+    width: 68%;
+  }
+  .sortPostSectionHeading {
+    padding: 0.35rem;
+    margin-right: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .sortOptionBigContainer {
+    flex-direction: column;
+  }
 }
