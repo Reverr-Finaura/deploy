@@ -2,6 +2,7 @@
   width: 90%;
 
   margin: auto;
+ 
 }
 
 .course_content {
@@ -39,6 +40,7 @@
   color: #f6f6f6;
   cursor: pointer;
   margin-right: 1em;
+  margin-top: 1.5rem;
 }
 
 .btns_div > a {

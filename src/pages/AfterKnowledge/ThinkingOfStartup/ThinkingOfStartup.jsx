@@ -29,23 +29,39 @@ const ThinkingOfStartup = () => {
   };
   return (
     <>
-     {width>=600?<><SidebarFinal /><NavBarFinal /></>:<><PhnSidebar />
-    <KnowledgeNavbar /></>}
+      {width >= 600 ? (
+        <>
+          <SidebarFinal />
+          <NavBarFinal />
+        </>
+      ) : (
+        <>
+          <PhnSidebar />
+          <KnowledgeNavbar />
+        </>
+      )}
       <div className={styles.knowledge}>
         {/* <KnowledgeNavbar /> */}
         <div className={styles.body}>
-        {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
+          {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
           <div className={styles.content}>
-          <Hero
-            imgUrl="tos1.png"
-            // heading="Idea validation and elevator pitch"
-          />
-          <CourseIntro
-            url="/thinkingofstartupslides"
-            courseDetails={courseDetails}
-          />
-          <CourseContent points={["How to identify problems?","How to come up with innovative solutions?","How to be more observant?"]} imgUrl="tos2.png" />
-          {/* <CourseReview /> */}
+            <Hero
+              imgUrl="tos1.png"
+              // heading="Idea validation and elevator pitch"
+            />
+            <CourseIntro
+              url="/thinkingofstartupslides"
+              courseDetails={courseDetails}
+            />
+            <CourseContent
+              points={[
+                "How to identify problems?",
+                "How to come up with innovative solutions?",
+                "How to be more observant?",
+              ]}
+              imgUrl="tos2.png"
+            />
+            {/* <CourseReview /> */}
           </div>
         </div>
       </div>

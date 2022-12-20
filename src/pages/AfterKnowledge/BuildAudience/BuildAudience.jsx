@@ -29,20 +29,39 @@ const BuildAudience = () => {
   };
   return (
     <>
-    {width>=600?<><SidebarFinal /><NavBarFinal /></>:<><PhnSidebar />
-    <KnowledgeNavbar /></>}
+      {width >= 600 ? (
+        <>
+          <SidebarFinal />
+          <NavBarFinal />
+        </>
+      ) : (
+        <>
+          <PhnSidebar />
+          <KnowledgeNavbar />
+        </>
+      )}
       <div className={styles.knowledge}>
         {/* <KnowledgeNavbar /> */}
         <div className={styles.body}>
           {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
           <div className={styles.content}>
-          <Hero
-            imgUrl="audience1.png"
-            // heading="Idea validation and elevator pitch"
-          />
-          <CourseIntro url="/buildingaudienceslides" courseDetails={courseDetails} />
-          <CourseContent points={["Who is your target customer?","What are the means and channels to reach your audience?","How to develop a long term marketing strategy?"]} imgUrl="audience2.png" />
-          {/* <CourseReview /> */}
+            <Hero
+              imgUrl="audience1.png"
+              // heading="Idea validation and elevator pitch"
+            />
+            <CourseIntro
+              url="/buildingaudienceslides"
+              courseDetails={courseDetails}
+            />
+            <CourseContent
+              points={[
+                "Who is your target customer?",
+                "What are the means and channels to reach your audience?",
+                "How to develop a long term marketing strategy?",
+              ]}
+              imgUrl="audience2.png"
+            />
+            {/* <CourseReview /> */}
           </div>
         </div>
       </div>
