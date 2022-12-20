@@ -7,22 +7,28 @@ import Footer from "../Footer/Footer";
 import "../../components/Calendar/Calendar.css";
 import "../../components/TimePicker/TimePicker.css";
 import "../../components/Clock/Clock.css";
-import { InlineWidget } from "react-calendly";
+import { InlineWidget,useCalendlyEventListener } from "react-calendly";
 import "animate.css";
 import axios from "axios";
 import GoogleLogin from "react-google-login";
 import { useNavigate, useLocation } from "react-router-dom";
 import emailjs from "@emailjs/browser";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
 import SidebarFinal from "../../components/Sidebar Final/SidebarFinal";
 import NavBarFinal from "../../components/Navbar/NavBarFinal";
+import PaymentMentorMeetingSchedule from "../../components/Payment For Mentor Meeting Schedule/PaymentMentorMeetingSchedule";
+
 
 function Schedule() {
   const [width, setWidth] = useState(window.innerWidth);
   const user = useSelector(selectUser);
 
+
   const {state} = useLocation();
+  const[paymentModeOn,setPaymentModeOn]=useState(false)
+
+ 
   // const [date, setDate] = useState(new Date());
   // const [endDate, setEndDate] = useState();
   // const [time, setTime] = useState("10:00");
@@ -32,6 +38,13 @@ function Schedule() {
   // const navigate = useNavigate();
 
   // const dateobj = {};
+
+  useCalendlyEventListener({
+    // onProfilePageViewed: () => console.log("onProfilePageViewed"),
+    onDateAndTimeSelected: () => {setPaymentModeOn(true);console.log("onDateAndTimeSelected")},
+    // onEventTypeViewed: () => console.log("onEventTypeViewed"),
+    // onEventScheduled: (e) => console.log("eventSchedule",e.data.payload),
+  });
 
   const updateWidth = () => {
     setWidth(window.innerWidth);
@@ -94,6 +107,7 @@ function Schedule() {
     <>
     {width>=600?<><SidebarFinal /><NavBarFinal/></>:<><PhnSidebar />
           <KnowledgeNavbar /></>}
+          {/* {paymentModeOn?<PaymentMentorMeetingSchedule item={state.mentor}/>:null} */}
       {/* <PhnSidebar /> */}
       <div className={styles.schedule}>
         {/* <KnowledgeNavbar /> */}

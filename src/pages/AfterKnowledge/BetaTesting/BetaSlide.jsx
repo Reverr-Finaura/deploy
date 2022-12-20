@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Slide from "../../../components/After knowledge/Slide Format/Slide";
+import NavBarFinal from "../../../components/Navbar/NavBarFinal";
 
 const BetaSlide = () => {
   const obj = [
@@ -65,6 +66,7 @@ const BetaSlide = () => {
 
   return (
     <>
+    
       {obj.map((slide, index) => (
         <div
           key={index}

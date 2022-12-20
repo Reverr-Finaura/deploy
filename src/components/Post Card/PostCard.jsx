@@ -307,12 +307,14 @@ useEffect(()=>{
     <div className='postLikesAndCommentContainer'>
         <div className='postLikesContainer'>
         <div onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className='postLikesContainerLikeIcon'>{item?.likes.includes(user?.user?.email)?<LikedIcon/>:<LikeIcon/>}</div>
+        <p className='postLikeCount postLikeCountText'>Like</p>
         {/* <i onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className={"fa fa-heart "+ (item?.likes.includes(user?.user?.email)?"heartPostLiked":"heartPostNotLiked")}></i> */}
             <h3 className='postLikeCount'>{item?.likes.length}</h3>
         </div>
         <div className='postCommentContainer'>
         <div className='commentContainer'>
         <img src={commentIcon} alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIcon'/>
+        <p className='postLikeCountText'>Comment</p>
         {/* ;(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus() */}
         </div>
             <h3 className='postCommentCount'>{item?.comments.length}</h3>
@@ -327,7 +329,11 @@ useEffect(()=>{
         </div>
         <div className='threeDotsMainCont'>
         <div className='threeDotsContainer'>
+        <div style={{display:"flex"}}>
         <img onClick={()=>setIsThreeDotsClicked(current=>!current)} className='threeDotsPost' src="./images/dots.png" alt="3dots" />
+        <p className='moreRandomText'>More</p>
+        </div>
+        
        {isThreeDotsClicked?
        <div className={user?.user?.email===item?.postedby?.id?'threeDotsOptions':"standardThreeDotsOption"}>
        

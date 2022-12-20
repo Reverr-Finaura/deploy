@@ -77,6 +77,7 @@ import GetFundedPage from "./pages/Get Funded/GetFundedPage";
 import CommunityNew from "./pages/Community/CommunityNew";
 import CommunityFinal from "./pages/Community/CommunityFinal";
 import SharedCommunityPost from "./pages/Shared Community Post/SharedCommunityPost";
+import PaymentMentorMeetingSchedule from "./components/Payment For Mentor Meeting Schedule/PaymentMentorMeetingSchedule";
 
 function App() {
   const user = useSelector(selectUser);
@@ -238,6 +239,7 @@ function App() {
         <Route path="/funding-page" element={<GetFundedPage/>}></Route>
         
         <Route path="*" element={<NotFound />}></Route>
+        <Route path="/payment" element={<PaymentMentorMeetingSchedule/>}></Route>
       </Routes>
     </>
   );

@@ -1,0 +1,21 @@
+.outerContainer{
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgb(0, 0, 0 ,.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 600000;
+    display: flex;
+    align-items: center;
+    place-content: center;
+}
+.innerContainer{
+width: 1000px;
+height: 600px;
+background-color: white;
+border-radius: 20px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
