@@ -1,0 +1,12 @@
+
+.courseContainer{
+    width: 80%;
+    margin-left: 12rem;
+    margin-top: 10rem;
+}
+@media(max-width:600px){
+    .courseContainer{
+        margin: auto;
+        width: 90%;
+    }
+}

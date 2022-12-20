@@ -2,12 +2,11 @@ import React, { useState,useEffect } from "react";
 import Slide from "../../../components/After knowledge/Slide Format/Slide";
 
 import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
-import NavbarFinal from "../../../components/Navbar/NavBarFinal";
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
-import "./BetaSlide.css";
-import NavBarFinal from "../../../components/Navbar/NavBarFinal";
 
+import NavBarFinal from "../../../components/Navbar/NavBarFinal";
+import styles from "./BetaSlide.module.css"
 
 const BetaSlide = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -85,6 +84,8 @@ const BetaSlide = () => {
     <>
     {width>=600?<><SidebarFinal /><NavBarFinal /></>:<><PhnSidebar />
     <KnowledgeNavbar /></>}
+ 
+        <div className={styles.courseContainer}>
       {obj.map((slide, index) => (
         <div
           key={index}
@@ -98,6 +99,8 @@ const BetaSlide = () => {
           />
         </div>
       ))}
+      </div>
+     
     </>
   );
 };
