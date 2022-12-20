@@ -628,7 +628,7 @@ const CommunityFinal = () => {
                 </span>{" "}
                 <span style={{ display: "flex" }}>
                   <img
-                    className="downarrorwSortImg"
+                    className={`downarrorwSortImg ${furtherSortOptionClick?'rotate-180':''}`}
                     src="./images/down-filled-triangular-arrow.png"
                     alt="downArrow"
                   />
@@ -685,7 +685,7 @@ const CommunityFinal = () => {
                 </span>{" "}
                 <span style={{ display: "flex" }}>
                   <img
-                    className="downarrorwSortImg"
+                    className={`downarrorwSortImg ${sortOptionClick?'rotate-180':''}`}
                     src="./images/down-filled-triangular-arrow.png"
                     alt="downArrow"
                   />

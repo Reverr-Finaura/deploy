@@ -83,6 +83,9 @@
   margin-top: 2rem;
   width: 80%;
 }
+.rotate-180{
+  transform: rotate(180deg);
+}
 /* SORT POST SECTION */
 
 #sortPostSection {

@@ -419,7 +419,7 @@ const MentorsNew = () => {
                   >
                     Sort : By Price{" "}
                     <img
-                      className="down-triangle-image"
+                      className={`down-triangle-image ${isFilterByPriceOptionClick?'rotate-180':''}`}
                       src="./images/down-filled-triangular-arrow.png"
                       alt="down-triangle"
                     />
@@ -500,7 +500,7 @@ const MentorsNew = () => {
                   >
                     Sort : By Expertise{" "}
                     <img
-                      className="down-triangle-image-expertise"
+                      className={`down-triangle-image-expertise ${isFilterByExpertiseOptionClick?'rotate-180':''}`}
                       src="./images/down-filled-triangular-arrow.png"
                       alt="down-triangle"
                     />
