@@ -11,11 +11,50 @@
     place-content: center;
 }
 .innerContainer{
-width: 1000px;
-height: 600px;
+width: 95%;
+height: 95%;
 background-color: white;
 border-radius: 20px;
 display: flex;
 align-items: center;
 justify-content: center;
+flex-direction: column;
+padding: 1rem;
+}
+.PaymentSessionIdContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    place-content: center;
+}
+.container_SubHeading{
+    font-weight: 400;
+}
+.chooseComponentsText{
+    font-weight: 400;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+.componentsContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+.individualComponent{
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+.inputLabel{
+    margin-left: .25rem;
+}
+
+.renderButton{
+    border-radius: 6px;
+    background-color: rgb(105, 51, 211);
+    color: rgb(255, 255, 255);
+    border: none;
+    font-size: 14px;
+    padding: 11px 16px;
+    margin-bottom: 1.5rem;
 }

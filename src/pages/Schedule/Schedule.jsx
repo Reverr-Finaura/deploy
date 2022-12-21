@@ -107,7 +107,7 @@ function Schedule() {
     <>
     {width>=600?<><SidebarFinal /><NavBarFinal/></>:<><PhnSidebar />
           <KnowledgeNavbar /></>}
-          {/* {paymentModeOn?<PaymentMentorMeetingSchedule item={state.mentor}/>:null} */}
+          {paymentModeOn?<PaymentMentorMeetingSchedule item={state.mentor}/>:null}
       {/* <PhnSidebar /> */}
       <div className={styles.schedule}>
         {/* <KnowledgeNavbar /> */}

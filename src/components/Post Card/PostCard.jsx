@@ -307,17 +307,19 @@ useEffect(()=>{
     <div className='postLikesAndCommentContainer'>
         <div className='postLikesContainer'>
         <div onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className='postLikesContainerLikeIcon'>{item?.likes.includes(user?.user?.email)?<LikedIcon/>:<LikeIcon/>}</div>
-        <p className='postLikeCount postLikeCountText'>Like</p>
+        
         {/* <i onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className={"fa fa-heart "+ (item?.likes.includes(user?.user?.email)?"heartPostLiked":"heartPostNotLiked")}></i> */}
             <h3 className='postLikeCount'>{item?.likes.length}</h3>
+            <p className='postLikeCount postLikeCountText'>Like</p>
         </div>
         <div className='postCommentContainer'>
         <div className='commentContainer'>
         <img src={commentIcon} alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIcon'/>
-        <p className='postLikeCountText'>Comment</p>
+        
         {/* ;(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus() */}
         </div>
             <h3 className='postCommentCount'>{item?.comments.length}</h3>
+            <p className='postLikeCountText'>Comment</p>
         </div>
         <div onClick={()=>handleSendPostLinkClick(item.id)} className='postSendLinkContainer'>
 <div className='postSendCont'>
