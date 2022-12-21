@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Slide from "../../../components/After knowledge/Slide Format/Slide";
 
 import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
-import NavbarFinal from "../../../components/Navbar/NavBarFinal";
+import NavBarFinal from "../../../components/Navbar/NavBarFinal";
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
-import './ReachingOutSlides.css'
-import { useEffect } from "react";
+import styles from "./Knowledge.module.css";
 const ReachingOutSlides = () => {
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -100,7 +99,7 @@ const ReachingOutSlides = () => {
       {width >= 600 ? (
         <>
           <SidebarFinal />
-          <NavbarFinal />
+          <NavBarFinal />
         </>
       ) : (
         <>
@@ -108,21 +107,23 @@ const ReachingOutSlides = () => {
           <KnowledgeNavbar />
         </>
       )}
-
-      <div className="course-container">
-        {obj.map((slide, index) => (
-          <div
-            key={index}
-            style={{ display: currIndex === index ? "block" : "none" }}
-          >
-            <Slide
-              content={slide}
-              setCurrIndex={setCurrIndex}
-              currIndex={currIndex}
-              size={totalLen}
-            />
-          </div>
-        ))}
+      <div className={styles.knowledge}>
+        <div className={styles.body}>
+          {obj.map((slide, index) => (
+            <div
+              key={index}
+              style={{ display: currIndex === index ? "block" : "none" }}
+              className={styles.content}
+            >
+              <Slide
+                content={slide}
+                setCurrIndex={setCurrIndex}
+                currIndex={currIndex}
+                size={totalLen}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
