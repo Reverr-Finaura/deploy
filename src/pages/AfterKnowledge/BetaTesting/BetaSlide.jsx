@@ -4,9 +4,8 @@ import Slide from "../../../components/After knowledge/Slide Format/Slide";
 import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
-
 import NavBarFinal from "../../../components/Navbar/NavBarFinal";
-import styles from "./BetaSlide.module.css"
+import styles from "./Knowledge.module.css";
 
 const BetaSlide = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -82,25 +81,35 @@ const BetaSlide = () => {
 
   return (
     <>
-    {width>=600?<><SidebarFinal /><NavBarFinal /></>:<><PhnSidebar />
-    <KnowledgeNavbar /></>}
- 
-        <div className={styles.courseContainer}>
-      {obj.map((slide, index) => (
-        <div
-          key={index}
-          style={{ display: currIndex === index ? "block" : "none" }}
-        >
-          <Slide
-            content={slide}
-            setCurrIndex={setCurrIndex}
-            currIndex={currIndex}
-            size={totalLen}
-          />
+      {width >= 600 ? (
+        <>
+          <SidebarFinal />
+          <NavBarFinal />
+        </>
+      ) : (
+        <>
+          <PhnSidebar />
+          <KnowledgeNavbar />
+        </>
+      )}
+      <div className={styles.knowledge}>
+        <div className={styles.body}>
+          {obj.map((slide, index) => (
+            <div
+              key={index}
+              style={{ display: currIndex === index ? "block" : "none" }}
+              className={styles.content}
+            >
+              <Slide
+                content={slide}
+                setCurrIndex={setCurrIndex}
+                currIndex={currIndex}
+                size={totalLen}
+              />
+            </div>
+          ))}
         </div>
-      ))}
       </div>
-     
     </>
   );
 };
