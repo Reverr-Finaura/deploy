@@ -11,10 +11,7 @@ import MentorComponent from "../../components/MentorComponent/MentorComponent";
 function Mentor() {
   const [width, setWidth] = useState(window.innerWidth);
 
-  useEffect(()=>{
-
-  })
-
+  useEffect(() => {});
 
   const prices = [
     { id: "1", price: "Rs.499" },

@@ -1,317 +1,310 @@
-#mentors-page-new{
+#mentors-page-new {
   width: fit-content;
-    min-height: 100vh;
-    margin-left: 14rem;
-    margin-top: 4rem;
-    margin-bottom: 3rem;
-    display: flex;
+  min-height: 100vh;
+  margin-left: 14rem;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+  display: flex;
 }
-.MentorstitleAndFilterCont{
-    display: flex;
-    align-items: center;
-    width:80%;
-    margin-top: 11rem;
-    margin-left: 15rem;
-
+.MentorstitleAndFilterCont {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin-top: 11rem;
+  margin-left: 15rem;
 }
-.mentorFilterCardCont{
-    margin-left: auto;
-    position: relative;
-   
+.mentorFilterCardCont {
+  margin-left: auto;
+  position: relative;
 }
-.MentorsFilterButton,.mentorsSearchFilter{
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    color: black;
-    font-size: 18px;
-    letter-spacing: .05rem;
-    border: none;
-    background: #92a5c1;
-    box-shadow: 0px 4px 4px rgb(255 255 255 / 25%);
-    border-radius: 4px;
-    width: fit-content; 
-    
+.MentorsFilterButton,
+.mentorsSearchFilter {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 0.05rem;
+  border: none;
+  background: #2a72de;
+  box-shadow: 0px 4px 4px rgb(255 255 255 / 25%);
+  border-radius: 4px;
+  width: fit-content;
 }
-.mentorsSearchFilter{
-    margin-left: 3rem;
-    height: 53px;
+.mentorsSearchFilter {
+  margin-left: 3rem;
+  height: 53px;
 }
-.priceAndExpertiseFilterCont{
-    background-color: transparent;
-    width:fit-content;
-    /* margin-top: 2rem;
+.priceAndExpertiseFilterCont {
+  background-color: transparent;
+  width: fit-content;
+  /* margin-top: 2rem;
     margin-bottom: 2rem;
     margin-left: 15rem; */
-    display: flex;
-    
-    
+  display: flex;
 }
-.sortContainer{
-    display: flex;
+.sortContainer {
+  display: flex;
 }
-.ByExpertiseFilterCont{
-    margin-left: 2rem;
-    position: relative;
+.ByExpertiseFilterCont {
+  margin-left: 2rem;
+  position: relative;
 }
-.ByPriceFilterCont{
-    position: relative;
+.ByPriceFilterCont {
+  position: relative;
 }
-.down-triangle-image{
-    width: 10%;
-    margin: auto;
+.down-triangle-image {
+  width: 10%;
+  margin: auto;
 }
-.down-triangle-image-expertise{
-    width: 7%;
-    margin: auto;
+.down-triangle-image-expertise {
+  width: 7%;
+  margin: auto;
 }
-.ByPriceFilter{
-    padding: 1rem;
-    background-color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    width: 150px;
+.ByPriceFilter {
+  padding: 1rem;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 150px;
 }
-.price-filter-option-cont{
-    width: 200px;
-    height: 300px;
-    border-radius: 7px;
-    background-color: white;
-    z-index:1;
-    margin-top: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: .5rem;
-    padding-top: .5rem;
-    position: absolute;
-    left: -2rem;
-}
-.price-filter-option{
-    border: 1px solid black;
-    padding: .2rem;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1.25rem;
-    font-weight: 600; 
-    margin-top: 1rem;
-}
-.price-filter-option-selected{
-    border: none;
-    padding: .2rem;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1.25rem;
-    font-weight: 600; 
-    margin-top: 1rem;
-    background-color: #92a5c1;
-}
-.ByExpertiseFilter{
-    padding: 1rem;
-    background-color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    width: 200px; 
-}
-.expertise-filter-option-cont{
-    width: 300px;
-    height: 285px;
-    border-radius: 7px;
-    background-color: white;
-    z-index:1;
-    margin-top: 1.5rem;
-    padding: .5rem;
-    padding-top: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    position: absolute;
+.price-filter-option-cont {
+  border-radius: 7px;
+  background-color: white;
+  z-index: 1;
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
 
+  align-items: flex-start;
+  padding: 1rem;
+  padding-top: 0.5rem;
+  position: absolute;
+  left: -10rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
-.expertise-filter-option{
-    
-    width: fit-content;
-    float: left;
-    margin-right: 1rem;
-    margin-bottom: .5rem;
-    border: 1px solid black;
-    padding: .2rem;
-    cursor: pointer;
-    border-radius: 5px;
+.price-filter-option {
+  border: 1px solid black;
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
 }
-.expertise-filter-option-selected{
-    width: fit-content;
-    float: left;
-    margin-right: 1rem;
-    margin-bottom: .5rem;
-    border:none;
-    padding: .2rem;
-    cursor: pointer;
-    border-radius: 5px;
-    background-color: #92a5c1;
+.price-filter-option-selected {
+  border: 1px solid #2a72de;
+  border: none;
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  color: #ffffff;
+  background-color: #2a72de;
 }
-.loadingAnimationContainer{
-    margin-left:15rem ;
-    margin-top: 2rem;
-    display: flex;
+.ByExpertiseFilter {
+  padding: 1rem;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 200px;
 }
-.MentorslinkedInSocialLink{
-    width: fit-content;
-    height: fit-content;
-    margin-right: 1rem;
-    
+.expertise-filter-option-cont {
+  width: 300px;
+  height: 285px;
+  border-radius: 7px;
+  background-color: white;
+  z-index: 1;
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  position: absolute;
 }
-.mentors-page-card-container{
-    width: 100%;
-    height: 100%;
-   display: flex;
- flex-wrap: wrap;
- margin: auto;
-    
+.expertise-filter-option {
+  width: fit-content;
+  float: left;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid black;
+  padding: 0.2rem;
+  cursor: pointer;
+  border-radius: 5px;
 }
-.mentors-page-card{
-    height: 500px;
-   margin-right: 1rem;
-   margin-bottom: 1rem;
- width: 400px;
-   margin: auto;
-   margin-bottom: 2.5rem;
-   
+.expertise-filter-option-selected {
+  width: fit-content;
+  float: left;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  padding: 0.2rem 0.3rem;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #2a72de;
 }
-
-.mentor-cardd{
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    padding: 2rem;
-    height: 450px;
-    margin-left: 1rem;
+.loadingAnimationContainer {
+  margin-left: 15rem;
+  margin-top: 2rem;
+  display: flex;
 }
-.mentor-cardd-top-part{
-    display: flex;
-    height: 180px;
+.MentorslinkedInSocialLink {
+  width: fit-content;
+  height: fit-content;
+  margin-right: 1rem;
 }
-.mentor-cardd-top-part-left-col-name-icon-cont{
-    display: flex;
-    position: relative;
+.mentors-page-card-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
 }
-.mentor-cardd-top-part-left-col-title{
-    font-family: 'Poppins';
-    font-size: 1.2rem;
-    margin-bottom: .25rem;
-    margin-right: 1rem;
-  
-}
-.mentor-cardd-top-part-left-col-sub-title{
-    font-size: .8rem;
-    font-family: 'Poppins';
-    color: hsl(221, 18%, 49%);
-    margin-bottom: 1rem;
-}
-.mentor-cardd-top-part-right-col{
-    width: fit-content;
-    margin-left: auto;
-}
-.mentor-cardd-top-part-right-col-image{
-    width: 6rem;
-    border-radius: 50%;
-    height: 6rem;
+.mentors-page-card {
+  height: 500px;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  width: 400px;
+  margin: auto;
+  margin-bottom: 2.5rem;
 }
 
-.mentor-cardd-middle-part{
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    height: 150px;
+.mentor-cardd {
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 2rem;
+  height: 450px;
+  margin-left: 1rem;
 }
-.mentor-cardd-middle-part-intro{
-    font-family: 'Poppins';
-    font-size: .9rem;
-    line-height: 1.4;
- 
+.mentor-cardd-top-part {
+  display: flex;
+  height: 180px;
 }
-.mentor-cardd-skill-part{
-    height: 150px;
+.mentor-cardd-top-part-left-col-name-icon-cont {
+  display: flex;
+  position: relative;
 }
-.mentor-cardd-skill-part-skill-cont{
-    display: flex;
-    width: fit-content;
-    float: left;
-    margin-right: 1rem;
-    margin-bottom: .5rem;
+.mentor-cardd-top-part-left-col-title {
+  font-family: "Poppins";
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+  margin-right: 1rem;
 }
-.mentor-cardd-skill-part-skill-cont-skill-tag{
-    width: .7rem;
-    margin-right: .7rem;
-   padding-top: .05rem;
-    
+.mentor-cardd-top-part-left-col-sub-title {
+  font-size: 0.8rem;
+  font-family: "Poppins";
+  color: hsl(221, 18%, 49%);
+  margin-bottom: 1rem;
 }
-.mentor-cardd-skill-part-skill-cont-skill{
-    font-family: 'Poppins';
-    font-size: .8rem;
-    line-height: 1.4;
-    color: hsl(221, 18%, 49%);
-    margin: auto;
+.mentor-cardd-top-part-right-col {
+  width: fit-content;
+  margin-left: auto;
 }
-
-
-.mentor-cardd-bottom-part-left-col-price-cont{
-    font-family: 'Poppins';
-    font-size: 1.2rem;
-    margin-bottom: .25rem;
+.mentor-cardd-top-part-right-col-image {
+  width: 6rem;
+  border-radius: 50%;
+  height: 6rem;
 }
 
-
-.mentor-cardd-bottom-part{
-    display: flex;
-    margin-top: 2rem;
+.mentor-cardd-middle-part {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: 150px;
+}
+.mentor-cardd-middle-part-intro {
+  font-family: "Poppins";
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.mentor-cardd-skill-part {
+  height: 150px;
+}
+.mentor-cardd-skill-part-skill-cont {
+  display: flex;
+  width: fit-content;
+  float: left;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+}
+.mentor-cardd-skill-part-skill-cont-skill-tag {
+  width: 0.7rem;
+  margin-right: 0.7rem;
+  padding-top: 0.05rem;
+}
+.mentor-cardd-skill-part-skill-cont-skill {
+  font-family: "Poppins";
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: hsl(221, 18%, 49%);
+  margin: auto;
 }
 
-.mentor-cardd-bottom-part-left-col{
-    display: flex;
-    align-items: center;
-}
-.mentor-cardd-bottom-part-left-col-per-time{
-    color: hsl(221, 18%, 49%);
-}
-.mentor-cardd-bottom-part-right-col{
-    width: fit-content;
-    margin-left: auto;
+.mentor-cardd-bottom-part-left-col-price-cont {
+  font-family: "Poppins";
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
 }
 
-.mentor-cardd-bottom-part-right-col-schedule-btn{
-    padding: 4px 6px;
-gap: 10px;
-color: #2A72DE;
-background: transparent;
-border-radius: 6px;
-border: 2px solid #2A72DE;
-font-family: 'Poppins';
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
+.mentor-cardd-bottom-part {
+  display: flex;
+  margin-top: 2rem;
 }
 
-.filterOptionsShowCont{
-    margin-left: 14rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    width: 78%;
-    height: fit-content;
-    display: flex;
-    align-items: center;
-    padding: 1rem;
+.mentor-cardd-bottom-part-left-col {
+  display: flex;
+  align-items: center;
 }
-.priceAndExpertiseOptionCont{
-    display: flex;
-    width: 70%;
-    height: 100px;
-    overflow: auto;
-    align-items: center;
-    background: white;
-    border-radius: 11px;
-    padding: 1rem;
+.mentor-cardd-bottom-part-left-col-per-time {
+  color: hsl(221, 18%, 49%);
+}
+.mentor-cardd-bottom-part-right-col {
+  width: fit-content;
+  margin-left: auto;
+}
+
+.mentor-cardd-bottom-part-right-col-schedule-btn {
+  padding: 4px 6px;
+  gap: 10px;
+  color: #2a72de;
+  background: transparent;
+  border-radius: 6px;
+  border: 2px solid #2a72de;
+  font-family: "Poppins";
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filterOptionsShowCont {
+  margin-left: 14rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 78%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+.priceAndExpertiseOptionCont {
+  display: flex;
+  width: 70%;
+  height: 100px;
+  overflow: auto;
+  align-items: center;
+  background: white;
+  border-radius: 11px;
+  padding: 1rem;
 }
 /* .price-filter-optionss{
     display: flex;
@@ -319,25 +312,23 @@ font-family: 'Poppins';
     width: 25%;
     align-items: center;
 } */
-.price-filter-optionsselecteddd{
-    padding: 1rem;
-    color: black;
-    font-size: 16px;
-    border: none;
-    background: #92a5c1;
-    box-shadow: 0px 4px 4px rgb(255 255 255 / 25%);
-    margin-left: .5rem;
-    cursor: pointer;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-   width: max-content;
-   
-  
+.price-filter-optionsselecteddd {
+  padding: 1rem;
+  color: #ffffff;
+  font-size: 16px;
+  border: none;
+  background: #2a72de;
+  box-shadow: 0px 4px 4px rgb(255 255 255 / 25%);
+  margin-left: 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  width: max-content;
 }
-.deleteFilterOption{
-    padding-left: .5rem;
-    font-weight: bold;
+.deleteFilterOption {
+  padding-left: 0.5rem;
+  font-weight: bold;
 }
 /* .expertise-filter-optionss{
     display: flex;
@@ -345,146 +336,149 @@ font-family: 'Poppins';
     width: 75%;
     align-items: center;
 } */
-.saveNewFilterChanges,.resetFilter{
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    color: black;
-    font-size: 18px;
-    letter-spacing: .05rem;
-    border: none;
-    background: #92a5c1;
-    box-shadow: 0px 4px 4px rgb(255 255 255 / 25%);
-    border-radius: 4px;
-    width: fit-content;
-    margin-left: auto;
+.saveNewFilterChanges,
+.resetFilter {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 0.05rem;
+  border: none;
+  background: #2a72de;
+  box-shadow: 0px 4px 4px rgb(255 255 255 / 25%);
+  border-radius: 4px;
+  width: fit-content;
+  margin-left: auto;
 }
-.resetFilter{
-    margin-left: 1rem!important;
+.resetFilter {
+  margin-left: 1rem !important;
 }
-.saveChangesAndResetButtonCont{
+.saveChangesAndResetButtonCont {
+  display: flex;
+  width: fit-content;
+  margin-left: auto;
+}
+@media (max-width: 1248px) {
+  .MentorstitleAndFilterCont {
+    flex-direction: column;
+  }
+  .mentorFilterCardCont {
+    margin: auto;
+    margin-top: 2rem;
+  }
+  .priceAndExpertiseFilterCont {
+    margin-top: 2rem;
+  }
+}
+@media (max-width: 1217px) {
+  .MentorstitleAndFilterCont {
+    width: 70%;
+  }
+  .price-filter-option-cont {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    left: 0rem;
+  }
+}
+@media (max-width: 1180px) {
+  .filterOptionsShowCont {
+    display: block;
+  }
+  .saveChangesAndResetButtonCont {
     display: flex;
     width: fit-content;
-    margin-left: auto;
-}
-@media(max-width:1248px){
-    .MentorstitleAndFilterCont{
-        flex-direction: column;
-    }
-    .mentorFilterCardCont{
-        margin: auto;
-        margin-top: 2rem;
-    }
-    .priceAndExpertiseFilterCont{
-        margin-top: 2rem;
-    }
-}
-@media(max-width:1217px){
-    .MentorstitleAndFilterCont{
-        width: 70%;
-    }
-}
-@media(max-width:1180px){
-    .filterOptionsShowCont{
-        display: block;
-    }
-    .saveChangesAndResetButtonCont{
-        display: flex;
-        width: fit-content;
-        margin-left: 1rem;
-        margin-top: 2rem;
-    }
-    .filterOptionsShowCont{
-        width: 70%;
-    }
-    .priceAndExpertiseOptionCont{
-        width: 95%;
-    }
+    margin-left: 1rem;
+    margin-top: 2rem;
+  }
+  .filterOptionsShowCont {
+    width: 70%;
+  }
+  .priceAndExpertiseOptionCont {
+    width: 95%;
+  }
 }
 
-@media(max-width:1024px){
-    .mentorsSearchFilter{
-        margin-left: 1rem;
-    }
-    .ByExpertiseFilterCont{
-        margin-left: 1rem;
-    }
-    .priceAndExpertiseFilterCont{
-       flex-direction: column;
-    }
-    .mentorsSearchFilter{
-        margin: auto;
-        margin-top: 1.5rem;
-    }
+@media (max-width: 1024px) {
+  .mentorsSearchFilter {
+    margin-left: 1rem;
+  }
+  .ByExpertiseFilterCont {
+    margin-left: 1rem;
+  }
+  .priceAndExpertiseFilterCont {
+    flex-direction: column;
+  }
+  .mentorsSearchFilter {
+    margin: auto;
+    margin-top: 1.5rem;
+  }
 }
-@media(max-width:870px){
-    .filterOptionsShowCont{
-        width: 60%;
-    }
-    .priceAndExpertiseOptionCont{
-        width: 95%;
-    }
+@media (max-width: 870px) {
+  .filterOptionsShowCont {
+    width: 60%;
+  }
+  .priceAndExpertiseOptionCont {
+    width: 95%;
+  }
 }
-@media (max-width:816px){
-    .MentorstitleAndFilterCont{
-        width: 65%;
-        margin-left: 14rem;
-    }
-   /* .sortContainer{
+@media (max-width: 816px) {
+  .MentorstitleAndFilterCont {
+    width: 65%;
+    margin-left: 14rem;
+  }
+  /* .sortContainer{
     flex-direction: column;
    }  */
-   .ByExpertiseFilterCont{
+  .ByExpertiseFilterCont {
     margin-left: 0;
     margin-top: 1.5rem;
-   }
-   .ByExpertiseFilter{
+  }
+  .ByExpertiseFilter {
     margin: auto;
-   }
-   .ByPriceFilterCont{
+  }
+  .ByPriceFilterCont {
     margin: auto;
-   }   
-   .priceAndExpertiseFilterCont{
+  }
+  .priceAndExpertiseFilterCont {
     width: 95%;
-   } 
-   .ByExpertiseFilterCont{
+  }
+  .ByExpertiseFilterCont {
     margin-top: 0;
-   }
+  }
 }
-@media(max-width:680px){
-#mentors-page-new{
-margin-left: 11rem;
-}
-.MentorstitleAndFilterCont{
-
+@media (max-width: 680px) {
+  #mentors-page-new {
+    margin-left: 11rem;
+  }
+  .MentorstitleAndFilterCont {
     margin-left: 12.5rem;
+  }
 }
-}
-@media(max-width:634px){
-    #mentors-page-new{
+@media (max-width: 634px) {
+  #mentors-page-new {
     margin-left: 12.5rem;
-    }
-    }
-    
+  }
+}
 
-    @media(max-width:600px){
-        #mentors-page-new{
-            margin: auto;
-            margin-top: 3rem;
-            } 
-            
-            .MentorstitleAndFilterCont{
-                margin: auto;
-                width: 85%;
-            }
+@media (max-width: 600px) {
+  #mentors-page-new {
+    margin: auto;
+    margin-top: 3rem;
+  }
 
-            .priceAndExpertiseFilterCont{
-                margin: auto;
-                margin-top: 1.5rem;
-            }
+  .MentorstitleAndFilterCont {
+    margin: auto;
+    width: 85%;
+  }
 
-            .filterOptionsShowCont{
-                margin: auto;
-                margin-top: 2rem;
-                width: 80%;
-            }
-            
-    }
+  .priceAndExpertiseFilterCont {
+    margin: auto;
+    margin-top: 1.5rem;
+  }
+
+  .filterOptionsShowCont {
+    margin: auto;
+    margin-top: 2rem;
+    width: 80%;
+  }
+}
