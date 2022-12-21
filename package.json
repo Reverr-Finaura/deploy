@@ -10,7 +10,6 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.3.0",
     "animate.css": "^4.1.1",
-    "api": "^5.0.5",
     "axios": "^0.27.2",
     "body-parser": "^1.20.0",
     "cashfree-dropjs": "^1.1.4",

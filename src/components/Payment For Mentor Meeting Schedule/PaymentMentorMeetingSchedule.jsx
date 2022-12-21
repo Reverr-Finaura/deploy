@@ -1,4 +1,5 @@
 
+
 import { useState,useEffect } from 'react'
 import axios from 'axios'
 import React from 'react'
@@ -8,12 +9,16 @@ import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../firebase";
 import { setUserDoc } from "../../features/userDocSlice";
 import CashfreeDropInCont from "../Cashfree Dropin Container/CashfreeDropInCont"
+import { CorsOptions } from 'cors'
+
 
 const PaymentMentorMeetingSchedule = ({item}) => {
     const[mentorPlanPrice,setMentorPlanPrice]=useState()
     const user=useSelector((state)=>state.user)
     const userDocc=useSelector((state)=>state.userDoc)
     const dispatch=useDispatch()
+    
+    
     
 
 
@@ -41,13 +46,13 @@ setMentorPlanPrice(planPrice)
 
 
 const header={
-   headers:{
-        "Content-Type":`application/json`,
+  
+    accept: 'application/json',
+        "content-type":`application/json`,
         "x-api-version":"2022-09-01",
         "x-client-id":process.env.REACT_APP_CASHFREE_APP_ID,
         "x-client-secret":process.env.REACT_APP_CASHFREE_SECRET_KEY,
-
-   }
+         
 }
 
 //GENERATE RANDOM UNIQUE ID
@@ -84,38 +89,6 @@ axios.post(`https://sandbox.cashfree.com/pg/orders`,header,body)
 }
 
 
-
-
-//DROP CONTAINER CONFIG
-const dropinConfig = {
-    components: [
-        "order-details",
-        "card",
-        "netbanking",
-        "app",
-        "upi",
-    ],
-    onSuccess: function(data){
-       //on success
-       console.log("sucess",data)
-    },
-    onFailure: function(data){
-       //on success
-       console.log("failure",data)
-    },
-    style: {
-          //to be replaced by the desired values
-          backgroundColor: "#ffffff",
-          color: "#11385b", 
-          fontFamily: "Lato",
-          fontSize: "14px",
-          errorColor: "#ff0000",
-          theme: "light"
-    }
-}
-
-//RENDER DROPIN
-const renderDropin=()=>{}
 
   return (
     <>

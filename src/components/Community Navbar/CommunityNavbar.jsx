@@ -144,7 +144,7 @@ const rejectFollowRequest=async (id,userData)=>{
             {userDoc?.receivedRequests?.length===0?<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64.png" alt="nav-icons" />:<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64 (1).png" alt="nav-icons" />}
         {isRequestsButtonClick?
             <div className='notifiction-dropdown-cont'>
-            {userDoc?.receivedRequests?.length===0?<p className='notifiction-dropdown-Request-Cont'>No Requests</p>:null}
+            {userDoc?.receivedRequests?.length===0?<p className='notifiction-dropdown-Request-Cont'>No New Notification</p>:null}
            { userDoc?.receivedRequests?.map((item)=>{
             return <>
             <p className='notifiction-dropdown-Request-Cont' key={item}>
