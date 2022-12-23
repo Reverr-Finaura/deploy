@@ -18,6 +18,8 @@ import { selectUser } from "../../features/userSlice";
 import SidebarFinal from "../../components/Sidebar Final/SidebarFinal";
 import NavBarFinal from "../../components/Navbar/NavBarFinal";
 import PaymentMentorMeetingSchedule from "../../components/Payment For Mentor Meeting Schedule/PaymentMentorMeetingSchedule";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Schedule() {
@@ -27,6 +29,7 @@ function Schedule() {
 
   const {state} = useLocation();
   const[paymentModeOn,setPaymentModeOn]=useState(false)
+  const[paymentMade,setPaymentMade]=useState(false)
 
  
   // const [date, setDate] = useState(new Date());
@@ -41,9 +44,12 @@ function Schedule() {
 
   useCalendlyEventListener({
     // onProfilePageViewed: () => console.log("onProfilePageViewed"),
-    onDateAndTimeSelected: () => {setPaymentModeOn(true);console.log("onDateAndTimeSelected")},
+    onDateAndTimeSelected: () => {setPaymentModeOn(true)},
     // onEventTypeViewed: () => console.log("onEventTypeViewed"),
-    // onEventScheduled: (e) => console.log("eventSchedule",e.data.payload),
+    onEventScheduled: (e) => {console.log("eventSchedule",e.data.payload);
+  if(paymentMade===false){toast.error("As no payment has been made, your meeting has been Canceled!");return}
+if(paymentMade===true){toast.success("Meeting Scheduled Successfully");return}
+  }
   });
 
   const updateWidth = () => {
@@ -107,7 +113,7 @@ function Schedule() {
     <>
     {width>=600?<><SidebarFinal /><NavBarFinal/></>:<><PhnSidebar />
           <KnowledgeNavbar /></>}
-          {paymentModeOn?<PaymentMentorMeetingSchedule item={state.mentor}/>:null}
+          {paymentModeOn?<PaymentMentorMeetingSchedule item={state.mentor} setPaymentModeOn={setPaymentModeOn} setPaymentMade={setPaymentMade}/>:null}
       {/* <PhnSidebar /> */}
       <div className={styles.schedule}>
         {/* <KnowledgeNavbar /> */}

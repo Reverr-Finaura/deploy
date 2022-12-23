@@ -28,11 +28,10 @@
   }
 
   .dropin_parent {
-    max-width: 420px;
+    max-width: 500px;
     margin: auto;
     margin-top: 20px;
-    max-height: 600px;
-    height: 300px;
+    height: 95%;
     overflow-y: auto;
   }
   
@@ -76,6 +75,10 @@
   }
   .toppings_list{
     margin-bottom: 1rem;
+  }
+  .warningMessage{
+    color: red;
+    font-size: 1rem;
   }
   .mr_8 {
     margin-right: 1rem;

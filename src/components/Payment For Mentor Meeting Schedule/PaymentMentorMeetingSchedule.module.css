@@ -48,13 +48,33 @@ padding: 1rem;
 .inputLabel{
     margin-left: .25rem;
 }
-
-.renderButton{
+.makePaymentContainer{
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+.makePaymentContainerHeading{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.makePaymentContainerSubText{
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+.makePaymentContainerAmount{
+    font-weight: bold;
+}
+.makePaymentContainerPayButton{
     border-radius: 6px;
-    background-color: rgb(105, 51, 211);
+    /* background-color: rgb(105, 51, 211); */
+    background-color: #2A72DE;
     color: rgb(255, 255, 255);
     border: none;
     font-size: 14px;
     padding: 11px 16px;
     margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    cursor: pointer;
 }

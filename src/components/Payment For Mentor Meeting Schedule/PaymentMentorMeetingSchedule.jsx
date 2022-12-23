@@ -9,17 +9,23 @@ import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../firebase";
 import { setUserDoc } from "../../features/userDocSlice";
 import CashfreeDropInCont from "../Cashfree Dropin Container/CashfreeDropInCont"
-import { CorsOptions } from 'cors'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-const PaymentMentorMeetingSchedule = ({item}) => {
+const PaymentMentorMeetingSchedule = ({item,setPaymentModeOn,setPaymentMade}) => {
     const[mentorPlanPrice,setMentorPlanPrice]=useState()
     const user=useSelector((state)=>state.user)
     const userDocc=useSelector((state)=>state.userDoc)
     const dispatch=useDispatch()
+
+    const[sessionIdTokken,setSessionIdTokken]=useState(null)
+ 
+ 
     
-    
-    
+
+
+
 
 
     useEffect(()=>{
@@ -68,25 +74,28 @@ function addMinutes(date, minutes) {
     return new Date(date.getTime() + minutes*60000);
 }
 
-const handlePaymentClick=()=>{
-const body={
-    "order_id": `order_${uuid()}`,
-    "order_amount": mentorPlanPrice,
-    "order_currency": "INR",
-    "order_note": "",
-    "order_expiry_time": addMinutes(new Date(),15),
-    "customer_details": {
-     "customer_id": user?.user?.email,
-      "customer_name": userDocc?.name,
-      "customer_email": user?.user?.email,
-      "customer_phone": userDocc?.phone
-    }
+const handlePaymentClick=async()=>{
+
+if(userDocc?.phone===""||userDocc?.phone===undefined||userDocc?.phone===null){
+    toast.error("Kindly Fill your Mobile Number info in your Profile");return
+}
+toast("Processing Your Request")
+const bodyData={
+ 
+    id:`order_${uuid()}`,
+    amount:`${mentorPlanPrice}`,
+    // amount:"1",
+    currency:"INR",
+    customer_id:uuid(),
+    customer_phone:userDocc?.phone,
+    
 }
 
-axios.post(`https://sandbox.cashfree.com/pg/orders`,header,body)
-.then((res)=>{console.log("sucess",res)})
-.catch((err)=>{console.log("Failure",err)})
+axios.post("http://localhost:1337/webcftoken",bodyData)
+.then((res)=>{setSessionIdTokken(res.data.token)})
+.catch((err)=>{toast.error(err.message)})
 }
+
 
 
 
@@ -94,56 +103,19 @@ axios.post(`https://sandbox.cashfree.com/pg/orders`,header,body)
     <>
     <section className={styles.outerContainer}>
         <div className={styles.innerContainer}>
-        {/* <CashfreeDropInCont/> */}
-{/* 
-        <div className={styles.PaymentSessionIdContainer}>
-          <h1 className={styles.container_Heading}>Payment Session Id : <span className={styles.container_SubHeading}>12133131313</span></h1>
-          <h3 className={styles.chooseComponentsText}>Choose Components</h3>
+        <ToastContainer/>
+       {sessionIdTokken!==null?<CashfreeDropInCont sessionIdTokken={sessionIdTokken} mentorDetails={item} setSessionIdTokken={setSessionIdTokken} userDoc={userDocc} setPaymentModeOn={setPaymentModeOn} setPaymentMade={setPaymentMade}/>:null} 
+{sessionIdTokken===null?<div className={styles.makePaymentContainer}>
+<h1 className={styles.makePaymentContainerHeading}>Make Payment</h1>
+<p className={styles.makePaymentContainerSubText}>User Name : <span className={styles.makePaymentContainerAmount}>{userDocc?.name}</span></p>
+<p className={styles.makePaymentContainerSubText}>User Email : <span className={styles.makePaymentContainerAmount}>{userDocc?.email}</span></p>
+<p className={styles.makePaymentContainerSubText}>User Mobile Number : <span className={styles.makePaymentContainerAmount}>{userDocc?.phone}</span></p>
+<p className={styles.makePaymentContainerSubText}>Mentor Name : <span className={styles.makePaymentContainerAmount}>{item?.name}</span></p>
+<p className={styles.makePaymentContainerSubText}>Mentor Email : <span className={styles.makePaymentContainerAmount}>{item?.email}</span></p>
+<p className={styles.makePaymentContainerSubText}>Amount To Be Paid : <span className={styles.makePaymentContainerAmount}>₹ {mentorPlanPrice}</span></p>
+<button className={styles.makePaymentContainerPayButton} onClick={handlePaymentClick}>Pay</button>
+</div>:null}
 
-          <div className={styles.componentsContainer}>
-          <div className={styles.individualComponent}>
-          <input id='orderDetailsInput' className="drops" type="checkbox" value="order-details" checked/>
-        <label htmlFor="orderDetailsInput" className={styles.inputLabel}>Order Details</label> 
-        </div>
-        <div className={styles.individualComponent}>
-          <input id='orderDetailsInput' className="drops" type="checkbox" value="card"/>
-        <label htmlFor="orderDetailsInput" className={styles.inputLabel}>Card</label> 
-        </div>
-        <div className={styles.individualComponent}>
-          <input id='orderDetailsInput' className="drops" type="checkbox" value="upi"/>
-        <label htmlFor="orderDetailsInput" className={styles.inputLabel}>UPI</label> 
-        </div>
-        <div className={styles.individualComponent}>
-          <input id='orderDetailsInput' className="drops" type="checkbox" value="app"/>
-        <label htmlFor="orderDetailsInput" className={styles.inputLabel}>Wallets</label> 
-        </div>
-        <div className={styles.individualComponent}>
-          <input id='orderDetailsInput' className="drops" type="checkbox" value="netbanking"/>
-        <label htmlFor="orderDetailsInput" className={styles.inputLabel}>Netbanking</label> 
-        </div>
-        <div className={styles.individualComponent}>
-          <input id='orderDetailsInput' className="drops" type="checkbox" value="paylater"/>
-        <label htmlFor="orderDetailsInput" className={styles.inputLabel}>Paylater</label> 
-        </div>
-        <div className={styles.individualComponent}>
-          <input id='orderDetailsInput' className="drops" type="checkbox" value="credicardemi"/>
-        <label htmlFor="orderDetailsInput" className={styles.inputLabel}>Credit Card EMI</label> 
-        </div>
-        <div className={styles.individualComponent}>
-          <input id='orderDetailsInput' className="drops" type="checkbox" value="cardlessemi"/>
-        <label htmlFor="orderDetailsInput" className={styles.inputLabel}>Cardless EMI</label> 
-        </div>
-          </div>
-
-         
-<button onClick={renderDropin} className={styles.renderButton}>Render</button>
-
-<div className="dropin-parent" id="drop_in_container">
-Your component will come here
-</div>
-        </div> */}
-<h1>Make Payment</h1>
-        <button style={{padding:"1rem"}} onClick={handlePaymentClick}>Pay</button>
         </div>
     </section>
 
