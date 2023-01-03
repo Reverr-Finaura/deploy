@@ -43,8 +43,9 @@ const MentorsNew = () => {
   const [isFiltered, setIsFiltered] = useState(false);
   const data = [];
 
+
   console.log(selectedPriceOption);
-  // console.log("mentor array",mentorArray)
+  console.log("mentor array",mentorArray)
 
   const updateWidth = () => {
     setWidth(window.innerWidth);
@@ -57,7 +58,9 @@ const MentorsNew = () => {
 
   //FETCH MENTOR DATA FROM FIREBASE
   useEffect(() => {
+ 
     async function fetchMentorExpertise() {
+      
       const mentorsRef = collection(db, "Users");
       const q = query(mentorsRef);
       const querySnapshot = await getDocs(q);
@@ -65,17 +68,20 @@ const MentorsNew = () => {
         // var mentor = [];
         if (
           doc.data().userType === "Mentor" &&
-          doc.data().domain[0] != "" &&
-          doc.data().industry != ""
+          doc.data().domain[0] !== "" &&
+          doc.data().industry !== ""
         ) {
-          data.push(doc.data());
+          setMentorArray((prev)=>{
+            return [...prev,doc.data()]
+          })
+         
           // var {email} =doc._document.data.value.mapValue.fields;
           // console.log(email.stringValue);
           // doc.data().id=email;
           // console.log(doc.data());
         }
       });
-      setMentorArray(data);
+     
     }
     fetchMentorExpertise();
   }, []);

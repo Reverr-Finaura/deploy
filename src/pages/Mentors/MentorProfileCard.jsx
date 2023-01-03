@@ -21,12 +21,12 @@ const MentorProfileCard = ({item,index}) => {
         
     </div>
     <div className='mentor-cardd-top-part-right-col'>
-        <img className='mentor-cardd-top-part-right-col-image' src={item?.image} alt="mentor-profile" />
+        <img className='mentor-cardd-top-part-right-col-image' src={item?.image?item?.image:"https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6"} alt="mentor-profile" />
     </div>
 </div>
 
 <div className='mentor-cardd-middle-part'>
-    <p className='mentor-cardd-middle-part-intro'>{item?.about.slice(0,180)}</p>
+    <p className='mentor-cardd-middle-part-intro'>{item?.about?item?.about.slice(0,180):"He's an entrepreneur who has mentored more than 1000 students, and is highly experienced in this field. He's an explorer and is extremely passionate about all his work."}</p>
 </div>
 
 <div className='mentor-cardd-skill-part'>

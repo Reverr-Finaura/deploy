@@ -2,7 +2,7 @@ import React from 'react'
 import "./EventCard.css"
 
 const EventCard = ({meetingArray,purementorArray}) => {
-
+console.log("meetingArray",meetingArray)
     function toMonthName(monthNumber) {
         const date = new Date();
         date.setMonth(monthNumber - 1);

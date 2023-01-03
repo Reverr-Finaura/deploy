@@ -53,7 +53,7 @@ console.log("user",user)
 
 
 
-  const data = [];
+ 
   const blogData=[];
   const courseData=[];
   const meetingData=[];
@@ -171,14 +171,17 @@ useEffect(()=>{
           doc.data().domain[0] != "" &&
           doc.data().industry != ""
         ) {
-          data.push(doc.data());
+          setMentorArray((prev)=>{
+            return [...prev,doc.data()]
+          })
+        
           // var {email} =doc._document.data.value.mapValue.fields;
           // console.log(email.stringValue);
           // doc.data().id=email;
           // console.log(doc.data());
         }
       });
-      setMentorArray(data);
+      
     }
     fetchMentorExpertise();
   }, []);
