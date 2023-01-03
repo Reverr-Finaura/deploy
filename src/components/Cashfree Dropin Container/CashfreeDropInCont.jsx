@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { doc, setDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 function CashfreeDropInCont({sessionIdTokken,mentorDetails,setSessionIdTokken,userDoc,setPaymentModeOn,setPaymentMade}) {
   const navigate=useNavigate()
@@ -92,9 +93,34 @@ if(transaction.txStatus==="SUCCESS"){
 }
 },[orderDetails])
 
+
+//INITIALIZE SPLIT PAYMENT
+const initiateSplitPayment=async(order)=>{
+  const headers = {
+    'Content-Type': 'application/json',
+    "X-Client-Id":"21235619dae90a7c71fa82b24c653212",
+    "X-Client-Secret":"b3fcd2aee2a93a9d7efedcd88936046a43506c5c",
+  };
+
+  const data=
+    {
+      "split": [
+        {
+              "vendorId":mentorDetails.mentorUniqueID,
+              "amount":(mentorDetails.plans[0]/2)*0.9,
+              "percentage": null
+          }
+      ],
+      "splitType": "ORDER_AMOUNT"
+  }
+  
+  await axios.post(`https://api.cashfree.com/api/v2/easy-split/orders/${order.orderId}/split`,data,{headers: headers}).then((res)=>{console.log("sucess split",res)}).catch((err)=>{console.log("Failure Split",err.message)})
+}
+
 //ACTION PERFORM ON SUCESSFUL PAYMENT
 
 const onSuccessfulPayment=async(order,transaction)=>{
+  initiateSplitPayment(order)
   const newId=uuid()
   await setDoc(
     doc(db, "Payments", newId),{

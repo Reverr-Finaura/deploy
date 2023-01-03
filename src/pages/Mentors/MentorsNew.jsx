@@ -68,8 +68,10 @@ const MentorsNew = () => {
         // var mentor = [];
         if (
           doc.data().userType === "Mentor" &&
-          doc.data().domain[0] !== "" &&
-          doc.data().industry !== ""
+          doc.data().domain &&
+          // doc.data().industry !== ""&&
+          doc.data().mentorUniqueID&&
+          doc.data().mentorCalendlyLink
         ) {
           setMentorArray((prev)=>{
             return [...prev,doc.data()]

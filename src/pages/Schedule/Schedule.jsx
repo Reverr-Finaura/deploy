@@ -123,7 +123,8 @@ if(paymentMade===true){toast.success("Meeting Scheduled Successfully");return}
             className={`animate__animated animate__fadeInUp ${styles.content}`}
           >
             <InlineWidget
-              url="https://calendly.com/reverrmeet/30min"
+              // url="https://calendly.com/reverrmeet/30min"
+              url={state.mentor.mentorCalendlyLink}
               prefill={prefill}
               styles={{
                 width: "75vw",

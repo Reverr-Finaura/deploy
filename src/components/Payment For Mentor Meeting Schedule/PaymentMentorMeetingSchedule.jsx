@@ -79,6 +79,9 @@ const handlePaymentClick=async()=>{
 if(userDocc?.phone===""||userDocc?.phone===undefined||userDocc?.phone===null){
     toast.error("Kindly Fill your Mobile Number info in your Profile");return
 }
+if(!item.mentorUniqueID||item.mentorUniqueID===""){
+  toast.error("No Mentor Unique Id");return
+}
 toast("Processing Your Request")
 const bodyData={
  
