@@ -18,7 +18,7 @@ console.log("meetingArray",meetingArray)
    <>
     {meetingArray.map((item,index)=>{
 return (
-<div style={{display:item.month>new Date().getMonth()+1?"":item.month===new Date().getMonth()+1?item.date>=new Date().getDate()?"":"none":"none"}} className="meeting-item-container" key={index}>
+<div style={{display:item.year<new Date().getFullYear()?"none":item.month>new Date().getMonth()+1?"":item.month===new Date().getMonth()+1?item.date>=new Date().getDate()?"":"none":"none"}} className="meeting-item-container" key={index}>
     <img className="meeting-person-photo" src={(purementorArray.filter((items)=>{
       return items.email===item.mentor_email
     }))[0].image?

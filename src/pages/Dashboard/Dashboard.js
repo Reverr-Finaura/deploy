@@ -275,6 +275,8 @@ fetchCoursesFromDb()
 
 useEffect(()=>{
   meetingArray.map((item)=>{
+    if(item.year<new Date().getFullYear){setHasMeeting(false);return}
+    if(item.year>new Date().getFullYear){setHasMeeting(true);return}
     if(item.month>new Date().getMonth()+1){setHasMeeting(true)} 
     else if(item.month===new Date().getMonth()+1){
     if (item.date>=new Date().getDate()){setHasMeeting(true)}
