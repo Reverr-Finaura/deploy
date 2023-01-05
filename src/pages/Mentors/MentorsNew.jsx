@@ -41,7 +41,8 @@ const MentorsNew = () => {
     useState(false);
   const [arrayToBeMapped, setArrayToBeMapped] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
-  const data = [];
+
+
 
 
   console.log(selectedPriceOption);
@@ -65,13 +66,13 @@ const MentorsNew = () => {
       const q = query(mentorsRef);
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
+       
         // var mentor = [];
         if (
           doc.data().userType === "Mentor" &&
           doc.data().domain &&
           // doc.data().industry !== ""&&
-          doc.data().mentorUniqueID&&
-          doc.data().mentorCalendlyLink
+          doc.data().mentorUniqueID
         ) {
           setMentorArray((prev)=>{
             return [...prev,doc.data()]
@@ -615,7 +616,7 @@ const MentorsNew = () => {
           {arrayToBeMapped.map((item, index) => {
             return (
               <>
-                <MentorProfileCard key={index} item={item} index={index} />
+                <MentorProfileCard key={item.email} item={item} index={index} />
               </>
             );
           })}

@@ -8,7 +8,7 @@ const MentorProfileCard = ({item,index}) => {
     const navigate=useNavigate()
   return (
   <>
-   <div className='mentors-page-card' key={index} id={index}>
+   <div className='mentors-page-card' key={item.email} id={item.email}>
     <div className='mentor-cardd'>
 <div className='mentor-cardd-top-part'>
     <div className='mentor-cardd-top-part-left-col'>
@@ -26,7 +26,7 @@ const MentorProfileCard = ({item,index}) => {
 </div>
 
 <div className='mentor-cardd-middle-part'>
-    <p className='mentor-cardd-middle-part-intro'>{item?.about?item?.about.slice(0,180):"He's an entrepreneur who has mentored more than 1000 students, and is highly experienced in this field. He's an explorer and is extremely passionate about all his work."}</p>
+    <p className='mentor-cardd-middle-part-intro'>{item?.about?item?.about.slice(0,180):"I am an entrepreneur who has mentored more than 1000 students, and is highly experienced in this field. I am an explorer and is extremely passionate about all my work."}</p>
 </div>
 
 <div className='mentor-cardd-skill-part'>
@@ -34,7 +34,7 @@ const MentorProfileCard = ({item,index}) => {
     return <>
     <div className='mentor-cardd-skill-part-skill-cont'>
         <div className='mentor-cardd-skill-part-skill-cont-skill-tag'><SkillIcon /></div>
-        <p className='mentor-cardd-skill-part-skill-cont-skill name'>{skill}</p>
+        <p className='mentor-cardd-skill-part-skill-cont-skill name'>{skill?skill:"Edtech"}</p>
     </div> 
     </>
 })}
@@ -43,7 +43,7 @@ const MentorProfileCard = ({item,index}) => {
 
 <div className='mentor-cardd-bottom-part'>
     <div className='mentor-cardd-bottom-part-left-col'>
-<h3 className='mentor-cardd-bottom-part-left-col-price-cont'>&#8377; {(item?.plans[0]/2)<=500?500:(item?.plans[0]/2)>500&&(item?.plans[0]/2)<=750?750:(item?.plans[0]/2)>750&&(item?.plans[0]/2)<=1000?1000:(item?.plans[0]/2)>1000&&(item?.plans[0]/2)<=1500?1500:item?.plans[0]/2} <span className='mentor-cardd-bottom-part-left-col-per-time'>/ 30 min</span></h3>
+<h3 className='mentor-cardd-bottom-part-left-col-price-cont'>&#8377; {(item?.plans[0]/2)<=500?500:(item?.plans[0]/2)>500&&(item?.plans[0]/2)<=750?750:(item?.plans[0]/2)>750&&(item?.plans[0]/2)<=1000?1000:(item?.plans[0]/2)>1000&&(item?.plans[0]/2)<=1500?1500:item?.plans[0]/2+50} <span className='mentor-cardd-bottom-part-left-col-per-time'>/ 30 min</span></h3>
     </div>
     <div className='mentor-cardd-bottom-part-right-col'>
         <button onClick={()=>navigate('/schedule', {state:{mentor:item}})}className='mentor-cardd-bottom-part-right-col-schedule-btn'>Schedule</button>

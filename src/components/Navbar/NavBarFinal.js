@@ -28,6 +28,23 @@ const[isRequestsButtonClick,setRequestsbuttonClick]=useState(false)
     const [userDocList,setUserDocList]=useState([])
 
 
+// CHECK FOR USER DOC DATA
+useEffect(()=>{
+  async function fetchUserDocFromFirebase(){
+    const userDataRef = collection(db, "Users");
+    const q = query(userDataRef);
+    const querySnapshot = await getDocs(q);
+   
+    querySnapshot.forEach((doc) => {
+      
+     if(doc.id===user?.user?.email){
+      dispatch(setUserDoc(doc.data())); 
+     }
+    }); 
+  }
+fetchUserDocFromFirebase()
+},[user])
+
 // CHECK FOR USER DOC LIST WHO HAS REQUESTED FOLLOW
 useEffect(()=>{
   async function fetchUserDocListFromFirebase(){

@@ -280,7 +280,9 @@ setEditCommentId(null)
     <h3 className={styles.postAuthorName}>{postUserDetail?.name}</h3>
     <p className={styles.postAuthorDesignation}>{postUserDetail?.designation?postUserDetail?.designation:""}</p>
     </div>
-    <div className={styles.postUploadDateContainer}>{
+    <div className={styles.postUploadDateContainer}>
+    {new Date(item?.createdAt?.seconds*1000).toDateString().slice(4)}
+    {/* {
         new Date(singlePostTime)?.getFullYear()!==new Date().getFullYear()?((new Date().getFullYear()- new Date(singlePostTime)?.getFullYear())+" Year ago"):
         singlePostTime?.getMonth()+1!==new Date().getMonth()+1?(((new Date().getMonth()+1)-(singlePostTime?.getMonth()+1))+" Month ago"):
         singlePostTime?.getDate()!==new Date().getDate()?((new Date().getDate()-singlePostTime?.getDate())+" Day ago"):
@@ -289,7 +291,8 @@ setEditCommentId(null)
         new Date(singlePostTime).getMinutes()!==new Date().getMinutes()?(new Date().getMinutes()-
         new Date(singlePostTime).getMinutes())+" Minute Ago":
         new Date(singlePostTime).getSeconds()!==new Date().getSeconds()?(new Date().getSeconds()-
-        new Date(singlePostTime).getSeconds())+" Second Ago":""}</div>
+        new Date(singlePostTime).getSeconds())+" Second Ago":""} */}
+        </div>
 </div>
 <div className={styles.postTextContainer}>
     {item?.text.length>100?<h3 className={styles.postText}>{ShowMorePostText?item?.text:<>{item?.text.slice(0,100)}<span onClick={()=>setShowMorePostText(true)} className={styles.morePostTextButton}>...continue</span> </>}</h3>

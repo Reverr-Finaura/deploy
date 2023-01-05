@@ -124,7 +124,7 @@ if(paymentMade===true){toast.success("Meeting Scheduled Successfully");return}
           >
             <InlineWidget
               // url="https://calendly.com/reverrmeet/30min"
-              url={state.mentor.mentorCalendlyLink}
+              url={state.mentor.mentorCalendlyLink?state.mentor.mentorCalendlyLink:"https://calendly.com/reverrmeet/30min"}
               prefill={prefill}
               styles={{
                 width: "75vw",

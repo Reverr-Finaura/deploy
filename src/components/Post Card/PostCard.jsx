@@ -261,7 +261,6 @@ const handleSendPostLinkClick=(id)=>{
     var url = `${tempUrl}/${id}`;
 navigator.clipboard.writeText(url).then(function() {
   toast("Link Copied To ClipBoard");
-  toast("Link Copied To ClipBoard");
 }, function(err) {
   console.error('Could not copy text: ', err);
 });
@@ -283,7 +282,9 @@ useEffect(()=>{
     <p className='postAuthorDesignation'>{postedByUserDoc?.designation?postedByUserDoc?.designation:""}</p>
     </div>
         
-        <div className='postUploadDateContainer'>{
+        <div className='postUploadDateContainer'>
+        {new Date(item?.createdAt?.seconds*1000).toDateString().slice(4)}
+        {/* {
         new Date(postTime)?.getFullYear()!==new Date().getFullYear()?((new Date().getFullYear()- new Date(postTime)?.getFullYear())+" Year ago"):
         postTime?.getMonth()+1!==new Date().getMonth()+1?(((new Date().getMonth()+1)-(postTime?.getMonth()+1))+" Month ago"):
         postTime?.getDate()!==new Date().getDate()?((new Date().getDate()-postTime?.getDate())+" Day ago"):
@@ -292,7 +293,8 @@ useEffect(()=>{
         new Date(postTime).getMinutes()!==new Date().getMinutes()?(new Date().getMinutes()-
         new Date(postTime).getMinutes())+" Minute Ago":
         new Date(postTime).getSeconds()!==new Date().getSeconds()?(new Date().getSeconds()-
-        new Date(postTime).getSeconds())+" Second Ago":""}</div>
+        new Date(postTime).getSeconds())+" Second Ago":""} */}
+        </div>
     </div>
     <div className='postTextContainer'>
     {item?.text.length>100?<h3 className='postText'>{showMorePostTextClick?item?.text:<>{item?.text.slice(0,100)}<span onClick={()=>setShowMorePostTextClick(true)} className='morePostTextButton'>...continue</span> </>}</h3>
