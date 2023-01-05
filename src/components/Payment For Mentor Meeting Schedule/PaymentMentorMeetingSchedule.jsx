@@ -77,7 +77,7 @@ function addMinutes(date, minutes) {
 const handlePaymentClick=async()=>{
 
 if(userDocc?.phone===""||userDocc?.phone===undefined||userDocc?.phone===null){
-    toast.error("Kindly Fill your Mobile Number info in your Profile");return
+    toast.error("Kindly Fill your Mobile Number Info in your Profile");return
 }
 if(!item.mentorUniqueID||item.mentorUniqueID===""){
   toast.error("No Mentor Unique Id");return
@@ -94,7 +94,7 @@ const bodyData={
     
 }
 
-axios.post("http://localhost:1337/webcftoken",bodyData)
+axios.post("http://54.172.20.42:3000/webcftoken",bodyData)
 .then((res)=>{setSessionIdTokken(res.data.token)})
 .catch((err)=>{toast.error(err.message)})
 }

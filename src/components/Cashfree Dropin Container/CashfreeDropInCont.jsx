@@ -108,6 +108,8 @@ const initiateSplitPayment=async(order)=>{
         {
               "vendorId":mentorDetails.mentorUniqueID,
               "amount":(mentorDetails.plans[0]/2)*0.9,
+              // "vendorId":"ansh123456bansal",
+              // "amount":(1)*0.9,
               "percentage": null
           }
       ],
