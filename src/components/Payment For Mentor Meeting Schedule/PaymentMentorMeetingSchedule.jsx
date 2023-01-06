@@ -29,7 +29,7 @@ const PaymentMentorMeetingSchedule = ({item,setPaymentModeOn,setPaymentMade}) =>
 
 
     useEffect(()=>{
-const planPrice=(item?.plans[0]/2)<=500?500:(item?.plans[0]/2)>500&&(item?.plans[0]/2)<=750?750:(item?.plans[0]/2)>750&&(item?.plans[0]/2)<=1000?1000:(item?.plans[0]/2)>1000&&(item?.plans[0]/2)<=1500?1500:item?.plans[0]/2
+const planPrice=(item?.plans[0]/2)<=5?item?.plans[0]/2:(item?.plans[0]/2)<=500?500:(item?.plans[0]/2)>500&&(item?.plans[0]/2)<=750?750:(item?.plans[0]/2)>750&&(item?.plans[0]/2)<=1000?1000:(item?.plans[0]/2)>1000&&(item?.plans[0]/2)<=1500?1500:(item?.plans[0]/2)+50
 setMentorPlanPrice(planPrice)
     },[])
 
