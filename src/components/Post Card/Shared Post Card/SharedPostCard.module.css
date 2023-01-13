@@ -63,6 +63,13 @@ margin-bottom: 1rem;
 font-weight: 600;
 
 }
+.postSharedLikeCountText{
+    margin: auto;
+    /* margin-left: 0.5rem; */
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
 .postText{
     font-weight: lighter;
     font-size: 1rem!important;
@@ -114,6 +121,11 @@ font-weight: 600;
     margin-right: .5rem;
     cursor: pointer;
 }
+.commentPostIconn{
+    font-size: 1.8rem;
+    margin: auto;
+    margin-right: .5rem;
+}
 .postSendLinkContainer{
     margin: auto;
     cursor: pointer;
@@ -143,6 +155,16 @@ font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;
+}
+.moreRandomText{
+    display: flex;
+    align-items: center;
+    margin-left: 0.25rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.1rem!important;
+    margin-left: .5rem;
 }
 .standardThreeDotsOption{
     width: 110px;
@@ -253,4 +275,10 @@ color: white;
 border: none;
 cursor: pointer;
 
+}
+
+@media(max-width:550px){
+    .moreRandomText,.postSendText,.postSharedLikeCountText{
+        display: none;
+    }
 }

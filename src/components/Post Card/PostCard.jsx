@@ -10,6 +10,11 @@ import { getUserDocByRef } from '../../firebase'
 import LikeIcon from '../Like And Liked Icon/LikeIcon'
 import LikedIcon from '../Like And Liked Icon/LikedIcon'
 import commentIcon from "../../images/postCommentIcon.png"
+import { FaComments } from 'react-icons/fa'
+import {RiShareForwardFill} from "react-icons/ri"
+import {TfiMoreAlt} from "react-icons/tfi"
+import {AiTwotoneLike} from "react-icons/ai"
+import {AiOutlineLike} from "react-icons/ai"
 
 const PostCard = ({postsData,setPostsData,item,handleEditPostButtonClick,setPostsAuthorIsClick,setPostsAuthorInfo}) => {
     const userDoc=useSelector((state)=>state.userDoc) 
@@ -308,33 +313,40 @@ useEffect(()=>{
     
     <div className='postLikesAndCommentContainer'>
         <div className='postLikesContainer'>
-        <div onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className='postLikesContainerLikeIcon'>{item?.likes.includes(user?.user?.email)?<LikedIcon/>:<LikeIcon/>}</div>
+        <div onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className='postLikesContainerLikeIcon'>{item?.likes.includes(user?.user?.email)? <AiTwotoneLike className='postLikesContainerLikedIconn'/>:<AiOutlineLike className='postLikesContainerLikeIconn'/>}</div>
         
         {/* <i onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className={"fa fa-heart "+ (item?.likes.includes(user?.user?.email)?"heartPostLiked":"heartPostNotLiked")}></i> */}
-            <h3 className='postLikeCount'>{item?.likes.length}</h3>
-            <p className='postLikeCount postLikeCountText'>Like</p>
+       
+        
+        <p className='postLikeCount postLikeCountText'>{item?.likes.length<=1?"Like":"Likes"}</p>
+        <h3 className='postLikeCount'>{item?.likes.length}</h3>
+            
         </div>
         <div className='postCommentContainer'>
         <div className='commentContainer'>
-        <img src={commentIcon} alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIcon'/>
+        {/* <img src={commentIcon} alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIcon'/> */}
+        <FaComments onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIconn'/>
         
         {/* ;(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus() */}
         </div>
-            <h3 className='postCommentCount'>{item?.comments.length}</h3>
-            <p className='postLikeCountText'>Comment</p>
+        <p className='postLikeCountText'>{item?.comments.length<=1?"Comment":"Comments"}</p>
+        <h3 className='postCommentCount'>{item?.comments.length}</h3>
+           
         </div>
         <div onClick={()=>handleSendPostLinkClick(item.id)} className='postSendLinkContainer'>
 <div className='postSendCont'>
     <div className='postSendIcon'>
-        <img style={{width:"100%",height:"100%"}} src="./images/paper-plane.png" alt="sendIcon" />
+        {/* <img style={{width:"100%",height:"100%"}} src="./images/paper-plane.png" alt="sendIcon" /> */}
+        <RiShareForwardFill style={{fontSize:"1.8rem"}}/>
     </div>
-    <h3 className='postSendText'>Send</h3>
+    <h3 className='postSendText'>Share</h3>
 </div>
         </div>
         <div className='threeDotsMainCont'>
         <div className='threeDotsContainer'>
         <div style={{display:"flex"}}>
-        <img onClick={()=>setIsThreeDotsClicked(current=>!current)} className='threeDotsPost' src="./images/dots.png" alt="3dots" />
+        {/* <img onClick={()=>setIsThreeDotsClicked(current=>!current)} className='threeDotsPost' src="./images/dots.png" alt="3dots" /> */}
+        <TfiMoreAlt onClick={()=>setIsThreeDotsClicked(current=>!current)} className='threeDotsPostt'/>
         <p className='moreRandomText'>More</p>
         </div>
         

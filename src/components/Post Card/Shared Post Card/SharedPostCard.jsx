@@ -10,6 +10,11 @@ import commentIcon from "../../../images/postCommentIcon.png"
 import sendIcon from "../../../images/paper-plane.png"
 import threeDotsIcon from "../../../images/dots.png"
 import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import { FaComments } from 'react-icons/fa'
+import {RiShareForwardFill} from "react-icons/ri"
+import {TfiMoreAlt} from "react-icons/tfi"
+import {AiTwotoneLike} from "react-icons/ai"
+import {AiOutlineLike} from "react-icons/ai"
 
 const SharedPostCard = ({item,setPostsData,postsData,setEditSinglePostIsClick,handleEditSinglePost}) => {
 
@@ -305,29 +310,38 @@ setEditCommentId(null)
 {/* POST LIKE AND COMMENT SECTION */}
 <div className={styles.postLikesAndCommentContainer}>
 <div className={styles.postLikesContainer}>
-        <div onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className={styles.postLikesContainerLikeIcon}>{item?.likes.includes(user?.user?.email)?<LikedIcon/>:<LikeIcon/>}</div>
+        <div onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className={styles.postLikesContainerLikeIcon}>{item?.likes.includes(user?.user?.email)?<AiTwotoneLike className='postLikesContainerLikedIconn'/>:<AiOutlineLike className='postLikesContainerLikeIconn'/>}</div>
+        <p className={styles.postSharedLikeCountText}>{item?.likes.length<=1?"Like":"Likes"}</p>
             <h3 className={styles.postLikeCount}>{item?.likes.length}</h3>
         </div>
         <div className={styles.postCommentContainer}>
         <div className={styles.commentContainer}>
-        <img onClick={()=>setsinglePostCommentIconClick(current=>!current)} src={commentIcon} alt='commentIcon' className={styles.commentPostIcon}/>
+        <FaComments onClick={()=>setsinglePostCommentIconClick(current=>!current)} className={styles.commentPostIconn}/>
+        {/* <img onClick={()=>setsinglePostCommentIconClick(current=>!current)} src={commentIcon} alt='commentIcon' className={styles.commentPostIcon}/> */}
         </div>
+        <p className='postLikeCountText'>{item?.comments.length<=1?"Comment":"Comments"}</p>
             <h3 className={styles.postCommentCount}>{item?.comments.length}</h3>
         </div>
 {/* SEND POST SECTION */}
         <div onClick={()=>handleSendPostLinkClick(item.id)} className={styles.postSendLinkContainer}>
 <div className={styles.postSendCont}>
     <div className={styles.postSendIcon}>
-        <img style={{width:"100%",height:"100%"}} src={sendIcon} alt="sendIcon" />
+        {/* <img style={{width:"100%",height:"100%"}} src={sendIcon} alt="sendIcon" /> */}
+        <RiShareForwardFill style={{fontSize:"1.8rem"}}/>
     </div>
-    <h3 className={styles.postSendText}>Send</h3>
+    <h3 className={styles.postSendText}>Share</h3>
 </div>
         </div>
 
    {/* 3 DOTS SECTION      */}
    <div className={styles.threeDotsMainCont}>
         <div className={styles.threeDotsContainer}>
-        <img onClick={()=>setThreeDotsClicked(current=>!current)} className={styles.threeDotsPost} src={threeDotsIcon} alt="3dots" />
+        {/* <img onClick={()=>setThreeDotsClicked(current=>!current)} className={styles.threeDotsPost} src={threeDotsIcon} alt="3dots" /> */}
+        <div style={{display:"flex"}}>
+        <TfiMoreAlt  onClick={()=>setThreeDotsClicked(current=>!current)} className='threeDotsPostt'/>
+        <p className={styles.moreRandomText}>More</p>
+        </div>
+        
        {threeDotsClicked?
        <div className={user?.user?.email===item?.postedby?.id?styles.threeDotsOptions:styles.standardThreeDotsOption}>
        

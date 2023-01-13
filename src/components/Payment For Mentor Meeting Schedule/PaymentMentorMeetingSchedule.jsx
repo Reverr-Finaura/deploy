@@ -94,7 +94,7 @@ const bodyData={
     
 }
 
-axios.post("http://54.172.20.42:3000/webcftoken",bodyData)
+axios.post("https://server.reverrapp.com/webcftoken",bodyData)
 .then((res)=>{setSessionIdTokken(res.data.token)})
 .catch((err)=>{toast.error(err.message)})
 }

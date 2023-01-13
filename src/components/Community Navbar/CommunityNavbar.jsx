@@ -32,7 +32,6 @@ const[isSettingButtonClick,setIsSettingbuttonClick]=useState(false)
         setScroll(window.scrollY)
     }
 
-
 // CHECK FOR USER DOC LIST WHO HAS REQUESTED FOLLOW
 useEffect(()=>{
   async function fetchUserDocListFromFirebase(){

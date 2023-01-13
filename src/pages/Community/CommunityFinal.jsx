@@ -30,6 +30,9 @@ import CommunityUserProfilePopup from "../../components/Community User Profile P
 import { Outlet } from "react-router-dom";
 import CommunitySidebar from "../../components/Community Sidebar/CommunitySidebar";
 import expandTextAreaIcon from "../../images/addExpandTextArea.png";
+import axios from "axios";
+import CommunityNews from "../../components/Community News/CommunityNews";
+import NewSkeleton from "../../components/Post Skeleton/News Skeleton/NewSkeleton";
 
 const CommunityFinal = () => {
   const dispatch = useDispatch();
@@ -59,12 +62,45 @@ const CommunityFinal = () => {
   const [furtherSortOptionClick, setfurtherSortOptionClick] = useState(false);
 
   const [postIdExist, setPostIdExist] = useState("");
+const[newScoll,setNewScroll]=useState(0)
+const [newsData, setNewsData] = useState();
+const[singleNews,setSingleNews]=useState(null)
+console.log('newsData',newsData);
+
+
+//FETCH LATEST NEWS 
+const options = {
+  method: 'GET',
+  url: 'https://api.bing.microsoft.com/v7.0/news/search',
+  params: {q: 'startup', safeSearch: 'Off', textFormat: 'Raw'},
+  headers: {
+    'Content-Type': 'application/json',
+    'Ocp-Apim-Subscription-Key': 'bd03e8f8f29b46479ee4c2004280308f',
+  },
+};
+
+async function getNews() {
+
+  try {
+    await axios.request(options).then(res => {
+      setNewsData(res.data.value);
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+useEffect(()=>{
+  getNews();
+  
+},[])
 
   window.onscroll = () => {
     setScroll(window.scrollY);
   };
 
-  console.log("postsData", postsData);
+  console.log("scroll",newScoll)
+  // console.log("postsData", postsData);
 
   const updateWidth = () => {
     setWidth(window.innerWidth);
@@ -74,6 +110,15 @@ const CommunityFinal = () => {
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
+
+const updateScroll=()=>{
+  setNewScroll(window.scrollY)
+}
+
+useEffect(()=>{
+  window.addEventListener("scroll", updateScroll);
+  return () => window.removeEventListener("scroll", updateScroll);
+},[])
 
   //GET SITE URL
   useEffect(() => {
@@ -341,11 +386,11 @@ const CommunityFinal = () => {
       )}
       <section
         style={{
-          position: postsAuthorIsClick || postIdExist !== "" ? "fixed" : "",
+          position: postsAuthorIsClick || postIdExist!== "" ? "fixed" : "",
         }}
         id="communityFinalPageOuterSection"
       >
-        <section id="communityFinalPage">
+        <section style={{position:singleNews?"fixed":""}} id="communityFinalPage">
           <ToastContainer />
           <input
             onChange={onImageChange}
@@ -612,10 +657,10 @@ const CommunityFinal = () => {
             </section>
           </div>
 
-          <section className="sortOptionBigContainer">
+          <section className={width>600&&newScoll>212?"sortOptionBigContainer sortOptionBigContainerScrolled":width<600&&newScoll>382?"sortOptionBigContainer sortOptionBigContainerScrolledd":"sortOptionBigContainer"}>
             {/* FURTHER SORT POST SECTION */}
 
-            <section id="sortPostSection">
+            {/* <section id="sortPostSection">
               <h2
                 onClick={() => setfurtherSortOptionClick((e) => !e)}
                 className="sortPostSectionHeading"
@@ -668,14 +713,36 @@ const CommunityFinal = () => {
                   </button>
                 </div>
               ) : null}
-            </section>
+            </section> */}
+<section  onClick={() => {setSortOptionSelected((prev) => {return { ...prev, whose: "Everything" };});setfurtherSortOptionClick(false);}} id="updatedSortPostSection">Discover
+<div style={{display:sortOptionSelected.whose === "Everything"?"":"none"}} className="updatedSortPostSectionUnderLine"></div>
+</section>
 
+<section onClick={() => {setSortOptionSelected((prev) => { return { ...prev, whose: "People You Follow" };});setfurtherSortOptionClick(false);}} id="updatedSortPostSection">Following
+<div style={{display:sortOptionSelected.whose === "People You Follow"?"":"none"}} className="updatedSortPostSectionUnderLine"></div>
+</section>
             {/* SORT POST SECTION */}
-
-            <section id="sortPostSection">
+<section onClick={() => setSortOptionClick((e) => !e)} id="updatedSortPostSection">{sortOptionSelected.time==="Popular Now"?"Popular":sortOptionSelected.time==="Newest"?"Latest":sortOptionSelected.time}
+{sortOptionClick?<section style={{ right:sortOptionSelected.time==="Newest"||sortOptionSelected.time==="Oldest"? "-40px":"-20px"}} className="dropDownSortOptionCont">
+  <p onClick={(e) => {e.stopPropagation();setSortOptionSelected((prev) => {return { ...prev, time: "Popular Now" };});setSortOptionClick(false);}} className="dropDownSortOptionContOptions">Popular</p>
+  <p  onClick={(e) => {e.stopPropagation();
+                      setSortOptionSelected((prev) => {
+                        return { ...prev, time: "Newest" };
+                      });
+                      setSortOptionClick(false);
+                    }} className="dropDownSortOptionContOptions">Latest</p>
+  <p  onClick={(e) => {e.stopPropagation();
+                      setSortOptionSelected((prev) => {
+                        return { ...prev, time: "Oldest" };
+                      });
+                      setSortOptionClick(false);
+                    }} className="dropDownSortOptionContOptions">Oldest</p>
+</section>:null}
+</section>
+            {/* <section id="sortPostSection">
               <h2
                 onClick={() => setSortOptionClick((e) => !e)}
-                className="sortPostSectionHeading"
+                className="sortPostSectionHeading sortPostSectionHeadinggg"
               >
                 Sorted By:{" "}
                 <span className="sortPostSectionHeadingItemName">
@@ -740,7 +807,7 @@ const CommunityFinal = () => {
                   </button>
                 </div>
               ) : null}
-            </section>
+            </section> */}
           </section>
 
           {/* POST SECTION */}
@@ -780,6 +847,31 @@ const CommunityFinal = () => {
             </InfiniteScroll>
           </div>
         </section>
+
+{/* COMMUNITY NEWS SECTION */}
+{width>1180?
+<section id="communityNewsSection">
+  <div className="communityNewsSectionContainer">
+    <h3 className="communityNewsSectionHeading">Trending News</h3>
+    {!newsData && (
+                  <div>
+                    <NewSkeleton cards={3} />
+                  </div>
+                )}
+    {newsData?.map((news)=>{
+      return <>
+      <div className="communityNewsSectionNewsCont" onClick={()=>setSingleNews(news)} key={news.url}>
+      <div className="communityNewsSectionNewsImageCont">
+        <img className="communityNewsSectionNewsImage" src={news.image.thumbnail.contentUrl} alt="newsImg" />
+      </div>
+      <p className="communityNewsSectionNewsInfo">{news.description.slice(0,60)}....</p>
+    </div>
+      </>
+    })}
+  </div>
+</section>
+:null}
+{singleNews?<CommunityNews singleNews={singleNews} setSingleNews={setSingleNews}/>:null}
       </section>
 
       <CommunityUserProfilePopup

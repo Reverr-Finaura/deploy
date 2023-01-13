@@ -7,9 +7,9 @@ import PhnSidebar from "../../components/PhnSidebar/PhnSidebar";
 import { db } from "../../firebase";
 import "./MentorsNew_Module_Ansh_New.css";
 import MentorProfileCard from "./MentorProfileCard";
-import LoadingMentorCard from "./LoadingMentorCard";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import MentorSkeleton from "../../components/Post Skeleton/Mentor Skeleton/MentorSkeleton";
 // const MentorProfileCard=React.lazy(()=>import('./MentorProfileCard'))
 
 const MentorsNew = () => {
@@ -546,12 +546,7 @@ const MentorsNew = () => {
         ) : null}
       </div>
 
-      {/* <div className='loadingAnimationContainer'>
-<LoadingMentorCard />
-<LoadingMentorCard />
-<LoadingMentorCard />
-<LoadingMentorCard />
-</div> */}
+     
       {NewFilteredMentorArrayExpertieWise.length !== 0 ||
       NewFilteredMentorArrayPriceWise.length !== 0 ||
       NewFilteredMentorArrayExpertieWiseAfterPriceWise.length !== 0 ? (
@@ -611,8 +606,14 @@ const MentorsNew = () => {
         </>
       ) : null}
 
-      <section id="mentors-page-new">
-        <div className="mentors-page-card-container">
+      <section style={{marginLeft:arrayToBeMapped?.length===0&&width>600?"17.5rem":"",marginTop:arrayToBeMapped?.length===0&&width>1509?"-2rem":""}} id="mentors-page-new">
+      
+        <div style={{gap:arrayToBeMapped?.length===0?"14px":"",width:arrayToBeMapped?.length===0?"100%":""}} className="mentors-page-card-container">
+        {arrayToBeMapped?.length===0 && (
+                  <>
+                    <MentorSkeleton cards={3} />
+                  </>
+                )}
           {arrayToBeMapped.map((item, index) => {
             return (
               <>

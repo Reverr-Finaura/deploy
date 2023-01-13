@@ -25,10 +25,13 @@ box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
 }
 .postLikeCount,.postCommentCount{
     font-size: 1.2rem!important;
+    margin: auto;
     
 }
 .postLikeCountText{
+    margin: auto;
     margin-left: .5rem;
+    margin-right: .5rem;
     font-size: 1.1rem;
     font-weight: bold;
 }
@@ -67,6 +70,11 @@ box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
     display: flex;
     align-items: center;
 }
+.threeDotsPostt{
+    font-size: 1.7rem;
+    cursor: pointer;
+    margin: auto;
+}
 .standardThreeDotsOption{
     width: 110px;
     height: 50px;
@@ -76,7 +84,8 @@ box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
     right: 0;
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);  
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%); 
+    z-index: 20; 
 }
 .threeDotsOptions{
     width: 100px;
@@ -87,7 +96,8 @@ box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
     right: 0;
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);  
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    z-index: 20;  
 }
 .commentThreeDotsPost{
     margin-left: auto;
@@ -121,7 +131,7 @@ font-weight: 600;
 }
 .postText{
     font-weight: lighter;
-    font-size: 1rem!important;
+    font-size: 1.2rem!important;
 }
 .morePostTextButton{
     color: #2A72DE;
@@ -139,6 +149,15 @@ font-weight: 600;
 .postLikesContainerLikeIcon{
     width: fit-content;
     cursor: pointer;
+}
+.postLikesContainerLikedIconn{
+    font-size: 1.8rem;
+    margin: auto;
+    color: #2a72de;
+}
+.postLikesContainerLikeIconn{
+    font-size: 1.8rem;
+    margin: auto;
 }
 .heartPostLiked{
     font-size: 30px;
@@ -159,6 +178,10 @@ font-weight: 600;
 .commentPostIcon{
     width: 30px;
     margin-right: .2rem;
+    cursor: pointer;
+}
+.commentPostIconn{
+    font-size: 2rem;
     cursor: pointer;
 }
 .commentContainer{
@@ -336,11 +359,12 @@ outline: 2px solid #2A72DE;
 
 
 @media(max-width:980px){
-    .infiniteScrollOuterDiv,.reverrCommunityUploadContainerrr{
-        width: 75%;
-    }
+   
     .postLikeCountText,.moreRandomText,.postSendText{
         display: none;
+    }
+    .commentPostIconn{
+        margin-right: .25rem;
     }
   
 }

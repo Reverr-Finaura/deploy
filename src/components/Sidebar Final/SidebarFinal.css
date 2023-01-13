@@ -1,6 +1,7 @@
 #sidebar-final{
     background-color: white;
-    width: 156px;
+    /* width: 156px; */
+    width: 200px;
     height: 100vh;
     display: flex;
     position:fixed;

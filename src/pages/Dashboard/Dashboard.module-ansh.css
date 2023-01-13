@@ -58,7 +58,7 @@ margin-top: 1rem;
 .dashboard{
     width: 80%;
     min-height: 100vh;
-    margin-left: 14rem;
+    margin-left: 17rem;
     margin-top: 10rem;
     margin-bottom: 3rem;
 
@@ -418,8 +418,10 @@ line-height: 48px;
 @media(max-width:1135px)
 {
     .dashboard{
-        margin-left: 12.5rem;
+        margin-left: 14.5rem;
+        width: 77%;
     }
+    
 }
 
 @media(max-width:1055){
@@ -429,7 +431,7 @@ line-height: 48px;
 }
 @media(max-width:1030px){
     .dashboard{
-        margin-left: 11rem;
+        margin-left: 13rem;
     }
     .dashboard-data-right-cont{
         align-items: flex-end;
@@ -500,7 +502,12 @@ line-height: 48px;
 
 
 }
-
+@media(max-width:800px){
+    .dashboard{
+        width: 70%;
+        margin-left: 13rem;
+    }
+}
 @media(max-width:750px){
     .dashboard{
         width: 70%;
@@ -511,7 +518,7 @@ line-height: 48px;
 @media(max-width:701px){
     .dashboard{
         width: 75%;
-        margin-left: 10rem;
+        margin-left: 12rem;
         
     }
        .dshboard-user-profile-status-cont{
