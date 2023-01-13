@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.88aade1f.css",
+    "main.js": "/static/js/main.e6ed7a74.js",
+    "static/media/Rectangle 2931.png": "/static/media/Rectangle 2931.70db98a5c106857d20e9.png",
+    "static/media/addExpandTextArea.png": "/static/media/addExpandTextArea.132696644e79a1f05c3b.png",
+    "static/media/paper-plane.png": "/static/media/paper-plane.94969f8dc18ef9d88a57.png",
+    "index.html": "/index.html",
+    "main.88aade1f.css.map": "/static/css/main.88aade1f.css.map",
+    "main.e6ed7a74.js.map": "/static/js/main.e6ed7a74.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.88aade1f.css",
+    "static/js/main.e6ed7a74.js"
+  ]
+}
