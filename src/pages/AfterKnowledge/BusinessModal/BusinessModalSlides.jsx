@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Slide from "./../../../components/After knowledge/Slide Format/Slide";
 
 import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
@@ -6,6 +6,7 @@ import NavBarFinal from "../../../components/Navbar/NavBarFinal";
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
 import styles from "./Knowledge.module.css";
+import { useNavigate } from "react-router-dom";
 
 const BusinessModalSlides = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -141,7 +142,7 @@ const BusinessModalSlides = () => {
 
   var totalLen = Object.keys(obj).length;
   const [currIndex, setCurrIndex] = useState(0);
-
+  const navigate = useNavigate();
   return (
     <>
       {width >= 600 ? (
@@ -163,6 +164,15 @@ const BusinessModalSlides = () => {
               style={{ display: currIndex === index ? "block" : "none" }}
               className={styles.content}
             >
+              <div className={styles.back_Btn}>
+                <button
+                  className={styles.knowledge_Btn}
+                  onClick={() => navigate("/buisnessmodal")}
+                >
+                  {" "}
+                  ⬅ Back
+                </button>
+              </div>
               <Slide
                 content={slide}
                 setCurrIndex={setCurrIndex}

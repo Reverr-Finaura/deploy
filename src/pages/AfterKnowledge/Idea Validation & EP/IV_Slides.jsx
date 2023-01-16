@@ -6,10 +6,10 @@ import NavBarFinal from "../../../components/Navbar/NavBarFinal";
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
 import styles from "./Knowledge.module.css";
+import { useNavigate } from "react-router-dom";
 const IV_Slides = () => {
-
   const [width, setWidth] = useState(window.innerWidth);
-
+  const navigate = useNavigate();
   const updateWidth = () => {
     setWidth(window.innerWidth);
   };
@@ -17,7 +17,7 @@ const IV_Slides = () => {
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
-  
+
   const research_plan = [
     {
       title: "INTRODUCTION",
@@ -227,6 +227,15 @@ const IV_Slides = () => {
               style={{ display: currIndex === index ? "block" : "none" }}
               className={styles.content}
             >
+              <div className={styles.back_Btn}>
+                <button
+                  className={styles.knowledge_Btn}
+                  onClick={() => navigate("/idea-validation")}
+                >
+                  {" "}
+                  ⬅ Back
+                </button>
+              </div>
               <Slide
                 content={slide}
                 setCurrIndex={setCurrIndex}

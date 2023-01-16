@@ -56,7 +56,23 @@
 .courses__flex {
   display: flex;
 }
+.back_Btn {
+  width: 90%;
+  margin: auto;
+}
+.knowledge_Btn {
+  background: #2a72de;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  margin-bottom: 2rem;
 
+  padding: 0.8rem 1.5rem;
+  font-size: 18px;
+  font-weight: 600;
+  color: #f6f6f6;
+  cursor: pointer;
+}
 @media (max-width: 768px) {
   .book_para {
     font-size: 24px;
@@ -266,7 +282,7 @@
     font-size: 32px;
   }
 }
-@media(max-width:945px){
+@media (max-width: 945px) {
   .content {
     width: 75%;
     /* margin: auto 5rem auto 10rem; */
@@ -293,7 +309,6 @@
     width: 6rem;
     object-fit: contain;
   } */
-
 
   .phnOptions {
     display: flex;

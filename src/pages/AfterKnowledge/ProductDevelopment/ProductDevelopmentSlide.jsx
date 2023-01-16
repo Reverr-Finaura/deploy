@@ -5,6 +5,7 @@ import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
 import NavBarFinal from "../../../components/Navbar/NavBarFinal";
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import styles from "./Knowledge.module.css";
+import { useNavigate } from "react-router-dom";
 const ProductDevelopmentSlide = () => {
   const obj = [
     {
@@ -149,7 +150,7 @@ const ProductDevelopmentSlide = () => {
   var totalLen = Object.keys(obj).length;
   const [currIndex, setCurrIndex] = useState(0);
   const [width, setWidth] = useState(window.innerWidth);
-
+  const navigate = useNavigate();
   const updateWidth = () => {
     setWidth(window.innerWidth);
   };
@@ -179,6 +180,15 @@ const ProductDevelopmentSlide = () => {
               style={{ display: currIndex === index ? "block" : "none" }}
               className={styles.content}
             >
+              <div className={styles.back_Btn}>
+                <button
+                  className={styles.knowledge_Btn}
+                  onClick={() => navigate("/productdevelopment")}
+                >
+                  {" "}
+                  ⬅ Back
+                </button>
+              </div>
               <Slide
                 content={slide}
                 setCurrIndex={setCurrIndex}
