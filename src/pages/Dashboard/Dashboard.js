@@ -30,6 +30,7 @@ const Dashboard = () => {
 
 const user=useSelector((state)=>state.user)
 const userDoc=useSelector((state)=>state.userDoc)
+console.log("user",userDoc)
 // const userFundingDoc=useSelector((state)=>state.userFundingDoc)
 
 // console.log("userFundingDoc",userFundingDoc)
@@ -129,7 +130,10 @@ else{setHasNoUserDoc(true);return}
 
 // CHECK FOR USER PHOTO
 useEffect(()=>{
- 
+ if(userDoc?.image!==""){
+  setUserImage(userDoc.image)
+  return;
+ }
   if(user?.user?.photoURL!==null){
     setUserImage(user?.user?.photoURL)
  return;
@@ -146,16 +150,33 @@ useEffect(()=>{
 
   // CHECK FOR USER NAME
 useEffect(()=>{
+  if(userDoc?.name&&userDoc?.name!==""){
+    setUserName(userDoc.name)
+    return;
+  }
   if(user?.user?.displayName!==null){
     setUserName(user?.user?.displayName )
+    return
   }
-  else{
+  
     
     var idx = user?.user?.email.indexOf("@")
     var name =user?.user?.email.slice(0,idx)
     setUserName(name)
-  }
   
+  
+  },[userDoc])
+
+  useEffect(()=>{
+    if(user?.user?.displayName!==null){
+      setUserName(user?.user?.displayName )
+      
+    }
+    else{      
+      var idx = user?.user?.email.indexOf("@")
+      var name =user?.user?.email.slice(0,idx)
+      setUserName(name)
+    }
   },[user])
 
 //FETCH MENTOR DATA FROM FIREBASE
@@ -497,7 +518,7 @@ toast("Processing Your Request")
 
 <section className="mentors-containerr">
 <h2 className="mentors-container-titlee">Mentors</h2>
-{mentorArray.slice(0,8).map((item)=>{
+{mentorArray.filter((item)=>{return item.image!=="https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6"}).slice(0,8).map((item)=>{
   return <MentorCard key={item.email} item={item}  />
 })}
 <div className="load-more-mentor-btn-cont">

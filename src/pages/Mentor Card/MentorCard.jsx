@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const MentorCard = ({item}) => {
-  
+  console.log("mentors",item)
     const navigate = useNavigate();
   return (
     <>

@@ -608,7 +608,7 @@ const MentorsNew = () => {
 
       <section style={{marginLeft:arrayToBeMapped?.length===0&&width>600?"17.5rem":"",marginTop:arrayToBeMapped?.length===0&&width>1509?"-2rem":""}} id="mentors-page-new">
       
-        <div style={{gap:arrayToBeMapped?.length===0?"14px":"",width:arrayToBeMapped?.length===0?"100%":""}} className="mentors-page-card-container">
+        <div style={{gap:arrayToBeMapped?.length===0?"14px":"",width:arrayToBeMapped?.length===0?"80.5vw":""}} className="mentors-page-card-container">
         {arrayToBeMapped?.length===0 && (
                   <>
                     <MentorSkeleton cards={3} />

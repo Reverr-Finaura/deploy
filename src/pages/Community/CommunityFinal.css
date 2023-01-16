@@ -494,7 +494,7 @@ body::-webkit-scrollbar{
 }
 .communityNewsSectionContainer{
   width: 88%;
-  height: 450px;
+  height: 560px;
   background-color: #F6F6F6;
   border-radius: 11px;
   display: flex;
