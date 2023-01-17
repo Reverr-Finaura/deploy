@@ -84,20 +84,20 @@
   margin-top: 2rem;
   width: 88%;
   margin-left: 5rem;
-  padding-top: .8rem;
-  padding-bottom: .8rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
   background-color: white;
   border-radius: 7px;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 30%);
 }
-.sortOptionBigContainerScrolled{
+.sortOptionBigContainerScrolled {
   position: fixed;
-  top: 4.40rem;
+  top: 4.4rem;
   width: 45.5%;
   z-index: 100;
   margin-left: 4rem;
 }
-.rotate-180{
+.rotate-180 {
   transform: rotate(180deg);
 }
 /* SORT POST SECTION */
@@ -108,7 +108,7 @@
   margin: auto;
   position: relative;
 }
-#updatedSortPostSection{
+#updatedSortPostSection {
   margin: auto;
   position: relative;
   font-family: "Poppins";
@@ -117,7 +117,7 @@
   font-size: 20px;
   cursor: pointer;
 }
-.updatedSortPostSectionUnderLine{
+.updatedSortPostSectionUnderLine {
   width: 90%;
   height: 4px;
   background-color: #2a72de;
@@ -127,11 +127,11 @@
   left: 3%;
   border-radius: 5px;
 }
-.dropDownSortOptionCont{
+.dropDownSortOptionCont {
   cursor: default;
   width: 150px;
   height: 100px;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
   border-radius: 11px;
   font-family: "Poppins";
@@ -145,11 +145,10 @@
   display: flex;
   flex-direction: column;
 }
-.dropDownSortOptionContOptions{
+.dropDownSortOptionContOptions {
   margin: auto;
   cursor: pointer;
 }
-
 
 .sortPostSectionHeading {
   font-family: "Poppins";
@@ -160,7 +159,7 @@
   width: fit-content;
   padding: 0.5rem;
   /* background-color: white; */
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
   cursor: pointer;
   display: flex;
@@ -183,7 +182,7 @@
   margin-top: 1rem;
   width: fit-content;
   z-index: 1;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   padding: 1rem;
   position: absolute;
 }
@@ -227,7 +226,7 @@
   width: fit-content;
   position: absolute;
   z-index: 1;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   padding: 1rem;
   width: max-content;
 }
@@ -391,11 +390,13 @@
   border-top: 0;
   margin-top: -10px;
   display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .communityPostImage {
   width: 40%;
-  margin: auto;
+  /* margin: auto; */
   margin-bottom: 1rem;
 }
 
@@ -441,12 +442,32 @@
   border-top: 0;
   margin-top: -10px;
   display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 .edit-communityPostImage {
   width: 209px;
   height: 150px;
-  margin: auto;
+  /* margin: auto; */
   margin-bottom: 1rem;
+}
+edit_Delete_Btn {
+  display: flex;
+
+  width: 100px;
+  justify-content: space-around;
+}
+
+.delete_Btn,
+.edit_Btn {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.edit_Btn {
+  margin-left: 0.81rem;
+}
+.delete_Btn {
+  color: red;
 }
 .editImageOverLayContainerImageContainer {
   position: relative;
@@ -475,7 +496,7 @@
 
 /* COMMUNITY NEWS SECTION */
 
-#communityNewsSection{
+#communityNewsSection {
   width: 28%;
   min-height: 100%;
   background-color: white;
@@ -486,16 +507,16 @@
   padding-top: 0;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
 }
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   display: none;
 }
-.communityNewsSectionContainer::-webkit-scrollbar{
+.communityNewsSectionContainer::-webkit-scrollbar {
   display: none;
 }
-.communityNewsSectionContainer{
+.communityNewsSectionContainer {
   width: 88%;
   height: 560px;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   border-radius: 11px;
   display: flex;
   flex-direction: column;
@@ -505,80 +526,79 @@ body::-webkit-scrollbar{
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
   margin-top: 1rem;
   margin-left: 1rem;
-    
 }
 
-.communityNewsSectionHeading{
-  font-family: 'Poppins';
-font-style: normal;
-font-weight: 600;
-font-size: 1.4rem;
-line-height: 42px;
-margin-bottom: 1.5rem;
+.communityNewsSectionHeading {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 42px;
+  margin-bottom: 1.5rem;
 }
-.communityNewsSectionNewsCont{
+.communityNewsSectionNewsCont {
   display: flex;
   margin-bottom: 1.5rem;
   cursor: pointer;
   border-radius: 11px;
-    padding: .5rem;
-    background: white;
-    margin-right: 1rem;
+  padding: 0.5rem;
+  background: white;
+  margin-right: 1rem;
 }
-.communityNewsSectionNewsImageCont{
+.communityNewsSectionNewsImageCont {
   display: flex;
 }
-.communityNewsSectionNewsImage{
+.communityNewsSectionNewsImage {
   border-radius: 11px;
   width: 80px;
   height: 80px;
   margin: auto;
 }
-.communityNewsSectionNewsInfo{
-  font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    color: #202020;
-    padding: .5rem;
+.communityNewsSectionNewsInfo {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #202020;
+  padding: 0.5rem;
 }
 
-@media(max-width:1350px){
+@media (max-width: 1350px) {
   /* #communityNewsSection {
     width: 34.5%;
   } */
 }
-@media(max-width:1240px){
-  .sortOptionBigContainer{
-    padding-left: .5rem;
-    padding-right: .5rem;
+@media (max-width: 1240px) {
+  .sortOptionBigContainer {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     margin-left: 4rem;
     /* width: 92%; */
   }
-  #communityFinalPageOuterSection{
-margin-left: 13rem;
+  #communityFinalPageOuterSection {
+    margin-left: 13rem;
   }
 }
-@media(max-width:1220px){
-  .sortOptionBigContainerScrolled{
+@media (max-width: 1220px) {
+  .sortOptionBigContainerScrolled {
     position: fixed;
-    top: 4.40rem;
+    top: 4.4rem;
     width: 43%;
     z-index: 100;
     margin-left: 4rem;
   }
 }
 @media (max-width: 1180px) {
-  #communityFinalPageOuterSection{
+  #communityFinalPageOuterSection {
     margin-left: 15rem;
-      }
+  }
   #communityFinalPage {
     width: 82%;
   }
-  .sortOptionBigContainerScrolled{
+  .sortOptionBigContainerScrolled {
     position: fixed;
-    top: 4.40rem;
+    top: 4.4rem;
     width: 59%;
     z-index: 100;
     margin-left: 4rem;
@@ -597,10 +617,10 @@ margin-left: 13rem;
     margin-right: 1rem;
   }
 }
-@media(max-width:980px){
-  .sortOptionBigContainerScrolled{
+@media (max-width: 980px) {
+  .sortOptionBigContainerScrolled {
     position: fixed;
-    top: 4.40rem;
+    top: 4.4rem;
     width: 54%;
     z-index: 100;
     margin-left: 4rem;
@@ -611,9 +631,9 @@ margin-left: 13rem;
     width: 90%;
     padding-right: 1rem;
   }
-  .sortOptionBigContainerScrolled{
+  .sortOptionBigContainerScrolled {
     position: fixed;
-    top: 4.40rem;
+    top: 4.4rem;
     width: 60%;
     z-index: 100;
     margin-left: 4rem;
@@ -626,14 +646,14 @@ margin-left: 13rem;
     margin-top: 2rem;
     /* flex-direction: column; */
   }
-  .sortOptionBigContainerScrolled{
+  .sortOptionBigContainerScrolled {
     position: fixed;
-    top: 4.40rem;
+    top: 4.4rem;
     width: 58%;
     z-index: 100;
     margin-left: 4rem;
   }
-  .sortPostSectionHeadinggg{
+  .sortPostSectionHeadinggg {
     margin-top: 1rem;
   }
 }
@@ -643,7 +663,7 @@ margin-left: 13rem;
     margin-left: 2rem;
     width: 100% !important;
   }
-  .sortOptionBigContainer{
+  .sortOptionBigContainer {
     width: 95%;
     margin-left: 2rem;
   }
@@ -658,9 +678,9 @@ margin-left: 13rem;
     padding: 0.35rem;
     margin-right: 1rem;
   }
-  .sortOptionBigContainerScrolled{
+  .sortOptionBigContainerScrolled {
     position: fixed;
-    top: 4.40rem;
+    top: 4.4rem;
     width: 60%;
     z-index: 100;
     margin-left: 1rem;
@@ -679,17 +699,16 @@ margin-left: 13rem;
   }
   .sortOptionBigContainer {
     margin-left: 2rem;
-    
   }
-  .sortOptionBigContainerScrolled{
+  .sortOptionBigContainerScrolled {
     position: fixed;
-    top: 4.40rem;
+    top: 4.4rem;
     width: 55.9%;
     z-index: 100;
     margin-left: 2rem;
   }
 }
-@media(max-width:700px){
+@media (max-width: 700px) {
   #communityFinalPageOuterSection {
     margin-left: 12rem;
   }
@@ -725,18 +744,17 @@ margin-left: 13rem;
     margin-right: 1rem;
     margin-bottom: 1.5rem;
   }
-  
+
   .sortOptionBigContainer {
     margin: auto;
-    
   }
-  .sortPostSectionHeadinggg{
+  .sortPostSectionHeadinggg {
     margin-top: 0;
     margin-bottom: 0;
   }
-  .sortOptionBigContainerScrolledd{
+  .sortOptionBigContainerScrolledd {
     position: fixed;
-    top: .00rem;
+    top: 0rem;
     width: 90.9%;
     z-index: 100;
     margin: auto;
