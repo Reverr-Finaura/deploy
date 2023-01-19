@@ -26,6 +26,8 @@ const[isRequestsButtonClick,setRequestsbuttonClick]=useState(false)
     const chat = useSelector(selectChat);
     const userDoc=useSelector((state)=>state.userDoc)
     const [userDocList,setUserDocList]=useState([])
+    const[notificationList,setNotificationList]=useState([])
+
 
 
 // CHECK FOR USER DOC DATA
@@ -38,12 +40,31 @@ useEffect(()=>{
     querySnapshot.forEach((doc) => {
       
      if(doc.id===user?.user?.email){
+      
       dispatch(setUserDoc(doc.data())); 
      }
     }); 
   }
 fetchUserDocFromFirebase()
 },[user])
+
+
+//CHECK FOR NOTIFICATION
+useEffect(()=>{
+async function fetchNotificationFromFirebase(){
+  const userDataRef = collection(db, "Users"); 
+  const q = query(userDataRef);
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc)=>{
+if(userDoc?.notification?.includes(doc.id)){
+  setNotificationList((prev)=>{
+    return [...prev,{...doc.data(),id:doc.id}]
+  })
+}
+  })
+}
+fetchNotificationFromFirebase()
+},[isRequestsButtonClick])
 
 // CHECK FOR USER DOC LIST WHO HAS REQUESTED FOLLOW
 useEffect(()=>{
@@ -53,7 +74,7 @@ useEffect(()=>{
     const querySnapshot = await getDocs(q);
    
     querySnapshot.forEach((doc) => {
-      if(userDoc?.receivedRequests.includes(doc.id))
+      if(userDoc?.receivedRequests?.includes(doc.id))
       setUserDocList((prev)=>{
         return [...prev,{...doc.data(),id:doc.id}]
       })
@@ -80,6 +101,11 @@ acceptFollowRequest(id,userData[0])
         }
 //ACCEPT FOLLOW REQUEST
 const acceptFollowRequest=async (id,userData)=>{
+  let notificationArray
+  if(!userDoc.notification){notificationArray=[]}
+  else{notificationArray=userDoc.notification}
+  const newNotificationArray=[...notificationArray,userDoc.email]
+
   const newReceivedRequestsArray=userDoc.receivedRequests.filter((item)=>{
     return item!==id
   })
@@ -96,7 +122,7 @@ const acceptFollowRequest=async (id,userData)=>{
 console.log("userWhoRequestedNewNetworkArray",userWhoRequestedNewNetworkArray)
   try {
     await updateDoc(userDocumentRef,{receivedRequests:newReceivedRequestsArray,network:newNetworkArray})
-    await updateDoc(userWhoRequestedFollowDocRef,{sendRequests:userWhoRequestedNewsendRequestArray,network:userWhoRequestedNewNetworkArray})
+    await updateDoc(userWhoRequestedFollowDocRef,{sendRequests:userWhoRequestedNewsendRequestArray,network:userWhoRequestedNewNetworkArray,notification:newNotificationArray})
   toast("Accepted Follow Request")
   dispatch(setUserDoc(updatedUserDoc))
   } catch (error) {
@@ -141,6 +167,22 @@ const rejectFollowRequest=async (id,userData)=>{
   
 }
 
+//HANDLE DELETE NOTIFICATION
+
+const handleDeleteNotification=async(id)=>{
+const newNotificationList=notificationList.filter((item)=>{
+  return item.id!==id
+})
+const userDocumentRef=doc(db,"Users",userDoc.email)
+const updatedUserDoc={...userDoc,notification:newNotificationList}
+try {
+  await updateDoc(userDocumentRef,{notification:newNotificationList})
+  dispatch(setUserDoc(updatedUserDoc))
+} catch (error) {
+  console.log(error.message)
+}
+}
+
   return (
     <>
     <section id='navbar-final'>
@@ -154,10 +196,20 @@ const rejectFollowRequest=async (id,userData)=>{
             }}  className='nabar-final-msg-cont' src="./images/Vector (2).png" alt="nav-icons" /></div> */}
 
             <div onClick={()=>setRequestsbuttonClick(current=>!current)} className='navbar-topp-social-icon'>
-            {userDoc?.receivedRequests?.length===0?<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64.png" alt="nav-icons" />:<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64 (1).png" alt="nav-icons" />}
+            {userDoc?.receivedRequests?.length===0&&userDoc?.notification?.length===0?<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64.png" alt="nav-icons" />:<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64 (1).png" alt="nav-icons" />}
             {isRequestsButtonClick?
             <div className='notifiction-dropdown-cont'>
-            {userDoc?.receivedRequests?.length===0?<p className='notifiction-dropdown-Request-Cont'>No New Notification</p>:null}
+            {userDoc?.receivedRequests?.length===0&&userDoc?.notification?.length===0?<p className='notifiction-dropdown-Request-Cont'>No New Notification</p>:null}
+            {userDoc?.notification?.map((item)=>{
+              return <>
+              <p className='notifiction-dropdown-Request-Cont' key={item}>
+            <span style={{height:"fit-content"}}><img className='notifiction-dropdown-Request-image' src={notificationList?.filter((e)=>{
+              return e.id===item})[0]?.image} alt="requestUsrImg" /></span>
+            <span className='notifiction-dropdown-Request-name'>{notificationList?.filter((e)=>{
+              return e.id===item})[0]?.name}</span> has accepted your follow request
+            <span onClick={()=>handleDeleteNotification(item)} className='notifiction-dropdown-Request-reject'>❌</span></p> 
+              </>
+            })}
            { userDoc?.receivedRequests?.map((item)=>{
             return <>
             <p className='notifiction-dropdown-Request-Cont' key={item}>
