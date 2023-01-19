@@ -96,27 +96,18 @@ if(transaction.txStatus==="SUCCESS"){
 
 //INITIALIZE SPLIT PAYMENT
 const initiateSplitPayment=async(order)=>{
-  const headers = {
-    'Content-Type': 'application/json',
-    "X-Client-Id":"21235619dae90a7c71fa82b24c653212",
-    "X-Client-Secret":"b3fcd2aee2a93a9d7efedcd88936046a43506c5c",
-  };
 
-  const data=
-    {
-      "split": [
-        {
-              "vendorId":mentorDetails.mentorUniqueID,
-              "amount":(mentorDetails.plans[0]/2)*0.9,
-              // "vendorId":"ansh123456bansal",
-              // "amount":(1)*0.9,
-              "percentage": null
-          }
-      ],
-      "splitType": "ORDER_AMOUNT"
-  }
+  const bodyData={
+    orderId:order.orderId,
+    vendorId:mentorDetails.mentorUniqueID,
+    amount:(mentorDetails.plans[0]/2)*0.9,
+    secrett:"2V7W@ODU6HTRS1GY$54JQ*EP0F8N%9!BI&AXKML3#ZCQ!$3U",
+}
+
   
-  await axios.post(`https://api.cashfree.com/api/v2/easy-split/orders/${order.orderId}/split`,data,{headers: headers}).then((res)=>{console.log("sucess split",res)}).catch((err)=>{console.log("Failure Split",err.message)})
+  await axios.post("https://server.reverrapp.com/webSplitPayment",bodyData)
+  .then((res)=>{console.log("success split",res.data.message)})
+  .catch((err)=>{console.log("Failure Split",err.message)})
 }
 
 //ACTION PERFORM ON SUCESSFUL PAYMENT
@@ -164,12 +155,21 @@ txTime:""
 //UPDATE DATA IN USER DATABASE
 const updateUserDatabase=async(newId,transaction)=>{
   let userPaymentArray
+  let userMentorArray
+  let mentorClientArray
   if(!userDoc.Payments){userPaymentArray=[]}
   else{userPaymentArray=userDoc.Payments}
   const newUserPaymentArray=[...userPaymentArray,newId]
+if(!userDoc.mentors){userMentorArray=[]}
+else{userMentorArray=userDoc.mentors}
+const newMentorArray=[...userMentorArray,mentorDetails.email]
+if(!mentorDetails.clients){mentorClientArray=[]}
+else{mentorClientArray=mentorDetails.clients}
+const newMentorClientsArray=[...mentorClientArray,userDoc.email]
 
 
 const userDocumentRef=doc(db,"Users",user?.user?.email)
+const mentorDocumentRef=doc(db,"Users",mentorDetails?.email)
 await updateDoc(userDocumentRef,{Payments:newUserPaymentArray}).then(()=>{
   if(transaction.txStatus==="FAILED"){
   toast.error(transaction.txMsg);
@@ -179,10 +179,15 @@ await updateDoc(userDocumentRef,{Payments:newUserPaymentArray}).then(()=>{
         return;
       }
     if(transaction.txStatus==="SUCCESS"){
-      toast.success(transaction.txMsg); 
+      updateDoc(userDocumentRef,{mentors:newMentorArray}).then(()=>{
+        updateDoc(mentorDocumentRef,{clients:newMentorClientsArray})
+      }).then(()=>{
+        toast.success(transaction.txMsg); 
       setPaymentModeOn(false) 
       setPaymentMade(true)
       return
+      })
+      
     }
 }).catch((err)=>{toast(err.message)})
 }

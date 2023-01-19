@@ -51,15 +51,7 @@ setMentorPlanPrice(planPrice)
   },[user])
 
 
-const header={
-  
-    accept: 'application/json',
-        "content-type":`application/json`,
-        "x-api-version":"2022-09-01",
-        "x-client-id":process.env.REACT_APP_CASHFREE_APP_ID,
-        "x-client-secret":process.env.REACT_APP_CASHFREE_SECRET_KEY,
-         
-}
+
 
 //GENERATE RANDOM UNIQUE ID
 const uuid=()=>{
