@@ -27,7 +27,7 @@ const MentorProfile = () => {
 <>
 {width>=600?<><SidebarFinal /><NavBarFinal /></>:<><PhnSidebar />
     <KnowledgeNavbar /></>}
-    <div style={{ backgroundColor: "#f6f6f6" }}>
+    <div className={styles.background}>
       {/* <PhnSidebar /> */}
       <div className={styles.knowledge}>
         {/* <KnowledgeNavbar /> */}

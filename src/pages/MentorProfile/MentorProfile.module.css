@@ -1,3 +1,6 @@
+.background{
+  background-color: var(--bg-clr);
+}
 .body {
   width: 88.5%;
   display: flex;
@@ -59,14 +62,14 @@
 
 .h1_tag {
   font-size: 45px;
-  color: #202020;
+  color: var(--main-text);
   font-weight: 600;
   margin: 0 auto;
   text-align: inherit;
 }
 
 .about_mentor > p {
-  color: rgba(32, 32, 32, 0.75);
+  color: var(--main-text);
   text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.12);
   font-size: 35px;
   font-weight: 500;
@@ -80,7 +83,7 @@
 }
 
 .detail > h5 {
-  color: rgba(32, 32, 32, 0.75);
+  color: var(--main-text);
   font-size: 22px;
   font-weight: 600;
   margin: 0 auto;
@@ -102,7 +105,7 @@
 }
 
 .mentor_bio > p {
-  color: rgba(32, 32, 32, 0.75);
+  color: var(--main-text);
   text-align: justify;
   padding-left: 5%;
   font-size: 24px;
@@ -137,7 +140,7 @@
   font-size: 18px;
   line-height: 10px;
   font-weight: 600;
-  color: rgba(32, 32, 32, 0.75);
+  color: var(--main-text);
 }
 
 .mentor_contact {
@@ -159,7 +162,7 @@
 }
 
 .mentor_contact > p {
-  color: #3b3b3b;
+  color: var(--main-text);
   font-size: 40px;
   font-weight: 600;
 }
