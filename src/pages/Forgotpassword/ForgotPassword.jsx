@@ -7,10 +7,11 @@ import { auth } from "../../firebase";
 import Header from "../../components/Header/Header";
 import Footer from "../Footer/Footer";
 import {toast} from "react-hot-toast"
+import { useSelector } from "react-redux";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
-
+  const theme=useSelector((state)=>state.themeColor)
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,7 +28,7 @@ const ForgotPassword = () => {
   };
   return (
     <>
-      <Header theme={"black"} />
+      <Header theme={theme} />
       <section className={styles.auth}>
         <div className={styles.password_reset}>
           <p>We'll mail you password reset link.</p>

@@ -1,5 +1,5 @@
 #sidebar-final{
-    background-color: white;
+    background-color: var(--comment-card);
     /* width: 156px; */
     width: 200px;
     height: 100vh;
@@ -11,7 +11,7 @@
     padding: 1rem 2rem;
     padding-bottom: 1.5rem;
     z-index: 1000;
-    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);;
+    box-shadow: 0px 4px 4px var(--box-shadow);
 }
 .sidebar-final-brand-logo{
     cursor: pointer;
@@ -34,7 +34,7 @@ font-style: normal;
 font-weight: 500;
 font-size: 18px;
 line-height: 36px;
-color: #202020;
+color: var(--main-text);
 }
 
 .sidebar-final-line{

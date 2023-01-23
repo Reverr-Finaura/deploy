@@ -16,7 +16,7 @@
     font-weight: 600;
     font-size: 32px;
     line-height: 48px;
-    color: #000C12;
+    color: var(--main-text);
 }
 
 .getFundingPageForm{
@@ -37,6 +37,7 @@
     border: none;
     font-family: 'Poppins';
     font-size: 18px;
+    color: var(--main-text);
 }
 .getFundingPageFormInput:focus{
     outline: none;
@@ -55,7 +56,8 @@ position: absolute;
 right: 17%;
 top: 33.5%;
 font-size: 16px !important;
-background-color: #a1a3a6 !important;
+/* background-color: #a1a3a6 !important; */
+background-color: #2a72de;
     padding: 12px 21px;
     font-weight: 600;
     border-radius: 10px;

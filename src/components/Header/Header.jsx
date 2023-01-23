@@ -9,12 +9,12 @@ import { toast } from "react-hot-toast";
 import styles from "./header.module.css";
 import { remove } from "../../features/newUserSlice";
 
-const Header = ({ theme }) => {
+const Header = ({theme}) => {
   const navigate = useNavigate();
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const [extendNavbar, setExtendNavbar] = useState(false);
-
+  
   const [dimensions, setDimensions] = React.useState({
     height: window.innerHeight,
     width: window.innerWidth,
@@ -42,10 +42,10 @@ const Header = ({ theme }) => {
   return (
     <section className={styles.headerContainer}>
       <button className={styles.logo} onClick={handleClick}>
-        <img
+        <img onClick={()=>navigate("/")} style={{cursor:"pointer"}}
           src={
-            theme === "black"
-              ? "/images/Reverr Black 1.svg"
+            theme === "light-theme"
+              ? "/images/Reverr Black 1.png"
               : "/images/reaver-logo.svg"
           }
           alt=""

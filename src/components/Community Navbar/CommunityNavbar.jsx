@@ -13,8 +13,11 @@ import { removeUserFundingDoc } from '../../features/userFundingDocSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import brandImg from "../../images/Frame 6266720.png"
+import brandImgLight from "../../images/Reverr Light.png"
 import { collection, doc, getDocs, query, updateDoc } from 'firebase/firestore';
-
+import {VscBellDot} from "react-icons/vsc"
+import {FaLightbulb} from "react-icons/fa"
+import { setTheme } from '../../features/themeSlice';
 
 const CommunityNavbar = ({setNavbarPostButtonClick}) => {
   const user = useSelector((state)=>state.user);
@@ -28,12 +31,23 @@ const[isSettingButtonClick,setIsSettingbuttonClick]=useState(false)
     const[isRequestsButtonClick,setRequestsbuttonClick]=useState(false)
     const [userDocList,setUserDocList]=useState([])
     const[notificationList,setNotificationList]=useState([])
-  
+    const theme=useSelector((state)=>state.themeColor)
 
 
     window.onscroll = () => {
         setScroll(window.scrollY)
     }
+
+//CHECK FOR THEME
+useEffect(()=>{
+  document.body.className=theme
+  },[theme])
+  
+  //TOGGLE THEME
+  const toggleTheme=()=>{
+    if(theme==="light-theme"){dispatch(setTheme("dark-theme"))}
+    else{dispatch(setTheme("light-theme"))}
+  }
 
 //CHECK FOR NOTIFICATION
 useEffect(()=>{
@@ -174,15 +188,19 @@ const handleDeleteNotification=async(id)=>{
     <section id='navbar-final'>
     <ToastContainer/>
         <div onClick={()=>navigate("/")} className='navbar-brand-logo-img-cont'>
-        <img className='navbar-final-brand-logo-img' src={brandImg} alt="brand-logo"/>
+        <img className='navbar-final-brand-logo-img' src={theme==="light-theme"?brandImg:brandImgLight} alt="brand-logo"/>
         </div>
         <div className='navbar-icons-cont'>
+        <div className='navbar-topp-social-icon' onClick={toggleTheme}>
+        <FaLightbulb className='navbar-changeThemeIcon'/>
+        </div>
         {scroll>150?
         <div onClick={()=>setNavbarPostButtonClick(current=>!current)} className='navbar-topp-social-icon'>
         <div id='postUploaddSquareCont' className='NavbarPostUploaddSquareCont'><img className='NavbarPostUploaddSquareContAddImg' src="./images/add.png" alt="addIcon" /></div>
         </div>:null}
         <div onClick={()=>setRequestsbuttonClick(current=>!current)} className='navbar-topp-social-icon'>
-            {userDoc?.receivedRequests?.length===0&&userDoc?.notification?.length===0?<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64.png" alt="nav-icons" />:<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64 (1).png" alt="nav-icons" />}
+            {/* {userDoc?.receivedRequests?.length===0&&userDoc?.notification?.length===0?<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64.png" alt="nav-icons" />:<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64 (1).png" alt="nav-icons" />} */}
+            <VscBellDot className={userDoc?.receivedRequests?.length===0&&userDoc?.notification?.length===0?'nabar-final-notificationBell':"nabar-final-notificationBell1"}/>
         {isRequestsButtonClick?
             <div className='notifiction-dropdown-cont'>
             {userDoc?.receivedRequests?.length===0&&userDoc?.notification?.length===0?<p className='notifiction-dropdown-Request-Cont'>No New Notification</p>:null}

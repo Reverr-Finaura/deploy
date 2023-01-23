@@ -90,7 +90,7 @@ font-style: normal;
 font-weight: 600;
 font-size: 28px;
 line-height: 42px;
-color: #202020;
+color: var(--main-text);
 }
 .handwave-img{
     width: 36px;
@@ -115,7 +115,7 @@ color: #202020;
     font-weight: 500;
     font-size: 28px;
     line-height: 42px;
-    color: #000000;
+    color: var(--main-text);
     margin: 0;
     text-transform: capitalize;
 }
@@ -180,7 +180,7 @@ text-align: center;
 /* COURSE CONTAINER */
 
 .courses-container{
-    background: #FFFFFF;
+    background: var(--bg-card);
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 height: max-content;
 padding: 24px 32px;
@@ -199,7 +199,7 @@ font-style: normal;
 font-weight: 600;
 font-size: 30px;
 line-height: 30px;
-color: #000000;
+color: var(--main-text);
 }
 .load-more-course-link{
     background: #0077B7;
@@ -227,7 +227,7 @@ margin: 1.5rem auto 0rem auto;
     display: flex;
 flex-direction: column;
 padding: 25px 32px;
-background: #FFFFFF;
+background: var(--bg-card);
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 margin-top: 2rem;
 margin-left: 1rem;
@@ -240,7 +240,7 @@ width: 80%;
     font-weight: 500;
     font-size: 32px;
     line-height: 48px;
-    color: #000C12;
+    color: var(--main-text);
 }
 .meeting-container-current-date{
     text-align: center;
@@ -249,7 +249,7 @@ font-style: normal;
 font-weight: 500;
 font-size: 20px;
 line-height: 48px;
-color: #000C12;
+color: var(--main-text);
 }
 .no-meeting-schedule-msg{
     text-align: center;
@@ -258,7 +258,7 @@ font-style: normal;
 font-weight: 500;
 font-size: 20px;
 line-height: 48px;
-color: #000C12;
+color: var(--main-text);
 margin-top: 1.5rem;
 }
 
@@ -267,7 +267,7 @@ margin-top: 1.5rem;
 /* APPLY FOR FUNDING CONTAINER */
 
 .apply-for-funding-cont{
-    background: #FFFFFF;
+    background: var(--bg-card);
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 padding: 25px 33px;
 margin-top: 1.5rem;
@@ -284,7 +284,7 @@ font-style: normal;
 font-weight: 600;
 font-size: 20px;
 line-height: 30px;
-color: #000000;
+color: var(--main-text);
 margin: 1.5rem 0;
 }
 .apply-for-funding--btn{
@@ -307,7 +307,7 @@ cursor:pointer;
 /* JOIN OUR COMUNITY CONTAINER */
 
 .join-our-comunity-cont{
-    background: #FFFFFF;
+    background: var(--bg-card);
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 padding: 25px 31px;
 margin-top: 1.5rem;
@@ -324,7 +324,7 @@ font-style: normal;
 font-weight: 600;
 font-size: 20px;
 line-height: 30px;
-color: #000000;
+color: var(--main-text);
 margin: 1.5rem 0;
 }
 
@@ -349,7 +349,7 @@ margin: 1.5rem 0;
 
 .blog-containerr{
     padding: 32px 33px;
-    background: #FFFFFF;
+    background: var(--bg-card);
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 margin-top: 1.5rem;
 margin-right: 1rem;
@@ -361,7 +361,7 @@ width: 80%;
 /* MENTORS CONTAINER */
 .mentors-containerr{
     padding: 32px 31px;
-    background: #FFFFFF;
+    background: var(--bg-card);
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 margin-top: 1.5rem;
 margin-left: 1rem;
@@ -376,6 +376,7 @@ font-style: normal;
 font-weight: 700;
 font-size: 26px;
 line-height: 48px;
+color: var(--main-text);
 }
 .load-more-mentor-btn-cont{
     width: 100%;

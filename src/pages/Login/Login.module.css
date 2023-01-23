@@ -41,14 +41,16 @@
   border: none;
   width: 20rem;
   padding: 0 3rem;
-  color: black3;
+  color: var(--main-text);
 }
 
 .link {
   text-decoration: none;
   color: #2a72de;
 }
-
+.login_dontHaveAccountText{
+  color: var(--main-text);
+}
 @media (max-width: 768px) {
   .signup > form > div > input {
     width: 7.7rem;

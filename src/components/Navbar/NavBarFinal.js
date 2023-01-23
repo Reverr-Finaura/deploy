@@ -14,7 +14,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { collection, doc, getDocs, query, updateDoc } from 'firebase/firestore';
 import { useEffect } from 'react';
-
+import {VscBellDot} from "react-icons/vsc"
+import {FaLightbulb} from "react-icons/fa"
+import { setTheme } from '../../features/themeSlice';
 
 const NavBarFinal = () => {
   const user = useSelector((state)=>state.user);
@@ -27,7 +29,18 @@ const[isRequestsButtonClick,setRequestsbuttonClick]=useState(false)
     const userDoc=useSelector((state)=>state.userDoc)
     const [userDocList,setUserDocList]=useState([])
     const[notificationList,setNotificationList]=useState([])
+const theme=useSelector((state)=>state.themeColor)
 
+//CHECK FOR THEME
+useEffect(()=>{
+document.body.className=theme
+},[theme])
+
+//TOGGLE THEME
+const toggleTheme=()=>{
+  if(theme==="light-theme"){dispatch(setTheme("dark-theme"))}
+  else{dispatch(setTheme("light-theme"))}
+}
 
 
 // CHECK FOR USER DOC DATA
@@ -188,15 +201,18 @@ try {
     <section id='navbar-final'>
     <ToastContainer/>
         <div onClick={()=>navigate("/")} className='navbar-brand-logo-img-cont'>
-        <img className='navbar-final-brand-logo-img' src="./images/Frame 6266720.png" alt="brand-logo"/>
+        <img className='navbar-final-brand-logo-img' src={theme==="light-theme"?"./images/Frame 6266720.png":"./images/Reverr Light.png"} alt="brand-logo"/>
         </div>
         <div className='navbar-icons-cont'>
         {/* <div className='navbar-topp-social-icon'><img onClick={() => {
               dispatch(showChat());
             }}  className='nabar-final-msg-cont' src="./images/Vector (2).png" alt="nav-icons" /></div> */}
-
+<div className='navbar-topp-social-icon' onClick={toggleTheme}>
+  <FaLightbulb className='navbar-changeThemeIcon'/>
+</div>
             <div onClick={()=>setRequestsbuttonClick(current=>!current)} className='navbar-topp-social-icon'>
-            {userDoc?.receivedRequests?.length===0&&userDoc?.notification?.length===0?<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64.png" alt="nav-icons" />:<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64 (1).png" alt="nav-icons" />}
+            {/* {userDoc?.receivedRequests?.length===0&&userDoc?.notification?.length===0?<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64.png" alt="nav-icons" />:<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64 (1).png" alt="nav-icons" />} */}
+            <VscBellDot className={userDoc?.receivedRequests?.length===0&&userDoc?.notification?.length===0?'nabar-final-notificationBell':"nabar-final-notificationBell1"}/>
             {isRequestsButtonClick?
             <div className='notifiction-dropdown-cont'>
             {userDoc?.receivedRequests?.length===0&&userDoc?.notification?.length===0?<p className='notifiction-dropdown-Request-Cont'>No New Notification</p>:null}

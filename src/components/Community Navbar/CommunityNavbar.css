@@ -1,12 +1,13 @@
 #navbar-final{
     width: 100%;
     height: 102px;
-    background-color: white;
+    background-color: var(--comment-card);
     position: fixed;
     top: 0;
     display: flex;
     align-items: center;
     z-index: 10000;
+    border-bottom: 1px solid var(--main-text);
 }
 .navbar-brand-logo-img-cont{
     align-items: center;
@@ -28,7 +29,7 @@
 }
 
 .navbar-topp-social-icon{
-    background: #FFFFFF;
+    background: var(--bg-sub-card);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 width: 43.65px;
 height: 43.65px;
@@ -62,7 +63,7 @@ cursor: pointer;
 .setting-dropdown-cont{
     width: 200px;
     height: 200px;
-    background-color: white;
+    background-color:  var(--bg-sub-card);
     border-radius: 6px;
     position: absolute;
     bottom: -15.5rem;
@@ -89,4 +90,15 @@ font-size: 14px;
 color: white;
 border: none;
 cursor: pointer;
+}
+
+.nabar-final-notificationBell{
+    font-size: 1.3rem;
+    margin-left: -0.2rem;
+    color: #2A72DE;
+}
+.nabar-final-notificationBell1{
+    font-size: 1.3rem;
+    margin-left: -0.2rem;
+    color: red;
 }

@@ -140,6 +140,7 @@
   justify-content: space-between;
   margin-top: 10rem;
   margin-left: 4rem;
+  color: var(--main-text);
   
 }
 
@@ -235,12 +236,12 @@
   font-size: 18px;
   text-align: center;
   line-height: 32.5px;
-  color: rgba(32, 32, 32, 0.75);
+  color: var(--sub-text);
   font-weight: 700;
 }
 
 .journeyPartText {
-  color: rgba(32, 32, 32, 1);
+  color: var(--main-text);
 }
 
 .chapters {

@@ -22,7 +22,7 @@ font-style: normal;
 font-weight: 600;
 font-size: 21px;
     line-height: 26px;
-color: #202020;
+color: var(--main-text);
 margin-bottom: .5rem;
 width: fit-content;
 }
@@ -32,7 +32,7 @@ font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 24px;
-color: #202020;
+color: var(--main-text);
 width: fit-content;
 }
 .mentor-item-contact-now-btn{

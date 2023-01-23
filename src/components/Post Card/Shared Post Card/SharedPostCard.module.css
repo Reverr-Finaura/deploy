@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    background-color: white;
+    background-color: var(--bg-card);
     border-radius: 19px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -13,6 +13,7 @@
 font-style: normal;
 box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
 margin-top: 2rem;
+color: var(--main-text);
 }
 .SharedPostCardTop{
     display: flex;
@@ -30,7 +31,7 @@ margin-top: 2rem;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    color: #202020;
+    color: var(--main-text);
 }
 .postAuthorName{
     font-size: 1.4rem;
@@ -42,7 +43,7 @@ margin-top: 2rem;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    color: #202020;
+    color: var(--main-text);
 }
 .postUploadDateContainer{
     margin-left: auto;
@@ -169,7 +170,7 @@ font-weight: 600;
 .standardThreeDotsOption{
     width: 110px;
     height: 50px;
-    background-color: #fafafa;
+    background-color: var(--bg-clr);
     border-radius: 7px;
     position: absolute;
     right: 0;
@@ -180,7 +181,7 @@ font-weight: 600;
 .threeDotsOptions{
     width: 100px;
     height: 100px;
-    background-color: #fafafa;
+    background-color: var(--bg-sub-card);
     border-radius: 7px;
     position: absolute;
     right: 0;
@@ -197,6 +198,7 @@ font-weight: 600;
 .threeDotsEditPostOption,.threeDotsReportPostOption{
     margin: auto;
     cursor: pointer;
+    color: var(--main-text);
 }
 
 /* COMMENT SECTION */
@@ -209,7 +211,7 @@ font-weight: 600;
     margin-bottom: 2.5rem;
     padding: 1rem;
     background-color: #e6e4e4dc;
-    background-color: white;
+    background-color: var(--bg-card);
     box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
     margin-bottom: 10rem;
 }
@@ -237,10 +239,11 @@ font-weight: 600;
     width: 92%;
     padding-left: 0.5rem;
     font-size: 18px;
-    background-color: white!important;
+    background-color: var(--comment-card);
     border: 2px solid #2A72DE;
     padding-bottom: 0;
     margin-bottom: 0;
+    color: var(--main-text);
     
 }
 .addImageandUploadPostIcon{
@@ -258,7 +261,7 @@ font-weight: 600;
     padding-top: 1rem;
     margin-top: -6px;
     
-    background-color: white;
+    background-color: var(--bg-card);
     width: 92%;
     padding-right: 16px;
 }

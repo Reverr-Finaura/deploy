@@ -15,6 +15,7 @@ import {RiShareForwardFill} from "react-icons/ri"
 import {TfiMoreAlt} from "react-icons/tfi"
 import {AiTwotoneLike} from "react-icons/ai"
 import {AiOutlineLike} from "react-icons/ai"
+import {GrAddCircle} from "react-icons/gr"
 
 const PostCard = ({postsData,setPostsData,item,handleEditPostButtonClick,setPostsAuthorIsClick,setPostsAuthorInfo}) => {
     const userDoc=useSelector((state)=>state.userDoc) 
@@ -393,7 +394,8 @@ useEffect(()=>{
             <img className='community-newComment-cont-userImage' src={userDoc?.image?userDoc.image:"https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"} alt="userImage" />
             <div className='textAreaUploadContainer'>
             <textarea autoFocus className={item?.id} onClick={()=>{setNewCommentTextAreaClick(true)}} onChange={(e)=>setNewComment(e.target.value)} name="newComment" id={newCommentTextAreaClick?"postCommentContainerExpanded":"postCommentContainer"} rows="3" placeholder="Share Your Thoughts" value={newComment}></textarea>
-            <img onClick={()=>setNewCommentTextAreaClick(current=>!current)} className={newCommentTextAreaClick?"expandTextAreaIconExpanded":'expandTextAreaIcon'} src="./images/addExpandTextArea.png" alt="expandTextarea" />
+            {/* <img onClick={()=>setNewCommentTextAreaClick(current=>!current)} className={newCommentTextAreaClick?"expandTextAreaIconExpanded":'expandTextAreaIcon'} src="./images/addExpandTextArea.png" alt="expandTextarea" /> */}
+            <GrAddCircle onClick={()=>setNewCommentTextAreaClick(current=>!current)} className={newCommentTextAreaClick?"expandTextAreaIconExpanded":'expandTextAreaIcon'}/>
             {newCommentTextAreaClick?
             <div className='addImageandUploadPostIcon newCommentAddImageAndUpload'>
               <button onClick={()=>handleNewCommentonPost(item,item.id)} className='uploadPostIconButton'>Comment</button>
@@ -414,9 +416,10 @@ useEffect(()=>{
         return it.email===list?.commentedby?.id})[0]?.image} alt="CommentedUserPhoto" />
             <p className='commented-by'>{commentedByUserDoc?.filter((it)=>{
         return it.email===list?.commentedby?.id})[0]?.name}</p>
-            {list?.commentedby?.id===user?.user?.email?
-                <img onClick={()=>{setIsCommentThreeDotsClicked(current=>!current);setThreeDotsClickCommentId(list?.commentid)}} className='threeDotsPost commentThreeDotsPost' src="./images/dots.png" alt="3dots" />
-                :null}
+            {list?.commentedby?.id===user?.user?.email? <TfiMoreAlt className='threeDotsPost commentThreeDotsPost' onClick={()=>{setIsCommentThreeDotsClicked(current=>!current);setThreeDotsClickCommentId(list?.commentid)}}/>:null}
+                {/* <img onClick={()=>{setIsCommentThreeDotsClicked(current=>!current);setThreeDotsClickCommentId(list?.commentid)}} className='threeDotsPost commentThreeDotsPost' src="./images/dots.png" alt="3dots" /> */}
+               
+                
              {isCommentThreeDotsClicked&&list?.commentedby?.id===user?.user?.email&&threeDotsClickCommentId===list?.commentid?
                 <>
                 <div className='threeDotsOptions commentThreeDotsOption'>

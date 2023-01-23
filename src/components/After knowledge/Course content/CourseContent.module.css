@@ -6,10 +6,11 @@
   width: 95%;
   justify-content: space-around;
   align-items: center;
+  color: var(--main-text);
 }
 
 .cc_details > h1 {
-  color: #202020;
+  color: var(--main-text);
   font-size: 48px;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -18,19 +19,19 @@
 .cc_details > h3 {
   font-size: 40px;
   font-weight: 500;
-  color: #202020;
+  color: var(--main-text);
   /* margin: 0.2rem auto; */
 }
 
 .cc_details > p {
   font-size: 28px;
-  color: #202020;
+  color: var(--main-text);
   font-weight: 500;
 }
 
 .cc_details > ul > li {
   font-size: 24px;
-  color: #202020;
+  color: var(--main-text);
   line-height: 36px;
 }
 .cc_img{

@@ -33,7 +33,7 @@ font-weight: 600;
 font-size: 11px;
 line-height: 17px;
 text-align: center;
-color: rgba(42, 114, 222, 0.5);
+color: var(--user-profile-sub-indicator);
 
 }
 .userProfileCompletionIndicator-second{
@@ -43,7 +43,7 @@ color: rgba(42, 114, 222, 0.5);
     font-size: 16px;
     line-height: 17px;
     text-align: center;
-    color: #2A72DE;
+    color: var(--user-profile-indicator);
     margin-top: .5rem;
     margin-bottom: .5rem;
 }

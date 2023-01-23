@@ -1,5 +1,5 @@
 .blog-item-cont{
-    background: #FAFAFF;
+    background: var(--bg-sub-card);
 border-radius: 8px;
 padding: 16px 24px;
 display: flex;
@@ -27,7 +27,7 @@ font-style: normal;
 font-weight: 500;
 font-size: 12px;
 line-height: 18px;
-color: #202020;
+color: var(--main-text);
 margin-bottom: .5rem;
 }
 .blog-item-title{
@@ -36,7 +36,7 @@ font-style: normal;
 font-weight: 600;
 font-size: 16px;
 line-height: 24px;
-color: #202020;
+color: var(--main-text);
 margin-bottom: .5rem;
 }
 .blog-item-para{
@@ -45,5 +45,5 @@ font-style: normal;
 font-weight: 400;
 font-size: 14px;
 line-height: 21px;
-color: #202020;
+color: var(--main-text);
 }

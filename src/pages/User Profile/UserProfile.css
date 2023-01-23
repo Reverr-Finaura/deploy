@@ -40,7 +40,7 @@ font-weight: 700;
 font-size: 30px;
 line-height: 75px;
 text-align: center;
-color: #202020;
+color: var(--main-text);
 width: fit-content;
 margin: auto;
 }
@@ -61,15 +61,18 @@ margin: auto;
     margin: auto;
     margin-top: 1rem;
     margin-right: 5rem;
+    color: var(--main-text);
 }
 .user-general-info-user-cont{
     display: grid;
     grid-template-columns: 40% 60%;
     margin-bottom: 1.1rem;
+    color: var(--main-text);
 }
 .user-general-profile-about-cont{
     display: flex;
     flex-direction: column;
+    color: var(--main-text);
 }
 .user-general-info-user-name{
     
@@ -78,13 +81,14 @@ font-style: normal;
 font-weight: 700;
 font-size: 20px;
 line-height: 36px;
-color: #202020;
+color: var(--main-text);
 
 }
 .user-general-profile-about-cont-user-name{
     margin-top: 1rem;
     font-size: 18px!important;
     line-height: 32px!important;
+    color: var(--main-text);
 }
 .user-general-info-user{
     
@@ -93,7 +97,7 @@ font-style: normal;
 font-weight: 500;
 font-size: 18px;
 line-height: 45px;
-color: rgba(32, 32, 32, 0.75);
+color: var(--main-text);
 text-transform: capitalize;
 
 }
@@ -107,6 +111,7 @@ text-transform: capitalize;
     margin: auto;
     margin-top: 4rem;
     margin-right: 5rem;
+    color: var(--main-text);
 }
 
 /* USER EXPERIENCE INFO */
@@ -117,6 +122,7 @@ text-transform: capitalize;
     margin: auto;
     margin-top: 2rem;
     margin-right: 5rem;
+    color: var(--main-text);
 }
 .user-experience-info-title{
     font-family: 'Inter';
@@ -124,12 +130,13 @@ font-style: normal;
 font-weight: 700;
 font-size: 20px;
 line-height: 36px;
-color: #202020;
+color: var(--main-text);
 }
 .user-experience-info-experince{
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
     gap: 20px;
+    color: var(--main-text);
     /* margin-top: 1rem; */
 }
 .user-experience-info-company-role{
@@ -138,6 +145,7 @@ color: #202020;
     /* margin-top: 2rem; */
     padding: 1rem;
     padding-bottom: 0;
+    color: var(--main-text);
 }
 .user-experience-info-company-role-company-name{
     font-family: 'Poppins';
@@ -145,7 +153,7 @@ font-style: normal;
 font-weight: 600;
 font-size: 18px;
 line-height: 36px;
-color: #303030;
+color: var(--main-text);
 text-transform: capitalize;
 }
 .user-experience-info-company-role-job-profile{
@@ -154,12 +162,13 @@ font-style: normal;
 font-weight: 500;
 font-size: 18px;
 line-height: 30px;
-color: rgba(32, 32, 32, 0.75);
+color: var(--main-text);
 text-transform: capitalize;
 
 }
 ul{
     list-style: none;
+
 }
 ul li::before{
     content: "\2022";  
@@ -179,6 +188,7 @@ ul li::before{
     margin: auto;
     margin-top: 2rem; 
     margin-right: 5rem;
+    color: var(--main-text);
 }
 .user-education-info-title{
     font-family: 'Inter';
@@ -186,18 +196,20 @@ font-style: normal;
 font-weight: 700;
 font-size: 20px;
 line-height: 36px;
-color: #202020;  
+color: var(--main-text);  
 }
 
 .user-education-info-degree-cont{
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
     gap: 20px;
+    color: var(--main-text);
     /* margin-bottom: 1rem; */
 }
 .user-education-info-specific-degree{
     display: flex;
     flex-direction: column;
+    color: var(--main-text);
     /* margin-top: 1rem; */
     
 }
@@ -208,7 +220,7 @@ font-style: normal;
 font-weight: 500;
 font-size: 18px;
 line-height: 36px;
-color: #202020;
+color: var(--main-text);
 text-transform: capitalize;
 }
 
@@ -219,7 +231,7 @@ text-transform: capitalize;
     font-size: 18px;
     line-height: 30px;
     
-    color: rgba(32, 32, 32, 0.75);
+    color: var(--main-text);
     text-transform: capitalize;
 }
 
@@ -232,6 +244,7 @@ text-transform: capitalize;
     margin: auto;
     margin-top: 2rem;
     margin-right: 5rem;
+    color: var(--main-text);
 }
 .user-how-can-we-meet-title{
     font-family: 'Inter';
@@ -240,7 +253,7 @@ font-weight: 700;
 font-size: 20px;
 line-height: 31px;
 
-color: #202020;
+color: var(--main-text);
 }
 .no-social-link-avai-msg{
     margin-top: 1.5rem;
@@ -249,7 +262,7 @@ color: #202020;
     font-weight: 500;
     font-size: 18px;
    
-    color: rgba(32, 32, 32, 0.75);
+    color: var(--main-text);
 }
 .user-how-can-we-meet-social-icon-cont{
     display: flex;

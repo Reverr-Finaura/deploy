@@ -105,7 +105,7 @@ const initiateSplitPayment=async(order)=>{
 }
 
   
-  await axios.post("https://server.reverrapp.com/webSplitPayment",bodyData)
+  await axios.post("https://server.reverr.io/webSplitPayment",bodyData)
   .then((res)=>{console.log("success split",res.data.message)})
   .catch((err)=>{console.log("Failure Split",err.message)})
 }

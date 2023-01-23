@@ -6,7 +6,7 @@ import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login, setUserData } from "../../features/userSlice";
 import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
@@ -20,7 +20,7 @@ function Auth() {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const theme=useSelector((state)=>state.themeColor)
   const provider = new GoogleAuthProvider();
 
   const signInWithGoogle = () => {
@@ -69,7 +69,7 @@ function Auth() {
 
   return (
     <>
-      <Header theme={"black"} />
+      <Header theme={theme} />
       <section className={styles.auth}>
         <div className={styles.signup}>
           <div className={styles.google_signup}>
@@ -82,7 +82,7 @@ function Auth() {
             </Button>
           </div>
           <div>
-            <p>Or Login with your E-mail</p>
+            <p className={styles.login_dontHaveAccountText}>Or Login with your E-mail</p>
           </div>
           <form onSubmit={loginEmail}>
             <div>
@@ -103,13 +103,13 @@ function Auth() {
             </div>
             <Button type="submit">Login</Button>
           </form>
-          <p>
+          <p className={styles.login_dontHaveAccountText}>
             Don't have an account?{" "}
             <Link to="/signup" className={styles.link}>
               Sign Up
             </Link>
           </p>
-          <p>
+          <p className={styles.login_dontHaveAccountText}>
             Forgot Password?{" "}
             <Link to="/forgotpassword" className={styles.link}>
               Click Here

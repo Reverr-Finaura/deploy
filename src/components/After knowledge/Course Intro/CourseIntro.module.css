@@ -4,10 +4,12 @@
   /* width: 95%; */
   justify-content: space-around;
   align-items: center;
+  color: var(--main-text);
 }
 
 .course_left {
   width: 50%;
+  color: var(--main-text);
 }
 
 .course_left > h1 {
@@ -31,7 +33,7 @@
 }
 
 .course_left > p {
-  color: #202020;
+  color: var(--main-text);
   font-size: 18px;
   font-weight: 500;
 }

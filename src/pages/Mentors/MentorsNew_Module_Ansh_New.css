@@ -12,6 +12,7 @@
   width: 78%;
   margin-top: 11rem;
   margin-left: 18rem;
+  color: var(--main-text);
 }
 .mentorFilterCardCont {
   margin-left: auto;
@@ -62,7 +63,7 @@
 }
 .ByPriceFilter {
   padding: 1rem;
-  background-color: white;
+  background-color: var(--bg-sub-card);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -70,7 +71,7 @@
 }
 .price-filter-option-cont {
   border-radius: 7px;
-  background-color: white;
+  background-color: var(--bg-sub-card);
   z-index: 1;
   margin-top: 1.5rem;
   display: flex;
@@ -84,7 +85,7 @@
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 .price-filter-option {
-  border: 1px solid black;
+  border: 1px solid var(--main-text);
   padding: 0.2rem 0.4rem;
   cursor: pointer;
   border-radius: 5px;
@@ -110,7 +111,7 @@
 }
 .ByExpertiseFilter {
   padding: 1rem;
-  background-color: white;
+  background-color: var(--bg-sub-card);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -120,7 +121,7 @@
   width: 300px;
   height: 285px;
   border-radius: 7px;
-  background-color: white;
+  background-color: var(--bg-sub-card);
   z-index: 1;
   margin-top: 1.5rem;
   padding: 0.5rem;
@@ -135,7 +136,7 @@
   float: left;
   margin-right: 1rem;
   margin-bottom: 0.5rem;
-  border: 1px solid black;
+  border: 1px solid var(--main-text);
   padding: 0.2rem;
   cursor: pointer;
   border-radius: 5px;
@@ -182,7 +183,7 @@
   border-radius: 16px;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: var(--bg-card);
   padding: 2rem;
   height: 450px;
   margin-left: 1rem;
@@ -200,6 +201,7 @@
   font-size: 1.2rem;
   margin-bottom: 0.25rem;
   margin-right: 1rem;
+  color: var(--main-text);
 }
 .mentor-cardd-top-part-left-col-sub-title {
   font-size: 0.8rem;
@@ -226,6 +228,7 @@
   font-family: "Poppins";
   font-size: 0.9rem;
   line-height: 1.4;
+  color: var(--main-text);
 }
 .mentor-cardd-skill-part {
   height: 150px;
@@ -254,6 +257,7 @@
   font-family: "Poppins";
   font-size: 1.2rem;
   margin-bottom: 0.25rem;
+  color: var(--main-text);
 }
 
 .mentor-cardd-bottom-part {
@@ -302,7 +306,7 @@
   height: 100px;
   overflow: auto;
   align-items: center;
-  background: white;
+  background: var(--bg-sub-card);
   border-radius: 11px;
   padding: 1rem;
 }

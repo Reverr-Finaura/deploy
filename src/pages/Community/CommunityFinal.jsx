@@ -39,6 +39,8 @@ import SortingNavbar from "./Sorting NavBar/SortingNavbar";
 import SortingNavbarTest from "./Sorting Navbar Test/SortingNavbarTest";
 import SortingNavbarOldest from "./Sorting Navbar Oldest/SortingNavbarOldest";
 import NoFollowingCard from "../../components/No Following Card/NoFollowingCard";
+import {MdOutlineAddPhotoAlternate} from "react-icons/md"
+import {GrAddCircle} from "react-icons/gr"
 const CommunityFinal = () => {
   const dispatch = useDispatch();
   const postData = [];
@@ -467,12 +469,14 @@ const CommunityFinal = () => {
                           </div>
                         ) : null}
                         <div className="addImageandUploadPostIcon">
-                          <img
+                          {/* <img
                             onClick={chooseFile}
                             className="addImageInCommunityIcon"
                             src="./images/add-image-icon.png"
+                            
                             alt="addImageIcon"
-                          />
+                          /> */}
+                          <MdOutlineAddPhotoAlternate className="addImageInCommunityReactIcon" onClick={chooseFile}/>
                           <button
                             onClick={uploadImageToFireBase}
                             className="uploadPostIconButton"
@@ -623,7 +627,7 @@ const CommunityFinal = () => {
                     }
                   >
                     <textarea
-                      style={{ background: "rgba(255,255,255,.25)" }}
+                      // style={{ background: "rgba(255,255,255,.25)" }}
                       onClick={() => setTextAreaIsClick(true)}
                       onChange={(e) => setNewPostText(e.target.value)}
                       name="postText"
@@ -636,7 +640,7 @@ const CommunityFinal = () => {
                       value={newPostText}
                       placeholder="What Would You Like To Post?"
                     ></textarea>
-                    <img
+                    {/* <img
                       onClick={() => setTextAreaIsClick((current) => !current)}
                       className={
                         textAreaIsClick
@@ -645,7 +649,9 @@ const CommunityFinal = () => {
                       }
                       src={expandTextAreaIcon}
                       alt="expandTextarea"
-                    />
+                    /> */}
+                    <GrAddCircle onClick={() => setTextAreaIsClick((current) => !current)} className={textAreaIsClick?"expandTextAreaIconExpanded":"expandTextAreaIcon"
+                      }/>
                     {tempImageURL ? (
                       <div className="communityPostImage-cont">
                         <img
@@ -664,12 +670,13 @@ const CommunityFinal = () => {
                     ) : null}
                     {textAreaIsClick ? (
                       <div className="addImageandUploadPostIcon uploadNewPostaddImageandUploadPostIcon">
-                        <img
+                        {/* <img
                           onClick={chooseFile}
                           className="addImageInCommunityIcon"
                           src="./images/add-image-icon.png"
                           alt="addImageIcon"
-                        />
+                        /> */}
+                        <MdOutlineAddPhotoAlternate className="addImageInCommunityReactIcon" onClick={chooseFile}/>
                         <button
                           onClick={uploadImageToFireBase}
                           className="uploadPostIconButton"

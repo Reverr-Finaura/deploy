@@ -12,6 +12,7 @@ import { updateDoc,doc, collection, query, getDocs, setDoc } from 'firebase/fire
 import { getDownloadURL, listAll, ref, uploadBytes } from 'firebase/storage';
 import { setUserDoc } from '../../features/userDocSlice';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { IoMdAddCircleOutline } from 'react-icons/io';
 
 const UserAddProfile = () => {
 const dispatch=useDispatch()
@@ -455,7 +456,8 @@ async function updateUserDocAddNewImageCreateFundingUser(){
         </div>
 
         <div onClick={addNewEducationFormInput} className='add-more-form-image-container'>
-            <img src="./images/addMorePlusIcon.png" alt="add-more-icon" />
+            {/* <img src="./images/addMorePlusIcon.png" alt="add-more-icon" /> */}
+            <IoMdAddCircleOutline className='add-more-form-image-container-image-react-icon'/>
         </div>
         </section>
 
@@ -485,7 +487,8 @@ async function updateUserDocAddNewImageCreateFundingUser(){
         </div>
 
         <div onClick={addNewProfessionalFormInput} className='add-more-form-image-container'>
-            <img src="./images/addMorePlusIcon.png" alt="add-more-icon" />
+            {/* <img src="./images/addMorePlusIcon.png" alt="add-more-icon" /> */}
+            <IoMdAddCircleOutline className='add-more-form-image-container-image-react-icon'/>
         </div>
         </section>
 

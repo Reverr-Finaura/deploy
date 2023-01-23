@@ -402,9 +402,9 @@ setEditCommentId(null)
         return it.email===list?.commentedby?.id})[0]?.image} alt="CommentedUserPhoto" />
             <p className='commented-by'>{commentedByUserDetail?.filter((it)=>{
         return it.email===list?.commentedby?.id})[0]?.name}</p>
-            {list?.commentedby?.id===user?.user?.email?
-                <img onClick={()=>{setCommentThreeDotsClicked(current=>!current);setPostThreeDotsClickCommentId(list?.commentid)}} className='threeDotsPost commentThreeDotsPost' src={threeDotsIcon} alt="3dots" />
-                :null}
+            {list?.commentedby?.id===user?.user?.email?<TfiMoreAlt className='threeDotsPost commentThreeDotsPost' onClick={()=>{setCommentThreeDotsClicked(current=>!current);setPostThreeDotsClickCommentId(list?.commentid)}}/>:null}
+                {/* <img onClick={()=>{setCommentThreeDotsClicked(current=>!current);setPostThreeDotsClickCommentId(list?.commentid)}} className='threeDotsPost commentThreeDotsPost' src={threeDotsIcon} alt="3dots" /> */}
+                
              {CommentThreeDotsClicked&&list?.commentedby?.id===user?.user?.email&&PostThreeDotsClickCommentId===list?.commentid?
                 <>
                 <div className='threeDotsOptions commentThreeDotsOption'>

@@ -13,6 +13,7 @@ import { getDownloadURL, listAll, ref, uploadBytes } from 'firebase/storage';
 import { setUserDoc } from '../../features/userDocSlice';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { setUserFundingDoc } from '../../features/userFundingDocSlice';
+import {IoMdAddCircleOutline} from "react-icons/io"
 
 const UserEditProfile = () => {
 const dispatch=useDispatch()
@@ -493,7 +494,8 @@ uploadImageToFireBase()
         </div>
 
         <div onClick={addNewEducationFormInput} className='add-more-form-image-container'>
-            <img className='add-more-form-image-container-image' src="./images/addMorePlusIcon.png" alt="add-more-icon" />
+            {/* <img className='add-more-form-image-container-image' src="./images/addMorePlusIcon.png" alt="add-more-icon" /> */}
+            <IoMdAddCircleOutline className='add-more-form-image-container-image-react-icon'/>
         </div>
         </section>
 
@@ -523,7 +525,8 @@ uploadImageToFireBase()
         </div>
 
         <div onClick={addNewProfessionalFormInput} className='add-more-form-image-container'>
-            <img className='add-more-form-image-container-image' src="./images/addMorePlusIcon.png" alt="add-more-icon" />
+            {/* <img className='add-more-form-image-container-image' src="./images/addMorePlusIcon.png" alt="add-more-icon" /> */}
+            <IoMdAddCircleOutline className='add-more-form-image-container-image-react-icon'/>
         </div>
         </section>
 

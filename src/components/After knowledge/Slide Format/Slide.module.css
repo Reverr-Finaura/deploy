@@ -14,13 +14,13 @@
 .course_details > h1 {
   font-size: 36px;
   font-weight: 500;
-  color: #202020;
+  color: var(--main-text);
 }
 
 .course_details > p {
   font-size: 24px;
   font-weight: 400;
-  color: #000000;
+  color: var(--main-text);
 }
 
 .course_img > img {

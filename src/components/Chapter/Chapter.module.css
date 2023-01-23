@@ -4,6 +4,8 @@
   gap: 2rem;
   padding: 1rem;
   cursor: pointer;
+  background-color: var(--knowledge-card);
+  border-radius: 6px;
 }
 
 .chapter:hover {

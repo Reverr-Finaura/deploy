@@ -17,7 +17,7 @@ const ChangePassword = () => {
  const navigate=useNavigate()
  const user=useSelector((state)=>state.user)
  const userDoc=useSelector((state)=>state.userDoc)
-
+ const theme=useSelector((state)=>state.themeColor)
 
 console.log("user",user)
 console.log("userDoc",userDoc)
@@ -76,7 +76,7 @@ async function updateUserDocInFirebase(){
 
   return (
   <>
-   <Header theme={"black"} />
+   <Header theme={theme} />
     <section id='changePassContainer'>
     <ToastContainer />
         <h3 className='changePassContainer-title'>Change Your Password</h3>
