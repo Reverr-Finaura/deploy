@@ -568,6 +568,8 @@ color: var(--main-text);
     #quotation-cont{
         width: 88%;
     }
-
+    #quotation-cont{
+        margin: auto;
+    }
 }
 

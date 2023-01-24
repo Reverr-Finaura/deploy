@@ -72,6 +72,7 @@
   .navbar {
     flex-direction: column;
     justify-content: center;
+    background-color: var(--knowledge-card);
   }
   .menuIcon {
     position: absolute;
@@ -80,5 +81,6 @@
     display: block;
     height: 3rem;
     width: 3rem;
+    color: var(--main-text);
   }
 }

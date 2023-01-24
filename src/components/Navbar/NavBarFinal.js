@@ -17,6 +17,7 @@ import { useEffect } from 'react';
 import {VscBellDot} from "react-icons/vsc"
 import {FaLightbulb} from "react-icons/fa"
 import { setTheme } from '../../features/themeSlice';
+import { DarkModeToggle } from '@anatoliygatt/dark-mode-toggle';
 
 const NavBarFinal = () => {
   const user = useSelector((state)=>state.user);
@@ -30,6 +31,7 @@ const[isRequestsButtonClick,setRequestsbuttonClick]=useState(false)
     const [userDocList,setUserDocList]=useState([])
     const[notificationList,setNotificationList]=useState([])
 const theme=useSelector((state)=>state.themeColor)
+
 
 //CHECK FOR THEME
 useEffect(()=>{
@@ -207,11 +209,30 @@ try {
         {/* <div className='navbar-topp-social-icon'><img onClick={() => {
               dispatch(showChat());
             }}  className='nabar-final-msg-cont' src="./images/Vector (2).png" alt="nav-icons" /></div> */}
-<div className='navbar-topp-social-icon' onClick={toggleTheme}>
+            
+{/* <div className='navbar-topp-social-icon' onClick={toggleTheme}>
   <FaLightbulb className='navbar-changeThemeIcon'/>
-</div>
+</div> */}
+<div className='navbar-themeToggler'>
+<DarkModeToggle
+      mode={theme==="dark-theme"?"dark":"light"}
+      // dark="dark"
+      // light="Light" 
+      size="sm"
+      inactiveTrackColor="#e2e8f0"
+      inactiveTrackColorOnHover="#f8fafc"
+      inactiveTrackColorOnActive="#cbd5e1"
+      activeTrackColor="#334155"
+      activeTrackColorOnHover="#1e293b"
+      activeTrackColorOnActive="#0f172a"
+      inactiveThumbColor="#1e293b"
+      activeThumbColor="#e2e8f0"
+      onChange={toggleTheme}
+    />
+    </div>
             <div onClick={()=>setRequestsbuttonClick(current=>!current)} className='navbar-topp-social-icon'>
             {/* {userDoc?.receivedRequests?.length===0&&userDoc?.notification?.length===0?<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64.png" alt="nav-icons" />:<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64 (1).png" alt="nav-icons" />} */}
+            
             <VscBellDot className={userDoc?.receivedRequests?.length===0&&userDoc?.notification?.length===0?'nabar-final-notificationBell':"nabar-final-notificationBell1"}/>
             {isRequestsButtonClick?
             <div className='notifiction-dropdown-cont'>

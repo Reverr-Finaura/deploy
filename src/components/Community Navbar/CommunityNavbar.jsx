@@ -18,6 +18,7 @@ import { collection, doc, getDocs, query, updateDoc } from 'firebase/firestore';
 import {VscBellDot} from "react-icons/vsc"
 import {FaLightbulb} from "react-icons/fa"
 import { setTheme } from '../../features/themeSlice';
+import { DarkModeToggle } from '@anatoliygatt/dark-mode-toggle';
 
 const CommunityNavbar = ({setNavbarPostButtonClick}) => {
   const user = useSelector((state)=>state.user);
@@ -191,9 +192,26 @@ const handleDeleteNotification=async(id)=>{
         <img className='navbar-final-brand-logo-img' src={theme==="light-theme"?brandImg:brandImgLight} alt="brand-logo"/>
         </div>
         <div className='navbar-icons-cont'>
-        <div className='navbar-topp-social-icon' onClick={toggleTheme}>
+        {/* <div className='navbar-topp-social-icon' onClick={toggleTheme}>
         <FaLightbulb className='navbar-changeThemeIcon'/>
-        </div>
+        </div> */}
+        <div className='navbar-themeToggler'>
+        <DarkModeToggle
+      mode={theme==="dark-theme"?"dark":"light"}
+      // dark="dark"
+      // light="Light" 
+      size="sm"
+      inactiveTrackColor="#e2e8f0"
+      inactiveTrackColorOnHover="#f8fafc"
+      inactiveTrackColorOnActive="#cbd5e1"
+      activeTrackColor="#334155"
+      activeTrackColorOnHover="#1e293b"
+      activeTrackColorOnActive="#0f172a"
+      inactiveThumbColor="#1e293b"
+      activeThumbColor="#e2e8f0"
+      onChange={toggleTheme}
+    />
+    </div>
         {scroll>150?
         <div onClick={()=>setNavbarPostButtonClick(current=>!current)} className='navbar-topp-social-icon'>
         <div id='postUploaddSquareCont' className='NavbarPostUploaddSquareCont'><img className='NavbarPostUploaddSquareContAddImg' src="./images/add.png" alt="addIcon" /></div>

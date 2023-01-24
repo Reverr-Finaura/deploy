@@ -133,3 +133,10 @@ cursor: pointer;
     font-size: 1.3rem;
     color: var(--change-theme);
 }
+
+
+.navbar-themeToggler{
+    display: flex;
+    margin-right: 3rem;
+    margin-top: .5rem;
+}

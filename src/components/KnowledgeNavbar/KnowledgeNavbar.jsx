@@ -15,6 +15,7 @@ function KnowledgeNavbar() {
   const chat = useSelector(selectChat);
   const [phnOptionsVisible, setPhnOptionsVisible] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
+  const theme=useSelector((state)=>state.themeColor)
   const updateWidth = () => {
     setWidth(window.innerWidth);
   };
@@ -37,11 +38,11 @@ function KnowledgeNavbar() {
             onClick={() => setPhnOptionsVisible(!phnOptionsVisible)}
           >
             <img
-              src="./images/Reverr Black 1.png"
-              alt=""
+              src={theme==="light-theme"?"/images/Reverr Black 1.png":"/images/reaver-logo.svg"}
+              alt="logo"
               style={{ marginTop: "5px", width: "80px" }}
             />
-            <p style={{ color: "black", fontSize: "18px" }}>REVERR</p>
+            <p style={{ color: theme==="light-theme"?"black":"white", fontSize: "18px" }}>REVERR</p>
           </div>
         </Link>
         <div className={styles.options}>

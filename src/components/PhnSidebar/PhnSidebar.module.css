@@ -4,6 +4,7 @@
 
 .navlink {
   text-decoration: none;
+  color: var(--main-text);
 }
 
 @media (max-width: 600px) {
@@ -11,7 +12,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background: rgba(246, 246, 246, 1);
+    background: var(--bg-card);
     width: 60%;
     position: fixed;
     height: 100vh;
