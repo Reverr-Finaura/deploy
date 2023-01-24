@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import styles from "./Login.module.css";
 import { auth, db } from "../../firebase";
 import {
@@ -66,6 +66,7 @@ function Auth() {
         alert(errorMessage);
       });
   };
+
 
   return (
     <>
