@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Auth.module.css";
 import { auth } from "../../firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { create } from "../../features/newUserSlice";
 import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,6 +19,7 @@ function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const theme=useSelector((state)=>state.themeColor)
   const dispatch = useDispatch();
 
   const provider = new GoogleAuthProvider();
@@ -110,7 +111,7 @@ function Auth() {
 
   return (
     <>
-      <Header theme={"black"} />
+      <Header theme={theme} />
       <section className={styles.auth}>
         <div className={styles.signup}>
           <div>
