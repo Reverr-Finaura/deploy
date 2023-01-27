@@ -4,7 +4,7 @@ import "./BlogCard.css"
 const BlogCard = ({item}) => {
   return (
     <>
-         <div onClick={()=>{window.open(`https://reverrapp.com/blog/${item.id}`, '_blank')}} className="blog-item-cont">
+         <div onClick={()=>{window.open(`https://reverr.io/blog/${item.id}`, '_blank')}} className="blog-item-cont">
     <div className="blog-item-cont-left-box">
       <img className='blog-item-left-cont-img' src={item?.image.imageUrl} alt={item?.image.imageName} />
     </div>
