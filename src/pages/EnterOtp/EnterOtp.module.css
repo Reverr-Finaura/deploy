@@ -1,0 +1,72 @@
+.otp {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  padding: 1rem;
+  text-align: center;
+}
+
+.getStarted {
+  width: 60%;
+}
+
+.getStarted > h1 {
+  font-size: 50px;
+  font-weight: 500;
+  line-height: 75px;
+}
+
+.getStarted > h1 > span {
+  font-family: "Philosopher", sans-serif;
+  color: rgba(42, 114, 222, 1);
+}
+
+.para {
+  width: 65%;
+}
+
+.para > p {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.otpForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.otpForm > .otpInputs > input {
+  width: 66px;
+  height: 66px;
+  background: rgba(95, 95, 95, 0.2);
+  color: black;
+  font-size: large;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  text-align: center;
+}
+
+.otpInputs {
+  display: flex;
+  gap: 1rem;
+}
+
+.resend {
+  width: fit-content;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+}

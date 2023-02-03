@@ -1,0 +1,90 @@
+#sidebar-final{
+    background-color: var(--navbar-clr);
+    /* width: 156px; */
+    width: 200px;
+    height: 100vh;
+    display: flex;
+    position:fixed;
+    top: 103px;
+    left: 0;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    padding-bottom: 1.5rem;
+    z-index: 1000;
+    box-shadow: 0px 4px 4px var(--box-shadow);
+}
+.sidebar-final-brand-logo{
+    cursor: pointer;
+    width: 70%;
+    padding-top: 1.5rem;
+}
+.sidebar-final-icon-name-cont{
+    display: flex;
+    margin-top: 1.8rem;
+    cursor: pointer;
+}
+.sidebar-final-icon{
+    width: 11%;
+    height: 11%;
+    margin:auto ;
+    margin-right: .5rem;
+}
+.sidebar-final-funding-icon{
+    width: 7%;
+    height: 7%;
+    margin: auto;
+}
+.sidebar-final-mentor-icon{
+    width: 13%;
+    height: 13%;
+    margin: auto; 
+}
+.sidebar-final-icon-name{
+    width: 80%;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 36px;
+color: var(--main-text);
+}
+
+.sidebar-final-line{
+    border: 1px solid #2A72DE;
+    width: 133px;
+height: 0px;
+margin-top: 1.5rem;
+margin-bottom: .5rem;
+}
+.sidebar-final-icon-logout{
+    width: 20%;
+    margin-right: .5rem;
+    z-index: 1;
+    
+}
+.sidebar-final-logout-btn{
+    margin-top: 10rem;
+    padding: 8px 32px;
+    width: 150px;
+height: 40px;
+background: linear-gradient(99.02deg, #2A72DE 19.49%, rgba(42, 114, 222, 0.823601) 49.43%, rgba(42, 114, 222, 0.66705) 74.79%, rgba(42, 114, 222, 0.324771) 102.8%, rgba(42, 114, 222, 0) 131.08%);
+box-shadow: 0px 3.39883px 12.7456px -0.849707px rgba(0, 0, 0, 0.25);
+border-radius: 32px;
+display: flex;
+flex-direction: row;
+align-items: center;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+cursor: pointer;
+
+color: #FFFFFF;
+border: none;
+}
+
+@media(max-width:701px){
+    #sidebar-final{
+         padding: 1.1rem;
+    }
+}

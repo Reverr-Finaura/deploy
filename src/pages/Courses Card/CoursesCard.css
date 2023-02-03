@@ -1,0 +1,80 @@
+/* COURSE CARD */
+
+
+.course-item{
+    background: var(--bg-sub-card);
+    border-radius: 8px;
+    padding: 16px 32px;
+    display: flex;
+    flex-direction: column;
+    width: 88%;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+border-radius: 26px;
+}
+.course-item-top-info{
+    display: flex;
+    align-items: center;
+}
+.green-dot{
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #10DB25;
+}
+.course-number-text{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 18px;
+color: rgba(0, 0, 0, 0.5);
+margin-left: .5rem;
+}
+
+.course-item-name-and-img{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500!important;
+font-size: 15px!important;
+line-height: 36px;
+color: var(--main-text);
+margin-top: 1rem;
+display: flex;
+align-items: center;
+}
+.course-item-name{
+    width: 70%;
+    font-weight: 500!important;
+font-size: 20px!important;
+}
+.course-item-img{
+    width: 100px;
+    margin-top: 1rem;
+    margin: 1rem auto;
+}
+
+@media(max-width:1360px){
+    .course-item-name-and-img{
+        font-size: 13.5px;
+    }
+}
+@media(max-width:1265px){
+    .course-item{
+        padding: 16px 22px;
+    }
+    .course-item-name-and-img{
+        font-size: 12px;
+    }
+}
+@media(max-width:650px){
+    .course-item-name-and-img{
+        line-height: 28px;
+        font-size: 1rem;
+    }
+    .course-item-name{
+        font-size: 1rem;
+        
+    }
+}

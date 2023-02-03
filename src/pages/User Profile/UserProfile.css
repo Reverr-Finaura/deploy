@@ -1,0 +1,303 @@
+#userProfilePage{
+    margin-top: 8rem;
+    margin-left: 14rem;
+    width: 80%;
+    min-height: 100vh;
+    margin-bottom: 3rem;
+    
+}
+.user-profile-page-user-info{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    
+}
+.user-edit-profile-button{
+    background: #2A72DE;
+    border-radius: 10px;
+    padding: 5px 10px;
+    gap: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    color: #FFFFFF;
+    margin: auto;
+    border: none;
+    margin-top: 0rem;
+    margin-bottom: 3rem;
+    cursor: pointer;
+}
+
+/* USER GENERAL INFO  */
+
+.user-profile-page-user-info-title{
+
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 75px;
+text-align: center;
+color: var(--main-text);
+width: fit-content;
+margin: auto;
+}
+.user-profile-page-user-info-img{
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    margin: auto;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+
+}
+
+.user-general-info{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 1rem;
+    margin-right: 5rem;
+    color: var(--main-text);
+}
+.user-general-info-user-cont{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    margin-bottom: 1.1rem;
+    color: var(--main-text);
+}
+.user-general-profile-about-cont{
+    display: flex;
+    flex-direction: column;
+    color: var(--main-text);
+}
+.user-general-info-user-name{
+    
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 36px;
+color: var(--main-text);
+
+}
+.user-general-profile-about-cont-user-name{
+    margin-top: 1rem;
+    font-size: 18px!important;
+    line-height: 32px!important;
+    color: var(--main-text);
+}
+.user-general-info-user{
+    
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 45px;
+color: var(--main-text);
+text-transform: capitalize;
+
+}
+
+/* USER WORK INFO */
+
+.user-work-info{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 4rem;
+    margin-right: 5rem;
+    color: var(--main-text);
+}
+
+/* USER EXPERIENCE INFO */
+.user-experience-info{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 2rem;
+    margin-right: 5rem;
+    color: var(--main-text);
+}
+.user-experience-info-title{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 36px;
+color: var(--main-text);
+}
+.user-experience-info-experince{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 20px;
+    color: var(--main-text);
+    /* margin-top: 1rem; */
+}
+.user-experience-info-company-role{
+    display: flex;
+    flex-direction: column;
+    /* margin-top: 2rem; */
+    padding: 1rem;
+    padding-bottom: 0;
+    color: var(--main-text);
+}
+.user-experience-info-company-role-company-name{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 36px;
+color: var(--main-text);
+text-transform: capitalize;
+}
+.user-experience-info-company-role-job-profile{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 30px;
+color: var(--main-text);
+text-transform: capitalize;
+
+}
+ul{
+    list-style: none;
+
+}
+ul li::before{
+    content: "\2022";  
+    color: #00A6FF; 
+    font-weight: bold; 
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+
+/* USER EDUCATION INFO */
+.user-education-info{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 2rem; 
+    margin-right: 5rem;
+    color: var(--main-text);
+}
+.user-education-info-title{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 36px;
+color: var(--main-text);  
+}
+
+.user-education-info-degree-cont{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 20px;
+    color: var(--main-text);
+    /* margin-bottom: 1rem; */
+}
+.user-education-info-specific-degree{
+    display: flex;
+    flex-direction: column;
+    color: var(--main-text);
+    /* margin-top: 1rem; */
+    
+}
+.user-education-info-institute-name{
+    
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 36px;
+color: var(--main-text);
+text-transform: capitalize;
+}
+
+.user-education-info-institute-degree,.user-education-info-institute-time-period{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 30px;
+    
+    color: var(--main-text);
+    text-transform: capitalize;
+}
+
+/* USER HOW CAN WE MEET INFO */
+
+.user-how-can-we-meet-info{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 2rem;
+    margin-right: 5rem;
+    color: var(--main-text);
+}
+.user-how-can-we-meet-title{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 31px;
+
+color: var(--main-text);
+}
+.no-social-link-avai-msg{
+    margin-top: 1.5rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+   
+    color: var(--main-text);
+}
+.user-how-can-we-meet-social-icon-cont{
+    display: flex;
+    margin-top: 2rem;
+    align-items: center;
+    
+}
+.user-how-can-we-meet-social-icon{
+    background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+width: 43.65px;
+height: 43.65px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-right: 2rem;
+cursor: pointer;
+}
+
+@media(max-width:1120px){
+    #userProfilePage{
+        margin-left: 10rem;
+    }
+}
+@media(max-width:600px){
+    #userProfilePage{
+        margin: auto;
+    }
+    .user-profile-page-user-info{
+        width: 95%;
+    }
+    .user-general-info,.user-work-info,.user-experience-info,.user-education-info,.user-how-can-we-meet-info{
+        margin: auto;
+        width: 95%;
+        margin-top: 3rem;
+    }
+}

@@ -1,0 +1,42 @@
+.phnSidebar {
+  display: block;
+}
+
+.navlink {
+  text-decoration: none;
+  color: var(--main-text);
+}
+
+@media (max-width: 600px) {
+  .phnSidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: var(--bg-card);
+    width: 60%;
+    position: fixed;
+    height: 100vh;
+    z-index: 999;
+    border-radius: 0 1rem 1rem 0;
+    padding: 1rem;
+    color: lightblue;
+  }
+
+  .phnSidebarOption {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5rem;
+    cursor: pointer;
+  }
+
+  .xicon {
+    width: 2.5rem;
+    color: lightblue;
+  }
+
+  .phnSidebarOption > img {
+    width: 2.5rem;
+    object-fit: contain;
+  }
+}

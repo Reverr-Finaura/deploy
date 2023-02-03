@@ -1,0 +1,92 @@
+.onboard_section {
+  width: 80%;
+  margin: auto;
+  /* color: #fff; */
+}
+
+.onboard_intro > h1 {
+  font-size: 50px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.onboard_intro > p {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.onboard_input {
+  margin: 3rem auto;
+}
+
+.onboard_input > h3 {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.onboard_input > p {
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.onboard_input > input,
+.onboard_input > textarea {
+  width: 100%;
+  border: none;
+  background: rgba(95, 95, 95, 0.2);
+  border-radius: 4px;
+  outline: none;
+  padding: 1.3rem;
+  /* color: #fff; */
+  font-size: 18px;
+}
+
+.onboard_input > textarea {
+  height: 7rem;
+}
+
+.next_btn {
+  display: flex;
+  justify-content: end;
+}
+
+.next_btn button {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height */
+  text-align: center;
+  /* padding: 6px 128px; */
+  width: 299px;
+  height: 42px;
+  color: white;
+  background: #2a72de;
+  border: 2px solid #2a72de;
+  cursor: pointer;
+  margin: auto auto 3rem;
+}
+
+@media (max-width: 1024px) {
+  .onboard_intro > h1 {
+    font-size: 36px;
+  }
+
+  .onboard_intro > p,
+  .onboard_input > p {
+    font-size: 16px;
+  }
+
+  .onboard_input > h3 {
+    font-size: 28px;
+  }
+
+  .onboard_input > input,
+  .onboard_input > textarea {
+    width: 90%;
+    padding: 0.7rem;
+    font-size: 16px;
+  }
+}

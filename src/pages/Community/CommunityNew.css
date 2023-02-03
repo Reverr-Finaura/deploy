@@ -1,0 +1,162 @@
+#communityPagee{
+    min-height: 100vh;
+    width: 80%;
+    margin-left: 14.5rem;
+    margin-top: 7.2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    
+}
+.community-page-content{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+.community-images{
+    margin: auto;
+    margin-top: 1rem;
+}
+.community-sub-text{
+    width: fit-content;
+    margin: auto;
+    margin-top: .5rem;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 25px;
+color: #0077B7;
+}
+.community-main-text{
+    width: fit-content;
+    margin: auto;
+    margin-top: 1rem;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 80px;
+line-height: 120px;
+background: linear-gradient(270deg, #A6103D 44.79%, rgba(100, 23, 147, 0.927698) 53.8%, rgba(20, 34, 166, 0.837735) 65.01%, rgba(17, 43, 135, 0.707051) 81.3%, rgba(16, 168, 122, 0.664182) 86.64%, rgba(26, 202, 97, 0.60314) 94.25%, rgba(11, 145, 32, 0.558607) 99.8%, rgba(92, 165, 19, 0.508954) 105.98%, rgba(160, 155, 19, 0.333319) 127.87%, rgba(201, 86, 21, 0.172344) 147.93%, rgba(200, 12, 12, 0) 169.41%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+}
+.community-explain-text{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    margin-top: .5rem;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 22px;
+line-height: 33px;
+color: black;
+}
+.community-subscribe-cont{
+    width: fit-content;
+    margin: auto;
+    position: relative;
+    margin-top: 3rem;
+}
+.community-email-input{
+    background: rgba(217, 217, 217, 0.86);
+border-radius: 17px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 33px;
+color: rgba(0, 0, 0, 0.45);
+padding: 1rem 10rem 1rem 2rem;
+border: none;
+}
+.community-email-input:focus{
+    outline: none;
+}
+.community-notify-me-button{
+    background: #000000;
+border-radius: 17px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 22px;
+line-height: 33px;
+color: white;
+padding: .5rem;
+position: absolute;
+right: 1rem;
+top: .4rem;
+cursor: pointer;
+}
+.community-getNotified-text{
+    width: fit-content;
+    margin: auto;
+    margin-top: 1rem;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+color: rgba(0, 0, 0, 0.75);
+}
+
+@media(max-width:1180px){
+    #communityPagee{
+        width: 72%;
+    }
+    .community-explain-text{
+        width: 70%;
+    }
+}
+
+@media(max-width:847px){
+    .community-main-text{
+        font-size: 62px;
+    }
+    #communityPagee{
+        width: 65%;
+    }
+}
+
+@media(max-width:730px){
+    .community-images{
+        width: 60%!important;
+        margin: auto;
+        margin-top: 2rem;
+    }
+    .community-main-text{
+        font-size: 50px;
+    }
+    .community-explain-text{
+        font-size: 16px;
+    }
+    .community-notify-me-button{
+        padding: .1rem;
+        border-radius: 5px;
+        top: .75rem;
+    }
+    .community-email-input{
+        font-size: 18px;
+        padding: 1rem 9rem 1rem 1rem;  
+    border-radius: 9px;
+
+    }
+    #communityPagee{
+        margin-left: 12rem;
+    }
+}
+
+@media(max-width:600px){
+    #communityPagee{
+        margin: auto;
+        width: 88%;
+    }
+}
+@media(max-width:500px){
+    .community-main-text {
+        font-size: 46px;
+    }
+}

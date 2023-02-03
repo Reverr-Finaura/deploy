@@ -1,0 +1,40 @@
+.loadingMentorCard__card {
+    width: 300px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    margin-bottom: 1.5rem;
+  }
+  .loadingMentorCard__card__content {
+    padding: 20px;
+  }
+
+  .loadingMentorCard__card__image,
+  .loading-mentor-card__h2,
+.loading-mentor-card__p{
+  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  border-radius: 5px;
+  background-size: 200% 100%;
+  animation: 1s shine linear infinite;
+}
+.loadingMentorCard__card__image {
+  height: 200px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.loadingMentorCard__card__content {
+  padding: 20px;
+}
+l.oading-mentor-card__h2 {
+  height: 30px;
+}
+.loading-mentor-card__p {
+  height: 70px;
+  width: 80%;
+}
+  @keyframes shine {
+    to {
+      background-position-x: -200%;
+    }
+  }
