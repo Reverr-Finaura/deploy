@@ -75,7 +75,8 @@ const CommunityFinal = () => {
   const [newScoll, setNewScroll] = useState(0);
   const [newsData, setNewsData] = useState();
   const [singleNews, setSingleNews] = useState(null);
-  console.log("userDoc", userDoc);
+  const[blogArray,setBlogArray]=useState([])
+  console.log("blogArray", blogArray);
 
   //FETCH LATEST NEWS
   const options = {
@@ -380,6 +381,23 @@ const CommunityFinal = () => {
     }
   };
 
+//FETCH BLOG DATA FROM FIREBASE
+
+useEffect(()=>{
+  async function fetchBlogsFromDb(){
+    const blogRef = collection(db, "Blogs");
+    const q = query(blogRef);
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => { 
+          setBlogArray((prev)=>{
+            return [...prev,{...doc.data(),id:doc.data().id}]
+          })
+        });
+        
+  }
+      fetchBlogsFromDb()
+    },[])
+
   const ArticleDummyData = [
     {
       id: "1",
@@ -432,72 +450,6 @@ const CommunityFinal = () => {
         }}
         id="communityFinalPageOuterSection"
       >
-        {width > 1180 ? (
-          <section id="Article_and_Event">
-            <div className="communityNewsSectionContainer">
-              <h3 className="communityNewsSectionHeading">Articles</h3>
-              {!newsData && (
-                <div>
-                  <NewSkeleton cards={4} />
-                </div>
-              )}
-              {ArticleDummyData?.map((article) => {
-                return (
-                  <>
-                    <div
-                      className="communityArticleSectionArticleCont"
-                      // onClick={() => setSingleNews(news)}
-                      key={article.id}
-                    >
-                      <div className="communityArticleSectionArticleImageCont">
-                        <img
-                          className="communityArticleSectionArticleImage"
-                          src={"https://i.imgur.com/es6VRIM.jpg"}
-                          alt="newsImg"
-                        />
-                      </div>
-                      <p className="communityArticleSectionArticleInfo">
-                        {article.text.slice(0, 30)}....
-                      </p>
-                    </div>
-                  </>
-                );
-              })}
-            </div>
-
-            <div className="communityNewsSectionContainer">
-              <h3 className="communityNewsSectionHeading">My Events</h3>
-              {!newsData && (
-                <div>
-                  <NewSkeleton cards={4} />
-                </div>
-              )}
-              {ArticleDummyData?.map((article) => {
-                return (
-                  <>
-                    <div
-                      className="communityArticleSectionArticleCont"
-                      // onClick={() => setSingleNews(news)}
-                      key={article.id}
-                    >
-                      <div className="communityArticleSectionArticleImageCont">
-                        <img
-                          className="communityArticleSectionArticleImage"
-                          src={"https://i.imgur.com/es6VRIM.jpg"}
-                          alt="newsImg"
-                        />
-                      </div>
-                      <p className="communityArticleSectionArticleInfo">
-                        {article.text.slice(0, 30)}....
-                      </p>
-                    </div>
-                  </>
-                );
-              })}
-            </div>
-          </section>
-        ) : null}
-        {/* testing side  */}
 
         <section
           style={{ position: singleNews ? "fixed" : "" }}
@@ -923,6 +875,38 @@ const CommunityFinal = () => {
                       </div>
                       <p className="communityNewsSectionNewsInfo">
                         {news.description.slice(0, 60)}....
+                      </p>
+                    </div>
+                  </>
+                );
+              })}
+            </div>
+
+{/* ARTICLE SECTION  */}
+<div className="communityNewsSectionContainer">
+              <h3 className="communityNewsSectionHeading">Articles</h3>
+              {blogArray.length===0 && (
+                <div>
+                  <NewSkeleton cards={4} />
+                </div>
+              )}
+              {blogArray?.map((article) => {
+                return (
+                  <>
+                    <div
+                      className="communityArticleSectionArticleCont"
+                      onClick={()=>{window.open(`https://reverr.io/blog/${article.id}`, '_blank')}}
+                      key={article.id}
+                    >
+                      <div className="communityArticleSectionArticleImageCont">
+                        <img
+                          className="communityArticleSectionArticleImage"
+                          src={article?.image?.imageUrl}
+                          alt="newsImg"
+                        />
+                      </div>
+                      <p className="communityArticleSectionArticleInfo">
+                        {article?.body.slice(0, 61)}....
                       </p>
                     </div>
                   </>

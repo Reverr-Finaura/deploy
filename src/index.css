@@ -22,6 +22,7 @@ code {
   --profile-input:rgb(40, 39, 39);
   --user-profile-indicator:white;
   --user-profile-sub-indicator:rgba(255, 255, 255, 0.703);
+  --navbar-scroll-bg:rgba(0, 0, 0, 0.8);
 }
 .light-theme{
   --navbar-clr:linear-gradient(157.59deg, #FFFFFF 0%, #D9E4F4 37.68%, #C7DAF5 43.96%, #D0E0F8 55.48%, #DDE9FC 64.37%, #E3EEFD 75.37%, #E9F2FF 100.49%);
@@ -38,6 +39,7 @@ code {
   --profile-input:#F6F6F6;
   --user-profile-indicator:#2A72DE;
   --user-profile-sub-indicator:rgba(42, 114, 222, 0.5);
+  --navbar-scroll-bg:rgba(255, 255, 255, 0.8);
 }
 body {
   margin: 0;

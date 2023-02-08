@@ -32,6 +32,10 @@ const[isRequestsButtonClick,setRequestsbuttonClick]=useState(false)
     const [userDocList,setUserDocList]=useState([])
     const[notificationList,setNotificationList]=useState([])
 const theme=useSelector((state)=>state.themeColor)
+const[scroll,setScroll]=useState(0)
+window.onscroll = () => {
+  setScroll(window.scrollY)
+}
 
 
 //CHECK FOR THEME
@@ -201,7 +205,7 @@ try {
 
   return (
     <>
-    <section id='navbar-final'>
+    <section id={scroll>1?"navbar-finalScrolled":'navbar-final'}>
     <ToastContainer/>
         <div onClick={()=>navigate("/")} className='navbar-brand-logo-img-cont'>
         <img className='navbar-final-brand-logo-img' src={theme==="light-theme"?"./images/Frame 6266720.png":"./images/Reverr Light.png"} alt="brand-logo"/>
@@ -214,11 +218,13 @@ try {
 {/* <div className='navbar-topp-social-icon' onClick={toggleTheme}>
   <FaLightbulb className='navbar-changeThemeIcon'/>
 </div> */}
-<div className='navbar-themeToggler'>
+
+{/* THEME TOGGLER */}
+
+
+{/* <div className='navbar-themeToggler'>
 <DarkModeToggle
-      mode={theme==="dark-theme"?"dark":"light"}
-      // dark="dark"
-      // light="Light" 
+      mode={theme==="dark-theme"?"dark":"light"} 
       size="sm"
       inactiveTrackColor="#e2e8f0"
       inactiveTrackColorOnHover="#f8fafc"
@@ -230,7 +236,9 @@ try {
       activeThumbColor="#e2e8f0"
       onChange={toggleTheme}
     />
-    </div>
+    </div> */}
+
+    
             <div onClick={()=>setRequestsbuttonClick(current=>!current)} className='navbar-topp-social-icon'>
             {/* {userDoc?.receivedRequests?.length===0&&userDoc?.notification?.length===0?<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64.png" alt="nav-icons" />:<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64 (1).png" alt="nav-icons" />} */}
             

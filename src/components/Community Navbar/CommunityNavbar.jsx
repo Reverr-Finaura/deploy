@@ -39,7 +39,7 @@ const[isSettingButtonClick,setIsSettingbuttonClick]=useState(false)
     window.onscroll = () => {
         setScroll(window.scrollY)
     }
-
+console.log("scroll",scroll)
 //CHECK FOR THEME
 useEffect(()=>{
   document.body.className=theme
@@ -187,7 +187,7 @@ const handleDeleteNotification=async(id)=>{
 
   return (
     <>
-    <section id='navbar-final'>
+    <section id={scroll>1?"navbar-finalScrolled":'navbar-final'}>
     <ToastContainer/>
         <div onClick={()=>navigate("/")} className='navbar-brand-logo-img-cont'>
         <img className='navbar-final-brand-logo-img' src={theme==="light-theme"?brandImg:brandImgLight} alt="brand-logo"/>
@@ -196,11 +196,12 @@ const handleDeleteNotification=async(id)=>{
         {/* <div className='navbar-topp-social-icon' onClick={toggleTheme}>
         <FaLightbulb className='navbar-changeThemeIcon'/>
         </div> */}
-        <div className='navbar-themeToggler'>
+
+        {/* THEME TOGGLER */}
+
+        {/* <div className='navbar-themeToggler'>
         <DarkModeToggle
-      mode={theme==="dark-theme"?"dark":"light"}
-      // dark="dark"
-      // light="Light" 
+      mode={theme==="dark-theme"?"dark":"light"} 
       size="sm"
       inactiveTrackColor="#e2e8f0"
       inactiveTrackColorOnHover="#f8fafc"
@@ -212,7 +213,8 @@ const handleDeleteNotification=async(id)=>{
       activeThumbColor="#e2e8f0"
       onChange={toggleTheme}
     />
-    </div>
+    </div> */}
+    
         {scroll>150?
         <div onClick={()=>setNavbarPostButtonClick(current=>!current)} className='navbar-topp-social-icon'>
         <div id='postUploaddSquareCont' className='NavbarPostUploaddSquareCont'><img className='NavbarPostUploaddSquareContAddImg' src="./images/add.png" alt="addIcon" /></div>
