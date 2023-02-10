@@ -42,11 +42,8 @@ const MentorsNew = () => {
   const [arrayToBeMapped, setArrayToBeMapped] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
 
-
-
-
   console.log(selectedPriceOption);
-  console.log("mentor array",mentorArray)
+  console.log("mentor array", mentorArray);
 
   const updateWidth = () => {
     setWidth(window.innerWidth);
@@ -59,14 +56,11 @@ const MentorsNew = () => {
 
   //FETCH MENTOR DATA FROM FIREBASE
   useEffect(() => {
- 
     async function fetchMentorExpertise() {
-      
       const mentorsRef = collection(db, "Users");
       const q = query(mentorsRef);
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-       
         // var mentor = [];
         if (
           doc.data().userType === "Mentor" &&
@@ -74,17 +68,16 @@ const MentorsNew = () => {
           // doc.data().industry !== ""&&
           doc.data().mentorUniqueID
         ) {
-          setMentorArray((prev)=>{
-            return [...prev,doc.data()]
-          })
-         
+          setMentorArray((prev) => {
+            return [...prev, doc.data()];
+          });
+
           // var {email} =doc._document.data.value.mapValue.fields;
           // console.log(email.stringValue);
           // doc.data().id=email;
           // console.log(doc.data());
         }
       });
-     
     }
     fetchMentorExpertise();
   }, []);
@@ -428,7 +421,9 @@ const MentorsNew = () => {
                   >
                     Sort : By Price{" "}
                     <img
-                      className={`down-triangle-image ${isFilterByPriceOptionClick?'rotate-180':''}`}
+                      className={`down-triangle-image ${
+                        isFilterByPriceOptionClick ? "rotate-180" : ""
+                      }`}
                       src="./images/down-filled-triangular-arrow.png"
                       alt="down-triangle"
                     />
@@ -509,7 +504,9 @@ const MentorsNew = () => {
                   >
                     Sort : By Expertise{" "}
                     <img
-                      className={`down-triangle-image-expertise ${isFilterByExpertiseOptionClick?'rotate-180':''}`}
+                      className={`down-triangle-image-expertise ${
+                        isFilterByExpertiseOptionClick ? "rotate-180" : ""
+                      }`}
                       src="./images/down-filled-triangular-arrow.png"
                       alt="down-triangle"
                     />
@@ -546,7 +543,6 @@ const MentorsNew = () => {
         ) : null}
       </div>
 
-     
       {NewFilteredMentorArrayExpertieWise.length !== 0 ||
       NewFilteredMentorArrayPriceWise.length !== 0 ||
       NewFilteredMentorArrayExpertieWiseAfterPriceWise.length !== 0 ? (
@@ -606,14 +602,27 @@ const MentorsNew = () => {
         </>
       ) : null}
 
-      <section style={{marginLeft:arrayToBeMapped?.length===0&&width>600?"17.5rem":"",marginTop:arrayToBeMapped?.length===0&&width>1509?"-2rem":""}} id="mentors-page-new">
-      
-        <div style={{gap:arrayToBeMapped?.length===0?"14px":"",width:arrayToBeMapped?.length===0?"80.5vw":""}} className="mentors-page-card-container">
-        {arrayToBeMapped?.length===0 && (
-                  <>
-                    <MentorSkeleton cards={3} />
-                  </>
-                )}
+      <section
+        style={{
+          marginLeft:
+            arrayToBeMapped?.length === 0 && width > 600 ? "17.5rem" : "",
+          marginTop:
+            arrayToBeMapped?.length === 0 && width > 1509 ? "-2rem" : "",
+        }}
+        id="mentors-page-new"
+      >
+        <div
+          style={{
+            gap: arrayToBeMapped?.length === 0 ? "14px" : "",
+            width: arrayToBeMapped?.length === 0 ? "80.5vw" : "",
+          }}
+          className="mentors-page-card-container"
+        >
+          {arrayToBeMapped?.length === 0 && (
+            <>
+              <MentorSkeleton cards={3} />
+            </>
+          )}
           {arrayToBeMapped.map((item, index) => {
             return (
               <>

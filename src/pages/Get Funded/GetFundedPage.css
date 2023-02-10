@@ -1,150 +1,152 @@
-#getFundingPage{
-    min-height: 100vh;
-    width: 95%;
- 
-    margin-left: 14.5rem;
-   
-    margin-top: 7rem;
-    margin-bottom: 3rem;
-    display: flex;
-    flex-direction: column;
-    
+#getFundingPage {
+  min-height: 100vh;
+  width: 95%;
+
+  margin-left: 14.5rem;
+
+  margin-top: 7rem;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
 }
-.getFundingPageOuter{
-    background: linear-gradient(119.93deg, rgba(255, 255, 255, 0.35) 4.68%, rgba(255, 255, 255, 0.3) 91.73%);
-box-shadow: 0px 2.4417px 14.6502px -0.610425px rgba(0, 0, 0, 0.15);
-backdrop-filter: blur(6.10425px);
-border-radius: 10px;
-margin: auto;
-   margin-left: calc(30% - 10%);
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 5;
+.getFundingPageOuter {
+  /* background: linear-gradient(
+    119.93deg,
+    rgba(255, 255, 255, 0.35) 4.68%,
+    rgba(255, 255, 255, 0.3) 91.73%
+  ); */
+  background: var(--bg-clr);
+  box-shadow: 0px 2.4417px 14.6502px -0.610425px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(6.10425px);
+  border-radius: 10px;
+  margin: auto;
+  margin-left: calc(30% - 10%);
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 5;
 }
-.getFundingPageOuterIcon1{
-    position: absolute;
-    z-index: -1;
-    transform: scale(.6);
-    bottom: -50px;
-    left: -350px;
+.getFundingPageOuterIcon1 {
+  position: absolute;
+  z-index: -1;
+  transform: scale(0.6);
+  bottom: -50px;
+  left: -350px;
 }
-.getFundingPageOuterIcon2{
-    position: absolute;
-    z-index: -1; 
-    transform: scale(.8); 
-    right: -170px;
-    top: -100px;
+.getFundingPageOuterIcon2 {
+  position: absolute;
+  z-index: -1;
+  transform: scale(0.8);
+  right: -170px;
+  top: -100px;
 }
-.getFundingPageTitle{
-    width: 100%;
-    text-align: center;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 48px;
-    color: var(--main-text);
+.getFundingPageTitle {
+  width: 100%;
+  text-align: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 48px;
+  color: var(--main-text);
 }
 
-.getFundingPageForm{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-left:auto ;
-    margin-right: auto;
-    margin-top: 0rem
+.getFundingPageForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0rem;
 }
 
-.getFundingPageFormInput{
+.getFundingPageFormInput {
+  width: 70%;
+  margin: auto;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  background: rgba(95, 95, 95, 0.2);
+  border: none;
+  font-family: "Poppins";
+  font-size: 18px;
+  color: var(--main-text);
+}
+.getFundingPageFormInput:focus {
+  outline: none;
+}
+
+.uploadPitchDeckContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.pitchDeckUploadButton {
+  position: absolute;
+  right: 17%;
+  top: 33.5%;
+  font-size: 16px !important;
+  /* background-color: #a1a3a6 !important; */
+  background-color: #2a72de;
+  padding: 12px 21px;
+  font-weight: 600;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  border: none;
+  cursor: pointer;
+}
+
+.getFundedPageApplyButton {
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+  color: #2a72de;
+  font-size: 20px;
+  background: transparent;
+  box-shadow: 0px 4px 4px rgb(255 255 255 / 25%);
+  border-radius: 20px;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: 2px solid #2a72de;
+}
+
+@media (max-width: 1024px) {
+  .getFundingPageOuter {
     width: 70%;
     margin: auto;
-    margin-top: 1rem;
-    padding: 1rem 2rem;
-    background: rgba(95, 95, 95, 0.2);
-    border: none;
-    font-family: 'Poppins';
-    font-size: 18px;
-    color: var(--main-text);
+    margin-left: 2rem;
+  }
 }
-.getFundingPageFormInput:focus{
-    outline: none;
+@media (max-width: 875px) {
+  #getFundingPage {
+    width: 95%;
+  }
+  .getFundingPageForm {
+    width: 90%;
+  }
 }
-
-.uploadPitchDeckContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-
+@media (max-width: 680px) {
+  #getFundingPage {
+    margin-left: 11rem;
+  }
+  .getFundingPageForm {
+    width: 95%;
+  }
 }
-
-.pitchDeckUploadButton{
-position: absolute;
-right: 17%;
-top: 33.5%;
-font-size: 16px !important;
-/* background-color: #a1a3a6 !important; */
-background-color: #2a72de;
-    padding: 12px 21px;
-    font-weight: 600;
-    border-radius: 10px;
-    color: white;
-    border: none;
-    border: none;
-    cursor: pointer;
-}
-
-.getFundedPageApplyButton{
-    
-    padding: 0.5rem 2rem;
-    cursor: pointer;
-    color: #2a72de;
-    font-size: 20px;
-    background: transparent;
-    box-shadow: 0px 4px 4px rgb(255 255 255 / 25%);
-    border-radius: 20px;
+@media (max-width: 600px) {
+  #getFundingPage {
     margin: auto;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    border: 2px solid #2a72de;
-}
-
-@media(max-width:1024px){
-    .getFundingPageOuter {
-        width: 70%;
-        margin: auto;
-        margin-left: 2rem;
-    } 
-}
-@media(max-width:875px){
-    #getFundingPage{
-        width: 95%;
-    }
-    .getFundingPageForm{
-        width: 90%;
-    }
-}
-@media(max-width:680px){
-    #getFundingPage{
-        margin-left: 11rem;
-    }
-    .getFundingPageForm{
-        width: 95%;
-    }
-}
-@media(max-width:600px){
-    #getFundingPage{
-     margin: auto;
-    } 
-    .getFundingPageForm{
-        width: 101%;
-    }
-    .pitchDeckUploadButton{
-        right: 12%;
-    }
-    .getFundingPageOuter{
-        width: 90%;
-    }
+  }
+  .getFundingPageForm {
+    width: 101%;
+  }
+  .pitchDeckUploadButton {
+    right: 12%;
+  }
+  .getFundingPageOuter {
+    width: 90%;
+  }
 }

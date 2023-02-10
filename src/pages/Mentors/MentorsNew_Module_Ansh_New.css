@@ -206,7 +206,8 @@
 .mentor-cardd-top-part-left-col-sub-title {
   font-size: 0.8rem;
   font-family: "Poppins";
-  color: hsl(221, 18%, 49%);
+  /* color: hsl(221, 18%, 49%); */
+  color: var(--main-text);
   margin-bottom: 1rem;
 }
 .mentor-cardd-top-part-right-col {
@@ -249,7 +250,8 @@
   font-family: "Poppins";
   font-size: 0.8rem;
   line-height: 1.4;
-  color: hsl(221, 18%, 49%);
+  color: var(--main-text);
+  /* color: hsl(221, 18%, 49%); */
   margin: auto;
 }
 
@@ -270,7 +272,8 @@
   align-items: center;
 }
 .mentor-cardd-bottom-part-left-col-per-time {
-  color: hsl(221, 18%, 49%);
+  /* color: hsl(221, 18%, 49%); */
+  color: var(--main-text);
 }
 .mentor-cardd-bottom-part-right-col {
   width: fit-content;
@@ -280,10 +283,12 @@
 .mentor-cardd-bottom-part-right-col-schedule-btn {
   padding: 4px 6px;
   gap: 10px;
-  color: #2a72de;
+  /* color: #2a72de; */
+  color: var(--main-text);
   background: transparent;
   border-radius: 6px;
-  border: 2px solid #2a72de;
+  /* border: 2px solid #2a72de; */
+  border: 2px solid var(--main-text);
   font-family: "Poppins";
   font-size: 1rem;
   font-weight: 600;

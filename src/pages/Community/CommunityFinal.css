@@ -312,8 +312,16 @@
   height: 32px;
   width: 90%;
   /* padding-left: 3rem; */
+  /* color: var(--main-text); */
   font-size: 20px;
+  border-color: var(--main-text);
   background-color: var(--bg-clr);
+}
+#postTextContainer::placeholder {
+  color: var(--main-text);
+}
+#postTextContainerExpanded::placeholder {
+  color: var(--main-text);
 }
 #postTextContainerExpanded {
   height: fit-content;
@@ -327,13 +335,14 @@
   margin-bottom: 0;
   padding-bottom: 0;
   border: none;
+
   background-color: var(--bg-clr);
   color: var(--main-text);
 }
 .editPostTextarea {
   font-family: "Poppins";
   background: #f6f6f6;
-  border: 2px solid #2a72de;
+  /* border: 2px solid #2a72de; */
   border-radius: 8px;
   outline: none;
   padding: 0.4rem 1rem;
@@ -537,7 +546,8 @@ edit_Delete_Btn {
   position: absolute;
 }
 .navbarUploadPostOuterBoxContainer {
-  border: 2px solid #b1cbf1;
+  border: 2px solid var(--main-text);
+
   border-radius: 8px;
   width: 90%;
   z-index: 10;
@@ -684,7 +694,7 @@ body::-webkit-scrollbar {
     margin-left: calc(100vw - 96.5%);
     width: 48%;
   } */
- 
+
   .commentPostIconn {
     font-size: 1.5rem !important;
   }
@@ -757,7 +767,7 @@ body::-webkit-scrollbar {
     top: 4.4rem;
     width: 54%;
     z-index: 100;
-    margin-left: .5rem;
+    margin-left: 0.5rem;
     /* margin-left: 4rem; */
   }
 }
@@ -771,7 +781,7 @@ body::-webkit-scrollbar {
     top: 4.4rem;
     width: 60%;
     z-index: 100;
-    margin-left: .5rem;
+    margin-left: 0.5rem;
   }
 }
 @media (max-width: 890px) {
@@ -786,7 +796,7 @@ body::-webkit-scrollbar {
     top: 4.4rem;
     width: 58%;
     z-index: 100;
-    margin-left: .5rem;
+    margin-left: 0.5rem;
   }
   .sortPostSectionHeadinggg {
     margin-top: 1rem;
@@ -826,9 +836,9 @@ body::-webkit-scrollbar {
     margin-left: 1rem;
   }
 }
-@media(max-width:770px){
-  #communityFinalPage{
-  margin-left: .25rem;
+@media (max-width: 770px) {
+  #communityFinalPage {
+    margin-left: 0.25rem;
   }
 }
 @media (max-width: 730px) {
