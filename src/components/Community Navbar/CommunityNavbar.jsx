@@ -199,7 +199,7 @@ const handleDeleteNotification=async(id)=>{
 
         {/* THEME TOGGLER */}
 
-        {/* <div className='navbar-themeToggler'>
+        <div className='navbar-themeToggler'>
         <DarkModeToggle
       mode={theme==="dark-theme"?"dark":"light"} 
       size="sm"
@@ -213,7 +213,7 @@ const handleDeleteNotification=async(id)=>{
       activeThumbColor="#e2e8f0"
       onChange={toggleTheme}
     />
-    </div> */}
+    </div>
     
         {scroll>150?
         <div onClick={()=>setNavbarPostButtonClick(current=>!current)} className='navbar-topp-social-icon'>

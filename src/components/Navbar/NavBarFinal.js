@@ -222,7 +222,7 @@ try {
 {/* THEME TOGGLER */}
 
 
-{/* <div className='navbar-themeToggler'>
+<div className='navbar-themeToggler'>
 <DarkModeToggle
       mode={theme==="dark-theme"?"dark":"light"} 
       size="sm"
@@ -236,7 +236,7 @@ try {
       activeThumbColor="#e2e8f0"
       onChange={toggleTheme}
     />
-    </div> */}
+    </div>
 
     
             <div onClick={()=>setRequestsbuttonClick(current=>!current)} className='navbar-topp-social-icon'>
