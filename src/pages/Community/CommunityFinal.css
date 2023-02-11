@@ -359,8 +359,13 @@
   left: 1rem;
   top: 33%;
   cursor: pointer;
-  color: var(--main-text);
+  color: var(--comment-card-placeHolder);
+  stroke: var(--comment-card-placeHolder);
 }
+.expandTextAreaIcon>path{
+  stroke: var(--comment-card-placeHolder);
+}
+
 .expandTextAreaIconExpanded {
   display: none;
 }

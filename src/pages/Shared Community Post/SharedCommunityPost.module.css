@@ -10,7 +10,7 @@
 .SharedCommunityPostContainer{
     min-height: 100vh;
     min-width: 60%;
-    background-color: var(--bg-clr);
+    background-color: white;
     position: fixed;
     right: 0;
     top: 0;

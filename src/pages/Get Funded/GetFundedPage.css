@@ -72,6 +72,9 @@
   font-size: 18px;
   color: var(--main-text);
 }
+.getFundingPageFormInput::placeholder{
+  color: var(--main-text)
+}
 .getFundingPageFormInput:focus {
   outline: none;
 }

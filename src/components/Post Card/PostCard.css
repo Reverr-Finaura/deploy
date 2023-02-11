@@ -272,6 +272,10 @@
   background-color: var(--comment-card);
   /* border: 2px solid #2a72de; */
   border: 2px solid var(--main-text);
+  color: var(--comment-card-placeHolder);
+}
+#postCommentContainer::placeholder{
+  color: var(--comment-card-placeHolder);
 }
 #postCommentContainerExpanded {
   height: fit-content;
@@ -284,6 +288,9 @@
   padding-bottom: 0;
   margin-bottom: 0;
   color: var(--main-text);
+}
+#postCommentContainerExpanded::placeholder{
+  color: var(--comment-card-placeHolder);
 }
 #postCommentContainerExpanded:focus {
   /* border: 2px solid #2a72de; */

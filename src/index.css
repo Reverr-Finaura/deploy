@@ -41,7 +41,8 @@ code {
   --bg-dashboard-card: rgb(75, 71, 71);
   --bg-sub-card: rgb(75, 71, 71);
   --box-shadow: white;
-  --comment-card: black;
+  --comment-card: #787878;
+  --comment-card-placeHolder:white;
   --change-theme: white;
   --profile-input: rgb(40, 39, 39);
   --user-profile-indicator: white;
@@ -90,6 +91,7 @@ code {
   --bg-sub-card: #fafaff;
   --box-shadow: rgb(0 0 0 / 25%);
   --comment-card: white;
+  --comment-card-placeHolder:black;
   --change-theme: black;
   --profile-input: #f6f6f6;
   --user-profile-indicator: #2a72de;
