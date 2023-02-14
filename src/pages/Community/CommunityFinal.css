@@ -109,10 +109,10 @@
 .sortOptionBigContainerScrolled {
   position: fixed;
   top: 4.4rem;
-  width: 42.5%;
+  width: calc(100vw - 56%);
   z-index: 100;
   /* margin-left: 4rem; */
-  /* background-color: var(--bg-card); */
+  background: var(--navbar-scroll-bg);
 }
 .rotate-180 {
   transform: rotate(180deg);
@@ -362,7 +362,7 @@
   color: var(--comment-card-placeHolder);
   stroke: var(--comment-card-placeHolder);
 }
-.expandTextAreaIcon>path{
+.expandTextAreaIcon > path {
   stroke: var(--comment-card-placeHolder);
 }
 
@@ -569,12 +569,12 @@ edit_Delete_Btn {
   width: 27%;
   min-height: 100%;
   /* background-color: var(--bg-card); */
-  padding: 1rem;
+  padding: 0rem 1.5rem;
   position: fixed;
-  padding-left: 0;
+  /* padding-left: 0; */
   right: 0;
 
-  padding-top: 0;
+  /* padding-top: 0; */
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
 }
 body::-webkit-scrollbar {
@@ -585,6 +585,7 @@ body::-webkit-scrollbar {
 }
 .communityNewsSectionContainer {
   width: 88%;
+  margin: 0 auto;
   height: 277px;
   /* background-color: var(--bg-sub-card); */
   background: linear-gradient(
@@ -602,7 +603,7 @@ body::-webkit-scrollbar {
   max-height: 80vh;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
   margin-top: 1rem;
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
 }
 
 .communityNewsSectionHeading {
@@ -722,7 +723,7 @@ body::-webkit-scrollbar {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     /* margin-left: 4rem; */
-    /* width: 92%; */
+    width: 88%;
   }
   #communityFinalPageOuterSection {
     margin-left: 13rem;
@@ -748,7 +749,7 @@ body::-webkit-scrollbar {
   .sortOptionBigContainerScrolled {
     position: fixed;
     top: 4.4rem;
-    width: 59%;
+    width: 56%;
     z-index: 100;
     /* margin-left: 4rem; */
   }
@@ -784,7 +785,7 @@ body::-webkit-scrollbar {
   .sortOptionBigContainerScrolled {
     position: fixed;
     top: 4.4rem;
-    width: 60%;
+    width: 54%;
     z-index: 100;
     margin-left: 0.5rem;
   }
@@ -792,14 +793,14 @@ body::-webkit-scrollbar {
 @media (max-width: 890px) {
   .sortOptionBigContainer {
     width: 80%;
-    margin: auto;
+    /* margin: auto; */
     margin-top: 2rem;
     /* flex-direction: column; */
   }
   .sortOptionBigContainerScrolled {
     position: fixed;
     top: 4.4rem;
-    width: 58%;
+    width: 54%;
     z-index: 100;
     margin-left: 0.5rem;
   }

@@ -75,7 +75,7 @@ const CommunityFinal = () => {
   const [newScoll, setNewScroll] = useState(0);
   const [newsData, setNewsData] = useState();
   const [singleNews, setSingleNews] = useState(null);
-  const[blogArray,setBlogArray]=useState([])
+  const [blogArray, setBlogArray] = useState([]);
   console.log("blogArray", blogArray);
 
   //FETCH LATEST NEWS
@@ -381,22 +381,21 @@ const CommunityFinal = () => {
     }
   };
 
-//FETCH BLOG DATA FROM FIREBASE
+  //FETCH BLOG DATA FROM FIREBASE
 
-useEffect(()=>{
-  async function fetchBlogsFromDb(){
-    const blogRef = collection(db, "Blogs");
-    const q = query(blogRef);
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => { 
-          setBlogArray((prev)=>{
-            return [...prev,{...doc.data(),id:doc.data().id}]
-          })
+  useEffect(() => {
+    async function fetchBlogsFromDb() {
+      const blogRef = collection(db, "Blogs");
+      const q = query(blogRef);
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        setBlogArray((prev) => {
+          return [...prev, { ...doc.data(), id: doc.data().id }];
         });
-        
-  }
-      fetchBlogsFromDb()
-    },[])
+      });
+    }
+    fetchBlogsFromDb();
+  }, []);
 
   const ArticleDummyData = [
     {
@@ -433,7 +432,9 @@ useEffect(()=>{
     <>
       {width >= 600 ? (
         <>
-          <CommunitySidebar />
+          <SidebarFinal />
+          {/* <NavBarFinal /> */}
+          {/* <CommunitySidebar /> */}
           <CommunityNavbar
             setNavbarPostButtonClick={setNavbarPostButtonClick}
           />
@@ -450,7 +451,6 @@ useEffect(()=>{
         }}
         id="communityFinalPageOuterSection"
       >
-
         <section
           style={{ position: singleNews ? "fixed" : "" }}
           id="communityFinalPage"
@@ -882,10 +882,10 @@ useEffect(()=>{
               })}
             </div>
 
-{/* ARTICLE SECTION  */}
-<div className="communityNewsSectionContainer">
+            {/* ARTICLE SECTION  */}
+            <div className="communityNewsSectionContainer">
               <h3 className="communityNewsSectionHeading">Articles</h3>
-              {blogArray.length===0 && (
+              {blogArray.length === 0 && (
                 <div>
                   <NewSkeleton cards={4} />
                 </div>
@@ -895,7 +895,12 @@ useEffect(()=>{
                   <>
                     <div
                       className="communityArticleSectionArticleCont"
-                      onClick={()=>{window.open(`https://reverr.io/blog/${article.id}`, '_blank')}}
+                      onClick={() => {
+                        window.open(
+                          `https://reverr.io/blog/${article.id}`,
+                          "_blank"
+                        );
+                      }}
                       key={article.id}
                     >
                       <div className="communityArticleSectionArticleImageCont">

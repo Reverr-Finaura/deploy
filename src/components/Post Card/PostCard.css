@@ -1,7 +1,7 @@
 .PostCardContainer {
   height: max-content;
-  width: 90%;
-  margin: auto;
+  width: 93%;
+  /* margin: auto; */
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -253,11 +253,11 @@
 }
 /* NEW COMMENT SECTION */
 .newCommentOnPostSection {
-  width: 90%;
+  width: 93%;
   height: max-content;
   border-bottom-left-radius: 19px;
   border-bottom-right-radius: 19px;
-  margin: auto;
+  /* margin: auto; */
   margin-bottom: 2.5rem;
   padding: 1rem;
   background-color: #e6e4e4dc;
@@ -274,7 +274,7 @@
   border: 2px solid var(--main-text);
   color: var(--comment-card-placeHolder);
 }
-#postCommentContainer::placeholder{
+#postCommentContainer::placeholder {
   color: var(--comment-card-placeHolder);
 }
 #postCommentContainerExpanded {
@@ -289,7 +289,7 @@
   margin-bottom: 0;
   color: var(--main-text);
 }
-#postCommentContainerExpanded::placeholder{
+#postCommentContainerExpanded::placeholder {
   color: var(--comment-card-placeHolder);
 }
 #postCommentContainerExpanded:focus {
