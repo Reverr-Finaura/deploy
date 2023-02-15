@@ -1,0 +1,78 @@
+.documentCard {
+  width: 280px;
+  /* height: 380px; */
+
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  text-decoration: none;
+}
+
+.DocumentCard_top {
+  display: flex;
+  width: 100%;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.DocumentCard_top .icon {
+  width: 50px;
+  height: 50px;
+}
+
+.DocumentCard_top .icon > img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.DocumentCard_title {
+  font-size: 1.5rem;
+  font-weight: 500;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
+  color: var(--main-text);
+}
+
+.DocumentCard_description {
+  text-decoration: none;
+  text-align: justify;
+  color: var(--main-text);
+}
+
+.documentCard_tag {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--main-text);
+}
+
+.tag_icon {
+  font-size: 1.1rem;
+}
+
+.DocumentCard_lower {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.edit_btn,
+.delete_btn {
+  padding: 0.6rem 2rem;
+  outline: none;
+  border: none;
+  background: #2a72de;
+  border-radius: 5px;
+  color: #ffff;
+  font-size: 1rem;
+}
