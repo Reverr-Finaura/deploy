@@ -26,6 +26,7 @@
     "react-calendar": "^3.7.0",
     "react-calendly": "^4.1.0",
     "react-circular-progressbar": "^2.1.0",
+    "react-documents": "^1.2.1",
     "react-dom": "^18.2.0",
     "react-google-login": "^5.2.2",
     "react-hot-toast": "^2.3.0",

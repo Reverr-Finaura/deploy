@@ -88,6 +88,26 @@ const SidebarFinal = () => {
             <p className="sidebar-final-icon-name">Community</p>
           </div>
         </NavLink>
+        <NavLink style={{ textDecoration: "none" }} to="/pptTemplates">
+          <div className="sidebar-final-icon-name-cont">
+            <img
+              className="sidebar-final-icon sidebar-final-mentor-icon"
+              src={theme === "light-theme" ? mentD : mentL}
+              alt="icon"
+            />
+            <p className="sidebar-final-icon-name">PPT Templates</p>
+          </div>
+        </NavLink>
+        <NavLink style={{ textDecoration: "none" }} to="/documentTemplates">
+          <div className="sidebar-final-icon-name-cont">
+            <img
+              className="sidebar-final-icon sidebar-final-mentor-icon"
+              src={theme === "light-theme" ? mentD : mentL}
+              alt="icon"
+            />
+            <p className="sidebar-final-icon-name">Document Templates</p>
+          </div>
+        </NavLink>
 
         {/* <div className='sidebar-final-line'></div>
 <NavLink style={{textDecoration:"none"}} to="/userprofile">

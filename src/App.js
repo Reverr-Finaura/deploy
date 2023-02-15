@@ -80,6 +80,10 @@ import CommunityNew from "./pages/Community/CommunityNew";
 import CommunityFinal from "./pages/Community/CommunityFinal";
 import SharedCommunityPost from "./pages/Shared Community Post/SharedCommunityPost";
 import PaymentMentorMeetingSchedule from "./components/Payment For Mentor Meeting Schedule/PaymentMentorMeetingSchedule";
+import PPTTemplates from "./pages/PPT Templates/PPTTemplates";
+import PPTTemplatesViewer from "./pages/PPT Templates/PPT Templates Viewer/PPTTemplatesViewer";
+import DocumentTemplates from "./pages/Document Templates/DocumentTemplates";
+import DocumentTemplatesViewer from "./pages/Document Templates/Document Templates Viewer/DocumentTemplatesViewer";
 
 function App() {
   const user = useSelector(selectUser);
@@ -245,6 +249,10 @@ function App() {
         
         <Route path="*" element={<NotFound />}></Route>
         <Route path="/payment" element={<PaymentMentorMeetingSchedule/>}></Route>
+        <Route path="/pptTemplates" element={<PPTTemplates/>}></Route>
+        <Route path="/pptTemplates/:id" element={<PPTTemplatesViewer/>}></Route>
+        <Route path="/documentTemplates" element={<DocumentTemplates/>}></Route>
+        <Route path="/documentTemplates/:id" element={<DocumentTemplatesViewer/>}></Route>
       </Routes>
     </>
   );
