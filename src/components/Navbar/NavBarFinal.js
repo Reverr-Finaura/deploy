@@ -19,6 +19,9 @@ import { FaLightbulb } from "react-icons/fa";
 import { setTheme } from "../../features/themeSlice";
 import { DarkModeToggle } from "@anatoliygatt/dark-mode-toggle";
 import userIcon from "../../images/userIcon.png";
+import settingIcon from "../../images/Vector (3).png";
+import ReverrLightIcon from "../../images/Reverr Light.png";
+import ReverrDarkIcon from "../../images/Frame 6266720.png";
 
 const NavBarFinal = () => {
   const user = useSelector((state) => state.user);
@@ -239,11 +242,7 @@ const NavBarFinal = () => {
         >
           <img
             className="navbar-final-brand-logo-img"
-            src={
-              theme === "light-theme"
-                ? "./images/Frame 6266720.png"
-                : "./images/Reverr Light.png"
-            }
+            src={theme === "light-theme" ? ReverrDarkIcon : ReverrLightIcon}
             alt="brand-logo"
           />
         </div>
@@ -254,7 +253,7 @@ const NavBarFinal = () => {
 
           {/* <div className='navbar-topp-social-icon' onClick={toggleTheme}>
   <FaLightbulb className='navbar-changeThemeIcon'/>
-</div> */}
+   </div> */}
 
           {/* THEME TOGGLER */}
 
@@ -384,9 +383,10 @@ const NavBarFinal = () => {
           >
             <img
               className="nabar-final-setting-cont"
-              src="./images/Vector (3).png"
+              src={settingIcon}
               alt="nav-icons"
             />
+
             {isSettingButtonClick ? (
               <div className="setting-dropdown-cont">
                 <button

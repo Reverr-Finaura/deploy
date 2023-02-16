@@ -21,8 +21,7 @@ import comD from "../../images/com-dark.png";
 import comL from "../../images/Vector (1).png";
 import fundD from "../../images/funding-dark.png";
 import fundL from "../../images/funding-light.png";
-import logoutIconn from "../../images/bx_log-out-white.png"
-
+import logoutIconn from "../../images/bx_log-out-white.png";
 
 const SidebarFinal = () => {
   const user = useSelector(selectUser);

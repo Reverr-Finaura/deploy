@@ -15,7 +15,7 @@ const DocumentSlide = ({ tag }) => {
 
     TagDocumentTemplate?.forEach((doc) => {
       if (doc.data().tag.toLowerCase() === tag.toLowerCase()) {
-        setAllTagDocuments((prev) => [...prev, doc.data()]);
+        setAllTagDocuments((prev) => [...prev, { ...doc.data(), id: doc.id }]);
       }
     });
   }
@@ -90,7 +90,7 @@ const DocumentSlide = ({ tag }) => {
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
       >
-        {DocumentData?.map((item, index) => {
+        {AllTagDocuments?.map((item, index) => {
           return (
             <SwiperSlide key={index}>
               <DocumentCard data={item} />

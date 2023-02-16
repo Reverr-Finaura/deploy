@@ -62,7 +62,7 @@ const DocumentTemplates = () => {
       )}
 
       <section className={styles.documentTemplates_main}>
-        {DummyDocument?.map((tag, index) => {
+        {documentTemplate?.map((tag, index) => {
           return <DocumentSlide key={index} tag={tag} />;
         })}
       </section>

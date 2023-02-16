@@ -46,6 +46,9 @@
 .DocumentCard_description {
   text-decoration: none;
   text-align: justify;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: var(--main-text);
 }
 
@@ -56,6 +59,9 @@
   color: var(--main-text);
 }
 
+.documentCard_tag .tag {
+  font-size: 0.9rem;
+}
 .tag_icon {
   font-size: 1.1rem;
 }
@@ -66,13 +72,26 @@
   justify-content: space-between;
 }
 
+.button_div {
+  display: flex;
+  gap: 1rem;
+}
 .edit_btn,
-.delete_btn {
-  padding: 0.6rem 2rem;
+.download_btn {
+  padding: 0.2rem;
   outline: none;
   border: none;
-  background: #2a72de;
-  border-radius: 5px;
-  color: #ffff;
-  font-size: 1rem;
+  border-radius: 50%;
+  background: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* color: #ffff; */
+  cursor: pointer;
+}
+
+.edit_icon,
+.download_icon {
+  font-size: 1.6rem;
 }
