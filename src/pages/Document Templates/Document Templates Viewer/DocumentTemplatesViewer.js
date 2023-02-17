@@ -9,7 +9,7 @@ import styles from "./DocumentTemplatesViewer.module.css";
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import { BsArrowRightSquareFill } from "react-icons/bs";
 import { DocumentViewer } from "react-documents";
-
+import loader from "../../../images/Pulse-1s-200px.svg";
 const DocumentTemplatesViewer = () => {
   const documentId = useParams().id;
   const [documentLink, setDocumentLink] = useState("");
@@ -73,7 +73,14 @@ const DocumentTemplatesViewer = () => {
             ></DocumentViewer>
           </section>
         </>
-      ) : null}
+      ) : (
+        <>
+          <div className={styles.outerContLoading}>
+            <h1>Loading......</h1>
+            <img className={styles.loadIcon} src={loader} alt="loading" />
+          </div>
+        </>
+      )}
     </>
   );
 };

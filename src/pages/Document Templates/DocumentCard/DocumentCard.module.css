@@ -1,11 +1,12 @@
 .documentCard {
-  width: 280px;
-  /* height: 380px; */
+  width: 300px;
+  height: 300px;
 
-  padding: 1rem 2rem;
+  padding: 1.2rem 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  justify-content: space-between;
   background: var(--bg-card);
   border-radius: 12px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -35,10 +36,10 @@
 .DocumentCard_title {
   font-size: 1.5rem;
   font-weight: 500;
-
-  white-space: nowrap;
+  word-break: break-all;
+  /* white-space: ;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; */
   width: 80%;
   color: var(--main-text);
 }
@@ -46,9 +47,10 @@
 .DocumentCard_description {
   text-decoration: none;
   text-align: justify;
-  white-space: nowrap;
+  word-break: break-all;
+  /* white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; */
   color: var(--main-text);
 }
 

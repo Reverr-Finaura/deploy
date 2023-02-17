@@ -9,7 +9,7 @@ import styles from "./PPTTemplatesViewer.module.css";
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import { BsArrowRightSquareFill } from "react-icons/bs";
 import { DocumentViewer } from "react-documents";
-import load from "../../../images/Pulse-1s-200px.svg"
+import load from "../../../images/Pulse-1s-200px.svg";
 
 const PPTTemplatesViewer = () => {
   const pptId = useParams().id;
@@ -75,7 +75,14 @@ const PPTTemplatesViewer = () => {
             ></DocumentViewer>
           </section>
         </>
-      ) : <><div className={styles.outerContLoading}><h1>Loading......</h1><img className={styles.loadIcon} src={load} alt="loading" /></div></>}
+      ) : (
+        <>
+          <div className={styles.outerContLoading}>
+            <h1>Loading......</h1>
+            <img className={styles.loadIcon} src={load} alt="loading" />
+          </div>
+        </>
+      )}
     </>
   );
 };

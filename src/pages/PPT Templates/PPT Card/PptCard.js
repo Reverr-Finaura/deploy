@@ -39,8 +39,15 @@ const PptCard = ({ ppt }) => {
           </p>
         </div> */}
         <div className={styles.tagListCont}>
-          {ppt.tag.slice(0,3).map((tag)=>{
-            return <p className={styles.tagCont}><span><AiFillTag className={styles.tagIcon}/></span>{tag}</p>
+          {ppt.tag.slice(0, 3).map((tag) => {
+            return (
+              <p className={styles.tagCont}>
+                <span>
+                  <AiFillTag className={styles.tagIcon} />
+                </span>
+                {tag}
+              </p>
+            );
           })}
         </div>
         <div className={styles.btnCont}>
