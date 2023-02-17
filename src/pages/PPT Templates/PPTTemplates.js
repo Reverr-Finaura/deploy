@@ -7,6 +7,8 @@ import PhnSidebar from "../../components/PhnSidebar/PhnSidebar";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../firebase";
 import PptCard from "./PPT Card/PptCard";
+import PptSkeleton from "../../components/Post Skeleton/PPT SKELETON/PptSkeleton";
+
 
 const PPTTemplates = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -124,6 +126,11 @@ const PPTTemplates = () => {
 
         {/* PPT CONTAINER */}
         <section className={styles.pptListCont}>
+        {pptListShowData?.length === 0 && (
+            <>
+              <PptSkeleton cards={3} />
+            </>
+          )}
           {pptListShowData.map((ppt) => {
             return (
               <>
