@@ -10,21 +10,19 @@
 }
 .cardTop{
     display: flex;
-    padding: 1rem;
+    padding: .5rem;
 }
-.info{
-    width: 50%;
-    margin-right: 1rem;
-}
+
 .cardTopUserImage{
-    margin: auto;
+    width: 95%;
+    height: 230px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
 }
-.cardMid{
-    padding: 1rem;
-}
+
 .cardBottomTop{
 
-    padding: 1rem;
+    padding: .5rem;
 }
 .cardBottom{
     display: flex;
@@ -33,6 +31,14 @@
 .cardPrice{
     width: 50%;
     margin-right: 1rem; 
+}
+.tag{
+width: 25%;
+margin-right: 1rem;
+}
+.tagCont{
+    display: flex;
+    padding-left: .5rem;
 }
 .cardButton{
     width: 50%;
