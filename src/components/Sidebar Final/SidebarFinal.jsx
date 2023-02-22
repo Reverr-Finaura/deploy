@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./SidebarFinal.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, logout } from "../../features/userSlice";
@@ -22,6 +22,7 @@ import comL from "../../images/Vector (1).png";
 import fundD from "../../images/funding-dark.png";
 import fundL from "../../images/funding-light.png";
 import logoutIconn from "../../images/bx_log-out-white.png";
+import { BiArrowBack } from "react-icons/bi";
 
 const SidebarFinal = () => {
   const user = useSelector(selectUser);
@@ -30,6 +31,13 @@ const SidebarFinal = () => {
 
   const chat = useSelector(selectChat);
   const theme = useSelector((state) => state.themeColor);
+
+  const routes = useLocation();
+
+  const pptPath = routes.pathname.includes("/pptTemplates/");
+  const docPath = routes.pathname.includes("/documentTemplates/");
+
+  //console.log(routes.pathname.includes('/pptTemplates/'),"routes");
 
   console.log(theme);
   return (
@@ -140,32 +148,50 @@ const SidebarFinal = () => {
         <img className='sidebar-final-icon' src="./images/bx_log-out.png" alt="icon" />
         <p className='sidebar-final-icon-name'>Log Out</p>
       </div> */}
-        <button
-          onClick={
-            user
-              ? () =>
-                  signOut(auth)
-                    .then(() => {
-                      dispatch(logout());
-                      dispatch(remove());
-                      dispatch(removeUserDoc());
-                      dispatch(removeUserFundingDoc());
-                    })
-                    .then(() => {
-                      toast.success("Sucessfully logged out");
-                      navigate("/");
-                    })
-              : () => navigate("/login")
-          }
-          className="sidebar-final-logout-btn"
-        >
-          <img
-            className="sidebar-final-icon-logout"
-            src={logoutIconn}
-            alt="icon"
-          />
-          Log Out
-        </button>
+        {pptPath ? (
+          <button
+            onClick={() => navigate("/pptTemplates")}
+            className="sidebar-final-logout-btn"
+          >
+            {" "}
+            <BiArrowBack /> Back
+          </button>
+        ) : docPath ? (
+          <button
+            onClick={() => navigate("/documentTemplates")}
+            className="sidebar-final-logout-btn"
+          >
+            {" "}
+            <BiArrowBack /> Back
+          </button>
+        ) : (
+          <button
+            onClick={
+              user
+                ? () =>
+                    signOut(auth)
+                      .then(() => {
+                        dispatch(logout());
+                        dispatch(remove());
+                        dispatch(removeUserDoc());
+                        dispatch(removeUserFundingDoc());
+                      })
+                      .then(() => {
+                        toast.success("Sucessfully logged out");
+                        navigate("/");
+                      })
+                : () => navigate("/login")
+            }
+            className="sidebar-final-logout-btn"
+          >
+            <img
+              className="sidebar-final-icon-logout"
+              src={logoutIconn}
+              alt="icon"
+            />
+            Log Out
+          </button>
+        )}
       </section>
       {chat && <Chat />}
     </>
