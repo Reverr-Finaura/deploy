@@ -81,6 +81,7 @@ const DocumentSlide = ({ tag }) => {
   return (
     <section className={styles.documentTemplates_main}>
       <h2 className={styles.Document_Template_title}>{tag}</h2>
+      
       <Swiper
         spaceBetween={350}
         slidesPerView={4}

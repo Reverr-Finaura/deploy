@@ -49,6 +49,7 @@ const DocumentTemplates = () => {
 
   return (
     <div>
+      
       {width >= 600 ? (
         <>
           <SidebarFinal />

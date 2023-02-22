@@ -1,8 +1,9 @@
 .outerCont{
     max-width: 98%;
-    min-height: 100vh;
+    min-height: 83.5vh;
     margin-top: 7rem;
     margin-left: 1rem;
+    
 }
 .outerContLoading{
     max-width: 98%;
@@ -16,8 +17,9 @@
 }
 .pptViewerOuterCont{
     max-width: 100%;
-    min-height: 100vh;
+    min-height: 83.5vh;
     margin-left: .5rem;
+    
 }
 .animatedSideBar{
     transform: translateX(-260px);

@@ -7,7 +7,7 @@ import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
 import { db } from "../../../firebase";
 import styles from "./DocumentTemplatesViewer.module.css";
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
-import { BsArrowRightSquareFill } from "react-icons/bs";
+import { BsArrowRightSquareFill,BsArrowLeftSquareFill } from "react-icons/bs";
 import { DocumentViewer } from "react-documents";
 import loader from "../../../images/Pulse-1s-200px.svg";
 const DocumentTemplatesViewer = () => {
@@ -42,16 +42,21 @@ const DocumentTemplatesViewer = () => {
 
   return (
     <>
+     
       {width >= 600 ? (
         <>
           <div
             style={{ transform: isSideBarCalled ? "translateX(0)" : "" }}
             className={styles.animatedSideBar}
           >
-            <BsArrowRightSquareFill
-              onClick={() => setIsSideBarCalled((e) => !e)}
-              className={styles.arroww}
-            />
+            {isSideBarCalled? <BsArrowLeftSquareFill
+            onClick={() => setIsSideBarCalled((e) => !e)}
+            className={styles.arroww}
+          /> :<BsArrowRightSquareFill
+          onClick={() => setIsSideBarCalled((e) => !e)}
+          className={styles.arroww}
+        />}
+           
             <SidebarFinal />
           </div>
           <NavBarFinal />

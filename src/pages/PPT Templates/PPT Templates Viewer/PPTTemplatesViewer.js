@@ -1,13 +1,13 @@
 import { collection, getDocs, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams, useRoutes } from "react-router-dom";
 import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
 import NavBarFinal from "../../../components/Navbar/NavBarFinal";
 import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
 import { db } from "../../../firebase";
 import styles from "./PPTTemplatesViewer.module.css";
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
-import { BsArrowRightSquareFill } from "react-icons/bs";
+import { BsArrowRightSquareFill ,BsArrowLeftSquareFill} from "react-icons/bs";
 import { DocumentViewer } from "react-documents";
 import load from "../../../images/Pulse-1s-200px.svg";
 
@@ -25,6 +25,7 @@ const PPTTemplatesViewer = () => {
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
+  
   //FETCH PARTICULAR PPT LINK FROM FIREBASE
   useEffect(() => {
     async function fetchPptLinkFromFirebase() {
@@ -50,10 +51,14 @@ const PPTTemplatesViewer = () => {
             style={{ transform: isSideBarCalled ? "translateX(0)" : "" }}
             className={styles.animatedSideBar}
           >
-            <BsArrowRightSquareFill
-              onClick={() => setIsSideBarCalled((e) => !e)}
-              className={styles.arroww}
-            />
+            
+            {isSideBarCalled? <BsArrowLeftSquareFill
+            onClick={() => setIsSideBarCalled((e) => !e)}
+            className={styles.arroww}
+          /> :<BsArrowRightSquareFill
+          onClick={() => setIsSideBarCalled((e) => !e)}
+          className={styles.arroww}
+        />}
             <SidebarFinal />
           </div>
           <NavBarFinal />
