@@ -10,8 +10,10 @@ import { doc, setDoc, updateDoc } from "firebase/firestore";
 import { db, storage } from "../../firebase";
 import { useSelector } from "react-redux";
 import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage";
+import { useNavigate } from "react-router-dom";
 
 const GetFundedPage = () => {
+  const navigate =useNavigate()
   const user = useSelector((state) => state.user);
   const [width, setWidth] = useState(window.innerWidth);
   const [pitchDeckFile, setPitchDeckFile] = useState(null);
@@ -170,10 +172,15 @@ const GetFundedPage = () => {
       )}
 
       <section id="getFundingPage">
+      <img className="getFundingPageOuterIcon1" src="/images/Business vision-pana 1.png" alt="" />
+      <img className="getFundingPageOuterIcon2" src="/images/20945238 1.png" alt="" />
+      <div className="getFundingPage_CheckYourScoreCont">
+        <button onClick={()=>navigate("/checkYourScore")} className="getFundingPage_CheckYourScoreCont_btn">Check Your Score</button>
+      </div>
       <div className="getFundingPageOuter">
         <ToastContainer />
-        <img className="getFundingPageOuterIcon1" src="/images/Business vision-pana 1.png" alt="" />
-        <img className="getFundingPageOuterIcon2" src="/images/20945238 1.png" alt="" />
+        
+        
         <h1 className="getFundingPageTitle">Funding Form</h1>
 
         <div className="getFundingPageForm">

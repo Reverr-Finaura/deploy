@@ -48,6 +48,7 @@ code {
   --user-profile-indicator: white;
   --user-profile-sub-indicator: rgba(255, 255, 255, 0.703);
   --navbar-scroll-bg: rgba(0, 0, 0, 0.8);
+  --btnNewColorTheme:white
   /* --navbar-scroll-bg: linear-gradient(
     157.59deg,
     #2f2f2f 0%,
@@ -97,6 +98,7 @@ code {
   --user-profile-indicator: #2a72de;
   --user-profile-sub-indicator: rgba(42, 114, 222, 0.5);
   --navbar-scroll-bg: rgba(255, 255, 255, 0.8);
+  --btnNewColorTheme:#2a72de
 }
 body {
   margin: 0;

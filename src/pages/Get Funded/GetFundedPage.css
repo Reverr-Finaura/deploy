@@ -1,13 +1,12 @@
 #getFundingPage {
   min-height: 100vh;
   width: 95%;
-
   margin-left: 14.5rem;
-
-  margin-top: 7rem;
+  margin-top: 8rem;
   margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
+  position: fixed;
 }
 .getFundingPageOuter {
   /* background: linear-gradient(
@@ -26,20 +25,30 @@
   flex-direction: column;
   position: relative;
   z-index: 5;
+  position: fixed;
+  overflow-y: scroll;
+  background: transparent;
+  border: 8px solid linear-gradient(#91C1FF 1.13%, #79C0DB 28.23%, #A2E1C4 60%, #C7FFAF 100%);
+}
+.getFundingPageOuter::-webkit-scrollbar {
+  display: none;
 }
 .getFundingPageOuterIcon1 {
   position: absolute;
   z-index: -1;
   transform: scale(0.6);
-  bottom: -50px;
-  left: -350px;
+  /* bottom: -50px;
+  left: -350px; */
+  left: 1rem;
+  bottom: 2rem;
 }
 .getFundingPageOuterIcon2 {
   position: absolute;
   z-index: -1;
   transform: scale(0.8);
-  right: -170px;
-  top: -100px;
+  /* right: -170px;
+  top: -100px; */
+  right: 15%;
 }
 .getFundingPageTitle {
   width: 100%;
@@ -50,6 +59,7 @@
   font-size: 32px;
   line-height: 48px;
   color: var(--main-text);
+  padding-top: 2rem;
 }
 
 .getFundingPageForm {
@@ -101,19 +111,39 @@
   border: none;
   cursor: pointer;
 }
-
+.getFundingPage_CheckYourScoreCont{
+  position: absolute;
+  right: 11rem;
+  z-index: 10;
+}
+.getFundingPage_CheckYourScoreCont_btn{
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+  font-size: 20px;
+  background: transparent;
+  /* box-shadow: 0px 4px 4px rgb(255 255 255 / 25%); */
+  border-radius: 20px;
+  border: none;
+  background-color: #2a72de;
+  color: white;
+}
 .getFundedPageApplyButton {
   padding: 0.5rem 2rem;
   cursor: pointer;
-  color: #2a72de;
+  color: var(--btnNewColorTheme);
   font-size: 20px;
   background: transparent;
-  box-shadow: 0px 4px 4px rgb(255 255 255 / 25%);
+  /* box-shadow: 0px 4px 4px rgb(255 255 255 / 25%); */
   border-radius: 20px;
   margin: auto;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  border: 2px solid #2a72de;
+  border: 2px solid var(--btnNewColorTheme);
+}
+.getFundedPageApplyButton:hover{
+  border: none;
+  background-color: #2a72de;
+  color: white;
 }
 
 @media (max-width: 1024px) {
