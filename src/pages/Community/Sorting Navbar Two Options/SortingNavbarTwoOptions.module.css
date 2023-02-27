@@ -1,0 +1,23 @@
+.outerCont{
+    background: linear-gradient(
+        119.93deg,
+        rgba(255, 255, 255, 0.35) 4.68%,
+        rgba(255, 255, 255, 0.3) 91.73%
+      );
+      color: var(--main-text);
+  border-radius: 9px;
+  box-shadow: 0px 2.05973px 12.3584px -0.514933px rgba(0, 0, 0, 0.15);
+  padding: .7rem 3rem;
+  
+}
+
+.updatedSortPostSectionUnderLine{
+    width: 81%;
+    height: 4px;
+    background-color: #2a72de;
+    margin: auto;
+    position: absolute;
+    bottom: 0%;
+    left: 9%;
+    border-radius: 5px;
+}

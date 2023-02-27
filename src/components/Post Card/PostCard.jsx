@@ -16,6 +16,8 @@ import {TfiMoreAlt} from "react-icons/tfi"
 import {AiTwotoneLike} from "react-icons/ai"
 import {AiOutlineLike} from "react-icons/ai"
 import {GrAddCircle} from "react-icons/gr"
+import {FiSend} from "react-icons/fi"
+import {BiCommentDots} from "react-icons/bi"
 
 const PostCard = ({postsData,setPostsData,item,handleEditPostButtonClick,setPostsAuthorIsClick,setPostsAuthorInfo}) => {
     const userDoc=useSelector((state)=>state.userDoc) 
@@ -326,7 +328,7 @@ useEffect(()=>{
         <div className='postCommentContainer'>
         <div className='commentContainer'>
         {/* <img src={commentIcon} alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIcon'/> */}
-        <FaComments onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIconn'/>
+        <BiCommentDots onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIconn'/>
         
         {/* ;(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus() */}
         </div>
@@ -338,7 +340,7 @@ useEffect(()=>{
 <div className='postSendCont'>
     <div className='postSendIcon'>
         {/* <img style={{width:"100%",height:"100%"}} src="./images/paper-plane.png" alt="sendIcon" /> */}
-        <RiShareForwardFill style={{fontSize:"1.8rem"}}/>
+        <FiSend style={{fontSize:"1.8rem"}}/>
     </div>
     <h3 className='postSendText'>Share</h3>
 </div>

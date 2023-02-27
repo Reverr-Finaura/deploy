@@ -45,11 +45,20 @@
   justify-content: center;
   margin-right: 3rem;
   cursor: pointer;
+  
 }
+
 .navbar-topp-social-icon:hover {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 }
-
+.nabar-final-setting-Icon{
+  color: var(--btnNewColorTheme);
+  font-size: 1.7rem;
+}
+.nabar-final-userProfile-Icon{
+  color: var(--btnNewColorTheme);
+  font-size: 1.4rem;
+}
 .setting-social-icon-cont {
   position: relative;
 }

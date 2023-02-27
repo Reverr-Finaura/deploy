@@ -103,20 +103,24 @@ function Knowledge() {
             eiusmod tempor"
                 url="/esop"
               /> */}
+              <section className={styles.outerCont}>
+              <img className={styles.idealValidationIcon} src="/images/faltuIcon1.png" alt="" />
               <Chapter
                 heading="Idea Validation"
                 image="./images/18915856 1.png"
                 description="Is it worthwhile to pursue your fresh startup idea? Let's put it through our tried-and-true method to obtain opinions from experts, users, and the available research to determine whether it's worthwhile to construct."
                 url="/idea-validation"
-                faltuImage="/images/faltuIcon1.png"
               />
+              </section>
+              <section className={styles.outerCont}>
+              <img className={styles.fundRaisingIcon} src="/images/faltuIcon2.png" alt="" />
               <Chapter
                 heading="Fundraising and its Means"
                 image="./images/fundraising.png"
                 description="How are businesses supported in reality? From the various funding sources accessible to locating investors and creating the ideal pitch, we'll walk you through everything you could possible want to know."
                 url="/fundraising-and-means"
-                faltuImage="/images/faltuIcon2.png"
               />
+              </section>
               <Chapter
                 heading="Reaching Out to Investor"
                 image="./images/reachingout.png"
@@ -130,6 +134,7 @@ function Knowledge() {
             eiusmod tempor"
                 url="/social-media"
               /> */}
+              <section className={styles.outerCont}>
               <Chapter
                 heading="Beta Testing"
                 image="./images/beta.png"
@@ -138,6 +143,8 @@ function Knowledge() {
                 faltuImage="/images/faltuIcon3.png"
                 
               />
+              </section>
+              <section className={styles.outerCont}>
               <Chapter
                 heading="Business Modal"
                 image="./images/definevalues.png"
@@ -146,22 +153,24 @@ function Knowledge() {
                 faltuImage="/images/faltuIcon4.png"
            
               />
-
+   </section>
+   <section className={styles.outerCont}>
+   <img className={styles.businessPlaningIcon} src="/images/faltuIcon2.png" alt="" />
               <Chapter
                 heading="Business Planning"
                 image="./images/pitchdeck.png"
                 description="A solid business strategy is the foundation of every successful venture. However, developing a strategy for your firm doesn't need to be a tedious 80-page exercise. To help you succeed, we're dissecting each element in detail."
                 url="/buisnessplanning"
-                faltuImage="/images/faltuIcon2.png"
+                // faltuImage="/images/faltuIcon2.png"
               />
-
+              </section>
               <Chapter
                 heading="Competitor Analysis"
                 image="./images/comeptitor.svg"
                 description="Get a handle on the operating environment and level of market competition in which your company will operate?"
                 url="/competitoranalysis"
               />
-
+<section className={styles.outerCont}>
               <Chapter
                 heading="Product Development"
                 image="./images/productdev.png"
@@ -169,15 +178,18 @@ function Knowledge() {
                 url="/productdevelopment"
                 faltuImage="/images/faltuIcon3.png"
               />
+              </section>
 
+              <section className={styles.outerCont}>
+              <img className={styles.thinkingStartupIcon} src="/images/faltuIcon1.png" alt="" />
               <Chapter
                 heading="THINKING OF A STARTUP IDEA & IDEA SHORTLISTING"
                 image="./images/thinking.png"
                 description="How do you come up with the next big concept? What issues need to be resolved, and what would be the best approach for each one? Find out nocw!"
                 url="/thinkingofstartup"
-                faltuImage="/images/faltuIcon1.png"
+               
               />
-
+              </section>
               <Chapter
                 heading="Building an Audience"
                 image="./images/audience.svg"

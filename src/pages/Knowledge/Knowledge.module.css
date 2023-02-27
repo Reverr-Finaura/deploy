@@ -1,4 +1,56 @@
-
+.outerCont{
+  width: fit-content;
+  height: fit-content;
+  z-index: 10;
+  position: relative;
+}
+.idealValidationIcon{
+  position: absolute;
+  z-index: -1;
+left: 9rem;
+bottom: 11rem;
+}
+.fundRaisingIcon{
+  position: absolute;
+  z-index: -1;
+  right: 100px;
+  transform: scale(1.5) rotate(240deg);
+  top: -100px;
+ 
+}
+.betaTestingIcon{
+  position: absolute;
+  z-index: -1;
+  left: 100px;
+  top: -100px;
+  transform: scale(1);
+}
+.businessModalIcon{
+  position: absolute;
+  z-index: -1;
+  bottom: -200px;
+  left: 100px;
+}
+.businessPlaningIcon{
+  position: absolute;
+  z-index: -1;
+  right: 100px;
+  transform: scale(.8) rotate(240deg);
+  top: -50px;
+}
+.productDevIcon{
+  position: absolute;
+  z-index: -1;
+  right: 100px;
+  transform: rotate(-180deg);
+  top: -100px;
+}
+.thinkingStartupIcon{
+  position: absolute;
+  z-index: -1;
+  bottom: -30px;
+  left: 200px;
+}
 .book_section {
   margin: auto;
 }
