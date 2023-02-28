@@ -35,15 +35,16 @@ import CommunityNews from "../../components/Community News/CommunityNews";
 import NewSkeleton from "../../components/Post Skeleton/News Skeleton/NewSkeleton";
 import { RxCrossCircled } from "react-icons/rx";
 import { FiEdit } from "react-icons/fi";
-import SortingNavbar from "./Sorting NavBar/SortingNavbar";
+
 import SortingNavbarTest from "./Sorting Navbar Test/SortingNavbarTest";
-import SortingNavbarOldest from "./Sorting Navbar Oldest/SortingNavbarOldest";
+
 import NoFollowingCard from "../../components/No Following Card/NoFollowingCard";
 import { MdOutlineAddPhotoAlternate, MdVideoCameraBack } from "react-icons/md";
 
 import { IoLocationSharp } from "react-icons/io5";
 import { BsImages } from "react-icons/bs";
 import { RiFileSearchLine } from "react-icons/ri";
+import SortingNavbarTwoOption from "./Sorting Navbar Two Options/SortingNavbarTwoOptions";
 const CommunityFinal = () => {
   const dispatch = useDispatch();
   const postData = [];
@@ -792,7 +793,7 @@ const CommunityFinal = () => {
             {/* FURTHER SORT POST SECTION */}
 
             {/* <SortingNavbarOldest setfurtherSortOptionClick={setfurtherSortOptionClick} sortOptionSelected={sortOptionSelected} furtherSortOptionClick={furtherSortOptionClick} setSortOptionSelected={setSortOptionSelected} setSortOptionClick={setSortOptionClick} sortOptionClick={sortOptionClick} /> */}
-            <SortingNavbarTest
+            <SortingNavbarTwoOption
               setSortOptionSelected={setSortOptionSelected}
               setfurtherSortOptionClick={setfurtherSortOptionClick}
               sortOptionSelected={sortOptionSelected}
@@ -883,7 +884,7 @@ const CommunityFinal = () => {
             </div>
 
             {/* ARTICLE SECTION  */}
-            <div className="communityNewsSectionContainer">
+            {/* <div className="communityNewsSectionContainer">
               <h3 className="communityNewsSectionHeading">Articles</h3>
               {blogArray.length === 0 && (
                 <div>
@@ -917,7 +918,7 @@ const CommunityFinal = () => {
                   </>
                 );
               })}
-            </div>
+            </div> */}
           </section>
         ) : null}
         {singleNews ? (

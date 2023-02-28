@@ -20,6 +20,9 @@ import { FaLightbulb } from "react-icons/fa";
 import { setTheme } from "../../features/themeSlice";
 import { DarkModeToggle } from "@anatoliygatt/dark-mode-toggle";
 import userIcon from "../../images/userIcon.png";
+import {AiFillSetting} from "react-icons/ai"
+import {FaUserAlt} from "react-icons/fa"
+import {IoMdAdd} from "react-icons/io"
 
 const CommunityNavbar = ({ setNavbarPostButtonClick }) => {
   const user = useSelector((state) => state.user);
@@ -260,11 +263,12 @@ const CommunityNavbar = ({ setNavbarPostButtonClick }) => {
                 id="postUploaddSquareCont"
                 className="NavbarPostUploaddSquareCont"
               >
-                <img
+              <IoMdAdd className="NavbarPostUploaddSquareContAddImg"/>
+                {/* <img
                   className="NavbarPostUploaddSquareContAddImg"
                   src="./images/add.png"
                   alt="addIcon"
-                />
+                /> */}
               </div>
             </div>
           ) : null}
@@ -374,11 +378,7 @@ const CommunityNavbar = ({ setNavbarPostButtonClick }) => {
             onClick={() => setIsSettingbuttonClick((current) => !current)}
             className="navbar-topp-social-icon setting-social-icon-cont"
           >
-            <img
-              className="nabar-final-setting-cont"
-              src="./images/Vector (3).png"
-              alt="nav-icons"
-            />
+           <AiFillSetting className="nabar-final-setting-Icon"/>
             {isSettingButtonClick ? (
               <div className="setting-dropdown-cont">
                 <button
@@ -424,12 +424,7 @@ const CommunityNavbar = ({ setNavbarPostButtonClick }) => {
             ) : null}
           </div>
           <div className="navbar-topp-social-icon">
-            <img
-              onClick={() => navigate("/userprofile")}
-              className="nabar-final-userProfile-cont userIconNavbarFinl"
-              src={userIcon}
-              alt="nav-icons"
-            />
+          <FaUserAlt className="nabar-final-userProfile-Icon" onClick={() => navigate("/userprofile")}/>
           </div>
         </div>
       </section>

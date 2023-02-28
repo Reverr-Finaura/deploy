@@ -22,6 +22,8 @@ import userIcon from "../../images/userIcon.png";
 import settingIcon from "../../images/Vector (3).png";
 import ReverrLightIcon from "../../images/Reverr Light.png";
 import ReverrDarkIcon from "../../images/Frame 6266720.png";
+import {AiFillSetting} from "react-icons/ai"
+import {FaUserAlt} from "react-icons/fa"
 
 const NavBarFinal = () => {
   const user = useSelector((state) => state.user);
@@ -381,11 +383,12 @@ const NavBarFinal = () => {
             onClick={() => setIsSettingbuttonClick((current) => !current)}
             className="navbar-topp-social-icon setting-social-icon-cont"
           >
-            <img
+          <AiFillSetting className="nabar-final-setting-Icon"/>
+            {/* <img
               className="nabar-final-setting-cont"
               src={settingIcon}
               alt="nav-icons"
-            />
+            /> */}
 
             {isSettingButtonClick ? (
               <div className="setting-dropdown-cont">
@@ -432,12 +435,13 @@ const NavBarFinal = () => {
             ) : null}
           </div>
           <div className="navbar-topp-social-icon">
-            <img
+          <FaUserAlt className="nabar-final-userProfile-Icon" onClick={() => navigate("/userprofile")}/>
+            {/* <img
               onClick={() => navigate("/userprofile")}
               className="nabar-final-userProfile-cont userIconNavbarFinl"
               src={userIcon}
               alt="nav-icons"
-            />
+            /> */}
           </div>
         </div>
       </section>

@@ -506,27 +506,29 @@ const Dashboard = () => {
         </div>
 
         {/* QUOTATION DATA CONTAINER */}
-
-        <section id="quotation-cont">
-          <div className="quotation-cont">
-            <img
+        <section id="quotation-cont_outerCont">
+        <img
               className="quotation-cont_faltuIcon1"
               src="/images/faltuIcon1.png"
               alt=""
             />
-            <h4 className="quote-container-quote">
-              Your reputation is more important than your paycheck, and your
-              integrity is worth more than your career.
-            </h4>
-            <p className="quote-container-author">“ Joshua Johnson “</p>
             <img
               className="quotation-cont_faltuIcon2"
               src="/images/faltuIcon2.png"
               alt=""
             />
+        <section id="quotation-cont">
+          <div className="quotation-cont">
+            
+            <h4 className="quote-container-quote">
+              Your reputation is more important than your paycheck, and your
+              integrity is worth more than your career.
+            </h4>
+            <p className="quote-container-author">“ Joshua Johnson “</p>
+            
           </div>
         </section>
-
+</section>
         {/* DASHBOARD DATA STARTS */}
 
         <section id="dashboard-data-cont">
@@ -567,12 +569,19 @@ const Dashboard = () => {
             </section>
 
             {/* BLOG CONTAINER */}
-            <section className="blog-containerr">
-              <img
+            <section id="dashborad_blog-containerr_outerCont">
+            <img
                 className="blog-containerr_faltuIcon3"
                 src="/images/faltuIcon3.png"
                 alt=""
               />
+              <img
+                className="blog-containerr_faltuIcon4"
+                src="/images/faltuIcon4.png"
+                alt=""
+              />
+            <section className="blog-containerr">
+             
               <div className="blog-containerr_Top">
                 <h4
                   style={{ marginBottom: "1rem" }}
@@ -592,11 +601,8 @@ const Dashboard = () => {
               {blogArray.slice(0, 3).map((item, index) => {
                 return <BlogCard item={item} key={index} />;
               })}
-              <img
-                className="blog-containerr_faltuIcon4"
-                src="/images/faltuIcon4.png"
-                alt=""
-              />
+            
+            </section>
             </section>
           </div>
 
