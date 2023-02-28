@@ -18,7 +18,7 @@
 }
 
 .stage_form {
-  padding: 1rem 2rem;
+  padding: 1rem 2rem 0 0;
 }
 
 .stage_form::before {
@@ -104,4 +104,31 @@
   cursor: pointer;
   line-height: 15px;
   color: #2a72de;
+}
+
+@media (max-width: 600px) {
+  .input_flex {
+    flex-direction: column;
+  }
+
+  .stages_container > h3,
+  .inputgrp > h3 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .stages_done {
+    flex-direction: column;
+    text-align: center;
+  }
+  .done_img > img {
+    height: 40vh;
+  }
+  .done_message > h3 {
+    font-size: 22px;
+  }
+  .done_message > p {
+    margin: 1rem auto;
+  }
 }

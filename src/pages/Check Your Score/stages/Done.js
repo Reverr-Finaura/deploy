@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./stages.module.css";
 
 const Done = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.stages_done}>
       <div className={styles.done_img}>
@@ -12,7 +14,7 @@ const Done = () => {
           Wait for your Start-up to get reviewed by us ! We will get back to you
           in 24 hours.
         </p>
-        <button>Visit Dashboard</button>
+        <button onClick={() => navigate("/dashboard")}>Visit Dashboard</button>
       </div>
     </div>
   );

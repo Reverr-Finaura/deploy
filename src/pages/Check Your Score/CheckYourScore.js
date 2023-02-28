@@ -5,7 +5,6 @@ import KnowledgeNavbar from "../../components/KnowledgeNavbar/KnowledgeNavbar";
 import NavBarFinal from "../../components/Navbar/NavBarFinal";
 import SidebarFinal from "../../components/Sidebar Final/SidebarFinal";
 import PhnSidebar from "../../components/PhnSidebar/PhnSidebar";
-import { ToastContainer } from "react-toastify";
 import PnT from "./stages/PnT";
 import Team from "./stages/Team";
 import Market from "./stages/Market";
@@ -14,6 +13,8 @@ import Done from "./stages/Done";
 const CheckYourScore = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const [stage, setStage] = useState(0);
+  const [scoreData, setScoreData] = useState({});
+
   const updateWidth = () => {
     setWidth(window.innerWidth);
   };
@@ -30,10 +31,10 @@ const CheckYourScore = () => {
     stage === 0 ? "25%" : stage === 1 ? "50%" : stage === 2 ? "75%" : "100%";
 
   const stages = [
-    <PnT stage={stage} setStage={setStage} />,
-    <Team setStage={setStage} />,
-    <Market setStage={setStage} />,
-    <Done setStage={setStage} />,
+    <PnT setStage={setStage} data={scoreData} setData={setScoreData} />,
+    <Team setStage={setStage} data={scoreData} setData={setScoreData} />,
+    <Market setStage={setStage} data={scoreData} setData={setScoreData} />,
+    <Done setStage={setStage} data={scoreData} setData={setScoreData} />,
   ];
 
   return (
@@ -66,7 +67,6 @@ const CheckYourScore = () => {
             {" "}
             Welcome To <span>Start-Up</span> ALGO.
           </h1>
-          <ToastContainer />
           <div className={styles.checkscore__content}>
             <h3>Assessment</h3>
             <div className={styles.stages}>

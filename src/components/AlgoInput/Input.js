@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Input.module.css";
 
-const Input = ({ name, title, ...props }) => {
+const Input = ({ title, ...props }) => {
   return (
     <div className={styles.input}>
       <p>
@@ -13,14 +13,14 @@ const Input = ({ name, title, ...props }) => {
   );
 };
 
-const TextArea = ({ name, title, placeholder }) => {
+const TextArea = ({ title, ...props }) => {
   return (
     <div className={styles.textarea}>
       <p>
         {title}
         <span style={{ color: "red" }}>*</span>
       </p>
-      <textarea placeholder={placeholder} />
+      <textarea {...props} />
     </div>
   );
 };
