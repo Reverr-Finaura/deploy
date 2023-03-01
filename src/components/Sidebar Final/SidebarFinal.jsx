@@ -23,6 +23,7 @@ import fundD from "../../images/funding-dark.png";
 import fundL from "../../images/funding-light.png";
 import logoutIconn from "../../images/bx_log-out-white.png";
 import { BiArrowBack } from "react-icons/bi";
+import pptIcon from "../../images/pptIcon.png"
 
 const SidebarFinal = () => {
   const user = useSelector(selectUser);
@@ -99,7 +100,7 @@ const SidebarFinal = () => {
           <div className="sidebar-final-icon-name-cont">
             <img
               className="sidebar-final-icon sidebar-final-mentor-icon"
-              src={theme === "light-theme" ? mentD : mentL}
+              src={theme === "light-theme" ? pptIcon : pptIcon}
               alt="icon"
             />
             <p className="sidebar-final-icon-name">PPT Templates</p>

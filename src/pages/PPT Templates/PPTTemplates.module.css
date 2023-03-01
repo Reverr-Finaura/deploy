@@ -5,10 +5,10 @@
     margin-left: 17rem;
 }
 .title{
-    font-family: 'Poppins';
-    font-weight: 700;
+    font-family: 'Exo';
+    font-weight: 600;
     line-height: 1.2;
-    font-size: 1.7rem;
+    font-size: 2.2rem;
     padding:1rem;
     width: fit-content;
 }
@@ -42,10 +42,11 @@
 font-size: 1.1rem;
   margin: auto;
   font-weight: 600;
-  font-family: "Poppins";
+  font-family: "Exo";
   cursor: pointer;
   position: relative;
   padding: 0 1rem;
+  text-transform: uppercase;
 }
 
 

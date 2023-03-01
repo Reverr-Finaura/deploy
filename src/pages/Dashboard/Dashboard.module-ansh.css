@@ -154,7 +154,16 @@ box-shadow: 0px 2.4417px 14.6502px -0.610425px rgba(0, 0, 0, 0.15);
 backdrop-filter: blur(6.10425px);
 padding-top: 1.5rem;
 padding-bottom: 1.5rem;
+
+
+
+
+/* border: 2px solid transparent;
+
+border-image:  linear-gradient(117.67deg, #91C1FF 1.13%, #79C0DB 28.23%, #A2E1C4 60%, #C7FFAF 100%);
+border-image-slice: 1; */
 border-radius: 19px;
+
 
 }
 #quotation-cont_outerCont{
@@ -491,6 +500,7 @@ color: var(--main-text);
 .load-more-mentor-btn:hover{
     background-color: #0077B7;
     color: white;
+    border: none;
 }
 @media(max-width:1260px){
     #dashborad_blog-containerr_outerCont{

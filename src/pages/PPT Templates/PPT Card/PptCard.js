@@ -4,6 +4,8 @@ import { RiComputerLine } from "react-icons/ri";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiFillTag } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { MdModeEditOutline } from "react-icons/md";
+import { BsDownload } from "react-icons/bs";
 
 const PptCard = ({ ppt }) => {
   const navigate = useNavigate();
@@ -58,6 +60,7 @@ const PptCard = ({ ppt }) => {
             className={styles.btn}
           >
             Edit
+            <span><MdModeEditOutline/></span>
           </button>
           <button
             onClick={() => {
@@ -66,6 +69,7 @@ const PptCard = ({ ppt }) => {
             className={styles.btn}
           >
             Download
+            <span><BsDownload/></span>
           </button>
         </div>
       </div>
