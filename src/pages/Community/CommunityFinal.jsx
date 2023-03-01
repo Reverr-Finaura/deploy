@@ -77,6 +77,7 @@ const CommunityFinal = () => {
   const [newsData, setNewsData] = useState();
   const [singleNews, setSingleNews] = useState(null);
   const [blogArray, setBlogArray] = useState([]);
+  const[seeAllNewsIsClicked,setSeeAllNewsIsClicked]=useState(false)
   console.log("blogArray", blogArray);
 
   //FETCH LATEST NEWS
@@ -852,14 +853,15 @@ const CommunityFinal = () => {
         {/* COMMUNITY NEWS SECTION */}
         {width > 1180 ? (
           <section id="communityNewsSection">
-            <div className="communityNewsSectionContainer">
+            <div style={{overflowY:"auto"}} className="communityNewsSectionContainer">
               <h3 className="communityNewsSectionHeading">Trending News</h3>
               {!newsData && (
                 <div>
                   <NewSkeleton cards={3} />
                 </div>
               )}
-              {newsData?.map((news) => {
+              {seeAllNewsIsClicked?<>
+                {newsData?.map((news) => {
                 return (
                   <>
                     <div
@@ -870,7 +872,7 @@ const CommunityFinal = () => {
                       <div className="communityNewsSectionNewsImageCont">
                         <img
                           className="communityNewsSectionNewsImage"
-                          src={news.image.thumbnail.contentUrl}
+                          src={news?.image?.thumbnail?.contentUrl}
                           alt="newsImg"
                         />
                       </div>
@@ -881,6 +883,29 @@ const CommunityFinal = () => {
                   </>
                 );
               })}
+              </>:newsData?.slice(0,4).map((news) => {
+                return (
+                  <>
+                    <div
+                      className="communityNewsSectionNewsCont"
+                      onClick={() => setSingleNews(news)}
+                      key={news.url}
+                    >
+                      <div className="communityNewsSectionNewsImageCont">
+                        <img
+                          className="communityNewsSectionNewsImage"
+                          src={news?.image?.thumbnail?.contentUrl}
+                          alt="newsImg"
+                        />
+                      </div>
+                      <p className="communityNewsSectionNewsInfo">
+                        {news.description.slice(0, 60)}....
+                      </p>
+                    </div>
+                  </>
+                );
+              })}
+              {seeAllNewsIsClicked?null:<button onClick={()=>setSeeAllNewsIsClicked(true)} className="communityNewsSectionContainerMoreNewsButton">See All</button>}
             </div>
 
             {/* ARTICLE SECTION  */}

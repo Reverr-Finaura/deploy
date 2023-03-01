@@ -169,13 +169,14 @@
   display: flex;
   flex-wrap: wrap;
   margin: auto;
+  gap: 1.6rem;
 }
 .mentors-page-card {
   height: 500px;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
+  /* margin-right: 1rem; */
+  /* margin-bottom: 1rem; */
   width: 400px;
-  margin: auto;
+  /* margin: auto; */
   margin-bottom: 2.5rem;
 }
 
@@ -405,6 +406,9 @@
   .priceAndExpertiseOptionCont {
     width: 95%;
   }
+  .mentors-page-card{
+    margin: auto;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -474,7 +478,9 @@
     margin: auto;
     margin-top: 3rem;
   }
-
+  .mentors-page-card{
+    margin: auto;
+  }
   .MentorstitleAndFilterCont {
     margin: auto;
     width: 85%;

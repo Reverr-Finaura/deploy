@@ -14,8 +14,8 @@ bottom: 11rem;
   position: absolute;
   z-index: -1;
   right: 100px;
-  transform: scale(1.5) rotate(240deg);
-  top: -100px;
+  transform: scale(1.2) rotate(240deg);
+  top: -20px;
  
 }
 .betaTestingIcon{

@@ -91,7 +91,7 @@
   margin-top: 2rem;
   width: 90%;
   /* margin-left: 5rem; */
-  padding-top: 0.8rem;
+  /* padding-top: 0.8rem; */
   padding-bottom: 0.8rem;
   /* background-color: var(--bg-card); */
   /* background-color: var(--bg-clr); */
@@ -112,7 +112,7 @@
   width: calc(100vw - 56%);
   z-index: 100;
   /* margin-left: 4rem; */
-  background: var(--navbar-scroll-bg);
+  /* background: var(--navbar-scroll-bg); */
 }
 .rotate-180 {
   transform: rotate(180deg);
@@ -586,7 +586,7 @@ body::-webkit-scrollbar {
 .communityNewsSectionContainer {
   width: 88%;
   margin: 0 auto;
-  height: 380px;
+  height: 480px;
   /* background-color: var(--bg-sub-card); */
   background: linear-gradient(
     119.93deg,
@@ -599,13 +599,23 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   max-height: 80vh;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
   margin-top: 1rem;
   /* margin-left: 1rem; */
 }
-
+.communityNewsSectionContainerMoreNewsButton{
+  background-color: transparent;
+  width: 80%;
+  margin: auto;
+  border-radius: 11px;
+  border: 2px solid #2A72DE;
+color: #2A72DE;
+padding-top: .25rem;
+padding-bottom: .25rem;
+cursor: pointer;
+}
 .communityNewsSectionHeading {
   font-family: "Poppins";
   font-style: normal;
