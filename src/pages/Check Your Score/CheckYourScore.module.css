@@ -1,7 +1,7 @@
 #checkyourscore {
   min-height: 100vh;
   max-height: max-content;
-  /* width: 1140px; */
+  width: 1140px;
   margin: 8rem 0 2rem 12rem;
   display: flex;
   flex-direction: column;
@@ -105,7 +105,8 @@
 @media screen and (max-width: 600px) {
   #checkyourscore {
     margin: 0;
-    max-width: 100%;
+    margin-left: 0;
+    width: 100%;
   }
   .checkscore__container > h1 {
     font-size: 30px;
@@ -119,5 +120,12 @@
   }
   .checkscore__content > h3 {
     font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 1333px) and (min-width: 600px) {
+  #checkyourscore {
+    margin-left: 25%;
+    width: 70%;
   }
 }

@@ -9,6 +9,7 @@ import PnT from "./stages/PnT";
 import Team from "./stages/Team";
 import Market from "./stages/Market";
 import Done from "./stages/Done";
+import Result from "./stages/Result";
 
 const CheckYourScore = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -34,7 +35,8 @@ const CheckYourScore = () => {
     <PnT setStage={setStage} data={scoreData} setData={setScoreData} />,
     <Team setStage={setStage} data={scoreData} setData={setScoreData} />,
     <Market setStage={setStage} data={scoreData} setData={setScoreData} />,
-    <Done setStage={setStage} data={scoreData} setData={setScoreData} />,
+    // <Done setStage={setStage} data={scoreData} setData={setScoreData} />,
+    <Result />,
   ];
 
   return (

@@ -72,7 +72,61 @@
 
 .stages_done {
   display: flex;
+  margin-top: 1rem;
   align-items: center;
+}
+
+.result_score {
+  display: flex;
+  flex: 50%;
+  align-items: center;
+  flex-direction: column;
+}
+.result_labels {
+  margin: 2rem 0;
+}
+.result_label {
+  display: flex;
+  margin: 0.5rem 0;
+  justify-content: start;
+  gap: 2rem;
+  align-items: center;
+}
+.result_label > img {
+  height: 1rem;
+}
+
+.result_label > span {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 25px;
+  color: var(--main-text);
+}
+
+.result_msg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 50%;
+}
+
+.msg_text > h3 {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 40px;
+  color: var(--main-text);
+}
+
+.msg_text > p {
+  font-weight: 500;
+  margin-top: 1rem;
+  font-size: 17px;
+  line-height: 27px;
+  color: var(--sub-text);
+}
+
+.msg_img > img {
+  height: 20rem;
 }
 
 .done_img > img {
@@ -125,10 +179,21 @@
   .done_img > img {
     height: 40vh;
   }
-  .done_message > h3 {
+  .done_message > h3,
+  .msg_text > h3 {
     font-size: 22px;
   }
   .done_message > p {
     margin: 1rem auto;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .stages_done {
+    flex-direction: column;
+    text-align: center;
+  }
+  .msg_img > img {
+    height: 14rem;
   }
 }
