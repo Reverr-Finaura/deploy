@@ -2,13 +2,13 @@ const data=[
     {
         id:1,
         courseName:"Equity & Everything",
-        image:"",
+        image:"https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fequity%20illustration.png?alt=media&token=c9f60c07-5a6e-4253-a899-a69a5eba2d4c",
         type:"course",
         module:[
             {id:1,
             title:"Module-1",
             name:"What is Equity?",
-            image:"",
+            image:"https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FCartoon%20girl%20in%20front%20of%20huge%20scales%20with%20lightbulb%20and%20coin%201.png?alt=media&token=f35bbf2d-f9f4-4506-a22f-b96cec0a5f92",
             type:"module",
             slides:[{id:1,
                 title:"What Is Equity?",
@@ -41,57 +41,58 @@ const data=[
             },
             {id:5,
                 title:"Key Issues",
-                img:"",
+                img:"https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fvecteezy_internet-network-warning-404-error-page-or-file-not-found_%201.png?alt=media&token=b4bd41ce-d015-4b48-95c8-fbfc9b3a91fa",
                 type:"Checkpoint"
             },
             {id:6,
                 title:"",
                 detail:["Well well well, you might think splitting equity is a no-brainer."],
                 subHeading:"THAT IS A BIG NO!!!",
-                img:"",
-                type:"slide"
+                img:"https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fpie-graph-split%201.png?alt=media&token=b1a9fde7-c622-4bd4-ba9b-04351ec48465",
+                type:"checkslide"
             },
             {id:7,
                 title:"",
                 detail:["So, let’s just be very honest. Trust me that’s the biggest misconception you can have if you think so."],
                 subHeading:"",
-                img:"",
-                type:"slide"
+                img:"https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fvecteezy_portrait-of-a-young-girl-surprised-or-shocked-or-scared-in-a_6852261%201.png?alt=media&token=a6833d1e-2857-4aa1-9c7f-9ea04f978d1e",
+                type:"checkslide"
             },
             {id:8,
                 title:"",
                 detail:["Mind you, it is the most important consideration while deciding the capital structure of your startup.","Therefore,without further ado, let’s dive deep into it and get a thorough understanding of the so-called “Splitting Equity”."],
                 subHeading:"",
-                img:"",
-                type:"slide"
+                img:"https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fbill%201.png?alt=media&token=6264154d-a726-4f3c-bc04-83f6a0f44280",
+                type:"checkslide"
             },
             {
                 id:9,
             title:"PHASE 1",
             name:"TREAT EQUITY LIKE GOLD",
-            image:"",
-            type:"module",
+            img:"https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fg10.png?alt=media&token=c6a80eb6-0247-4df1-bf10-a6e92ef742fa",
+            type:"Checkpoint",
             },
             {id:10,
                 title:"",
                 detail:["There’s no better way than to learn from others’ shortcomings and modify your plan of action beforehand!"],
                 subHeading:"",
-                img:"",
+                img:"https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fundraw_engineering_team_a7n2%201.png?alt=media&token=cf08e4b9-ad88-4394-8b52-0a5cea19b82e",
                 type:"slide"
             },
             {id:11,
                 title:"",
                 detail:["So, before jumping directly to structuring and managing our equity, it’s pivotal to understand the biggest pitfalls in handing out early equity, especially when we’re putting the appropriate value on every decision we make."],
                 subHeading:"",
-                img:"",
+                img:"https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fdecision%20making%201.png?alt=media&token=6c53099b-d96a-4897-bb06-5aaae9d7b6c9",
                 type:"slide"
             },
             {id:12,
-                title:"Don't Treat Equity like Monopoly Money",
+                name:"Don't Treat Equity like Monopoly Money",
                 detail:[],
                 subHeading:"",
                 img:"",
-                type:"slide"
+                image:"https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fg10%20(1).png?alt=media&token=30962f80-82c8-43ab-a007-6ff1c8001916",
+                type:"Checkpoint"
             },
             {id:13,
                 title:"",
@@ -125,11 +126,13 @@ const data=[
                 type:"question"
             },
             {id:17,
-                title:"Understand the Future Value of Equity!",
+                title:"",
+                name:"Understand the Future Value of Equity!",
                 detail:[],
                 subHeading:"",
                 img:"",
-                type:"course"
+                image:"",
+                type:"Checkpoint"
             },
             {id:18,
                 title:"",
@@ -146,13 +149,22 @@ const data=[
                 type:"slide"
             },
             {id:20,
-                title:"Give Equity as Slowly as Possible",
+                title:"",
+                name:"Give Equity as Slowly as Possible",
                 detail:[],
                 subHeading:"",
                 img:"",
-                type:"course"
+                image:"",
+                type:"Checkpoint"
             },
             {id:21,
+                title:"",
+                detail:["Not only do startups go on making hasty decisions by issuing and treating equity like Monopoly money, they also tend to run into issues like giving it away all at once – up front. If it were cash we’d never imagine doing that, but for some reason we’re propelled to think that equity should be a lump sum payment despite the services rendered."],
+                subHeading:"",
+                img:"",
+                type:"slide"
+            },
+            {id:22,
                 title:"Quiz Time!!",
                 question:"”Power of compounding works wonders”",
                 options:["TRUE","FALSE"],
@@ -160,35 +172,39 @@ const data=[
                 img:"",
                 type:"question"
             },
-            {id:22,
+            {id:23,
                 title:"",
                 detail:["Now, beware! That would mean moving slowly towards disaster. That doesn’t mean we are running out of options as to how we can manage our equity or should we consider giving it out. It simply implies that when we do, we want to retrospect where we were and where we are today and think about the greater angles of the business in the long run."],
                 subHeading:"",
                 img:"",
                 type:"slide"
             },
-            {id:23,
-                title:"Get it in Writing ",
+            {id:24,
+                title:"",
+                name:"Get it in Writing ",
                 detail:[],
                 subHeading:"",
                 img:"",
-                type:"course"
+                image:"",
+                type:"Checkpoint"
             },
-            {id:24,
+            {id:25,
                 title:"",
                 detail:["There can be no plausible explanation as to why we need to wait until we’ve got a final affirmation on our equity arrangements to finally put it on paper. We can gradually start regulating each step individually and then eventually compile them all into a single formalized document with our startup lawyers."],
                 subHeading:"",
                 img:"",
                 type:"slide"
             },
-            {id:25,
-                title:"Time to Wheel in the Lawyers",
+            {id:26,
+                name:"Time to Wheel in the Lawyers",
+                title:"",
                 detail:[],
                 subHeading:"",
                 img:"",
-                type:"course"
+                image:"",
+                type:"Checkpoint"
             },
-            {id:26,
+            {id:27,
                 title:"",
                 detail:["To paper it up, we require good lawyers who will aid in crafting our documents more seamlessly. Our agenda right now will be to put forward and discuss the substantive issues amongst ourselves and then take notes of whatever we have decided upon and ask our attorneys to translate these decisions into binding, signable legal docs. "],
                 subHeading:"",
@@ -205,3 +221,5 @@ const data=[
         {}]
     }
 ]
+
+export default data
