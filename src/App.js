@@ -85,6 +85,7 @@ import PPTTemplatesViewer from "./pages/PPT Templates/PPT Templates Viewer/PPTTe
 import DocumentTemplates from "./pages/Document Templates/DocumentTemplates";
 import DocumentTemplatesViewer from "./pages/Document Templates/Document Templates Viewer/DocumentTemplatesViewer";
 import CheckYourScore from "./pages/Check Your Score/CheckYourScore";
+import EquityAndEverythingg from "./pages/New Courses/Courses/EquityAndEverythingg";
 
 function App() {
   const user = useSelector(selectUser);
@@ -255,6 +256,7 @@ function App() {
         <Route path="/documentTemplates" element={<DocumentTemplates/>}></Route>
         <Route path="/documentTemplates/:id" element={<DocumentTemplatesViewer/>}></Route>
         <Route path="/checkYourScore" element={<CheckYourScore/>}></Route>
+        <Route path="/newcourses/EquityAndEverything" element={<EquityAndEverythingg/>}></Route>
       </Routes>
     </>
   );
