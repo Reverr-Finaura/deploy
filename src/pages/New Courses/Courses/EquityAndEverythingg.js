@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from "./EquityAndEverythingg.module.css"
 import data from "../../../assets/New Courses Data/EquityAndEverything"
 import {IoIosArrowForward} from "react-icons/io"
-import ModuleCard from '../Courses Card/Module Card/ModuleCard'
+import ChooseModuleCard from '../Courses Card/Choose Module Card/ChooseModuleCard'
 
 
 const EquityAndEverythingg = () => {
@@ -20,7 +20,8 @@ const EquityAndEverythingg = () => {
     </div>
    </section>
     }
-    {isSlideBegin&&<section><ModuleCard setIsSlideBegin={setIsSlideBegin} data={data[0].module[0]}/></section>}
+    {isSlideBegin&&<section><ChooseModuleCard setIsSlideBegin={setIsSlideBegin} data={data[0]}/></section>}
+    
    </>
   )
 }

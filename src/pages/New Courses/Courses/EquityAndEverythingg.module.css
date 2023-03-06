@@ -16,6 +16,7 @@
     background-color: white;
     border-radius: 20px;
     padding: 1rem;
+    position: relative;
 }
 .cont{
     width: 100%;
@@ -55,6 +56,9 @@ justify-content: center;
 margin-left: auto;
 margin-top: 1rem;
 cursor: pointer;
+position: absolute;
+bottom: 1rem;
+right: 1rem;
 }
 .icon{
     display: flex;

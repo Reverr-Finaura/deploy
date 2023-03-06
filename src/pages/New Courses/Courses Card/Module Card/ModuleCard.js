@@ -3,13 +3,12 @@ import { IoIosArrowForward } from 'react-icons/io'
 import SubSlide from '../SubSLides Card/SubSlide'
 import styles from "./ModuleCard.module.css"
 
-const ModuleCard = ({data,setIsSlideBegin}) => {
+const ModuleCard = ({data,setIsModuleChoosen}) => {
     const[subSlidesBegin,setSubSlidesBegin]=useState(false)
 
-  const goToCoursePage=(id)=>{
-if(id===1){setIsSlideBegin(false)
+  const goToChooseModulePage=()=>{
+setIsModuleChoosen(false)
 
-}
   }  
   return (
     <>
@@ -22,7 +21,7 @@ if(id===1){setIsSlideBegin(false)
         </div>
         <h1 className={styles.subHeading}>{data?.name}</h1>
         <div className={styles.btnCont}>
-        <button onClick={()=>goToCoursePage(data.id)} className={styles.prevBtn}>Prev <span className={styles.iconn}><IoIosArrowForward/></span></button>
+        <button onClick={()=>goToChooseModulePage()} className={styles.prevBtn}>Prev <span className={styles.iconn}><IoIosArrowForward/></span></button>
         <button onClick={()=>setSubSlidesBegin(true)}  className={styles.nextBtn}>Next <span className={styles.icon}><IoIosArrowForward/></span></button>
         </div>
     </div>

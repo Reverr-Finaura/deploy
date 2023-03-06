@@ -215,10 +215,36 @@ const data=[
 
         }
         ,
-        {},
-        {},
-        {},
-        {}]
+         {id:2,
+            title:"Module-2",
+            name:"Stock Structure",
+            image:"https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fg12.png?alt=media&token=158fb6ff-03e9-40d8-a50a-c0ee8ab2b316",
+            type:"module",
+            slides:[]
+        },
+        {id:2,
+            title:"Module-3",
+            name:"SPLITTING EQUITY",
+            image:"https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fg12.png?alt=media&token=158fb6ff-03e9-40d8-a50a-c0ee8ab2b316",
+            type:"module",
+            slides:[]
+        },
+        {
+            id:4,
+            title:"Module-4",
+            name:"MANAGING EQUITY",
+            image:"https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fg12.png?alt=media&token=158fb6ff-03e9-40d8-a50a-c0ee8ab2b316",
+            type:"module",
+            slides:[]
+        },
+        {
+            id:5,
+            title:"End Questions",
+            name:"",
+            image:"https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fg12.png?alt=media&token=158fb6ff-03e9-40d8-a50a-c0ee8ab2b316",
+            type:"module",
+            slides:[]
+        }]
     }
 ]
 
