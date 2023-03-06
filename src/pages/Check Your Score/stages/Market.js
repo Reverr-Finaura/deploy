@@ -1,16 +1,19 @@
 import React from "react";
-import { Input, TextArea } from "../../../components/AlgoInput/Input";
+import { DropDown, Input, TextArea } from "../../../components/AlgoInput/Input";
 import styles from "./stages.module.css";
 import { toast } from "react-toastify";
+import { nonscoredData, scoredData } from "./scores";
 
-const Market = ({ setStage, data, setData }) => {
+const Market = ({ setStage, data, setData, score, setScore }) => {
   const handleNext = () => {
     console.log(Object.keys(data).length);
-    if (Object.keys(data).length < 76) {
+    if (Object.keys(data).length < 7) {
       toast.error("Kindly Fill All Mandatory Fields");
     } else {
       setStage((prev) => prev + 1);
     }
+    console.log(score);
+    console.log(data);
   };
 
   const handlePrev = () => {
@@ -25,26 +28,56 @@ const Market = ({ setStage, data, setData }) => {
     });
   };
 
+  const handleDropdown = (e) => {
+    const { name, value } = e.target;
+    const score_of_var = scoredData[name].filter(
+      (val) => val.value === value
+    )[0].score;
+    setScore((prev) => ({
+      ...prev,
+      ["Market"]: score.Market + score_of_var,
+    }));
+    setData((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+
+  const handleRevenue = (e) => {
+    const { name, value } = e.target;
+    const score_of_var = scoredData[name]?.filter(
+      (val) => val.value === value
+    )[0].score;
+    setScore((prev) => ({
+      ...prev,
+      ["Market"]: score.Market + score_of_var,
+    }));
+    setData((prev) => {
+      return {
+        ...prev,
+        ["revenue_growth"]: { ...prev["revenue_growth"], [name]: value },
+      };
+    });
+  };
+
   return (
     <div className={styles.stages_container}>
       <h3>Market</h3>
       <div className={styles.stage_form}>
         <div className={styles.input_flex}>
-          <Input
+          <DropDown
             name={"target_market"}
             value={data?.target_market}
-            onChange={handleChange}
+            onChange={handleDropdown}
             title={"What is your Target Market?"}
-            placeholder={"Enter here"}
-            type={"text"}
+            options={scoredData.target_market}
           />
-          <Input
+          <DropDown
             name={"market_dmg"}
             value={data?.market_dmg}
             onChange={handleChange}
             title={"Describe your market demographics"}
-            placeholder={"Enter here"}
-            type={"text"}
+            nonscored={true}
+            options={nonscoredData.market_dmg}
           />
         </div>
         <div className={styles.input_flex}>
@@ -56,13 +89,12 @@ const Market = ({ setStage, data, setData }) => {
             placeholder={"Enter here"}
             type={"number"}
           />
-          <Input
+          <DropDown
             name={"growth_rate"}
             value={data?.growth_rate}
-            onChange={handleChange}
+            onChange={handleDropdown}
             title={"What is the Market Growth Rate over the next 4 years? (%)*"}
-            placeholder={"Enter here"}
-            type={"number"}
+            options={scoredData.growth_rate}
           />
         </div>
         <div className={styles.input_flex}>
@@ -105,53 +137,65 @@ const Market = ({ setStage, data, setData }) => {
           type={"url"}
         />
 
-        <Input
+        <DropDown
           name="competitors"
           value={data?.competitors}
           onChange={handleChange}
           title={"Do you have any competitors?"}
-          placeholder={"Yes/No"}
-          type={"text"}
+          options={["Yes", "No"]}
+          nonscored={true}
         />
       </div>
       <h3>Financial</h3>
       <div className={styles.stage_form}>
         <div className={styles.input_flex}>
-          <Input
+          <DropDown
             name={"revenue_stage"}
             value={data?.revenue_stage}
-            onChange={handleChange}
+            onChange={handleDropdown}
             title={"Stage Of Revenue"}
-            placeholder={"Enter here"}
-            type={"number"}
+            options={scoredData.revenue_stage}
           />
-          <Input
+          <DropDown
             name={"revenue_nature"}
             value={data?.revenue_nature}
-            onChange={handleChange}
+            onChange={handleDropdown}
             title={"What is the Nature of the Revenue"}
-            placeholder={"Enter here"}
-            type={"text"}
+            options={scoredData.revenue_nature}
           />
         </div>
+        <p>What is you're revenue Growth Rate?</p>
         <div className={styles.input_flex}>
-          <Input
-            name={"revenue_grt"}
-            value={data?.revenue_grt}
-            onChange={handleChange}
-            title={"What is you're revenue Growth Rate?"}
-            placeholder={"Enter here"}
-            type={"text"}
+          <DropDown
+            name={"mom"}
+            value={data?.revenue_growth?.mom}
+            onChange={handleRevenue}
+            title={"MOM"}
+            options={scoredData.mom}
           />
-          <Input
-            name={"avg_pricing"}
-            value={data?.avg_pricing}
-            onChange={handleChange}
-            title={"What is your average product pricing?"}
-            placeholder={"Enter here"}
-            type={"text"}
+          <DropDown
+            name={"qoq"}
+            value={data?.revenue_growth?.qoq}
+            onChange={handleRevenue}
+            title={"QOQ"}
+            options={scoredData.qoq}
+          />
+          <DropDown
+            name={"yoy"}
+            value={data?.revenue_growth?.yoy}
+            onChange={handleRevenue}
+            title={"YOY"}
+            options={scoredData.yoy}
           />
         </div>
+        <Input
+          name={"avg_pricing"}
+          value={data?.avg_pricing}
+          onChange={handleChange}
+          title={"What is your average product pricing?"}
+          placeholder={"Enter here"}
+          type={"text"}
+        />
         <div className={styles.input_flex}>
           <Input
             name={"monthly_rate"}
@@ -161,13 +205,12 @@ const Market = ({ setStage, data, setData }) => {
             placeholder={"Enter here"}
             type={"text"}
           />
-          <Input
+          <DropDown
             name={"curr_rate"}
             value={data?.curr_rate}
-            onChange={handleChange}
+            onChange={handleDropdown}
             title={"What is your current Burn Rate?"}
-            placeholder={"Enter here"}
-            type={"text"}
+            options={scoredData.curr_rate}
           />
         </div>
         <TextArea
@@ -177,88 +220,95 @@ const Market = ({ setStage, data, setData }) => {
           title={"What is to aquire a customer?"}
           placeholder={"Type here.."}
         />
-        <TextArea
+        <DropDown
           name={"ltv"}
           value={data?.ltv}
-          onChange={handleChange}
+          onChange={handleDropdown}
           title={"What is LTV/CAC? "}
-          placeholder={"Type here.."}
+          tooltip={true}
+          content={
+            "LTV= Average monthly revenue per customer * Customer Lifetime(in Months) ,CAC= (Cost of sales + Cost of Marketing)/ Number of New users aquired"
+          }
+          options={scoredData.ltv}
         />
         <div className={styles.input_flex}>
-          <Input
+          <DropDown
             name={"break_even"}
             value={data?.break_even}
-            onChange={handleChange}
+            onChange={handleDropdown}
             title={"Have you achieved break-even?"}
-            placeholder={"Enter here"}
-            type={"text"}
+            options={scoredData.break_even}
           />
-          <Input
+          <DropDown
             name={"est_break_even"}
             value={data?.est_break_even}
-            onChange={handleChange}
+            onChange={handleDropdown}
             title={"If No, by when do you estimate to break-even?*"}
-            placeholder={"Enter here"}
-            type={"text"}
+            options={scoredData.est_break_even}
           />
         </div>
         <div className={styles.input_flex}>
-          <Input
+          <DropDown
             name={"gross_margin"}
             value={data?.gross_margin}
-            onChange={handleChange}
+            onChange={handleDropdown}
             title={"What is your gross margin?"}
-            placeholder={"Enter here"}
-            type={"text"}
+            options={scoredData.gross_margin}
           />
-          <Input
+          <DropDown
             name={"net_margin"}
             value={data?.net_margin}
-            onChange={handleChange}
+            onChange={handleDropdown}
             title={"What is your net margin?"}
-            placeholder={"Enter here"}
-            type={"text"}
+            options={scoredData.net_margin}
           />
         </div>
         <div className={styles.input_flex}>
-          <Input
+          <DropDown
             name={"profitable"}
             value={data?.profitable}
-            onChange={handleChange}
+            onChange={handleDropdown}
             title={"Are You profitable?"}
-            placeholder={"Yes / No"}
-            type={"text"}
+            options={scoredData.profitable}
           />
-          <Input
+          <DropDown
             name={"funds"}
             value={data?.funds}
-            onChange={handleChange}
+            onChange={handleDropdown}
             title={"How much funds do you have as of now?(Estimated Runway)"}
-            placeholder={"Enter here"}
-            type={"number"}
+            options={scoredData.funds}
           />
         </div>
+        <DropDown
+          name={"financial_audited"}
+          value={data?.financial_audited}
+          onChange={handleDropdown}
+          title={"Do you have your financials Audited?"}
+          options={scoredData.financial_audited}
+        />
       </div>
       <h3>Ratios</h3>
       <div className={styles.stage_form}>
         <div className={styles.inputgrp_flex}>
           <div className={styles.inputgrp}>
             <h3>LIQUIDITY</h3>
-            <Input
+            <DropDown
               name={"curr_ratio"}
+              tooltip={true}
+              content={"Current Assets/ Current Liabilities"}
               value={data?.curr_ratio}
-              onChange={handleChange}
+              onChange={handleDropdown}
               title={"Current Ratio"}
-              placeholder={"Enter here"}
-              type={"number"}
+              options={scoredData.curr_ratio}
             />
-            <Input
+            <DropDown
               name={"cash_ratio"}
+              content={"Cash+ marketable securities/Current liabilities"}
+              tooltip={true}
               value={data?.cash_ratio}
-              onChange={handleChange}
+              onChange={handleDropdown}
               title={"Operating Cashflow Ratio"}
-              placeholder={"Enter here"}
-              type={"number"}
+              options={scoredData.cash_ratio}
             />
             <Input
               name={"quick_ratio"}
@@ -271,13 +321,14 @@ const Market = ({ setStage, data, setData }) => {
           </div>
           <div className={styles.inputgrp}>
             <h3>LEVERAGE</h3>
-            <Input
+            <DropDown
               name="eqt_ratio"
               value={data?.eqt_ratio}
-              onChange={handleChange}
+              onChange={handleDropdown}
+              tooltip={true}
+              content={"Total Debt/ Total Equity"}
               title={"Debt-Equity Ratio"}
-              placeholder={"Enter here"}
-              type={"number"}
+              options={scoredData.eqt_ratio}
             />
             <Input
               name="service_ratio"

@@ -15,6 +15,7 @@ const CheckYourScore = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const [stage, setStage] = useState(0);
   const [scoreData, setScoreData] = useState({});
+  const [algoScore, setAlgoScore] = useState({ Pnt: 0, Team: 0, Market: 0 });
 
   const updateWidth = () => {
     setWidth(window.innerWidth);
@@ -32,11 +33,29 @@ const CheckYourScore = () => {
     stage === 0 ? "25%" : stage === 1 ? "50%" : stage === 2 ? "75%" : "100%";
 
   const stages = [
-    <PnT setStage={setStage} data={scoreData} setData={setScoreData} />,
-    <Team setStage={setStage} data={scoreData} setData={setScoreData} />,
-    <Market setStage={setStage} data={scoreData} setData={setScoreData} />,
+    <PnT
+      setStage={setStage}
+      data={scoreData}
+      setData={setScoreData}
+      score={algoScore}
+      setScore={setAlgoScore}
+    />,
+    <Team
+      setStage={setStage}
+      data={scoreData}
+      setData={setScoreData}
+      score={algoScore}
+      setScore={setAlgoScore}
+    />,
+    <Market
+      setStage={setStage}
+      data={scoreData}
+      setData={setScoreData}
+      score={algoScore}
+      setScore={setAlgoScore}
+    />,
     // <Done setStage={setStage} data={scoreData} setData={setScoreData} />,
-    <Result />,
+    <Result score={algoScore} />,
   ];
 
   return (

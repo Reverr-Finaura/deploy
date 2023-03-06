@@ -1,21 +1,36 @@
 import React from "react";
-import { Input, TextArea } from "../../../components/AlgoInput/Input";
+import { DropDown, Input, TextArea } from "../../../components/AlgoInput/Input";
 import { toast } from "react-toastify";
 import styles from "./stages.module.css";
+import { scoredData, nonscoredData } from "./scores";
 
-const PnT = ({ setStage, setData, data }) => {
+const PnT = ({ setStage, setData, data, score, setScore }) => {
+  console.log(score);
   const handleNext = () => {
-    console.log(Object.keys(data).length);
-    if (Object.keys(data).length < 18) {
+    if (Object.keys(data).length < 8) {
       toast.error("Kindly Fill All Mandatory Fields");
     } else {
+      console.log(data);
       setStage((prev) => prev + 1);
     }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(data);
+    setData((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+
+  const handleDropdown = (e) => {
+    const { name, value } = e.target;
+    const score_of_var = scoredData[name].filter(
+      (val) => val.value === value
+    )[0].score;
+    setScore((prev) => ({
+      ...prev,
+      ["Pnt"]: score.Pnt + score_of_var,
+    }));
     setData((prev) => {
       return { ...prev, [name]: value };
     });
@@ -63,90 +78,98 @@ const PnT = ({ setStage, setData, data }) => {
           />
         </div>
         <div className={styles.input_flex}>
-          <Input
+          <DropDown
             value={data?.pri_tech}
             title={"Primary Technology"}
             name={"pri_tech"}
+            nonscored={true}
             onChange={(e) => handleChange(e)}
-            placeholder={"Enter here"}
-            type={"text"}
+            options={nonscoredData.tech_used}
           />
-          <Input
+          <DropDown
             value={data?.sec_tech}
             title={"Secondary Technology"}
-            placeholder={"Enter here"}
             name={"sec_tech"}
+            nonscored={true}
             onChange={(e) => handleChange(e)}
-            type={"text"}
+            options={nonscoredData.tech_used}
           />
         </div>
-        <TextArea
-          name={"motivation"}
-          value={data?.motivation}
+        <DropDown
+          value={data?.ter_tech}
+          title={"Tertiary Technology"}
+          name={"ter_tech"}
+          nonscored={true}
           onChange={(e) => handleChange(e)}
-          title={"What made you create the solution? - Motivation"}
-          placeholder={"Type here"}
+          options={nonscoredData.tech_used}
         />
-        <TextArea
+        <DropDown
+          name={"motivation"}
+          options={scoredData.motivation}
+          value={data?.motivation}
+          onChange={(e) => handleDropdown(e)}
+          title={"What made you create the solution? - Motivation"}
+        />
+        <DropDown
           name={"tech_based"}
           value={data?.tech_based}
-          onChange={(e) => handleChange(e)}
+          options={scoredData.tech_based}
+          onChange={(e) => handleDropdown(e)}
           title={
             "If product/solution is tech-based in nature (e.g a platform/technology product), will it be developed in-house?"
           }
         />
         <div className={styles.input_flex}>
-          <Input
+          <DropDown
             value={data?.prod_stage}
             title={"Stage of Product/Service Development"}
             name={"prod_stage"}
-            onChange={(e) => handleChange(e)}
-            placeholder={"Enter here"}
-            type={"text"}
+            onChange={(e) => handleDropdown(e)}
+            options={scoredData.prod_stage}
           />
-          <Input
+          <DropDown
             name={"primary_offer"}
             value={data?.primary_offer}
             onChange={(e) => handleChange(e)}
             title={"Primary Offering"}
-            placeholder={"Enter here"}
-            type={"text"}
+            nonscored={true}
+            options={nonscoredData.primary_offer}
           />
         </div>
         <div className={styles.input_flex}>
-          <Input
+          <DropDown
             name={"industry"}
             value={data?.industry}
             onChange={(e) => handleChange(e)}
             title={"Which Tech Industry is your Company in?"}
-            placeholder={"Enter here"}
-            type={"text"}
+            nonscored={true}
+            options={nonscoredData.industry}
           />
-          <Input
+          <DropDown
             title={"Sub Industry"}
             value={data?.sub_industry}
             name={"sub_industry"}
             onChange={(e) => handleChange(e)}
-            placeholder={"Enter here"}
-            type={"text"}
+            nonscored={true}
+            options={nonscoredData.industry}
           />
         </div>
         <div className={styles.input_flex}>
-          <Input
+          <DropDown
             name={"domain"}
             value={data?.domain}
             onChange={(e) => handleChange(e)}
             title={"Which domain does your startup cater to?"}
-            placeholder={"Enter here"}
-            type={"text"}
+            nonscored={true}
+            options={nonscoredData.domain}
           />
-          <Input
+          <DropDown
             name={"customer_segment"}
             value={data?.customer_segment}
             onChange={(e) => handleChange(e)}
             title={"Customer Segment"}
-            placeholder={"Enter here"}
-            type={"text"}
+            nonscored={true}
+            options={nonscoredData.customer_segment}
           />
         </div>
         <TextArea
@@ -159,31 +182,30 @@ const PnT = ({ setStage, setData, data }) => {
           placeholder={"Enter here"}
         />
         <div className={styles.input_flex}>
-          <Input
+          <DropDown
             name={"ismoat"}
             value={data?.ismoat}
             onChange={(e) => handleChange(e)}
             title={"Does your business have a MOAT?"}
-            placeholder={"Yes/No"}
-            type={"text"}
+            nonscored={true}
+            options={nonscoredData.ismoat}
           />
-          <Input
+          <DropDown
             name={"moat"}
             value={data?.moat}
-            onChange={(e) => handleChange(e)}
+            onChange={(e) => handleDropdown(e)}
             title={"What MOAT's does your business have/will potentially have?"}
-            placeholder={"Enter here"}
-            type={"text"}
+            options={scoredData.moat}
           />
         </div>
-        <TextArea
+        <DropDown
           name={"pro_risk"}
           value={data?.pro_risk}
-          onChange={(e) => handleChange(e)}
+          onChange={(e) => handleDropdown(e)}
           title={
             "Is your product exposed to any form of risk currently/will be in future?"
           }
-          placeholder={"Enter here"}
+          options={scoredData.pro_risk}
         />
       </div>
       <div className={styles.btn_div}>
