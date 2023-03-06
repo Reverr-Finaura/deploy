@@ -2,7 +2,7 @@ import React from "react";
 import Chart from "react-apexcharts";
 import styles from "./stages.module.css";
 
-const Result = () => {
+const Result = ({ score }) => {
   const series = [20, 40, 18, 12];
   const options = {
     chart: {
@@ -72,17 +72,17 @@ const Result = () => {
           <div className={styles.result_label}>
             <img src={"/images/green_label.png"} />
             <span>Product & Team -</span>
-            <span>20%</span>
+            <span>{score.Pnt}%</span>
           </div>
           <div className={styles.result_label}>
             <img src="/images/blue_label.png" />
             <span>Team -</span>
-            <span>40%</span>
+            <span>{score.Team}%</span>
           </div>
           <div className={styles.result_label}>
             <img src={"/images/pink_label.png"} />
             <span>Market & Finance -</span>
-            <span>18%</span>
+            <span>{score.Market}%</span>
           </div>
         </div>
       </div>

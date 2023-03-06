@@ -21,6 +21,13 @@
   padding: 1rem 2rem 0 0;
 }
 
+.stage_form > h3 {
+  color: var(--main-text);
+  font-size: 20px;
+  margin: 1rem auto;
+  text-align: center;
+}
+
 .stage_form::before {
   content: "";
   position: absolute;
@@ -35,6 +42,13 @@
   align-items: center;
   gap: 15%;
 }
+
+.input_flex_radio {
+  display: flex;
+  align-items: center;
+  gap: 2%;
+}
+
 .inputgrp_flex {
   display: flex;
   margin: 1rem 0;

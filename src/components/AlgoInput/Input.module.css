@@ -1,24 +1,42 @@
 .input,
-.textarea {
+.textarea,
+.dropdown {
   width: 100%;
   margin-bottom: 1rem;
 }
 
 .input > p,
-.textarea > p {
+.textarea > p,
+.dropdown > p {
   color: var(--main-text);
   font-size: 14px;
   margin-bottom: 0.4rem;
 }
 
 .input > input,
-.textarea > textarea {
+.textarea > textarea,
+.dropdown > select {
   border: none;
   outline: none;
   width: 100%;
   color: var(--main-text);
   background: rgba(140, 139, 139, 0.2);
   border-radius: 5px;
+}
+
+.dropdown > select {
+  padding: 0.5rem;
+  width: 103%;
+}
+
+.dropdown > select > option {
+  padding: 4rem;
+  background-color: var(--bg-card);
+  color: var(--main-text);
+}
+
+.dropdown > select > option:hover {
+  box-shadow: 0 0 10px 100px #a3a3a3 inset;
 }
 
 .textarea > textarea {
