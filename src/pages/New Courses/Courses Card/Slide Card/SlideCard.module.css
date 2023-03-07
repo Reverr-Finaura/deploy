@@ -45,7 +45,7 @@ font-style: normal;
 font-weight: 700;
 font-size: 64px;
 line-height: 85px;
-
+align-self: baseline;
 color: #202020;
 margin-bottom: 1rem;
 }
@@ -56,7 +56,7 @@ font-weight: 600;
 font-size: 1.6rem;
 line-height: 48px;
 margin-top: 1rem;
-/* or 69px */
+align-self: baseline;
 
 
 color: #202020;
