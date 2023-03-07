@@ -5,12 +5,12 @@ import { selectNewUser } from "./features/newUserSlice";
 import { login, logout, selectUser } from "./features/userSlice";
 import Card from "./pages/AfterSignUp/Cards/Card";
 import Auth from "./pages/Auth/Auth";
-import SignUpAuth from "./pages/Auth/SignUpAuth"
+import SignUpAuth from "./pages/Auth/SignUpAuth";
 import EnterOtp from "./pages/EnterOtp/EnterOtp";
 import ForgotPassword from "./pages/Forgotpassword/ForgotPassword";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
-import LoginNew from "./pages/Login/LoginNew"
+import LoginNew from "./pages/Login/LoginNew";
 import PasswordReset from "./pages/PasswordRecover/PasswordReset";
 import Experience from "./pages/AfterSignUp/Experience/Experience";
 import Industry from "./pages/AfterSignUp/Industry/Industry";
@@ -26,7 +26,6 @@ import { Toaster } from "react-hot-toast";
 import Knowledge from "./pages/Knowledge/Knowledge";
 import Mentors from "./pages/Mentors/Mentors";
 import MentorsNew from "./pages/Mentors/MentorsNew";
-import BetaTesting from "./pages/AfterKnowledge/BetaTesting/BetaTesting";
 import IdeaValidation from "./pages/AfterKnowledge/Idea Validation & EP/IdeaValidation";
 import BusinessPlanning from "./pages/AfterKnowledge/BusinessPlanning/BusinessPlanning";
 import Newsletter from "./pages/AfterKnowledge/Newsletter/Newsletter";
@@ -64,8 +63,8 @@ import SocialMedia from "./pages/AfterKnowledge/SocialMedia/SocialMedia";
 import NotFound from "./pages/NotFound/NotFound";
 import BuildAudienceSlides from "./pages/AfterKnowledge/BuildAudience/BuildAudienceSlides";
 import BusinessModalSlides from "./pages/AfterKnowledge/BusinessModal/BusinessModalSlides";
-import CompetitorAnalysis from "./pages/AfterKnowledge/CompetitorAnalysis/CompetitorAnalysis";
-import CompetitorAnalysisSlides from "./pages/AfterKnowledge/CompetitorAnalysis/CompetitorAnalysisSlides";
+// import CompetitorAnalysis from "./pages/AfterKnowledge/CompetitorAnalysis/CompetitorAnalysis";
+// import CompetitorAnalysisSlides from "./pages/AfterKnowledge/CompetitorAnalysis/CompetitorAnalysisSlides";
 import ProductDevelopment from "./pages/AfterKnowledge/ProductDevelopment/ProductDevelopment";
 import ProductDevelopmentSlide from "./pages/AfterKnowledge/ProductDevelopment/ProductDevelopmentSlide";
 import ThinkingOfStartup from "./pages/AfterKnowledge/ThinkingOfStartup/ThinkingOfStartup";
@@ -86,12 +85,15 @@ import DocumentTemplates from "./pages/Document Templates/DocumentTemplates";
 import DocumentTemplatesViewer from "./pages/Document Templates/Document Templates Viewer/DocumentTemplatesViewer";
 import CheckYourScore from "./pages/Check Your Score/CheckYourScore";
 import EquityAndEverythingg from "./pages/New Courses/Courses/EquityAndEverythingg";
+import BetaTesting from "./pages/New Courses/Courses/BetaTesting";
+import StartupIdea from "./pages/New Courses/Courses/StartupIdea";
+// import CompetitorAnalysis from "./pages/New Courses/Courses/CompetitorAnalysis";
+// import BuildAudience from "./pages/New Courses/Courses/BuildAudience";
 
 function App() {
   const user = useSelector(selectUser);
   const newUser = useSelector(selectNewUser);
   const dispatch = useDispatch();
- 
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -111,7 +113,7 @@ function App() {
   }, []);
 
   console.log(user);
-  
+
   return (
     <>
       <Toaster />
@@ -120,10 +122,9 @@ function App() {
           <>
             <Route path="/" element={<LoginNew />} />
             {/* <Route path="/signup" element={<Auth />} /> */}
-            <Route path="/signup" element={<SignUpAuth/>}></Route>
+            <Route path="/signup" element={<SignUpAuth />}></Route>
 
             <Route path="/login" element={<LoginNew />} />
-            
           </>
         )}
         <Route path="/forgotpassword" element={<ForgotPassword />} />
@@ -154,7 +155,7 @@ function App() {
         <Route path="/fundingform" element={<FundingForm />}></Route>
         <Route path="/mentor-profile" element={<MentorProfile />}></Route>
         <Route path="/community" element={<CommunityFinal />}>
-        <Route path=":postId" element={<SharedCommunityPost />}></Route>
+          <Route path=":postId" element={<SharedCommunityPost />}></Route>
         </Route>
         <Route path="/schedule" element={<Schedule />}></Route>
         <Route path="/betaslide" element={<BetaSlide />}></Route>
@@ -171,10 +172,10 @@ function App() {
           path="/financeforstartupslides"
           element={<FinanceforStartupSlides />}
         ></Route>
-        <Route path="/betatesting" element={<BetaTesting />}></Route>
+        {/* <Route path="/betatesting" element={<BetaTesting />}></Route> */}
         <Route path="/betatestingslides" element={<BetaSlide />}></Route>
 
-        <Route path="/buildingaudience" element={<BuildAudience />}></Route>
+        {/* <Route path="/buildingaudience" element={<BuildAudience />}></Route> */}
         <Route
           path="/buildingaudienceslides"
           element={<BuildAudienceSlides />}
@@ -192,14 +193,14 @@ function App() {
           element={<BusinessPlanningSlides />}
         ></Route>
 
-        <Route
+        {/* <Route
           path="/competitoranalysis"
           element={<CompetitorAnalysis />}
         ></Route>
         <Route
           path="/competitoranalysisslides"
           element={<CompetitorAnalysisSlides />}
-        ></Route>
+        ></Route> */}
 
         <Route
           path="/productdevelopment"
@@ -246,17 +247,45 @@ function App() {
         ></Route>
         <Route path="/userprofile" element={<UserProfile />}></Route>
         <Route path="/user-edit-profile" element={<UserEditProfile />}></Route>
-        <Route path="/change-user-password" element={<ChangePassword />}></Route>
-        <Route path="/funding-page" element={<GetFundedPage/>}></Route>
-        
+        <Route
+          path="/change-user-password"
+          element={<ChangePassword />}
+        ></Route>
+        <Route path="/funding-page" element={<GetFundedPage />}></Route>
+
         <Route path="*" element={<NotFound />}></Route>
-        <Route path="/payment" element={<PaymentMentorMeetingSchedule/>}></Route>
-        <Route path="/pptTemplates" element={<PPTTemplates/>}></Route>
-        <Route path="/pptTemplates/:id" element={<PPTTemplatesViewer/>}></Route>
-        <Route path="/documentTemplates" element={<DocumentTemplates/>}></Route>
-        <Route path="/documentTemplates/:id" element={<DocumentTemplatesViewer/>}></Route>
-        <Route path="/checkYourScore" element={<CheckYourScore/>}></Route>
-        <Route path="/newcourses/EquityAndEverything" element={<EquityAndEverythingg/>}></Route>
+        <Route
+          path="/payment"
+          element={<PaymentMentorMeetingSchedule />}
+        ></Route>
+        <Route path="/pptTemplates" element={<PPTTemplates />}></Route>
+        <Route
+          path="/pptTemplates/:id"
+          element={<PPTTemplatesViewer />}
+        ></Route>
+        <Route
+          path="/documentTemplates"
+          element={<DocumentTemplates />}
+        ></Route>
+        <Route
+          path="/documentTemplates/:id"
+          element={<DocumentTemplatesViewer />}
+        ></Route>
+        <Route path="/checkYourScore" element={<CheckYourScore />}></Route>
+        <Route
+          path="/newcourses/EquityAndEverything"
+          element={<EquityAndEverythingg />}
+        ></Route>
+        <Route path="/newcourses/BetaTesting" element={<BetaTesting />}></Route>
+        <Route path="/newcourses/StartupIdea" element={<StartupIdea />}></Route>
+        {/* <Route
+          path="/newcourses/CompetitorAnalysis"
+          element={<CompetitorAnalysis />}
+        ></Route>
+        <Route
+          path="/newcourses/BuildAudience"
+          element={<BuildAudience />}
+        ></Route> */}
       </Routes>
     </>
   );
