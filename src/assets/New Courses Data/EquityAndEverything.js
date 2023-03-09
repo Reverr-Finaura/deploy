@@ -30,7 +30,7 @@ const data = [
               "In addition, shareholder equity can represent the book value of a company. Equity can sometimes be offered as payment-in-kind. It also represents the pro-rata ownership of a company's shares.",
               "Equity can be found on a company's balance sheet and is one of the most common pieces of data employed by analysts to assess a company's financial health.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBalanced%20Scale.png?alt=media&token=04a6534a-226e-402f-9f13-ff6e165a450e",
             type: "slide",
           },
           {
@@ -74,7 +74,7 @@ const data = [
               "Well well well, you might think splitting equity is a no-brainer.",
             ],
             subHeading: "THAT IS A BIG NO!!!",
-            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fpie-graph-split%201.png?alt=media&token=b1a9fde7-c622-4bd4-ba9b-04351ec48465",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20Distribution.png?alt=media&token=ef4762a9-0946-4251-b7cc-32a0eab050bc",
             type: "checkslide",
           },
           {
@@ -143,7 +143,7 @@ const data = [
               "Equity can be found on a company's balance sheet and is one of the most common pieces of data employed by analysts to assess a company's financial health.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fgrowth.png?alt=media&token=19ed617b-d8e6-49fa-a336-ca3b8ee89f25",
             type: "slide",
           },
           {
@@ -154,7 +154,7 @@ const data = [
               "One of our most valuable assets is our equity. In the future, it will likely be the only asset class we own that will likely be worth exponentially more than it is today. We don’t get it back.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20investment.png?alt=media&token=722a9291-7ffd-4be5-87ff-99282c0120e8",
             type: "slide",
           },
           {
@@ -164,7 +164,7 @@ const data = [
               "Giving away equity reduces the future payout we will earn over the rest of our career. The issue is not that equity shouldn't be used - the backbone of the startups in one sense - but that we must recognize just how valuable it is.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fhiring%20employees.png?alt=media&token=820f4459-4f07-4d57-ae23-43f27a083731",
             type: "slide",
           },
           {
@@ -183,7 +183,7 @@ const data = [
             detail: [],
             subHeading: "",
             img: "",
-            image: "",
+            image: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20entrepreneur%20make%20strategy%20for%20product%20and%20funding.png?alt=media&token=fb8800a2-30bc-402b-a321-3e302a1e684d",
             type: "Checkpoint",
           },
           {
@@ -193,7 +193,7 @@ const data = [
               "Understanding the future value of equity is just as important as taking some current business decision that might influence the profitability of the business.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FLayer_7.png?alt=media&token=3796b6b1-7f2f-4b7d-ad35-d79bb61999e3",
             type: "slide",
           },
           {
@@ -203,7 +203,7 @@ const data = [
               "As we’ve grown up hearing,”Power of compounding works wonders”, that is not all! If you don”t understand its true worth, then I’m sorry to say mate, you didn’t appreciate the time value of equity when you just gave it away to some investor at a high rate - and now you’ll have to pay for it for the rest of our lives.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FMan%20holding%20dollar%20coin.png?alt=media&token=76424080-5179-47d8-9ab1-58377e5d6d63",
             type: "slide",
           },
           {
@@ -213,7 +213,7 @@ const data = [
             detail: [],
             subHeading: "",
             img: "",
-            image: "",
+            image: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FMan%20holding%20dollar%20coin.png?alt=media&token=76424080-5179-47d8-9ab1-58377e5d6d63",
             type: "Checkpoint",
           },
           {
@@ -223,7 +223,7 @@ const data = [
               "Not only do startups go on making hasty decisions by issuing and treating equity like Monopoly money, they also tend to run into issues like giving it away all at once – up front. If it were cash we’d never imagine doing that, but for some reason we’re propelled to think that equity should be a lump sum payment despite the services rendered.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20investment%20(1).png?alt=media&token=8aabb009-32d4-4191-9711-24c67eeb9330",
             type: "slide",
           },
           {
@@ -242,7 +242,7 @@ const data = [
               "Now, beware! That would mean moving slowly towards disaster. That doesn’t mean we are running out of options as to how we can manage our equity or should we consider giving it out. It simply implies that when we do, we want to retrospect where we were and where we are today and think about the greater angles of the business in the long run.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fvecteezy_portrait-of-a-young-girl-surprised-or-shocked-or-scared-in-a_6852261%201.png?alt=media&token=a6833d1e-2857-4aa1-9c7f-9ea04f978d1e",
             type: "slide",
           },
           {
@@ -252,7 +252,7 @@ const data = [
             detail: [],
             subHeading: "",
             img: "",
-            image: "",
+            image: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20Tasklist.png?alt=media&token=46ca21cb-3aad-48d5-8260-70285c6e0e3e",
             type: "Checkpoint",
           },
           {
@@ -262,7 +262,7 @@ const data = [
               "There can be no plausible explanation as to why we need to wait until we’ve got a final affirmation on our equity arrangements to finally put it on paper. We can gradually start regulating each step individually and then eventually compile them all into a single formalized document with our startup lawyers.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FLayer_7%20(1).png?alt=media&token=85da6c11-f379-4d0d-9c3f-8cac28b5ddd1",
             type: "slide",
           },
           {
@@ -272,7 +272,7 @@ const data = [
             detail: [],
             subHeading: "",
             img: "",
-            image: "",
+            image: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20Tasklist.png?alt=media&token=46ca21cb-3aad-48d5-8260-70285c6e0e3e",
             type: "Checkpoint",
           },
           {
@@ -282,7 +282,7 @@ const data = [
               "To paper it up, we require good lawyers who will aid in crafting our documents more seamlessly. Our agenda right now will be to put forward and discuss the substantive issues amongst ourselves and then take notes of whatever we have decided upon and ask our attorneys to translate these decisions into binding, signable legal docs. ",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fbusinessman%20(1).png?alt=media&token=c1b6315c-c23d-4ead-9391-3641ee682f0c",
             type: "slide",
           },
         ],
@@ -302,7 +302,7 @@ const data = [
               "There are essentially 4 components to setting up the fundamental structure of our Stock Plan:",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FYoung%20woman%20employee%20working%20on%20desk%20in%20office.png?alt=media&token=541add2c-5e6e-4ea0-ba3a-45d34999cdbc",
             type: "slide",
           },
           {
@@ -312,7 +312,7 @@ const data = [
               "We need to understand exactly how our stock will be structured to allocate. There are several ways we can counter this on the basis of how we want to manage control of the company.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FStock%20Market%20Portfolio.png?alt=media&token=28c4fe78-ea00-4439-b27a-2f4e8a7b1ce3",
             type: "slide",
           },
           {
@@ -322,7 +322,7 @@ const data = [
               "By default, the Founders of a business have equity. They’re directly responsible for the management of the company like paying taxes and covering payroll. On the other side the employees, however, don’t necessarily need to own equity or maintain the same liabilities that founders do. This is where the stock structure bridges the gap.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FWoman%20checking%20invoice.png?alt=media&token=e28530c6-8157-4be0-9393-dad2632832ec",
             type: "slide",
           },
           {
@@ -332,7 +332,7 @@ const data = [
               "There are 3 ways employees can be granted stocks in our company:",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FGrowth%20(1).png?alt=media&token=6e747b4d-991f-4c1c-ba03-c5a8f87b85ec",
             type: "slide",
           },
           {
@@ -352,7 +352,7 @@ const data = [
               "When we want to divide the company amongst a small number of active members who will all share the responsibility of managing the company long term.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FWoman%20checking%20invoice%20(1).png?alt=media&token=cb0fb9d9-d0ac-46e5-8a81-4f9f660bec3f",
             type: "slide",
           },
           {
@@ -386,7 +386,7 @@ const data = [
               "The owner of a legal share in a company often has specific rights, such as voting rights and fiduciary duties. It is not necessary to introduce complex control issues as well if our goal is to create cash incentives on upside.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FWoman%20checking%20invoice%20(1).png?alt=media&token=cb0fb9d9-d0ac-46e5-8a81-4f9f660bec3f",
             type: "slide",
           },
           {
@@ -396,7 +396,7 @@ const data = [
               "It is likely that there is a fair market value for buying back actual equity. The issue is that we probably won’t have idle cash to “buy someone out”.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Ferror.png?alt=media&token=828662eb-0512-49b2-a2e2-402b5ad8ab52",
             type: "slide",
           },
           {
@@ -406,7 +406,7 @@ const data = [
               "If we get handed a share of equity, and that equity has marketable value, the IRS may tax us on the value, regardless of the cashflow to show as evidence. This can become a tight spot for someone. This is a complicated legal and tax matter that requires advisors’ say.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FLayer_1-2.png?alt=media&token=dec59880-8082-4a55-9244-aba71ffc0d1c",
             type: "slide",
           },
           {
@@ -440,7 +440,7 @@ const data = [
               "Eventually, if we can't buy back the equity from people who have left, we may end up with a lot of equity holders who aren't contributing any ongoing value while eating up valuable equity that could be used to raise more capital or to reward current employees.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FArranging%20Files.png?alt=media&token=c4ee6245-738c-4870-8da8-86796f5833a1",
             type: "slide",
           },
           {
@@ -450,7 +450,7 @@ const data = [
               "This means that the employee have a privilege to avail the “option” to buy stock in the company at a later date implicating that right now they don’t “own” anything, but if the company chose to go public, they can “exercise” the option to buy stock and earn the benefit at that time.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FArranging%20Files.png?alt=media&token=c4ee6245-738c-4870-8da8-86796f5833a1",
             type: "slide",
           },
           {
@@ -460,7 +460,7 @@ const data = [
               "When we want to offer the benefits of equity while mitigating some of the consequences of handing out regular equity.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FWoman%20checking%20invoice%20(1).png?alt=media&token=cb0fb9d9-d0ac-46e5-8a81-4f9f660bec3f",
             type: "slide",
           },
           {
@@ -473,7 +473,7 @@ const data = [
               "Well understood in the startup community",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FWoman%20checking%20invoice%20(1).png?alt=media&token=cb0fb9d9-d0ac-46e5-8a81-4f9f660bec3f",
             type: "slide",
           },
           {
@@ -485,7 +485,7 @@ const data = [
               "May create dormant equity holders",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Ferror.png?alt=media&token=828662eb-0512-49b2-a2e2-402b5ad8ab52",
             type: "slide",
           },
           {
@@ -495,7 +495,7 @@ const data = [
               "Most Stock Options have a “strike price” which means the price at which the user can purchase their options. For example, if the Strike Price were $1, we would have the option to buy stock in the company for $1 per share.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FGroup%206267309.png?alt=media&token=61346bd4-a669-4640-bd91-cd8e65f1105b",
             type: "slide",
           },
           {
@@ -520,7 +520,7 @@ const data = [
               "If the company were worth $3 per share, like at the time of a sale, we would buy the options for $1, sell them for $3, thereby making a profit of $2 per share.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FGroup%206267309.png?alt=media&token=61346bd4-a669-4640-bd91-cd8e65f1105b",
             type: "slide",
           },
           {
@@ -530,7 +530,7 @@ const data = [
               "During our tenure as employees of the company, if we join at a strike price of $1 and the company's value never exceeds $1, we may not reap any benefit because the company's value didn't improve during our tenure.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FGroup%206267309.png?alt=media&token=61346bd4-a669-4640-bd91-cd8e65f1105b",
             type: "slide",
           },
           {
@@ -540,7 +540,7 @@ const data = [
               "In startups, stock options are issued with a strike price so that new employees can gain from the surge in the value of the company.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fbusinessman%20(1).png?alt=media&token=c1b6315c-c23d-4ead-9391-3641ee682f0c",
             type: "slide",
           },
           {
@@ -560,7 +560,7 @@ const data = [
             detail: [],
             subHeading: "",
             img: "",
-            image: "",
+            image: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fbusinessman%20(1).png?alt=media&token=c1b6315c-c23d-4ead-9391-3641ee682f0c",
             type: "Checkpoint",
           },
           {
@@ -570,7 +570,7 @@ const data = [
               "Unless the stock option is availed, the employees would typically have no rights within the company such as voting or other control-based problems. It is typically by design since we don't want a lot of people with no ownership stake to have direct control",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FGirl%20drinking%20coffee%20near%20fireplace.png?alt=media&token=d64413cf-62c5-474e-add7-051443b50c3f",
             type: "slide",
           },
           {
@@ -580,7 +580,7 @@ const data = [
               "If an employee terminates and chooses not to exercise his options, then those options will be forfeited, and the stock would be retained back to reward future employees.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fbranding%20or%20marketing%20for%20product.png?alt=media&token=38d69153-509e-4267-9baa-1946238efbc3",
             type: "slide",
           },
           {
@@ -600,7 +600,7 @@ const data = [
               "The concept of stock options has become standard fare in the startup world, so even if a potential recipient has not experienced them before, they will most likely understand what they are.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fbranding%20or%20marketing%20for%20product.png?alt=media&token=38d69153-509e-4267-9baa-1946238efbc3",
             type: "slide",
           },
           {
@@ -610,7 +610,7 @@ const data = [
             detail: [],
             subHeading: "",
             img: "",
-            image: "",
+            image: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FWoman%20checking%20invoice%20(1).png?alt=media&token=cb0fb9d9-d0ac-46e5-8a81-4f9f660bec3f",
             type: "Checkpoint",
           },
           {
@@ -620,7 +620,7 @@ const data = [
               "The person who worked for the company for say 5 years, left without exercising their options, and the company sold 4 years later may receive no benefit at all. This might be hard to digest and may not be aligned with how we want to compensate people.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FOffice%20employee%20making%20checklist.png?alt=media&token=d80d4a5b-6be2-4037-b96e-65e95a42961d",
             type: "slide",
           },
           {
@@ -630,7 +630,7 @@ const data = [
               "In order to mark a Strike Price at which the employee would pay for their option, it would be necessary to know the valuation of the company.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FGirl%20drinking%20coffee%20near%20fireplace.png?alt=media&token=d64413cf-62c5-474e-add7-051443b50c3f",
             type: "slide",
           },
           {
@@ -640,7 +640,7 @@ const data = [
               "In the event that people exercise their options but do not participate in the business moving forward, we might have to get a dormant cap table.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20for%20Investment%20concept.png?alt=media&token=73ef8e29-20f1-4454-832e-c86f14504a42",
             type: "slide",
           },
           {
@@ -662,7 +662,7 @@ const data = [
               "Avoids dormant equity issues",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FStock%20Market%20Portfolio.png?alt=media&token=28c4fe78-ea00-4439-b27a-2f4e8a7b1ce3",
             type: "slide",
           },
           {
@@ -674,7 +674,7 @@ const data = [
               "Employees are taxed as “regular income” vs. “capital gains”",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fbranding%20or%20marketing%20for%20product.png?alt=media&token=38d69153-509e-4267-9baa-1946238efbc3",
             type: "slide",
           },
           {
@@ -684,7 +684,7 @@ const data = [
             detail: [],
             subHeading: "",
             img: "",
-            image: "",
+            image: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FSign%20Up%20form.png?alt=media&token=9ec31197-a754-44c2-97e6-8a5b0665c3ab",
             type: "Checkpoint",
           },
           {
@@ -694,7 +694,7 @@ const data = [
               "As phantom equity is a contractual right, not an equity stake, we can grant upside without having to issue actual equity ownership shares. For example, we may not want our employees to materially own the company.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FSmall%20team%20discussing%20ideas.png?alt=media&token=3907b80a-825d-43c9-b981-bd10d22b5d72",
             type: "slide",
           },
           {
@@ -704,7 +704,7 @@ const data = [
               " A significant issue in granting equity is that it doesn’t come easy since it is taxable upon transfer. Unless money is exchanged, phantom equity units are not a legal ownership of any actual profit.",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FConcept%20of%20Securing%20Money%20in%20business%20startup.png?alt=media&token=bbccd3e8-50f9-4e0a-9a9d-475c579495da",
             type: "slide",
           },
           {
@@ -714,7 +714,7 @@ const data = [
               "Phantom equity is not the original equity ownership of the company; technically, the Cap Table will never replace it.  That said, company still might be liable if the phantom equity holders leave and still have provisions in their agreement to be paid on outstanding basis",
             ],
             subHeading: "",
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FSmall%20team%20discussing%20ideas.png?alt=media&token=3907b80a-825d-43c9-b981-bd10d22b5d72",
             type: "slide",
           },
           {
@@ -849,8 +849,7 @@ const data = [
         id: 3,
         title: "Module-3",
         name: "SPLITTING EQUITY",
-        image:
-          "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fg12.png?alt=media&token=158fb6ff-03e9-40d8-a50a-c0ee8ab2b316",
+        image:"https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FJury%20voting.png?alt=media&token=0d65480d-c90c-4ce5-9d7e-cfb526241a10",
         type: "module",
         slides: [
           {

@@ -87,6 +87,7 @@ import CheckYourScore from "./pages/Check Your Score/CheckYourScore";
 import EquityAndEverythingg from "./pages/New Courses/Courses/EquityAndEverythingg";
 import BetaTesting from "./pages/New Courses/Courses/BetaTesting";
 import StartupIdea from "./pages/New Courses/Courses/StartupIdea";
+import ReachingOutToInvestorr from "./pages/New Courses/Courses/ReachingOutToInvestor"
 // import CompetitorAnalysis from "./pages/New Courses/Courses/CompetitorAnalysis";
 // import BuildAudience from "./pages/New Courses/Courses/BuildAudience";
 
@@ -278,6 +279,7 @@ function App() {
         ></Route>
         <Route path="/newcourses/BetaTesting" element={<BetaTesting />}></Route>
         <Route path="/newcourses/StartupIdea" element={<StartupIdea />}></Route>
+        <Route path="/newcourses/ReachingOutToInvestor" element={<ReachingOutToInvestorr/>}></Route>
         {/* <Route
           path="/newcourses/CompetitorAnalysis"
           element={<CompetitorAnalysis />}
