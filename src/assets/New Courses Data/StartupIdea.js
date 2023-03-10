@@ -21,7 +21,7 @@ const data = [
             detail: [
               "Now right here's the way to generate a startup concept for what you are in all likelihood looking forward to. you may sit returned and think in element about your startup concept.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2FSmall%20team%20discussing%20ideas.png?alt=media&token=53b72656-adc7-49d1-8307-bd1fcfa90aa7",
           },
           {
             id: 2,
@@ -30,7 +30,7 @@ const data = [
             detail: [
               "We're going to talk approximately a way to do this in a moment. however in truth, this is not the first-class way to get ideas for startups. The best manner to get startup ideas is to organically word them.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2Fempty%20list.png?alt=media&token=738b3743-576c-46b1-ad92-867a16b00ae1",
           },
           {
             id: 3,
@@ -39,7 +39,7 @@ const data = [
             detail: [
               "Terrific startup ideas are all around you, and you may see them everywhere in case you're geared up. The problem is that once humans sit down down and attempt to think of a startup idea, they tend to think handiest of bad thoughts. ",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2Fbusiness%20lady%20arrive%20late%20in%20office%20in%20time%20management%20concept.png?alt=media&token=ae05004f-6072-4997-b678-9c4369e7262d",
           },
           {
             id: 4,
@@ -49,7 +49,7 @@ const data = [
               "A startup concept that emerges organically can in reality grow to be an awesome idea.  ",
               "So first I need to speak approximately a way to organically generate thoughts for startups. in case you're no longer beginning a organisation right now, this should be your preferred technique",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2Fsecuring%20money.png?alt=media&token=82802d13-906c-4b38-82bf-a1e4aa1166ab",
           },
           {
             id: 5,
@@ -58,7 +58,7 @@ const data = [
             detail: [
               "Find exquisite startup thoughts and discover ways to convey them to you. To have a startup idea organically, you first need to realize what an excellent startup idea is so that you'll note it when it comes to you. then you definitely preserve an eye at the matters that appear to be lacking from the arena.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2FImportance%20of%20Research%20in%20business%20startup.png?alt=media&token=657a521b-32d3-4ed0-a8be-270ebf078ea8",
           },
           {
             id: 6,
@@ -104,7 +104,7 @@ const data = [
             detail: [
               "Good. Let's take a look at 7 ways for explicit idea generation for startups. We list all 7 ways exhaustively. This is almost every way we know how to generate ideas for startups. Now we know examples where all 7 worked and led to successful companies, but not all are equally good. Some are much more likely to generate good ideas.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2FBusiness%20Tasklist.png?alt=media&token=01ed3acc-467b-4824-8553-5e69bd3b18b3",
           },
           {
             id: 10,
@@ -113,7 +113,7 @@ const data = [
             detail: [
               "Start with what your team is particularly good at, and think of ideas that might have an undue advantage in implementation. What makes this so effective is that ideas conceived in this way automatically fit the founders/markets. It basically generates all ideas that are good for the founder/market.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2FImportance%20of%20Research%20in%20business%20startup.png?alt=media&token=657a521b-32d3-4ed0-a8be-270ebf078ea8",
           },
           {
             id: 11,
@@ -123,7 +123,7 @@ const data = [
               "Second, Think of the things you want someone to do for you.",
               "Third , Even if things don't go well for 10 years, what kind of work will make you happy? What are you really passionate about?",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2Fbusiness%20lady%20arrive%20late%20in%20office%20in%20time%20management%20concept.png?alt=media&token=ae05004f-6072-4997-b678-9c4369e7262d",
           },
           {
             id: 12,
@@ -133,7 +133,7 @@ const data = [
               " Fourth, find a recent change in the world and think of possible ideas that are currently possible because of that change. For example, new technologies, new platforms for developers, new regulations, new challenges in the world. What waves can you ride?",
               "Fifth, we seek new alternatives by finding recently successful companies.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2FBusiness%20Tasklist.png?alt=media&token=01ed3acc-467b-4824-8553-5e69bd3b18b3",
           },
           {
             id: 13,
@@ -143,7 +143,7 @@ const data = [
               "Sixth, you can also crowdsource ideas by talking to people you know and asking questions about problems you want to solve. It is especially interesting to work with people with specific specialties, for example those who work in interesting industry",
               "Seventh Look for industries that appear to be broken. Any industry that appears to be broken is probably ripe for destruction.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2FBusiness%20Tasklist.png?alt=media&token=01ed3acc-467b-4824-8553-5e69bd3b18b3",
           },
           {
             id: 14,
@@ -171,7 +171,7 @@ const data = [
             detail: [
               "The first criteria is how big is this idea? The best way to judge this, we think, is to look for existing large companies that do something similar. So, suppose you want to start a new kind of bank. Well, there already are a bunch of banks, and they're big companies, so that suggests that this idea could be big.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2FBusiness%20Tasklist.png?alt=media&token=01ed3acc-467b-4824-8553-5e69bd3b18b3",
           },
           {
             id: 2,
@@ -180,7 +180,7 @@ const data = [
             detail: [
               "Your idea could also score well here if you're doing something in a market that's small today, but has a real chance of being huge in the future.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2FSmall%20team%20discussing%20ideas.png?alt=media&token=53b72656-adc7-49d1-8307-bd1fcfa90aa7",
           },
           {
             id: 3,
@@ -189,7 +189,7 @@ const data = [
             detail: [
               "The next criteria is how sure are you that you're solving a big problem? Ideally, you should  have personal experience with this problem. And finally, do you have a new, important insight into this idea? And a great example of this is Airbnb.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2Fsecuring%20money.png?alt=media&token=82802d13-906c-4b38-82bf-a1e4aa1166ab",
           },
           {
             id: 4,
@@ -220,7 +220,7 @@ const data = [
             detail: [
               "Here are some other signs to look for that your idea is probably a good one. You're making something you personally want to have. It turns out it's much easier to start a successful company if you're making something you yourself want, instead of something other people want.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2Fempty%20list.png?alt=media&token=738b3743-576c-46b1-ad92-867a16b00ae1",
           },
           {
             id: 7,
@@ -244,7 +244,7 @@ const data = [
             detail: [
               "For one, you start with at least one user, yourself, but more importantly, when you're building for yourself, you can trust your intuition about what to build. If you're building for other people, you have to guess what they would want.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2FBusiness%20Tasklist.png?alt=media&token=01ed3acc-467b-4824-8553-5e69bd3b18b3",
           },
           {
             id: 9,
@@ -253,7 +253,7 @@ const data = [
             detail: [
               "Another sign is that this only recently became possible. If something recently changed in the world, like a new technology or a new product you can build on top of, that's often a sign that a new opportunity has been created. Or, there are successful companies that do something similar.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2Fsecuring%20money.png?alt=media&token=82802d13-906c-4b38-82bf-a1e4aa1166ab",
           },
           {
             id: 10,
@@ -262,7 +262,7 @@ const data = [
             detail: [
               "Last topic about evaluating startup ideas is to talk about filters. Filters are bad reasons to reject startup ideas.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2FSmall%20team%20discussing%20ideas.png?alt=media&token=53b72656-adc7-49d1-8307-bd1fcfa90aa7",
           },
           {
             id: 11,
@@ -271,7 +271,7 @@ const data = [
             detail: [
               "The most dangerous part of filters is that they will cause you to reject your best startup ideas unconsciously, before they even bubble up to your conscious mind, and there are four big ones that are extremely important to understand.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2FImportance%20of%20Research%20in%20business%20startup.png?alt=media&token=657a521b-32d3-4ed0-a8be-270ebf078ea8",
           },
           {
             id: 12,
@@ -280,7 +280,7 @@ const data = [
             detail: [
               "Almost everyone has these filters. And one of the most impactful things you can do to become good at generating startup ideas is to learn what these are, and to turn them off.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2Fempty%20list.png?alt=media&token=738b3743-576c-46b1-ad92-867a16b00ae1",
           },
           {
             id: 13,
@@ -299,10 +299,10 @@ const data = [
       },
       {
         id: 3,
-        title: "MISTAKES FOUNDERS DO",
-        name: "",
+        name: "MISTAKES FOUNDERS DO",
+        title: "Module-3",
         image:
-          "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fg12.png?alt=media&token=158fb6ff-03e9-40d8-a50a-c0ee8ab2b316",
+          "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2FGroup.png?alt=media&token=2745f4e7-747d-4771-bcaf-1d565d9cb5ca",
         slides: [
           {
             id: 1,
@@ -311,7 +311,7 @@ const data = [
             detail: [
               "The first and most common mistake is the belief that good ideas come first. It usually looks like this: People believe that the key to a successful startup is starting with a brilliant idea. So they wait for a brilliant idea before starting anything.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2Fempty%20list.png?alt=media&token=738b3743-576c-46b1-ad92-867a16b00ae1",
           },
           {
             id: 2,
@@ -320,7 +320,7 @@ const data = [
             detail: [
               "When you look at successful modern companies like Google or Facebook, it's easy to think, \"Wow, what a brilliant idea.\" But we can say that it only looks so in retrospect. When Google was launched, it was the 20th search engine. And when Facebook was launched, it was the 20th social network. What made them successful wasn't a great initial idea. It was a reasonably good initial idea combined with excellent execution.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2FGroup%202906.png?alt=media&token=c52f641a-c7a6-4803-b164-d9779daca5f9",
           },
           {
             id: 3,
@@ -338,7 +338,7 @@ const data = [
             detail: [
               'Surprisingly, very few founders do this, and when they do they are actually ahead of the curve. My argument is that if you imagine a spectrum where one end is "try the idea that comes to mind first" and the other end "wait for the perfect idea", you want to be somewhere in between. You should think of your original idea as a good starting point.',
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2FBusiness%20Tasklist.png?alt=media&token=01ed3acc-467b-4824-8553-5e69bd3b18b3",
           },
           {
             id: 5,
@@ -365,7 +365,7 @@ const data = [
             detail: [
               "This is called SISP (Solving in Search of Problem). And that's usually not good because it usually doesn't find the problem. It's much better to start with the problem and then find a solution.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2FSmall%20team%20discussing%20ideas.png?alt=media&token=53b72656-adc7-49d1-8307-bd1fcfa90aa7",
           },
           {
             id: 8,
@@ -374,7 +374,7 @@ const data = [
             detail: [
               "The final mistake is believing that startup ideas are hard to come by. In fact, it is easy to find because there are so many real problems left in the world. If you're having trouble finding it, you haven't learned how to do it yet. Learn to discover great startup ideas and you'll see them everywhere.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FStartupIdea%2FImportance%20of%20Research%20in%20business%20startup.png?alt=media&token=657a521b-32d3-4ed0-a8be-270ebf078ea8",
           },
           {
             id: 9,
