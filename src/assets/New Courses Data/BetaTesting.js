@@ -49,7 +49,7 @@ const data = [
           {
             id: 4,
             type: "question",
-            title: "What is Beta Testing ?",
+            question: "What is Beta Testing ?",
             options: [
               "Beta testing is the process of releasing an old product to a limited audience to understand how they respond to it. ",
               "Beta testing is the process of releasing unstable product  ",
@@ -72,7 +72,7 @@ const data = [
           {
             id: 6,
             type: "question",
-            title: "Why beta users are important?",
+            question: "Why beta users are important?",
             options: [
               "they can help you find bugs in the product.",
               "they can improve user flow and enhance usability. ",
@@ -86,7 +86,7 @@ const data = [
           {
             id: 7,
             type: "question",
-            title: "Who is an ideal beta user?",
+            question: "Who is an ideal beta user?",
             options: [
               "An ideal beta tester is a person who only gives negative feedback.",
               "An ideal beta tester is a friend or family member who is interested in buying the product.  ",
