@@ -5,6 +5,7 @@ import styles from "./stages.module.css";
 import { scoredData, nonscoredData } from "./scores";
 
 const Team = ({ setStage, data, setData, score, setScore }) => {
+  console.log(score);
   const handleNext = () => {
     console.log(Object.keys(data).length);
     console.log(data);
@@ -45,10 +46,13 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
     const score_of_var = scoredData[name]?.filter(
       (val) => val.value === value
     )[0].score;
-    setScore((prev) => ({
-      ...prev,
-      ["Team"]: score.Team + score_of_var,
-    }));
+    // console.log(score_of_var);
+    if (score_of_var !== undefined) {
+      setScore((prev) => ({
+        ...prev,
+        ["Team"]: score.Team + score_of_var,
+      }));
+    }
     setData((prev) => {
       return {
         ...prev,

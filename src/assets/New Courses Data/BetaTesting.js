@@ -22,7 +22,7 @@ const data = [
               "Beta testing is the process of releasing a new product to a limited audience to understand how they respond to it. ",
               "The team behind the development can then work on flaws, fix bugs, and develop even better features that will enhance the value of the product.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FBetaTesting%2FAsk%20Customer%20Feedback.png?alt=media&token=0341b8fc-5be0-4570-8d8e-d03ffae7f04f",
           },
           {
             id: 2,
@@ -31,12 +31,12 @@ const data = [
             detail: [
               "If you are launching your product for the first time, it is crucial that the product is free of bugs. Otherwise, the public will not like the product and the startup will fail even before the official launch.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FImportance%20of%20Research%20in%20business%20startup.png?alt=media&token=1f4ac1fe-b5d1-4c99-ad6b-b1d72d76306e",
           },
           {
             id: 3,
             type: "slide",
-            subHeading:
+            title:
               "In short, beta users are important for the following reason:",
             detail: [
               "they can help you find bugs in the product; ",
@@ -44,7 +44,7 @@ const data = [
               "they can come up with innovative ideas that you can add to the product to improve its value and features;",
               "they will do it all for free, so make sure you recruit only those who need the product and understand its use case.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FBetaTesting%2FAsk%20Customer%20Feedback.png?alt=media&token=0341b8fc-5be0-4570-8d8e-d03ffae7f04f",
           },
           {
             id: 4,
@@ -67,7 +67,7 @@ const data = [
             detail: [
               "An ideal beta tester is a person who is actually interested in buying the product. This is not your family member or a friend, but a person that fits your buyer persona. This person suffers the pain that your product can resolve.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FImportance%20of%20Research%20in%20business%20startup.png?alt=media&token=1f4ac1fe-b5d1-4c99-ad6b-b1d72d76306e",
           },
           {
             id: 6,
@@ -114,7 +114,7 @@ const data = [
             detail: [
               "Here is a list of the best ways to find beta testers for your startup product that we have put together for you. Any of these methods can lead you to 100 to 500 beta testers easily.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FImportance%20of%20Research%20in%20business%20startup.png?alt=media&token=1f4ac1fe-b5d1-4c99-ad6b-b1d72d76306e",
           },
           {
             id: 2,
@@ -124,7 +124,7 @@ const data = [
               "we reach out to specific groups in our community, such as yoga studios, university programs, alumni networks, food bloggers and athletic teams to use their social media platforms. ",
               " When people hear that they fit your “ideal” testing group, it feels exclusive, and they’re excited to participate in a best test.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20Tasklist.png?alt=media&token=46ca21cb-3aad-48d5-8260-70285c6e0e3e",
           },
           {
             id: 3,
@@ -178,7 +178,8 @@ const data = [
               "Did the beta testers test the product? Did you fix all the issues they found? Is the product ready?",
               "Depending on the results of beta testing, you can move to public launch or conduct a second round of public beta testing. ",
             ],
-            img: "",
+
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FBetaTesting%2FAsk%20Customer%20Feedback.png?alt=media&token=0341b8fc-5be0-4570-8d8e-d03ffae7f04f",
           },
           {
             id: 8,
@@ -188,7 +189,7 @@ const data = [
               "When planning a public launch, make sure that the product is stable and bug-free. The beta stage can be extended if you are still uncertain about the functions of the product. ",
               "Beta stages usually last between two and three months. When you pass this beta testing stage, it's time for the big launch.",
             ],
-            img: "",
+            img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FImportance%20of%20Research%20in%20business%20startup.png?alt=media&token=1f4ac1fe-b5d1-4c99-ad6b-b1d72d76306e",
           },
           {
             id: 9,
@@ -211,7 +212,7 @@ const data = [
         title: "END QUESTIONS",
         name: "",
         image:
-          "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fg12.png?alt=media&token=158fb6ff-03e9-40d8-a50a-c0ee8ab2b316",
+          "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FBetaTesting%2FQuestion.png?alt=media&token=b4d2371d-85d4-4591-b9b2-e7bab0293324",
         slides: [
           {
             id: 1,
