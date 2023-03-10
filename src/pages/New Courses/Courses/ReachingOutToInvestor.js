@@ -1,14 +1,39 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "./EquityAndEverythingg.module.css"
 import data from "../../../assets/New Courses Data/ReachingOutToInvestor"
 import {IoIosArrowForward} from "react-icons/io"
 import ChooseModuleCard from '../Courses Card/Choose Module Card/ChooseModuleCard'
-
+import SidebarFinal from '../../../components/Sidebar Final/SidebarFinal'
+import NavBarFinal from '../../../components/Navbar/NavBarFinal'
+import KnowledgeNavbar from '../../../components/KnowledgeNavbar/KnowledgeNavbar'
+import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar"
 
 const ReachingOutToInvestor = () => {
   const[isSlideBegin,setIsSlideBegin]=useState(false)
+  const [width, setWidth] = useState(window.innerWidth);
+
+  
+  const updateWidth = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
   return (
     <>
+    {width >= 600 ? (
+        <>
+          <SidebarFinal />
+          <NavBarFinal />
+        </>
+      ) : (
+        <>
+          <PhnSidebar />
+          <KnowledgeNavbar />
+        </>
+      )}
     {!isSlideBegin&&
    <section className={styles.outerCont}>
    <div className={styles.innerCont}>
