@@ -85,7 +85,7 @@ const data = [
             ],
             subHeading: "",
             img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fvecteezy_portrait-of-a-young-girl-surprised-or-shocked-or-scared-in-a_6852261%201.png?alt=media&token=a6833d1e-2857-4aa1-9c7f-9ea04f978d1e",
-            type: "checkslide",
+            type: "slide",
           },
           {
             id: 8,
@@ -96,7 +96,7 @@ const data = [
             ],
             subHeading: "",
             img: "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fbill%201.png?alt=media&token=6264154d-a726-4f3c-bc04-83f6a0f44280",
-            type: "checkslide",
+            type: "slide",
           },
           {
             id: 9,
