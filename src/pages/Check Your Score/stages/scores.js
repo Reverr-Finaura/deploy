@@ -272,6 +272,8 @@ const nonscoredData = {
 
 const scoredData = {
   motivation: [
+    { value: "select", score: 0 },
+
     {
       value:
         "My domain experience in this space led me to realise this specific market opportunity",
@@ -298,6 +300,8 @@ const scoredData = {
     },
   ],
   tech_based: [
+    { value: "select", score: 0 },
+
     {
       value:
         "Yes - I am a tech professional with relevant experience to build the product",
@@ -318,6 +322,8 @@ const scoredData = {
     },
   ],
   prod_stage: [
+    { value: "select", score: 0 },
+
     {
       value: "1. Preliminary R&D, MVP not achieved, Pre-prototype stage",
       score: 5,
@@ -360,6 +366,8 @@ const scoredData = {
     },
   ],
   moat: [
+    { value: "select", score: 0 },
+
     {
       value: "Barriers to Entry/Exit",
       score: 10,
@@ -386,6 +394,8 @@ const scoredData = {
     },
   ],
   pro_risk: [
+    { value: "select", score: 0 },
+
     {
       value:
         "Yes, Business Model Risk- The company's business model is not viable and we may have to burn for a long time to aquire users",
@@ -412,23 +422,29 @@ const scoredData = {
     },
   ],
   has: [
+    { value: "select", score: 0 },
     { value: "Yes", score: 10 },
     { value: "No", score: 5 },
-    { value: "-", score: 0 },
   ],
   year_of_exp: [
+    { value: "select", score: 0 },
+
     { value: "10+", score: 10 },
     { value: "5-10", score: 9 },
     { value: "3-5", score: 8 },
     { value: "<3", score: 7 },
   ],
   working_years: [
+    { value: "select", score: 0 },
+
     { value: "10+", score: 10 },
     { value: "5-10", score: 9 },
     { value: "3-5", score: 8 },
     { value: "<3", score: 7 },
   ],
   prod_launches: [
+    { value: "select", score: 0 },
+
     { value: "5+", score: 10 },
     { value: "4", score: 9 },
     { value: "3", score: 9 },
@@ -437,6 +453,8 @@ const scoredData = {
     { value: "0", score: 7 },
   ],
   process_imp: [
+    { value: "select", score: 0 },
+
     { value: "5+", score: 10 },
     { value: "4", score: 9 },
     { value: "3", score: 9 },
@@ -445,6 +463,8 @@ const scoredData = {
     { value: "0", score: 7 },
   ],
   new_team: [
+    { value: "select", score: 0 },
+
     { value: "5+", score: 10 },
     { value: "4", score: 9 },
     { value: "3", score: 9 },
@@ -453,11 +473,15 @@ const scoredData = {
     { value: "0", score: 7 },
   ],
   dependencies: [
+    { value: "select", score: 0 },
+
     { value: "High Dependence", score: 6 },
     { value: "Moderate", score: 8 },
     { value: "Low Dependence", score: 9 },
   ],
   informal_com: [
+    { value: "select", score: 0 },
+
     {
       value: "High Levels (frequent get-togethers, parties, informal meetups)",
       score: 8,
@@ -473,6 +497,8 @@ const scoredData = {
     },
   ],
   skill_overlap: [
+    { value: "select", score: 0 },
+
     {
       value: "Same Skillsets",
       score: 6,
@@ -487,6 +513,8 @@ const scoredData = {
     },
   ],
   interaction: [
+    { value: "select", score: 0 },
+
     {
       value:
         "Very necessary - the team's goals require that team members interact often",
@@ -504,100 +532,137 @@ const scoredData = {
     },
   ],
   target_market: [
+    { value: "select", score: 0 },
+
     { value: "B2B", score: 9 },
     { value: "B2C", score: 8 },
     { value: "B2B2C", score: 8 },
     { value: "C2C", score: 8 },
   ],
   growth_rate: [
+    { value: "select", score: 0 },
+
     { value: "<5%", score: 6 },
     { value: "Between 5-10%", score: 7 },
     { value: "10-15%", score: 8 },
     { value: ">15%", score: 9 },
   ],
   revenue_stage: [
+    { value: "select", score: 0 },
+
     { value: "Yes, We're generating Revenue for more than 1 year", score: 8 },
     { value: "Yes, We're generating Revenue but <1 Year", score: 7 },
     { value: "No We are pre-revenue", score: 6 },
   ],
   revenue_nature: [
+    { value: "select", score: 0 },
+
     { value: "Recurring", score: 8 },
     { value: "One-time", score: 6 },
     { value: "Hybrid", score: 7 },
   ],
   mom: [
+    { value: "select", score: 0 },
+
     { value: "<10%", score: 5 },
     { value: "Between 10 and 25%", score: 7 },
     { value: ">25%", score: 9 },
   ],
   qoq: [
+    { value: "select", score: 0 },
+
     { value: "<10%", score: 5 },
     { value: "Between 10 and 25%", score: 7 },
     { value: ">25%", score: 9 },
   ],
   yoy: [
+    { value: "select", score: 0 },
+
     { value: "<10%", score: 5 },
     { value: "Between 10 and 25%", score: 8 },
     { value: ">25%", score: 10 },
   ],
   curr_rate: [
+    { value: "select", score: 0 },
+
     { value: "Zero", score: 10 },
     { value: "<10%", score: 8 },
     { value: "10%>>30%", score: 6 },
     { value: ">30%", score: 5 },
   ],
   ltv: [
+    { value: "select", score: 0 },
+
     { value: "<3:1", score: 5 },
     { value: ">3:1", score: 10 },
   ],
   break_even: [
+    { value: "select", score: 0 },
+
     { value: "Yes", score: 10 },
     { value: "No", score: 5 },
     { value: "-", score: 0 },
   ],
   est_break_even: [
+    { value: "select", score: 0 },
+
     { value: "Within 6 months", score: 8 },
     { value: "6 months-1 year", score: 7 },
     { value: "More than 1 year", score: 6 },
   ],
   profitable: [
+    { value: "select", score: 0 },
+
     { value: "Yes", score: 10 },
     { value: "No", score: 7 },
     { value: "-", score: 0 },
   ],
   gross_margin: [
+    { value: "select", score: 0 },
+
     { value: "Negative", score: 4 },
     { value: "0<<40%", score: 6 },
     { value: "40%<<80%", score: 7 },
     { value: ">80%", score: 9 },
   ],
   net_margin: [
+    { value: "select", score: 0 },
+
     { value: "Negative", score: 4 },
     { value: "0<<20%", score: 8 },
     { value: "20%<<40%", score: 9 },
     { value: ">40%", score: 10 },
   ],
   funds: [
+    { value: "select", score: 0 },
+
     { value: "<6 Months", score: 6 },
     { value: "6<<12 Months", score: 7 },
     { value: ">12 Months", score: 8 },
   ],
   curr_ratio: [
+    { value: "select", score: 0 },
+
     { value: ">2:1", score: 5 },
     { value: "<2:1", score: 10 },
   ],
   cash_ratio: [
+    { value: "select", score: 0 },
+
     { value: ">1", score: 5 },
     { value: "<1", score: 10 },
   ],
   eqt_ratio: [
+    { value: "select", score: 0 },
+
     { value: ">2:1", score: 5 },
     { value: "<2:1", score: 10 },
   ],
   financial_audited: [
+    { value: "select", score: 0 },
+
     { value: "Yes", score: 10 },
     { value: "No", score: 5 },
-    { value: "-", score: 0 },
   ],
 };
 

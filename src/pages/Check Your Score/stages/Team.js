@@ -5,13 +5,14 @@ import styles from "./stages.module.css";
 import { scoredData, nonscoredData } from "./scores";
 
 const Team = ({ setStage, data, setData, score, setScore }) => {
-  console.log(score);
   const handleNext = () => {
-    console.log(Object.keys(data).length);
-    console.log(data);
-    if (Object.keys(data).length < 3) {
+    if (Object.keys(data["Team"]).length < 13) {
       toast.error("Kindly Fill All Mandatory Fields");
     } else {
+      setData((prev) => ({
+        ...prev,
+        ["score"]: prev["score"] + prev["Team"]["score"],
+      }));
       setStage((prev) => prev + 1);
     }
   };
@@ -28,16 +29,43 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
       ...prev,
       ["Team"]: score.Team + score_of_var,
     }));
-    setData((prev) => {
-      return { ...prev, [name]: value };
-    });
+    if (score_of_var !== undefined) {
+      setData((prev) => {
+        return {
+          ...prev,
+          ["Team"]: {
+            ...prev["Team"],
+            [name]: value,
+            ["score"]: prev["Team"]["score"] + score_of_var,
+          },
+        };
+      });
+    } else {
+      setData((prev) => {
+        return {
+          ...prev,
+          ["Team"]: {
+            ...prev["Team"],
+
+            [name]: value,
+          },
+        };
+      });
+    }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log(data);
     setData((prev) => {
-      return { ...prev, [name]: value };
+      return {
+        ...prev,
+        ["Team"]: {
+          ...prev["Team"],
+
+          [name]: value,
+        },
+      };
     });
   };
 
@@ -47,39 +75,56 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
       (val) => val.value === value
     )[0].score;
     // console.log(score_of_var);
-    if (score_of_var !== undefined) {
-      setScore((prev) => ({
-        ...prev,
-        ["Team"]: score.Team + score_of_var,
-      }));
-    }
-    setData((prev) => {
-      return {
-        ...prev,
-        [lead]: { ...prev[lead], [name]: value },
-      };
-    });
-  };
+    // if (score_of_var !== undefined) {
+    //   setScore((prev) => ({
+    //     ...prev,
+    //     ["Team"]: score.Team + score_of_var,
+    //   }));
+    // }
 
+    if (score_of_var !== undefined) {
+      setData((prev) => {
+        return {
+          ...prev,
+          ["Team"]: {
+            ...prev["Team"],
+
+            [lead]: { ...prev["Team"][lead], [name]: value },
+            ["score"]: prev["Team"]["score"] + score_of_var,
+          },
+        };
+      });
+    } else {
+      setData((prev) => {
+        return {
+          ...prev,
+          ["Team"]: {
+            ...prev["Team"],
+            [lead]: { ...prev["Team"][lead], [name]: value },
+          },
+        };
+      });
+    }
+  };
   return (
     <div className={styles.stages_container}>
       <h3>Team Leads</h3>
       <div className={styles.stage_form}>
         <h3>CEO</h3>
         <DropDown
+          defaultValue={"select"}
           options={scoredData.has}
-          value={data?.ceo?.has}
+          value={data?.Team?.ceo?.has}
           name={"has"}
-          defaultValue={"-"}
           onChange={(e) => handleTeamLeads(e, "ceo")}
           title={"Do you have a CEO?"}
         />
-        {data?.ceo?.has === "Yes" && (
+        {data?.Team?.ceo?.has === "Yes" && (
           <>
             <div className={styles.input_flex}>
               <Input
                 title={"Name"}
-                value={data?.ceo.name}
+                value={data?.Team?.ceo.name}
                 name={"name"}
                 onChange={(e) => handleTeamLeads(e, "ceo")}
                 placeholder={"Enter here"}
@@ -87,7 +132,7 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
               />
               <Input
                 title={"Age"}
-                value={data?.ceo.age}
+                value={data?.Team?.ceo.age}
                 name={"age"}
                 onChange={(e) => handleTeamLeads(e, "ceo")}
                 placeholder={"Enter here"}
@@ -98,7 +143,7 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             <div className={styles.input_flex}>
               <Input
                 title={"Gender"}
-                value={data?.ceo.gender}
+                value={data?.Team?.ceo.gender}
                 name={"gender"}
                 onChange={(e) => handleTeamLeads(e, "ceo")}
                 placeholder={"Enter here"}
@@ -106,7 +151,7 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
               />
               <Input
                 title={"Email"}
-                value={data?.ceo.email}
+                value={data?.Team?.ceo.email}
                 name={"email"}
                 onChange={(e) => handleTeamLeads(e, "ceo")}
                 placeholder={"Enter here"}
@@ -115,15 +160,17 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             </div>
             <div className={styles.input_flex}>
               <DropDown
+                defaultValue={"select"}
                 name={"year_of_exp"}
-                value={data?.ceo.year_of_exp}
+                value={data?.Team?.ceo.year_of_exp}
                 onChange={(e) => handleTeamLeads(e, "ceo")}
                 title={"How many years of experience does he/she hold?"}
                 options={scoredData.year_of_exp}
               />
               <DropDown
+                defaultValue={"select"}
                 name={"working_years"}
-                value={data?.ceo.working_years}
+                value={data?.Team?.ceo.working_years}
                 onChange={(e) => handleTeamLeads(e, "ceo")}
                 title={
                   "How many years of experience does he/she hold working/running a startup?"
@@ -133,16 +180,18 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             </div>
             <div className={styles.input_flex}>
               <DropDown
+                defaultValue={"select"}
                 name={"education"}
-                value={data?.ceo.education}
+                value={data?.Team?.ceo.education}
                 onChange={(e) => handleTeamLeads(e, "ceo")}
                 title={"What is the Highest level of Education?"}
                 nonscored={true}
                 options={nonscoredData.education}
               />
               <DropDown
+                defaultValue={"select"}
                 name={"certification"}
-                value={data?.ceo.certification}
+                value={data?.Team?.ceo.certification}
                 onChange={(e) => handleTeamLeads(e, "ceo")}
                 title={"Does he/she hold any professional Certification?"}
                 nonscored={true}
@@ -151,23 +200,26 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             </div>
             <div className={styles.input_flex}>
               <DropDown
+                defaultValue={"select"}
                 name={"prod_launches"}
-                value={data?.ceo.prod_launches}
+                value={data?.Team?.ceo.prod_launches}
                 onChange={(e) => handleTeamLeads(e, "ceo")}
                 title={"Times responsible for New Product Launches:"}
                 options={scoredData.prod_launches}
               />
               <DropDown
+                defaultValue={"select"}
                 name={"process_imp"}
-                value={data?.ceo.process_imp}
+                value={data?.Team?.ceo.process_imp}
                 onChange={(e) => handleTeamLeads(e, "ceo")}
                 title={"Times responsible for Process Implementations"}
                 options={scoredData.process_imp}
               />
             </div>
             <DropDown
+              defaultValue={"select"}
               name={"new_team"}
-              value={data?.ceo.new_team}
+              value={data?.Team?.ceo.new_team}
               onChange={(e) => handleTeamLeads(e, "ceo")}
               title={"Times been a part of New / changing teams*"}
               options={scoredData.new_team}
@@ -176,19 +228,19 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
         )}
         <h3>CFO</h3>
         <DropDown
+          defaultValue={"select"}
           options={scoredData.has}
-          value={data?.cfo?.has}
-          defaultValue={"-"}
+          value={data?.Team?.cfo?.has}
           name={"has"}
           onChange={(e) => handleTeamLeads(e, "cfo")}
           title={"Do you have a CFO?"}
         />
-        {data?.cfo?.has === "Yes" && (
+        {data?.Team?.cfo?.has === "Yes" && (
           <>
             <div className={styles.input_flex}>
               <Input
                 title={"Name"}
-                value={data?.cfo.name}
+                value={data?.Team?.cfo.name}
                 name={"name"}
                 onChange={(e) => handleTeamLeads(e, "cfo")}
                 placeholder={"Enter here"}
@@ -196,7 +248,7 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
               />
               <Input
                 title={"Age"}
-                value={data?.cfo.age}
+                value={data?.Team?.cfo.age}
                 name={"age"}
                 onChange={(e) => handleTeamLeads(e, "cfo")}
                 placeholder={"Enter here"}
@@ -207,7 +259,7 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             <div className={styles.input_flex}>
               <Input
                 title={"Gender"}
-                value={data?.cfo.gender}
+                value={data?.Team?.cfo.gender}
                 name={"gender"}
                 onChange={(e) => handleTeamLeads(e, "cfo")}
                 placeholder={"Enter here"}
@@ -215,7 +267,7 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
               />
               <Input
                 title={"Email"}
-                value={data?.cfo.email}
+                value={data?.Team?.cfo.email}
                 name={"email"}
                 onChange={(e) => handleTeamLeads(e, "cfo")}
                 placeholder={"Enter here"}
@@ -224,15 +276,17 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             </div>
             <div className={styles.input_flex}>
               <DropDown
+                defaultValue={"select"}
                 name={"year_of_exp"}
-                value={data?.cfo.year_of_exp}
+                value={data?.Team?.cfo.year_of_exp}
                 onChange={(e) => handleTeamLeads(e, "cfo")}
                 title={"How many years of experience does he/she hold?"}
                 options={scoredData.year_of_exp}
               />
               <DropDown
+                defaultValue={"select"}
                 name={"working_years"}
-                value={data?.cfo.working_years}
+                value={data?.Team?.cfo.working_years}
                 onChange={(e) => handleTeamLeads(e, "cfo")}
                 title={
                   "How many years of experience does he/she hold working/running a startup?"
@@ -242,16 +296,18 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             </div>
             <div className={styles.input_flex}>
               <DropDown
+                defaultValue={"select"}
                 name={"education"}
-                value={data?.cfo.education}
+                value={data?.Team?.cfo.education}
                 onChange={(e) => handleTeamLeads(e, "cfo")}
                 title={"What is the Highest level of Education?"}
                 nonscored={true}
                 options={nonscoredData.education}
               />
               <DropDown
+                defaultValue={"select"}
                 name={"certification"}
-                value={data?.cfo.certification}
+                value={data?.Team?.cfo.certification}
                 onChange={(e) => handleTeamLeads(e, "cfo")}
                 title={"Does he/she hold any professional Certification?"}
                 nonscored={true}
@@ -260,23 +316,26 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             </div>
             <div className={styles.input_flex}>
               <DropDown
+                defaultValue={"select"}
                 name={"prod_launches"}
-                value={data?.cfo.prod_launches}
+                value={data?.Team?.cfo.prod_launches}
                 onChange={(e) => handleTeamLeads(e, "cfo")}
                 title={"Times responsible for New Product Launches:"}
                 options={scoredData.prod_launches}
               />
               <DropDown
+                defaultValue={"select"}
                 name={"process_imp"}
-                value={data?.cfo.process_imp}
+                value={data?.Team?.cfo.process_imp}
                 onChange={(e) => handleTeamLeads(e, "cfo")}
                 title={"Times responsible for Process Implementations"}
                 options={scoredData.process_imp}
               />
             </div>
             <DropDown
+              defaultValue={"select"}
               name={"new_team"}
-              value={data?.cfo.new_team}
+              value={data?.Team?.cfo.new_team}
               onChange={(e) => handleTeamLeads(e, "cfo")}
               title={"Times been a part of New / changing teams*"}
               options={scoredData.new_team}
@@ -285,19 +344,19 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
         )}
         <h3>CTO</h3>
         <DropDown
+          defaultValue={"select"}
           options={scoredData.has}
-          value={data?.cto?.has}
-          defaultValue={"-"}
+          value={data?.Team?.cto?.has}
           name={"has"}
           onChange={(e) => handleTeamLeads(e, "cto")}
           title={"Do you have a cto?"}
         />
-        {data?.cto?.has === "Yes" && (
+        {data?.Team?.cto?.has === "Yes" && (
           <>
             <div className={styles.input_flex}>
               <Input
                 title={"Name"}
-                value={data?.cto.name}
+                value={data?.Team?.cto.name}
                 name={"name"}
                 onChange={(e) => handleTeamLeads(e, "cto")}
                 placeholder={"Enter here"}
@@ -305,7 +364,7 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
               />
               <Input
                 title={"Age"}
-                value={data?.cto.age}
+                value={data?.Team?.cto.age}
                 name={"age"}
                 onChange={(e) => handleTeamLeads(e, "cto")}
                 placeholder={"Enter here"}
@@ -316,7 +375,7 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             <div className={styles.input_flex}>
               <Input
                 title={"Gender"}
-                value={data?.cto.gender}
+                value={data?.Team?.cto.gender}
                 name={"gender"}
                 onChange={(e) => handleTeamLeads(e, "cto")}
                 placeholder={"Enter here"}
@@ -324,7 +383,7 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
               />
               <Input
                 title={"Email"}
-                value={data?.cto.email}
+                value={data?.Team?.cto.email}
                 name={"email"}
                 onChange={(e) => handleTeamLeads(e, "cto")}
                 placeholder={"Enter here"}
@@ -333,15 +392,17 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             </div>
             <div className={styles.input_flex}>
               <DropDown
+                defaultValue={"select"}
                 name={"year_of_exp"}
-                value={data?.cto.year_of_exp}
+                value={data?.Team?.cto.year_of_exp}
                 onChange={(e) => handleTeamLeads(e, "cto")}
                 title={"How many years of experience does he/she hold?"}
                 options={scoredData.year_of_exp}
               />
               <DropDown
+                defaultValue={"select"}
                 name={"working_years"}
-                value={data?.cto.working_years}
+                value={data?.Team?.cto.working_years}
                 onChange={(e) => handleTeamLeads(e, "cto")}
                 title={
                   "How many years of experience does he/she hold working/running a startup?"
@@ -351,16 +412,18 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             </div>
             <div className={styles.input_flex}>
               <DropDown
+                defaultValue={"select"}
                 name={"education"}
-                value={data?.cto.education}
+                value={data?.Team?.cto.education}
                 onChange={(e) => handleTeamLeads(e, "cto")}
                 title={"What is the Highest level of Education?"}
                 nonscored={true}
                 options={nonscoredData.education}
               />
               <DropDown
+                defaultValue={"select"}
                 name={"certification"}
-                value={data?.cto.certification}
+                value={data?.Team?.cto.certification}
                 onChange={(e) => handleTeamLeads(e, "cto")}
                 title={"Does he/she hold any professional Certification?"}
                 nonscored={true}
@@ -369,23 +432,26 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             </div>
             <div className={styles.input_flex}>
               <DropDown
+                defaultValue={"select"}
                 name={"prod_launches"}
-                value={data?.cto.prod_launches}
+                value={data?.Team?.cto.prod_launches}
                 onChange={(e) => handleTeamLeads(e, "cto")}
                 title={"Times responsible for New Product Launches:"}
                 options={scoredData.prod_launches}
               />
               <DropDown
+                defaultValue={"select"}
                 name={"process_imp"}
-                value={data?.cto.process_imp}
+                value={data?.Team?.cto.process_imp}
                 onChange={(e) => handleTeamLeads(e, "cto")}
                 title={"Times responsible for Process Implementations"}
                 options={scoredData.process_imp}
               />
             </div>
             <DropDown
+              defaultValue={"select"}
               name={"new_team"}
-              value={data?.cto.new_team}
+              value={data?.Team?.cto.new_team}
               onChange={(e) => handleTeamLeads(e, "cto")}
               title={"Times been a part of New / changing teams*"}
               options={scoredData.new_team}
@@ -394,19 +460,19 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
         )}
         <h3>CMO</h3>
         <DropDown
+          defaultValue={"select"}
           options={scoredData.has}
-          value={data?.cmo?.has}
-          defaultValue={"-"}
+          value={data?.Team?.cmo?.has}
           name={"has"}
           onChange={(e) => handleTeamLeads(e, "cmo")}
           title={"Do you have a cmo?"}
         />
-        {data?.cmo?.has === "Yes" && (
+        {data?.Team?.cmo?.has === "Yes" && (
           <>
             <div className={styles.input_flex}>
               <Input
                 title={"Name"}
-                value={data?.cmo.name}
+                value={data?.Team?.cmo.name}
                 name={"name"}
                 onChange={(e) => handleTeamLeads(e, "cmo")}
                 placeholder={"Enter here"}
@@ -414,7 +480,7 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
               />
               <Input
                 title={"Age"}
-                value={data?.cmo.age}
+                value={data?.Team?.cmo.age}
                 name={"age"}
                 onChange={(e) => handleTeamLeads(e, "cmo")}
                 placeholder={"Enter here"}
@@ -425,7 +491,7 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             <div className={styles.input_flex}>
               <Input
                 title={"Gender"}
-                value={data?.cmo.gender}
+                value={data?.Team?.cmo.gender}
                 name={"gender"}
                 onChange={(e) => handleTeamLeads(e, "cmo")}
                 placeholder={"Enter here"}
@@ -433,7 +499,7 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
               />
               <Input
                 title={"Email"}
-                value={data?.cmo.email}
+                value={data?.Team?.cmo.email}
                 name={"email"}
                 onChange={(e) => handleTeamLeads(e, "cmo")}
                 placeholder={"Enter here"}
@@ -442,15 +508,17 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             </div>
             <div className={styles.input_flex}>
               <DropDown
+                defaultValue={"select"}
                 name={"year_of_exp"}
-                value={data?.cmo.year_of_exp}
+                value={data?.Team?.cmo.year_of_exp}
                 onChange={(e) => handleTeamLeads(e, "cmo")}
                 title={"How many years of experience does he/she hold?"}
                 options={scoredData.year_of_exp}
               />
               <DropDown
+                defaultValue={"select"}
                 name={"working_years"}
-                value={data?.cmo.working_years}
+                value={data?.Team?.cmo.working_years}
                 onChange={(e) => handleTeamLeads(e, "cmo")}
                 title={
                   "How many years of experience does he/she hold working/running a startup?"
@@ -460,16 +528,18 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             </div>
             <div className={styles.input_flex}>
               <DropDown
+                defaultValue={"select"}
                 name={"education"}
-                value={data?.cmo.education}
+                value={data?.Team?.cmo.education}
                 onChange={(e) => handleTeamLeads(e, "cmo")}
                 title={"What is the Highest level of Education?"}
                 nonscored={true}
                 options={nonscoredData.education}
               />
               <DropDown
+                defaultValue={"select"}
                 name={"certification"}
-                value={data?.cmo.certification}
+                value={data?.Team?.cmo.certification}
                 onChange={(e) => handleTeamLeads(e, "cmo")}
                 title={"Does he/she hold any professional Certification?"}
                 nonscored={true}
@@ -478,23 +548,26 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             </div>
             <div className={styles.input_flex}>
               <DropDown
+                defaultValue={"select"}
                 name={"prod_launches"}
-                value={data?.cmo.prod_launches}
+                value={data?.Team?.cmo.prod_launches}
                 onChange={(e) => handleTeamLeads(e, "cmo")}
                 title={"Times responsible for New Product Launches:"}
                 options={scoredData.prod_launches}
               />
               <DropDown
+                defaultValue={"select"}
                 name={"process_imp"}
-                value={data?.cmo.process_imp}
+                value={data?.Team?.cmo.process_imp}
                 onChange={(e) => handleTeamLeads(e, "cmo")}
                 title={"Times responsible for Process Implementations"}
                 options={scoredData.process_imp}
               />
             </div>
             <DropDown
+              defaultValue={"select"}
               name={"new_team"}
-              value={data?.cmo.new_team}
+              value={data?.Team?.cmo.new_team}
               onChange={(e) => handleTeamLeads(e, "cmo")}
               title={"Times been a part of New / changing teams*"}
               options={scoredData.new_team}
@@ -503,19 +576,19 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
         )}
         <h3>COO</h3>
         <DropDown
+          defaultValue={"select"}
           options={scoredData.has}
-          value={data?.coo?.has}
-          defaultValue={"-"}
+          value={data?.Team?.coo?.has}
           name={"has"}
           onChange={(e) => handleTeamLeads(e, "coo")}
           title={"Do you have a coo?"}
         />
-        {data?.coo?.has === "Yes" && (
+        {data?.Team?.coo?.has === "Yes" && (
           <>
             <div className={styles.input_flex}>
               <Input
                 title={"Name"}
-                value={data?.coo.name}
+                value={data?.Team?.coo.name}
                 name={"name"}
                 onChange={(e) => handleTeamLeads(e, "coo")}
                 placeholder={"Enter here"}
@@ -523,7 +596,7 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
               />
               <Input
                 title={"Age"}
-                value={data?.coo.age}
+                value={data?.Team?.coo.age}
                 name={"age"}
                 onChange={(e) => handleTeamLeads(e, "coo")}
                 placeholder={"Enter here"}
@@ -534,7 +607,7 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             <div className={styles.input_flex}>
               <Input
                 title={"Gender"}
-                value={data?.coo.gender}
+                value={data?.Team?.coo.gender}
                 name={"gender"}
                 onChange={(e) => handleTeamLeads(e, "coo")}
                 placeholder={"Enter here"}
@@ -542,7 +615,7 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
               />
               <Input
                 title={"Email"}
-                value={data?.coo.email}
+                value={data?.Team?.coo.email}
                 name={"email"}
                 onChange={(e) => handleTeamLeads(e, "coo")}
                 placeholder={"Enter here"}
@@ -551,15 +624,17 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             </div>
             <div className={styles.input_flex}>
               <DropDown
+                defaultValue={"select"}
                 name={"year_of_exp"}
-                value={data?.coo.year_of_exp}
+                value={data?.Team?.coo.year_of_exp}
                 onChange={(e) => handleTeamLeads(e, "coo")}
                 title={"How many years of experience does he/she hold?"}
                 options={scoredData.year_of_exp}
               />
               <DropDown
+                defaultValue={"select"}
                 name={"working_years"}
-                value={data?.coo.working_years}
+                value={data?.Team?.coo.working_years}
                 onChange={(e) => handleTeamLeads(e, "coo")}
                 title={
                   "How many years of experience does he/she hold working/running a startup?"
@@ -569,16 +644,18 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             </div>
             <div className={styles.input_flex}>
               <DropDown
+                defaultValue={"select"}
                 name={"education"}
-                value={data?.coo.education}
+                value={data?.Team?.coo.education}
                 onChange={(e) => handleTeamLeads(e, "coo")}
                 title={"What is the Highest level of Education?"}
                 nonscored={true}
                 options={nonscoredData.education}
               />
               <DropDown
+                defaultValue={"select"}
                 name={"certification"}
-                value={data?.coo.certification}
+                value={data?.Team?.coo.certification}
                 onChange={(e) => handleTeamLeads(e, "coo")}
                 title={"Does he/she hold any professional Certification?"}
                 nonscored={true}
@@ -587,23 +664,26 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
             </div>
             <div className={styles.input_flex}>
               <DropDown
+                defaultValue={"select"}
                 name={"prod_launches"}
-                value={data?.coo.prod_launches}
+                value={data?.Team?.coo.prod_launches}
                 onChange={(e) => handleTeamLeads(e, "coo")}
                 title={"Times responsible for New Product Launches:"}
                 options={scoredData.prod_launches}
               />
               <DropDown
+                defaultValue={"select"}
                 name={"process_imp"}
-                value={data?.coo.process_imp}
+                value={data?.Team?.coo.process_imp}
                 onChange={(e) => handleTeamLeads(e, "coo")}
                 title={"Times responsible for Process Implementations"}
                 options={scoredData.process_imp}
               />
             </div>
             <DropDown
+              defaultValue={"select"}
               name={"new_team"}
-              value={data?.coo.new_team}
+              value={data?.Team?.coo.new_team}
               onChange={(e) => handleTeamLeads(e, "coo")}
               title={"Times been a part of New / changing teams*"}
               options={scoredData.new_team}
@@ -615,15 +695,17 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
       <div className={styles.stage_form}>
         <div className={styles.input_flex}>
           <DropDown
+            defaultValue={"select"}
             name={"dependencies"}
-            value={data?.dependencies}
+            value={data?.Team?.dependencies}
             onChange={handleDropdown}
             title={"What level of dependence exists between team members?"}
             options={scoredData.dependencies}
           />
           <DropDown
+            defaultValue={"select"}
             name={"informal_com"}
-            value={data?.informal_com}
+            value={data?.Team?.informal_com}
             onChange={handleDropdown}
             title={"How much informal communication exists within the team?"}
             options={scoredData.informal_com}
@@ -631,16 +713,18 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
         </div>
         <div className={styles.input_flex}>
           <DropDown
+            defaultValue={"select"}
             name={"personality"}
-            value={data?.personality}
+            value={data?.Team?.personality}
             onChange={handleChange}
             title={"How similar are the members' personalities?"}
             nonscored={true}
             options={nonscoredData.personality}
           />
           <DropDown
+            defaultValue={"select"}
             name={"skill_overlap"}
-            value={data?.skill_overlap}
+            value={data?.Team?.skill_overlap}
             onChange={handleChange}
             title={"How much overlap of skills exists in the team?"}
             options={scoredData.skill_overlap}
@@ -648,15 +732,17 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
         </div>
         <div className={styles.input_flex}>
           <DropDown
+            defaultValue={"select"}
             name={"interaction"}
-            value={data?.interaction}
+            value={data?.Team?.interaction}
             onChange={handleChange}
             title={"How necessary is frequent professional interaction?"}
             options={scoredData.interaction}
           />
           <DropDown
+            defaultValue={"select"}
             name={"exp_levels"}
-            value={data?.exp_levels}
+            value={data?.Team?.exp_levels}
             onChange={handleChange}
             title={
               "What is the difference in experience levels between team members?"
@@ -667,16 +753,18 @@ const Team = ({ setStage, data, setData, score, setScore }) => {
         </div>
         <div className={styles.input_flex}>
           <DropDown
+            defaultValue={"select"}
             name={"emotion_level"}
-            value={data?.emotion_level}
+            value={data?.Team?.emotion_level}
             onChange={handleChange}
             title={"What is the emotional state of the team?"}
             nonscored={true}
             options={nonscoredData.emotion_level}
           />
           <DropDown
+            defaultValue={"select"}
             name={"team_apply"}
-            value={data?.team_apply}
+            value={data?.Team?.team_apply}
             onChange={handleChange}
             title={
               "Which of the following applies most significantly to your team?"

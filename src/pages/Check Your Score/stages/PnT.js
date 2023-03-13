@@ -5,12 +5,14 @@ import styles from "./stages.module.css";
 import { scoredData, nonscoredData } from "./scores";
 
 const PnT = ({ setStage, setData, data, score, setScore }) => {
-  console.log(score);
   const handleNext = () => {
-    if (Object.keys(data).length < 8) {
+    if (Object.keys(data["productTech"]).length < 18) {
       toast.error("Kindly Fill All Mandatory Fields");
     } else {
-      console.log(data);
+      setData((prev) => ({
+        ...prev,
+        ["score"]: prev["score"] + prev["productTech"]["score"],
+      }));
       setStage((prev) => prev + 1);
     }
   };
@@ -18,7 +20,10 @@ const PnT = ({ setStage, setData, data, score, setScore }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prev) => {
-      return { ...prev, [name]: value };
+      return {
+        ...prev,
+        ["productTech"]: { ...prev["productTech"], [name]: value },
+      };
     });
   };
 
@@ -32,7 +37,14 @@ const PnT = ({ setStage, setData, data, score, setScore }) => {
       ["Pnt"]: score.Pnt + score_of_var,
     }));
     setData((prev) => {
-      return { ...prev, [name]: value };
+      return {
+        ...prev,
+        ["productTech"]: {
+          ...prev["productTech"],
+          [name]: value,
+          ["score"]: prev["productTech"]["score"] + score_of_var,
+        },
+      };
     });
   };
 
@@ -43,7 +55,7 @@ const PnT = ({ setStage, setData, data, score, setScore }) => {
       <div className={styles.stage_form}>
         <div className={styles.input_flex}>
           <Input
-            value={data?.company_name}
+            value={data?.productTech?.company_name}
             name={"company_name"}
             onChange={(e) => handleChange(e)}
             title={"Company Name"}
@@ -51,7 +63,7 @@ const PnT = ({ setStage, setData, data, score, setScore }) => {
             type={"text"}
           />
           <Input
-            value={data?.incor_date}
+            value={data?.productTech?.incor_date}
             name={"incor_date"}
             onChange={(e) => handleChange(e)}
             title={"Incorporation Date"}
@@ -61,7 +73,7 @@ const PnT = ({ setStage, setData, data, score, setScore }) => {
         </div>
         <div className={styles.input_flex}>
           <Input
-            value={data?.country}
+            value={data?.productTech?.country}
             title={"Country"}
             name={"country"}
             onChange={(e) => handleChange(e)}
@@ -70,7 +82,7 @@ const PnT = ({ setStage, setData, data, score, setScore }) => {
           />
           <Input
             title={"State"}
-            value={data?.state}
+            value={data?.productTech?.state}
             name={"state"}
             onChange={(e) => handleChange(e)}
             placeholder={"Enter here"}
@@ -79,7 +91,8 @@ const PnT = ({ setStage, setData, data, score, setScore }) => {
         </div>
         <div className={styles.input_flex}>
           <DropDown
-            value={data?.pri_tech}
+            defaultValue={"select"}
+            value={data?.productTech?.pri_tech}
             title={"Primary Technology"}
             name={"pri_tech"}
             nonscored={true}
@@ -87,7 +100,8 @@ const PnT = ({ setStage, setData, data, score, setScore }) => {
             options={nonscoredData.tech_used}
           />
           <DropDown
-            value={data?.sec_tech}
+            defaultValue={"select"}
+            value={data?.productTech?.sec_tech}
             title={"Secondary Technology"}
             name={"sec_tech"}
             nonscored={true}
@@ -96,7 +110,8 @@ const PnT = ({ setStage, setData, data, score, setScore }) => {
           />
         </div>
         <DropDown
-          value={data?.ter_tech}
+          defaultValue={"select"}
+          value={data?.productTech?.ter_tech}
           title={"Tertiary Technology"}
           name={"ter_tech"}
           nonscored={true}
@@ -104,15 +119,17 @@ const PnT = ({ setStage, setData, data, score, setScore }) => {
           options={nonscoredData.tech_used}
         />
         <DropDown
+          defaultValue={"select"}
           name={"motivation"}
           options={scoredData.motivation}
-          value={data?.motivation}
+          value={data?.productTech?.motivation}
           onChange={(e) => handleDropdown(e)}
           title={"What made you create the solution? - Motivation"}
         />
         <DropDown
+          defaultValue={"select"}
           name={"tech_based"}
-          value={data?.tech_based}
+          value={data?.productTech?.tech_based}
           options={scoredData.tech_based}
           onChange={(e) => handleDropdown(e)}
           title={
@@ -121,15 +138,17 @@ const PnT = ({ setStage, setData, data, score, setScore }) => {
         />
         <div className={styles.input_flex}>
           <DropDown
-            value={data?.prod_stage}
+            defaultValue={"select"}
+            value={data?.productTech?.prod_stage}
             title={"Stage of Product/Service Development"}
             name={"prod_stage"}
             onChange={(e) => handleDropdown(e)}
             options={scoredData.prod_stage}
           />
           <DropDown
+            defaultValue={"select"}
             name={"primary_offer"}
-            value={data?.primary_offer}
+            value={data?.productTech?.primary_offer}
             onChange={(e) => handleChange(e)}
             title={"Primary Offering"}
             nonscored={true}
@@ -138,16 +157,18 @@ const PnT = ({ setStage, setData, data, score, setScore }) => {
         </div>
         <div className={styles.input_flex}>
           <DropDown
+            defaultValue={"select"}
             name={"industry"}
-            value={data?.industry}
+            value={data?.productTech?.industry}
             onChange={(e) => handleChange(e)}
             title={"Which Tech Industry is your Company in?"}
             nonscored={true}
             options={nonscoredData.industry}
           />
           <DropDown
+            defaultValue={"select"}
             title={"Sub Industry"}
-            value={data?.sub_industry}
+            value={data?.productTech?.sub_industry}
             name={"sub_industry"}
             onChange={(e) => handleChange(e)}
             nonscored={true}
@@ -156,16 +177,18 @@ const PnT = ({ setStage, setData, data, score, setScore }) => {
         </div>
         <div className={styles.input_flex}>
           <DropDown
+            defaultValue={"select"}
             name={"domain"}
-            value={data?.domain}
+            value={data?.productTech?.domain}
             onChange={(e) => handleChange(e)}
             title={"Which domain does your startup cater to?"}
             nonscored={true}
             options={nonscoredData.domain}
           />
           <DropDown
+            defaultValue={"select"}
             name={"customer_segment"}
-            value={data?.customer_segment}
+            value={data?.productTech?.customer_segment}
             onChange={(e) => handleChange(e)}
             title={"Customer Segment"}
             nonscored={true}
@@ -174,7 +197,7 @@ const PnT = ({ setStage, setData, data, score, setScore }) => {
         </div>
         <TextArea
           name={"business_kw"}
-          value={data?.business_kw}
+          value={data?.productTech?.business_kw}
           onChange={(e) => handleChange(e)}
           title={
             "Help us understand your business better with upto 10 related keywords"
@@ -183,24 +206,27 @@ const PnT = ({ setStage, setData, data, score, setScore }) => {
         />
         <div className={styles.input_flex}>
           <DropDown
+            defaultValue={"select"}
             name={"ismoat"}
-            value={data?.ismoat}
+            value={data?.productTech?.ismoat}
             onChange={(e) => handleChange(e)}
             title={"Does your business have a MOAT?"}
             nonscored={true}
             options={nonscoredData.ismoat}
           />
           <DropDown
+            defaultValue={"select"}
             name={"moat"}
-            value={data?.moat}
+            value={data?.productTech?.moat}
             onChange={(e) => handleDropdown(e)}
             title={"What MOAT's does your business have/will potentially have?"}
             options={scoredData.moat}
           />
         </div>
         <DropDown
+          defaultValue={"select"}
           name={"pro_risk"}
-          value={data?.pro_risk}
+          value={data?.productTech?.pro_risk}
           onChange={(e) => handleDropdown(e)}
           title={
             "Is your product exposed to any form of risk currently/will be in future?"

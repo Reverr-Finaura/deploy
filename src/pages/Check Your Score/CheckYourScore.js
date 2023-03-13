@@ -14,7 +14,13 @@ import Result from "./stages/Result";
 const CheckYourScore = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const [stage, setStage] = useState(0);
-  const [scoreData, setScoreData] = useState({});
+  const [startupScore, setstartupScore] = useState({
+    productTech: { totalScore: 49, score: 0 },
+    Team: { totalScore: 327, score: 0 },
+    Market: { totalScore: 177, score: 0 },
+    totalScore: 553,
+    score: 0,
+  });
   const [algoScore, setAlgoScore] = useState({ Pnt: 0, Team: 0, Market: 0 });
 
   const updateWidth = () => {
@@ -35,27 +41,27 @@ const CheckYourScore = () => {
   const stages = [
     <PnT
       setStage={setStage}
-      data={scoreData}
-      setData={setScoreData}
+      data={startupScore}
+      setData={setstartupScore}
       score={algoScore}
       setScore={setAlgoScore}
     />,
     <Team
       setStage={setStage}
-      data={scoreData}
-      setData={setScoreData}
+      data={startupScore}
+      setData={setstartupScore}
       score={algoScore}
       setScore={setAlgoScore}
     />,
     <Market
       setStage={setStage}
-      data={scoreData}
-      setData={setScoreData}
+      data={startupScore}
+      setData={setstartupScore}
       score={algoScore}
       setScore={setAlgoScore}
     />,
     // <Done setStage={setStage} data={scoreData} setData={setScoreData} />,
-    <Result score={algoScore} />,
+    <Result score={algoScore} data={startupScore} setData={setstartupScore} />,
   ];
 
   return (
