@@ -10,14 +10,16 @@ import { getUserDocByRef } from '../../firebase'
 import LikeIcon from '../Like And Liked Icon/LikeIcon'
 import LikedIcon from '../Like And Liked Icon/LikedIcon'
 import commentIcon from "../../images/postCommentIcon.png"
-import { FaComments } from 'react-icons/fa'
-import {RiShareForwardFill} from "react-icons/ri"
+import { FaComments, FaRegCommentDots } from 'react-icons/fa'
+import {RiShareForwardFill, RiShareForwardLine} from "react-icons/ri"
 import {TfiMoreAlt} from "react-icons/tfi"
-import {AiTwotoneLike} from "react-icons/ai"
+import {AiOutlineHeart, AiTwotoneLike} from "react-icons/ai"
 import {AiOutlineLike} from "react-icons/ai"
 import {GrAddCircle} from "react-icons/gr"
 import {FiSend} from "react-icons/fi"
 import {BiCommentDots} from "react-icons/bi"
+import {AiFillHeart} from "react-icons/ai"
+import { BsBookmark } from 'react-icons/bs'
 
 const PostCard = ({postsData,setPostsData,item,handleEditPostButtonClick,setPostsAuthorIsClick,setPostsAuthorInfo}) => {
     const userDoc=useSelector((state)=>state.userDoc) 
@@ -292,65 +294,12 @@ useEffect(()=>{
         
         <div className='postUploadDateContainer'>
         {new Date(item?.createdAt?.seconds*1000).toDateString().slice(4)}
-        {/* {
-        new Date(postTime)?.getFullYear()!==new Date().getFullYear()?((new Date().getFullYear()- new Date(postTime)?.getFullYear())+" Year ago"):
-        postTime?.getMonth()+1!==new Date().getMonth()+1?(((new Date().getMonth()+1)-(postTime?.getMonth()+1))+" Month ago"):
-        postTime?.getDate()!==new Date().getDate()?((new Date().getDate()-postTime?.getDate())+" Day ago"):
-        new Date(postTime).getHours()!==new Date().getHours()?(new Date().getHours()-
-        new Date(postTime).getHours())+" Hour Ago":
-        new Date(postTime).getMinutes()!==new Date().getMinutes()?(new Date().getMinutes()-
-        new Date(postTime).getMinutes())+" Minute Ago":
-        new Date(postTime).getSeconds()!==new Date().getSeconds()?(new Date().getSeconds()-
-        new Date(postTime).getSeconds())+" Second Ago":""} */}
-        </div>
-    </div>
-    <div className='postTextContainer'>
-    {item?.text.length>100?<h3 className='postText'>{showMorePostTextClick?item?.text:<>{item?.text.slice(0,100)}<span onClick={()=>setShowMorePostTextClick(true)} className='morePostTextButton'>...continue</span> </>}</h3>
-    :<h3 className='postText'>{item?.text}</h3>}
-        
-        
-    </div>
-    {item?.image? <div className='postImageContainer'>
-        <img className='postImage' src={item?.image} alt="postImage" />
-    </div>:null}
-    
-    <div className='postLikesAndCommentContainer'>
-        <div className='postLikesContainer'>
-        <div onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className='postLikesContainerLikeIcon'>{item?.likes.includes(user?.user?.email)? <AiTwotoneLike className='postLikesContainerLikedIconn'/>:<AiOutlineLike className='postLikesContainerLikeIconn'/>}</div>
-        
-        {/* <i onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className={"fa fa-heart "+ (item?.likes.includes(user?.user?.email)?"heartPostLiked":"heartPostNotLiked")}></i> */}
-       
-        
-        <p className='postLikeCount postLikeCountText'>{item?.likes.length<=1?"Like":"Likes"}</p>
-        <h3 className='postLikeCount'>{item?.likes.length}</h3>
-            
-        </div>
-        <div className='postCommentContainer'>
-        <div className='commentContainer'>
-        {/* <img src={commentIcon} alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIcon'/> */}
-        <BiCommentDots onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIconn'/>
-        
-        {/* ;(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus() */}
-        </div>
-        <p className='postLikeCountText'>{item?.comments.length<=1?"Comment":"Comments"}</p>
-        <h3 className='postCommentCount'>{item?.comments.length}</h3>
-           
-        </div>
-        <div onClick={()=>handleSendPostLinkClick(item.id)} className='postSendLinkContainer'>
-<div className='postSendCont'>
-    <div className='postSendIcon'>
-        {/* <img style={{width:"100%",height:"100%"}} src="./images/paper-plane.png" alt="sendIcon" /> */}
-        <FiSend style={{fontSize:"1.8rem"}}/>
-    </div>
-    <h3 className='postSendText'>Share</h3>
-</div>
-        </div>
+
+        {/* MORE OPTION CONT */}
         <div className='threeDotsMainCont'>
         <div className='threeDotsContainer'>
-        <div style={{display:"flex"}}>
-        {/* <img onClick={()=>setIsThreeDotsClicked(current=>!current)} className='threeDotsPost' src="./images/dots.png" alt="3dots" /> */}
+        <div style={{display:"flex",transform: "rotate(90deg)"}}>
         <TfiMoreAlt onClick={()=>setIsThreeDotsClicked(current=>!current)} className='threeDotsPostt'/>
-        <p className='moreRandomText'>More</p>
         </div>
         
        {isThreeDotsClicked?
@@ -370,6 +319,53 @@ useEffect(()=>{
         :null} 
         </div>
         </div>
+        </div>
+    </div>
+    <div className='postTextContainer'>
+    {item?.text.length>100?<h3 className='postText'>{showMorePostTextClick?item?.text:<>{item?.text.slice(0,100)}<span onClick={()=>setShowMorePostTextClick(true)} className='morePostTextButton'>...continue</span> </>}</h3>
+    :<h3 className='postText'>{item?.text}</h3>}
+        
+        
+    </div>
+    {item?.image? <div className='postImageContainer'>
+        <img className='postImage' src={item?.image} alt="postImage" />
+    </div>:null}
+    
+    <div className='postLikesAndCommentContainer'>
+    <div style={{display:"flex",alignItems:"center",width:"60%"}}>
+        <div className='postLikesContainer'>
+        <div onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className='postLikesContainerLikeIcon'>{item?.likes.includes(user?.user?.email)? <AiFillHeart className='postLikesContainerLikedIconn'/>:<AiOutlineHeart className='postLikesContainerLikeIconn'/>}</div>
+        
+        {/* <i onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className={"fa fa-heart "+ (item?.likes.includes(user?.user?.email)?"heartPostLiked":"heartPostNotLiked")}></i> */}
+       
+        
+        {/* <p className='postLikeCount postLikeCountText'>{item?.likes.length<=1?"Like":"Likes"}</p> */}
+        <h3 className='postLikeCount'>{item?.likes.length}</h3>
+            
+        </div>
+        <div className='postCommentContainer'>
+        <div className='commentContainer'>
+        {/* <img src={commentIcon} alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIcon'/> */}
+        <FaRegCommentDots onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIconn'/>
+        
+        {/* ;(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus() */}
+        </div>
+        {/* <p className='postLikeCountText'>{item?.comments.length<=1?"Comment":"Comments"}</p> */}
+        <h3 className='postCommentCount'>{item?.comments.length}</h3>
+           
+        </div>
+        <div onClick={()=>handleSendPostLinkClick(item.id)} className='postSendLinkContainer'>
+<div className='postSendCont'>
+    <div className='postSendIcon'>
+        {/* <img style={{width:"100%",height:"100%"}} src="./images/paper-plane.png" alt="sendIcon" /> */}
+        <RiShareForwardLine style={{fontSize:"1.8rem"}}/>
+    </div>
+    {/* <h3 className='postSendText'>Share</h3> */}
+</div>
+        </div>
+</div>
+{/* saveCont */}
+<BsBookmark className="post_card_save_post_icon"/>
     </div>
    </section>
 

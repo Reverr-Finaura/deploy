@@ -782,7 +782,7 @@ const CommunityFinal = () => {
             </section>
           </div>
 
-          <section
+          {/* <section
             className={
               width > 600 && newScoll > 212
                 ? "sortOptionBigContainer sortOptionBigContainerScrolled"
@@ -790,18 +790,19 @@ const CommunityFinal = () => {
                 ? "sortOptionBigContainer sortOptionBigContainerScrolledd"
                 : "sortOptionBigContainer"
             }
-          >
+          > */}
             {/* FURTHER SORT POST SECTION */}
 
             {/* <SortingNavbarOldest setfurtherSortOptionClick={setfurtherSortOptionClick} sortOptionSelected={sortOptionSelected} furtherSortOptionClick={furtherSortOptionClick} setSortOptionSelected={setSortOptionSelected} setSortOptionClick={setSortOptionClick} sortOptionClick={sortOptionClick} /> */}
-            <SortingNavbarTwoOption
+            
+            {/* <SortingNavbarTwoOption
               setSortOptionSelected={setSortOptionSelected}
               setfurtherSortOptionClick={setfurtherSortOptionClick}
               sortOptionSelected={sortOptionSelected}
               sortOptionClick={sortOptionClick}
               setSortOptionClick={setSortOptionClick}
             />
-          </section>
+          </section> */}
 
           {/* POST SECTION */}
 

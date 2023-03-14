@@ -19,7 +19,7 @@
   align-items: center;
   font-family: "Poppins";
   font-style: normal;
-  font-weight: 600;
+  /* font-weight: 600; */
   font-size: 18px;
   line-height: 30px;
   color: var(--main-text);
@@ -28,6 +28,7 @@
 .postCommentCount {
   font-size: 1.2rem !important;
   margin: auto;
+  margin-left: .25rem;
 }
 .postLikeCountText {
   margin: auto;
@@ -59,7 +60,9 @@
   color: var(--main-text);
 }
 .threeDotsMainCont {
-  margin: auto;
+  /* margin: auto; */
+  margin-left: auto;
+  margin-left: 1rem;
 }
 .threeDotsContainer {
   margin-left: auto;
@@ -157,21 +160,26 @@
 .postLikesContainerLikeIcon {
   width: fit-content;
   cursor: pointer;
+  display: flex;
 }
 .postLikesContainerLikedIconn {
   font-size: 1.8rem;
   margin: auto;
-  color: #2a72de;
+  color: red;
+  display: flex;
+  margin-right: .25rem;
 }
 .postLikesContainerLikeIconn {
   font-size: 1.8rem;
   margin: auto;
+  margin-right: .25rem;
 }
 .heartPostLiked {
   font-size: 30px;
   color: red;
   margin-right: 0.5rem;
   cursor: pointer;
+
 }
 .heartPostNotLiked {
   font-size: 30px;
@@ -179,6 +187,7 @@
   margin-right: 0.5rem;
   cursor: pointer;
 }
+
 .postCommentContainer {
   display: flex;
   margin: auto;
@@ -197,6 +206,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  margin-right: .25rem;
 }
 .comment-box {
   width: 400px;
@@ -235,6 +245,16 @@
   font-family: "Poppins";
   font-size: 1.1rem !important;
   font-style: normal;
+}
+.post_card_save_post_icon{
+  /* margin: auto; */
+  margin-left: auto;
+  margin-right: 2rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+margin-top: .25rem;
+cursor: pointer;
+color: var(--main-text);
 }
 .closeCommentBox {
   font-size: 2rem;
