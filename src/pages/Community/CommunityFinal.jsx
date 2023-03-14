@@ -630,11 +630,11 @@ const CommunityFinal = () => {
           <div className="reverrCommunityUploadContainerrr">
             <div className="reverrCommunityHeadingAndPostUploadIcon">
               <div>
-                <h2 className="reverrCommunityHeading">Reverr Community</h2>
-                <p className="reverrCommunitySubbHeading">
+                <h2 className="reverrCommunityHeading"> Welcome To Our <span style={{color:"rgba(42, 114, 222, 1)"}}>Reverr</span> Community!</h2>
+                {/* <p className="reverrCommunitySubbHeading">
                   The community where future entrepreneurs come to learn,
                   execute and grow.
-                </p>
+                </p> */}
               </div>
 
               {width < 600 ? (
