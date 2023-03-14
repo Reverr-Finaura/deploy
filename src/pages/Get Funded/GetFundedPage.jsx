@@ -11,12 +11,15 @@ import { db, storage } from "../../firebase";
 import { useSelector } from "react-redux";
 import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
+import { Input } from "../../components/Funding Inputs/Input";
+import uploadIcon from "../../images/Upload.png";
 
 const GetFundedPage = () => {
-  const navigate =useNavigate()
+  const navigate = useNavigate();
   const user = useSelector((state) => state.user);
   const [width, setWidth] = useState(window.innerWidth);
   const [pitchDeckFile, setPitchDeckFile] = useState(null);
+  const [dragActive, setDragActive] = React.useState(false);
   const [getFundedInput, setGetFundedInput] = useState({
     Name: "",
     Email: "",
@@ -38,6 +41,34 @@ const GetFundedPage = () => {
   const chooseFile = () => {
     if (chooseFileRef.current) {
       chooseFileRef.current.click();
+    }
+  };
+
+  const handleDrag = function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  // triggers when file is dropped
+  const handleDrop = function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      setPitchDeckFile(e.dataTransfer.files[0]);
+    }
+  };
+
+  // triggers when file is selected with click
+  const handleChange = function (e) {
+    e.preventDefault();
+    if (e.target.files && e.target.files[0]) {
+      setPitchDeckFile(e.dataTransfer.files[0]);
     }
   };
 
@@ -172,84 +203,120 @@ const GetFundedPage = () => {
       )}
 
       <section id="getFundingPage">
-      <img className="getFundingPageOuterIcon1" src="/images/Business vision-pana 1.png" alt="" />
-      <img className="getFundingPageOuterIcon2" src="/images/20945238 1.png" alt="" />
-      <div className="getFundingPage_CheckYourScoreCont">
-        <button onClick={()=>navigate("/checkYourScore")} className="getFundingPage_CheckYourScoreCont_btn">Check Your Score</button>
-      </div>
-      <div className="getFundingPageOuter">
-        <ToastContainer />
-        
-        
-        <h1 className="getFundingPageTitle">Funding Form</h1>
+        <img
+          className="getFundingPageOuterIcon1"
+          src="/images/fundingIcon2.png"
+          alt=""
+        />
+        <img
+          className="getFundingPageOuterIcon2"
+          src="/images/fundingIcon1.png"
+          alt=""
+        />
+        <h1 className="getFundedMainTitle">
+          Apply For <span>Funding Now</span>{" "}
+        </h1>
+        <div className="getFundingPageOuter">
+          <h1 className="getFundingPageTitle">Fill Up The Form</h1>
+          <hr />
+          <div>
+            <div className="getFundingPageForm">
+              <Input
+                onChange={handleGetFundedInputChange}
+                type="text"
+                name="Name"
+                label={"Your Name*"}
+                placeholder="Enter here"
+                value={getFundedInput.Name}
+              />
+              <Input
+                onChange={handleGetFundedInputChange}
+                type="text"
+                name="StartUpName"
+                label="Start-Up Name*"
+                placeholder="Enter here"
+                value={getFundedInput.StartUpName}
+              />
+              <div className="input_flex">
+                <Input
+                  onChange={handleGetFundedInputChange}
+                  type="text"
+                  name="Email"
+                  label="Email*"
+                  placeholder="xyz@gmail.com"
+                  value={getFundedInput.Email}
+                />
+                <Input
+                  onChange={handleGetFundedInputChange}
+                  type="text"
+                  name="Phone"
+                  label="Phone No*"
+                  placeholder="+91 -"
+                  value={getFundedInput.Phone}
+                />
+              </div>
 
-        <div className="getFundingPageForm">
-          <input
-            onChange={handleGetFundedInputChange}
-            type="text"
-            name="Name"
-            placeholder="Name*"
-            className="getFundingPageFormInput"
-            value={getFundedInput.Name}
-          />
-          <input
-            onChange={handleGetFundedInputChange}
-            type="text"
-            name="Email"
-            placeholder="Email*"
-            className="getFundingPageFormInput"
-            value={getFundedInput.Email}
-          />
-          <input
-            onChange={handleGetFundedInputChange}
-            type="text"
-            name="Phone"
-            placeholder="Phone No.*"
-            className="getFundingPageFormInput"
-            value={getFundedInput.Phone}
-          />
-          <input
-            onChange={handleGetFundedInputChange}
-            type="text"
-            name="StartUpName"
-            placeholder="StartUp Name*"
-            className="getFundingPageFormInput"
-            value={getFundedInput.StartUpName}
-          />
-          <input
-            onChange={handleGetFundedInputChange}
-            type="text"
-            name="WebsiteLink"
-            placeholder="Website Link"
-            className="getFundingPageFormInput"
-            value={getFundedInput.WebsiteLink}
-          />
-          <div className="uploadPitchDeckContainer">
-            <input
-              type="text"
-              name="PitchDeck"
-              placeholder="PitchDeck*"
-              className="getFundingPageFormInput pitchDeckUploadDocument"
-              value={pitchDeckFile?.name}
-            />
-            <button onClick={chooseFile} className="pitchDeckUploadButton">
-              Select
-            </button>
-            <input
-              onChange={(e) => setPitchDeckFile(e.target.files[0])}
-              ref={chooseFileRef}
-              type="file"
-              hidden
-              className="pitchdeckInputUpload"
-            />
+              <Input
+                onChange={handleGetFundedInputChange}
+                type="text"
+                name="WebsiteLink"
+                label="Website Link"
+                placeholder="https://samplelink.com"
+                value={getFundedInput.WebsiteLink}
+              />
+              <label className="uploadPitchLabel">Pitch Deck*</label>
+              <div className="uploadPitchDeckContainer">
+                <div
+                  className="form-file-upload"
+                  onDragEnter={handleDrag}
+                  onSubmit={(e) => e.preventDefault()}
+                >
+                  <input
+                    onChange={(e) => setPitchDeckFile(e.target.files[0])}
+                    ref={chooseFileRef}
+                    type="file"
+                    hidden
+                    id="pitchdeckInputUpload"
+                  />
+                  <label
+                    htmlFor="pitchdeckInputUpload"
+                    className={`upload-label-main ${
+                      dragActive ? "drag-active" : ""
+                    }`}
+                  >
+                    <p>Drag Or Upload File Here</p>
+                    <img src={uploadIcon} />
+                    <span>
+                      {pitchDeckFile ? pitchDeckFile.name : "Click Here"}
+                    </span>
+                  </label>
+                  {dragActive && (
+                    <div
+                      id="drag-file-element"
+                      onDragEnter={handleDrag}
+                      onDragLeave={handleDrag}
+                      onDragOver={handleDrag}
+                      onDrop={handleDrop}
+                    ></div>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="btn_flex_div">
+              <button
+                onClick={applyForGetFunded}
+                className="getFundedPageApplyButton"
+              >
+                Apply Now
+              </button>
+              <button
+                onClick={() => navigate("/checkYourScore")}
+                className="getFundingPage_CheckYourScoreCont_btn"
+              >
+                Check Your Score
+              </button>
+            </div>
           </div>
-          <button
-            onClick={applyForGetFunded}
-            className="getFundedPageApplyButton"
-          >
-            Apply Now
-          </button>
-        </div>
         </div>
       </section>
     </>

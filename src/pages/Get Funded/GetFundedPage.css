@@ -1,12 +1,11 @@
 #getFundingPage {
   min-height: 100vh;
-  width: 95%;
+  /* width: 1140px; */
   margin-left: 14.5rem;
   margin-top: 8rem;
   margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
-  position: fixed;
 }
 .getFundingPageOuter {
   /* background: linear-gradient(
@@ -19,16 +18,17 @@
   backdrop-filter: blur(6.10425px);
   border-radius: 10px;
   margin: auto;
-  margin-left: calc(30% - 10%);
-  width: 50%;
+  /* margin-left: calc(30% - 10%); */
+  width: 65%;
   display: flex;
   flex-direction: column;
   position: relative;
   z-index: 5;
-  position: fixed;
+  /* position: fixed; */
   overflow-y: scroll;
   background: transparent;
-  border: 8px solid linear-gradient(#91C1FF 1.13%, #79C0DB 28.23%, #A2E1C4 60%, #C7FFAF 100%);
+  border: 8px solid
+    linear-gradient(#91c1ff 1.13%, #79c0db 28.23%, #a2e1c4 60%, #c7ffaf 100%);
 }
 .getFundingPageOuter::-webkit-scrollbar {
   display: none;
@@ -36,20 +36,39 @@
 .getFundingPageOuterIcon1 {
   position: absolute;
   z-index: -1;
-  transform: scale(0.6);
-  /* bottom: -50px;
-  left: -350px; */
-  left: 1rem;
-  bottom: 0rem;
+  transform: scale(0.8);
+  bottom: -30rem;
 }
 .getFundingPageOuterIcon2 {
   position: absolute;
   z-index: -1;
-  transform: scale(0.8);
-  /* right: -170px;
-  top: -100px; */
-  right: 15%;
+  transform: scale(0.5);
+  top: 5rem;
+  right: 10px;
 }
+
+.getFundingPageOuter > hr {
+  border: 1px solid #c4c5ce;
+  width: 78%;
+  margin: 1rem auto;
+}
+
+.getFundedMainTitle {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 30px;
+  /* identical to box height, or 111% */
+  letter-spacing: 0.05em;
+  color: var(--main-text);
+  margin-left: 5%;
+  margin-bottom: 2%;
+}
+
+.getFundedMainTitle > span {
+  font-size: 40px;
+  color: #2a72de;
+}
+
 .getFundingPageTitle {
   width: 100%;
   text-align: center;
@@ -58,17 +77,26 @@
   font-weight: 600;
   font-size: 32px;
   line-height: 48px;
-  color: var(--main-text);
+  color: #2a72de;
   padding-top: 2rem;
 }
 
 .getFundingPageForm {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0rem;
+  width: 80%;
+  background: linear-gradient(
+    180deg,
+    #eaf2ff -1.75%,
+    #edf4ff -1.75%,
+    #eaf2ff -1.74%,
+    rgba(220, 247, 255, 0.35) 109.39%
+  );
+  border: 0.819921px solid #eff0f7;
+  box-shadow: 0px 4.09961px 13.1187px rgba(8, 15, 52, 0.06);
+  border-radius: 27.8773px;
+  margin: 1rem auto;
+  padding: 3rem 1rem;
 }
 
 .getFundingPageFormInput {
@@ -82,18 +110,93 @@
   font-size: 18px;
   color: var(--main-text);
 }
-.getFundingPageFormInput::placeholder{
-  color: var(--main-text)
+.getFundingPageFormInput::placeholder {
+  color: var(--main-text);
 }
 .getFundingPageFormInput:focus {
   outline: none;
 }
 
-.uploadPitchDeckContainer {
+.input_flex {
+  display: flex;
+  margin: auto 4rem;
+}
+
+.uploadPitchLabel {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 16px;
+  margin-left: 3.7rem;
+  margin-bottom: 0.6rem;
+}
+
+.upload-label-main {
+  height: 80%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  border-width: 2px;
+  border-radius: 1rem;
+  border-style: dashed;
+  border-color: #cbd5e1;
+  background-color: #fff;
+}
+
+.upload-label-main > p {
+  font-weight: 400;
+  font-size: 14.7586px;
+  line-height: 16px;
+  color: #6f6c90;
+}
+
+.upload-label-main > span {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 9px;
+  margin-top: 0.6rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #2a72de;
+}
+
+.upload-label-main.drag-active {
+  background-color: #e4e4e490;
+}
+
+.form-file-upload {
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 28rem;
+  max-width: 100%;
+  text-align: center;
   position: relative;
+}
+
+#drag-file-element {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+.uploadPitchDeckContainer {
+  display: flex;
+  margin: auto;
+  width: 80%;
+  flex-direction: column;
+  background: #ffffff;
+  border: 0.819921px solid #eff0f7;
+  box-shadow: 0px 1.63984px 4.91953px rgba(19, 18, 66, 0.07);
+  border-radius: 17px;
 }
 
 .pitchDeckUploadButton {
@@ -111,62 +214,61 @@
   border: none;
   cursor: pointer;
 }
-.getFundingPage_CheckYourScoreCont{
-  position: absolute;
-  right: 11rem;
-  z-index: 10;
+
+.btn_flex_div {
+  display: flex;
+  justify-content: center;
 }
-.getFundingPage_CheckYourScoreCont_btn{
-  padding: 0.5rem 2rem;
-  cursor: pointer;
-  font-size: 20px;
-  background: transparent;
-  /* box-shadow: 0px 4px 4px rgb(255 255 255 / 25%); */
-  border-radius: 20px;
-  border: none;
-  background-color: #2a72de;
-  color: white;
-}
+
 .getFundedPageApplyButton {
+  background: #2a72de;
+  box-shadow: 0px 3.14294px 14px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  color: #fff;
+  border: none;
+}
+.btn_flex_div > button {
   padding: 0.5rem 2rem;
   cursor: pointer;
-  color: var(--btnNewColorTheme);
-  font-size: 20px;
-  background: transparent;
-  /* box-shadow: 0px 4px 4px rgb(255 255 255 / 25%); */
-  border-radius: 20px;
-  margin: auto;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  border: 2px solid var(--btnNewColorTheme);
+  box-shadow: 0px 3.14294px 14px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 2rem auto;
+  outline: none;
 }
-.getFundedPageApplyButton:hover{
-  border: none;
-  background-color: #2a72de;
-  color: white;
+.getFundingPage_CheckYourScoreCont_btn {
+  border-radius: 12px;
+  background: transparent;
+  color: #2a72de;
+  border: 2px solid #2a72de;
+}
+
+@media (max-width: 1320px) {
+  .input_flex {
+    flex-direction: column;
+    margin: 0;
+  }
 }
 
 @media (max-width: 1024px) {
   .getFundingPageOuter {
-    width: 70%;
+    width: 80%;
     margin: auto;
-    margin-left: 2rem;
+    margin-left: 5rem;
   }
 }
 @media (max-width: 875px) {
-  #getFundingPage {
+  /* #getFundingPage {
     width: 95%;
   }
   .getFundingPageForm {
     width: 90%;
-  }
+  } */
 }
 @media (max-width: 680px) {
   #getFundingPage {
     margin-left: 11rem;
-  }
-  .getFundingPageForm {
-    width: 95%;
   }
 }
 @media (max-width: 600px) {
@@ -174,12 +276,13 @@
     margin: auto;
   }
   .getFundingPageForm {
-    width: 101%;
+    width: 80%;
   }
   .pitchDeckUploadButton {
     right: 12%;
   }
   .getFundingPageOuter {
     width: 90%;
+    margin: auto 2rem;
   }
 }
