@@ -20,7 +20,7 @@
 }
 .sidebar-final-icon-name-cont {
   display: flex;
-  margin-top: 1.8rem;
+  margin: 1rem;
   cursor: pointer;
 }
 .sidebar-final-icon {
@@ -87,6 +87,18 @@
 
   color: #ffffff;
   border: none;
+}
+
+.sidebar_link.active {
+  background: #ebf0fe;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10.1694px;
+  text-decoration: none;
+  /* color: #000; */
+}
+
+.sidebar_link {
+  text-decoration: none;
 }
 
 @media (max-width: 701px) {

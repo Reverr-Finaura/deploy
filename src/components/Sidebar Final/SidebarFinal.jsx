@@ -21,10 +21,13 @@ import comD from "../../images/com-dark.png";
 import comL from "../../images/Vector (1).png";
 import fundD from "../../images/funding-dark.png";
 import fundL from "../../images/funding-light.png";
+import startL from "../../images/startup-light.png";
+import toolsL from "../../images/tools-light.png";
 import logoutIconn from "../../images/bx_log-out-white.png";
 import { BiArrowBack } from "react-icons/bi";
-import pptIcon from "../../images/pptIcon.png"
-import pptIconL from "../../images/PPT iconVector.svg"
+import pptIcon from "../../images/pptIcon.png";
+import pptIconL from "../../images/PPT iconVector.svg";
+
 const SidebarFinal = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -45,58 +48,71 @@ const SidebarFinal = () => {
     <>
       <section id="sidebar-final">
         {/* <img className='sidebar-final-brand-logo' src="./images/Frame 6266720.png" alt="brand-logo" /> */}
-        <NavLink style={{ textDecoration: "none" }} to="/dashboard">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "sidebar_link active" : "sidebar_link"
+          }
+          to="/dashboard"
+        >
           <div className="sidebar-final-icon-name-cont">
-            <img
-              className="sidebar-final-icon"
-              src={theme === "light-theme" ? dashD : dashL}
-              alt="icon"
-            />
+            <img className="sidebar-final-icon" src={dashL} alt="icon" />
             <p className="sidebar-final-icon-name">Dashboard</p>
           </div>
         </NavLink>
-        <NavLink style={{ textDecoration: "none" }} to="/knowledge">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "sidebar_link active" : "sidebar_link"
+          }
+          to="/knowledge"
+        >
           <div className="sidebar-final-icon-name-cont">
-            <img
-              className="sidebar-final-icon"
-              src={theme === "light-theme" ? knowD : knowL}
-              alt="icon"
-            />
+            <img className="sidebar-final-icon" src={knowL} alt="icon" />
             <p className="sidebar-final-icon-name">Knowledge</p>
           </div>
         </NavLink>
         {/* href="https://reverrapp.com/fundingform" target="_blank" */}
-        <NavLink style={{ textDecoration: "none" }} to="/funding-page">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "sidebar_link active" : "sidebar_link"
+          }
+          to="/funding-page"
+        >
           <div className="sidebar-final-icon-name-cont">
             <img
               className="sidebar-final-icon sidebar-final-funding-icon"
-              src={theme === "light-theme" ? fundD : fundL}
+              src={fundL}
               alt="icon"
             />
             <p className="sidebar-final-icon-name">Funding</p>
           </div>
         </NavLink>
-        <NavLink style={{ textDecoration: "none" }} to="/mentors">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "sidebar_link active" : "sidebar_link"
+          }
+          to="/mentors"
+        >
           <div className="sidebar-final-icon-name-cont">
             <img
               className="sidebar-final-icon sidebar-final-mentor-icon"
-              src={theme === "light-theme" ? mentD : mentL}
+              src={mentL}
               alt="icon"
             />
             <p className="sidebar-final-icon-name">Mentorship</p>
           </div>
         </NavLink>
-        <NavLink style={{ textDecoration: "none" }} to="/community">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "sidebar_link active" : "sidebar_link"
+          }
+          to="/community"
+        >
           <div className="sidebar-final-icon-name-cont">
-            <img
-              className="sidebar-final-icon"
-              src={theme === "light-theme" ? comD : comL}
-              alt="icon"
-            />
+            <img className="sidebar-final-icon" src={comL} alt="icon" />
             <p className="sidebar-final-icon-name">Community</p>
           </div>
         </NavLink>
-        <NavLink style={{ textDecoration: "none" }} to="/pptTemplates">
+        {/* <NavLink style={{ textDecoration: "none" }} to="/pptTemplates">
           <div className="sidebar-final-icon-name-cont">
             <img
               className="sidebar-final-icon sidebar-final-mentor-icon"
@@ -105,8 +121,8 @@ const SidebarFinal = () => {
             />
             <p className="sidebar-final-icon-name">PPT Templates</p>
           </div>
-        </NavLink>
-        <NavLink style={{ textDecoration: "none" }} to="/documentTemplates">
+        </NavLink> */}
+        {/* <NavLink style={{ textDecoration: "none" }} to="/documentTemplates">
           <div className="sidebar-final-icon-name-cont">
             <img
               className="sidebar-final-icon sidebar-final-mentor-icon"
@@ -115,8 +131,29 @@ const SidebarFinal = () => {
             />
             <p className="sidebar-final-icon-name">Document Templates</p>
           </div>
+        </NavLink> */}
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "sidebar_link active" : "sidebar_link"
+          }
+          to="/start-up"
+        >
+          <div className="sidebar-final-icon-name-cont">
+            <img className="sidebar-final-icon" src={startL} alt="icon" />
+            <p className="sidebar-final-icon-name">Start-up</p>
+          </div>
         </NavLink>
-
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "sidebar_link active" : "sidebar_link"
+          }
+          to="/tools"
+        >
+          <div className="sidebar-final-icon-name-cont">
+            <img className="sidebar-final-icon" src={toolsL} alt="icon" />
+            <p className="sidebar-final-icon-name">Tools</p>
+          </div>
+        </NavLink>
         {/* <div className='sidebar-final-line'></div>
 <NavLink style={{textDecoration:"none"}} to="/userprofile">
       <div className='sidebar-final-icon-name-cont'>
@@ -149,7 +186,7 @@ const SidebarFinal = () => {
         <img className='sidebar-final-icon' src="./images/bx_log-out.png" alt="icon" />
         <p className='sidebar-final-icon-name'>Log Out</p>
       </div> */}
-        {pptPath ? (
+        {/* {pptPath ? (
           <button
             onClick={() => navigate("/pptTemplates")}
             className="sidebar-final-logout-btn"
@@ -165,8 +202,8 @@ const SidebarFinal = () => {
             {" "}
             <BiArrowBack /> Back
           </button>
-        ) : (
-          <button
+        ) : ( */}
+        {/* <button
             onClick={
               user
                 ? () =>
@@ -192,7 +229,7 @@ const SidebarFinal = () => {
             />
             Log Out
           </button>
-        )}
+        )} */}
       </section>
       {chat && <Chat />}
     </>
