@@ -8,6 +8,8 @@ import chatReducer from "../features/chatSlice";
 import userDocReducer from "../features/userDocSlice"
 import userFundingDocReducer from "../features/userFundingDocSlice"
 import themeSliceReducer from "../features/themeSlice"
+import onboardingSliceReducer from "../features/onboardingSlice"
+
 
 export const store = configureStore({
   reducer: {
@@ -19,6 +21,7 @@ export const store = configureStore({
     chat: chatReducer,
     userDoc:userDocReducer,
     userFundingDoc:userFundingDocReducer,
-    themeColor:themeSliceReducer
+    themeColor:themeSliceReducer,
+    onboarding:onboardingSliceReducer,
   },
 });

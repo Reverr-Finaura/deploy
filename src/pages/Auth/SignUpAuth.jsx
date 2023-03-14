@@ -39,7 +39,8 @@ function Auth() {
         );
       })
       .then(() => {
-        navigate("/startup-list");
+        // navigate("/startup-list");
+        navigate("/OnboardingScreen")
       })
       .catch((error) => {
         alert(error);
