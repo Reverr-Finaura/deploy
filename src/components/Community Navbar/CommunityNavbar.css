@@ -77,11 +77,13 @@
 
 .setting-dropdown-cont {
   width: 200px;
-  height: 250px;
+  /* height: 250px; */
+  height: 150px;
   background-color: var(--bg-sub-card);
   border-radius: 6px;
   position: absolute;
-  bottom: -18.5rem;
+  /* bottom: -18.5rem; */
+  bottom: -12.5rem;
   display: flex;
   flex-direction: column;
   cursor: default;

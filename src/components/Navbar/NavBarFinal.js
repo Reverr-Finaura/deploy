@@ -22,12 +22,13 @@ import userIcon from "../../images/userIcon.png";
 import settingIcon from "../../images/Vector (3).png";
 import ReverrLightIcon from "../../images/Reverr Light.png";
 import ReverrDarkIcon from "../../images/Frame 6266720.png";
-import {AiFillSetting} from "react-icons/ai"
+import {AiFillBell, AiFillSetting} from "react-icons/ai"
 import {FaUserAlt} from "react-icons/fa"
+import {MdOutlineKeyboardArrowDown} from "react-icons/md"
 
 const NavBarFinal = () => {
   const user = useSelector((state) => state.user);
-
+  const [userImage, setUserImage] = useState("");
   const [isSettingButtonClick, setIsSettingbuttonClick] = useState(false);
   const [isRequestsButtonClick, setRequestsbuttonClick] = useState(false);
   const navigate = useNavigate();
@@ -41,6 +42,30 @@ const NavBarFinal = () => {
   window.onscroll = () => {
     setScroll(window.scrollY);
   };
+
+ // CHECK FOR USER PHOTO
+ useEffect(() => {
+  if (userDoc?.image !== "") {
+    setUserImage(userDoc.image);
+    return;
+  }
+  if (user?.user?.photoURL !== null) {
+    setUserImage(user?.user?.photoURL);
+    return;
+  } else {
+    setUserImage(
+      "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6"
+    );
+    return;
+  }
+}, [userDoc]);
+
+useEffect(() => {
+  setUserImage(
+    "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6"
+  );
+}, []);
+
 
   //CHECK FOR THEME
   useEffect(() => {
@@ -275,13 +300,15 @@ const NavBarFinal = () => {
             />
           </div>
 
+            <button className="navbar_final_upgrade_btn">Upgrade</button>
+
           <div
             onClick={() => setRequestsbuttonClick((current) => !current)}
-            className="navbar-topp-social-icon"
+            className="navbar-topp-social-icon navbar_noOuterContCSS"
           >
             {/* {userDoc?.receivedRequests?.length===0&&userDoc?.notification?.length===0?<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64.png" alt="nav-icons" />:<img className='nabar-final-requestIcon-cont' src="./images/icons8-alarm-64 (1).png" alt="nav-icons" />} */}
 
-            <VscBellDot
+            <AiFillBell
               className={
                 userDoc?.receivedRequests?.length === 0 &&
                 userDoc?.notification?.length === 0
@@ -379,37 +406,38 @@ const NavBarFinal = () => {
             ) : null}
           </div>
 
+          <img onClick={() => navigate("/userprofile")} className="navbar_final_user_Image" src={userImage} alt="userimg" />
+          {/* <div className="navbar-topp-social-icon">
+          <FaUserAlt className="nabar-final-userProfile-Icon" onClick={() => navigate("/userprofile")}/>
+          </div> */}
+
           <div
             onClick={() => setIsSettingbuttonClick((current) => !current)}
-            className="navbar-topp-social-icon setting-social-icon-cont"
+            className="navbar-topp-social-icon setting-social-icon-cont navbar_noOuterContCSS"
           >
-          <AiFillSetting className="nabar-final-setting-Icon"/>
-            {/* <img
-              className="nabar-final-setting-cont"
-              src={settingIcon}
-              alt="nav-icons"
-            /> */}
+          {/* <AiFillSetting className="nabar-final-setting-Icon"/> */}
+          <MdOutlineKeyboardArrowDown className="nabar-final-setting-Icon"/>
 
             {isSettingButtonClick ? (
               <div className="setting-dropdown-cont">
-                <button
+                {/* <button
                   onClick={() => navigate("/change-user-password")}
                   className="setting-dropdown-button"
                 >
                   Change Password
-                </button>
+                </button> */}
                 <button
                   onClick={() => navigate("/userprofile")}
                   className="setting-dropdown-button"
                 >
                   My Profile
                 </button>
-                <button
+                {/* <button
                   onClick={() => navigate("/user-edit-profile")}
                   className="setting-dropdown-button"
                 >
                   Edit Profile
-                </button>
+                </button> */}
                 <button
                   onClick={
                     user
@@ -434,15 +462,9 @@ const NavBarFinal = () => {
               </div>
             ) : null}
           </div>
-          <div className="navbar-topp-social-icon">
-          <FaUserAlt className="nabar-final-userProfile-Icon" onClick={() => navigate("/userprofile")}/>
-            {/* <img
-              onClick={() => navigate("/userprofile")}
-              className="nabar-final-userProfile-cont userIconNavbarFinl"
-              src={userIcon}
-              alt="nav-icons"
-            /> */}
-          </div>
+
+
+
         </div>
       </section>
       {chat && <Chat />}
