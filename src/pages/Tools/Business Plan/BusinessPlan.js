@@ -6,12 +6,21 @@ import {AiOutlineTag} from "react-icons/ai"
 import { collection, getDocs } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import { useNavigate } from 'react-router-dom'
+import DocSkeleton from '../../../components/Post Skeleton/Doc Skeleton/DocSkeleton'
 
 const BusinessPlan = ({dataFilter,setDataFilter,tag}) => {
   const [AllTagDocuments, setAllTagDocuments] = useState([]);
+  const[tagDocToShow,setTagDocToShow]=useState([])
   const navigate=useNavigate()
   console.log("dataFilter",dataFilter)
   console.log("AllTagDocuments",AllTagDocuments)
+
+
+useEffect(()=>{
+if(dataFilter==="All"){setTagDocToShow(AllTagDocuments.slice(0,2));return}
+setTagDocToShow(AllTagDocuments)
+},[dataFilter,AllTagDocuments])
+
 
   async function getAllDocuments(tag) {
     const TagDocumentTemplate = await getDocs(
@@ -41,11 +50,17 @@ const BusinessPlan = ({dataFilter,setDataFilter,tag}) => {
   return (
    <>
      <section className={styles.outerCont}>
+    
+    
     <h1 className={styles.title}>{tag}</h1>
+    <div className={styles.docSkeletonCont}>
+      {tagDocToShow.length===0&&<DocSkeleton cards={2}/>}
+    </div>
     <div className={styles.docCont}>
     {dataFilter==="All"&&<img onClick={()=>setDataFilter(tag.toLowerCase())} className={styles.loadMoreImg} src={loadMore} alt="loadMore" />}
 
-    {AllTagDocuments.map((doc)=>{
+
+    {tagDocToShow.map((doc)=>{
       return <>
     <div className={styles.doc}>
 <h3 className={styles.docHeading}>{doc.title}</h3>

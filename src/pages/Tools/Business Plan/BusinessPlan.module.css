@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+.docSkeletonCont{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
 .outerCont{
     width: 95%;
     min-height: 30vh;

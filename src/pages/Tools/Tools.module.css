@@ -1,4 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+.skeletonLoaingCont{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-left: 2rem;
+
+}
+
 .outerCont{
     width: 81%;
     min-height: 85vh;
@@ -28,6 +40,7 @@ color: #202020;
     border-radius: 15px;
     margin: auto;
     margin-top: 2rem;
+    color: var(--main-text);
 
 }
 .underLine{

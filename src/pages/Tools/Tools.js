@@ -8,6 +8,8 @@ import styles from "./Tools.module.css"
 import PhnSidebar from "../../components/PhnSidebar/PhnSidebar";
 import PitchDeck from './PitchDeck/PitchDeck';
 import BusinessPlan from './Business Plan/BusinessPlan';
+import ToolsSkeleton from '../../components/Post Skeleton/Tools Skeleton/ToolsSkeleton';
+
 
 const list=["Pitch Deck","Business Plan","Business validation","Financial Models","fundraising","HR","Legal"]
 
@@ -125,6 +127,12 @@ if(dataFilter.toLowerCase()==="legal"){setPptToShow([]);setDocTagToShow(["legal"
             );
           })}
         </div>
+
+          <div className={styles.skeletonLoaingCont}>
+          
+              {(pptList.length===0&&docList.length===0)&&<ToolsSkeleton cards={4} />}
+
+          </div>
 
           {/* PPT CONT */}
           {pptToShow.length>0&&<PitchDeck pptList={pptToShow} dataFilter={dataFilter} setDataFilter={setDataFilter}/>}
