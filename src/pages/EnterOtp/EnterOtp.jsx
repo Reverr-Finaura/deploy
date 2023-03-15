@@ -53,7 +53,8 @@ function EnterOtp() {
           dispatch(create({ newUser }));
         })
         .then(() => {
-          navigate("/startup-list");
+          // navigate("/startup-list");
+          navigate("/OnboardingScreen");
         })
         .catch((error) => {
           const errorMessage = error.message;

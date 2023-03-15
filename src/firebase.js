@@ -162,5 +162,6 @@ export const uploadMedia = async (media, path) => {
     return mediaLink;
   } catch (err) {
     console.log("Err: ", err);
+    
   }
 };

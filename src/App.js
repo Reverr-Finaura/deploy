@@ -88,6 +88,8 @@ import EquityAndEverythingg from "./pages/New Courses/Courses/EquityAndEverythin
 import BetaTesting from "./pages/New Courses/Courses/BetaTesting";
 import StartupIdea from "./pages/New Courses/Courses/StartupIdea";
 import ReachingOutToInvestorr from "./pages/New Courses/Courses/ReachingOutToInvestor"
+import OnboardingScreen from "./pages/Onboarding Screens/OnboardingScreen";
+import Tools from "./pages/Tools/Tools";
 // import CompetitorAnalysis from "./pages/New Courses/Courses/CompetitorAnalysis";
 // import BuildAudience from "./pages/New Courses/Courses/BuildAudience";
 
@@ -280,6 +282,8 @@ function App() {
         <Route path="/newcourses/BetaTesting" element={<BetaTesting />}></Route>
         <Route path="/newcourses/StartupIdea" element={<StartupIdea />}></Route>
         <Route path="/newcourses/ReachingOutToInvestor" element={<ReachingOutToInvestorr/>}></Route>
+        <Route path="/OnboardingScreen" element={<OnboardingScreen/>}></Route>
+        <Route path="/tools" element={<Tools/>}></Route>
         {/* <Route
           path="/newcourses/CompetitorAnalysis"
           element={<CompetitorAnalysis />}

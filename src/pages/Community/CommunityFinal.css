@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 .infiniteScrollOuterDiv {
   width: 92.5%;
   /* margin-left: 4rem; */
@@ -51,8 +52,11 @@
   align-items: center;
 }
 .reverrCommunityHeading {
+  font-family: 'Quicksand';
+font-style: normal;
   font-size: 2rem;
   color: var(--main-text);
+  margin-bottom: 1.5rem;
 }
 .postUploaddSquareCont {
   margin-left: auto;
@@ -70,13 +74,13 @@
 }
 .uploadPostContainerrrr {
   display: flex;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   /* align-items: center; */
 }
 .community-upload-cont-userImage {
   width: 50px;
   height: 50px;
-  border-radius: 50%;
+  border-radius: 11px;
   margin-top: 1rem;
   margin-right: 1rem;
 }
@@ -637,6 +641,7 @@ cursor: pointer;
   border-radius: 11px;
   padding: 0.5rem;
   background: var(--bg-card);
+  /* background: #FAFAFA; */
   margin-right: 1rem;
 }
 .communityNewsSectionNewsImageCont {
