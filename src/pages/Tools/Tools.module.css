@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+.outerCont{
+    width: 81%;
+    min-height: 85vh;
+    margin-top: 7rem;
+    margin-left: 17rem;
+    font-family: "Quicksand";
+}
+.title{
+    font-style: normal;
+font-weight: 800;
+font-size: 1.8rem;
+line-height: 30px;
+letter-spacing: 0.03em;
+color: #202020;
+}
+
+.chooser{
+    padding: 1rem;
+    background: linear-gradient( 119.93deg, rgba(255, 255, 255, 0.35) 4.68%, rgba(255, 255, 255, 0.3) 91.73% );
+    box-shadow: 0px 2.05973px 12.3584px -0.514933px rgb(0 0 0 / 15%);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 95%;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 2rem;
+
+}
+.underLine{
+    width: 100%;
+    height: 4px;
+    background-color: #2a72de;
+    margin: auto;
+    position: absolute;
+    bottom: -60%;
+    left: 0%;
+    border-radius: 5px;
+}
+.chooserLink{
+font-size: 1.1rem;
+  margin: auto;
+  font-weight: 600;
+  font-family: "Exo";
+  cursor: pointer;
+  position: relative;
+  padding: 0 1rem;
+  text-transform: uppercase;
+}
+
+@media(max-width:1300px){
+    .outerCont{
+        width: 75%;
+    }  
+}
+@media(max-width:980px){
+    .outerCont{
+        width: 70%;
+    }  
+}
+
+@media(max-width:800px){
+    .outerCont{
+        width: 64%;
+    }  
+}
+
+@media(max-width:600px){
+    .outerCont{
+        margin: auto;
+        width: 85%;
+    }  
+}
