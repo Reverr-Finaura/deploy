@@ -321,6 +321,7 @@ useEffect(()=>{
         </div>
         </div>
     </div>
+    <div className="postDivideLine_community"></div>
     <div className='postTextContainer'>
     {item?.text.length>100?<h3 className='postText'>{showMorePostTextClick?item?.text:<>{item?.text.slice(0,100)}<span onClick={()=>setShowMorePostTextClick(true)} className='morePostTextButton'>...continue</span> </>}</h3>
     :<h3 className='postText'>{item?.text}</h3>}
@@ -330,7 +331,7 @@ useEffect(()=>{
     {item?.image? <div className='postImageContainer'>
         <img className='postImage' src={item?.image} alt="postImage" />
     </div>:null}
-    
+    <div className="postDivideLine_community"></div>
     <div className='postLikesAndCommentContainer'>
     <div style={{display:"flex",alignItems:"center",width:"60%"}}>
         <div className='postLikesContainer'>

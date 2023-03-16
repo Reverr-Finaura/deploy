@@ -1,4 +1,5 @@
 .PostCardContainer {
+
   height: max-content;
   width: 93%;
   /* margin: auto; */
@@ -11,7 +12,13 @@
   border-bottom-right-radius: 0;
   font-family: "Poppins";
   font-style: normal;
-  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+
+}
+.postDivideLine_community{
+  border: 0.1px solid #9C9C9C;
+  opacity: .3;
 }
 .postUploadDateContainer {
   margin-left: auto;
@@ -136,6 +143,8 @@
   margin-bottom: 1rem;
 
   font-weight: 600;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .postText {
   font-weight: lighter;
@@ -283,13 +292,16 @@ color: var(--main-text);
   background-color: #e6e4e4dc;
   background-color: var(--bg-card);
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  padding: 0;
+
 }
 #postCommentContainer {
   height: 32px !important;
   width: 84%;
   padding-left: 3rem;
   font-size: 18px;
-  background-color: var(--comment-card);
+  /* background-color: var(--comment-card); */
+  background-color: var(--bg-card);
   /* border: 2px solid #2a72de; */
   border: 2px solid var(--main-text);
   color: var(--comment-card-placeHolder);
@@ -302,7 +314,8 @@ color: var(--main-text);
   width: 92%;
   padding-left: 0.5rem;
   font-size: 18px;
-  background-color: var(--comment-card);
+  /* background-color: var(--comment-card); */
+  background-color: var(--bg-card);
   /* border: 2px solid #2a72de; */
   border: 2px solid var(--main-text);
   padding-bottom: 0;
@@ -390,8 +403,10 @@ color: var(--main-text);
 .commentedByAndComment {
   padding: 1rem;
   border-radius: 10px;
-  background-color: var(--comment-card-div);
+  /* background-color: var(--comment-card-div); */
+  background-color: var(--bg-card);
   color: var(--main-text);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 980px) {

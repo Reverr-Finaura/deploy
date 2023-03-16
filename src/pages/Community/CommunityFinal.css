@@ -46,6 +46,7 @@
   padding: 1rem;
   background-color: var(--bg-card);
   border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 .reverrCommunityHeadingAndPostUploadIcon {
   display: flex;
@@ -579,7 +580,7 @@ edit_Delete_Btn {
   right: 0;
 
   /* padding-top: 0; */
-  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  /* box-shadow: 0px 4px 4px rgb(0 0 0 / 25%); */
 }
 body::-webkit-scrollbar {
   display: none;
@@ -597,7 +598,7 @@ body::-webkit-scrollbar {
     rgba(255, 255, 255, 0.35) 4.68%,
     rgba(255, 255, 255, 0.3) 91.73%
   );
-  box-shadow: 0px 2.4417px 14.6502px -0.610425px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(6.10425px);
   border-radius: 11px;
   display: flex;
@@ -643,6 +644,7 @@ cursor: pointer;
   background: var(--bg-card);
   /* background: #FAFAFA; */
   margin-right: 1rem;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 .communityNewsSectionNewsImageCont {
   display: flex;

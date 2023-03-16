@@ -17,7 +17,7 @@ const BusinessPlan = ({dataFilter,setDataFilter,tag}) => {
 
 
 useEffect(()=>{
-if(dataFilter==="All"){setTagDocToShow(AllTagDocuments.slice(0,2));return}
+if(dataFilter==="All"){setTagDocToShow(AllTagDocuments.slice(0,3));return}
 setTagDocToShow(AllTagDocuments)
 },[dataFilter,AllTagDocuments])
 

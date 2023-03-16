@@ -1,5 +1,6 @@
 #sidebar-final {
-  background: var(--navbar-clr);
+  /* background: var(--navbar-clr); */
+  background: #fcfdfe;
   /* width: 156px; */
   width: 200px;
   height: 100vh;

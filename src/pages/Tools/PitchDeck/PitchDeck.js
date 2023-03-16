@@ -27,8 +27,8 @@ const handleDownload = (linkk) => {
       {pptList.map((ppt,idx)=>{return <>
         <div onMouseEnter={()=>{setHover(true);setCurrentPptIndex(idx)}} onMouseLeave={()=>{setHover(false);setCurrentPptIndex(null)}} className={styles.pptOuterCont}>
         <div className={styles.imgCont}>
-        <img className={styles.img} src={im} alt="img" />
-        {(hover&&currentPptIndex===idx)&&<div style={{background:`linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${im})`}} className={styles.blackishCont}>
+        <img className={styles.img} src={ppt?.thumbnail} alt="img" />
+        {(hover&&currentPptIndex===idx)&&<div style={{background:`linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${ppt?.thumbnail})`,backgroundPosition:"center",backgroundSize:"cover"}} className={styles.blackishCont}>
           <button onClick={() => {
               navigate(`/pptTemplates/${ppt.id}`);
             }} className={styles.viewBtn}>View</button>

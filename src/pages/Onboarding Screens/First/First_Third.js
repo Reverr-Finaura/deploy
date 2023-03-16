@@ -7,26 +7,35 @@ import Second_First from '../Second/Second_First'
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from 'react-redux'
-import {setEducation, setCurrentPosition,setCurrentCompany} from "../../../features/onboardingSlice"
+import {setEducation,setDesignation, setCurrentPosition,setCurrentCompany} from "../../../features/onboardingSlice"
 
 const First_Third = () => {
     const[isClick,setIsClick]=useState(false)
-    const[data,setData]=useState({education:"",currentPos:"",compName:""})
+    const[data,setData]=useState({currentPos:"",compName:""})
     const dispatch=useDispatch()
+    const[educationInfo,setEducationInfo]=useState({degree:"",schoolOrCollege:"",startingDate:"",lastDate:""})
 const handleChange=(e)=>{
     const{name,value}=e.target
     setData((prev)=>{
         return {...prev,[name]:value}
     })
 }
+const handleEducationInfoChange=(e)=>{
+    const{name,value}=e.target
+    setEducationInfo((prev)=>{
+        return {...prev,[name]:value}
+    })
+}
 
 const handleNext=()=>{
-    if(data.education===""||data.currentPos===""||data.compName===""){toast.error("Fill Mandatory Fields");return}
-    dispatch(setEducation(data.education))
+    if(educationInfo.degree===""||educationInfo.schoolOrCollege===""||data.currentPos===""||data.compName===""){toast.error("Fill Mandatory Fields");return}
+    dispatch(setEducation(educationInfo))
+    dispatch(setDesignation(data.currentPos))
     dispatch(setCurrentPosition(data.currentPos))
     dispatch(setCurrentCompany(data.compName))
     setIsClick(true)
 }
+
 
   return (
     <>
@@ -43,7 +52,8 @@ const handleNext=()=>{
         <div className={styles.first_third_dataCont_left}>
         <img className={styles.imageForShow_third} src={img} alt="img" />
             <h2 className={styles.subHeading}>Tell us About your Education*</h2>
-        <textarea onChange={handleChange} name="education" rows="3" type="text" placeholder='Enter Details here ' value={data.education}/>
+        <textarea onChange={handleEducationInfoChange} name="degree" rows="3" type="text" placeholder='Degree' value={educationInfo.degree}/>
+        <textarea onChange={handleEducationInfoChange} name="schoolOrCollege" rows="3" type="text" placeholder='College/School' value={educationInfo.schoolOrCollege}/>
         </div>
         
     </div>

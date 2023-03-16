@@ -284,7 +284,7 @@ useEffect(() => {
 
           {/* THEME TOGGLER */}
 
-          <div className="navbar-themeToggler">
+          {/* <div className="navbar-themeToggler">
             <DarkModeToggle
               mode={theme === "dark-theme" ? "dark" : "light"}
               size="sm"
@@ -298,7 +298,7 @@ useEffect(() => {
               activeThumbColor="#e2e8f0"
               onChange={toggleTheme}
             />
-          </div>
+          </div> */}
 
             <button className="navbar_final_upgrade_btn">Upgrade</button>
 
@@ -406,7 +406,7 @@ useEffect(() => {
             ) : null}
           </div>
 
-          <img onClick={() => navigate("/userprofile")} className="navbar_final_user_Image" src={userImage} alt="userimg" />
+          <img onClick={() => navigate("/userprofile")} className="navbar_final_user_Image" src={userImage?userImage:"https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"} alt="userimg" />
           {/* <div className="navbar-topp-social-icon">
           <FaUserAlt className="nabar-final-userProfile-Icon" onClick={() => navigate("/userprofile")}/>
           </div> */}
