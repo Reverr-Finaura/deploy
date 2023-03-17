@@ -69,7 +69,7 @@ import ProductDevelopment from "./pages/AfterKnowledge/ProductDevelopment/Produc
 import ProductDevelopmentSlide from "./pages/AfterKnowledge/ProductDevelopment/ProductDevelopmentSlide";
 import ThinkingOfStartup from "./pages/AfterKnowledge/ThinkingOfStartup/ThinkingOfStartup";
 import ThinkingOfStartupSlide from "./pages/AfterKnowledge/ThinkingOfStartup/ThinkingOfStartupSlide";
-import Dashboard from "./pages/Dashboard/Dashboard";
+import Dashboard from "./pages/New Dashboard/Dashboard";
 import UserAddProfile from "./pages/User Add Profile/UserAddProfile";
 import UserProfile from "./pages/User Profile/UserProfile";
 import UserEditProfile from "./pages/User Edit Page/UserEditProfile";
@@ -87,7 +87,7 @@ import CheckYourScore from "./pages/Check Your Score/CheckYourScore";
 import EquityAndEverythingg from "./pages/New Courses/Courses/EquityAndEverythingg";
 import BetaTesting from "./pages/New Courses/Courses/BetaTesting";
 import StartupIdea from "./pages/New Courses/Courses/StartupIdea";
-import ReachingOutToInvestorr from "./pages/New Courses/Courses/ReachingOutToInvestor"
+import ReachingOutToInvestorr from "./pages/New Courses/Courses/ReachingOutToInvestor";
 import OnboardingScreen from "./pages/Onboarding Screens/OnboardingScreen";
 import Tools from "./pages/Tools/Tools";
 // import CompetitorAnalysis from "./pages/New Courses/Courses/CompetitorAnalysis";
@@ -274,16 +274,19 @@ function App() {
           path="/documentTemplates/:id"
           element={<DocumentTemplatesViewer />}
         ></Route>
-        <Route path="/checkYourScore" element={<CheckYourScore />}></Route>
+        <Route path="/start-up" element={<CheckYourScore />}></Route>
         <Route
           path="/newcourses/EquityAndEverything"
           element={<EquityAndEverythingg />}
         ></Route>
         <Route path="/newcourses/BetaTesting" element={<BetaTesting />}></Route>
         <Route path="/newcourses/StartupIdea" element={<StartupIdea />}></Route>
-        <Route path="/newcourses/ReachingOutToInvestor" element={<ReachingOutToInvestorr/>}></Route>
-        <Route path="/OnboardingScreen" element={<OnboardingScreen/>}></Route>
-        <Route path="/tools" element={<Tools/>}></Route>
+        <Route
+          path="/newcourses/ReachingOutToInvestor"
+          element={<ReachingOutToInvestorr />}
+        ></Route>
+        <Route path="/OnboardingScreen" element={<OnboardingScreen />}></Route>
+        <Route path="/tools" element={<Tools />}></Route>
         {/* <Route
           path="/newcourses/CompetitorAnalysis"
           element={<CompetitorAnalysis />}

@@ -310,7 +310,7 @@ const GetFundedPage = () => {
                 Apply Now
               </button>
               <button
-                onClick={() => navigate("/checkYourScore")}
+                onClick={() => navigate("/start-up")}
                 className="getFundingPage_CheckYourScoreCont_btn"
               >
                 Check Your Score

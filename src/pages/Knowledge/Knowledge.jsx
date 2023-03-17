@@ -63,7 +63,7 @@ function Knowledge() {
         </div>
         <div className={styles.knowledge_cards_container}>
           <div className={styles.knowledge_card_head}>
-            <h5>The Journney</h5>
+            <h5>Recommended Books</h5>
             <div>
               <span>Load more</span>
               <FiArrowUpRight color={"#0058dd"} />

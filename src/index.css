@@ -19,10 +19,11 @@ code {
     #656565 91.17%,
     #737373 100.49%
   );
+  --sidebar-hover: #494949;
   --main-text: white;
-  --sub-text: rgba(255, 255, 255, 0.9);
-  /* --bg-clr: black; */
-  --bg-clr: linear-gradient(
+  --sub-text: #ffffffe6;
+  --bg-clr: #373737;
+  /* --bg-clr: linear-gradient(
     157.59deg,
     #2f2f2f 0%,
     #2f2f2f 13.08%,
@@ -33,22 +34,25 @@ code {
     #5d5d5d 82.69%,
     #656565 91.17%,
     #737373 100.49%
-  );
-  --bg-card: #787878;
+  ); */
+  --bg-card: #3e3e3e;
+  --card-border: #888080;
+  --bg-small-card: #555555;
   /* --bg-card: rgb(40, 39, 39); */
   --comment-card-div: rgb(40, 39, 39);
   --knowledge-card: rgb(40, 39, 39);
   --bg-dashboard-card: rgb(75, 71, 71);
-  --bg-sub-card: rgb(75, 71, 71);
+  --bg-sub-card: #4b4747;
   --box-shadow: white;
   --comment-card: #787878;
-  --comment-card-placeHolder:white;
+  --comment-card-placeHolder: white;
   --change-theme: white;
   --profile-input: rgb(40, 39, 39);
   --user-profile-indicator: white;
   --user-profile-sub-indicator: rgba(255, 255, 255, 0.703);
   --navbar-scroll-bg: rgba(0, 0, 0, 0.8);
-  --btnNewColorTheme:white
+  --btnNewColorTheme: white;
+  --dashbaord-btn-text: #ffffff;
   /* --navbar-scroll-bg: linear-gradient(
     157.59deg,
     #2f2f2f 0%,
@@ -73,9 +77,12 @@ code {
     #e3eefd 75.37%,
     #e9f2ff 100.49%
   );
+  --sidebar-hover: #ebf0fe;
+  --bg-small-card: #fafcff;
   --main-text: #202020;
   --sub-text: rgb(32, 32, 32, 0.75);
-  --bg-clr: linear-gradient(
+  --bg-clr: #fbfbfb;
+  /* --bg-clr: linear-gradient(
     157.59deg,
     #ffffff 0%,
     #d9e4f4 37.68%,
@@ -84,21 +91,23 @@ code {
     #dde9fc 64.37%,
     #e3eefd 75.37%,
     #e9f2ff 100.49%
-  );
+  ); */
   --knowledge-card: #f6f6f6;
-  --bg-card: #fdfdfd;
+  --bg-card: #fafcff;
+  --card-border: #efefef;
   --comment-card-div: rgba(217, 217, 217, 0.9);
   --bg-dashboard-card: #fafaff;
   --bg-sub-card: #fafaff;
   --box-shadow: rgb(0 0 0 / 25%);
   --comment-card: white;
-  --comment-card-placeHolder:black;
+  --comment-card-placeHolder: black;
   --change-theme: black;
   --profile-input: #f6f6f6;
   --user-profile-indicator: #2a72de;
   --user-profile-sub-indicator: rgba(42, 114, 222, 0.5);
   --navbar-scroll-bg: rgba(255, 255, 255, 0.8);
-  --btnNewColorTheme:#2a72de
+  --btnNewColorTheme: #2a72de;
+  --dashbaord-btn-text: #2a72de;
 }
 body {
   margin: 0;
@@ -112,11 +121,3 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
-
-
-
-
-
-
-
-
