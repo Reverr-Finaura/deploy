@@ -149,7 +149,7 @@ function handleEducationFormInputChange(e){
 
 function addNewEducationFormInput(){
     if(educationInfo.degree===""||educationInfo.schoolOrCollege===""||educationInfo.startingDate===""||educationInfo.lastDate===""){toast.error("Kindly fill all slots");return}
-
+console.log(educationInfo)
 
     setEducationFormArray((prev)=>{
         return[...prev,{...educationInfo,id:new Date().getTime()}]
@@ -489,8 +489,10 @@ uploadImageToFireBase()
         <ToastContainer />
             <input onChange={handleEducationFormInputChange} type="text" name='degree' className='education-form-input' placeholder='Degree' value={educationInfo.degree} />
             <input onChange={handleEducationFormInputChange} type="text" name='schoolOrCollege' className='education-form-input' placeholder='College/School' value={educationInfo.schoolOrCollege}  />
-            <input onChange={handleEducationFormInputChange} type="text" name='startingDate' className='education-form-input' placeholder='Starting Date' value={educationInfo.startingDate} />
-            <input onChange={handleEducationFormInputChange} type="text" name='lastDate' className='education-form-input' placeholder='Last Date' value={educationInfo.lastDate} />
+            <p>Starting Date</p>
+            <input onChange={handleEducationFormInputChange} type="date" name='startingDate' className='education-form-input' placeholder='Starting Date' value={educationInfo.startingDate} />
+            <p>Completion Date</p>
+            <input onChange={handleEducationFormInputChange} type="date" name='lastDate' className='education-form-input' placeholder='Last Date' value={educationInfo.lastDate} />
         </div>
 
         <div onClick={addNewEducationFormInput} className='add-more-form-image-container'>

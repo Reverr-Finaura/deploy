@@ -207,7 +207,7 @@ text-align: center;
 .education-form-input{
 
 padding: 8px 21px;
-gap: 650px;
+/* gap: 650px; */
 background: #F6F6F6;
 border: 2px solid #2A72DE;
 border-radius: 8px;

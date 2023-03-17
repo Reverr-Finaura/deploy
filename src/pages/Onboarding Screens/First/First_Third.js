@@ -28,7 +28,8 @@ const handleEducationInfoChange=(e)=>{
 }
 
 const handleNext=()=>{
-    if(educationInfo.degree===""||educationInfo.schoolOrCollege===""||data.currentPos===""||data.compName===""){toast.error("Fill Mandatory Fields");return}
+    if(educationInfo.degree===""||educationInfo.schoolOrCollege===""||educationInfo.startingDate===""||educationInfo.lastDate===""||data.currentPos===""||data.compName===""){toast.error("Fill Mandatory Fields");return}
+    // console.log("educationInfo",educationInfo)
     dispatch(setEducation(educationInfo))
     dispatch(setDesignation(data.currentPos))
     dispatch(setCurrentPosition(data.currentPos))
@@ -54,6 +55,16 @@ const handleNext=()=>{
             <h2 className={styles.subHeading}>Tell us About your Education*</h2>
         <textarea onChange={handleEducationInfoChange} name="degree" rows="3" type="text" placeholder='Degree' value={educationInfo.degree}/>
         <textarea onChange={handleEducationInfoChange} name="schoolOrCollege" rows="3" type="text" placeholder='College/School' value={educationInfo.schoolOrCollege}/>
+        <div className={styles.educationStartingAndEndCont}>
+        <div style={{width:"47%",display:"flex",flexDirection:"column"}}>
+            <label htmlFor="onboarding_third_educationStartingInput">Starting Date</label>
+            <input id='onboarding_third_educationStartingInput' className={styles.educationStartingInput} onChange={handleEducationInfoChange} type="date" name='startingDate' value={educationInfo.startingDate}/>
+            </div>
+        <div style={{width:"47%",display:"flex",flexDirection:"column",margin:"auto"}}>
+            <label htmlFor="onboarding_third_educationStartingInput">Completion Date</label>
+            <input id='onboarding_third_educationStartingInput' className={styles.educationStartingInput} onChange={handleEducationInfoChange} type="date" name='lastDate' value={educationInfo.lastDate}/>
+            </div>
+        </div>
         </div>
         
     </div>

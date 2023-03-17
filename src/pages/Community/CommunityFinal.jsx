@@ -664,7 +664,7 @@ const CommunityFinal = () => {
               )}
             </div>
 
-            <section className="uploadPostContainerrrrSection">
+            <section className="uploadPostContainerrrrSection  uploadPostContainerrrrSectionBoxShadow">
               <div className="uploadPostContainerrrr">
                 <img
                   className="community-upload-cont-userImage"
