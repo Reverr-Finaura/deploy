@@ -8,6 +8,7 @@ import Rs501Payment from './Rs501Payment';
 const RsFiveOneZero = () => {
 const[num,setNum]=useState("")
 const[sessionIdTokken,setSessionIdTokken]=useState(null)
+const[loading,setLoading]=useState(false)
 
     //GENERATE RANDOM UNIQUE ID
 const uuid=()=>{
@@ -17,7 +18,10 @@ const uuid=()=>{
     return val1+val2
 }
 
-const handleMakePayment=()=>{
+const handleMakePayment=(e)=>{
+    e.preventDefault()
+    if(num.length!==10){toast.error("Enter valid number");return}
+    setLoading(true)
     const bodyData={
  
         id:`order_${uuid()}`,
@@ -29,18 +33,18 @@ const handleMakePayment=()=>{
         
     }
     axios.post("https://server.reverr.io/webcftoken",bodyData)
-.then((res)=>{setSessionIdTokken(res.data.token)})
-.catch((err)=>{toast.error(err.message)})
+.then((res)=>{setSessionIdTokken(res.data.token);setLoading(false);setNum("")})
+.catch((err)=>{toast.error(err.message);setLoading(false)})
 }
 
   return (
     <><ToastContainer/>
-    {sessionIdTokken!==null?<Rs501Payment sessionIdTokken={sessionIdTokken} setSessionIdTokken={setSessionIdTokken}/>:null} 
+    {sessionIdTokken!==null?<Rs501Payment sessionIdTokken={sessionIdTokken} setSessionIdTokken={setSessionIdTokken} mob={num}/>:null} 
 
-    <form className={styles.form} onSubmit={handleMakePayment}>
+    {sessionIdTokken==null&&<form className={styles.form} onSubmit={handleMakePayment}>
         <input className={styles.input} onChange={(e)=>setNum(e.target.value)} type="number" placeholder='Enter your Phone Number' value={num} required/>
-        <button className={styles.btn} type='submit'>Make Payment</button>
-    </form>
+        <button style={{cursor:!loading&&"pointer"}} disabled={loading} className={styles.btn} type='submit'>Make Payment</button>
+    </form>}
     </>
   )
 }
