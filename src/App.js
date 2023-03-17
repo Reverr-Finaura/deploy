@@ -91,6 +91,7 @@ import ReachingOutToInvestorr from "./pages/New Courses/Courses/ReachingOutToInv
 import OnboardingScreen from "./pages/Onboarding Screens/OnboardingScreen";
 import Tools from "./pages/Tools/Tools";
 import GoogleSignupInfoPage from "./pages/Onboarding Screens/Google Signup Info Page/GoogleSignupInfoPage";
+import RsFiveOneZero from "./pages/RsFiveOneZero/RsFiveOneZero";
 // import CompetitorAnalysis from "./pages/New Courses/Courses/CompetitorAnalysis";
 // import BuildAudience from "./pages/New Courses/Courses/BuildAudience";
 
@@ -286,6 +287,7 @@ function App() {
         <Route path="/OnboardingScreen" element={<OnboardingScreen/>}></Route>
         <Route path="/onboardingGeneralInfoScreen" element={<GoogleSignupInfoPage/>}></Route>
         <Route path="/tools" element={<Tools/>}></Route>
+        <Route path="/rs501" element={<RsFiveOneZero/>}></Route>
         {/* <Route
           path="/newcourses/CompetitorAnalysis"
           element={<CompetitorAnalysis />}
