@@ -287,7 +287,8 @@ function App() {
         <Route path="/OnboardingScreen" element={<OnboardingScreen/>}></Route>
         <Route path="/onboardingGeneralInfoScreen" element={<GoogleSignupInfoPage/>}></Route>
         <Route path="/tools" element={<Tools/>}></Route>
-        <Route path="/rs501" element={<RsFiveOneZero/>}></Route>
+        <Route path="/rs501" element={<RsFiveOneZero/>}>
+        </Route>
         {/* <Route
           path="/newcourses/CompetitorAnalysis"
           element={<CompetitorAnalysis />}
