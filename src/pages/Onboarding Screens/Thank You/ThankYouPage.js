@@ -5,7 +5,7 @@ import logo from "../../../images/Frame 6267154.png"
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { doc, setDoc } from 'firebase/firestore'
-import { db, uploadMedia } from '../../../firebase'
+import { db } from '../../../firebase'
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 
@@ -43,12 +43,12 @@ const createUserInDataBase=async(email,data)=>{
 }
 const submitForm=async()=>{
   toast("Processing Your request")
-  const res=await uploadMedia(onboardingData.profileImg,"Images")
+
   const newData={...onboardingData,
     name:userName,
     email:userEmail,
-    image:res,
-    profileImg:res,
+    image:onboardingData.profileImg,
+    profileImg:onboardingData.profileImg,
     Appointement_request: [],
     saved: [],
     rating: 0,

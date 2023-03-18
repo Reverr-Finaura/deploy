@@ -11,6 +11,8 @@ import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from 'react-redux'
 import {setProfileImg,setAbout} from "../../../features/onboardingSlice"
+import { uploadMedia } from '../../../firebase'
+
 const First_Second = () => {
   const dispatch=useDispatch()
     const chooseFileRef = useRef(null);
@@ -18,7 +20,7 @@ const First_Second = () => {
     const [imageUpload, setImageUpload] = useState(null);
     const [tempImageURL, setTempImageURL] = useState(null);
     const[about,setAboutt]=useState("")
-    
+    const[loading,setLoading]=useState(false)
     const chooseFile = () => {
         if (chooseFileRef.current) {
           chooseFileRef.current.click();
@@ -34,10 +36,14 @@ function onImageChange(e) {
     }
   }
 
-const handleNext=()=>{
+const handleNext=async()=>{
   if(!imageUpload){toast.error("Upload Your Image");return}
   if(about===""){toast.error("Fill about field");return}
-  dispatch(setProfileImg(imageUpload))
+  toast("Uploading image in database")
+  setLoading(true)
+  const res=await uploadMedia(imageUpload,"Images/onboarding")
+  setLoading(false)
+  dispatch(setProfileImg(res))
   dispatch(setAbout(about))
   setIsClick(true)
 }
@@ -81,7 +87,7 @@ const handleNext=()=>{
         <textarea onChange={(e)=>setAboutt(e.target.value)} rows="3" type="text" placeholder='write about yourself ' value={about} />
     </div>
     <div className={styles.btnCont}>
-        <button onClick={handleNext}>Next</button>
+        <button style={{cursor:loading===true&&"default"}} disabled={loading} onClick={handleNext}>Next</button>
     </div>
    </section>
    </>}
