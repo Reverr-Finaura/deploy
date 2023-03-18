@@ -92,12 +92,11 @@ code {
     #e3eefd 75.37%,
     #e9f2ff 100.49%
   ); */
-  --bg-clr:#fbfbfb;
-  ); */
+
   --knowledge-card: #f6f6f6;
-  /* --bg-card: #fafcff;
-  --card-border: #efefef; */
-  --bg-card:  #FAFCFF;
+  /* --bg-card: #fafcff; */
+  --card-border: #efefef;
+  --bg-card: #fafcff;
   --comment-card-div: rgba(217, 217, 217, 0.9);
   --bg-dashboard-card: #fafaff;
   --bg-sub-card: #fafaff;
