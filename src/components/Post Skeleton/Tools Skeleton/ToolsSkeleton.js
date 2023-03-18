@@ -14,7 +14,7 @@ const ToolsSkeleton = ({ cards }) => {
               <div className={styles.cardTop}>
                 <Skeleton
                   className={styles.cardTopUserImage}
-                  width={470}
+                  width={360}
                   height={200}
                 />
               </div>

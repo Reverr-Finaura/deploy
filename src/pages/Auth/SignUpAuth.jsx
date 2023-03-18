@@ -10,14 +10,16 @@ import emailjs from "@emailjs/browser";
 import Header from "../../components/Header/Header";
 import Footer from "../Footer/Footer";
 import { toast } from "react-hot-toast";
+import {setPhone,setPassword} from '../../features/onboardingSlice'
 
 function Auth() {
   const navigate = useNavigate();
   const [userType, setUserType] = useState("FOUNDER");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const[mobile,setMobile]=useState("")
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPass] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const theme=useSelector((state)=>state.themeColor)
   const dispatch = useDispatch();
@@ -40,7 +42,7 @@ function Auth() {
       })
       .then(() => {
         // navigate("/startup-list");
-        navigate("/OnboardingScreen")
+        navigate("/onboardingGeneralInfoScreen")
       })
       .catch((error) => {
         alert(error);
@@ -49,7 +51,10 @@ function Auth() {
 
   const signUpEmail = (e) => {
     e.preventDefault();
+    if(password.length<6){toast.error("Password must contain minimum 6 characters");return}
     if (password === confirmPassword) {
+      dispatch(setPassword(password))
+      dispatch(setPhone(mobile))
       function generate(n) {
         var add = 1,
           max = 12 - add;
@@ -148,6 +153,14 @@ function Auth() {
                 placeholder="Last Name"
                 required
               />
+              <input
+             className={styles.input}
+                onChange={(e) => setMobile(e.target.value)}
+                value={mobile}
+                type="text"
+                placeholder="Your Phone Number"
+                required
+              />
              <input
              className={styles.input}
                 onChange={(e) => setEmail(e.target.value)}
@@ -158,7 +171,7 @@ function Auth() {
               />
               <input
               className={styles.input}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setPass(e.target.value)}
                 value={password}
                 type="password"
                 placeholder="Enter a password"

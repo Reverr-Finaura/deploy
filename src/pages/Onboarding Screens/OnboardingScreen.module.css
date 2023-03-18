@@ -104,6 +104,7 @@ text-transform: capitalize;
     flex-direction: column;
     margin: auto;
     width: 67%;
+    margin-top: 2.5rem;
 }
 .aboutCont h1{
     font-family: 'Quicksand';
@@ -201,6 +202,23 @@ border: 0.895833px solid #E4E4E4;
 border-radius: 8.95833px;
 margin-left: 0; 
 }
+.educationStartingAndEndCont{
+    width: 63%;
+    display: flex;
+}
+.educationStartingInput{
+    /* width: 100%; */
+    background: #EFEFEF;
+    border: 0.895833px solid #E4E4E4;
+    border-radius: 8.95833px;
+    height: 30px;
+    font-size: 24px;
+    cursor: pointer;
+}
+.educationStartingInput:focus{
+    outline: none;
+}
+
 .imageForShow_third{
     width: 300px;
     height: 300px;

@@ -71,7 +71,7 @@ const Tools = () => {
 
 
 useEffect(()=>{
-if(dataFilter==="All"){setPptToShow(pptList.slice(0,2));setDocTagToShow(docTagList);return}
+if(dataFilter==="All"){setPptToShow(pptList.slice(0,3));setDocTagToShow(docTagList);return}
 if(dataFilter.toLowerCase()==="pitch deck"){setPptToShow(pptList);setDocTagToShow([]);return}
 if(dataFilter.toLowerCase()==="business validation"){setPptToShow([]);setDocTagToShow(["business validation"]);return}
 if(dataFilter.toLowerCase()==="business plan"){setPptToShow([]);setDocTagToShow(["business plan"]);return}
@@ -130,7 +130,7 @@ if(dataFilter.toLowerCase()==="legal"){setPptToShow([]);setDocTagToShow(["legal"
 
           <div className={styles.skeletonLoaingCont}>
           
-              {(pptList.length===0&&docList.length===0)&&<ToolsSkeleton cards={4} />}
+              {(pptList.length===0&&docList.length===0)&&<ToolsSkeleton cards={6} />}
 
           </div>
 

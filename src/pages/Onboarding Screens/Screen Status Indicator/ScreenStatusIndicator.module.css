@@ -9,6 +9,7 @@
 height: 0px;
 border: 11px solid #2A72DE;
 margin-right: 1rem;
+border-radius: 11px;
 }
 
 .nonOpt{
@@ -16,4 +17,5 @@ margin-right: 1rem;
     width: 42px;
 height: 0px;
 margin-right: 1rem;
+border-radius: 11px;
 }

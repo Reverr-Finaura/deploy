@@ -46,6 +46,10 @@
   padding: 1rem;
   background-color: var(--bg-card);
   border-radius: 12px;
+
+}
+.uploadPostContainerrrrSectionBoxShadow{
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
 }
 .reverrCommunityHeadingAndPostUploadIcon {
   display: flex;
@@ -318,9 +322,11 @@ font-style: normal;
   /* padding-left: 3rem; */
   /* color: var(--main-text); */
   font-size: 20px;
-  border-color: var(--main-text);
+  /* border-color: var(--main-text); */
+  border-color: #9C9C9C;
   background-color: var(--bg-clr);
 }
+
 #postTextContainer::placeholder {
   color: var(--main-text);
 }
@@ -555,7 +561,8 @@ edit_Delete_Btn {
   position: absolute;
 }
 .navbarUploadPostOuterBoxContainer {
-  border: 2px solid var(--main-text);
+  /* border: 2px solid var(--main-text); */
+  border: 1px solid rgb(42, 114, 222);
 
   border-radius: 8px;
   width: 90%;
@@ -563,6 +570,7 @@ edit_Delete_Btn {
   background-color: var(--bg-clr);
   /* background-color: white; */
 }
+
 .navbarUploadPostContainerTextArea {
   background-color: white;
 }
@@ -579,7 +587,7 @@ edit_Delete_Btn {
   right: 0;
 
   /* padding-top: 0; */
-  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  /* box-shadow: 0px 4px 4px rgb(0 0 0 / 25%); */
 }
 body::-webkit-scrollbar {
   display: none;
@@ -590,14 +598,14 @@ body::-webkit-scrollbar {
 .communityNewsSectionContainer {
   width: 88%;
   margin: 0 auto;
-  height: 480px;
+  height: 490px;
   /* background-color: var(--bg-sub-card); */
   background: linear-gradient(
     119.93deg,
     rgba(255, 255, 255, 0.35) 4.68%,
     rgba(255, 255, 255, 0.3) 91.73%
   );
-  box-shadow: 0px 2.4417px 14.6502px -0.610425px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(6.10425px);
   border-radius: 11px;
   display: flex;
@@ -611,13 +619,16 @@ body::-webkit-scrollbar {
 }
 .communityNewsSectionContainerMoreNewsButton{
   background-color: transparent;
+  padding-bottom: .5rem;
+  padding-top: .5rem;
   width: 80%;
   margin: auto;
-  border-radius: 11px;
-  border: 2px solid var(--btnNewColorTheme);
+  border-radius: 16px;
+  border: 1px solid var(--btnNewColorTheme);
 color: var(--btnNewColorTheme);
-padding-top: .25rem;
-padding-bottom: .25rem;
+background-color:  var(--bg-clr);
+padding-top: .5rem;
+padding-bottom: .5rem;
 cursor: pointer;
 }
 .communityNewsSectionContainerMoreNewsButton:hover{
@@ -643,6 +654,7 @@ cursor: pointer;
   background: var(--bg-card);
   /* background: #FAFAFA; */
   margin-right: 1rem;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
 }
 .communityNewsSectionNewsImageCont {
   display: flex;
