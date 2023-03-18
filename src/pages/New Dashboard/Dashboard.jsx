@@ -30,6 +30,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { setUserFundingDoc } from "../../features/userFundingDocSlice";
 import UserProfileCompletedStatusBar from "../../components/User Profile Completed Status Bar/UserProfileCompletedStatusBar";
 import { FiArrowUpRight } from "react-icons/fi";
+import DashboardToolsCont from "../../components/Dashboard Tools Cont/DashboardToolsCont";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -533,7 +534,7 @@ const Dashboard = () => {
             {/* TOOLS CONTAINER */}
 
             <section className="meeting-container">
-              <h1 className="meeting-container-titlee">Tools</h1>
+              <DashboardToolsCont/>
             </section>
 
             {/* MEETING CONTAINER */}
