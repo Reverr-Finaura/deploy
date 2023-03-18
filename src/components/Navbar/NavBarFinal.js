@@ -300,7 +300,7 @@ useEffect(() => {
             />
           </div> */}
 
-            <button className="navbar_final_upgrade_btn">Upgrade</button>
+            <button className="navbar_final_upgrade_btn" onClick={()=>navigate("/upgrade")}>Upgrade</button>
 
           <div
             onClick={() => setRequestsbuttonClick((current) => !current)}
