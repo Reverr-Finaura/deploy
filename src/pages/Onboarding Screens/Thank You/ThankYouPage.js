@@ -68,6 +68,7 @@ const submitForm=async()=>{
     events: [],
     hasGeneralProfile: true,
     hasFundingProfile: "No",
+    hasUpgrade:false,
     applyForFundingId: null,
     meeting: {},
   }
