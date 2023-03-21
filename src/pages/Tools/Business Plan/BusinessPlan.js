@@ -64,7 +64,7 @@ setTagDocToShow(AllTagDocuments)
       return <>
     <div className={styles.doc}>
 <h3 className={styles.docHeading}>{doc.title}</h3>
-<p className={styles.info}>{doc.description}</p>
+<p className={styles.info}>{doc.description.slice(0,250)}</p>
 <div className={styles.tagAndBtnCont}>
   <div className={styles.tagCont}>
     <AiOutlineTag className={styles.tagIcon}/>

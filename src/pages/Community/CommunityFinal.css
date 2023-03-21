@@ -49,7 +49,7 @@
 
 }
 .uploadPostContainerrrrSectionBoxShadow{
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 .reverrCommunityHeadingAndPostUploadIcon {
   display: flex;
@@ -143,6 +143,7 @@ font-style: normal;
 
 .assest_icon {
   color: var(--change-theme);
+  font-size: 1.25rem;
 }
 .icon_text {
   color: var(--change-theme);
@@ -441,6 +442,7 @@ font-style: normal;
 .posts-containerr {
   width: 100%;
   height: 100%;
+  padding-left: .1rem;
 }
 .loading-card-container {
   width: 80%;
@@ -598,6 +600,7 @@ body::-webkit-scrollbar {
 .communityNewsSectionContainer {
   width: 88%;
   margin: 0 auto;
+  margin-top: 4.8rem!important;
   height: 490px;
   /* background-color: var(--bg-sub-card); */
   background: linear-gradient(
@@ -605,7 +608,7 @@ body::-webkit-scrollbar {
     rgba(255, 255, 255, 0.35) 4.68%,
     rgba(255, 255, 255, 0.3) 91.73%
   );
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 14px 2px rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(6.10425px);
   border-radius: 11px;
   display: flex;
@@ -613,7 +616,6 @@ body::-webkit-scrollbar {
   padding: 1rem;
   /* overflow-y: auto; */
   max-height: 80vh;
-  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
   margin-top: 1rem;
   /* margin-left: 1rem; */
 }
@@ -654,7 +656,7 @@ cursor: pointer;
   background: var(--bg-card);
   /* background: #FAFAFA; */
   margin-right: 1rem;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 .communityNewsSectionNewsImageCont {
   display: flex;

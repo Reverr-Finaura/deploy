@@ -17,7 +17,7 @@
 .title{
 font-style: normal;
 font-weight: 700;
-font-size: 19.9312px;
+font-size: 1.5rem;
 line-height: 36px;
 letter-spacing: 0.01em;
 color: #5B89CE;
@@ -42,7 +42,7 @@ text-transform: capitalize;
 }
 .doc{
     width: 337px;
-    height: 164px;
+    height: 206px;
     background: #F8F8F8;
 border: 0.370588px solid #B0B0B0;
 border-radius: 12px;
@@ -54,7 +54,7 @@ flex-direction: column;
     font-family: 'Quicksand';
 font-style: normal;
 font-weight: 700;
-font-size: 1.5rem;
+font-size: 1.4rem;
 line-height: 28px;
 letter-spacing: 0.03em;
 color: #333333;

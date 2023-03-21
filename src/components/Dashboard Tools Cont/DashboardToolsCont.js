@@ -40,7 +40,7 @@ const DashboardToolsCont = () => {
             </div>
             </>
         })} 
-        {pptList?.slice(1,2).map((ppt)=>{
+        {pptList?.slice(1,3).map((ppt)=>{
             return <>
             <div onClick={()=>navigate("/tools")} key={ppt.id} className={styles.pptCard}>
             <img className={styles.pptImg} src={ppt.thumbnail} alt="pptImg" />

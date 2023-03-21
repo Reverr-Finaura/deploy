@@ -10,6 +10,7 @@ const PitchDeck = ({pptList,dataFilter,setDataFilter}) => {
     const[hover,setHover]=useState(false)
     const[currentPptIndex,setCurrentPptIndex]=useState(null)
 
+
 //HANDLE DOWNLOAD PPT
 const handleDownload = (linkk) => {
   const link = linkk.split("/")[5];

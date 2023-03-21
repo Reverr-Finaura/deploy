@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 .outerCont{
     width: 95%;
-    min-height: 50vh;
+    min-height: 40vh;
     padding: 1rem;
     margin: auto;
     margin-top: 1.5rem;
@@ -11,7 +11,7 @@
 .title{
 font-style: normal;
 font-weight: 700;
-font-size: 19.9312px;
+font-size: 1.5rem;
 line-height: 36px;
 letter-spacing: 0.01em;
 color: #5B89CE;

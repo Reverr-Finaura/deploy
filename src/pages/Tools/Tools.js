@@ -11,10 +11,11 @@ import BusinessPlan from './Business Plan/BusinessPlan';
 import ToolsSkeleton from '../../components/Post Skeleton/Tools Skeleton/ToolsSkeleton';
 
 
-const list=["Pitch Deck","Business Plan","Business validation","Financial Models","fundraising","HR","Legal"]
+const list=["Pitch Deck","Business Plan","Business validation","Financial Models","fundraising","HR","Legal","startup basics"]
 
 const Tools = () => {
     const [width, setWidth] = useState(window.innerWidth);
+    console.log("width",width)
     const [pptList, setPptList] = useState([]);
     const[docList,setDocList] = useState([]);
     const[pptToShow,setPptToShow]=useState([]);
@@ -71,7 +72,7 @@ const Tools = () => {
 
 
 useEffect(()=>{
-if(dataFilter==="All"){setPptToShow(pptList.slice(0,3));setDocTagToShow(docTagList);return}
+if(dataFilter==="All"){setPptToShow(width>1850?pptList.slice(0,4):pptList.slice(0,3));setDocTagToShow(docTagList);return}
 if(dataFilter.toLowerCase()==="pitch deck"){setPptToShow(pptList);setDocTagToShow([]);return}
 if(dataFilter.toLowerCase()==="business validation"){setPptToShow([]);setDocTagToShow(["business validation"]);return}
 if(dataFilter.toLowerCase()==="business plan"){setPptToShow([]);setDocTagToShow(["business plan"]);return}
@@ -79,7 +80,8 @@ if(dataFilter.toLowerCase()==="financial models"){setPptToShow([]);setDocTagToSh
 if(dataFilter.toLowerCase()==="fundraising"){setPptToShow([]);setDocTagToShow(["fundraising"]);return}
 if(dataFilter.toLowerCase()==="hr"){setPptToShow([]);setDocTagToShow(["hr"]);return}
 if(dataFilter.toLowerCase()==="legal"){setPptToShow([]);setDocTagToShow(["legal"]);return}
-},[dataFilter,pptList,docList])
+if(dataFilter.toLowerCase()==="startup basics"){setPptToShow([]);setDocTagToShow(["startup basics"]);return}
+},[dataFilter,pptList,docList,width])
 
 
   return (
