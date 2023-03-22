@@ -43,7 +43,7 @@
 }
 
 .knowledge_card_head > h5 {
-  font-size: 20px;
+  font-size: 26px;
   font-weight: 700;
   line-height: 36px;
   letter-spacing: 0.01em;
@@ -66,9 +66,52 @@
 }
 
 .knowledge_cards {
+  width: 100%;
+  margin-top: 1rem;
   display: flex;
-  /* margin: auto; */
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 2rem;
+  position: relative;
+}
+
+.card_navbar {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 60%;
+  margin: auto;
+  margin-top: 2rem;
+  color: var(--main-text);
+  border-bottom: 2px solid #e1e1e1;
+}
+
+.chooserLink {
+  margin: auto;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  padding: 0 1rem;
+  text-transform: capitalize;
+  font-family: "Poppins" !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 22px;
+  color: #717171;
+}
+
+.underLine {
+  width: 110px;
+  transition: all 0.7s ease-out;
+  height: 4px;
+  background-color: #2a72de;
+  margin: auto;
+  position: absolute;
+  bottom: -80%;
+  left: 0%;
+  border-radius: 5px;
 }
 
 @media (min-width: 600px) {
@@ -77,8 +120,14 @@
   }
 }
 
-@media (max-width: 930px) {
+@media (max-width: 990px) {
   .knowledge_cards {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 1400px) {
+  .knowledge_cards {
+    flex-wrap: wrap;
   }
 }

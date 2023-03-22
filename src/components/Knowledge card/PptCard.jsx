@@ -4,16 +4,16 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { FiDownload } from "react-icons/fi";
 import Playbtn from "../../images/Play.png";
 
-function Card({ title, img }) {
+function PptCard({ title, img }) {
   const [hover, setHover] = useState(false);
 
   return (
-    <div className={styles.card_container}>
-      <div
-        className={styles.card_img}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-      >
+    <div
+      className={styles.card_container}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
+      <div className={styles.card_img}>
         {hover && (
           <div
             style={{
@@ -23,12 +23,7 @@ function Card({ title, img }) {
             }}
             className={styles.blackishCont}
           >
-            <p className={styles.viewText}>
-              Is it worthwhile to pursue your fresh startup idea? Let's put it
-              through our tried-and-true method to obtain opinions from experts,
-              users, and the available research to determine whether it's
-              worthwhile to construct.
-            </p>
+            <button className={styles.viewBtn}>View</button>
           </div>
         )}
         <img src={img} />
@@ -47,12 +42,9 @@ function Card({ title, img }) {
             </div>
           </div>
         </div>
-        <div className={styles.likesndwnld_right}>
-          <img src={Playbtn} />
-        </div>
       </div>
     </div>
   );
 }
 
-export default Card;
+export default PptCard;
