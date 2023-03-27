@@ -487,6 +487,7 @@ border-image-slice: 1; */
 .mentor_card_container {
   display: flex;
   gap: 1rem;
+  /* flex-wrap: wrap; */
 }
 
 .load-more-mentor-btn-cont {

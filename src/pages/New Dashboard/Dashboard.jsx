@@ -31,6 +31,7 @@ import { setUserFundingDoc } from "../../features/userFundingDocSlice";
 import UserProfileCompletedStatusBar from "../../components/User Profile Completed Status Bar/UserProfileCompletedStatusBar";
 import { FiArrowUpRight } from "react-icons/fi";
 import DashboardToolsCont from "../../components/Dashboard Tools Cont/DashboardToolsCont";
+import comImg from "../../images/community mockup.svg"
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -562,7 +563,8 @@ const Dashboard = () => {
             <section className="join-our-comunity-cont">
               <img
                 className="join-our-comunity-img"
-                src="./images/image 831.png"
+                // src="./images/image 831.png"
+                src={comImg}
                 alt="funding-img"
               />
               <h4 className="join-our-comunity-title">
@@ -612,6 +614,19 @@ const Dashboard = () => {
                     return <MentorCard key={item.email} item={item} />;
                   })}
               </div>
+              {/* <div style={{marginTop:"1rem"}} className="mentor_card_container">
+                {mentorArray
+                  .filter((item) => {
+                    return (
+                      item.image !==
+                      "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6"
+                    );
+                  })
+                  .slice(2, 4)
+                  .map((item) => {
+                    return <MentorCard key={item.email} item={item} />;
+                  })}
+              </div> */}
               {/* <div className="load-more-mentor-btn-cont">
                 <button className="load-more-mentor-btn">Load More</button>
               </div> */}
