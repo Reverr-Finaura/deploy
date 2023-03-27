@@ -3,11 +3,11 @@ import "./MentorsNew_Module_Ansh_New.css";
 import SkillIcon from "./skillIcon";
 import { useNavigate } from "react-router-dom";
 
-const MentorProfileCard = ({ item, index }) => {
+const MentorProfileCard = ({ item, index,contWidth }) => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="mentors-page-card" key={item.email} id={item.email}>
+      <div style={{width:(contWidth<1450&&contWidth>1300)?"31%":""}} className="mentors-page-card" key={item.email} id={item.email}>
         <div className="mentor-cardd">
           <div className="mentor-cardd-top-part">
             <div className="mentor-cardd-top-part-left-col">

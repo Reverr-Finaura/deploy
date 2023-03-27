@@ -137,12 +137,12 @@ if(dataFilter.toLowerCase()==="startup basics"){setPptToShow([]);setDocTagToShow
           </div>
 
           {/* PPT CONT */}
-          {pptToShow.length>0&&<PitchDeck pptList={pptToShow} dataFilter={dataFilter} setDataFilter={setDataFilter}/>}
+          {pptToShow.length>0&&<PitchDeck contWidth={width} pptList={pptToShow} dataFilter={dataFilter} setDataFilter={setDataFilter}/>}
 
 {docTagToShow.map((tag)=>{
   return <div key={tag}>
  {/* DOCUMENT CONT */}
- <BusinessPlan dataFilter={dataFilter} setDataFilter={setDataFilter} tag={tag}/>
+ <BusinessPlan contWidth={width} dataFilter={dataFilter} setDataFilter={setDataFilter} tag={tag}/>
   </div>
 })}
          

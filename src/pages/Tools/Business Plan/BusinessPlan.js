@@ -8,7 +8,7 @@ import { db } from '../../../firebase'
 import { useNavigate } from 'react-router-dom'
 import DocSkeleton from '../../../components/Post Skeleton/Doc Skeleton/DocSkeleton'
 
-const BusinessPlan = ({dataFilter,setDataFilter,tag}) => {
+const BusinessPlan = ({dataFilter,setDataFilter,tag,contWidth}) => {
   const [AllTagDocuments, setAllTagDocuments] = useState([]);
   const[tagDocToShow,setTagDocToShow]=useState([])
   const navigate=useNavigate()
@@ -62,7 +62,7 @@ setTagDocToShow(AllTagDocuments)
 
     {tagDocToShow.map((doc)=>{
       return <>
-    <div className={styles.doc}>
+    <div style={{width:(contWidth<1450&&contWidth>1300)?"28%":""}} className={styles.doc}>
 <h3 className={styles.docHeading}>{doc.title}</h3>
 <p className={styles.info}>{doc.description.slice(0,250)}</p>
 <div className={styles.tagAndBtnCont}>

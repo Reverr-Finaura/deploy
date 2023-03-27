@@ -5,7 +5,7 @@ import {GrView} from "react-icons/gr"
 import {FiDownload} from "react-icons/fi"
 import loadMore from "../../../images/Frame 6267252.svg"
 import { useNavigate } from 'react-router-dom'
-const PitchDeck = ({pptList,dataFilter,setDataFilter}) => {
+const PitchDeck = ({pptList,dataFilter,setDataFilter,contWidth}) => {
   const navigate=useNavigate()
     const[hover,setHover]=useState(false)
     const[currentPptIndex,setCurrentPptIndex]=useState(null)
@@ -26,7 +26,7 @@ const handleDownload = (linkk) => {
        <div className={styles.pptCont}>
        {dataFilter==="All"&&<img onClick={()=>setDataFilter("pitch deck")} className={styles.loadMoreImg} src={loadMore} alt="loadMore" />}
       {pptList.map((ppt,idx)=>{return <>
-        <div onMouseEnter={()=>{setHover(true);setCurrentPptIndex(idx)}} onMouseLeave={()=>{setHover(false);setCurrentPptIndex(null)}} className={styles.pptOuterCont}>
+        <div style={{width:(contWidth<1450&&contWidth>1300)?"30%":""}} onMouseEnter={()=>{setHover(true);setCurrentPptIndex(idx)}} onMouseLeave={()=>{setHover(false);setCurrentPptIndex(null)}} className={styles.pptOuterCont}>
         <div className={styles.imgCont}>
         <img className={styles.img} src={ppt?.thumbnail} alt="img" />
         {(hover&&currentPptIndex===idx)&&<div style={{background:`linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${ppt?.thumbnail})`,backgroundPosition:"center",backgroundSize:"cover"}} className={styles.blackishCont}>

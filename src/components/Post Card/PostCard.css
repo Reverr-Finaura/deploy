@@ -9,11 +9,11 @@
   padding: 1rem;
   background-color: var(--bg-card);
   border-radius: 19px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  /* border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0; */
   font-family: "Poppins";
   font-style: normal;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
   position: relative;
 
 }

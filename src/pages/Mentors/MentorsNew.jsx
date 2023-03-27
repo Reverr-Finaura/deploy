@@ -626,7 +626,7 @@ const MentorsNew = () => {
           {arrayToBeMapped.map((item, index) => {
             return (
               <>
-                <MentorProfileCard key={item.email} item={item} index={index} />
+                <MentorProfileCard contWidth={width} key={item.email} item={item} index={index} />
               </>
             );
           })}

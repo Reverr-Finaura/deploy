@@ -164,7 +164,7 @@
   margin-right: 1rem;
 }
 .mentors-page-card-container {
-  width: 98%;
+  width: 94%;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -175,10 +175,13 @@
   height: 500px;
   /* margin-right: 1rem; */
   /* margin-bottom: 1rem; */
-  width: 400px;
+  width: 380px;
   /* margin: auto; */
-  margin-bottom: 2.5rem;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0rem;
+  /* box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0px 4px 14px -1px rgba(0, 0, 0, 0.25);
+  /* margin-left: .25rem; */
+  border-radius: 16px;
 }
 
 .mentor-cardd {
@@ -189,6 +192,7 @@
   padding: 2rem;
   height: 450px;
   margin-left: 1rem;
+  padding-bottom: .5rem;
 }
 .mentor-cardd-top-part {
   display: flex;
