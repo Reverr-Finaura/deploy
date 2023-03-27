@@ -193,6 +193,7 @@
   height: 450px;
   margin-left: 1rem;
   padding-bottom: .5rem;
+  padding-left: .5rem;
 }
 .mentor-cardd-top-part {
   display: flex;
