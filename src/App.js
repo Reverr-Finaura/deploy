@@ -181,7 +181,7 @@ function App() {
         {/* <Route path="/betatesting" element={<BetaTesting />}></Route> */}
         <Route path="/betatestingslides" element={<BetaSlide />}></Route>
 
-        {/* <Route path="/buildingaudience" element={<BuildAudience />}></Route> */}
+        <Route path="/buildingaudience" element={<BuildAudience />}></Route>
         <Route
           path="/buildingaudienceslides"
           element={<BuildAudienceSlides />}
