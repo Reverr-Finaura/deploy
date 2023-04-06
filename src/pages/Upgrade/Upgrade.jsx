@@ -72,42 +72,64 @@ axios.post("https://server.reverr.io/webcftoken",bodyData)
             </h3>
             <hr className={styles.plan_divider} />
             <ul className={styles.plan_desc}>
-              <li>Loren ipsum</li>
-              <li>Loren ipsum</li>
-              <li>Loren ipsum</li>
-              <li>Loren ipsum</li>
+
+              <li>Get access to all the courses</li>
+              <li>Access all the tools</li>
+              <li>Access <b>VIBE</b> features like:</li>
+              <div>
+              <li>Unlimited swipes</li>
+                <li>Additional 4 handshakes per month</li>
+                <li>View who wants to connect with you</li>
+                <li>Get discovered more</li>
+                <li>Unlimited filters</li>
+              </div>
             </ul>
-            <button disabled={loading} onClick={()=>{handleUpgrade(499,1,"Monthly")}} className={styles.plan_buy_btn}>Buy Now</button>
+            <ul>
+                
+              </ul>
+            <button style={{cursor:loading?"default":""}} disabled={loading} onClick={()=>{handleUpgrade(499,1,"Monthly")}} className={styles.plan_buy_btn}>Buy 1 Month</button>
           </div>
           <div className={styles.plan_card_2}>
             <p className={styles.plan_duration}>Quarterly</p>
             <h3 className={styles.plan_price}>
-              ₹1099/<span>3Month</span>
+              ₹1200/<span>3Month</span>
             </h3>
             <hr className={styles.plan_divider} />
             <ul className={styles.plan_desc}>
-              <li>Loren ipsum</li>
-              <li>Loren ipsum</li>
-              <li>Loren ipsum</li>
-              <li>Loren ipsum</li>
+            <li>Get access to all the courses</li>
+              <li>Access all the tools</li>
+              <li>Access <b>VIBE</b> features like:</li>
+              <div>
+              <li>Unlimited swipes</li>
+                <li>Additional 4 handshakes per month</li>
+                <li>View who wants to connect with you</li>
+                <li>Get discovered more</li>
+                <li>Unlimited filters</li>
+              </div>
             </ul>
-            <button disabled={loading} onClick={()=>{handleUpgrade(1099,3,"Quarterly")}} className={styles.plan_buy_btn}>Buy Now</button>
+            <button style={{cursor:loading?"default":""}} disabled={loading} onClick={()=>{handleUpgrade(1200,3,"Quarterly")}} className={styles.plan_buy_btn}>Buy 3 Months</button>
           </div>
           <div className={styles.plan_card_3}>
             <p className={styles.plan_duration}>Semi-Annually</p>
             <h3 className={styles.plan_price}>
-              ₹4099/<span>6Month</span>
+              ₹2000/<span>6Month</span>
             </h3>
             <hr className={styles.plan_divider} />
             <ul className={styles.plan_desc}>
-              <li>Loren ipsum</li>
-              <li>Loren ipsum</li>
-              <li>Loren ipsum</li>
-              <li>Loren ipsum</li>
+            <li>Get access to all the courses</li>
+              <li>Access all the tools</li>
+              <li>Access <b>VIBE</b> features like:</li>
+              <div>
+              <li>Unlimited swipes</li>
+                <li>Additional 4 handshakes per month</li>
+                <li>View who wants to connect with you</li>
+                <li>Get discovered more</li>
+                <li>Unlimited filters</li>
+              </div>
             </ul>
-            <button disabled={loading} onClick={()=>{handleUpgrade(4099,6,"Semi-Annually")}} className={styles.plan_buy_btn}>Buy Now</button>
+            <button style={{cursor:loading?"default":""}} disabled={loading} onClick={()=>{handleUpgrade(2000,6,"Semi-Annually")}} className={styles.plan_buy_btn}>Buy 6 Months</button>
           </div>
-          <div className={styles.plan_card_4}>
+          {/* <div className={styles.plan_card_4}>
             <p className={styles.plan_duration}>Yearly</p>
             <h3 className={styles.plan_price}>
               ₹4099/<span>12Month</span>
@@ -120,7 +142,7 @@ axios.post("https://server.reverr.io/webcftoken",bodyData)
               <li>Loren ipsum</li>
             </ul>
             <button disabled={loading} onClick={()=>{handleUpgrade(4099,12,"Yearly")}} className={styles.plan_buy_btn}>Buy Now</button>
-          </div>
+          </div> */}
         </div>
         <p className={styles.plan_tnc}>
           * <span>Terms & Conditions </span> applied
