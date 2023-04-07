@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import { doc, setDoc, updateDoc } from 'firebase/firestore';
-import { db } from '../../firebase';
+import { createMentorInMessagesDoc, db } from '../../firebase';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
@@ -181,6 +181,8 @@ await updateDoc(userDocumentRef,{Payments:newUserPaymentArray}).then(()=>{
     if(transaction.txStatus==="SUCCESS"){
       updateDoc(userDocumentRef,{mentors:newMentorArray}).then(()=>{
         updateDoc(mentorDocumentRef,{clients:newMentorClientsArray})
+      }).then(()=>{
+        createMentorInMessagesDoc(user?.user?.email,mentorDetails?.email)
       }).then(()=>{
         toast.success(transaction.txMsg); 
       setPaymentModeOn(false) 
