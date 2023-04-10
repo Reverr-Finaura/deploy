@@ -301,7 +301,7 @@ useEffect(() => {
             </div>
           ) : null}
 
-          <button onClick={()=>navigate("/upgrade")} className="navbar_final_upgrade_btn">Upgrade</button>
+          {!userDoc.hasUpgrade&&<button onClick={()=>navigate("/upgrade")} className="navbar_final_upgrade_btn">Upgrade</button>}
           <div
             onClick={() => setRequestsbuttonClick((current) => !current)}
             className="navbar-topp-social-icon navbar_noOuterContCSS"
