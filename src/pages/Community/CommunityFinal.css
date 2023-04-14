@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 .infiniteScrollOuterDiv {
-  width: 92.5%;
+  width: 93.5%;
   /* margin-left: 4rem; */
   margin-top: 3rem;
+}
+.infiniteScrollOuterDiv::-webkit-scrollbar {
+  display: none;
 }
 #communityFinalPageOuterSection {
   margin-left: 15rem;
@@ -24,6 +27,9 @@
   padding: 1rem 1.5rem;
   /* padding-right: 3.5rem; */
   margin-left: 5rem;
+}
+#communityFinalPage::-webkit-scrollbar {
+  display: none;
 }
 .reverrCommunitySubbHeading {
   font-family: "Poppins";
@@ -440,7 +446,7 @@ font-style: normal;
 
 .loading-card-container,
 .posts-containerr {
-  width: 100%;
+  width: 98%;
   height: 100%;
   padding-left: .1rem;
 }

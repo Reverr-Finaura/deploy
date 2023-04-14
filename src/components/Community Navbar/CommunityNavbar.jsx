@@ -5,7 +5,7 @@ import { selectChat, showChat } from "../../features/chatSlice";
 import { useNavigate } from "react-router-dom";
 import Chat from "../Chat/Chat";
 import { signOut } from "firebase/auth";
-import { auth, db } from "../../firebase";
+import { auth, createNetworkInMessagesDoc, db } from "../../firebase";
 import { logout, selectUser } from "../../features/userSlice";
 import { remove } from "../../features/newUserSlice";
 import { removeUserDoc, setUserDoc } from "../../features/userDocSlice";
@@ -176,6 +176,7 @@ useEffect(() => {
         network: userWhoRequestedNewNetworkArray,
         notification: newNotificationArray,
       });
+      await createNetworkInMessagesDoc(userDoc.email,id);
       toast("Accepted Follow Request");
       dispatch(setUserDoc(updatedUserDoc));
     } catch (error) {
@@ -300,7 +301,7 @@ useEffect(() => {
             </div>
           ) : null}
 
-          <button onClick={()=>navigate("/upgrade")} className="navbar_final_upgrade_btn">Upgrade</button>
+          {!userDoc.hasUpgrade&&<button onClick={()=>navigate("/upgrade")} className="navbar_final_upgrade_btn">Upgrade</button>}
           <div
             onClick={() => setRequestsbuttonClick((current) => !current)}
             className="navbar-topp-social-icon navbar_noOuterContCSS"

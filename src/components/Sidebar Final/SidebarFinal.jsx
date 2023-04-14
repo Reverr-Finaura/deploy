@@ -40,10 +40,8 @@ const SidebarFinal = () => {
 
   const pptPath = routes.pathname.includes("/pptTemplates/");
   const docPath = routes.pathname.includes("/documentTemplates/");
-
   //console.log(routes.pathname.includes('/pptTemplates/'),"routes");
-
-  console.log(theme);
+  // console.log(theme);
   return (
     <>
       <section id="sidebar-final">
@@ -152,6 +150,18 @@ const SidebarFinal = () => {
           <div className="sidebar-final-icon-name-cont">
             <img className="sidebar-final-icon" src={toolsL} alt="icon" />
             <p className="sidebar-final-icon-name">Tools</p>
+          </div>
+        </NavLink>
+
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "sidebar_link active" : "sidebar_link"
+          }
+          to="/messages"
+        >
+          <div className="sidebar-final-icon-name-cont">
+            <img className="sidebar-final-icon" src={knowL} alt="icon" />
+            <p className="sidebar-final-icon-name">Messages</p>
           </div>
         </NavLink>
         {/* <div className='sidebar-final-line'></div>

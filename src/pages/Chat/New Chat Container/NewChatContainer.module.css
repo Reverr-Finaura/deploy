@@ -1,0 +1,70 @@
+.outerCont{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom-right-radius: 32px;
+    height: 45px;
+    border-top:1.6px solid #EEEEEE;
+    position: relative;
+}
+.tempImgCont{
+    width: 170px;
+    height: 170px;
+    z-index: 1;
+    position: absolute;
+    top: -180px;
+    border-radius: 15px;
+    background-color: #dadada;
+    box-shadow: 0px 4px 24px 2px #0000001a;
+}
+.crossIcon{
+    z-index: 2;
+    position: absolute;
+    font-size: 1.5rem;
+    right: 0;
+    cursor: pointer;
+}
+.tempImg{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+.attachmentIcon{
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.textInp{
+    margin-left: 1rem;
+    background: #FAFAFA;
+border-radius: 12px;
+width: 70%;
+padding: 1rem;
+border: 1.6px solid #EEEEEE;
+font-style: normal;
+font-weight: 500;
+font-size: 1rem;
+line-height: 16px;
+color: black;
+
+}
+.textInp::placeholder{
+    color: rgba(0, 0, 0, 0.45);  
+}
+.textInp:focus{
+    outline: none;
+}
+
+.sendMessageBtn{
+    padding: 1rem;
+    border: none;
+    color: #27AE60;
+    font-style: normal;
+font-weight: 500;
+font-size: 1rem;
+line-height: 16px;
+cursor: pointer;
+width: 200px;
+border-radius: 12px;
+background-color: transparent;
+}

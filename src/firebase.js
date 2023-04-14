@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
-import { DocumentReference, getFirestore } from "firebase/firestore";
+import { Timestamp, arrayUnion, getFirestore, onSnapshot, serverTimestamp } from "firebase/firestore";
 import {
   doc,
   getDocs,
@@ -163,5 +163,174 @@ export const uploadMedia = async (media, path) => {
   } catch (err) {
     console.log("Err: ", err);
     
+  }
+};
+
+
+export const getAllUserHavingChatWith = async (currentcUser, setList) => {
+  const list = [];
+  const ref = doc(db, "Messages", currentcUser.email);
+  const c = collection(
+    ref,
+    currentcUser && currentcUser.userType === "Mentor"
+      ? "YourClients"
+      : "YourMentors"
+  );
+
+  const f = collection(ref, "Networks");
+
+  const snap = await getDocs(f);
+  onSnapshot(f, (snapshot) => {
+    const dummyList = [];
+    snapshot.docs.forEach((doc) => {
+      dummyList.push({ ...doc.data(), id: doc.id, bucket: "Networks" });
+    });
+
+    setList(dummyList);
+  });
+
+  const querySnapshot = await getDocs(c);
+  //SNAPSHOT IMPLEMENT
+  onSnapshot(c, (snapshot) => {
+    const dummyList = [];
+    snapshot.docs.forEach((doc) => {
+      dummyList.push({
+        ...doc.data(),
+        id: doc.id,
+        bucket:
+          currentcUser && currentcUser.userType === "Mentor"
+            ? "YourClients"
+            : "YourMentors",
+      });
+    });
+
+    setList(dummyList);
+  });
+};
+
+export const createNetworkInMessagesDoc=async(userId,senderId)=>{
+const userRef=doc(db,"Messages",userId)
+const furtherUserRef=doc(userRef,"Networks",senderId)
+const senderRef=doc(db,"Messages",senderId)
+const furtherSenderRef=doc(senderRef,"Networks",userId)
+
+try {
+  await setDoc(furtherUserRef,{messages: [{createdAt: '',msg: '',sendBy: '',},]})
+  await setDoc(furtherSenderRef,{messages: [{createdAt: '',msg: '',sendBy: '',},]})
+} catch (error) {
+  console.log(error.messages)
+}
+}
+
+export const createMentorInMessagesDoc=async(userId,mentorId)=>{
+  const userRef=doc(db,"Messages",userId)
+  const furtherUserRef=doc(userRef,"YourMentors",mentorId)
+  const mentorRef=doc(db,"Messages",mentorId)
+  const furtherMentorRef=doc(mentorRef,"YourClients",userId)
+  
+  try {
+    await setDoc(furtherUserRef,{messages: [{createdAt: '',msg: '',sendBy: ''}]})
+    await setDoc(furtherMentorRef,{messages: [{createdAt: '',msg: '',sendBy: ''}]})
+  } catch (error) {
+    console.log(error.messages)
+  }
+  }
+
+export const SendMessage = async (
+  currentcUser,
+  sendTo,
+  message,
+  imgLink,
+  bucket
+) => {
+  const senderRef = doc(db, "Messages", currentcUser.email);
+  let furtherSenderRef;
+  if (bucket === "YourClients" || bucket === "YourMentors") {
+    furtherSenderRef = doc(
+      senderRef,
+      currentcUser && currentcUser.userType === "Mentor"
+        ? "YourClients"
+        : "YourMentors",
+      sendTo.email
+    );
+  } else if (bucket === "Networks") {
+    furtherSenderRef = doc(senderRef, "Networks", sendTo.email);
+  }
+  const receiverRef = doc(db, "Messages", sendTo.email);
+  let furtherReceiverRef;
+  if (bucket === "YourClients" || bucket === "YourMentors") {
+    furtherReceiverRef = doc(
+      receiverRef,
+      sendTo && sendTo.userType === "Mentor" ? "YourClients" : "YourMentors",
+      currentcUser.email
+    );
+  } else if (bucket === "Networks") {
+    furtherReceiverRef = doc(receiverRef, "Networks", currentcUser.email);
+  }
+
+  let timestmp = Timestamp.now();
+
+  try {
+    await updateDoc(furtherSenderRef, {
+      messages: arrayUnion({
+        msg: message,
+        createdAt: timestmp,
+        sendBy: currentcUser.email,
+        imgMsg: imgLink,
+      }),
+    });
+
+    // ref.current.scrollTo({
+    //   top:ref.current.scrollHeight,
+    //   behavior:"smooth"
+    // });
+
+    await updateDoc(furtherReceiverRef, {
+      messages: arrayUnion({
+        msg: message,
+        createdAt: timestmp,
+        sendBy: currentcUser.email,
+        imgMsg: imgLink,
+      }),
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const ReciveMessage = async (currentcUser, sendTo, setmsg, bucket) => {
+  try {
+    const docRef = doc(db, "Messages", currentcUser.email);
+    const furtherdocRef = collection(docRef, bucket);
+
+    onSnapshot(furtherdocRef, (snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        if (doc.id === sendTo.email) {
+          setmsg(doc.data().messages);
+        }
+      });
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const sendNotification = async (toemail, fromemail, messaage) => {
+  const obj = {
+    subject: fromemail,
+    message: messaage,
+    email: toemail,
+    type: "chat",
+    date: serverTimestamp(),
+  };
+
+  const docRef = doc(db, "Users", toemail);
+
+  try {
+    await updateDoc(docRef, {
+      notifications: arrayUnion(obj),
+    });
+  } catch (error) {
+    console.log(error);
   }
 };
