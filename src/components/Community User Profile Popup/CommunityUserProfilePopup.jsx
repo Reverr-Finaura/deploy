@@ -22,7 +22,7 @@ const CommunityUserProfilePopup = ({setPostsAuthorIsClick,postsAuthorInfo,setPos
     const[choiceButtonClick,setChoiceButtonClick]=useState("Info")
     const[selectedUserPostsArray,setSelectedUserPostsArray]=useState(null)
 
-  console.log(postsAuthorInfo,"postsAuthorInfo")  
+  console.log("postsAuthorInfo",postsAuthorInfo)  
 
 const fetchSelectedUserPosts=(postArray)=>{
     let SelectedUserPostData=[]
@@ -55,7 +55,7 @@ const updateUserSendRequestArray=async()=>{
 //HANDLE FOLLOW REQUEST CLICK
 
 const handleFollowUserClick=async()=>{
-const userRequestArray=postsAuthorInfo.receivedRequests.concat([user?.user?.email])
+const userRequestArray=postsAuthorInfo.receivedRequests?postsAuthorInfo.receivedRequests:postsAuthorInfo.recivedRequests.concat([user?.user?.email])
 
 const userDocumentRef=doc(db,"Users",postsAuthorInfo.email)
 
