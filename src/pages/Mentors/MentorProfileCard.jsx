@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./MentorsNew_Module_Ansh_New.css";
 import SkillIcon from "./skillIcon";
 import { useNavigate } from "react-router-dom";
 
-const MentorProfileCard = ({ item, index,contWidth }) => {
+const MentorProfileCard = ({ item, index, contWidth }) => {
   const navigate = useNavigate();
+
+  const emailToId = (email) => {
+    var id = "";
+    for (var i = 0; i < email.length; i++) {
+      if (email[i] === "@") break;
+      id += email[i];
+    }
+    return id;
+  };
+
   return (
     <>
-      <div style={{width:(contWidth<1450&&contWidth>1300)?"31%":""}} className="mentors-page-card" key={item.email} id={item.email}>
+      <div
+        style={{ width: contWidth < 1450 && contWidth > 1300 ? "31%" : "" }}
+        className="mentors-page-card"
+        key={item.email}
+        id={item.email}
+      >
         <div className="mentor-cardd">
           <div className="mentor-cardd-top-part">
             <div className="mentor-cardd-top-part-left-col">
@@ -84,9 +99,7 @@ const MentorProfileCard = ({ item, index,contWidth }) => {
             </div>
             <div className="mentor-cardd-bottom-part-right-col">
               <button
-                onClick={() =>
-                  navigate("/schedule", { state: { mentor: item } })
-                }
+                onClick={() => navigate(`/schedule/${emailToId(item.email)}`)}
                 className="mentor-cardd-bottom-part-right-col-schedule-btn"
               >
                 Schedule
