@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import "./MentorsNew_Module_Ansh_New.css";
 import SkillIcon from "./skillIcon";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const MentorProfileCard = ({ item, index, contWidth }) => {
   const navigate = useNavigate();
+  const userDoc=useSelector((state)=>state.userDoc)
 
   const emailToId = (email) => {
     var id = "";
@@ -99,7 +101,7 @@ const MentorProfileCard = ({ item, index, contWidth }) => {
             </div>
             <div className="mentor-cardd-bottom-part-right-col">
               <button
-                onClick={() => navigate(`/schedule/${emailToId(item.email)}`)}
+                onClick={() => navigate(`/schedule/${emailToId(item.email)}/${emailToId(userDoc.email)}`)}
                 className="mentor-cardd-bottom-part-right-col-schedule-btn"
               >
                 Schedule

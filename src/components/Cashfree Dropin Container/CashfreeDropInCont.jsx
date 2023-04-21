@@ -4,19 +4,18 @@ import { useState } from 'react';
 import { dropinComponents } from './DropInComments';
 import styles from "./CashfreeDropInCont.module.css"
 import { useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import { doc, setDoc, updateDoc } from 'firebase/firestore';
 import { createMentorInMessagesDoc, db } from '../../firebase';
-import { useSelector } from 'react-redux';
 import axios from 'axios';
 
 function CashfreeDropInCont({sessionIdTokken,mentorDetails,setSessionIdTokken,userDoc,setPaymentModeOn,setPaymentMade}) {
   const navigate=useNavigate()
   const [orderToken, setOrderToken] = useState(sessionIdTokken);
   const [orderDetails,setOrderDetails]=useState(null)
-  const user=useSelector((state)=>state.user)
+  // const user=useSelector((state)=>state.user)
 
 console.log(mentorDetails,"mentorDetails")
   const [checkedState, setCheckedState] = useState(
@@ -122,7 +121,7 @@ orderId:order.orderId,
 paymentMode:order.activePaymentMethod,
 transactionId:transaction.transactionId,
 txStatus:transaction.txStatus,
-user:user?.user?.email,
+user:userDoc?.email,
 vendor:mentorDetails.email,
 referenceId:"",
 signature:"",
@@ -143,7 +142,7 @@ orderId:order.orderId,
 paymentMode:order.activePaymentMethod,
 transactionId:transaction.transactionId,
 txStatus:transaction.txStatus,
-user:user?.user?.email,
+user:userDoc?.email,
 vendor:mentorDetails.email,
 referenceId:"",
 signature:"",
@@ -168,7 +167,7 @@ else{mentorClientArray=mentorDetails.clients}
 const newMentorClientsArray=[...mentorClientArray,userDoc.email]
 
 
-const userDocumentRef=doc(db,"Users",user?.user?.email)
+const userDocumentRef=doc(db,"Users",userDoc?.email)
 const mentorDocumentRef=doc(db,"Users",mentorDetails?.email)
 await updateDoc(userDocumentRef,{Payments:newUserPaymentArray}).then(()=>{
   if(transaction.txStatus==="FAILED"){
@@ -182,7 +181,7 @@ await updateDoc(userDocumentRef,{Payments:newUserPaymentArray}).then(()=>{
       updateDoc(userDocumentRef,{mentors:newMentorArray}).then(()=>{
         updateDoc(mentorDocumentRef,{clients:newMentorClientsArray})
       }).then(()=>{
-        createMentorInMessagesDoc(user?.user?.email,mentorDetails?.email)
+        createMentorInMessagesDoc(userDoc?.email,mentorDetails?.email)
       }).then(()=>{
         toast.success(transaction.txMsg); 
       setPaymentModeOn(false) 

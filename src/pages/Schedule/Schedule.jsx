@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Schedule.module.css";
 import PhnSidebar from "../../components/PhnSidebar/PhnSidebar";
 import KnowledgeNavbar from "../../components/KnowledgeNavbar/KnowledgeNavbar";
-import Sidebar from "../../components/Sidebar/Sidebar";
-import Footer from "../Footer/Footer";
+
 import "../../components/Calendar/Calendar.css";
 import "../../components/TimePicker/TimePicker.css";
 import "../../components/Clock/Clock.css";
@@ -11,36 +10,28 @@ import { InlineWidget, useCalendlyEventListener } from "react-calendly";
 import "animate.css";
 import { db } from "../../firebase";
 import { collection, getDocs, query } from "firebase/firestore";
-import axios from "axios";
-import GoogleLogin from "react-google-login";
-import { useNavigate, useParams } from "react-router-dom";
-import emailjs from "@emailjs/browser";
-import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "../../features/userSlice";
+
+import {  useParams } from "react-router-dom";
 import SidebarFinal from "../../components/Sidebar Final/SidebarFinal";
 import NavBarFinal from "../../components/Navbar/NavBarFinal";
 import PaymentMentorMeetingSchedule from "../../components/Payment For Mentor Meeting Schedule/PaymentMentorMeetingSchedule";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Schedule() {
   const [width, setWidth] = useState(window.innerWidth);
-  const user = useSelector(selectUser);
-  const { id } = useParams();
+  // const user = useSelector(selectUser);
+  const { id,userEmail } = useParams();
   const [mentorArray, setMentorArray] = useState([]);
+  const[tempUserArray,setTempUserArray]=useState([])
   const [currentMentor, setCurrentMentor] = useState({});
+  const [currentUser, setCurrentUser] = useState({});
   const [paymentModeOn, setPaymentModeOn] = useState(false);
   const [paymentMade, setPaymentMade] = useState(false);
+  console.log("userEmail",userEmail)
+console.log("currentUser",currentUser)
+console.log("currentMentor",currentMentor)
 
-  // const [date, setDate] = useState(new Date());
-  // const [endDate, setEndDate] = useState();
-  // const [time, setTime] = useState("10:00");
-  // const [title, setTitle] = useState("One-On-One-Mentorship-Meet");
-  // const [details, setDetails] = useState("One-on-One-Mentorship-Meet");
-  // const [link, setLink] = useState("");
-  // const navigate = useNavigate();
-
-  // const dateobj = {};
 
   //FETCH MENTOR DATA FROM FIREBASE
   useEffect(() => {
@@ -53,17 +44,17 @@ function Schedule() {
         if (
           doc.data().userType === "Mentor" &&
           doc.data().domain &&
-          // doc.data().industry !== ""&&
           doc.data().mentorUniqueID
         ) {
           setMentorArray((prev) => {
             return [...prev, doc.data()];
           });
 
-          // var {email} =doc._document.data.value.mapValue.fields;
-          // console.log(email.stringValue);
-          // doc.data().id=email;
-          // console.log(doc.data());
+        }
+        if(doc.data().userType === "individual"||doc.data().userType === "Individual"){
+          setTempUserArray((prev) => {
+            return [...prev, doc.data()];
+          });
         }
       });
     }
@@ -81,27 +72,26 @@ function Schedule() {
   };
 
   useEffect(() => {
-    // const getCurrMentor = async () => {
-    //   currentMentor = await Promise.all(
-    //     mentorArray?.map((m) => {
-    //       var temp = emailToId(m.email);
-    //       if (temp == id) {
-    //         console.log("in", m);
-    //         return m;
-    //       }
-    //     })
-    //   );
-    // };
-    // getCurrMentor();
+    
     mentorArray.forEach((m) => {
       var temp = emailToId(m.email);
       if (temp == id) {
         setCurrentMentor({ ...m });
-        console.log("in", currentMentor);
+   
       }
     });
-    console.log("out", currentMentor);
+ 
   }, [mentorArray]);
+
+  useEffect(() => {
+    
+    tempUserArray.forEach((m) => {
+      var temp = emailToId(m.email);
+      if (temp == userEmail) {
+        setCurrentUser({ ...m });
+      }
+    });
+  }, [tempUserArray]);
 
   useCalendlyEventListener({
     // onProfilePageViewed: () => console.log("onProfilePageViewed"),
@@ -129,53 +119,11 @@ function Schedule() {
   };
 
   const prefill = {
-    email: user?.email,
-    name: user?.displayName,
+    email: currentUser?.email,
+    name: currentUser?.name,
     guests: [currentMentor?.email],
     date: new Date(Date.now() + 86400000),
   };
-
-  // const selectDate = (e) => {
-  //   setDate(
-  //     new Date(e.target.value).toISOString().replace(/-|:|\.\d\d\d/g, "")
-  //   );
-  //   setEndDate(new Date(e.target.value.getTime() + 30 * 60000));
-  // };
-
-  // const onSelect = (e) => {
-  //   e.preventDefault();
-  //   setLink(
-  //     `https://calendar.google.com/calendar/r/eventedit?text=Test Event&dates=${date}/${endDate}&details=One-on-One Meeting with Reverr Mentor&location=India`
-  //   );
-
-  // var templateParams = {
-  //   from_name: "Reverr",
-  //   subject: "One-To-One Meet Mentorship Meet",
-  //   name: "Mentor Name",
-  //   email: "akaditya394@gmail.com",
-  //   message: `Hey, Mentor. You have a new meeting scheduled. Please add the following event to your calendar
-  //     https://calendar.google.com/calendar/r/eventedit?text=${title}&dates=${date}00Z/${endDate}00Z&details=${details}&location=India`,
-  // };
-
-  //   emailjs
-  //     .send(
-  //       "service_lfmmz8k",
-  //       "template_6lqwjap",
-  //       templateParams,
-  //       process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-  //     )
-  //     .then(
-  //       function (response) {
-  //         console.log("SUCCESS!", response.status, response.text);
-  //       },
-  //       function (error) {
-  //         console.log("FAILED...", error);
-  //       }
-  //     )
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
 
   useEffect(() => {
     window.addEventListener("resize", updateWidth);
@@ -196,6 +144,7 @@ function Schedule() {
       )}
       {paymentModeOn ? (
         <PaymentMentorMeetingSchedule
+        userDocc={currentUser}
           item={currentMentor}
           setPaymentModeOn={setPaymentModeOn}
           setPaymentMade={setPaymentMade}
@@ -228,25 +177,10 @@ function Schedule() {
                 borderRadius: "1rem",
               }}
             />
-            {/* <form onSubmit={onSelect}>
-              <input onChange={selectDate} type="datetime-local" value={date} />
-              <button>Select</button>
-              <a href={link}>Go</a>
-            </form> */}
-            {/* <GoogleLogin
-              clientId="710745964607-oiv3jlrl61v1f0v5lortvfq4tns1ldmn.apps.googleusercontent.com"
-              onSuccess={responseGoogle}
-              onFailure={responseError}
-              cookiePolicy={"single_host_origin"}
-              buttonText="Schedule Meeting with Google Calendar"
-              responseType="code"
-              accessType="offline"
-              scope="openid email profile hhtps://www.googleapis.com/auth/calendar"
-            /> */}
+          
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
     </>
   );
 }
