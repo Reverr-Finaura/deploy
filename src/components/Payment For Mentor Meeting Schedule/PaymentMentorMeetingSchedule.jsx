@@ -4,54 +4,20 @@ import { useState,useEffect } from 'react'
 import axios from 'axios'
 import React from 'react'
 import styles from "./PaymentMentorMeetingSchedule.module.css"
-import { useDispatch, useSelector } from 'react-redux'
-import { collection, getDocs, query } from "firebase/firestore";
-import { db } from "../../firebase";
-import { setUserDoc } from "../../features/userDocSlice";
 import CashfreeDropInCont from "../Cashfree Dropin Container/CashfreeDropInCont"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const PaymentMentorMeetingSchedule = ({item,setPaymentModeOn,setPaymentMade}) => {
+const PaymentMentorMeetingSchedule = ({userDocc,item,setPaymentModeOn,setPaymentMade}) => {
     const[mentorPlanPrice,setMentorPlanPrice]=useState()
-    const user=useSelector((state)=>state.user)
-    const userDocc=useSelector((state)=>state.userDoc)
-    const dispatch=useDispatch()
-
     const[sessionIdTokken,setSessionIdTokken]=useState(null)
  
- 
-    
-
-
-
-
 
     useEffect(()=>{
 const planPrice=(item?.plans[0]/2)<=5?item?.plans[0]/2:(item?.plans[0]/2)<=500?500:(item?.plans[0]/2)>500&&(item?.plans[0]/2)<=750?750:(item?.plans[0]/2)>750&&(item?.plans[0]/2)<=1000?1000:(item?.plans[0]/2)>1000&&(item?.plans[0]/2)<=1500?1500:(item?.plans[0]/2)+50
 setMentorPlanPrice(planPrice)
     },[])
-
- // CHECK FOR USER DOC DATA
- useEffect(()=>{
-    async function fetchUserDocFromFirebase(){
-      const userDataRef = collection(db, "Users");
-      const q = query(userDataRef);
-      const querySnapshot = await getDocs(q);
-     
-      querySnapshot.forEach((doc) => {
-       
-       if(doc.id===user?.user?.email){
-        dispatch(setUserDoc(doc.data())); 
-       }
-      }); 
-    }
-  fetchUserDocFromFirebase()
-  },[user])
-
-
-
 
 //GENERATE RANDOM UNIQUE ID
 const uuid=()=>{
