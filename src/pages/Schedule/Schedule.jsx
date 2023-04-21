@@ -7,31 +7,31 @@ import Footer from "../Footer/Footer";
 import "../../components/Calendar/Calendar.css";
 import "../../components/TimePicker/TimePicker.css";
 import "../../components/Clock/Clock.css";
-import { InlineWidget,useCalendlyEventListener } from "react-calendly";
+import { InlineWidget, useCalendlyEventListener } from "react-calendly";
 import "animate.css";
+import { db } from "../../firebase";
+import { collection, getDocs, query } from "firebase/firestore";
 import axios from "axios";
 import GoogleLogin from "react-google-login";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
 import SidebarFinal from "../../components/Sidebar Final/SidebarFinal";
 import NavBarFinal from "../../components/Navbar/NavBarFinal";
 import PaymentMentorMeetingSchedule from "../../components/Payment For Mentor Meeting Schedule/PaymentMentorMeetingSchedule";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Schedule() {
   const [width, setWidth] = useState(window.innerWidth);
   const user = useSelector(selectUser);
+  const { id } = useParams();
+  const [mentorArray, setMentorArray] = useState([]);
+  const [currentMentor, setCurrentMentor] = useState({});
+  const [paymentModeOn, setPaymentModeOn] = useState(false);
+  const [paymentMade, setPaymentMade] = useState(false);
 
-
-  const {state} = useLocation();
-  const[paymentModeOn,setPaymentModeOn]=useState(false)
-  const[paymentMade,setPaymentMade]=useState(false)
-
- 
   // const [date, setDate] = useState(new Date());
   // const [endDate, setEndDate] = useState();
   // const [time, setTime] = useState("10:00");
@@ -42,14 +42,86 @@ function Schedule() {
 
   // const dateobj = {};
 
+  //FETCH MENTOR DATA FROM FIREBASE
+  useEffect(() => {
+    async function fetchMentorExpertise() {
+      const mentorsRef = collection(db, "Users");
+      const q = query(mentorsRef);
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        // var mentor = [];
+        if (
+          doc.data().userType === "Mentor" &&
+          doc.data().domain &&
+          // doc.data().industry !== ""&&
+          doc.data().mentorUniqueID
+        ) {
+          setMentorArray((prev) => {
+            return [...prev, doc.data()];
+          });
+
+          // var {email} =doc._document.data.value.mapValue.fields;
+          // console.log(email.stringValue);
+          // doc.data().id=email;
+          // console.log(doc.data());
+        }
+      });
+    }
+    fetchMentorExpertise();
+  }, []);
+  // console.log(mentorArray);
+
+  const emailToId = (email) => {
+    var id = "";
+    for (var i = 0; i < email.length; i++) {
+      if (email[i] === "@") break;
+      id += email[i];
+    }
+    return id;
+  };
+
+  useEffect(() => {
+    // const getCurrMentor = async () => {
+    //   currentMentor = await Promise.all(
+    //     mentorArray?.map((m) => {
+    //       var temp = emailToId(m.email);
+    //       if (temp == id) {
+    //         console.log("in", m);
+    //         return m;
+    //       }
+    //     })
+    //   );
+    // };
+    // getCurrMentor();
+    mentorArray.forEach((m) => {
+      var temp = emailToId(m.email);
+      if (temp == id) {
+        setCurrentMentor({ ...m });
+        console.log("in", currentMentor);
+      }
+    });
+    console.log("out", currentMentor);
+  }, [mentorArray]);
+
   useCalendlyEventListener({
     // onProfilePageViewed: () => console.log("onProfilePageViewed"),
-    onDateAndTimeSelected: () => {setPaymentModeOn(true)},
+    onDateAndTimeSelected: () => {
+      setPaymentModeOn(true);
+    },
     // onEventTypeViewed: () => console.log("onEventTypeViewed"),
-    onEventScheduled: (e) => {console.log("eventSchedule",e.data.payload);
-  if(paymentMade===false){toast.error("As no payment has been made, your meeting has been Canceled!");return}
-if(paymentMade===true){toast.success("Meeting Scheduled Successfully");return}
-  }
+    onEventScheduled: (e) => {
+      console.log("eventSchedule", e.data.payload);
+      if (paymentMade === false) {
+        toast.error(
+          "As no payment has been made, your meeting has been Canceled!"
+        );
+        return;
+      }
+      if (paymentMade === true) {
+        toast.success("Meeting Scheduled Successfully");
+        return;
+      }
+    },
   });
 
   const updateWidth = () => {
@@ -59,7 +131,7 @@ if(paymentMade===true){toast.success("Meeting Scheduled Successfully");return}
   const prefill = {
     email: user?.email,
     name: user?.displayName,
-    guests: [state.mentor.email],
+    guests: [currentMentor?.email],
     date: new Date(Date.now() + 86400000),
   };
 
@@ -111,9 +183,24 @@ if(paymentMade===true){toast.success("Meeting Scheduled Successfully");return}
   }, []);
   return (
     <>
-    {width>=600?<><SidebarFinal /><NavBarFinal/></>:<><PhnSidebar />
-          <KnowledgeNavbar /></>}
-          {paymentModeOn?<PaymentMentorMeetingSchedule item={state.mentor} setPaymentModeOn={setPaymentModeOn} setPaymentMade={setPaymentMade}/>:null}
+      {width >= 600 ? (
+        <>
+          <SidebarFinal />
+          <NavBarFinal />
+        </>
+      ) : (
+        <>
+          <PhnSidebar />
+          <KnowledgeNavbar />
+        </>
+      )}
+      {paymentModeOn ? (
+        <PaymentMentorMeetingSchedule
+          item={currentMentor}
+          setPaymentModeOn={setPaymentModeOn}
+          setPaymentMade={setPaymentMade}
+        />
+      ) : null}
       {/* <PhnSidebar /> */}
       <div className={styles.schedule}>
         {/* <KnowledgeNavbar /> */}
@@ -124,7 +211,11 @@ if(paymentMade===true){toast.success("Meeting Scheduled Successfully");return}
           >
             <InlineWidget
               // url="https://calendly.com/reverrmeet/30min"
-              url={state.mentor.mentorCalendlyLink?state.mentor.mentorCalendlyLink:"https://calendly.com/reverrmeet/30min"}
+              url={
+                currentMentor?.mentorCalendlyLink
+                  ? currentMentor?.mentorCalendlyLink
+                  : "https://calendly.com/reverrmeet/30min"
+              }
               prefill={prefill}
               styles={{
                 width: "75vw",

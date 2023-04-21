@@ -43,7 +43,7 @@ const MentorsNew = () => {
   const [isFiltered, setIsFiltered] = useState(false);
 
   console.log(selectedPriceOption);
-  console.log("mentor array", mentorArray);
+  // console.log("mentor array", mentorArray);
 
   const updateWidth = () => {
     setWidth(window.innerWidth);
@@ -626,7 +626,12 @@ const MentorsNew = () => {
           {arrayToBeMapped.map((item, index) => {
             return (
               <>
-                <MentorProfileCard contWidth={width} key={item.email} item={item} index={index} />
+                <MentorProfileCard
+                  contWidth={width}
+                  key={item.email}
+                  item={item}
+                  index={index}
+                />
               </>
             );
           })}
