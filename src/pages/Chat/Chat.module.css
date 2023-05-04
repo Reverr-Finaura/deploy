@@ -11,3 +11,8 @@
   margin-left: 18rem;
   /* margin-left: 5rem; */
 }
+@media(max-width:600px){
+  .chat_main_Cont{
+    margin: auto;
+  }
+}

@@ -9,8 +9,10 @@ import {
 import { selectChat, showChat } from "../../features/chatSlice";
 import Chat from "../Chat/Chat";
 import styles from "./KnowledgeNavbar.module.css";
+import { useNavigate } from "react-router-dom";
 
 function KnowledgeNavbar() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const chat = useSelector(selectChat);
   const [phnOptionsVisible, setPhnOptionsVisible] = useState(false);
@@ -55,15 +57,13 @@ function KnowledgeNavbar() {
         <div>
           <img src="./images/calender.svg" alt="" />
         </div> */}
-          <div
-            onClick={() => {
-              dispatch(showChat());
-            }}
+          <div style={{cursor:"pointer"}}
+            onClick={() => {navigate("/messages")}}
           >
             <img src="./images/chat.svg" alt="" />
           </div>
-          <div>
-            <img src="./images/profile.svg" alt="" />
+          <div style={{cursor:"pointer"}}>
+            <img onClick={() => navigate("/userprofile")} src="./images/profile.svg" alt="" />
           </div>
         </div>
         <div
@@ -82,14 +82,14 @@ function KnowledgeNavbar() {
           <img src="./images/calender.svg" alt="" />
         </div> */}
           <div>
-            <img src="./images/chat.svg" alt="" />
+            <img onClick={() => {navigate("/messages")}} style={{cursor:"pointer"}} src="./images/chat.svg" alt="" />
           </div>
           <div>
-            <img src="./images/profile.svg" alt="" />
+            <img style={{cursor:"pointer"}} onClick={() => navigate("/userprofile")} src="./images/profile.svg" alt="" />
           </div>
         </div>
       </navbar>
-      {chat && <Chat />}
+
     </>
   );
 }
