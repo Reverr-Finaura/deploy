@@ -16,6 +16,7 @@
     "apexcharts": "^3.37.1",
     "axios": "^0.27.2",
     "body-parser": "^1.20.0",
+    "caniuse-lite": "^1.0.30001482",
     "cashfree-dropjs": "^1.1.4",
     "cors": "^2.8.5",
     "emoji-picker-react": "^4.4.4",
