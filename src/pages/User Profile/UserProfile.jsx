@@ -14,7 +14,7 @@ import { db } from "../../firebase";
 import { setUserDoc } from "../../features/userDocSlice";
 import { useNavigate } from "react-router-dom";
 import { setUserFundingDoc } from "../../features/userFundingDocSlice";
-
+import { auth } from "../../firebase";
 const UserProfile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -129,6 +129,10 @@ const UserProfile = () => {
               <div className="user-general-info-user-cont">
                 <p className="user-general-info-user-name">Name</p>
                 <p className="user-general-info-user">{userDoc?.name}</p>
+              </div>
+              <div className="user-general-info-user-cont">
+                <p className="user-general-info-user-name">Phone Number</p>
+                <p className="user-general-info-user">{userDoc?.phone}</p>
               </div>
               <div className="user-general-info-user-cont">
                 <p className="user-general-info-user-name">Date Of Birth</p>

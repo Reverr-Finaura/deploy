@@ -27,7 +27,9 @@ console.log("userDoc",userDoc)
 console.log("userFundingDoc",userFundingDoc)
 
 
-    const [width, setWidth] = useState(window.innerWidth);    
+    const [width, setWidth] = useState(window.innerWidth);
+    const[meta,setMeta]=useState([])
+    console.log("meta",meta)    
     const[imageUpload,setImageUpload]=useState(null)
     const[tempImageURL,setTempImageURL]=useState(null)
     const[userDefaultImage,setUserDefaultImage]=useState(userDoc?.image)
@@ -38,7 +40,7 @@ console.log("userFundingDoc",userFundingDoc)
    
     const[haveStartUpBtnClick,setHaveStartUpBtnClick]=useState(userDoc?.hasFundingProfile)
 
-const[generalProfileInfo,setGeneralProfileInfo]=useState({fullName:userDoc?.name,dOB:userDoc?.dob,gender:userDoc?.gender,stateOfUser:userDoc?.state,country:userDoc?.country,designation:userDoc?.designation,about:userDoc?.about})
+const[generalProfileInfo,setGeneralProfileInfo]=useState({fullName:userDoc?.name,dOB:userDoc?.dob,gender:userDoc?.gender,stateOfUser:userDoc?.state,country:userDoc?.country,designation:userDoc?.designation,about:userDoc?.about,phone:userDoc?.phone})
 const[socialLinkInfo,setSocialLinkInfo]=useState({instaLink:userDoc?.instagramLink,facebookLink:userDoc?.facebookLink,twitterLink:userDoc?.twitterLink,linkedInLink:userDoc?.linkedinLink})
 const[educationInfo,setEducationInfo]=useState({degree:"",schoolOrCollege:"",startingDate:"",lastDate:""})
 const[educationFormArray,setEducationFormArray]=useState(userDoc?.education)
@@ -79,6 +81,20 @@ const[startUpInfo,setStartUpInfo]=useState({startUpFullName:userFundingDoc?.Foun
       fetchUserDocFromFirebase()
       },[user])
 
+//CHECK FOR META DATA
+useEffect(()=>{
+    async function fetchUserDocFromFirebase(){
+      const userDataRef = collection(db, "meta");
+      const q = query(userDataRef);
+      const querySnapshot = await getDocs(q);
+     
+      querySnapshot.forEach((doc) => {
+       setMeta(doc.data().emailPhone)
+      }); 
+    }
+  fetchUserDocFromFirebase()
+  },[])
+
 // CHECK IF USER HAS FUNDING PROFILE
 
 useEffect(()=>{
@@ -118,7 +134,7 @@ fetchUserFundingDocFromFirebase()
 
 function handleGeneralProfileInfoInputChange(e){
     const{name,value}=e.target
-
+console.log(e.target.value)
     setGeneralProfileInfo((prev)=>{
         return {...prev,[name]:value}
     })
@@ -349,6 +365,12 @@ async function updateUserDocInFirebase(item){
         newEducationalArray=[...educationFormArray,{...educationInfo,id:new Date().getTime()}]
        }
     
+       //META UPDATE
+       let tempMeta=meta.map((item)=>{if(item.email===user?.user?.email){return {email:user?.user.email,phone:generalProfileInfo.phone}}
+       else{return item}
+    })
+
+
     
     const userDocumentRef=doc(db,"Users",user?.user?.email)
     
@@ -356,6 +378,7 @@ async function updateUserDocInFirebase(item){
    await updateDoc(userDocumentRef,{
         name: generalProfileInfo.fullName,
         dob:generalProfileInfo.dOB,
+        phone:generalProfileInfo.phone,
         state:generalProfileInfo.stateOfUser,
         country:generalProfileInfo.country,
         designation:generalProfileInfo.designation,
@@ -371,8 +394,9 @@ async function updateUserDocInFirebase(item){
         industry:yourIndustry,
         hasGeneralProfile:true,
         hasFundingProfile:haveStartUpBtnClick,
-      }
-        ).then(()=>{
+      })
+      await updateDoc(doc(db, "meta", "emailPhone"),{emailPhone:tempMeta})
+      .then(()=>{
         toast("Successfully Updated User Profile")
         navigate("/userprofile")
     }).catch((error)=>{
@@ -440,9 +464,9 @@ uploadImageToFireBase()
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='gender' className='add-profile-input Gender-input' placeholder='Gender' value={generalProfileInfo.gender} />
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='stateOfUser' className='add-profile-input state-input' placeholder='State' value={generalProfileInfo.stateOfUser} />
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='country' className='add-profile-input country-input' placeholder='Country' value={generalProfileInfo.country} />
-                
+                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='designation' className='add-profile-input fullName-input state-input' placeholder='Designation' value={generalProfileInfo.designation} />
+                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='phone' className='add-profile-input fullName-input country-input' placeholder='Phone Number' value={generalProfileInfo.phone} />  
             </div>
-            <input onChange={handleGeneralProfileInfoInputChange} type="text" name='designation' className='add-profile-input fullName-input designation-input' placeholder='Designation' value={generalProfileInfo.designation} />
             <textarea onChange={handleGeneralProfileInfoInputChange} name="about" className='about-input' rows="4" placeholder="About" value={generalProfileInfo.about}></textarea>
         </div>
 

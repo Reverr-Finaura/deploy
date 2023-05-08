@@ -4,7 +4,7 @@ import img from "../../../images/Girl doing online shopping.svg"
 import logo from "../../../images/Frame 6267154.png"
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { doc, setDoc } from 'firebase/firestore'
+import { arrayUnion, doc, setDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
@@ -14,6 +14,7 @@ const ThankYouPage = () => {
   const onboardingData=useSelector((state)=>state.onboarding)
   const newUserData=useSelector((state)=>state.newUser)
 console.log("onboardingData",onboardingData)
+console.log("newUserData",newUserData)
 let userName;
 let userEmail;
 
@@ -33,8 +34,8 @@ userEmail=newUserData.newUser.email;
 const createUserInDataBase=async(email,data)=>{
   if(email){
   try {
-    await setDoc(
-        doc(db, "Users", email),{...data})       
+    await setDoc(doc(db, "Users", email),{...data})       
+    await updateDoc(doc(db,"meta","emailPhone"),{emailPhone:arrayUnion({email:email,phone:data.phone})})
 } catch (error) {
   console.log(error.message)
  

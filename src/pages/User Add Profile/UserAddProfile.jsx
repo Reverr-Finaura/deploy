@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import { useSelector,useDispatch } from 'react-redux';
 import { db,storage } from '../../firebase';
-import { updateDoc,doc, collection, query, getDocs, setDoc } from 'firebase/firestore';
+import { updateDoc,doc, collection, query, getDocs, setDoc, arrayUnion } from 'firebase/firestore';
 import { getDownloadURL, listAll, ref, uploadBytes } from 'firebase/storage';
 import { setUserDoc } from '../../features/userDocSlice';
 import { Navigate, useNavigate } from 'react-router-dom';
@@ -35,7 +35,7 @@ console.log("userDoc",userDoc)
 const[imageUploadedUrl,setImageUploadedUrl]=useState('https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6')
 const[startupFilesUploadedUrl,setStartupFilesUploadedUrl]=useState("")
 
-const[generalProfileInfo,setGeneralProfileInfo]=useState({fullName:"",dOB:"",gender:"",stateOfUser:"",country:"",designation:"",about:""})
+const[generalProfileInfo,setGeneralProfileInfo]=useState({fullName:"",dOB:"",gender:"",stateOfUser:"",country:"",designation:"",about:"",phone:""})
 const[socialLinkInfo,setSocialLinkInfo]=useState({instaLink:"",facebookLink:"",twitterLink:"",linkedInLink:""})
 const[educationInfo,setEducationInfo]=useState({degree:"",schoolOrCollege:"",startingDate:"",lastDate:""})
 const[educationFormArray,setEducationFormArray]=useState([])
@@ -312,6 +312,7 @@ async function updateUserDocInFirebase(item){
     toast("Processing Your Request")
    await updateDoc(userDocumentRef,{
         name: generalProfileInfo.fullName,
+        phone:generalProfileInfo.phone,
         dob:generalProfileInfo.dOB,
         state:generalProfileInfo.stateOfUser,
         country:generalProfileInfo.country,
@@ -328,8 +329,9 @@ async function updateUserDocInFirebase(item){
         industry:yourIndustry,
         hasGeneralProfile:true,
         hasFundingProfile:haveStartUpBtnClick,
-      }
-        ).then(()=>{
+      })
+      await updateDoc(doc(db,"meta","emailPhone"),{emailPhone:arrayUnion({email:user?.user?.email,phone:generalProfileInfo.phone})})
+      .then(()=>{
         toast("Successfully Updated User Profile")
         setTimeout(()=>{
             window.location.reload()
@@ -402,9 +404,9 @@ async function updateUserDocAddNewImageCreateFundingUser(){
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='gender' className='add-profile-input Gender-input' placeholder='Gender' value={generalProfileInfo.gender} />
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='stateOfUser' className='add-profile-input state-input' placeholder='State' value={generalProfileInfo.stateOfUser} />
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='country' className='add-profile-input country-input' placeholder='Country' value={generalProfileInfo.country} />
-                
+                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='designation' className='add-profile-input fullName-input state-input' placeholder='Designation' value={generalProfileInfo.designation} />
+                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='phone' className='add-profile-input fullName-input country-input' placeholder='Phone Number' value={generalProfileInfo.phone} />
             </div>
-            <input onChange={handleGeneralProfileInfoInputChange} type="text" name='designation' className='add-profile-input fullName-input designation-input' placeholder='Designation' value={generalProfileInfo.designation} />
             <textarea onChange={handleGeneralProfileInfoInputChange} name="about" className='about-input' rows="4" placeholder="About" value={generalProfileInfo.about}></textarea>
         </div>
 

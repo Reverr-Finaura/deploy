@@ -94,6 +94,7 @@ import GoogleSignupInfoPage from "./pages/Onboarding Screens/Google Signup Info 
 import RsFiveOneZero from "./pages/RsFiveOneZero/RsFiveOneZero";
 import Upgrade from "./pages/Upgrade/Upgrade";
 import Chat from "./pages/Chat/Chat"
+import DummyTest from "./pages/Dummy Test Page/DummyTest";
 // import CompetitorAnalysis from "./pages/New Courses/Courses/CompetitorAnalysis";
 // import BuildAudience from "./pages/New Courses/Courses/BuildAudience";
 
@@ -306,6 +307,8 @@ function App() {
         ></Route> */}
         <Route path="/upgrade" element={<Upgrade />} />
         <Route path="/messages" element={<Chat/>}></Route>
+        <Route path="/dummy_test" element={<DummyTest/>}></Route>
+
       </Routes>
     </>
   );

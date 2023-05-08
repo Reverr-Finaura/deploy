@@ -4,11 +4,8 @@ import { auth } from "../../firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { create } from "../../features/newUserSlice";
-import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
-import Header from "../../components/Header/Header";
-import Footer from "../Footer/Footer";
 import { toast } from "react-hot-toast";
 import {setPhone,setPassword} from '../../features/onboardingSlice'
 
