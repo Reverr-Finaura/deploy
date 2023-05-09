@@ -162,7 +162,7 @@ function EnterOtp() {
             />
           </div>
           <button onClick={resendOtp} className={styles.resend}>
-            RESEND
+            Resend OTP
           </button>
           <Button type="submit">Move Ahead</Button>
         </form>
