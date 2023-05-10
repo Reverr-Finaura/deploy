@@ -196,6 +196,73 @@ margin-bottom: 1.5rem;
     text-decoration: none;
 }
 
+/* OTP MODAL */
+.outerCont{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0,.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.innerCont{
+    width: 500px;
+    height: 250px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+}
+.closeIcon{
+    position: absolute;
+    right: .5rem;
+    top: .5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #2A72DE;
+}
+.innerCont>h1{
+    font-size: 1.3rem;
+
+}
+.inputCont{
+    margin-top: 1.3rem;
+    width: 80%;
+    border: 1px solid #d3d1d1;
+    border-radius: 11px;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+.inputCont:focus{
+    outline: none;
+}
+.createCampaignButton{
+color: white;
+font-size: 1.1rem;
+padding: 1rem 1.5rem;
+width: 180px;
+height: 60px;   
+border-radius: 11px;
+margin-top: 1.5rem;
+background-color: #2A72DE;
+border: none;
+}
+.loaderr{
+    width: 50px;
+    margin: auto;
+    margin-top: -.6rem;
+}
+
+
+
 @media(max-width:1024px){
     .loginOuterCont{
         flex-direction: column;

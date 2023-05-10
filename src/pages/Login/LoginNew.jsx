@@ -14,11 +14,18 @@ import Header from "../../components/Header/Header";
 import Footer from "../Footer/Footer";
 import { toast } from "react-hot-toast";
 import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
+import { AiFillCloseCircle } from "react-icons/ai"
+import axios from "axios";
 
 function Auth() {
   const[metaData,setMetaData]=useState([])
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [signInWithOTPModal,setSignInWithOTPModal]=useState(false)
+  const[mobileNumber,setMobileNumber]=useState("")
+  const[tempOtp,setTempOtp]=useState(null)
+  const[loading,setLoading]=useState(false)
+  const[otpValue,setOtpValue]=useState("")
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const theme=useSelector((state)=>state.themeColor)
@@ -112,9 +119,96 @@ signInWithEmailAndPassword(auth, tempData[0].email, password)
       });
 
 }
+function generate(n) {
+  var add = 1,
+    max = 12 - add;
+  if (n > max) {
+    return generate(max) + generate(n - max);
+  }
+  max = Math.pow(10, n + add);
+  var min = max / 10;
+  var number = Math.floor(Math.random() * (max - min + 1)) + min;
+
+  return ("" + number).substring(add);
+}
+
+const sendOTP=async()=>{
+  setLoading(true)
+  if(mobileNumber===""){toast.error("Required phone Number");setLoading(false);return}
+  let tempData=metaData.filter((item)=>{return item.phone===mobileNumber})
+  if (tempData.length===0){toast.error("Phone number not registered yet");setLoading(false);return}
+  const otp = generate(6);
+  setTempOtp(otp);
+  try {
+    const data = await axios.post("http://localhost:8000/sendSms",
+    { to:mobileNumber,message:`Your OTP is ${otp}` })
+  if(data.data.status){
+    toast.success(data.data.message)
+    setLoading(false)
+  }
+  } catch (error) {
+    setLoading(false)
+    console.log("err",error)
+  }
+}
+
+const confirmOtpNLogin=()=>{
+  setLoading(true)
+  if(otpValue===""){toast.error("Required otp");setLoading(false);return}
+  if(otpValue!==tempOtp){toast.error("Otp does not match");setLoading(false);return}
+  let tempData=metaData.filter((item)=>{return item.phone===mobileNumber})
+  fetchDataOfUserFromDB(tempData[0])
+}
+
+const fetchDataOfUserFromDB=async(data)=>{
+  let tempDocData = {};
+  const userDataRef = await collection(db, "Users");
+    const q = await query(userDataRef);
+    const querySnapshot = await getDocs(q);
+
+     querySnapshot.forEach((doc) => {
+      if (doc.id === data.email) {
+        tempDocData = {password: doc.data().password };
+      }
+    });
+    try {
+      await signInWithEmailAndPassword(auth, data.email, tempDocData.password);
+      toast.success("Successfully Logged In");
+        navigate("/");
+        setLoading(false);
+    } catch (error) {
+      console.log("err", error);
+      setLoading(false);
+    }
+   
+}
+
+
 
   return (
     <>
+    {signInWithOTPModal&&<>
+      <section className={styles.outerCont}>
+            <div className={styles.innerCont}>
+            <AiFillCloseCircle onClick={()=>setSignInWithOTPModal(false)} className={styles.closeIcon}/>
+            {!tempOtp&&<>
+                <h1>Enter below Your Mobile Number</h1>
+                <input className={styles.inputCont} onChange={(e)=>setMobileNumber(e.target.value)} type="text" placeholder="Mobile Number" value={mobileNumber} />
+
+                <button onClick={()=>sendOTP()} disabled={loading} className={styles.createCampaignButton}>{loading?<img className={styles.loaderr} src="https://intly-app.s3.ap-south-1.amazonaws.com/WHITE+Spinner-1s-343px.svg" alt="loader" />:"Send OTP"}</button>
+                </>}
+
+              {
+                tempOtp&&<>
+                <h1>Enter the OTP Below</h1>
+                <input className={styles.inputCont} onChange={(e)=>setOtpValue(e.target.value)} type="text" placeholder="OTP" value={otpValue} />
+
+                <button onClick={()=>confirmOtpNLogin()} disabled={loading} className={styles.createCampaignButton}>{loading?<img className={styles.loaderr} src="https://intly-app.s3.ap-south-1.amazonaws.com/WHITE+Spinner-1s-343px.svg" alt="loader" />:"Login"}</button>
+                </>
+              }
+            </div>
+        </section>
+    </>}
      <section className={styles.loginOuterCont}>
         <div className={styles.leftCont}>
             <div className={styles.brandLogoCont}>
@@ -133,6 +227,8 @@ signInWithEmailAndPassword(auth, tempData[0].email, password)
         <div className={styles.rightCont}>
            <h1 className={styles.rightContHeading}>LOGIN</h1> 
            <button onClick={signInWithGoogle} className={styles.googleBtn}><span className={styles.gIconCont}><img className={styles.gICon} src="/images/icons8-google-48 1.png" alt="gICon" /></span>Log in with google </button>
+           <p className={styles.orText}>-OR-</p>
+           <button onClick={()=>setSignInWithOTPModal(true)} className={styles.googleBtn}><span className={styles.gIconCont}><img className={styles.gICon} src="/images/business-and-finance.png" alt="gICon" /></span>Log in with OTP </button>
            <p className={styles.orText}>-OR-</p>
            <form onSubmit={loginEmail} className={styles.form}>
             <input onChange={(e) => setEmail(e.target.value)} value={email} className={styles.input} type="text" name="email" placeholder="Email Address / Phone Number" required/>
