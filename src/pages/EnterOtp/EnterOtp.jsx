@@ -23,6 +23,29 @@ function EnterOtp() {
   const [fifthDigit, setFifthDigit] = useState("");
   const [sixthDigit, setSixthDigit] = useState("");
   const newUser = useSelector(selectNewUser);
+  const [minutes, setMinutes] = useState(3);
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (seconds >= 0) {
+        setSeconds(seconds - 1);
+      }
+
+      if (seconds === 0) {
+        if (minutes === 0) {
+          clearInterval(interval);
+        } else {
+          setSeconds(59);
+          setMinutes(minutes - 1);
+        }
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [seconds]);
 
   useEffect(() => {
     const enteredDigits =
@@ -105,6 +128,8 @@ function EnterOtp() {
       .catch((err) => {
         console.log(err);
       });
+    setMinutes(3);
+    setSeconds(0);
   };
 
   return (
@@ -161,7 +186,20 @@ function EnterOtp() {
               onChange={(e) => setSixthDigit(e.target.value)}
             />
           </div>
-          <button onClick={resendOtp} className={styles.resend}>
+          {seconds > 0 || minutes > 0 ? (
+            <p className={styles.otp_timer}>
+              Otp valid till: {minutes < 10 ? `0${minutes}` : minutes}:
+              {seconds < 10 ? `0${seconds}` : seconds}
+            </p>
+          ) : (
+            <p className={styles.otp_timer}>Didn't recieve code?</p>
+          )}
+
+          <button
+            onClick={resendOtp}
+            disabled={seconds > 0 || minutes > 0}
+            className={styles.resend}
+          >
             Resend OTP
           </button>
           <Button type="submit">Move Ahead</Button>

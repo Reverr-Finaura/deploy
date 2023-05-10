@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Forgotpassword.module.css";
 import { auth, db } from "../../firebase";
 import { updatePassword, signInWithEmailAndPassword } from "firebase/auth";
@@ -19,6 +19,30 @@ function Auth() {
   const [newOtp, setNewOtp] = useState("");
   const [tempUserData, setTempUserData] = useState({});
   const [loading, setLoading] = useState(false);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (seconds >= 0) {
+        setSeconds(seconds - 1);
+      }
+
+      if (seconds === 0) {
+        if (minutes === 0) {
+          clearInterval(interval);
+        } else {
+          setSeconds(59);
+          setMinutes(minutes - 1);
+        }
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [seconds]);
+
   const sendOtp = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -88,6 +112,8 @@ function Auth() {
         toast.error(error.message);
         setLoading(false);
       });
+    setMinutes(3);
+    setSeconds(0);
   };
 
   const updatePasswordOfUser = async (e) => {
@@ -193,12 +219,21 @@ function Auth() {
                 placeholder="Confirm New Password"
                 required
               />
+              {seconds > 0 || minutes > 0 ? (
+                <p className={styles.otp_timer}>
+                  Otp valid till: {minutes < 10 ? `0${minutes}` : minutes}:
+                  {seconds < 10 ? `0${seconds}` : seconds}
+                </p>
+              ) : (
+                <p className={styles.otp_timer}>Didn't recieve code?</p>
+              )}
+
               <button
                 style={{
                   cursor: loading ? "default" : "",
                   marginBottom: "1rem",
                 }}
-                disabled={loading}
+                disabled={loading || seconds > 0 || minutes > 0}
                 className={styles.Button}
                 type="button"
                 onClick={sendOtp}
