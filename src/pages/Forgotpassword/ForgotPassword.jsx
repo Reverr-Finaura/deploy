@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Forgotpassword.module.css";
 import { auth, db } from "../../firebase";
 import { updatePassword, signInWithEmailAndPassword } from "firebase/auth";
@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-hot-toast";
 import { collection, doc, getDocs, query, updateDoc } from "firebase/firestore";
+import axios from "axios";
 
 function Auth() {
   const navigate = useNavigate();
@@ -19,8 +20,31 @@ function Auth() {
   const [newOtp, setNewOtp] = useState("");
   const [tempUserData, setTempUserData] = useState({});
   const [loading, setLoading] = useState(false);
+  const[metaData,setMetaData]=useState([])
+
+
+//CHECK FOR META DATA
+useEffect(()=>{
+  async function fetchUserDocFromFirebase(){
+    const userDataRef = collection(db, "meta");
+    const q = query(userDataRef);
+    const querySnapshot = await getDocs(q);
+   
+    querySnapshot.forEach((doc) => {
+      setMetaData(doc.data().emailPhone)
+    }); 
+  }
+fetchUserDocFromFirebase()
+},[])
+
   const sendOtp = async (e) => {
     e.preventDefault();
+   
+    if(/^\d+$/.test(email)){
+      sendOTPByPhone()
+      return
+    }
+
     setLoading(true);
     let tempDocData = {};
     const userDataRef = collection(db, "Users");
@@ -33,6 +57,7 @@ function Auth() {
         setTempUserData({
           name: doc.data().name,
           password: doc.data().password,
+          email:doc.data().email
         });
       }
     });
@@ -90,6 +115,60 @@ function Auth() {
       });
   };
 
+  const sendOTPByPhone=async()=>{
+    let tempData=metaData.filter((item)=>{return item.phone===email})[0]
+if (tempData.length===0){toast.error("Phone number not registered yet");return}
+
+    setLoading(true);
+    let tempDocData = {};
+    const userDataRef = collection(db, "Users");
+    const q = query(userDataRef);
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      if (doc.id === tempData.email) {
+        tempDocData = { name: doc.data().name, password: doc.data().password };
+        setTempUserData({
+          name: doc.data().name,
+          password: doc.data().password,
+          email:doc.data().email
+        });
+      }
+    });
+    if (JSON.stringify(tempDocData) === "{}") {
+      toast.error("Email does not exist in database");
+      setLoading(false);
+      return;
+    }
+    function generate(n) {
+      var add = 1,
+        max = 12 - add;
+      if (n > max) {
+        return generate(max) + generate(n - max);
+      }
+      max = Math.pow(10, n + add);
+      var min = max / 10;
+      var number = Math.floor(Math.random() * (max - min + 1)) + min;
+
+      return ("" + number).substring(add);
+    }
+    const otp = generate(6);
+    setTempOtp(otp);
+    try {
+      const data = await axios.post("http://localhost:3000/sendSms",
+      { to:email,message:`Your OTP is ${otp}` })
+    if(data.data.status){
+      toast.success(data.data.message)
+      setLoading(false)
+    }
+    } catch (error) {
+      setLoading(false)
+      console.log("err",error)
+    }
+  
+  }
+
+
   const updatePasswordOfUser = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -105,9 +184,9 @@ function Auth() {
     }
 
     try {
-      await signInWithEmailAndPassword(auth, email, tempUserData.password);
+      await signInWithEmailAndPassword(auth, tempUserData.email, tempUserData.password);
       await updatePassword(auth.currentUser, password);
-      await updateDoc(doc(db, "Users", email), { password: password });
+      await updateDoc(doc(db, "Users", tempUserData.email), { password: password });
       toast.success("Successfully Updated Password");
       navigate("/");
       setLoading(false);
@@ -154,8 +233,8 @@ function Auth() {
                 className={styles.input}
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
-                type="email"
-                placeholder="Enter Your Email"
+                type="text"
+                placeholder="Enter Your Email / Mobile Number"
                 required
               />
               <button
