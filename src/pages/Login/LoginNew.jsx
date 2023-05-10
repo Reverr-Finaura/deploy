@@ -140,7 +140,7 @@ const sendOTP=async()=>{
   const otp = generate(6);
   setTempOtp(otp);
   try {
-    const data = await axios.post("http://localhost:3000/sendSms",
+    const data = await axios.post("https://server.reverr.io/sendSms",
     { to:mobileNumber,message:`Your OTP is ${otp}` })
   if(data.data.status){
     toast.success(data.data.message)

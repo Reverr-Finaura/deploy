@@ -155,7 +155,7 @@ if (tempData.length===0){toast.error("Phone number not registered yet");return}
     const otp = generate(6);
     setTempOtp(otp);
     try {
-      const data = await axios.post("http://localhost:3000/sendSms",
+      const data = await axios.post("https://server.reverr.io/sendSms",
       { to:email,message:`Your OTP is ${otp}` })
     if(data.data.status){
       toast.success(data.data.message)
