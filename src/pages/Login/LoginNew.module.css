@@ -116,6 +116,23 @@ font-size: 1rem;
 line-height: 14px;
 color: #898989;
 }
+.otpButton{
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    margin-top: 2rem;
+    background: #F0F0F0;
+border: 0.709201px solid rgba(0, 0, 0, 0.15);
+border-radius: 7.09201px;
+padding: .5rem 1rem;
+font-family: 'Exo';
+font-style: normal;
+font-weight: 500;
+font-size: 1rem;
+line-height: 14px;
+color: #898989;
+margin-left: 1.5rem;
+}
 .gIconCont{
     margin: auto;
     margin-right: .5rem;
@@ -195,7 +212,9 @@ margin-bottom: 1.5rem;
     cursor: pointer;
     text-decoration: none;
 }
-
+.optionButtonCont{
+    display: flex;
+}
 /* OTP MODAL */
 .outerCont{
     width: 100%;
