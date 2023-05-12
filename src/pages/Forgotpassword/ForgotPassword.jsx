@@ -20,29 +20,52 @@ function Auth() {
   const [newOtp, setNewOtp] = useState("");
   const [tempUserData, setTempUserData] = useState({});
   const [loading, setLoading] = useState(false);
-  const[metaData,setMetaData]=useState([])
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (seconds >= 0) {
+        setSeconds(seconds - 1);
+      }
 
-//CHECK FOR META DATA
-useEffect(()=>{
-  async function fetchUserDocFromFirebase(){
-    const userDataRef = collection(db, "meta");
-    const q = query(userDataRef);
-    const querySnapshot = await getDocs(q);
-   
-    querySnapshot.forEach((doc) => {
-      setMetaData(doc.data().emailPhone)
-    }); 
-  }
-fetchUserDocFromFirebase()
-},[])
+      if (seconds === 0) {
+        if (minutes === 0) {
+          clearInterval(interval);
+        } else {
+          setSeconds(59);
+          setMinutes(minutes - 1);
+        }
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [seconds]);
+
+  const [metaData, setMetaData] = useState([]);
+
+  //CHECK FOR META DATA
+  useEffect(() => {
+    async function fetchUserDocFromFirebase() {
+      const userDataRef = collection(db, "meta");
+      const q = query(userDataRef);
+      const querySnapshot = await getDocs(q);
+
+      querySnapshot.forEach((doc) => {
+        setMetaData(doc.data().emailPhone);
+      });
+    }
+    fetchUserDocFromFirebase();
+  }, []);
 
   const sendOtp = async (e) => {
     e.preventDefault();
-   
-    if(/^\d+$/.test(email)){
-      sendOTPByPhone()
-      return
+
+    if (/^\d+$/.test(email)) {
+      sendOTPByPhone();
+      return;
     }
 
     setLoading(true);
@@ -57,7 +80,7 @@ fetchUserDocFromFirebase()
         setTempUserData({
           name: doc.data().name,
           password: doc.data().password,
-          email:doc.data().email
+          email: doc.data().email,
         });
       }
     });
@@ -113,11 +136,18 @@ fetchUserDocFromFirebase()
         toast.error(error.message);
         setLoading(false);
       });
+    setMinutes(3);
+    setSeconds(0);
   };
 
-  const sendOTPByPhone=async()=>{
-    let tempData=metaData.filter((item)=>{return item.phone===email})[0]
-if (tempData.length===0){toast.error("Phone number not registered yet");return}
+  const sendOTPByPhone = async () => {
+    let tempData = metaData.filter((item) => {
+      return item.phone === email;
+    })[0];
+    if (tempData.length === 0) {
+      toast.error("Phone number not registered yet");
+      return;
+    }
 
     setLoading(true);
     let tempDocData = {};
@@ -131,7 +161,7 @@ if (tempData.length===0){toast.error("Phone number not registered yet");return}
         setTempUserData({
           name: doc.data().name,
           password: doc.data().password,
-          email:doc.data().email
+          email: doc.data().email,
         });
       }
     });
@@ -155,19 +185,19 @@ if (tempData.length===0){toast.error("Phone number not registered yet");return}
     const otp = generate(6);
     setTempOtp(otp);
     try {
-      const data = await axios.post("https://server.reverr.io/sendSms",
-      { to:email,message:`Your OTP is ${otp}` })
-    if(data.data.status){
-      toast.success(data.data.message)
-      setLoading(false)
-    }
+      const data = await axios.post("https://server.reverr.io/sendSms", {
+        to: email,
+        message: `Your OTP is ${otp}`,
+      });
+      if (data.data.status) {
+        toast.success(data.data.message);
+        setLoading(false);
+      }
     } catch (error) {
-      setLoading(false)
-      console.log("err",error)
+      setLoading(false);
+      console.log("err", error);
     }
-  
-  }
-
+  };
 
   const updatePasswordOfUser = async (e) => {
     e.preventDefault();
@@ -184,9 +214,15 @@ if (tempData.length===0){toast.error("Phone number not registered yet");return}
     }
 
     try {
-      await signInWithEmailAndPassword(auth, tempUserData.email, tempUserData.password);
+      await signInWithEmailAndPassword(
+        auth,
+        tempUserData.email,
+        tempUserData.password
+      );
       await updatePassword(auth.currentUser, password);
-      await updateDoc(doc(db, "Users", tempUserData.email), { password: password });
+      await updateDoc(doc(db, "Users", tempUserData.email), {
+        password: password,
+      });
       toast.success("Successfully Updated Password");
       navigate("/");
       setLoading(false);
@@ -272,12 +308,21 @@ if (tempData.length===0){toast.error("Phone number not registered yet");return}
                 placeholder="Confirm New Password"
                 required
               />
+              {seconds > 0 || minutes > 0 ? (
+                <p className={styles.otp_timer}>
+                  Otp valid till: {minutes < 10 ? `0${minutes}` : minutes}:
+                  {seconds < 10 ? `0${seconds}` : seconds}
+                </p>
+              ) : (
+                <p className={styles.otp_timer}>Didn't recieve code?</p>
+              )}
+
               <button
                 style={{
                   cursor: loading ? "default" : "",
                   marginBottom: "1rem",
                 }}
-                disabled={loading}
+                disabled={loading || seconds > 0 || minutes > 0}
                 className={styles.Button}
                 type="button"
                 onClick={sendOtp}

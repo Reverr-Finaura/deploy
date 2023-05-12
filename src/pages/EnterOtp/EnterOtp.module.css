@@ -70,3 +70,8 @@
   outline: none;
   border: none;
 }
+
+.resend:disabled {
+  background: #69a5ff;
+  cursor: not-allowed;
+}
