@@ -141,6 +141,7 @@ const sendOTP=async()=>{
   setTempOtp(otp);
   try {
     const data = await axios.post("https://server.reverr.io/sendSms",
+
     { to:mobileNumber,message:`Your OTP is ${otp}` })
   if(data.data.status){
     toast.success(data.data.message)
@@ -226,9 +227,10 @@ const fetchDataOfUserFromDB=async(data)=>{
         </div>
         <div className={styles.rightCont}>
            <h1 className={styles.rightContHeading}>LOGIN</h1> 
+           <div className={styles.optionButtonCont}>
            <button onClick={signInWithGoogle} className={styles.googleBtn}><span className={styles.gIconCont}><img className={styles.gICon} src="/images/icons8-google-48 1.png" alt="gICon" /></span>Log in with google </button>
-           <p className={styles.orText}>-OR-</p>
-           <button onClick={()=>setSignInWithOTPModal(true)} className={styles.googleBtn}><span className={styles.gIconCont}><img className={styles.gICon} src="/images/business-and-finance.png" alt="gICon" /></span>Log in with OTP </button>
+           <button onClick={()=>setSignInWithOTPModal(true)} className={styles.otpButton}><span className={styles.gIconCont}><img className={styles.gICon} src="/images/business-and-finance.png" alt="gICon" /></span>Log in with OTP </button>
+           </div>
            <p className={styles.orText}>-OR-</p>
            <form onSubmit={loginEmail} className={styles.form}>
             <input onChange={(e) => setEmail(e.target.value)} value={email} className={styles.input} type="text" name="email" placeholder="Email Address / Phone Number" required/>
