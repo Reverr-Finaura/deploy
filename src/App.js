@@ -8,6 +8,7 @@ import Auth from "./pages/Auth/Auth";
 import SignUpAuth from "./pages/Auth/SignUpAuth";
 import EnterOtp from "./pages/EnterOtp/EnterOtp";
 import ForgotPassword from "./pages/Forgotpassword/ForgotPassword";
+import ForgotEmail from "./pages/Forgotemail/ForgotEmail";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import LoginNew from "./pages/Login/LoginNew";
@@ -93,7 +94,7 @@ import Tools from "./pages/Tools/Tools";
 import GoogleSignupInfoPage from "./pages/Onboarding Screens/Google Signup Info Page/GoogleSignupInfoPage";
 import RsFiveOneZero from "./pages/RsFiveOneZero/RsFiveOneZero";
 import Upgrade from "./pages/Upgrade/Upgrade";
-import Chat from "./pages/Chat/Chat"
+import Chat from "./pages/Chat/Chat";
 import DummyTest from "./pages/Dummy Test Page/DummyTest";
 // import CompetitorAnalysis from "./pages/New Courses/Courses/CompetitorAnalysis";
 // import BuildAudience from "./pages/New Courses/Courses/BuildAudience";
@@ -136,6 +137,7 @@ function App() {
           </>
         )}
         <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/forgotemail" element={<ForgotEmail />} />
         <Route path="/password-reset" element={<PasswordReset />} />
         {newUser ? (
           <Route path="enterotp" element={<EnterOtp />}></Route>
@@ -306,9 +308,8 @@ function App() {
           element={<BuildAudience />}
         ></Route> */}
         <Route path="/upgrade" element={<Upgrade />} />
-        <Route path="/messages" element={<Chat/>}></Route>
-        <Route path="/dummy_test" element={<DummyTest/>}></Route>
-
+        <Route path="/messages" element={<Chat />}></Route>
+        <Route path="/dummy_test" element={<DummyTest />}></Route>
       </Routes>
     </>
   );
