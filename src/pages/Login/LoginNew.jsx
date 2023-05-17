@@ -8,10 +8,7 @@ import {
 } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { login, setUserData } from "../../features/userSlice";
-import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
-import Header from "../../components/Header/Header";
-import Footer from "../Footer/Footer";
 import { toast } from "react-hot-toast";
 import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
 import { AiFillCloseCircle } from "react-icons/ai"
@@ -141,6 +138,7 @@ const sendOTP=async()=>{
   setTempOtp(otp);
   try {
     const data = await axios.post("https://server.reverr.io/sendSms",
+    // const data = await axios.post("http://localhost:3000/sendSms",
 
     { to:mobileNumber,message:`Your OTP is ${otp}` })
   if(data.data.status){
