@@ -186,6 +186,7 @@ function Auth() {
     try {
       const data = await axios.post("https://server.reverr.io/sendSms", {
         // const data = await axios.post("http://localhost:3000/sendSms", {
+
         to: email,
         message: `Your OTP is ${otp}`,
       });
@@ -197,6 +198,8 @@ function Auth() {
       setLoading(false);
       console.log("err", error);
     }
+    setMinutes(3);
+    setSeconds(0);
   };
 
   const updatePasswordOfUser = async (e) => {
@@ -341,9 +344,9 @@ function Auth() {
             </form>
           )}
           <p className={styles.links}>
-            Already have an account?{" "}
-            <Link className={styles.linkk} to="/">
-              Login Here
+            Forgot Email?{" "}
+            <Link className={styles.linkk} to="/forgotemail">
+              Click Here
             </Link>
           </p>
         </div>
