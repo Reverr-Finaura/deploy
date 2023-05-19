@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./SignUpAuth.module.css";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { create } from "../../features/newUserSlice";
@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-hot-toast";
 import {setPhone,setPassword} from '../../features/onboardingSlice'
+import { collection, getDocs, query } from "firebase/firestore";
 
 function Auth() {
   const navigate = useNavigate();
@@ -20,8 +21,22 @@ function Auth() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const theme=useSelector((state)=>state.themeColor)
   const dispatch = useDispatch();
-
   const provider = new GoogleAuthProvider();
+  const[metaData,setMetaData]=useState([])
+
+   //CHECK FOR META DATA
+ useEffect(()=>{
+  async function fetchUserDocFromFirebase(){
+    const userDataRef = collection(db, "meta");
+    const q = query(userDataRef);
+    const querySnapshot = await getDocs(q);
+   
+    querySnapshot.forEach((doc) => {
+      setMetaData(doc.data().emailPhone)
+    }); 
+  }
+fetchUserDocFromFirebase()
+},[])
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
@@ -50,6 +65,8 @@ function Auth() {
     e.preventDefault();
     if(password.length<6){toast.error("Password must contain minimum 6 characters");return}
     if (password === confirmPassword) {
+      const data=metaData.filter((item)=>{return item.phone===mobile})
+      if(data.length>0){toast.error("Phone Number already registered");return}
       dispatch(setPassword(password))
       dispatch(setPhone(mobile))
       function generate(n) {

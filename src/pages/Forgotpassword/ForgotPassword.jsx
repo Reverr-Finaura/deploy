@@ -185,10 +185,8 @@ function Auth() {
     setTempOtp(otp);
     try {
       const data = await axios.post("https://server.reverr.io/sendSms", {
-        // const data = await axios.post("http://localhost:3000/sendSms", {
-
         to: email,
-        message: `Your OTP is ${otp}`,
+        message: `Your Change Password OTP is ${otp}`,
       });
       if (data.data.status) {
         toast.success(data.data.message);

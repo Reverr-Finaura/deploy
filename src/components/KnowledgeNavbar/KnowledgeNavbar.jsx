@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
+  phnSidebarInvisible,
   phnSidebarVisible,
   selectPhnSidebar,
 } from "../../features/phnSidebarSlice";
@@ -34,7 +35,7 @@ function KnowledgeNavbar() {
           onClick={() => dispatch(phnSidebarVisible())}
           className={styles.menuIcon}
         />
-        <Link to={"/"} style={{ textDecoration: "none" }}>
+        <Link onClick={()=>dispatch(phnSidebarInvisible())} to={"/"} style={{ textDecoration: "none" }}>
           <div
             className={styles.logo}
             onClick={() => setPhnOptionsVisible(!phnOptionsVisible)}

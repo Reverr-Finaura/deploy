@@ -138,9 +138,7 @@ const sendOTP=async()=>{
   setTempOtp(otp);
   try {
     const data = await axios.post("https://server.reverr.io/sendSms",
-    // const data = await axios.post("http://localhost:3000/sendSms",
-
-    { to:mobileNumber,message:`Your OTP is ${otp}` })
+    { to:mobileNumber,message:`Your Reverr Login OTP is ${otp}` })
   if(data.data.status){
     toast.success(data.data.message)
     setLoading(false)
@@ -200,6 +198,7 @@ const fetchDataOfUserFromDB=async(data)=>{
               {
                 tempOtp&&<>
                 <h1>Enter the OTP Below</h1>
+                <p className={styles.otpSendTextMessage}>OTP has been send to <b>{mobileNumber}</b> . If you want to change the number <span onClick={()=>{setTempOtp(null)}}>click here</span></p>
                 <input className={styles.inputCont} onChange={(e)=>setOtpValue(e.target.value)} type="text" placeholder="OTP" value={otpValue} />
 
                 <button onClick={()=>confirmOtpNLogin()} disabled={loading} className={styles.createCampaignButton}>{loading?<img className={styles.loaderr} src="https://intly-app.s3.ap-south-1.amazonaws.com/WHITE+Spinner-1s-343px.svg" alt="loader" />:"Login"}</button>

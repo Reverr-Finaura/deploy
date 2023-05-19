@@ -465,7 +465,7 @@ uploadImageToFireBase()
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='stateOfUser' className='add-profile-input state-input' placeholder='State' value={generalProfileInfo.stateOfUser} />
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='country' className='add-profile-input country-input' placeholder='Country' value={generalProfileInfo.country} />
                 <input onChange={handleGeneralProfileInfoInputChange} type="text" name='designation' className='add-profile-input fullName-input state-input' placeholder='Designation' value={generalProfileInfo.designation} />
-                <input onChange={handleGeneralProfileInfoInputChange} type="text" name='phone' className='add-profile-input fullName-input country-input' placeholder='Phone Number' value={generalProfileInfo.phone} />  
+                <input readOnly onChange={handleGeneralProfileInfoInputChange} type="text" name='phone' className='add-profile-input fullName-input country-input' placeholder='Phone Number' value={generalProfileInfo.phone} />  
             </div>
             <textarea onChange={handleGeneralProfileInfoInputChange} name="about" className='about-input' rows="4" placeholder="About" value={generalProfileInfo.about}></textarea>
         </div>
