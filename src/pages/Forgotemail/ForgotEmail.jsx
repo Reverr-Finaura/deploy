@@ -32,7 +32,7 @@ function Auth() {
     fetchUserDocFromFirebase();
   }, []);
 
-  console.log(metaData);
+  // console.log(metaData);
 
   // const sendOtp = async (e) => {
   //   e.preventDefault();
