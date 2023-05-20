@@ -32,6 +32,7 @@ import BusinessPlanning from "./pages/AfterKnowledge/BusinessPlanning/BusinessPl
 import Newsletter from "./pages/AfterKnowledge/Newsletter/Newsletter";
 import BuildAudience from "./pages/AfterKnowledge/BuildAudience/BuildAudience";
 import BusinessModal from "./pages/AfterKnowledge/BusinessModal/BusinessModal";
+import BetaTestingOld from "./pages/AfterKnowledge/BetaTesting/BetaTesting";
 import ESOP from "./pages/AfterKnowledge/ESOP/ESOP";
 import FounderAgreement from "./pages/AfterKnowledge/Founder Agreement/FounderAgreement";
 
@@ -182,7 +183,7 @@ function App() {
           path="/financeforstartupslides"
           element={<FinanceforStartupSlides />}
         ></Route>
-        {/* <Route path="/betatesting" element={<BetaTesting />}></Route> */}
+        <Route path="/betatesting" element={<BetaTestingOld />}></Route>
         <Route path="/betatestingslides" element={<BetaSlide />}></Route>
 
         <Route path="/buildingaudience" element={<BuildAudience />}></Route>

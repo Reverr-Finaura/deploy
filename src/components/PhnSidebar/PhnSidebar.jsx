@@ -55,50 +55,50 @@ function Sidebar() {
       >
         <XIcon className={styles.xicon} />
       </div>
-      <NavLink className={styles.navlink} to="/dashboard">
+      <NavLink onClick={()=>dispatch(phnSidebarInvisible())} className={styles.navlink} to="/dashboard">
         <div className={styles.phnSidebarOption}>
           <img src={dashL} alt="" />
           <p>Dashboard</p>
         </div>
       </NavLink>
-      <NavLink className={styles.navlink} to="/knowledge">
+      <NavLink onClick={()=>dispatch(phnSidebarInvisible())} className={styles.navlink} to="/knowledge">
         {" "}
         <div className={styles.phnSidebarOption}>
           <img src={knowL} alt="" />
           <p>Knowledge</p>
         </div>
       </NavLink>
-      <NavLink className={styles.navlink} to="/funding-page">
+      <NavLink onClick={()=>dispatch(phnSidebarInvisible())} className={styles.navlink} to="/funding-page">
         <div className={styles.phnSidebarOption}>
           <img className={styles.fundingIcon} src={fundL} alt="" />
           <p className={styles.fundingIconText}>Funding</p>
         </div>
       </NavLink>
-      <NavLink className={styles.navlink} to="/mentors">
+      <NavLink onClick={()=>dispatch(phnSidebarInvisible())} className={styles.navlink} to="/mentors">
         <div className={styles.phnSidebarOption}>
           <img src={mentL} alt="" />
           <p>Mentorship</p>
         </div>
       </NavLink>
-      <NavLink className={styles.navlink} to="/community">
+      <NavLink onClick={()=>dispatch(phnSidebarInvisible())} className={styles.navlink} to="/community">
         <div className={styles.phnSidebarOption}>
           <img src={comL} alt="" />
           <p>Community</p>
         </div>
       </NavLink>
-      <NavLink className={styles.navlink} to="/start-up">
+      <NavLink onClick={()=>dispatch(phnSidebarInvisible())} className={styles.navlink} to="/start-up">
         <div className={styles.phnSidebarOption}>
           <img src={startL} alt="" />
           <p>Start-up</p>
         </div>
       </NavLink>
-      <NavLink className={styles.navlink} to="/tools">
+      <NavLink onClick={()=>dispatch(phnSidebarInvisible())} className={styles.navlink} to="/tools">
         <div className={styles.phnSidebarOption}>
           <img src={toolsL} alt="" />
           <p>Tools</p>
         </div>
       </NavLink>
-      <NavLink className={styles.navlink} to="/messages">
+      <NavLink onClick={()=>dispatch(phnSidebarInvisible())} className={styles.navlink} to="/messages">
         <div className={styles.phnSidebarOption}>
           <img src={knowL} alt="" />
           <p>Messages</p>

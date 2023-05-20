@@ -9,7 +9,7 @@ const MessagesCont = () => {
    <section className={styles.outerCont}>
     <h1 className={styles.title}>Messsages</h1>
   
-    <UserSearch/>
+    {/* <UserSearch/> */}
     <div className={styles.sorterCont}>
     <p className={styles.sorterText}>Sort by</p>
     <div className={styles.messageSorterCont}>

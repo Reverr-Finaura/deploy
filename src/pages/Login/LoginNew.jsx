@@ -8,10 +8,7 @@ import {
 } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { login, setUserData } from "../../features/userSlice";
-import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
-import Header from "../../components/Header/Header";
-import Footer from "../Footer/Footer";
 import { toast } from "react-hot-toast";
 import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
 import { AiFillCloseCircle } from "react-icons/ai"
@@ -141,8 +138,7 @@ const sendOTP=async()=>{
   setTempOtp(otp);
   try {
     const data = await axios.post("https://server.reverr.io/sendSms",
-
-    { to:mobileNumber,message:`Your OTP is ${otp}` })
+    { to:mobileNumber,message:`Your Reverr Login OTP is ${otp}` })
   if(data.data.status){
     toast.success(data.data.message)
     setLoading(false)
@@ -202,6 +198,7 @@ const fetchDataOfUserFromDB=async(data)=>{
               {
                 tempOtp&&<>
                 <h1>Enter the OTP Below</h1>
+                <p className={styles.otpSendTextMessage}>OTP has been send to <b>{mobileNumber}</b> . If you want to change the number <span onClick={()=>{setTempOtp(null)}}>click here</span></p>
                 <input className={styles.inputCont} onChange={(e)=>setOtpValue(e.target.value)} type="text" placeholder="OTP" value={otpValue} />
 
                 <button onClick={()=>confirmOtpNLogin()} disabled={loading} className={styles.createCampaignButton}>{loading?<img className={styles.loaderr} src="https://intly-app.s3.ap-south-1.amazonaws.com/WHITE+Spinner-1s-343px.svg" alt="loader" />:"Login"}</button>

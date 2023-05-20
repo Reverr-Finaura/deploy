@@ -499,7 +499,7 @@ const Dashboard = () => {
               alt="handwave"
             />
           </div>
-          <div style={{marginLeft:"auto"}} className="usser-name-photo">
+          <div className="usser-name-photo">
             {/* <img className="user-img" src={userImage} alt="user-photo" /> */}
 
             <UserProfileCompletedStatusBar />

@@ -11,7 +11,6 @@ import axios from "axios";
 
 function Auth() {
   const navigate = useNavigate();
-  const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -185,9 +184,9 @@ function Auth() {
     const otp = generate(6);
     setTempOtp(otp);
     try {
-      const data = await axios.post("http://server.reverr.io/sendSms", {
+      const data = await axios.post("https://server.reverr.io/sendSms", {
         to: email,
-        message: `Your OTP is ${otp}`,
+        message: `Your Change Password OTP is ${otp}`,
       });
       if (data.data.status) {
         toast.success(data.data.message);

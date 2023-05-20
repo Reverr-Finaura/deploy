@@ -516,6 +516,7 @@ font-style: normal;
   display: flex;
   flex-direction: column;
   padding-bottom: 2rem;
+
 }
 .edit-communityPostImage-cont {
   width: 96.6%;
@@ -928,6 +929,7 @@ cursor: pointer;
   .editPostContainer-edit-container {
     width: 85%;
   }
+ 
   .reverrCommunityUploadContainerrr {
     margin: auto;
   }
@@ -937,7 +939,7 @@ cursor: pointer;
   }
   .editPostContainer-edit-container {
     margin: auto;
-    width: 68%;
+    width: 88%;
   }
   .sortPostSectionHeading {
     padding: 0.35rem;
@@ -959,5 +961,9 @@ cursor: pointer;
     z-index: 100;
     margin: auto;
     left: 1rem;
+  }
+  .postUploaddSquareCont{
+    width: 60px;
+    height: 40px;
   }
 }

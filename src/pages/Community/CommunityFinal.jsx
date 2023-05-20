@@ -636,7 +636,21 @@ const CommunityFinal = () => {
                   execute and grow.
                 </p> */}
               </div>
+              {(width<600&&scroll > 230)&&<>
+                <div style={{position:"fixed",width:"50px",height:"50px",bottom:"1rem",zIndex:"10000",right:"1rem"}}
+                 onClick={() => setNavbarPostButtonClick((current) => !current)}
+                  id="postUploaddSquareCont"
+                  className="postUploaddSquareCont"
+                >
+                  <img
+                    className="postUploaddSquareContAddImg"
+                    src="./images/add.png"
+                    alt="addIcon"
+                  />
+                </div>
+              </>
 
+              }
               {width < 600 ? (
                 <div
                   onClick={() => setTextAreaIsClick((current) => !current)}
@@ -764,14 +778,14 @@ const CommunityFinal = () => {
                       <MdVideoCameraBack className="assest_icon" />
                       <span className="icon_text">Video</span>
                     </div>
-                    <div className="post_assets_icon_main_div">
+                    {/* <div className="post_assets_icon_main_div">
                       <RiFileSearchLine className="assest_icon" />
                       <span className="icon_text">Files</span>
-                    </div>
-                    <div className="post_assets_icon_main_div">
+                    </div> */}
+                    {/* <div className="post_assets_icon_main_div">
                       <IoLocationSharp className="assest_icon" />
                       <span className="icon_text">Link</span>
-                    </div>
+                    </div> */}
                     {/* <div className="post_assets_icon_main_div">
                         <AiFillCamera className="assest_icon" />
                         <span className="icon_text">Camera</span>

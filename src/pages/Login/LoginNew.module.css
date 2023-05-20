@@ -280,7 +280,15 @@ border: none;
     margin-top: -.6rem;
 }
 
-
+.otpSendTextMessage{
+    margin-top: 1rem;
+    font-size: 1.1rem;
+}
+.otpSendTextMessage>span{
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+}
 
 @media(max-width:1024px){
     .loginOuterCont{

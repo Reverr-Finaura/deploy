@@ -596,12 +596,32 @@ color: rgba(32, 32, 32, 0.5);
     margin: auto;
     margin-top: 1rem;
     }
-
+    
 }
 
 @media(max-width:600px){
     #mentor-add-profile-page {
         margin: auto;
         width: 95%;
+    }
+    .profile-info-section-title {
+        width: 90%;
+    }
+    .add-profile-info-form,.how-you-want-to-meet-people,#know-about-your-education,.read-only-form{
+        width: 80%;
+    }
+    .know-about-your-education-form,.professional-profile-section-form,#what-is-your-industry-section{
+width: 90%;
+    }
+    .what-is-your-industry-options-cont{
+        width: 100%;
+    }
+    .pd-industry-option {
+        width: 61%;
+        text-align: center;
+    }
+    .what-is-your-industry-options{
+        margin: auto;
+        margin-top: 1rem;
     }
 }

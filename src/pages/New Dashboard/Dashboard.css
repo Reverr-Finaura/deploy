@@ -78,6 +78,9 @@
   display: flex;
   /* margin-left: auto; */
 }
+.usser-name-photo{
+  margin-left: auto;
+}
 .greeting {
   font-family: "Poppins";
   font-style: normal;
@@ -670,6 +673,9 @@ border-image-slice: 1; */
   }
   .user-container {
     width: 80%;
+  }
+  .usser-name-photo{
+    margin-left: 0;
   }
 }
 @media (max-width: 656px) {
