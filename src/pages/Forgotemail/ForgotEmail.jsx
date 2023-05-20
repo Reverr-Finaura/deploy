@@ -138,8 +138,8 @@ function Auth() {
       });
       if (data.data.status) {
         toast.success(data.data.message);
-        console.log("done");
         setLoading(false);
+        navigate("/forgotpassword");
       }
     } catch (error) {
       console.log("err", error);
