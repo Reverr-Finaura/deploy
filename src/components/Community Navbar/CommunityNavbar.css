@@ -78,12 +78,12 @@
 .setting-dropdown-cont {
   width: 200px;
   /* height: 250px; */
-  height: 150px;
+  height: 180px;
   background-color: var(--bg-sub-card);
   border-radius: 6px;
   position: absolute;
-  /* bottom: -18.5rem; */
-  bottom: -12.5rem;
+  bottom: -14.5rem;
+  /* bottom: -12.5rem; */
   display: flex;
   flex-direction: column;
   cursor: default;
@@ -121,4 +121,9 @@
   /* color: red; */
   /* color: #FEFF86; */
   color: var(--btnNewColorTheme);
+}
+.navbar_dropdown_changePassword_btn_img{
+  width: 50px;
+    margin: auto;
+    margin-top: -.75rem;
 }

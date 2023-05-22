@@ -25,6 +25,8 @@ import ReverrDarkIcon from "../../images/Frame 6266720.png";
 import {AiFillBell, AiFillSetting} from "react-icons/ai"
 import {FaUserAlt} from "react-icons/fa"
 import {MdOutlineKeyboardArrowDown} from "react-icons/md"
+import emailjs from "@emailjs/browser";
+import axios from "axios";
 
 const NavBarFinal = () => {
   const user = useSelector((state) => state.user);
@@ -39,6 +41,7 @@ const NavBarFinal = () => {
   const [notificationList, setNotificationList] = useState([]);
   const theme = useSelector((state) => state.themeColor);
   const [scroll, setScroll] = useState(0);
+  const[loading,setLoading]=useState(false)
   window.onscroll = () => {
     setScroll(window.scrollY);
   };
@@ -260,6 +263,51 @@ useEffect(() => {
     }
   };
 
+
+  function generateOTP(n) {
+    var add = 1,
+      max = 12 - add;
+    if (n > max) {
+      return generateOTP(max) + generateOTP(n - max);
+    }
+    max = Math.pow(10, n + add);
+    var min = max / 10;
+    var number = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    return ("" + number).substring(add);
+  }
+
+const changePassBtnClick=async()=>{
+  setLoading(true)
+  const otp = generateOTP(6);
+  var templateParams = {
+    from_name: "Reverr",
+    to_name: userDoc.name,
+    to_email: userDoc.email,
+    otp,
+  };
+  try {
+    await emailjs.send(
+      "service_lfmmz8k",
+      "template_n3pcht5",
+      templateParams,
+      "user_FR6AulWQMZry87FBzhKNu"
+    )
+    await axios.post("https://server.reverr.io/sendSms",
+    { to:userDoc?.phone?userDoc?.phone:userDoc?.mobile,message:`Your Change Password OTP is ${otp}` })
+
+  } catch (error) {
+    console.log("FAILED...", error);
+    setLoading(false)
+  }
+
+  navigate("/change-user-password", {
+    state: otp
+})
+  setLoading(false)
+}
+
+
   return (
     <>
       <section id={scroll > 1 ? "navbar-finalScrolled" : "navbar-final"}>
@@ -421,18 +469,22 @@ useEffect(() => {
 
             {isSettingButtonClick ? (
               <div className="setting-dropdown-cont">
-                {/* <button
-                  onClick={() => navigate("/change-user-password")}
-                  className="setting-dropdown-button"
-                >
-                  Change Password
-                </button> */}
+              
                 <button
                   onClick={() => navigate("/userprofile")}
                   className="setting-dropdown-button"
                 >
                   My Profile
                 </button>
+                
+                {/* <button style={{cursor:loading?"default":"",height:"50px"}} disabled={loading}
+                  onClick={(e) =>{e.stopPropagation(); changePassBtnClick()}}
+                  className="setting-dropdown-button"
+                >
+                {loading?<img className="navbar_dropdown_changePassword_btn_img" src="https://intly-app.s3.ap-south-1.amazonaws.com/WHITE+Spinner-1s-343px.svg" alt="loader" />:"Change Password"}
+                  
+                </button> */}
+
                 {/* <button
                   onClick={() => navigate("/user-edit-profile")}
                   className="setting-dropdown-button"

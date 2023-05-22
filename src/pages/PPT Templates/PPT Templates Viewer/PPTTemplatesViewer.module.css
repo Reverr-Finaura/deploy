@@ -37,3 +37,9 @@
     cursor: pointer;
     z-index: 1001;
 }
+
+@media(max-width:600px){
+    .outerCont{
+        margin-top: -2rem;
+    }
+}

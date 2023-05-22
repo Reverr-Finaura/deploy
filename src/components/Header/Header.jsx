@@ -127,8 +127,9 @@ const Header = ({theme}) => {
                     })
                     .then(() => {
                       toast.success("Sucessfully logged out");
+                      navigate("/")
                     })
-              : () => navigate("/login")
+              : () => navigate("/")
           }
           className={styles.authButton}
         >

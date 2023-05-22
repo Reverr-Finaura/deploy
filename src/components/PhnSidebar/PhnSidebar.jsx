@@ -1,7 +1,7 @@
 import { XIcon } from "@heroicons/react/outline";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import {
   phnSidebarInvisible,
   selectPhnSidebar,
@@ -24,13 +24,18 @@ import { auth } from "../../firebase";
 import { logout, selectUser } from "../../features/userSlice";
 import { remove } from "../../features/newUserSlice";
 import { toast } from "react-toastify";
+import { BiArrowBack } from "react-icons/bi";
+import logOutIconn from "../../images/bx_log-out.png"
+
 function Sidebar() {
   const user = useSelector(selectUser);
   const navigate = useNavigate();
   const phnSidebar = useSelector(selectPhnSidebar);
   const dispatch = useDispatch();
   const [width, setWidth] = useState(window.innerWidth);
-
+  const routes = useLocation();
+  const pptPath = routes.pathname.includes("/pptTemplates/");
+  const docPath = routes.pathname.includes("/documentTemplates/");
   const updateWidth = () => {
     setWidth(window.innerWidth);
   };
@@ -111,9 +116,26 @@ function Sidebar() {
                     })
               : () => navigate("/login")
           } className={styles.sidebar_final_icon_signout_cont}>
-        <img src="./images/bx_log-out.png" alt="icon" />
+        <img src={logOutIconn} alt="icon" />
         <p>Log Out</p>
       </div>
+      {pptPath ? (
+          <button
+            onClick={() => navigate(-1)}
+            className="sidebar-final-logout-btn"
+          >
+            {" "}
+            <BiArrowBack style={{marginRight:"1rem",color:"rgba(42, 114, 222, 0.92)"}} /> Back
+          </button>
+        ) : docPath ? (
+          <button
+            onClick={() => navigate(-1)}
+            className="sidebar-final-logout-btn"
+          >
+            {" "}
+            <BiArrowBack style={{marginRight:"1rem",color:"rgba(42, 114, 222, 0.92)"}}/> Back
+          </button>
+        ) : null}
       {/* <NavLink className={styles.navlink} to="/upgrade">
         <div className={styles.phnSidebarOption}>
           <img src="./images/crown.svg" alt="" />

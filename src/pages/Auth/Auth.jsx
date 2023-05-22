@@ -49,6 +49,7 @@ function Auth() {
   const signUpEmail = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
+      
       function generate(n) {
         var add = 1,
           max = 12 - add;

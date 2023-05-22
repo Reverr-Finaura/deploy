@@ -164,82 +164,23 @@ const SidebarFinal = () => {
             <p className="sidebar-final-icon-name">Messages</p>
           </div>
         </NavLink>
-        {/* <div className='sidebar-final-line'></div>
-<NavLink style={{textDecoration:"none"}} to="/userprofile">
-      <div className='sidebar-final-icon-name-cont'>
-        <img className='sidebar-final-icon' src="./images/Vector4.png" alt="icon" />
-        <p className='sidebar-final-icon-name'>Profile</p>
-      </div>
-</NavLink>
-
-      <div onClick={() => {
-              dispatch(showChat());
-            }} className='sidebar-final-icon-name-cont'>
-        <img className='sidebar-final-icon' src="./images/Vector (2).png" alt="icon" />
-        <p className='sidebar-final-icon-name'>Messages</p>
-      </div>
-
-<NavLink style={{textDecoration:"none" }} to="#">
-      <div className='sidebar-final-icon-name-cont'>
-        <img className='sidebar-final-icon' src="./images/Vector (3).png" alt="icon" />
-        <p className='sidebar-final-icon-name'>Settings</p>
-      </div>
-</NavLink> */}
-
-        {/* <div onClick={user ? () => signOut(auth).then(() => {dispatch(logout());dispatch(remove());})
-                    .then(() => {
-                      toast.success("Sucessfully logged out");
-                      navigate("/");
-                    })
-              : () => navigate("/login")
-          } className='sidebar-final-icon-name-cont'>
-        <img className='sidebar-final-icon' src="./images/bx_log-out.png" alt="icon" />
-        <p className='sidebar-final-icon-name'>Log Out</p>
-      </div> */}
-        {/* {pptPath ? (
+        {pptPath ? (
           <button
-            onClick={() => navigate("/pptTemplates")}
+            onClick={() => navigate(-1)}
             className="sidebar-final-logout-btn"
           >
             {" "}
-            <BiArrowBack /> Back
+            <BiArrowBack style={{marginRight:"1rem",color:"rgba(42, 114, 222, 0.92)"}} /> Back
           </button>
         ) : docPath ? (
           <button
-            onClick={() => navigate("/documentTemplates")}
+            onClick={() => navigate(-1)}
             className="sidebar-final-logout-btn"
           >
             {" "}
-            <BiArrowBack /> Back
+            <BiArrowBack style={{marginRight:"1rem",color:"rgba(42, 114, 222, 0.92)"}}/> Back
           </button>
-        ) : ( */}
-        {/* <button
-            onClick={
-              user
-                ? () =>
-                    signOut(auth)
-                      .then(() => {
-                        dispatch(logout());
-                        dispatch(remove());
-                        dispatch(removeUserDoc());
-                        dispatch(removeUserFundingDoc());
-                      })
-                      .then(() => {
-                        toast.success("Sucessfully logged out");
-                        navigate("/");
-                      })
-                : () => navigate("/login")
-            }
-            className="sidebar-final-logout-btn"
-          >
-            <img
-              className="sidebar-final-icon-logout"
-              src={logoutIconn}
-              alt="icon"
-            />
-            Log Out
-          </button>
-        )} */}
+        ) : null}
       </section>
       {chat && <Chat />}
     </>
