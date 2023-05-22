@@ -153,6 +153,7 @@ function Auth() {
         <div className={styles.leftCont}>
           <div className={styles.brandLogoCont}>
             <img
+            style={{cursor:"pointer"}} onClick={()=>navigate("/")}
               className={styles.brandLogo}
               src={
                 theme === "light-theme"

@@ -210,7 +210,7 @@ const fetchDataOfUserFromDB=async(data)=>{
      <section className={styles.loginOuterCont}>
         <div className={styles.leftCont}>
             <div className={styles.brandLogoCont}>
-                <img className={styles.brandLogo} src={theme === "light-theme"? "/images/Reverr Black 1.png": "/images/reaver-logo.svg"} alt="" />
+                <img style={{cursor:"pointer"}} onClick={()=>navigate("/")} className={styles.brandLogo} src={theme === "light-theme"? "/images/Reverr Black 1.png": "/images/reaver-logo.svg"} alt="" />
                 <p className={styles.brandName}>REVERR</p>
             </div>
             <div className={styles.leftMidCont}>
