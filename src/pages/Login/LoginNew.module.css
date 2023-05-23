@@ -1,317 +1,323 @@
-.loginOuterCont{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    padding: 0rem 3rem;
+.loginOuterCont {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  padding: 0rem 3rem;
 }
-.leftCont{
-    width: 49%;
-    /* min-height: 100vh; */
-    display: flex;
-    flex-direction: column;
-    padding-top: 2rem;
-   
+.leftCont {
+  width: 49%;
+  /* min-height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
 }
-.brandLogoCont{
-    display: flex;
-    flex-direction: column;
-    width: 110px;
-    height: 90px;
-    padding: 0rem;
+.brandLogoCont {
+  display: flex;
+  flex-direction: column;
+  width: 110px;
+  height: 90px;
+  padding: 0rem;
 }
-.brandLogo{
-    width: 100%;
-    height: 100%;
+.brandLogo {
+  width: 100%;
+  height: 100%;
 }
-.brandName{
-    color: #2A72DE;
-    font-family: "Poppins";
-    font-size: 1.2rem;
-    text-align: center;
-    font-weight: 700;
-    margin-top: .5rem;
+.brandName {
+  color: #2a72de;
+  font-family: "Poppins";
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 0.5rem;
 }
-.leftMidCont{
-   width: fit-content;
-   margin-top: 7rem;
-   margin-left: 2rem;
+.leftMidCont {
+  width: fit-content;
+  margin-top: 7rem;
+  margin-left: 2rem;
 }
-.leftMidContTopText{
-    font-family: 'Poppins';
-font-style: normal;
-font-weight: 600;
-font-size: 3rem;
-line-height: 39px;
-letter-spacing: 0.09em;
+.leftMidContTopText {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 3rem;
+  line-height: 39px;
+  letter-spacing: 0.09em;
 
-color: #1A114D;
-margin-bottom: 1rem;
+  color: #1a114d;
+  margin-bottom: 1rem;
 }
-.leftMidContBottomText{
-    
-font-family: 'poppins';
-font-style: normal;
-font-weight: 500;
-font-size: 2.5rem;
-line-height: 40px;
-display: flex;
-align-items: center;
-text-align: center;
-letter-spacing: 0.03em;
-color: #1A114D;
+.leftMidContBottomText {
+  font-family: "poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2.5rem;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: #1a114d;
 }
-.leftBottomCont{
-    width: fit-content;
-   margin-top: 3rem;
-   margin-left: 2rem; 
+.leftBottomCont {
+  width: fit-content;
+  margin-top: 3rem;
+  margin-left: 2rem;
 }
-.leftBottomContTopText,.leftBottomContBottomText{
-    font-family: 'Exo';
-font-style: normal;
-font-weight: 600;
-font-size: 1.5rem;
-line-height: 169.15%;
-letter-spacing: 0.14em;
-text-transform: capitalize;
-color: #4A4A4A;
-
+.leftBottomContTopText,
+.leftBottomContBottomText {
+  font-family: "Exo";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 169.15%;
+  letter-spacing: 0.14em;
+  text-transform: capitalize;
+  color: #4a4a4a;
 }
 
-.rightCont{
-    width: 50%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #F4F4F4;
-box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25), 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
-border-radius: 40px 0px 0px 40px;
+.rightCont {
+  width: 50%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f4f4f4;
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25),
+    0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+  border-radius: 40px 0px 0px 40px;
 }
 
-.rightContHeading{
-    font-family: 'Exo';
-font-style: normal;
-font-weight: 900;
-font-size: 1.2rem;
-line-height: 23px;
-letter-spacing: 0.175em;
+.rightContHeading {
+  font-family: "Exo";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 1.2rem;
+  line-height: 23px;
+  letter-spacing: 0.175em;
 
-color: #000000;
-}
-
-.googleBtn{
-    align-items: center;
-    cursor: pointer;
-    display: flex;
-    margin-top: 2rem;
-    background: #F0F0F0;
-border: 0.709201px solid rgba(0, 0, 0, 0.15);
-border-radius: 7.09201px;
-padding: .5rem 1rem;
-font-family: 'Exo';
-font-style: normal;
-font-weight: 500;
-font-size: 1rem;
-line-height: 14px;
-color: #898989;
-}
-.otpButton{
-    align-items: center;
-    cursor: pointer;
-    display: flex;
-    margin-top: 2rem;
-    background: #F0F0F0;
-border: 0.709201px solid rgba(0, 0, 0, 0.15);
-border-radius: 7.09201px;
-padding: .5rem 1rem;
-font-family: 'Exo';
-font-style: normal;
-font-weight: 500;
-font-size: 1rem;
-line-height: 14px;
-color: #898989;
-margin-left: 1.5rem;
-}
-.gIconCont{
-    margin: auto;
-    margin-right: .5rem;
-    width: 25px;
-    height: 25px;
-}
-.gICon{
-    width: 100%;
-    height: 100%;
+  color: #000000;
 }
 
-.orText{
-    font-style: normal;
-font-weight: 400;
-font-size: 1.1rem;
-line-height: 12px;
-color: rgba(0, 0, 0, 0.37);
-font-family: "Exo";
-margin-top: 1.5rem;
+.googleBtn {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  margin-top: 2rem;
+  background: #f0f0f0;
+  border: 0.709201px solid rgba(0, 0, 0, 0.15);
+  border-radius: 7.09201px;
+  padding: 0.5rem 1rem;
+  font-family: "Exo";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 14px;
+  color: #898989;
+}
+.otpButton {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  margin-top: 2rem;
+  background: #f0f0f0;
+  border: 0.709201px solid rgba(0, 0, 0, 0.15);
+  border-radius: 7.09201px;
+  padding: 0.5rem 1rem;
+  font-family: "Exo";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 14px;
+  color: #898989;
+  margin-left: 1.5rem;
+}
+.gIconCont {
+  margin: auto;
+  margin-right: 0.5rem;
+  width: 25px;
+  height: 25px;
+}
+.gICon {
+  width: 100%;
+  height: 100%;
 }
 
-.form{
-    display: flex;
-    flex-direction: column;
-    margin-top: 1.5rem;
-    width: 55%;
-    margin-bottom:2rem;
-}
-.input{
-    border: none;
-    border-bottom:0.6px solid #CCCBCB;
-    padding: 1rem;
-    font-family: 'Exo';
-font-style: normal;
-font-weight: 500;
-font-size: 1.2rem;
-line-height: 12px;
-letter-spacing: 0.05em;
-
-color: #898989;
-background-color: transparent;
-margin-bottom: 2rem;
+.orText {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 12px;
+  color: rgba(0, 0, 0, 0.37);
+  font-family: "Exo";
+  margin-top: 1.5rem;
 }
 
-.Button{
-    background: #2A72DE;
-    cursor: pointer;
-border: 0.709201px solid rgba(0, 0, 0, 0.15);
-border-radius: 7.09201px;
-font-family: 'Exo';
-font-style: normal;
-font-weight: 700;
-font-size: 1rem;
-line-height: 12px;
-letter-spacing: 0.09em;
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+  width: 55%;
+  margin-bottom: 2rem;
+}
+.input {
+  border: none;
+  border-bottom: 0.6px solid #cccbcb;
+  padding: 1rem;
+  font-family: "Exo";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 12px;
+  letter-spacing: 0.05em;
 
-color: #FFFFFF;
-padding: 1rem;
-width: 80%;
-margin: auto;
+  color: #898989;
+  background-color: transparent;
+  margin-bottom: 2rem;
 }
 
-.randomtext{
-    font-family: 'Exo';
-font-style: normal;
-font-weight: 500;
-font-size: 1rem;
-line-height: 12px;
-letter-spacing: 0.05em;
+.Button {
+  background: #2a72de;
+  cursor: pointer;
+  border: 0.709201px solid rgba(0, 0, 0, 0.15);
+  border-radius: 7.09201px;
+  font-family: "Exo";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 12px;
+  letter-spacing: 0.09em;
 
-color: #898989;
-margin-bottom: 1.5rem;
+  color: #ffffff;
+  padding: 1rem;
+  width: 80%;
+  margin: auto;
+}
 
+.randomtext {
+  font-family: "Exo";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 12px;
+  letter-spacing: 0.05em;
+
+  color: #898989;
+  margin-bottom: 1.5rem;
 }
-.linkk{
-    color: #91A2D1;
-    cursor: pointer;
-    text-decoration: none;
+.linkk {
+  color: #91a2d1;
+  cursor: pointer;
+  text-decoration: none;
 }
-.optionButtonCont{
-    display: flex;
+.optionButtonCont {
+  display: flex;
 }
 /* OTP MODAL */
-.outerCont{
-    width: 100%;
-    height: 100%;
-    background-color: rgb(0, 0, 0,.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
+.outerCont {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 }
 
-.innerCont{
-    width: 500px;
-    height: 250px;
-    background-color: white;
-    border-radius: 15px;
-    padding: 1rem;
-    display: flex;
+.innerCont {
+  width: 500px;
+  height: 270px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.closeIcon {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #2a72de;
+}
+.innerCont > h1 {
+  font-size: 1.3rem;
+}
+.inputCont {
+  margin-top: 1.3rem;
+  width: 80%;
+  border: 1px solid #d3d1d1;
+  border-radius: 11px;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+.inputCont:focus {
+  outline: none;
+}
+.createCampaignButton {
+  color: white;
+  font-size: 1.1rem;
+  padding: 1rem 1.5rem;
+  width: 180px;
+  height: 60px;
+  border-radius: 11px;
+  margin-top: 0.4rem;
+  background-color: #2a72de;
+  border: none;
+}
+
+.otp_timer {
+  margin-top: 0.5rem;
+}
+
+.createCampaignButton:disabled {
+  background-color: #87b7ff;
+  cursor: not-allowed;
+}
+
+.loaderr {
+  width: 50px;
+  margin: auto;
+  margin-top: -0.6rem;
+}
+
+.otpSendTextMessage {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+.otpSendTextMessage > span {
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .loginOuterCont {
     flex-direction: column;
-    position: relative;
-
-}
-.closeIcon{
-    position: absolute;
-    right: .5rem;
-    top: .5rem;
-    font-size: 2rem;
-    cursor: pointer;
-    color: #2A72DE;
-}
-.innerCont>h1{
-    font-size: 1.3rem;
-
-}
-.inputCont{
-    margin-top: 1.3rem;
-    width: 80%;
-    border: 1px solid #d3d1d1;
-    border-radius: 11px;
-    padding: 1rem;
-    font-size: 1.1rem;
-}
-.inputCont:focus{
-    outline: none;
-}
-.createCampaignButton{
-color: white;
-font-size: 1.1rem;
-padding: 1rem 1.5rem;
-width: 180px;
-height: 60px;   
-border-radius: 11px;
-margin-top: 1.5rem;
-background-color: #2A72DE;
-border: none;
-}
-.loaderr{
-    width: 50px;
-    margin: auto;
-    margin-top: -.6rem;
-}
-
-.otpSendTextMessage{
-    margin-top: 1rem;
-    font-size: 1.1rem;
-}
-.otpSendTextMessage>span{
-    text-decoration: underline;
-    color: blue;
-    cursor: pointer;
-}
-
-@media(max-width:1024px){
-    .loginOuterCont{
-        flex-direction: column;
-        padding-left: .25rem;
-    }
-
-    .leftCont,.rightCont{
-        width: 95%;
-        margin: auto;
-        text-align: center;
-
-    }
-    .rightCont{
-        border-radius: 6px;
-        margin-top: 3rem;
-    }
-   .brandLogoCont{
-    margin-bottom: 4rem;
-   }
-    .leftBottomCont,.leftMidCont{
-      margin: auto;
-      margin-top: 2rem;
-        
-    }
+    padding-left: 0.25rem;
   }
+
+  .leftCont,
+  .rightCont {
+    width: 95%;
+    margin: auto;
+    text-align: center;
+  }
+  .rightCont {
+    border-radius: 6px;
+    margin-top: 3rem;
+  }
+  .brandLogoCont {
+    margin-bottom: 4rem;
+  }
+  .leftBottomCont,
+  .leftMidCont {
+    margin: auto;
+    margin-top: 2rem;
+  }
+}
