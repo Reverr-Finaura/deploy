@@ -471,13 +471,13 @@ const changePassBtnClick=async()=>{
                   My Profile
                 </button>
 
-                {/* <button style={{cursor:loading?"default":"",height:"50px"}} disabled={loading}
+                <button style={{cursor:loading?"default":"",height:"50px"}} disabled={loading}
                   onClick={(e) =>{e.stopPropagation(); changePassBtnClick()}}
                   className="setting-dropdown-button"
                 >
                 {loading?<img className="navbar_dropdown_changePassword_btn_img" src="https://intly-app.s3.ap-south-1.amazonaws.com/WHITE+Spinner-1s-343px.svg" alt="loader" />:"Change Password"}
                   
-                </button> */}
+                </button>
 
                 {/* <button
                   onClick={() => navigate("/user-edit-profile")}
