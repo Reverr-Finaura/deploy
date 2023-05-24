@@ -17,7 +17,31 @@ function Auth() {
   const [tempUserData, setTempUserData] = useState({});
   const [loading, setLoading] = useState(false);
   const [metaData, setMetaData] = useState([]);
+  const [tempOtp, setTempOtp] = useState(null);
+  const [newOtp, setNewOtp] = useState("");
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (seconds >= 0) {
+        setSeconds(seconds - 1);
+      }
+
+      if (seconds === 0) {
+        if (minutes === 0) {
+          clearInterval(interval);
+        } else {
+          setSeconds(59);
+          setMinutes(minutes - 1);
+        }
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [seconds]);
   //CHECK FOR META DATA
   useEffect(() => {
     async function fetchUserDocFromFirebase() {
@@ -32,87 +56,67 @@ function Auth() {
     fetchUserDocFromFirebase();
   }, []);
 
-  // console.log(metaData);
+  const sendOtp = async (e) => {
+    e.preventDefault();
+    let tempData = metaData.filter((item) => {
+      return item.phone === mobile;
+    })[0];
+    if (tempData.length === 0) {
+      toast.error("Phone number not registered yet");
+      return;
+    }
 
-  // const sendOtp = async (e) => {
-  //   e.preventDefault();
+    setLoading(true);
+    let tempDocData = {};
+    const userDataRef = collection(db, "Users");
+    const q = query(userDataRef);
+    const querySnapshot = await getDocs(q);
 
-  //   if (/^\d+$/.test(email)) {
-  //     sendOTPByPhone();
-  //     return;
-  //   }
+    querySnapshot.forEach((doc) => {
+      if (doc.id === tempData.email) {
+        tempDocData = { name: doc.data().name, password: doc.data().password };
+        setTempUserData({
+          name: doc.data().name,
+          password: doc.data().password,
+          email: doc.data().email,
+        });
+      }
+    });
+    if (JSON.stringify(tempDocData) === "{}") {
+      toast.error("Email does not exist in database");
+      setLoading(false);
+      return;
+    }
+    function generate(n) {
+      var add = 1,
+        max = 12 - add;
+      if (n > max) {
+        return generate(max) + generate(n - max);
+      }
+      max = Math.pow(10, n + add);
+      var min = max / 10;
+      var number = Math.floor(Math.random() * (max - min + 1)) + min;
 
-  //   setLoading(true);
-  //   let tempDocData = {};
-  //   const userDataRef = collection(db, "Users");
-  //   const q = query(userDataRef);
-  //   const querySnapshot = await getDocs(q);
-
-  //   querySnapshot.forEach((doc) => {
-  //     if (doc.id === email) {
-  //       tempDocData = { name: doc.data().name, password: doc.data().password };
-  //       setTempUserData({
-  //         name: doc.data().name,
-  //         password: doc.data().password,
-  //         email: doc.data().email,
-  //       });
-  //     }
-  //   });
-  //   if (JSON.stringify(tempDocData) === "{}") {
-  //     toast.error("Email does not exist in database");
-  //     setLoading(false);
-  //     return;
-  //   }
-  //   function generate(n) {
-  //     var add = 1,
-  //       max = 12 - add;
-  //     if (n > max) {
-  //       return generate(max) + generate(n - max);
-  //     }
-  //     max = Math.pow(10, n + add);
-  //     var min = max / 10;
-  //     var number = Math.floor(Math.random() * (max - min + 1)) + min;
-
-  //     return ("" + number).substring(add);
-  //   }
-  //   const otp = generate(6);
-  //   setTempOtp(otp);
-  //   var templateParams = {
-  //     from_name: "Reverr",
-  //     to_name: tempDocData.name,
-  //     to_email: email,
-  //     otp,
-  //   };
-
-  //   emailjs
-  //     .send(
-  //       "service_lfmmz8k",
-  //       "template_n3pcht5",
-  //       templateParams,
-  //       "user_FR6AulWQMZry87FBzhKNu"
-  //     )
-  //     .then(
-  //       function (response) {
-  //         console.log("SUCCESS!", response.status, response.text);
-  //         setLoading(false);
-  //       },
-  //       function (error) {
-  //         console.log("FAILED...", error);
-  //         setLoading(false);
-  //       }
-  //     )
-  //     .then(() => {
-  //       toast.success("An OTP has been sent to your e-mail");
-  //       setLoading(false);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       toast.error(error.message);
-  //       setLoading(false);
-  //     });
-  //   setMinutes(3);
-  //   setSeconds(0);
-  // };
+      return ("" + number).substring(add);
+    }
+    const otp = generate(6);
+    setTempOtp(otp);
+    try {
+      const data = await axios.post("https://server.reverr.io/sendSms", {
+        to: mobile,
+        message: `Your OTP is ${otp}`,
+      });
+      if (data.data.status) {
+        toast.success(data.data.message);
+        setLoading(false);
+      }
+    } catch (error) {
+      setLoading(false);
+      console.log("err", error);
+    }
+    setMinutes(3);
+    setSeconds(0);
+  };
 
   const sendSMSByPhone = async (e) => {
     e.preventDefault();
@@ -134,7 +138,7 @@ function Auth() {
     try {
       const data = await axios.post("https://server.reverr.io/sendSms", {
         to: mobile,
-        message: `Your email is ${tempData.email}`,
+        message: `Your registered email is: ${tempData.email}`,
       });
       if (data.data.status) {
         toast.success(data.data.message);
@@ -153,7 +157,8 @@ function Auth() {
         <div className={styles.leftCont}>
           <div className={styles.brandLogoCont}>
             <img
-            style={{cursor:"pointer"}} onClick={()=>navigate("/")}
+              style={{ cursor: "pointer" }}
+              onClick={() => navigate("/")}
               className={styles.brandLogo}
               src={
                 theme === "light-theme"
@@ -179,28 +184,67 @@ function Auth() {
         </div>
         <div className={styles.rightCont}>
           <h1 className={styles.rightContHeading}>FORGOT EMAIL</h1>
-          {/* {tempOtp && ( */}
-          <form onSubmit={sendSMSByPhone} className={styles.form}>
-            <input
-              className={styles.input}
-              onChange={(e) => setMobile(e.target.value)}
-              value={mobile}
-              type="text"
-              placeholder="Enter Your Mobile Number"
-              required
-            />
-            <button disabled={loading} className={styles.Button} type="submit">
-              Send SMS
-            </button>
-          </form>
-          {/* )} */}
+          {!tempOtp && (
+            <form onSubmit={sendOtp} className={styles.form}>
+              <input
+                className={styles.input}
+                onChange={(e) => setMobile(e.target.value)}
+                value={mobile}
+                type="text"
+                placeholder="Enter Your Mobile Number"
+                required
+              />
+              <button
+                disabled={loading}
+                className={styles.Button}
+                type="submit"
+              >
+                Send OTP
+              </button>
+            </form>
+          )}
+          {tempOtp && (
+            <form onSubmit={sendSMSByPhone} className={styles.form}>
+              <input
+                className={styles.input}
+                onChange={(e) => setNewOtp(e.target.value)}
+                value={newOtp}
+                type="text"
+                placeholder="Enter OTP"
+                required
+              />
+              {seconds > 0 || minutes > 0 ? (
+                <p className={styles.otp_timer}>
+                  Otp valid till: {minutes < 10 ? `0${minutes}` : minutes}:
+                  {seconds < 10 ? `0${seconds}` : seconds}
+                </p>
+              ) : (
+                <p className={styles.otp_timer}>Didn't recieve code?</p>
+              )}
 
-          {/* <p className={styles.links}>
-            Already have an account?{" "}
-            <Link className={styles.linkk} to="/">
-              Login Here
-            </Link>
-          </p> */}
+              <button
+                style={{
+                  cursor: loading ? "default" : "",
+                  marginBottom: "1rem",
+                }}
+                disabled={loading || seconds > 0 || minutes > 0}
+                className={styles.Button}
+                type="button"
+                onClick={sendOtp}
+              >
+                Resend OTP
+              </button>
+
+              <button
+                style={{ cursor: loading ? "default" : "" }}
+                disabled={loading}
+                className={styles.Button}
+                type="submit"
+              >
+                Send sms
+              </button>
+            </form>
+          )}
         </div>
       </section>
     </>
