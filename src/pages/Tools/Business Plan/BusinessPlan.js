@@ -1,12 +1,12 @@
 
 import React, { useEffect, useState } from 'react'
 import styles from "./BusinessPlan.module.css"
-import loadMore from "../../../images/Frame 6267252.svg"
 import {AiOutlineTag} from "react-icons/ai"
 import { collection, getDocs } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import { useNavigate } from 'react-router-dom'
 import DocSkeleton from '../../../components/Post Skeleton/Doc Skeleton/DocSkeleton'
+import { FiArrowUpRight } from 'react-icons/fi'
 
 const BusinessPlan = ({dataFilter,setDataFilter,tag,contWidth}) => {
   const [AllTagDocuments, setAllTagDocuments] = useState([]);
@@ -57,7 +57,7 @@ setTagDocToShow(AllTagDocuments)
       {tagDocToShow.length===0&&<DocSkeleton cards={2}/>}
     </div>
     <div className={styles.docCont}>
-    {dataFilter==="All"&&<img onClick={()=>setDataFilter(tag.toLowerCase())} className={styles.loadMoreImg} src={loadMore} alt="loadMore" />}
+    {dataFilter==="All"&&<h1 onClick={()=>{setDataFilter("pitch deck");window.scrollTo({ top: 0, behavior: 'smooth' })}} className={styles.loadMoreImg}>See All <span><FiArrowUpRight className={styles.loadMoreImgIcon}/></span></h1>}
 
 
     {tagDocToShow.map((doc)=>{

@@ -65,8 +65,8 @@ import SocialMedia from "./pages/AfterKnowledge/SocialMedia/SocialMedia";
 import NotFound from "./pages/NotFound/NotFound";
 import BuildAudienceSlides from "./pages/AfterKnowledge/BuildAudience/BuildAudienceSlides";
 import BusinessModalSlides from "./pages/AfterKnowledge/BusinessModal/BusinessModalSlides";
-// import CompetitorAnalysis from "./pages/AfterKnowledge/CompetitorAnalysis/CompetitorAnalysis";
-// import CompetitorAnalysisSlides from "./pages/AfterKnowledge/CompetitorAnalysis/CompetitorAnalysisSlides";
+import CompetitorAnalysis from "./pages/AfterKnowledge/CompetitorAnalysis/CompetitorAnalysis";
+import CompetitorAnalysisSlides from "./pages/AfterKnowledge/CompetitorAnalysis/CompetitorAnalysisSlides";
 import ProductDevelopment from "./pages/AfterKnowledge/ProductDevelopment/ProductDevelopment";
 import ProductDevelopmentSlide from "./pages/AfterKnowledge/ProductDevelopment/ProductDevelopmentSlide";
 import ThinkingOfStartup from "./pages/AfterKnowledge/ThinkingOfStartup/ThinkingOfStartup";
@@ -204,14 +204,14 @@ function App() {
           element={<BusinessPlanningSlides />}
         ></Route>
 
-        {/* <Route
+        <Route
           path="/competitoranalysis"
           element={<CompetitorAnalysis />}
         ></Route>
         <Route
           path="/competitoranalysisslides"
           element={<CompetitorAnalysisSlides />}
-        ></Route> */}
+        ></Route>
 
         <Route
           path="/productdevelopment"

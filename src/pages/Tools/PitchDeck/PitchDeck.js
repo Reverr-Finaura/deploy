@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import styles from "./PitchDeck.module.css"
-import im from "../../../images/Rectangle.png"
 import {GrView} from "react-icons/gr"
-import {FiDownload} from "react-icons/fi"
-import loadMore from "../../../images/Frame 6267252.svg"
+import {FiArrowUpRight, FiDownload} from "react-icons/fi"
 import { useNavigate } from 'react-router-dom'
+
 const PitchDeck = ({pptList,dataFilter,setDataFilter,contWidth}) => {
   const navigate=useNavigate()
     const[hover,setHover]=useState(false)
@@ -24,7 +23,8 @@ const handleDownload = (linkk) => {
        <h1 className={styles.title}>Pitch Deck</h1>
 
        <div className={styles.pptCont}>
-       {dataFilter==="All"&&<img onClick={()=>setDataFilter("pitch deck")} className={styles.loadMoreImg} src={loadMore} alt="loadMore" />}
+       {dataFilter==="All"&&<h1 onClick={()=>{setDataFilter("pitch deck");window.scrollTo({ top: 0, behavior: 'smooth' })}} className={styles.loadMoreImg}>See All <span><FiArrowUpRight className={styles.loadMoreImgIcon}/></span></h1>}
+       
       {pptList.map((ppt,idx)=>{return <>
         <div style={{width:(contWidth<1450&&contWidth>1300)?"30%":""}} onMouseEnter={()=>{setHover(true);setCurrentPptIndex(idx)}} onMouseLeave={()=>{setHover(false);setCurrentPptIndex(null)}} className={styles.pptOuterCont}>
         <div className={styles.imgCont}>

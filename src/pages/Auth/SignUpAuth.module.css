@@ -179,6 +179,7 @@ color: #FFFFFF;
 padding: 1rem;
 width: 80%;
 margin: auto;
+height: 50px;
 }
 
 .randomtext{
@@ -224,7 +225,11 @@ margin-bottom: 1.5rem;
     font-size: 17px;
     cursor: pointer;
   }
-
+  .loaderr {
+    width: 50px;
+    margin: auto;
+    margin-top: -1.1rem;
+  }
   @media(max-width:1024px){
     .loginOuterCont{
         flex-direction: column;

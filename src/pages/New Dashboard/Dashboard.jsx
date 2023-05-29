@@ -74,6 +74,8 @@ const Dashboard = () => {
     setWidth(window.innerWidth);
   };
 
+ 
+
   useEffect(() => {
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);

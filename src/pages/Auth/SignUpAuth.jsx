@@ -9,6 +9,7 @@ import emailjs from "@emailjs/browser";
 import { toast } from "react-hot-toast";
 import {setPhone,setPassword} from '../../features/onboardingSlice'
 import { collection, getDocs, query } from "firebase/firestore";
+import axios from "axios";
 
 function Auth() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ function Auth() {
   const dispatch = useDispatch();
   const provider = new GoogleAuthProvider();
   const[metaData,setMetaData]=useState([])
-
+const[loading,setLoading]=useState(false)
    //CHECK FOR META DATA
  useEffect(()=>{
   async function fetchUserDocFromFirebase(){
@@ -61,12 +62,13 @@ fetchUserDocFromFirebase()
       });
   };
 
-  const signUpEmail = (e) => {
+  const signUpEmail = async(e) => {
     e.preventDefault();
-    if(password.length<6){toast.error("Password must contain minimum 6 characters");return}
+    setLoading(true)
+    if(password.length<6){toast.error("Password must contain minimum 6 characters");setLoading(false);return}
     if (password === confirmPassword) {
       const data=metaData.filter((item)=>{return item.phone===mobile})
-      if(data.length>0){toast.error("Phone Number already registered");return}
+      if(data.length>0){toast.error("Phone Number already registered");setLoading(false);return}
       dispatch(setPassword(password))
       dispatch(setPhone(mobile))
       function generate(n) {
@@ -98,32 +100,53 @@ fetchUserDocFromFirebase()
         to_email: email,
         otp,
       };
-      
-      emailjs
+      try {
+       const response=await emailjs
         .send(
           "service_lfmmz8k",
           "template_n3pcht5",
           templateParams,
           "user_FR6AulWQMZry87FBzhKNu"
         )
-        .then(
-          function (response) {
-            console.log("SUCCESS!", response.status, response.text);
-          },
-          function (error) {
-            console.log("FAILED...", error);
-          }
-        )
-        .then(() => {
-          navigate("/enterotp");
-        })
-        .then(() => {
-          toast.success("An OTP has been sent to your e-mail");
-        })
-        .catch((error) => {
-          console.log(error);
-          toast.error(error.message);
+        const data = await axios.post("https://server.reverr.io/sendSms", {
+          to: mobile,
+          message: `Your Reverr Signup OTP is ${otp}`,
         });
+        console.log("SUCCESS!", response.status, response.text);
+        console.log("otpMobile SUCCESS!",data)
+        navigate("/enterotp");
+        setLoading(false)
+        toast.success("An OTP has been sent to your e-mail and registered mobile number");
+      } catch (error) {
+        console.log(error);
+        toast.error(error.text);
+        setLoading(false)
+      }
+      // emailjs
+      //   .send(
+      //     "service_lfmmz8k",
+      //     "template_n3pcht5",
+      //     templateParams,
+      //     "user_FR6AulWQMZry87FBzhKNu"
+      //   )
+      //   .then(
+      //     function (response) {
+      //       console.log("SUCCESS!", response.status, response.text);
+      //     },
+      //     function (error) {
+      //       console.log("FAILED...", error);
+      //     }
+      //   )
+      //   .then(() => {
+      //     navigate("/enterotp");
+      //   })
+      //   .then(() => {
+      //     toast.success("An OTP has been sent to your e-mail");
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //     toast.error(error.message);
+      //   });
     } else {
       toast.error("passwords do not match");
     }
@@ -202,7 +225,15 @@ fetchUserDocFromFirebase()
 
 
 
-            <button className={styles.Button} type="submit">Sign Up</button>
+            <button disabled={loading} style={{cursor:loading?"default":""}} className={styles.Button} type="submit">{loading ? (
+                      <img
+                        className={styles.loaderr}
+                        src="https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Utils%2FWHITE%20Spinner-1s-343px.svg?alt=media&token=54b9d527-0969-41ff-a598-0fc389b2575a"
+                        alt="loader"
+                      />
+                    ) : (
+                      "Sign Up"
+                    )}</button>
            </form>
            <p className={styles.links}>Already have an account? <Link className={styles.linkk} to="/login">Login Here
             </Link></p>

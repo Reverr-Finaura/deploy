@@ -481,7 +481,7 @@ const changePassBtnClick=async()=>{
                   onClick={(e) =>{e.stopPropagation(); changePassBtnClick()}}
                   className="setting-dropdown-button"
                 >
-                {loading?<img className="navbar_dropdown_changePassword_btn_img" src="https://intly-app.s3.ap-south-1.amazonaws.com/WHITE+Spinner-1s-343px.svg" alt="loader" />:"Change Password"}
+                {loading?<img className="navbar_dropdown_changePassword_btn_img" src="https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Utils%2FWHITE%20Spinner-1s-343px.svg?alt=media&token=54b9d527-0969-41ff-a598-0fc389b2575a" alt="loader" />:"Change Password"}
                   
                 </button>
 

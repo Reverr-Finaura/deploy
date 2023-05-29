@@ -261,7 +261,7 @@ function Auth() {
                     {loading ? (
                       <img
                         className={styles.loaderr}
-                        src="https://intly-app.s3.ap-south-1.amazonaws.com/WHITE+Spinner-1s-343px.svg"
+                        src="https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Utils%2FWHITE%20Spinner-1s-343px.svg?alt=media&token=54b9d527-0969-41ff-a598-0fc389b2575a"
                         alt="loader"
                       />
                     ) : (
@@ -315,7 +315,7 @@ function Auth() {
                       {loading ? (
                         <img
                           className={styles.loaderr}
-                          src="https://intly-app.s3.ap-south-1.amazonaws.com/WHITE+Spinner-1s-343px.svg"
+                          src="https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Utils%2FWHITE%20Spinner-1s-343px.svg?alt=media&token=54b9d527-0969-41ff-a598-0fc389b2575a"
                           alt="loader"
                         />
                       ) : (
@@ -331,7 +331,7 @@ function Auth() {
                       {loading ? (
                         <img
                           className={styles.loaderr}
-                          src="https://intly-app.s3.ap-south-1.amazonaws.com/WHITE+Spinner-1s-343px.svg"
+                          src="https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Utils%2FWHITE%20Spinner-1s-343px.svg?alt=media&token=54b9d527-0969-41ff-a598-0fc389b2575a"
                           alt="loader"
                         />
                       ) : (
