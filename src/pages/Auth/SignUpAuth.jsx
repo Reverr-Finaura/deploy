@@ -106,7 +106,8 @@ fetchUserDocFromFirebase()
           "service_lfmmz8k",
           "template_n3pcht5",
           templateParams,
-          "user_FR6AulWQMZry87FBzhKNu"
+          // "user_FR6AulWQMZry87FBzhKNu"
+          "dVExxiI8hYMCyc0sY"
         )
         const data = await axios.post("https://server.reverr.io/sendSms", {
           to: mobile,
@@ -127,7 +128,7 @@ fetchUserDocFromFirebase()
       //     "service_lfmmz8k",
       //     "template_n3pcht5",
       //     templateParams,
-      //     "user_FR6AulWQMZry87FBzhKNu"
+      //     "dVExxiI8hYMCyc0sY"
       //   )
       //   .then(
       //     function (response) {

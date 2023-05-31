@@ -291,7 +291,7 @@ const changePassBtnClick=async()=>{
       "service_lfmmz8k",
       "template_n3pcht5",
       templateParams,
-      "user_FR6AulWQMZry87FBzhKNu"
+      "dVExxiI8hYMCyc0sY"
     )
     await axios.post("https://server.reverr.io/sendSms",
     { to:userDoc?.phone?userDoc?.phone:userDoc?.mobile,message:`Your Change Password OTP is ${otp}` })
