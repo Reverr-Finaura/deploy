@@ -67,6 +67,7 @@ function Auth() {
     }
 
     setLoading(true);
+
     let tempDocData = {};
     const userDataRef = collection(db, "Users");
     const q = query(userDataRef);
@@ -130,6 +131,11 @@ function Auth() {
     }
 
     setLoading(true);
+    if (newOtp !== tempOtp) {
+      toast.error("OTP does not match");
+      setLoading(false);
+      return;
+    }
     // let tempDocData = {};
     // const userDataRef = collection(db, "Users");
     // const q = query(userDataRef);
