@@ -5,20 +5,26 @@ import img from "../../../images/Arranging Files.png"
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
-import { useDispatch } from 'react-redux'
-import {setPhone,setPassword} from "../../../features/onboardingSlice"
+import { useDispatch, useSelector } from 'react-redux'
+import {setPhone,setPassword, setcountryCode} from "../../../features/onboardingSlice"
 import { useEffect } from 'react'
 import { collection, getDocs, query } from 'firebase/firestore'
-import { db } from '../../../firebase'
+import { auth, db } from '../../../firebase'
+import CountryCodePicker from '../../../Utils/Country Code Picker/CountryCodePicker'
+import { selectNewUser } from '../../../features/newUserSlice'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 
 
 const GoogleSignupInfoPage = () => {
+const selectedCountry=useSelector((state)=>state.countryCode)
 const dispatch=useDispatch()
 const navigate=useNavigate()
 const[mob,setMob]=useState("")
 const [pass,setPass]=useState("")
 const [confirmPass,setConfirmPass]=useState("")
 const[metaData,setMetaData]=useState([])
+const newUser = useSelector(selectNewUser);
+// console.log("newUser",newUser)
 
  //CHECK FOR META DATA
  useEffect(()=>{
@@ -40,9 +46,31 @@ const handleNext=()=>{
     if(pass.length<6){toast.error("Password must contian minimum 6 letters");return}
     const data=metaData.filter((item)=>{return item.phone===mob})
     if(data.length>0){toast.error("Phone Number already registered");return}
+
+  if(newUser.loginType==="linkedin"){
+    createUserWithEmailAndPassword(auth, newUser.email,pass)
+        .then(() => {
+          dispatch(setPhone(mob));
+          dispatch(setcountryCode(selectedCountry.dialCode.slice(1)))
+          dispatch(setPassword(pass))
+        })
+        .then(() => {
+          // navigate("/startup-list");
+          navigate("/OnboardingScreen");
+          return
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          toast.error(errorMessage);
+          return
+        });
+  }
+  if(newUser.loginType!=="linkedin"){
     dispatch(setPhone(mob));
+    dispatch(setcountryCode(selectedCountry.dialCode.slice(1)))
     dispatch(setPassword(pass))
-navigate("/OnboardingScreen")
+    navigate("/OnboardingScreen")
+  }
 }
 
   return (
@@ -55,7 +83,10 @@ navigate("/OnboardingScreen")
     <div className={styles.dataCont}>
         <div className={styles.left}>
             <h1>Let’s get general info first !!</h1>
+            <div className={styles.mobileNumberOuterCont}>
             <textarea onChange={(e)=>setMob(e.target.value)} rows="3" type="text" placeholder='Phone Number ' value={mob} />
+            <CountryCodePicker/>
+            </div>
             <input onChange={(e)=>setPass(e.target.value)} type="password" placeholder='Create Your Password ' value={pass} />
             <input onChange={(e)=>setConfirmPass(e.target.value)} type="password" placeholder='Confirm Your Password ' value={confirmPass} />
             <button onClick={handleNext}>Next</button>

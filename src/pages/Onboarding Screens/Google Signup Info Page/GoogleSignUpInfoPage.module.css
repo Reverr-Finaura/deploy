@@ -36,6 +36,16 @@ text-transform: capitalize;
 color: #0E0E0E;
 margin: auto;
 }
+.mobileNumberOuterCont{
+    position: relative;
+    width: 76%;
+    margin-bottom: .5rem;
+}
+.mobileNumberOuterCont textarea{
+    padding-left: 8.5rem;
+    width: 100%;
+    margin: 0;
+}
 .left button{
     width: 150px;
 height: 50px;
@@ -98,4 +108,9 @@ cursor: pointer;
     .first_third_dataCont_left textarea{
         width: 80%;
     } 
+}
+@media(max-width:600px){
+    .mobileNumberOuterCont{
+        width: 71%;
+    }
 }

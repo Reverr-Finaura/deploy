@@ -293,12 +293,13 @@ const changePassBtnClick=async()=>{
       templateParams,
       "dVExxiI8hYMCyc0sY"
     )
-    await axios.post("https://server.reverr.io/sendSms",
-    { to:userDoc?.phone?userDoc?.phone:userDoc?.mobile,message:`Your Change Password OTP is ${otp}` })
+    await axios.post("https://server.reverr.io/sendSmsCode",
+    { to:userDoc?.phone?userDoc?.phone:userDoc?.mobile,code:userDoc?.countryCode,message:`Your Change Password OTP is ${otp}` })
 
   } catch (error) {
     console.log("FAILED...", error);
     setLoading(false)
+    toast.error(error?.response?.data?.message)
   }
 
   navigate("/change-user-password", {

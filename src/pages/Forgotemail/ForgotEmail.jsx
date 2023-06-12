@@ -8,8 +8,10 @@ import emailjs from "@emailjs/browser";
 import { toast } from "react-hot-toast";
 import { collection, doc, getDocs, query, updateDoc } from "firebase/firestore";
 import axios from "axios";
+import CountryCodePicker from "../../Utils/Country Code Picker/CountryCodePicker";
 
 function Auth() {
+  const selectedCountry=useSelector((state)=>state.countryCode)
   const navigate = useNavigate();
   const [mobile, setMobile] = useState("");
   // const [email, setEmail] = useState("");
@@ -102,8 +104,9 @@ function Auth() {
     const otp = generate(6);
     setTempOtp(otp);
     try {
-      const data = await axios.post("https://server.reverr.io/sendSms", {
+      const data = await axios.post("https://server.reverr.io/sendSmsCode", {
         to: mobile,
+        code:selectedCountry.dialCode.slice(1),
         message: `Your OTP is ${otp}`,
       });
       if (data.data.status) {
@@ -113,6 +116,7 @@ function Auth() {
     } catch (error) {
       setLoading(false);
       console.log("err", error);
+      toast.error(error?.response?.data?.message)
     }
     setMinutes(3);
     setSeconds(0);
@@ -136,8 +140,9 @@ function Auth() {
     // const querySnapshot = await getDocs(q);
 
     try {
-      const data = await axios.post("https://server.reverr.io/sendSms", {
+      const data = await axios.post("https://server.reverr.io/sendSmsCode", {
         to: mobile,
+        code:selectedCountry.dialCode.slice(1),
         message: `Your registered email is: ${tempData.email}`,
       });
       if (data.data.status) {
@@ -148,6 +153,7 @@ function Auth() {
     } catch (error) {
       console.log("err", error);
       setLoading(false);
+      toast.error(error?.response?.data?.message)
     }
   };
 
@@ -186,14 +192,17 @@ function Auth() {
           <h1 className={styles.rightContHeading}>FORGOT EMAIL</h1>
           {!tempOtp && (
             <form onSubmit={sendOtp} className={styles.form}>
+            <div className={styles.inputPhoneContainer}>
               <input
-                className={styles.input}
+                className={styles.inputPhoneNumber}
                 onChange={(e) => setMobile(e.target.value)}
                 value={mobile}
                 type="text"
                 placeholder="Enter Your Mobile Number"
                 required
               />
+              <CountryCodePicker/>
+              </div>
               <button
                 disabled={loading}
                 className={styles.Button}

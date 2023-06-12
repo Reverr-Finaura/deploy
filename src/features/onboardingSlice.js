@@ -13,7 +13,8 @@ const initialState={
     designation:"",
     userType:"Individual",
     phone:"",
-    password:""
+    password:"",
+    countryCode:""
 }
 
 const onboardingSlice=createSlice({
@@ -22,6 +23,9 @@ const onboardingSlice=createSlice({
 reducers:{
    setPhone:(state,action)=>{
       state.phone= action.payload
+         }, 
+         setcountryCode:(state,action)=>{
+      state.countryCode= action.payload
          },
          setPassword:(state,action)=>{
             state.password= action.payload
@@ -62,5 +66,5 @@ state.about=action.payload
 }
 })
 
-export const {setPhone,setPassword, setProfileImg,  setAbout,  setEducation,  setCurrentPosition,setDesignation,  setCurrentCompany,  setWhatULookingFor,  setIndustry,  setLinkedinLink,  setTwitterLink,  setInstagramLink } = onboardingSlice.actions;
+export const {setPhone,setcountryCode,setPassword, setProfileImg,  setAbout,  setEducation,  setCurrentPosition,setDesignation,  setCurrentCompany,  setWhatULookingFor,  setIndustry,  setLinkedinLink,  setTwitterLink,  setInstagramLink } = onboardingSlice.actions;
 export default onboardingSlice.reducer;

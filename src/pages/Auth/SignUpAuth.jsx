@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
 import styles from "./SignUpAuth.module.css";
 import { auth, db } from "../../firebase";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, fetchSignInMethodsForEmail } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { create } from "../../features/newUserSlice";
 import { Link, useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-hot-toast";
-import {setPhone,setPassword} from '../../features/onboardingSlice'
+import {setPhone,setPassword, setcountryCode} from '../../features/onboardingSlice'
 import { collection, getDocs, query } from "firebase/firestore";
 import axios from "axios";
+import CountryCodePicker from "../../Utils/Country Code Picker/CountryCodePicker";
+import useQuery from "../../Utils/useQuery";
+import linkedinLogin from "../../images/linkedinImage.png"
+import { AiFillCloseCircle } from "react-icons/ai";
 
 function Auth() {
+  const selectedCountry=useSelector((state)=>state.countryCode)
   const navigate = useNavigate();
   const [userType, setUserType] = useState("FOUNDER");
   const [firstName, setFirstName] = useState("");
@@ -25,6 +30,63 @@ function Auth() {
   const provider = new GoogleAuthProvider();
   const[metaData,setMetaData]=useState([])
 const[loading,setLoading]=useState(false)
+const queryy = useQuery();
+const user_code = queryy.get('code')
+const linkedinLoginError = queryy.get('error')
+const[isSignUpUsingLinkedIn,setIsSignUpUsingLinkedIn]=useState(false)
+const [tempLinkedinUserData,setTempLinkedinUserData]=useState({})
+const[getLinkedinUrl,setGetLinkedinUrl]=useState(false)
+const[linkedinProfileUrl,setLinkedinProfileUrl]=useState("")
+
+//LINKEDIN LOGIN
+const getUserDataFromLinkedin=async(code)=>{
+
+  try {
+    const data=await axios.post('http://localhost:4000/getUserDataFromLinkedin/signup',{code:code},{
+      headers: {
+        "Content-Type": "application/json"},
+  })
+  // console.log("data",data.data.data)
+  if(data.status===200){
+    const signInMethods = await fetchSignInMethodsForEmail(auth,data?.data?.data?.email);
+    if(signInMethods.length>0){
+     toast.error("This email is already registered with us. Please login with your credentials")
+     setIsSignUpUsingLinkedIn(false)
+
+    }
+   
+    else{
+      setIsSignUpUsingLinkedIn(true)
+      setTempLinkedinUserData(data?.data?.data)
+    }
+  }
+
+  } catch (error) {
+    console.log("err",error)
+    toast.error(error.response.data.message)
+    setIsSignUpUsingLinkedIn(false)
+  }
+ 
+}
+
+useEffect(()=>{
+  if(user_code){
+   getUserDataFromLinkedin(user_code)
+  
+  
+  }
+  },[user_code])
+  
+  useEffect(()=>{
+    if(linkedinLoginError){
+     navigate("/signup")
+     toast.error(linkedinLoginError)
+    }
+    },[linkedinLoginError])
+
+
+
+
    //CHECK FOR META DATA
  useEffect(()=>{
   async function fetchUserDocFromFirebase(){
@@ -38,6 +100,24 @@ const[loading,setLoading]=useState(false)
   }
 fetchUserDocFromFirebase()
 },[])
+
+
+const manuallySignupUserLinkedin=()=>{
+  dispatch(
+    create({
+      email: tempLinkedinUserData.email,
+      uid: tempLinkedinUserData.sub,
+      displayName: tempLinkedinUserData.name,
+      profilePic:null,
+      userType: userType,
+      loginType: "linkedin",
+    })
+  );
+  navigate("/onboardingGeneralInfoScreen")
+}
+
+
+
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
@@ -71,6 +151,7 @@ fetchUserDocFromFirebase()
       if(data.length>0){toast.error("Phone Number already registered");setLoading(false);return}
       dispatch(setPassword(password))
       dispatch(setPhone(mobile))
+      dispatch(setcountryCode(selectedCountry.dialCode.slice(1)))
       function generate(n) {
         var add = 1,
           max = 12 - add;
@@ -91,6 +172,7 @@ fetchUserDocFromFirebase()
           userType,
           otp,
           password,
+          loginType: "email-pass",
         })
       );
   
@@ -109,8 +191,9 @@ fetchUserDocFromFirebase()
           // "user_FR6AulWQMZry87FBzhKNu"
           "dVExxiI8hYMCyc0sY"
         )
-        const data = await axios.post("https://server.reverr.io/sendSms", {
+        const data = await axios.post("https://server.reverr.io/sendSmsCode", {
           to: mobile,
+          code:selectedCountry.dialCode.slice(1),
           message: `Your Reverr Signup OTP is ${otp}`,
         });
         console.log("SUCCESS!", response.status, response.text);
@@ -122,6 +205,7 @@ fetchUserDocFromFirebase()
         console.log(error);
         toast.error(error.text);
         setLoading(false)
+        toast.error(error?.response?.data?.message)
       }
       // emailjs
       //   .send(
@@ -153,8 +237,52 @@ fetchUserDocFromFirebase()
     }
   };
 
+  const isValidLinkedinUrl = (url) => {
+    return /(https?:\/\/(www.)|(www.))?linkedin.com\/(mwlite\/|m\/)?in\/[a-zA-Z0-9_.-]+\/?/.test(url);
+  };
+
+const handleLinkedinSignup=()=>{
+  window.open("http://localhost:4000/api/linkedin/signup/authorize","_self")
+}
+
+const checkLinkedinProfieUrlAndProcced=()=>{
+  if(!isValidLinkedinUrl(linkedinProfileUrl)){
+    toast.error("Invalid Url entered")
+    setLinkedinProfileUrl("")
+   setTimeout(()=>{
+toast.dismiss()
+   },1500)
+  }
+  else{
+    //make api call to get data
+  }
+}
+
+
+
   return (
     <>
+    {isSignUpUsingLinkedIn&&<>
+      <section className={styles.linkedinSignupOuterCont}>
+        <div className={styles.linkedinSignupInnerCont}>
+        <AiFillCloseCircle onClick={()=>setIsSignUpUsingLinkedIn(false)} className={styles.closeIcon}/>
+          <h1 className={styles.linkedinSinupHeading}>How do you want to proceed?</h1>
+
+          {!getLinkedinUrl&&<button onClick={()=>setGetLinkedinUrl(true)} className={styles.shareLinkedinUrlButton}>Share you linkedin profile url to generate your profile automatcally</button>}
+          {
+            getLinkedinUrl&&<>
+              <div className={styles.getLinkedinUrlCont}>
+                <input onChange={(e)=>{setLinkedinProfileUrl(e.target.value)}} value={linkedinProfileUrl} type="text" placeholder="Enter Linkedin Profile Url" />
+                <button onClick={checkLinkedinProfieUrlAndProcced} className={styles.linkedinSignupProceedButton}>Proceed</button>
+              </div>
+            </>
+          }
+          <button onClick={manuallySignupUserLinkedin} className={styles.manualCreateProfilButton}>Manually Create your Profile</button>
+        </div>
+      </section>
+    </>
+
+    }
        <section className={styles.loginOuterCont}>
         <div className={styles.leftCont}>
             <div className={styles.brandLogoCont}>
@@ -172,7 +300,13 @@ fetchUserDocFromFirebase()
         </div>
         <div className={styles.rightCont}>
            <h1 className={styles.rightContHeading}>SIGNUP</h1> 
+           <div className={styles.optionButtonCont}>
            <button onClick={signInWithGoogle} className={styles.googleBtn}><span className={styles.gIconCont}><img className={styles.gICon} src="/images/icons8-google-48 1.png" alt="gICon" /></span>Sign up with google </button>
+           <button style={{marginLeft:"1rem"}} onClick={handleLinkedinSignup} className={styles.googleBtn}><span className={styles.gIconCont}><img className={styles.gICon} src={linkedinLogin} alt="gICon" /></span>Sign up with Linkedin </button>
+           {/* <div onClick={handleLinkedinSignup} className={styles.linkedinLoginCont}>
+            <img src={linkedinLogin} alt="linkedinLogin" />
+          </div> */}
+          </div>
            <p className={styles.orText}>-OR-</p>
            <form onSubmit={signUpEmail} className={styles.form}>
            <input
@@ -191,14 +325,17 @@ fetchUserDocFromFirebase()
                 placeholder="Last Name"
                 required
               />
+              <div className={styles.inputPhoneContainer}>
               <input
-             className={styles.input}
+             className={styles.inputPhoneNumber}
                 onChange={(e) => setMobile(e.target.value)}
                 value={mobile}
                 type="text"
                 placeholder="Your Phone Number"
                 required
               />
+             <CountryCodePicker/>
+              </div>
              <input
              className={styles.input}
                 onChange={(e) => setEmail(e.target.value)}

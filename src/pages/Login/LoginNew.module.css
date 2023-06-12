@@ -2,7 +2,7 @@
   width: 100%;
   height: 100vh;
   display: flex;
-  padding: 0rem 3rem;
+  /* padding: 0rem 3rem; */
 }
 .leftCont {
   width: 49%;
@@ -76,6 +76,7 @@
 }
 
 .rightCont {
+  position: relative;
   width: 50%;
   min-height: 100vh;
   display: flex;
@@ -160,6 +161,33 @@
   width: 55%;
   margin-bottom: 2rem;
 }
+.inputPhoneContainer{
+  position: relative;
+  width: 100%;
+  display: flex;
+  height: fit-content;
+  margin-bottom: 2rem;
+}
+.inputPhoneNumber{
+  border: none;
+  border-bottom:0.6px solid #CCCBCB;
+  padding: 1rem;
+  font-family: 'Exo';
+font-style: normal;
+font-weight: 500;
+font-size: 1.2rem;
+line-height: 12px;
+letter-spacing: 0.05em;
+
+color: #898989;
+background-color: transparent;
+width: 100%;
+margin-left: auto;
+padding-left:8rem;
+}
+.inputPhoneNumber:focus{
+  outline: none;
+}
 .input {
   border: none;
   border-bottom: 0.6px solid #cccbcb;
@@ -192,6 +220,7 @@
   padding: 1rem;
   width: 80%;
   margin: auto;
+  height: 60px;
 }
 
 .randomtext {
@@ -248,13 +277,27 @@
 .innerCont > h1 {
   font-size: 1.3rem;
 }
-.inputCont {
-  margin-top: 1.3rem;
+.writeOtpInputCont{
   width: 80%;
+  margin-top: 1.3rem;
   border: 1px solid #d3d1d1;
   border-radius: 11px;
   padding: 1rem;
   font-size: 1.1rem;
+}
+.inputContNumberContainer{
+  width: 80%;
+  position: relative;
+  margin-top: 1.3rem;
+}
+.inputCont {
+
+  width: 88%;
+  border: 1px solid #d3d1d1;
+  border-radius: 11px;
+  padding: 1rem;
+  font-size: 1.1rem;
+  padding-left: 7.5rem;
 }
 .inputCont:focus {
   outline: none;
@@ -295,6 +338,33 @@
   color: blue;
   cursor: pointer;
 }
+.linkedinLoginCont{
+width: 220px;
+height: 45px;
+border-radius: 6px;
+margin-top: 1rem;
+cursor: pointer;
+}
+.linkedinLoginCont>img{
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+}
+
+
+.likedinLogiinInOuterCont{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0,.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
 
 @media (max-width: 1024px) {
   .loginOuterCont {
@@ -320,4 +390,20 @@
     margin: auto;
     margin-top: 2rem;
   }
+}
+@media(max-width:600px){
+  .innerCont{
+    width: 90%;
+  }
+  .inputCont{
+    width: 80%;
+  }
+  .loginOuterCont{
+    padding: 0;
+  }
+  .createCampaignButton{
+    width: 140px;
+    height: 50px;
+  }
+  
 }

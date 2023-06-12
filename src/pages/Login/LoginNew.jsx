@@ -5,6 +5,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
+  fetchSignInMethodsForEmail,
 } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { login, setUserData } from "../../features/userSlice";
@@ -13,8 +14,13 @@ import { toast } from "react-hot-toast";
 import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
 import { AiFillCloseCircle } from "react-icons/ai";
 import axios from "axios";
+import CountryCodePicker from "../../Utils/Country Code Picker/CountryCodePicker";
+import useQuery from "../../Utils/useQuery";
+import linkedinLogin from "../../images/Sign-In-Large---Active.png"
+import whiteSpin from "../../images/WHITE Spinner-1s-343px.svg"
 
 function Auth() {
+  const selectedCountry=useSelector((state)=>state.countryCode)
   const [metaData, setMetaData] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,6 +33,95 @@ function Auth() {
   const navigate = useNavigate();
   const theme = useSelector((state) => state.themeColor);
   const provider = new GoogleAuthProvider();
+  const[showCodePicker,setShowCodePicker]=useState(false)
+  const queryy = useQuery();
+  const user_code = queryy.get('code')
+  const linkedinLoginError = queryy.get('error')
+  const[isLogginInUsingLinkedIn,setIsLogginInUsingLinkedIn]=useState(false)
+
+
+//LINKEDIN LOGIN
+  const getUserDataFromLinkedin=async(code)=>{
+
+    try {
+      const data=await axios.post('http://localhost:4000/getUserDataFromLinkedin',{code:code},{
+        headers: {
+          "Content-Type": "application/json"},
+    })
+    // console.log("data",data.data.data)
+    if(data.status===200){
+      const signInMethods = await fetchSignInMethodsForEmail(auth,data?.data?.data?.email);
+      if(signInMethods.length>0){
+        if(signInMethods[0]==="password"){
+          let userDocument={}
+          const userDataRef = collection(db, "Users");
+          const q = query(userDataRef);
+          const querySnapshot = await getDocs(q);
+        
+          querySnapshot.forEach((doc) => {
+           
+            if (doc.id === data?.data?.data?.email) {
+              userDocument=doc.data()
+            }
+          });
+    
+          if(JSON.stringify(userDocument)!=="{}"){
+            try {
+              await signInWithEmailAndPassword(auth, userDocument.email, userDocument.password);
+              toast.success("Successfully Logged In");
+              navigate("/");
+              setLoading(false);
+              setIsLogginInUsingLinkedIn(false)
+            } catch (error) {
+              console.log("err", error);
+              setLoading(false);
+              setIsLogginInUsingLinkedIn(false)
+            }
+        
+          }
+          else{
+            toast.error('User is not registered yet, Kindly signup first.')
+            setIsLogginInUsingLinkedIn(false)
+          }
+        }
+        else if(signInMethods[0]==="google.com"){
+          toast.error('User is already registered using google, Kindly signin using google.')
+          setIsLogginInUsingLinkedIn(false)
+        }
+        else{
+          toast.error('User is not registered yet, Kindly signup first.')
+          setIsLogginInUsingLinkedIn(false)
+        }
+      }
+     
+      else{
+        toast.error('User is not registered yet, Kindly signup first.')
+        setIsLogginInUsingLinkedIn(false)
+      }
+    }
+  
+    } catch (error) {
+      console.log("err",error)
+      toast.error(error.response.data.message)
+      setIsLogginInUsingLinkedIn(false)
+    }
+   
+  }
+
+useEffect(()=>{
+if(user_code){
+ getUserDataFromLinkedin(user_code)
+ setIsLogginInUsingLinkedIn(true)
+
+}
+},[user_code])
+
+useEffect(()=>{
+  if(linkedinLoginError){
+   navigate("/")
+   toast.error(linkedinLoginError)
+  }
+  },[linkedinLoginError])
 
   //CHECK FOR META DATA
   useEffect(() => {
@@ -175,17 +270,21 @@ function Auth() {
     const otp = generate(6);
     setTempOtp(otp);
     try {
-      const data = await axios.post("https://server.reverr.io/sendSms", {
+      const data = await axios.post("https://server.reverr.io/sendSmsCode", {
         to: mobileNumber,
+        code:selectedCountry.dialCode.slice(1),
         message: `Your Reverr Login OTP is ${otp}`,
       });
       if (data.data.status) {
         toast.success(data.data.message);
         setLoading(false);
       }
+
     } catch (error) {
       setLoading(false);
       console.log("err", error);
+      toast.error(error.response.data.message)
+      setTempOtp(null);
     }
     setMinutes(3);
     setSeconds(0);
@@ -230,9 +329,24 @@ function Auth() {
       setLoading(false);
     }
   };
+  function onlyNumbers(str) {
+    return /^[0-9]+$/.test(str);
+  }
+  useEffect(()=>{
+    if(email.length===0){setShowCodePicker(false);return}
+    if(onlyNumbers(email)){setShowCodePicker(true);return}
+    if(!onlyNumbers(email)){setShowCodePicker(false);return}
+      },[email])
+
+
+const handleLinkedinLogin=()=>{
+  window.open("http://localhost:4000/api/linkedin/authorize","_self")
+}
+
 
   return (
     <>
+    
       {signInWithOTPModal && (
         <>
           <section className={styles.outerCont}>
@@ -244,6 +358,7 @@ function Auth() {
               {!tempOtp && (
                 <>
                   <h1>Enter below Your Mobile Number</h1>
+                  <div className={styles.inputContNumberContainer}>
                   <input
                     className={styles.inputCont}
                     onChange={(e) => setMobileNumber(e.target.value)}
@@ -251,7 +366,8 @@ function Auth() {
                     placeholder="Mobile Number"
                     value={mobileNumber}
                   />
-
+                  <CountryCodePicker/>
+                  </div>
                   <button
                     onClick={() => sendOTP()}
                     disabled={loading}
@@ -286,7 +402,7 @@ function Auth() {
                     </span>
                   </p>
                   <input
-                    className={styles.inputCont}
+                    className={styles.writeOtpInputCont}
                     onChange={(e) => setOtpValue(e.target.value)}
                     type="text"
                     placeholder="OTP"
@@ -374,7 +490,9 @@ function Auth() {
             </h1>
           </div>
         </div>
+
         <div className={styles.rightCont}>
+       
           <h1 className={styles.rightContHeading}>LOGIN</h1>
           <div className={styles.optionButtonCont}>
             <button onClick={signInWithGoogle} className={styles.googleBtn}>
@@ -401,17 +519,23 @@ function Auth() {
               Log in with OTP{" "}
             </button>
           </div>
+          <div onClick={handleLinkedinLogin} className={styles.linkedinLoginCont}>
+            <img src={linkedinLogin} alt="linkedinLogin" />
+          </div>
           <p className={styles.orText}>-OR-</p>
           <form onSubmit={loginEmail} className={styles.form}>
-            <input
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              className={styles.input}
-              type="text"
-              name="email"
-              placeholder="Email Address / Phone Number"
-              required
-            />
+          <div className={styles.inputPhoneContainer}>
+              <input
+              style={{paddingLeft:showCodePicker?"":"1rem"}}
+                className={styles.inputPhoneNumber}
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                type="text"
+                placeholder="Enter Your Email / Mobile Number"
+                required
+              />
+              {showCodePicker&&<CountryCodePicker/>}
+              </div>
             <input
               onChange={(e) => setPassword(e.target.value)}
               value={password}
@@ -421,8 +545,16 @@ function Auth() {
               placeholder="Password"
               required
             />
-            <button className={styles.Button} type="submit">
-              Login Now
+            <button disabled={isLogginInUsingLinkedIn} className={styles.Button} type="submit">
+            {isLogginInUsingLinkedIn ? (
+                        <img
+                          className={styles.loaderr}
+                          src="https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Utils%2FWHITE%20Spinner-1s-343px.svg?alt=media&token=54b9d527-0969-41ff-a598-0fc389b2575a"
+                          alt="loader"
+                        />
+                      ) : (
+                        "Login Now"
+                      )}
             </button>
           </form>
           <p className={styles.randomtext}>
@@ -438,6 +570,7 @@ function Auth() {
             </Link>
           </p>
         </div>
+
       </section>
     </>
   );

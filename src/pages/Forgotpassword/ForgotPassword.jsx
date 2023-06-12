@@ -8,8 +8,10 @@ import emailjs from "@emailjs/browser";
 import { toast } from "react-hot-toast";
 import { collection, doc, getDocs, query, updateDoc } from "firebase/firestore";
 import axios from "axios";
+import CountryCodePicker from "../../Utils/Country Code Picker/CountryCodePicker";
 
 function Auth() {
+  const selectedCountry=useSelector((state)=>state.countryCode)
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
@@ -21,6 +23,7 @@ function Auth() {
   const [loading, setLoading] = useState(false);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
+const[showCodePicker,setShowCodePicker]=useState(false)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -184,8 +187,9 @@ function Auth() {
     const otp = generate(6);
     setTempOtp(otp);
     try {
-      const data = await axios.post("https://server.reverr.io/sendSms", {
+      const data = await axios.post("https://server.reverr.io/sendSmsCode", {
         to: email,
+        code:selectedCountry.dialCode.slice(1),
         message: `Your Change Password OTP is ${otp}`,
       });
       if (data.data.status) {
@@ -195,6 +199,7 @@ function Auth() {
     } catch (error) {
       setLoading(false);
       console.log("err", error);
+      toast.error(error?.response?.data?.message)
     }
     setMinutes(3);
     setSeconds(0);
@@ -233,6 +238,16 @@ function Auth() {
     }
   };
 
+  function onlyNumbers(str) {
+    return /^[0-9]+$/.test(str);
+  }
+
+  useEffect(()=>{
+if(email.length===0){setShowCodePicker(false);return}
+if(onlyNumbers(email)){setShowCodePicker(true);return}
+if(!onlyNumbers(email)){setShowCodePicker(false);return}
+  },[email])
+
   return (
     <>
       <section className={styles.loginOuterCont}>
@@ -267,14 +282,18 @@ function Auth() {
           <h1 className={styles.rightContHeading}>FORGOT PASSWORD</h1>
           {!tempOtp && (
             <form onSubmit={sendOtp} className={styles.form}>
+            <div className={styles.inputPhoneContainer}>
               <input
-                className={styles.input}
+              style={{paddingLeft:showCodePicker?"":"1rem"}}
+                className={styles.inputPhoneNumber}
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 type="text"
                 placeholder="Enter Your Email / Mobile Number"
                 required
               />
+              {showCodePicker&&<CountryCodePicker/>}
+              </div>
               <button
                 disabled={loading}
                 className={styles.Button}
