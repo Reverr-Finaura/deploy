@@ -48,6 +48,7 @@ const handleNext=()=>{
     if(data.length>0){toast.error("Phone Number already registered");return}
 
   if(newUser.loginType==="linkedin"){
+    toast("Processing your request")
     createUserWithEmailAndPassword(auth, newUser.email,pass)
         .then(() => {
           dispatch(setPhone(mob));

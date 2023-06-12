@@ -48,6 +48,7 @@ const getUserDataFromLinkedin=async(code)=>{
   })
   // console.log("data",data.data.data)
   if(data.status===200){
+    toast.dismiss()
     const signInMethods = await fetchSignInMethodsForEmail(auth,data?.data?.data?.email);
     if(signInMethods.length>0){
      toast.error("This email is already registered with us. Please login with your credentials")
@@ -56,12 +57,15 @@ const getUserDataFromLinkedin=async(code)=>{
     }
    
     else{
-      setIsSignUpUsingLinkedIn(true)
+      toast.dismiss()
+      // setIsSignUpUsingLinkedIn(true)
       setTempLinkedinUserData(data?.data?.data)
+      manuallySignupUserLinkedin(data?.data?.data)
     }
   }
 
   } catch (error) {
+    toast.dismiss()
     console.log("err",error)
     toast.error(error.response.data.message)
     setIsSignUpUsingLinkedIn(false)
@@ -72,6 +76,7 @@ const getUserDataFromLinkedin=async(code)=>{
 useEffect(()=>{
   if(user_code){
    getUserDataFromLinkedin(user_code)
+   toast.loading("Processing your request")
   
   
   }
@@ -102,12 +107,15 @@ fetchUserDocFromFirebase()
 },[])
 
 
-const manuallySignupUserLinkedin=()=>{
+const manuallySignupUserLinkedin=(data)=>{
   dispatch(
     create({
-      email: tempLinkedinUserData.email,
-      uid: tempLinkedinUserData.sub,
-      displayName: tempLinkedinUserData.name,
+      // email: tempLinkedinUserData.email,
+      // uid: tempLinkedinUserData.sub,
+      // displayName: tempLinkedinUserData.name,
+       email: data.email,
+      uid: data.sub,
+      displayName: data.name,
       profilePic:null,
       userType: userType,
       loginType: "linkedin",
@@ -148,7 +156,7 @@ const manuallySignupUserLinkedin=()=>{
     if(password.length<6){toast.error("Password must contain minimum 6 characters");setLoading(false);return}
     if (password === confirmPassword) {
       const data=metaData.filter((item)=>{return item.phone===mobile})
-      if(data.length>0){toast.error("Phone Number already registered");setLoading(false);return}
+      if(data.length>0){toast.error("This Phone Number is already registered with us");setLoading(false);return}
       dispatch(setPassword(password))
       dispatch(setPhone(mobile))
       dispatch(setcountryCode(selectedCountry.dialCode.slice(1)))
