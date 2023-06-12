@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ccbd54dc.css",
-    "main.js": "/static/js/main.22d6c6ee.js",
+    "main.css": "/static/css/main.85a7f6d0.css",
+    "main.js": "/static/js/main.21bb0c77.js",
     "static/media/community mockup.svg": "/static/media/community mockup.39e6b22b0621801842e4a5857e9af195.svg",
     "static/media/Concept of unemployed woman searching for job in startup company.svg": "/static/media/Concept of unemployed woman searching for job in startup company.029a3e9e2e59b36ede45c5150f6fb24c.svg",
     "static/media/Data analysis Case Study.svg": "/static/media/Data analysis Case Study.cb30bc5846f5550320a54dae7f933eb5.svg",
@@ -34,6 +34,7 @@
     "static/media/Group.svg": "/static/media/Group.7a40d9f7ce7d2bcf842ddbd5ad898aec.svg",
     "static/media/SalesIcon.svg": "/static/media/SalesIcon.7a40d9f7ce7d2bcf842ddbd5ad898aec.svg",
     "static/media/medTechIcon.svg": "/static/media/medTechIcon.c880a2e2ffcb67b2f27b3794b52f972a.svg",
+    "static/media/WHITE Spinner-1s-343px.svg": "/static/media/WHITE Spinner-1s-343px.34b540b2607c73047ec5b0f7ff4a02cd.svg",
     "static/media/marketing.svg": "/static/media/marketing.a4c1afa3fc465fdd9e4bc84645d8ca69.svg",
     "static/media/Camera.svg": "/static/media/Camera.4474956446cd70353f0554c888bad437.svg",
     "static/media/Layer 2.svg": "/static/media/Layer 2.ec634ce680a1132c855e80ac60f1c37d.svg",
@@ -44,11 +45,11 @@
     "index.html": "/index.html",
     "static/media/Group 6267336.svg": "/static/media/Group 6267336.41842a3c1f5f4fd8097cf657bf145838.svg",
     "static/media/PPT iconVector.svg": "/static/media/PPT iconVector.a0131fb78e7655bdc221733113bede5a.svg",
-    "main.ccbd54dc.css.map": "/static/css/main.ccbd54dc.css.map",
-    "main.22d6c6ee.js.map": "/static/js/main.22d6c6ee.js.map"
+    "main.85a7f6d0.css.map": "/static/css/main.85a7f6d0.css.map",
+    "main.21bb0c77.js.map": "/static/js/main.21bb0c77.js.map"
   },
   "entrypoints": [
-    "static/css/main.ccbd54dc.css",
-    "static/js/main.22d6c6ee.js"
+    "static/css/main.85a7f6d0.css",
+    "static/js/main.21bb0c77.js"
   ]
 }
