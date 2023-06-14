@@ -10,7 +10,7 @@ const DummyTest = () => {
 
   const { linkedInLogin } = useLinkedIn({
     clientId: '77k09msokpmnc9',
-    redirectUri: `http://localhost:4000/api/linkedin/redirect`, // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
+    redirectUri: `https://server.reverr.io/api/linkedin/redirect`, // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
     onSuccess: (code) => {
       console.log(code);
     },
@@ -20,8 +20,8 @@ const DummyTest = () => {
   });
 
 const tryNewLinkedin=async()=>{
-  // window.open('http://localhost:4000/api/linkedin/authorize','_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes')
-  window.open("http://localhost:4000/api/linkedin/authorize","_self")
+  // window.open('https://server.reverr.io/api/linkedin/authorize','_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes')
+  window.open("https://server.reverr.io/api/linkedin/authorize","_self")
 
 }
 

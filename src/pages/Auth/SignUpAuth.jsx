@@ -42,7 +42,7 @@ const[linkedinProfileUrl,setLinkedinProfileUrl]=useState("")
 const getUserDataFromLinkedin=async(code)=>{
 
   try {
-    const data=await axios.post('http://localhost:4000/getUserDataFromLinkedin/signup',{code:code},{
+    const data=await axios.post('https://server.reverr.io/getUserDataFromLinkedin/signup',{code:code},{
       headers: {
         "Content-Type": "application/json"},
   })
@@ -250,7 +250,7 @@ const manuallySignupUserLinkedin=(data)=>{
   };
 
 const handleLinkedinSignup=()=>{
-  window.open("http://localhost:4000/api/linkedin/signup/authorize","_self")
+  window.open("https://server.reverr.io/api/linkedin/signup/authorize","_self")
 }
 
 const checkLinkedinProfieUrlAndProcced=()=>{

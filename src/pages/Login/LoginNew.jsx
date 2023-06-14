@@ -44,7 +44,7 @@ function Auth() {
   const getUserDataFromLinkedin=async(code)=>{
 
     try {
-      const data=await axios.post('http://localhost:4000/getUserDataFromLinkedin',{code:code},{
+      const data=await axios.post('https://server.reverr.io/getUserDataFromLinkedin',{code:code},{
         headers: {
           "Content-Type": "application/json"},
     })
@@ -340,7 +340,7 @@ useEffect(()=>{
 
 
 const handleLinkedinLogin=()=>{
-  window.open("http://localhost:4000/api/linkedin/authorize","_self")
+  window.open("https://server.reverr.io/api/linkedin/authorize","_self")
 }
 
 
