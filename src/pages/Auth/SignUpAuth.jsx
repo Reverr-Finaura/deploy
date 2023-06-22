@@ -16,7 +16,7 @@ import {
   setPassword,
   setcountryCode,
 } from "../../features/onboardingSlice";
-import { collection, getDocs, query } from "firebase/firestore";
+import { collection, getDocs, query,getDoc,doc } from "firebase/firestore";
 import axios from "axios";
 import CountryCodePicker from "../../Utils/Country Code Picker/CountryCodePicker";
 import useQuery from "../../Utils/useQuery";
@@ -138,20 +138,46 @@ function Auth() {
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
       .then((userCredential) => {
-        dispatch(
-          create({
-            email: auth.currentUser.email,
-            uid: auth.currentUser.uid,
-            displayName: auth.currentUser.displayName,
-            profilePic: auth.currentUser.photoURL,
-            userType: userType,
-            loginType: "google",
-          })
-        );
+        console.log("---------------");
+        console.log("auth.currentUser.email", auth.currentUser.email);
+        console.log("auth.currentUser.uid", auth.currentUser.uid);
+        console.log("auth.currentUser.displayName",auth.currentUser.displayName );
+        console.log("---------------");
+
+                
+            dispatch(
+              create({
+                email: auth.currentUser.email,
+                uid: auth.currentUser.uid,
+                displayName: auth.currentUser.displayName,
+                profilePic: auth.currentUser.photoURL,
+                userType: userType,
+                loginType: "google",
+              })
+              );
+     
+
       })
-      .then(() => {
-        // navigate("/startup-list");
-        navigate("/onboardingGeneralInfoScreen");
+      .then(async () => {
+        const docRef = doc(db,"Users",auth.currentUser.uid)
+        
+        try{ 
+          const docSnap = await getDoc(docRef) ;        
+
+           if (docSnap.exists) {
+            console.log("docSnap  exist")
+            navigate("/dashboard");
+           
+          } else {
+            console.log("User document does not exist.");
+            navigate("/onboardingGeneralInfoScreen");
+          }
+
+        }catch(error){
+          console.log(error.message)
+        }
+
+       
       })
       .catch((error) => {
         alert(error);
@@ -289,7 +315,6 @@ function Auth() {
     }
   };
 
-
   // userspace section code is here
 
   // const closeModal = () => {
@@ -308,13 +333,11 @@ function Auth() {
   };
 
   function handleModalSubmit() {
-    if(userSpaceArr.length >= 1){
+    if (userSpaceArr.length >= 1) {
       dispatch(setUserSpace(userSpaceArr));
       setIsOpen(false);
-
-    }
-    else{
-      window.alert("Please choose atleast one!")
+    } else {
+      window.alert("Please choose atleast one!");
     }
   }
 
@@ -346,8 +369,6 @@ function Auth() {
   // Waste Management Technologies
   // Online Marketplaces
   // CloudTech
-  
-
 
   return (
     <>
@@ -385,7 +406,7 @@ function Auth() {
                     value="AgriTech"
                     onChange={handleCheckboxChange}
                   />
-                 AgriTech
+                  AgriTech
                 </label>
                 <label>
                   <input
@@ -425,7 +446,7 @@ function Auth() {
                     value="Ai & ML"
                     onChange={handleCheckboxChange}
                   />
-                 Ai & ML 
+                  Ai & ML
                 </label>
                 <label>
                   <input
@@ -441,7 +462,7 @@ function Auth() {
                     value="FashionTech"
                     onChange={handleCheckboxChange}
                   />
-                 FashionTech
+                  FashionTech
                 </label>
                 <label>
                   <input
@@ -449,7 +470,7 @@ function Auth() {
                     value="SpaceTech"
                     onChange={handleCheckboxChange}
                   />
-                 SpaceTech
+                  SpaceTech
                 </label>
                 <label>
                   <input
@@ -457,7 +478,7 @@ function Auth() {
                     value="HealthTech"
                     onChange={handleCheckboxChange}
                   />
-                 HealthTech
+                  HealthTech
                 </label>
                 <label>
                   <input
@@ -465,7 +486,7 @@ function Auth() {
                     value="Cybersecurity"
                     onChange={handleCheckboxChange}
                   />
-                 Cybersecurity
+                  Cybersecurity
                 </label>
                 <label>
                   <input
@@ -473,7 +494,7 @@ function Auth() {
                     value="AR & VR"
                     onChange={handleCheckboxChange}
                   />
-                 AR & VR
+                  AR & VR
                 </label>
                 <label>
                   <input
@@ -481,7 +502,7 @@ function Auth() {
                     value="Internet of Things(IOT)"
                     onChange={handleCheckboxChange}
                   />
-                 Internet of Things(IOT)
+                  Internet of Things(IOT)
                 </label>
                 <label>
                   <input
@@ -489,7 +510,7 @@ function Auth() {
                     value="Biotech"
                     onChange={handleCheckboxChange}
                   />
-                 Biotech
+                  Biotech
                 </label>
                 <label>
                   <input
@@ -497,7 +518,7 @@ function Auth() {
                     value="TravelTech"
                     onChange={handleCheckboxChange}
                   />
-                 TravelTech
+                  TravelTech
                 </label>
                 <label>
                   <input
@@ -505,7 +526,7 @@ function Auth() {
                     value="Real Estate-Tech"
                     onChange={handleCheckboxChange}
                   />
-                 Real Estate-Tech
+                  Real Estate-Tech
                 </label>
                 <label>
                   <input
@@ -513,7 +534,7 @@ function Auth() {
                     value="BeautyTech"
                     onChange={handleCheckboxChange}
                   />
-                 BeautyTech
+                  BeautyTech
                 </label>
                 <label>
                   <input
@@ -521,7 +542,7 @@ function Auth() {
                     value="LegalTech"
                     onChange={handleCheckboxChange}
                   />
-                 LegalTech
+                  LegalTech
                 </label>
                 <label>
                   <input
@@ -529,7 +550,7 @@ function Auth() {
                     value="HR-Tech"
                     onChange={handleCheckboxChange}
                   />
-                 HR-Tech
+                  HR-Tech
                 </label>
                 <label>
                   <input
@@ -537,7 +558,7 @@ function Auth() {
                     value="Personal fitness Tech"
                     onChange={handleCheckboxChange}
                   />
-                 Personal fitness Tech
+                  Personal fitness Tech
                 </label>
                 <label>
                   <input
@@ -545,7 +566,7 @@ function Auth() {
                     value="Waste Management Technologies"
                     onChange={handleCheckboxChange}
                   />
-                 Waste Management Technologies
+                  Waste Management Technologies
                 </label>
                 <label>
                   <input
@@ -553,7 +574,7 @@ function Auth() {
                     value="Online Marketplaces"
                     onChange={handleCheckboxChange}
                   />
-                 Online Marketplaces
+                  Online Marketplaces
                 </label>
                 <label>
                   <input
@@ -561,7 +582,7 @@ function Auth() {
                     value="CloudTech"
                     onChange={handleCheckboxChange}
                   />
-                 CloudTech
+                  CloudTech
                 </label>
                 <p>Selected Options: {userSpaceArr.join(", ")}</p>
               </div>
@@ -571,7 +592,7 @@ function Auth() {
           </div>
         )}
       </div>
-      
+
       {isSignUpUsingLinkedIn && (
         <>
           <section className={styles.linkedinSignupOuterCont}>
