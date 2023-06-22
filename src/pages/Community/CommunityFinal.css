@@ -15,6 +15,8 @@
   max-width: 87%;
   /* background-color: rgba(255, 255, 255, 0.25); */
   display: flex;
+  /* --bg-dark-blue */
+  background-color: #030b18 ;
 }
 #communityFinalPage {
   min-height: 100vh;
@@ -50,7 +52,8 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  background-color: var(--bg-card);
+  /* --bg-light-blue */
+  background-color: #0c1631;
   border-radius: 12px;
 
 }
@@ -65,7 +68,8 @@
   font-family: 'Quicksand';
 font-style: normal;
   font-size: 2rem;
-  color: var(--main-text);
+  /* --main-text */
+  color: #ffffff;
   margin-bottom: 1.5rem;
 }
 .postUploaddSquareCont {
@@ -148,11 +152,13 @@ font-style: normal;
 }
 
 .assest_icon {
-  color: var(--change-theme);
+  /*  --main-text */
+  color: #ffffff;
   font-size: 1.25rem;
 }
 .icon_text {
-  color: var(--change-theme);
+  /*  --main-text */
+  color:  #ffffff ;
 }
 
 /* SORT POST SECTION */
@@ -730,6 +736,24 @@ cursor: pointer;
   color: var(--main-text);
   padding: 0.5rem;
 }
+
+.community-navbar-block{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #1a1e28;
+  border-radius: 10px;
+  padding: 20px;
+  
+  width: 90%;
+
+  margin-bottom: 1em;
+}
+.community-nav-heading{
+  color: #ffffff;
+  font-weight: 600;
+}
+
 @media (max-width: 1420px) {
   /* #communityNewsSection {
     width: 34.5%;

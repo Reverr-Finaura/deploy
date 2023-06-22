@@ -39,7 +39,12 @@ import { FiEdit } from "react-icons/fi";
 import SortingNavbarTest from "./Sorting Navbar Test/SortingNavbarTest";
 
 import NoFollowingCard from "../../components/No Following Card/NoFollowingCard";
-import { MdOutlineAddPhotoAlternate, MdVideoCameraBack } from "react-icons/md";
+import {
+  MdOutlineAddPhotoAlternate,
+  MdVideoCameraBack,
+  MdLocationOn,
+  MdPoll,
+} from "react-icons/md";
 
 import { IoLocationSharp } from "react-icons/io5";
 import { BsImages } from "react-icons/bs";
@@ -77,7 +82,7 @@ const CommunityFinal = () => {
   const [newsData, setNewsData] = useState();
   const [singleNews, setSingleNews] = useState(null);
   const [blogArray, setBlogArray] = useState([]);
-  const[seeAllNewsIsClicked,setSeeAllNewsIsClicked]=useState(false)
+  const [seeAllNewsIsClicked, setSeeAllNewsIsClicked] = useState(false);
   console.log("blogArray", blogArray);
 
   //FETCH LATEST NEWS
@@ -630,27 +635,43 @@ const CommunityFinal = () => {
           <div className="reverrCommunityUploadContainerrr">
             <div className="reverrCommunityHeadingAndPostUploadIcon">
               <div>
-                <h2 className="reverrCommunityHeading"> Welcome To Our <span style={{color:"rgba(42, 114, 222, 1)"}}>Reverr</span> Community!</h2>
+                <h2 className="reverrCommunityHeading">
+                  {" "}
+                  Welcome To Reverr{" "}
+                  <span style={{ color: "rgba(42, 114, 222, 1)" }}>
+                    ,Jahanvi Singh
+                  </span>
+                </h2>
                 {/* <p className="reverrCommunitySubbHeading">
                   The community where future entrepreneurs come to learn,
                   execute and grow.
                 </p> */}
               </div>
-              {(width<600&&scroll > 230)&&<>
-                <div style={{position:"fixed",width:"50px",height:"50px",bottom:"1rem",zIndex:"10000",right:"1rem"}}
-                 onClick={() => setNavbarPostButtonClick((current) => !current)}
-                  id="postUploaddSquareCont"
-                  className="postUploaddSquareCont"
-                >
-                  <img
-                    className="postUploaddSquareContAddImg"
-                    src="./images/add.png"
-                    alt="addIcon"
-                  />
-                </div>
-              </>
-
-              }
+              {width < 600 && scroll > 230 && (
+                <>
+                  <div
+                    style={{
+                      position: "fixed",
+                      width: "50px",
+                      height: "50px",
+                      bottom: "1rem",
+                      zIndex: "10000",
+                      right: "1rem",
+                    }}
+                    onClick={() =>
+                      setNavbarPostButtonClick((current) => !current)
+                    }
+                    id="postUploaddSquareCont"
+                    className="postUploaddSquareCont"
+                  >
+                    <img
+                      className="postUploaddSquareContAddImg"
+                      src="./images/add.png"
+                      alt="addIcon"
+                    />
+                  </div>
+                </>
+              )}
               {width < 600 ? (
                 <div
                   onClick={() => setTextAreaIsClick((current) => !current)}
@@ -698,7 +719,7 @@ const CommunityFinal = () => {
                     }
                   >
                     <textarea
-                      // style={{ background: "rgba(255,255,255,.25)" }}
+                      style={{ borderRadius: "30px" }}
                       onClick={() => setTextAreaIsClick(true)}
                       onChange={(e) => setNewPostText(e.target.value)}
                       name="postText"
@@ -711,6 +732,17 @@ const CommunityFinal = () => {
                       value={newPostText}
                       placeholder="What Would You Like To Post?"
                     ></textarea>
+                    <img
+                      style={{
+                        display: "inline-flex",
+                        position: "absolute",
+                        right: " 23px",
+                        top: "14px",
+                        cursor:"pointer",
+                      }}
+                      src="./images/right-arraow-bg-blue.png"
+                    />
+
                     {/* <img
                       onClick={() => setTextAreaIsClick((current) => !current)}
                       className={
@@ -775,21 +807,21 @@ const CommunityFinal = () => {
                       <span className="icon_text">Images</span>
                     </div>
                     <div className="post_assets_icon_main_div">
+                      <MdPoll className="assest_icon" />
+                      <span className="icon_text">Polls</span>
+                    </div>
+                    <div className="post_assets_icon_main_div">
                       <MdVideoCameraBack className="assest_icon" />
                       <span className="icon_text">Video</span>
                     </div>
-                    {/* <div className="post_assets_icon_main_div">
+                    <div className="post_assets_icon_main_div">
                       <RiFileSearchLine className="assest_icon" />
                       <span className="icon_text">Files</span>
-                    </div> */}
-                    {/* <div className="post_assets_icon_main_div">
-                      <IoLocationSharp className="assest_icon" />
-                      <span className="icon_text">Link</span>
-                    </div> */}
-                    {/* <div className="post_assets_icon_main_div">
-                        <AiFillCamera className="assest_icon" />
-                        <span className="icon_text">Camera</span>
-                      </div> */}
+                    </div>
+                    <div className="post_assets_icon_main_div">
+                      <MdLocationOn className="assest_icon" />
+                      <span className="icon_text">Location</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -805,11 +837,11 @@ const CommunityFinal = () => {
                 : "sortOptionBigContainer"
             }
           > */}
-            {/* FURTHER SORT POST SECTION */}
+          {/* FURTHER SORT POST SECTION */}
 
-            {/* <SortingNavbarOldest setfurtherSortOptionClick={setfurtherSortOptionClick} sortOptionSelected={sortOptionSelected} furtherSortOptionClick={furtherSortOptionClick} setSortOptionSelected={setSortOptionSelected} setSortOptionClick={setSortOptionClick} sortOptionClick={sortOptionClick} /> */}
-            
-            {/* <SortingNavbarTwoOption
+          {/* <SortingNavbarOldest setfurtherSortOptionClick={setfurtherSortOptionClick} sortOptionSelected={sortOptionSelected} furtherSortOptionClick={furtherSortOptionClick} setSortOptionSelected={setSortOptionSelected} setSortOptionClick={setSortOptionClick} sortOptionClick={sortOptionClick} /> */}
+
+          {/* <SortingNavbarTwoOption
               setSortOptionSelected={setSortOptionSelected}
               setfurtherSortOptionClick={setfurtherSortOptionClick}
               sortOptionSelected={sortOptionSelected}
@@ -817,6 +849,8 @@ const CommunityFinal = () => {
               setSortOptionClick={setSortOptionClick}
             />
           </section> */}
+
+          {/* community navbar */}
 
           {/* POST SECTION */}
 
@@ -831,6 +865,16 @@ const CommunityFinal = () => {
                 </div>
               }
             >
+              <div className="community-navbar-block">
+                <h3 className="community-nav-heading">My Space</h3>
+
+                <div className="community-navbar-block-nav">
+                  <h3 className="community-nav-heading">What's Hot?</h3>
+                </div>
+                <div className="community-navbar-block-nav">
+                  <h3 className="community-nav-heading">Recent</h3>
+                </div>
+              </div>
               <section className="posts-containerr">
                 {displayPosts.length === 0 &&
                   sortOptionSelected.whose !== "People You Follow" && (
@@ -868,59 +912,73 @@ const CommunityFinal = () => {
         {/* COMMUNITY NEWS SECTION */}
         {width > 1180 ? (
           <section id="communityNewsSection">
-            <div style={{overflowY:"auto"}} className="communityNewsSectionContainer">
+            <div
+              style={{ overflowY: "auto" }}
+              className="communityNewsSectionContainer"
+            >
               <h3 className="communityNewsSectionHeading">Trending News</h3>
               {!newsData && (
                 <div>
                   <NewSkeleton cards={3} />
                 </div>
               )}
-              {seeAllNewsIsClicked?<>
-                {newsData?.map((news) => {
-                return (
-                  <>
-                    <div
-                      className="communityNewsSectionNewsCont"
-                      onClick={() => setSingleNews(news)}
-                      key={news.url}
-                    >
-                      <div className="communityNewsSectionNewsImageCont">
-                        <img
-                          className="communityNewsSectionNewsImage"
-                          src={news?.image?.thumbnail?.contentUrl}
-                          alt="newsImg"
-                        />
+              {seeAllNewsIsClicked ? (
+                <>
+                  {newsData?.map((news) => {
+                    return (
+                      <>
+                        <div
+                          className="communityNewsSectionNewsCont"
+                          onClick={() => setSingleNews(news)}
+                          key={news.url}
+                        >
+                          <div className="communityNewsSectionNewsImageCont">
+                            <img
+                              className="communityNewsSectionNewsImage"
+                              src={news?.image?.thumbnail?.contentUrl}
+                              alt="newsImg"
+                            />
+                          </div>
+                          <p className="communityNewsSectionNewsInfo">
+                            {news.description.slice(0, 60)}....
+                          </p>
+                        </div>
+                      </>
+                    );
+                  })}
+                </>
+              ) : (
+                newsData?.slice(0, 4).map((news) => {
+                  return (
+                    <>
+                      <div
+                        className="communityNewsSectionNewsCont"
+                        onClick={() => setSingleNews(news)}
+                        key={news.url}
+                      >
+                        <div className="communityNewsSectionNewsImageCont">
+                          <img
+                            className="communityNewsSectionNewsImage"
+                            src={news?.image?.thumbnail?.contentUrl}
+                            alt="newsImg"
+                          />
+                        </div>
+                        <p className="communityNewsSectionNewsInfo">
+                          {news.description.slice(0, 60)}....
+                        </p>
                       </div>
-                      <p className="communityNewsSectionNewsInfo">
-                        {news.description.slice(0, 60)}....
-                      </p>
-                    </div>
-                  </>
-                );
-              })}
-              </>:newsData?.slice(0,4).map((news) => {
-                return (
-                  <>
-                    <div
-                      className="communityNewsSectionNewsCont"
-                      onClick={() => setSingleNews(news)}
-                      key={news.url}
-                    >
-                      <div className="communityNewsSectionNewsImageCont">
-                        <img
-                          className="communityNewsSectionNewsImage"
-                          src={news?.image?.thumbnail?.contentUrl}
-                          alt="newsImg"
-                        />
-                      </div>
-                      <p className="communityNewsSectionNewsInfo">
-                        {news.description.slice(0, 60)}....
-                      </p>
-                    </div>
-                  </>
-                );
-              })}
-              {seeAllNewsIsClicked?null:<button onClick={()=>setSeeAllNewsIsClicked(true)} className="communityNewsSectionContainerMoreNewsButton">See All</button>}
+                    </>
+                  );
+                })
+              )}
+              {seeAllNewsIsClicked ? null : (
+                <button
+                  onClick={() => setSeeAllNewsIsClicked(true)}
+                  className="communityNewsSectionContainerMoreNewsButton"
+                >
+                  See All
+                </button>
+              )}
             </div>
 
             {/* ARTICLE SECTION  */}

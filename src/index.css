@@ -19,8 +19,11 @@ code {
     #656565 91.17%,
     #737373 100.49%
   );
+  --bg-dark-blue:#030b18;
+  --bg-light-blue:  #0c1631;
   --sidebar-hover: #494949;
   --main-text: white;
+  --blue-text:#00b2ff; 
   --sub-text: #ffffffe6;
   --bg-clr: #373737;
   /* --bg-clr: linear-gradient(
