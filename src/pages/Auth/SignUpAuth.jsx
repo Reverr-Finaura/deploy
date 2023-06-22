@@ -159,12 +159,12 @@ function Auth() {
 
       })
       .then(async () => {
-        const docRef = doc(db,"Users",auth.currentUser.uid)
+        const docRef = doc(db,"Users",auth.currentUser.email)
         
         try{ 
           const docSnap = await getDoc(docRef) ;        
 
-           if (docSnap.exists) {
+           if (docSnap.exists()) {
             console.log("docSnap  exist")
             navigate("/dashboard");
            
