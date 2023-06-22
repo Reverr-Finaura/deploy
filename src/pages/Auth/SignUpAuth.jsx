@@ -321,6 +321,33 @@ function Auth() {
   console.log("userSpaceArr ", userSpaceArr);
   console.log("userSpace: ", userSpace);
 
+  // FinTech
+  // EdTech
+  // AgriTech
+  // FoodTech
+  // Ecommerce
+  // Logistics & Delivery
+  // Cleantech & Renewable Energy
+  // Ai & ML
+  // Web 3.0
+  // FashionTech
+  // SpaceTech
+  // HealthTech
+  // Cybersecurity
+  // AR & VR
+  // Internet of Things(IOT)
+  // Biotech
+  // TravelTech
+  // Real Estate-Tech
+  // BeautyTech
+  // LegalTech
+  // HR-Tech
+  // Personal fitness Tech
+  // Waste Management Technologies
+  // Online Marketplaces
+  // CloudTech
+  
+
 
   return (
     <>
@@ -339,42 +366,34 @@ function Auth() {
                 <label>
                   <input
                     type="checkbox"
-                    value="Fintech"
+                    value="FinTech"
                     onChange={handleCheckboxChange}
                   />
-                  Fintech
+                  FinTech
                 </label>
                 <label>
                   <input
                     type="checkbox"
-                    value="Edtech"
+                    value="EdTech"
                     onChange={handleCheckboxChange}
                   />
-                  Edtech
+                  EdTech
                 </label>
                 <label>
                   <input
                     type="checkbox"
-                    value="Agritech"
+                    value="AgriTech"
                     onChange={handleCheckboxChange}
                   />
-                  Agritech
+                 AgriTech
                 </label>
                 <label>
                   <input
                     type="checkbox"
-                    value="SAAS"
+                    value="FoodTech"
                     onChange={handleCheckboxChange}
                   />
-                  SAAS
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    value="Foodtech"
-                    onChange={handleCheckboxChange}
-                  />
-                  Foodtech
+                  FoodTech
                 </label>
                 <label>
                   <input
@@ -387,10 +406,10 @@ function Auth() {
                 <label>
                   <input
                     type="checkbox"
-                    value="Logistics & delivery"
+                    value="Logistics & Delivery"
                     onChange={handleCheckboxChange}
                   />
-                  Logistics & delivery
+                  Logistics & Delivery
                 </label>
                 <label>
                   <input
@@ -406,15 +425,143 @@ function Auth() {
                     value="Ai & ML"
                     onChange={handleCheckboxChange}
                   />
-                  Ai & ML
+                 Ai & ML 
                 </label>
                 <label>
                   <input
                     type="checkbox"
-                    value="Web 3"
+                    value="Web 3.0"
                     onChange={handleCheckboxChange}
                   />
-                  Web 3
+                  Web 3.0
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="FashionTech"
+                    onChange={handleCheckboxChange}
+                  />
+                 FashionTech
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="SpaceTech"
+                    onChange={handleCheckboxChange}
+                  />
+                 SpaceTech
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="HealthTech"
+                    onChange={handleCheckboxChange}
+                  />
+                 HealthTech
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="Cybersecurity"
+                    onChange={handleCheckboxChange}
+                  />
+                 Cybersecurity
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="AR & VR"
+                    onChange={handleCheckboxChange}
+                  />
+                 AR & VR
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="Internet of Things(IOT)"
+                    onChange={handleCheckboxChange}
+                  />
+                 Internet of Things(IOT)
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="Biotech"
+                    onChange={handleCheckboxChange}
+                  />
+                 Biotech
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="TravelTech"
+                    onChange={handleCheckboxChange}
+                  />
+                 TravelTech
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="Real Estate-Tech"
+                    onChange={handleCheckboxChange}
+                  />
+                 Real Estate-Tech
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="BeautyTech"
+                    onChange={handleCheckboxChange}
+                  />
+                 BeautyTech
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="LegalTech"
+                    onChange={handleCheckboxChange}
+                  />
+                 LegalTech
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="HR-Tech"
+                    onChange={handleCheckboxChange}
+                  />
+                 HR-Tech
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="Personal fitness Tech"
+                    onChange={handleCheckboxChange}
+                  />
+                 Personal fitness Tech
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="Waste Management Technologies"
+                    onChange={handleCheckboxChange}
+                  />
+                 Waste Management Technologies
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="Online Marketplaces"
+                    onChange={handleCheckboxChange}
+                  />
+                 Online Marketplaces
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="CloudTech"
+                    onChange={handleCheckboxChange}
+                  />
+                 CloudTech
                 </label>
                 <p>Selected Options: {userSpaceArr.join(", ")}</p>
               </div>
@@ -424,6 +571,7 @@ function Auth() {
           </div>
         )}
       </div>
+      
       {isSignUpUsingLinkedIn && (
         <>
           <section className={styles.linkedinSignupOuterCont}>
