@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.85a7f6d0.css",
-    "main.js": "/static/js/main.b04335b7.js",
+    "main.css": "/static/css/main.b45a664a.css",
+    "main.js": "/static/js/main.bca1b15a.js",
     "static/media/community mockup.svg": "/static/media/community mockup.39e6b22b0621801842e4a5857e9af195.svg",
     "static/media/Concept of unemployed woman searching for job in startup company.svg": "/static/media/Concept of unemployed woman searching for job in startup company.029a3e9e2e59b36ede45c5150f6fb24c.svg",
     "static/media/Data analysis Case Study.svg": "/static/media/Data analysis Case Study.cb30bc5846f5550320a54dae7f933eb5.svg",
@@ -45,11 +45,11 @@
     "index.html": "/index.html",
     "static/media/Group 6267336.svg": "/static/media/Group 6267336.41842a3c1f5f4fd8097cf657bf145838.svg",
     "static/media/PPT iconVector.svg": "/static/media/PPT iconVector.a0131fb78e7655bdc221733113bede5a.svg",
-    "main.85a7f6d0.css.map": "/static/css/main.85a7f6d0.css.map",
-    "main.b04335b7.js.map": "/static/js/main.b04335b7.js.map"
+    "main.b45a664a.css.map": "/static/css/main.b45a664a.css.map",
+    "main.bca1b15a.js.map": "/static/js/main.bca1b15a.js.map"
   },
   "entrypoints": [
-    "static/css/main.85a7f6d0.css",
-    "static/js/main.b04335b7.js"
+    "static/css/main.b45a664a.css",
+    "static/js/main.bca1b15a.js"
   ]
 }

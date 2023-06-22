@@ -13,6 +13,7 @@ import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import { Input } from "../../components/Funding Inputs/Input";
 import uploadIcon from "../../images/Upload.png";
+import emailjs from "@emailjs/browser";
 
 const GetFundedPage = () => {
   const navigate = useNavigate();
@@ -136,6 +137,32 @@ const GetFundedPage = () => {
         FounderName: getFundedInput.Name,
         website: getFundedInput.WebsiteLink,
       });
+      var startupObject = {
+        ProfessionalEmail: getFundedInput.Email,
+        ContactNumber: getFundedInput.Phone,
+        UploadedFileName: itemName,
+        UploadedFilePath: url,
+        CompanyName: getFundedInput.StartUpName,
+        FounderName: getFundedInput.Name,
+        website: getFundedInput.WebsiteLink,
+      }
+      var templateParams = {
+        from_name: "Reverr",
+        Startup_name: startupObject.CompanyName,
+        to_email: "connect@reverr.io",
+        // to_email: "sugandthrana123@gmail.com",
+        startupObject,
+      };
+
+      const result=await emailjs
+        .send(
+          "service_lfmmz8k",
+          "template_2vvgsan",
+          templateParams,
+          "dVExxiI8hYMCyc0sY"
+        )
+       
+      console.log("SUCCESS!", result.status, result.text);
       toast("Sucessfully Applied");
       setTimeout(() => {
         updateUserFirebaseDatabase();
