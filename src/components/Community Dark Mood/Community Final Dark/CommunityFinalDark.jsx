@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./CommunityFinal.css";
-import KnowledgeNavbar from "../../components/KnowledgeNavbar/KnowledgeNavbar";
-import CommunityNavbar from "../../components/Community Navbar/CommunityNavbar";
-import SidebarFinal from "../../components/Sidebar Final/SidebarFinal";
-import PhnSidebar from "../../components/PhnSidebar/PhnSidebar";
+import style from "./CommunityFinalDark.module.css";
+import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
+import CommunityNavbar from "../../../components/Community Navbar/CommunityNavbar";
+import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
+import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import {
   collection,
   doc,
@@ -12,7 +12,7 @@ import {
   setDoc,
   updateDoc,
 } from "firebase/firestore";
-import { db, storage } from "../../firebase";
+import { db, storage } from "../../../firebase";
 import InfiniteScroll from "react-infinite-scroll-component";
 import {
   getDownloadURL,
@@ -22,36 +22,36 @@ import {
 } from "firebase/storage";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import PostCard from "../../components/Post Card/PostCard";
-import PostCardDark from "../../components/Community Dark Mood/Post Card Dark Mode/PostCardDark";
+import PostCard from "../../../components/Post Card/PostCard";
+import PostCardDark from "../../../components/Community Dark Mood/Post Card Dark Mode/PostCardDark";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserDoc } from "../../features/userDocSlice";
-import PostSkeleton from "../../components/Post Skeleton/PostSkeleton";
-import CommunityUserProfilePopup from "../../components/Community User Profile Popup/CommunityUserProfilePopup";
+import { setUserDoc } from "../../../features/userDocSlice";
+import PostSkeleton from "../../../components/Post Skeleton/PostSkeleton";
+import CommunityUserProfilePopup from "../../../components/Community User Profile Popup/CommunityUserProfilePopup";
 import { Outlet } from "react-router-dom";
-import CommunitySidebar from "../../components/Community Sidebar/CommunitySidebar";
-import expandTextAreaIcon from "../../images/addExpandTextArea.png";
+import CommunitySidebar from "../../../components/Community Sidebar/CommunitySidebar";
+// import expandTextAreaIcon from "../../images/addExpandTextArea.png";
 import axios from "axios";
-import CommunityNews from "../../components/Community News/CommunityNews";
-import NewSkeleton from "../../components/Post Skeleton/News Skeleton/NewSkeleton";
+import CommunityNews from "../../../components/Community News/CommunityNews";
+import NewSkeleton from "../../../components/Post Skeleton/News Skeleton/NewSkeleton";
 import { RxCrossCircled } from "react-icons/rx";
 import { FiEdit } from "react-icons/fi";
 
-import SortingNavbarTest from "./Sorting Navbar Test/SortingNavbarTest";
+// import SortingNavbarTest from ".././Sorting Navbar Test/SortingNavbarTest";
 
-import NoFollowingCard from "../../components/No Following Card/NoFollowingCard";
+import NoFollowingCard from "../../../components/No Following Card/NoFollowingCard";
 import {
   MdOutlineAddPhotoAlternate,
   MdVideoCameraBack,
   MdLocationOn,
   MdPoll,
 } from "react-icons/md";
-
 import { IoLocationSharp } from "react-icons/io5";
 import { BsImages } from "react-icons/bs";
 import { RiFileSearchLine } from "react-icons/ri";
-import SortingNavbarTwoOption from "./Sorting Navbar Two Options/SortingNavbarTwoOptions";
-const CommunityFinal = () => {
+// import SortingNavbarTwoOption from "./Sorting Navbar Two Options/SortingNavbarTwoOptions";
+
+const CommunityFinalDark = () => {
   const dispatch = useDispatch();
   const postData = [];
   const [width, setWidth] = useState(window.innerWidth);
@@ -457,11 +457,11 @@ const CommunityFinal = () => {
         style={{
           position: postsAuthorIsClick || postIdExist !== "" ? "fixed" : "",
         }}
-        id="communityFinalPageOuterSection"
+        id={style.communityFinalPageOuterSection}
       >
         <section
           style={{ position: singleNews ? "fixed" : "" }}
-          id="communityFinalPage"
+          id={style.communityFinalPage}
         >
           <ToastContainer />
           <input
@@ -469,7 +469,7 @@ const CommunityFinal = () => {
             ref={chooseFileRef}
             type="file"
             hidden
-            className="postImageUpload"
+            className={style.postImageUpload}
           />
 
           {/* NAVBAR POST BUTTON CLICK SECTION */}
@@ -487,7 +487,7 @@ const CommunityFinal = () => {
                 >
                   X
                 </div>
-                <section className="uploadPostContainerrrrSection">
+                <section className={style.uploadPostContainerrrrSection}>
                   <div className="EdituploadPostContainerrrr">
                     <img
                       className="community-upload-cont-userImage"
@@ -572,7 +572,7 @@ const CommunityFinal = () => {
                   >
                     X
                   </div>
-                  <section className="uploadPostContainerrrrSection">
+                  <section className={style.uploadPostContainerrrrSection}>
                     <div className="EdituploadPostContainerrrr">
                       <img
                         className="community-upload-cont-userImage"
@@ -636,7 +636,7 @@ const CommunityFinal = () => {
           <div className="reverrCommunityUploadContainerrr">
             <div className="reverrCommunityHeadingAndPostUploadIcon">
               <div>
-                <h2 className="reverrCommunityHeading">
+                <h2 className={style.reverrCommunityHeading}>
                   {" "}
                   Welcome To Reverr{" "}
                   <span style={{ color: "rgba(42, 114, 222, 1)" }}>
@@ -700,10 +700,13 @@ const CommunityFinal = () => {
               )}
             </div>
 
-            <section className="uploadPostContainerrrrSection  uploadPostContainerrrrSectionBoxShadow">
-              <div className="uploadPostContainerrrr">
+            <section
+              className={style.uploadPostContainerrrrSection}
+              ClassName={style.uploadPostContainerrrrSectionBoxShadow}
+            >
+              <div className={style.uploadPostContainerrrr}>
                 <img
-                  className="community-upload-cont-userImage"
+                  className={style.communityUploadContUserImage}
                   src={
                     userDoc?.image
                       ? userDoc.image
@@ -739,29 +742,11 @@ const CommunityFinal = () => {
                         position: "absolute",
                         right: " 23px",
                         top: "14px",
-                        cursor:"pointer",
+                        cursor: "pointer",
                       }}
                       src="./images/right-arraow-bg-blue.png"
                     />
 
-                    {/* <img
-                      onClick={() => setTextAreaIsClick((current) => !current)}
-                      className={
-                        textAreaIsClick
-                          ? "expandTextAreaIconExpanded"
-                          : "expandTextAreaIcon"
-                      }
-                      src={expandTextAreaIcon}
-                      alt="expandTextarea"
-                    /> */}
-                    {/* <GrAddCircle
-                      onClick={() => setTextAreaIsClick((current) => !current)}
-                      className={
-                        textAreaIsClick
-                          ? "expandTextAreaIconExpanded"
-                          : "expandTextAreaIcon"
-                      }
-                    /> */}
                     {tempImageURL ? (
                       <div className="communityPostImage-cont">
                         <img
@@ -780,16 +765,6 @@ const CommunityFinal = () => {
                     ) : null}
                     {textAreaIsClick ? (
                       <div className="addImageandUploadPostIcon uploadNewPostaddImageandUploadPostIcon">
-                        {/* <img
-                          onClick={chooseFile}
-                          className="addImageInCommunityIcon"
-                          src="./images/add-image-icon.png"
-                          alt="addImageIcon"
-                        /> */}
-                        {/* <MdOutlineAddPhotoAlternate
-                          className="addImageInCommunityReactIcon"
-                          onClick={chooseFile}
-                        /> */}
                         <button
                           onClick={uploadImageToFireBase}
                           className="uploadPostIconButton"
@@ -804,54 +779,30 @@ const CommunityFinal = () => {
                       className="post_assets_icon_main_div"
                       onClick={chooseFile}
                     >
-                      <BsImages className="assest_icon" />
-                      <span className="icon_text">Images</span>
+                      <BsImages className={style.assest_icon} />
+                      <span className={style.icon_text}>Images</span>
                     </div>
                     <div className="post_assets_icon_main_div">
-                      <MdPoll className="assest_icon" />
-                      <span className="icon_text">Polls</span>
+                      <MdPoll className={style.assest_icon} />
+                      <span className={style.icon_text}>Polls</span>
                     </div>
                     <div className="post_assets_icon_main_div">
-                      <MdVideoCameraBack className="assest_icon" />
-                      <span className="icon_text">Video</span>
+                      <MdVideoCameraBack className={style.assest_icon} />
+                      <span className={style.icon_text}>Video</span>
                     </div>
                     <div className="post_assets_icon_main_div">
-                      <RiFileSearchLine className="assest_icon" />
-                      <span className="icon_text">Files</span>
+                      <RiFileSearchLine className={style.assest_icon} />
+                      <span className={style.icon_text}>Files</span>
                     </div>
                     <div className="post_assets_icon_main_div">
-                      <MdLocationOn className="assest_icon" />
-                      <span className="icon_text">Location</span>
+                      <MdLocationOn className={style.assest_icon} />
+                      <span className={style.icon_text}>Location</span>
                     </div>
                   </div>
                 </div>
               </div>
             </section>
           </div>
-
-          {/* <section
-            className={
-              width > 600 && newScoll > 212
-                ? "sortOptionBigContainer sortOptionBigContainerScrolled"
-                : width < 600 && newScoll > 382
-                ? "sortOptionBigContainer sortOptionBigContainerScrolledd"
-                : "sortOptionBigContainer"
-            }
-          > */}
-          {/* FURTHER SORT POST SECTION */}
-
-          {/* <SortingNavbarOldest setfurtherSortOptionClick={setfurtherSortOptionClick} sortOptionSelected={sortOptionSelected} furtherSortOptionClick={furtherSortOptionClick} setSortOptionSelected={setSortOptionSelected} setSortOptionClick={setSortOptionClick} sortOptionClick={sortOptionClick} /> */}
-
-          {/* <SortingNavbarTwoOption
-              setSortOptionSelected={setSortOptionSelected}
-              setfurtherSortOptionClick={setfurtherSortOptionClick}
-              sortOptionSelected={sortOptionSelected}
-              sortOptionClick={sortOptionClick}
-              setSortOptionClick={setSortOptionClick}
-            />
-          </section> */}
-
-          {/* community navbar */}
 
           {/* POST SECTION */}
 
@@ -866,7 +817,19 @@ const CommunityFinal = () => {
                 </div>
               }
             >
-            
+              <div className={style.communityNavbarBlock}>
+                <div className={style.communityNavbarBlockNav}>
+                  <h3 className={style.communityNavHeading} >My Space</h3>
+                </div>
+                <div className={style.communityNavbarBlockNav}>
+                  <h3 className={style.communityNavHeading} >What's Hot?</h3>
+                </div>
+                <div className={style.communityNavbarBlockNav}>
+                  <h3 className={style.communityNavHeading} >Recent</h3>
+                </div>
+              </div>
+
+
               <section className="posts-containerr">
                 {displayPosts.length === 0 &&
                   sortOptionSelected.whose !== "People You Follow" && (
@@ -884,8 +847,8 @@ const CommunityFinal = () => {
                   </>
                 ) : null}
                 {displayPosts.map((item, index) => {
-                  return ( 
-                    <PostCard
+                  return (
+                    <PostCardDark
                       postsData={postsData}
                       setPostsData={setPostsData}
                       item={item}
@@ -906,9 +869,9 @@ const CommunityFinal = () => {
           <section id="communityNewsSection">
             <div
               style={{ overflowY: "auto" }}
-              className="communityNewsSectionContainer"
+              className={style.communityNewsSectionContainer}
             >
-              <h3 className="communityNewsSectionHeading">Trending News</h3>
+              <h3 className={style.communityNewsSectionHeading}>Trending <span>News</span></h3>
               {!newsData && (
                 <div>
                   <NewSkeleton cards={3} />
@@ -920,18 +883,18 @@ const CommunityFinal = () => {
                     return (
                       <>
                         <div
-                          className="communityNewsSectionNewsCont"
+                          className={style.communityNewsSectionNewsCont}
                           onClick={() => setSingleNews(news)}
                           key={news.url}
                         >
                           <div className="communityNewsSectionNewsImageCont">
                             <img
-                              className="communityNewsSectionNewsImage"
+                              className={style.communityNewsSectionNewsImage}
                               src={news?.image?.thumbnail?.contentUrl}
                               alt="newsImg"
                             />
                           </div>
-                          <p className="communityNewsSectionNewsInfo">
+                          <p className={style.communityNewsSectionNewsInfo}>
                             {news.description.slice(0, 60)}....
                           </p>
                         </div>
@@ -944,20 +907,24 @@ const CommunityFinal = () => {
                   return (
                     <>
                       <div
-                        className="communityNewsSectionNewsCont"
+                        className={style.communityNewsSectionNewsCont}
                         onClick={() => setSingleNews(news)}
                         key={news.url}
                       >
                         <div className="communityNewsSectionNewsImageCont">
                           <img
-                            className="communityNewsSectionNewsImage"
+                            className={style.communityNewsSectionNewsImage}
                             src={news?.image?.thumbnail?.contentUrl}
                             alt="newsImg"
                           />
                         </div>
-                        <p className="communityNewsSectionNewsInfo">
+                        <div className={style.communityNewsSectionNewsDateInfoSource}>
+                        <p className={style.communityNewsSectionNewsDate}>2 Hrs Ago </p>
+                        <p className={style.communityNewsSectionNewsInfo}>
                           {news.description.slice(0, 60)}....
                         </p>
+                        <p className={style.communityNewsSectionNewsSource}>Times of India</p>
+                        </div>
                       </div>
                     </>
                   );
@@ -972,43 +939,6 @@ const CommunityFinal = () => {
                 </button>
               )}
             </div>
-
-            {/* ARTICLE SECTION  */}
-            {/* <div className="communityNewsSectionContainer">
-              <h3 className="communityNewsSectionHeading">Articles</h3>
-              {blogArray.length === 0 && (
-                <div>
-                  <NewSkeleton cards={4} />
-                </div>
-              )}
-              {blogArray?.map((article) => {
-                return (
-                  <>
-                    <div
-                      className="communityArticleSectionArticleCont"
-                      onClick={() => {
-                        window.open(
-                          `https://reverr.io/blog/${article.id}`,
-                          "_blank"
-                        );
-                      }}
-                      key={article.id}
-                    >
-                      <div className="communityArticleSectionArticleImageCont">
-                        <img
-                          className="communityArticleSectionArticleImage"
-                          src={article?.image?.imageUrl}
-                          alt="newsImg"
-                        />
-                      </div>
-                      <p className="communityArticleSectionArticleInfo">
-                        {article?.body.slice(0, 61)}....
-                      </p>
-                    </div>
-                  </>
-                );
-              })}
-            </div> */}
           </section>
         ) : null}
         {singleNews ? (
@@ -1034,4 +964,4 @@ const CommunityFinal = () => {
   );
 };
 
-export default CommunityFinal;
+export default CommunityFinalDark;
