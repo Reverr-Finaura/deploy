@@ -31,14 +31,21 @@ import { setUserFundingDoc } from "../../features/userFundingDocSlice";
 import UserProfileCompletedStatusBar from "../../components/User Profile Completed Status Bar/UserProfileCompletedStatusBar";
 import { FiArrowUpRight } from "react-icons/fi";
 import DashboardToolsCont from "../../components/Dashboard Tools Cont/DashboardToolsCont";
-import comImg from "../../images/community mockup.svg"
+import comImg from "../../images/community mockup.svg";
+import { setUserSpace } from "../../features/userSlice";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
+  const [userSpaceArr, setUserSpaceArr] = useState([]);
+  const [isOpen, setIsOpen] = useState(true);
 
+  const userSpace = useSelector((state) => state.user.userSpace);
   const user = useSelector((state) => state.user);
   const userDoc = useSelector((state) => state.userDoc);
-  console.log("user", userDoc);
+
+  console.log("userSpace ", userSpace);
+  console.log("user ", user);
+  console.log("userDOC ", userDoc);
   // const userFundingDoc=useSelector((state)=>state.userFundingDoc)
 
   // console.log("userFundingDoc",userFundingDoc)
@@ -73,8 +80,6 @@ const Dashboard = () => {
   const updateWidth = () => {
     setWidth(window.innerWidth);
   };
-
- 
 
   useEffect(() => {
     window.addEventListener("resize", updateWidth);
@@ -341,6 +346,8 @@ const Dashboard = () => {
       return { ...prev, [name]: value };
     });
   }
+ 
+
 
   //CREATE NEW USER DOC
   const handleUserDocInputForm = async () => {
@@ -361,7 +368,7 @@ const Dashboard = () => {
     }
     toast("Processing Your Request");
     try {
-      await setDoc(doc(db, "Users", user?.user?.email), {
+      const dataFireBase = await setDoc(doc(db, "Users", user?.user?.email), {
         Appointement_request: [],
         saved: [],
         rating: 0,
@@ -399,14 +406,18 @@ const Dashboard = () => {
         hasFundingProfile: "No",
         applyForFundingId: null,
         meeting: {},
+        userSpace: userSpace,
       });
-
       toast.success("Success");
       setHasNoUserDoc(false);
     } catch (error) {
       toast.error(error.message);
     }
   };
+
+
+
+ 
 
   return (
     <>
@@ -415,6 +426,14 @@ const Dashboard = () => {
         <KnowledgeNavbar />
         <div className={styles.body}>
           <Sidebar isVisible={width >= 600 ? true : false} /> */}
+
+      {/* space */}
+      {/* <div className="space--section"> */}
+        {/* <button onClick={openModal}>Open Modal</button> */}
+       
+        
+               
+
 
       {hasNoUserDoc ? (
         <>
@@ -461,7 +480,8 @@ const Dashboard = () => {
                 className="user-doc-input user-doc-input-phone"
                 value={userDocInputFormInput.phone}
               />
-              <button
+
+          <button
                 onClick={handleUserDocInputForm}
                 className="user-doc-input-submit-btn"
               >
@@ -537,7 +557,7 @@ const Dashboard = () => {
             {/* TOOLS CONTAINER */}
 
             <section className="meeting-container">
-              <DashboardToolsCont/>
+              <DashboardToolsCont />
             </section>
 
             {/* MEETING CONTAINER */}
