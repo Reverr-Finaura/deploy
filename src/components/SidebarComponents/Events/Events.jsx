@@ -1,5 +1,5 @@
 import React from "react";
-import peopleGroup from "../../images/profile2user.svg";
+import peopleGroup from "../../../images/profile2user.svg";
 import styles from "./Events.module.css";
 
 function Events() {
@@ -32,7 +32,7 @@ function Events() {
 
       {items.map((item, index) => (
         <div className={styles.eventRow} key={index}>
-          <img src={require("../../images/image 5.png")} alt="img" />
+          <img src={require("../../../images/image 5.png")} alt="img" />
           <div>
             <text style={{ color: "#A7A7A7", fontSize: 8 }}>{item.date}</text>
             <text style={{ color: "#ffffff", fontSize: 12, marginTop: 5 }}>

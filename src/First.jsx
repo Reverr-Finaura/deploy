@@ -1,15 +1,15 @@
 import React from "react";
-import ConnectSuggestion from "./components/ConnectSuggestion/ConnectSuggestion";
-import ProfileSummary from "./components/ProfileSummary/ProfileSummary";
-import VibePatch from "./components/VibePatch/VibePatch";
-import ExploreTools from "./components/ExploreTools/ExploreTools";
-import Journey from "./components/Journey/Journey";
-import GetPremium from "./components/GetPremium/GetPremium";
-import Appoinments from "./components/Appoinments/Appoinments";
-import TrendingNews from "./components/TrendingNews/TrendingNews";
-import Events from "./components/Events/Events";
-import Mentors from "./components/Mentors/Mentors";
-import InvestorFinder from "./components/InvestorFinder/InvestorFinder"
+import ConnectSuggestion from "./components/SidebarComponents/ConnectSuggestion/ConnectSuggestion";
+import ProfileSummary from "./components/SidebarComponents/ProfileSummary/ProfileSummary";
+import VibePatch from "./components/SidebarComponents/VibePatch/VibePatch";
+import ExploreTools from "./components/SidebarComponents/ExploreTools/ExploreTools";
+import Journey from "./components/SidebarComponents/Journey/Journey";
+import GetPremium from "./components/SidebarComponents/GetPremium/GetPremium";
+import Appoinments from "./components/SidebarComponents/Appoinments/Appoinments";
+import TrendingNews from "./components/SidebarComponents/TrendingNews/TrendingNews";
+import Events from "./components/SidebarComponents/Events/Events";
+import Mentors from "./components/SidebarComponents/Mentors/Mentors";
+import InvestorFinder from "./components/SidebarComponents/InvestorFinder/InvestorFinder"
 function First() {
   return (
     <div

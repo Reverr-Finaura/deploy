@@ -1,6 +1,6 @@
 import React from "react";
-import clock from "../../images/clock.svg";
-import peopleGroup from "../../images/profile2user.svg";
+import clock from "../../../images/clock.svg";
+import peopleGroup from "../../../images/profile2user.svg";
 import styles from "./Appoinments.module.css";
 
 function Appoinments() {
@@ -46,12 +46,12 @@ function Appoinments() {
             <div className={styles.meetingRow}>
               <div className={styles.imageContainer}>
                 <img
-                  src={require("../../images/userIcon.png")}
+                  src={require("../../../images/userIcon.png")}
                   alt="Image1"
                   className={styles.image1}
                 />
                 <img
-                  src={require("../../images/userIcon.png")}
+                  src={require("../../../images/userIcon.png")}
                   alt="Image2"
                   className={styles.image2}
                 />
@@ -79,7 +79,7 @@ function Appoinments() {
         } else if (row.type === "event") {
           return (
             <div className={styles.eventRow}>
-              <img src={require("../../images/image 3.png")} alt="img" />
+              <img src={require("../../../images/image 3.png")} alt="img" />
               <div>
                 <text style={{ color: "#A7A7A7", fontSize: 8 }}>Tomorrow</text>
                 <text style={{ color: "#ffffff", fontSize: 12, marginTop: 5 }}>

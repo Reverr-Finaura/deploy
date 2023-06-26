@@ -4,21 +4,21 @@ import styles from "./TrendingNews.module.css";
 function TrendingNews() {
   const newsData = [
     {
-      imageSrc: require("../../images/image 4.png"),
+      imageSrc: require("../../../images/image 4.png"),
       timestamp: "2 Hrs Ago",
       title:
         "Is your smartphone ruining your memory day by day? Is your smartphone ruining your memory day by day?Is your smartphone ruining your memory day by day?",
       source: "Times of India",
     },
     {
-      imageSrc: require("../../images/image 4.png"),
+      imageSrc: require("../../../images/image 4.png"),
       timestamp: "2 Hrs Ago",
       title:
         "Is your smartphone ruining your memory day by day? Is your smartphone ruining your memory day by day?Is your smartphone ruining your memory day by day?",
       source: "Times of India",
     },
     {
-      imageSrc: require("../../images/image 4.png"),
+      imageSrc: require("../../../images/image 4.png"),
       timestamp: "2 Hrs Ago",
       title:
         "Is your smartphone ruining your memory day by day? Is your smartphone ruining your memory day by day?Is your smartphone ruining your memory day by day?",

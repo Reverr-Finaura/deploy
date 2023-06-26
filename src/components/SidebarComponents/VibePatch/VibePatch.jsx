@@ -1,5 +1,5 @@
 import React from "react";
-import vibeImg from "../../images/Frame 6267617.svg";
+import vibeImg from "../../../images/Frame 6267617.svg";
 import styles from "./VibePatch.module.css";
 
 function VibePatch() {
@@ -11,7 +11,7 @@ function VibePatch() {
       </button>
       <img
         style={{ marginTop: 40 }}
-        src={require("../../images/image 827.png")}
+        src={require("../../../images/image 827.png")}
         alt="img"
       />
       <text

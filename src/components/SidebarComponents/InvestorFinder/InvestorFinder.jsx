@@ -1,5 +1,5 @@
 import React from "react";
-import illustration from "../../images/illustration.svg";
+import illustration from "../../../images/illustration.svg";
 import styles from "./InvestorFinder.module.css";
 
 function InvestorFinder() {

@@ -16,7 +16,7 @@ function ExploreTools() {
         style={{
           marginTop: 20,
         }}
-        src={require("../../images/explore.png")}
+        src={require("../../../images/explore.png")}
         alt="img"
       />
       <button onClick={() => console.log("explore tools clicked")}>

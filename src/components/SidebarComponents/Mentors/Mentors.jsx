@@ -6,27 +6,27 @@ function Mentors() {
     {
       name: "Gloria Balistreri",
       role: "CEO, Starbucks",
-      profileImage: require("../../images/userIcon.png"),
+      profileImage: require("../../../images/userIcon.png"),
     },
     {
       name: "Gloria Balistreri",
       role: "CEO, Starbucks",
-      profileImage: require("../../images/userIcon.png"),
+      profileImage: require("../../../images/userIcon.png"),
     },
     {
       name: "Gloria Balistreri",
       role: "CEO, Starbucks",
-      profileImage: require("../../images/userIcon.png"),
+      profileImage: require("../../../images/userIcon.png"),
     },
     {
       name: "Gloria Balistreri",
       role: "CEO, Starbucks",
-      profileImage: require("../../images/userIcon.png"),
+      profileImage: require("../../../images/userIcon.png"),
     },
     {
       name: "Gloria Balistreri",
       role: "CEO, Starbucks",
-      profileImage: require("../../images/userIcon.png"),
+      profileImage: require("../../../images/userIcon.png"),
     },
   ];
 

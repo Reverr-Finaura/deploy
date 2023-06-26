@@ -6,22 +6,22 @@ function ConnectSuggestion() {
     {
       name: "Monica Nitzsche",
       role: "Strategist",
-      profileImage: require("../../images/userIcon.png"),
+      profileImage: require("../../../images/userIcon.png"),
     },
     {
       name: "Monica Nitzsche",
       role: "Strategist",
-      profileImage: require("../../images/userIcon.png"),
+      profileImage: require("../../../images/userIcon.png"),
     },
     {
       name: "Monica Nitzsche",
       role: "Strategist",
-      profileImage: require("../../images/userIcon.png"),
+      profileImage: require("../../../images/userIcon.png"),
     },
     {
       name: "Monica Nitzsche",
       role: "Strategist",
-      profileImage: require("../../images/userIcon.png"),
+      profileImage: require("../../../images/userIcon.png"),
     },
   ];
 

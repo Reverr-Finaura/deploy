@@ -1,8 +1,8 @@
 import React from "react";
-import eye from "../../images/eye.svg";
-import people from "../../images/people.svg";
-import setting from "../../images/setting.svg";
-import edit from "../../images/edit.svg";
+import eye from "../../../images/eye.svg";
+import people from "../../../images/people.svg";
+import setting from "../../../images/setting.svg";
+import edit from "../../../images/edit.svg";
 import styles from "./ProfileSummary.module.css";
 
 const ProfileSummary = () => {
@@ -11,7 +11,7 @@ const ProfileSummary = () => {
       <div className={styles.header}>
         <div className={styles.user}>
           <img
-            src={require("../../images/userIcon.png")}
+            src={require("../../../images/userIcon.png")}
             className={styles.profileImage}
             alt="Profile"
           />

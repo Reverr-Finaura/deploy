@@ -11,7 +11,7 @@ function Journey() {
         <span style={{ color: "#ffffff" }}>&nbsp;just for you!</span>
       </p>
       <div>
-        <img src={require("../../images/Rectangle 1612.png")} alt="img" />
+        <img src={require("../../../images/Rectangle 1612.png")} alt="img" />
         <button onClick={() => console.log("patch clicked")}>
         The Journey &nbsp;&gt;
         </button>
