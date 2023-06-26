@@ -7,7 +7,9 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  background-color: var(--bg-card);
+  /* --bg-light-blue */
+  background-color: #0c1631;
+
   border-radius: 19px;
   /* border-bottom-left-radius: 0;
   border-bottom-right-radius: 0; */
@@ -15,6 +17,7 @@
   font-style: normal;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
   position: relative;
+  margin-bottom: 3em;
 
 }
 .postDivideLine_community{
@@ -30,7 +33,8 @@
   /* font-weight: 600; */
   font-size: 18px;
   line-height: 30px;
-  color: var(--main-text);
+  /* gray color */
+  color: #a7a7a7;
 }
 .postLikeCount,
 .postCommentCount {
@@ -42,7 +46,8 @@ font-style: normal;
 font-weight: 600;
 font-size: 1rem;
 line-height: 18px;
-color: #202020;
+/* --main-text */
+color: #ffffff;
 margin: auto;
 margin-left: .25rem;
 }
@@ -66,14 +71,16 @@ margin-left: .25rem;
   font-size: 1.4rem;
   display: flex;
   align-items: center;
-  color: var(--main-text);
+  /* --blue-text  */
+  color: #00b2ff;
 }
 .postAuthorDesignation {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  color: var(--main-text);
+  /* --main-text */
+  color: #ffffff;
 }
 .threeDotsMainCont {
   /* margin: auto; */
@@ -84,7 +91,8 @@ margin-left: .25rem;
   margin-left: auto;
   width: fit-content;
   position: relative;
-  color: var(--main-text);
+  /* --main-text */
+  color: #ffffff;
 }
 .threeDotsPost {
   width: 30px;
@@ -158,7 +166,8 @@ margin-left: .25rem;
 .postText {
   font-weight: lighter;
   font-size: 1.2rem !important;
-  color: var(--main-text);
+  /*--main-text   */
+  color: #ffffff;
 }
 .morePostTextButton {
   color: #2a72de;
@@ -173,7 +182,7 @@ margin-left: .25rem;
 .postLikesContainer {
   display: flex;
   margin: auto;
-  color: var(--main-text);
+  color: #ffffff;
 }
 .postLikesContainerLikeIcon {
   width: fit-content;
@@ -209,7 +218,8 @@ margin-left: .25rem;
 .postCommentContainer {
   display: flex;
   margin: auto;
-  color: var(--main-text);
+  /* --main-text */
+  color: #ffffff;
 }
 .commentPostIcon {
   width: 30px;
@@ -249,7 +259,8 @@ margin-left: .25rem;
 .postSendLinkContainer {
   margin: auto;
   cursor: pointer;
-  color: var(--main-text);
+  /* --main-text */
+  color: #ffffff;
 }
 .postSendCont {
   display: flex;
