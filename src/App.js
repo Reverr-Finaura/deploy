@@ -100,6 +100,8 @@ import DummyTest from "./pages/Dummy Test Page/DummyTest";
 // import CompetitorAnalysis from "./pages/New Courses/Courses/CompetitorAnalysis";
 // import BuildAudience from "./pages/New Courses/Courses/BuildAudience";
 import CommunityFinalDark from "./components/Community Dark Mood/Community Final Dark/CommunityFinalDark";
+import Test from "./TestPage/Test";
+
 
 function App() {
   const user = useSelector(selectUser);
@@ -166,7 +168,8 @@ function App() {
         <Route path="/funding" element={<Funding />}></Route>
         <Route path="/fundingform" element={<FundingForm />}></Route>
         <Route path="/mentor-profile" element={<MentorProfile />}></Route>
-        <Route path="/community" element={<CommunityFinalDark />}>
+        <Route path="/community" element={<Test/>}>
+        {/* <Route path="/community" element={<CommunityFinalDark />}> */}
         {/* <Route path="/community" element={<CommunityFinal />}> */}
           <Route path=":postId" element={<SharedCommunityPost />}></Route>
         </Route>

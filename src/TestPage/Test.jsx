@@ -15,6 +15,8 @@ import DiscoverEvents from "../components/DynamicComponents/DiscoverEvents/Disco
 import DiscoverPerfectTools from "../components/DynamicComponents/DiscoverPerfectTools/DiscoverPerfectTools";
 import FeaturedSuggestions from "../components/DynamicComponents/FeaturedSuggestions/FeaturedSuggestions";
 import FeaturedMentors from "../components/DynamicComponents/FeaturedMentors/FeaturedMentors";
+import CommunityFinalDark from "../components/Community Dark Mood/Community Final Dark/CommunityFinalDark"
+
 
 function Test() {
   return (
@@ -32,15 +34,19 @@ function Test() {
         <div style={{ marginTop: 50 }}></div>
         <GetPremium />
       </div>
+
       <div className={styles.middleSection}>
-        <DiscoverEvents />
+        
+        <CommunityFinalDark/>
+        {/* <DiscoverEvents />
         <div style={{ marginTop: 50 }}></div>
         <DiscoverPerfectTools />
         <div style={{ marginTop: 50 }}></div>
         <FeaturedSuggestions />
         <div style={{ marginTop: 50 }}></div>
-        <FeaturedMentors />
+        <FeaturedMentors /> */}
       </div>
+
       <div className={styles.rightSidebar}>
         <Appoinments />
         <div style={{ marginTop: 50 }}></div>
