@@ -1,0 +1,41 @@
+.searchPageWrapper {
+  background-color: #030b18;
+  height: 100vh;
+  overflow-y: scroll;
+  color: #fff;
+  padding: 4rem 4rem;
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  color: #4cc9ff;
+  font-size: 4rem;
+  font-family: Reem Kufi;
+  font-weight: 700;
+  display: inline;
+}
+.title > p > img {
+  align-items: center;
+  align-self: center;
+}
+
+.title {
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-start;
+  margin-bottom: 2rem;
+}
+
+.title p {
+  display: flex;
+  align-items: center; 
+}
+
+.title p img {
+  margin-right: 25px; 
+  cursor: pointer;
+}
+.searchResultContainer {
+    display:  flex;
+    flex-wrap: wrap;
+}

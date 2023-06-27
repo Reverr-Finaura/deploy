@@ -100,6 +100,8 @@ import DummyTest from "./pages/Dummy Test Page/DummyTest";
 // import CompetitorAnalysis from "./pages/New Courses/Courses/CompetitorAnalysis";
 // import BuildAudience from "./pages/New Courses/Courses/BuildAudience";
 import CommunityFinalDark from "./components/Community Dark Mood/Community Final Dark/CommunityFinalDark";
+import MentorTesting from "./pages/Mentors/MentorTesting";
+import MentorSearch from "./pages/MentorSearch/MentorSearch";
 
 function App() {
   const user = useSelector(selectUser);
@@ -159,7 +161,8 @@ function App() {
         <Route path="/" element={<Dashboard />} />
         <Route path="/knowledge" element={<Knowledge />}></Route>
         {/* <Route path="/com" element={<BusinessPlanningSlides />}></Route> */}
-        <Route path="/mentors" element={<MentorsNew />}></Route>
+        <Route path="/mentors" element={<MentorTesting/>}></Route>
+        <Route path="/mentors-search" element={<MentorSearch/>}></Route>
         <Route path="/mentor" element={<Mentor />}></Route>
         <Route path="/mentorform" element={<MentorForm />}></Route>
         <Route path="/mentordetails" element={<MentorMoreDetails />}></Route>
