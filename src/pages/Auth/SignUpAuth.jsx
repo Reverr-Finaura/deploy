@@ -321,6 +321,7 @@ function Auth() {
   //   setIsOpen(false);
   // };
 
+  // below code is for userspace
   const handleCheckboxChange = (event) => {
     const selectedValue = event.target.value;
     if (event.target.checked) {
@@ -344,32 +345,7 @@ function Auth() {
   console.log("userSpaceArr ", userSpaceArr);
   console.log("userSpace: ", userSpace);
 
-  // FinTech
-  // EdTech
-  // AgriTech
-  // FoodTech
-  // Ecommerce
-  // Logistics & Delivery
-  // Cleantech & Renewable Energy
-  // Ai & ML
-  // Web 3.0
-  // FashionTech
-  // SpaceTech
-  // HealthTech
-  // Cybersecurity
-  // AR & VR
-  // Internet of Things(IOT)
-  // Biotech
-  // TravelTech
-  // Real Estate-Tech
-  // BeautyTech
-  // LegalTech
-  // HR-Tech
-  // Personal fitness Tech
-  // Waste Management Technologies
-  // Online Marketplaces
-  // CloudTech
-
+ 
   return (
     <>
       <div className="space--section">

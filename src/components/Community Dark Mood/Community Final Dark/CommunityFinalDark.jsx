@@ -3,6 +3,7 @@ import style from "./CommunityFinalDark.module.css";
 import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
 import CommunityNavbar from "../../../components/Community Navbar/CommunityNavbar";
 import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
+import NavBarFinalDarkMode from "../../Navbar Dark Mode/NavBarFinalDarkMode";
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import {
   collection,
@@ -50,8 +51,16 @@ import { IoLocationSharp } from "react-icons/io5";
 import { BsImages } from "react-icons/bs";
 import { RiFileSearchLine } from "react-icons/ri";
 // import SortingNavbarTwoOption from "./Sorting Navbar Two Options/SortingNavbarTwoOptions";
+import  {setUserSpace} from "../../../features/userSlice"
+
+
 
 const CommunityFinalDark = () => {
+
+  const userSpace = useSelector((state) => state.user.userSpace);
+  const [userSpaceArr, setUserSpaceArr] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+
   const dispatch = useDispatch();
   const postData = [];
   const [width, setWidth] = useState(window.innerWidth);
@@ -436,16 +445,380 @@ const CommunityFinalDark = () => {
     },
   ];
 
+  // below code is for the userspace
+  const handleCheckboxChange = (event) => {
+    const selectedValue = event.target.value;
+    if (event.target.checked) {
+      setUserSpaceArr((prevArr) => [...prevArr, selectedValue]);
+    } else {
+      setUserSpaceArr((prevArr) =>
+        prevArr.filter((value) => value !== selectedValue)
+      );
+    }
+  };
+
+  function handleModalSubmit() {
+    if (userSpaceArr.length >= 1) {
+      dispatch(setUserSpace(userSpaceArr));
+      setIsOpen(false);
+    } else {
+      window.alert("Please choose atleast one!");
+    }
+  }
+
+  console.log("userSpaceArr ", userSpaceArr);
+  console.log("userSpace: ", userSpace);
+
+ function openTheSpaceModal(){
+  if(isOpen){
+    setIsOpen(false)
+  }
+  else{
+    setIsOpen(true)
+  }
+ }
+ function handleModalClose(){
+   setIsOpen(false)
+ }
+
+
   return (
     <>
+    <button onClick={openTheSpaceModal} className={style.spaceSectionButton}>Change your Space</button>
+    {isOpen && ( <div className={style.spaceSection}>
+        {/* <button className={style.spaceSectionButton} onClick={openModal}>Open Modal</button> */}
+     
+          <div className={style.spaceModal}>
+            <div className={style.spaceModalContent}>
+              {/* <span className="close" onClick={closeModal}>
+                &times;
+              </span> */}
+
+              <p className={style.spaceModalHeading}>Select your space (s).</p>
+              {/* <p>Imagine the industry as a vibrant tapestry of possibilities—where does your thread weave its unique pattern?</p> */}
+              <div className={style.spaceMenu}>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}                    
+                    type="checkbox"
+                    value="FinTech"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  FinTech
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="EdTech"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  EdTech
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="AgriTech"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  AgriTech
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="FoodTech"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  FoodTech
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="Ecommerce"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  Ecommerce
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="Logistics & Delivery"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  Logistics & Delivery
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="Cleantech & Renewable Energy"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  Cleantech & Renewable Energy
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="Ai & ML"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  Ai & ML
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="Web 3.0"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  Web 3.0
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="FashionTech"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  FashionTech
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="SpaceTech"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  SpaceTech
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="HealthTech"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  HealthTech
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="Cybersecurity"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  Cybersecurity
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="AR & VR"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  AR & VR
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="Internet of Things(IOT)"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  Internet of Things(IOT)
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="Biotech"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  Biotech
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="TravelTech"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  TravelTech
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="Real Estate-Tech"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  Real Estate-Tech
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="BeautyTech"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  BeautyTech
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="LegalTech"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  LegalTech
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="HR-Tech"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  HR-Tech
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="Personal fitness Tech"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  Personal fitness Tech
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="Waste Management Technologies"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  Waste Management Technologies
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="Online Marketplaces"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  Online Marketplaces
+
+                  </p>
+                </div>
+                <div className={style.spaceMenuData}>
+                  {/*<input 
+                   className={style.spaceMenuInput}
+                    type="checkbox"
+                    value="CloudTech"
+                    onChange={handleCheckboxChange}
+                  /> */}
+                  <p className={style.spaceMenuDataPara} >
+                  CloudTech
+
+                  </p>
+                </div>
+                <p>Selected Options: {userSpaceArr.join(", ")}</p>
+              </div>
+              <div className={style.spaceDoneCloseBtn}>
+              <button className={style.spaceDoneBtn} onClick={handleModalSubmit}>Done</button>
+              <button className={style.spaceCloseBtn} onClick={handleModalClose}>Close</button>
+              </div>
+            </div>
+          </div>
+     
+      </div>   )}
+
+
+
+
       {width >= 600 ? (
         <>
           <SidebarFinal />
-          {/* <NavBarFinal /> */}
+          <NavBarFinalDarkMode/>
           {/* <CommunitySidebar /> */}
-          <CommunityNavbar
+          {/* <CommunityNavbar
             setNavbarPostButtonClick={setNavbarPostButtonClick}
-          />
+          /> */}
         </>
       ) : (
         <>

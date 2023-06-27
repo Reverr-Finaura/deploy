@@ -12,6 +12,7 @@ import PhnSidebar from "../../components/PhnSidebar/PhnSidebar";
 import styles from "./Community.module.css";
 import KnowledgeNavbar from "../../components/KnowledgeNavbar/KnowledgeNavbar";
 import NavBarFinal from "../../components/Navbar/NavBarFinal";
+import NavBarFinalDarkMode from "../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 
 function Community() {
   const [width, setWidth] = useState(window.innerWidth);

@@ -23,6 +23,7 @@ import BlogCard from "../Blog Card/BlogCard";
 import MentorCard from "../Mentor Card/MentorCard";
 import SidebarFinal from "../../components/Sidebar Final/SidebarFinal";
 import NavBarFinal from "../../components/Navbar/NavBarFinal";
+import NavBarFinalDarkMode from "../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 import { useSelector, useDispatch } from "react-redux";
 import { setUserDoc } from "../../features/userDocSlice";
 import { ToastContainer, toast } from "react-toastify";
@@ -495,7 +496,8 @@ const Dashboard = () => {
       {width >= 600 ? (
         <>
           <SidebarFinal />
-          <NavBarFinal />
+          {/* <NavBarFinal /> */}
+          <NavBarFinalDarkMode/>
         </>
       ) : (
         <>
