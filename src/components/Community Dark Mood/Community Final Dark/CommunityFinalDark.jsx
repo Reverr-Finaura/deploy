@@ -828,6 +828,7 @@ const CommunityFinalDark = () => {
           <KnowledgeNavbar /> */}
         </>
       )}
+      
       <section
         style={{
           position: postsAuthorIsClick || postIdExist !== "" ? "fixed" : "",
