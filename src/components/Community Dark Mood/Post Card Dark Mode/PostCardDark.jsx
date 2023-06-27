@@ -422,7 +422,7 @@ export default function PostCardDark({
               {/* <i onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className={"fa fa-heart "+ (item?.likes.includes(user?.user?.email)?"heartPostLiked":"heartPostNotLiked")}></i> */}
 
               {/* <p className='postLikeCount postLikeCountText'>{item?.likes.length<=1?"Like":"Likes"}</p> */}
-              <h3 className="postLikeCount">{item?.likes.length}</h3>
+              <h3 className={style.postLikeCount}>{item?.likes.length}</h3>
             </div>
             <div className={style.postCommentContainer}>
               <div className="commentContainer">
@@ -437,7 +437,7 @@ export default function PostCardDark({
                 {/* ;(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus() */}
               </div>
               {/* <p className='postLikeCountText'>{item?.comments.length<=1?"Comment":"Comments"}</p> */}
-              <h3 className="postCommentCount">{item?.comments.length}</h3>
+              <h3 className={style.postCommentCount}>{item?.comments.length}</h3>
             </div>
 
             <div
@@ -465,11 +465,11 @@ export default function PostCardDark({
                 {/* ;(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus() */}
               </div>
               {/* <p className='postLikeCountText'>{item?.comments.length<=1?"Comment":"Comments"}</p> */}
-              <h3 className="postCommentCount">{item?.comments.length}</h3>
+              <h3 className={style.postCommentCount}>{item?.comments.length}</h3>
             </div>
           </div>
           {/* saveCont */}
-          <BsBookmark className="post_card_save_post_icon" />
+          <BsBookmark stlye={{color:"white"}} className="post_card_save_post_icon" />
         </div>
       </section>
     </>

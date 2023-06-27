@@ -52,8 +52,10 @@ import { BsImages } from "react-icons/bs";
 import { RiFileSearchLine } from "react-icons/ri";
 // import SortingNavbarTwoOption from "./Sorting Navbar Two Options/SortingNavbarTwoOptions";
 import  {setUserSpace} from "../../../features/userSlice"
-
-
+import  Appoinments from "../../SidebarComponents/Appoinments/Appoinments"
+import TrendingNews from "../../SidebarComponents/TrendingNews/TrendingNews";
+import Events from "../../SidebarComponents/Events/Events";
+import Mentors from "../../SidebarComponents/Mentors/Mentors";
 
 const CommunityFinalDark = () => {
 
@@ -813,8 +815,8 @@ const CommunityFinalDark = () => {
 
       {width >= 600 ? (
         <>
-          <SidebarFinal />
-          <NavBarFinalDarkMode/>
+          {/* <SidebarFinal /> */}
+          {/* <NavBarFinalDarkMode/> */}
           {/* <CommunitySidebar /> */}
           {/* <CommunityNavbar
             setNavbarPostButtonClick={setNavbarPostButtonClick}
@@ -822,8 +824,8 @@ const CommunityFinalDark = () => {
         </>
       ) : (
         <>
-          <PhnSidebar />
-          <KnowledgeNavbar />
+          {/* <PhnSidebar />
+          <KnowledgeNavbar /> */}
         </>
       )}
       <section
@@ -1006,7 +1008,7 @@ const CommunityFinalDark = () => {
 
           {/* UPLOAD NEW POST SECTION */}
 
-          <div className="reverrCommunityUploadContainerrr">
+          <div className={style.reverrCommunityUploadContainerrr}>
             <div className="reverrCommunityHeadingAndPostUploadIcon">
               <div>
                 <h2 className={style.reverrCommunityHeading}>
@@ -1179,7 +1181,7 @@ const CommunityFinalDark = () => {
 
           {/* POST SECTION */}
 
-          <div className="infiniteScrollOuterDiv">
+          <div className={style.infiniteScrollOuterDiv}>
             <InfiniteScroll
               dataLength={displayPosts.length}
               next={fetchMorePosts}
@@ -1237,89 +1239,7 @@ const CommunityFinalDark = () => {
           </div>
         </section>
 
-        {/* COMMUNITY NEWS SECTION */}
-        {width > 1180 ? (
-          <section id="communityNewsSection">
-            <div
-              style={{ overflowY: "auto" }}
-              className={style.communityNewsSectionContainer}
-            >
-              <h3 className={style.communityNewsSectionHeading}>Trending <span>News</span></h3>
-              {!newsData && (
-                <div>
-                  <NewSkeleton cards={3} />
-                </div>
-              )}
-              {seeAllNewsIsClicked ? (
-                <>
-                  {newsData?.map((news) => {
-                    return (
-                      <>
-                        <div
-                          className={style.communityNewsSectionNewsCont}
-                          onClick={() => setSingleNews(news)}
-                          key={news.url}
-                        >
-                          <div className="communityNewsSectionNewsImageCont">
-                            <img
-                              className={style.communityNewsSectionNewsImage}
-                              src={news?.image?.thumbnail?.contentUrl}
-                              alt="newsImg"
-                            />
-                          </div>
-                          <p className={style.communityNewsSectionNewsInfo}>
-                            {news.description.slice(0, 60)}....
-                          </p>
-                        </div>
-                      </>
-                    );
-                  })}
-                </>
-              ) : (
-                newsData?.slice(0, 4).map((news) => {
-                  return (
-                    <>
-                      <div
-                        className={style.communityNewsSectionNewsCont}
-                        onClick={() => setSingleNews(news)}
-                        key={news.url}
-                      >
-                        <div className="communityNewsSectionNewsImageCont">
-                          <img
-                            className={style.communityNewsSectionNewsImage}
-                            src={news?.image?.thumbnail?.contentUrl}
-                            alt="newsImg"
-                          />
-                        </div>
-                        <div className={style.communityNewsSectionNewsDateInfoSource}>
-                        <p className={style.communityNewsSectionNewsDate}>2 Hrs Ago </p>
-                        <p className={style.communityNewsSectionNewsInfo}>
-                          {news.description.slice(0, 60)}....
-                        </p>
-                        <p className={style.communityNewsSectionNewsSource}>Times of India</p>
-                        </div>
-                      </div>
-                    </>
-                  );
-                })
-              )}
-              {seeAllNewsIsClicked ? null : (
-                <button
-                  onClick={() => setSeeAllNewsIsClicked(true)}
-                  className="communityNewsSectionContainerMoreNewsButton"
-                >
-                  See All
-                </button>
-              )}
-            </div>
-          </section>
-        ) : null}
-        {singleNews ? (
-          <CommunityNews
-            singleNews={singleNews}
-            setSingleNews={setSingleNews}
-          />
-        ) : null}
+  
       </section>
 
       <CommunityUserProfilePopup
