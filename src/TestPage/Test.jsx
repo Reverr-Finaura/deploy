@@ -16,12 +16,14 @@ import DiscoverPerfectTools from "../components/DynamicComponents/DiscoverPerfec
 import FeaturedSuggestions from "../components/DynamicComponents/FeaturedSuggestions/FeaturedSuggestions";
 import FeaturedMentors from "../components/DynamicComponents/FeaturedMentors/FeaturedMentors";
 import CommunityFinalDark from "../components/Community Dark Mood/Community Final Dark/CommunityFinalDark"
-
+import NavBarFinalDarkMode from "../components/Navbar Dark Mode/NavBarFinalDarkMode";
 
 function Test() {
   return (
+  <>
+   <NavBarFinalDarkMode/>
     <div className={styles.container}>
-      <div className={styles.leftSidebar}>
+      <div className={styles.leftSidebar} style={{marginTop: "10em"}}>
         <ProfileSummary />
         <div style={{ marginTop: 50 }}></div>
         <ConnectSuggestion />
@@ -47,7 +49,7 @@ function Test() {
         <FeaturedMentors /> */}
       </div>
 
-      <div className={styles.rightSidebar}>
+      <div className={styles.rightSidebar}  style={{marginTop: "10em"}}>
         <Appoinments />
         <div style={{ marginTop: 50 }}></div>
         <TrendingNews />
@@ -59,7 +61,9 @@ function Test() {
         <Mentors />
       </div>
     </div>
+    </>
   );
+
 }
 
 export default Test;
