@@ -53,7 +53,8 @@ const MentorsNew = () => {
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
-
+  console.log(uniqueExpertiseArray);
+  console.log("Mentor Array",mentorArray);
   //FETCH MENTOR DATA FROM FIREBASE
   useEffect(() => {
     async function fetchMentorExpertise() {

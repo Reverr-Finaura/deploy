@@ -102,6 +102,7 @@ import DummyTest from "./pages/Dummy Test Page/DummyTest";
 import CommunityFinalDark from "./components/Community Dark Mood/Community Final Dark/CommunityFinalDark";
 import MentorTesting from "./pages/Mentors/MentorTesting";
 import MentorSearch from "./pages/MentorSearch/MentorSearch";
+import ScheduleTesting from "./pages/Schedule/ScheduleTesting";
 
 function App() {
   const user = useSelector(selectUser);
@@ -162,7 +163,8 @@ function App() {
         <Route path="/knowledge" element={<Knowledge />}></Route>
         {/* <Route path="/com" element={<BusinessPlanningSlides />}></Route> */}
         <Route path="/mentors" element={<MentorTesting/>}></Route>
-        <Route path="/mentors-search" element={<MentorSearch/>}></Route>
+        {/* <Route path="/mentors" element={<MentorsNew/>}></Route> */}
+        <Route path="/mentors-search/:industry" element={<MentorSearch/>}></Route>
         <Route path="/mentor" element={<Mentor />}></Route>
         <Route path="/mentorform" element={<MentorForm />}></Route>
         <Route path="/mentordetails" element={<MentorMoreDetails />}></Route>
@@ -173,7 +175,8 @@ function App() {
         {/* <Route path="/community" element={<CommunityFinal />}> */}
           <Route path=":postId" element={<SharedCommunityPost />}></Route>
         </Route>
-        <Route path="/schedule/:id/:userEmail" element={<Schedule />}></Route>
+        {/* <Route path="/schedule/:id/:userEmail" element={<Schedule />}></Route> */}
+        <Route path="/schedule/:id/:userEmail" element={<ScheduleTesting />}></Route>
         <Route path="/betaslide" element={<BetaSlide />}></Route>
         <Route path="/eeslides" element={<EESlides />}></Route>
         <Route

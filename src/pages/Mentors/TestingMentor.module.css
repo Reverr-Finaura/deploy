@@ -173,29 +173,6 @@
   gap: 1rem;
 }
 
-.categoryCard {
-  position: relative;
-  width: 15rem;
-  margin-top: 2rem;
-  cursor: pointer;
-}
-.categoryCard > p {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.5rem;
-  font-family: Poppins;
-  font-weight: 600;
-  letter-spacing: 0.04rem;
-  text-align: center;
-}
-.categoryCard > img {
-  width: 100%;
-  object-fit: cover;
-  border-radius: 16.468px;
-}
-
 /* --------------------Media query------------------ */
 @media (max-width: 768px) {
   .wrapper {
@@ -248,6 +225,10 @@
   }
   .leftMainImage {
     width: 6rem; 
+  }
+  .leftMainImage > img {
+    width: 100%; 
+    border-radius: 100%;
   }
   .rightCardMain > p {
     font-size: 1rem; 

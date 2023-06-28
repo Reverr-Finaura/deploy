@@ -1,0 +1,24 @@
+.categoryCard {
+  position: relative;
+  width: 15rem;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.categoryCard > p {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-family: Poppins;
+  font-weight: 600;
+  letter-spacing: 0.04rem;
+  line-height: 1.2;
+  text-align: center;
+}
+.categoryCard > img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 16.468px;
+}

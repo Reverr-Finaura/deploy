@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Schedule.module.css";
-import PhnSidebar from "../../components/PhnSidebar/PhnSidebar";
+import styles from "./ScheduleTesting.module.css";
 import KnowledgeNavbar from "../../components/KnowledgeNavbar/KnowledgeNavbar";
 
 import "../../components/Calendar/Calendar.css";
@@ -12,13 +11,11 @@ import { db } from "../../firebase";
 import { collection, getDocs, query } from "firebase/firestore";
 
 import { useParams } from "react-router-dom";
-import SidebarFinal from "../../components/Sidebar Final/SidebarFinal";
-import NavBarFinal from "../../components/Navbar/NavBarFinal";
 import PaymentMentorMeetingSchedule from "../../components/Payment For Mentor Meeting Schedule/PaymentMentorMeetingSchedule";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function Schedule() {
+function ScheduleTesting() {
   const [width, setWidth] = useState(window.innerWidth);
   // const user = useSelector(selectUser);
   const { id, userEmail } = useParams();
@@ -128,17 +125,6 @@ function Schedule() {
   }, []);
   return (
     <>
-      {width >= 600 ? (
-        <>
-          <SidebarFinal />
-          <NavBarFinal />
-        </>
-      ) : (
-        <>
-          <PhnSidebar />
-          <KnowledgeNavbar />
-        </>
-      )}
       {paymentModeOn ? (
         <PaymentMentorMeetingSchedule
           userDocc={currentUser}
@@ -181,4 +167,4 @@ function Schedule() {
   );
 }
 
-export default Schedule;
+export default ScheduleTesting;
