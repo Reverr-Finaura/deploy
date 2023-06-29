@@ -13,7 +13,7 @@ const IndustryCard = ({ item }) => {
         src={item.image ? item.image : FinanceImg}
         alt="Categorycard"
       />
-      <p>{item.industryname}</p>
+      <p>{item.industryname.charAt(0).toUpperCase() + item.industryname.slice(1)}</p>
     </div>
   );
 };

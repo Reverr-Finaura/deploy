@@ -9,9 +9,9 @@
 }
 .title {
   color: #4cc9ff;
-  font-size: 4rem;
-  font-family: Reem Kufi;
-  font-weight: 700;
+  font-size: 3rem;
+  font-family: 'Reem Kufi';
+  font-weight: 500;
   display: inline;
 }
 .title > p > img {
@@ -39,3 +39,38 @@
     display:  flex;
     flex-wrap: wrap;
 }
+
+@media (max-width: 768px) {
+  .searchPageWrapper {
+    padding: 2rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .title > p img {
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchPageWrapper {
+    padding: 2rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .title > p img {
+    margin-right: 15px;
+  }
+
+  .searchResultContainer {
+    padding: 0 1rem;
+  }
+}
+

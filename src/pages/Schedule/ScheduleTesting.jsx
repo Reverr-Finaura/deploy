@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ScheduleTesting.module.css";
-import KnowledgeNavbar from "../../components/KnowledgeNavbar/KnowledgeNavbar";
 
 import "../../components/Calendar/Calendar.css";
 import "../../components/TimePicker/TimePicker.css";

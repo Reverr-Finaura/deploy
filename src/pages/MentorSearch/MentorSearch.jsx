@@ -74,7 +74,7 @@ const MentorSearch = () => {
                 navigate("/mentors");
               }}
             />
-            {industry}
+            {industry.charAt(0).toUpperCase() + industry.slice(1)}
           </p>
         </div>
         <div className={styles.searchResultContainer}>

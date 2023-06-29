@@ -5,12 +5,35 @@ import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../firebase";
 import industry from "./Industry.json";
 import IndustryCard from "../../components/IndustryCard/IndustryCard";
-
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import SearchIcon from "../../images/Search.svg";
 
 const MentorTesting = () => {
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 2,
+    },
+    desktop: {
+      breakpoint: { max: 1024, min: 800 },
+      items: 2,
+    },
+    tablet: {
+      breakpoint: { max: 800, min: 464 },
+      items: 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
+
   const [industryArray, setIndustryArray] = useState([]);
   const [mentorArray, setMentorArray] = useState([]);
   const [filteredArray, setFilteredArray] = useState([]);
+  const [featuredMentors, setFeaturedMentors] = useState([]);
+
 
   useEffect(() => {
     async function fetchMentorExpertise() {
@@ -46,6 +69,27 @@ const MentorTesting = () => {
     });
     // setArrayToBeMapped(mentorArray);
   }, [mentorArray]);
+  useEffect(() => {
+    const getRandomObjects = (arr, count) => {
+      const shuffled = [...arr].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, count);
+    };
+
+    const randomMentors = getRandomObjects(mentorArray, 5);
+    const updatedMentors = randomMentors.map((item) => ({
+      name: item.name,
+      email: item.email,
+      about: item.about,
+      industry: item.industry?.split(",").map((x) => x.trim()),
+      domain: item.domain,
+      designation: item.designation,
+      linkedin: item.linkedin,
+      image: item.image,
+      plans: item.plans,
+    }));
+
+    setFeaturedMentors(updatedMentors);
+  }, [mentorArray]);
 
   function removeEmptyIndustryFromArray() {
     let filteredData = [];
@@ -56,8 +100,6 @@ const MentorTesting = () => {
     removeEmptyIndustryFromArray();
   }, [industryArray]);
 
-
-
   return (
     <div className={styles.mentor}>
       <div className={styles.wrapper}>
@@ -65,15 +107,42 @@ const MentorTesting = () => {
           <div>
             Find the best <span>Mentors</span>
           </div>
-          <div>
+          <div className={styles.search}>
             <input type="text" placeholder="Search a mentor..." />
+            <button
+              type="button"
+              style={{
+                position: "absolute",
+                top: "50%",
+                right: "0.5rem",
+                transform: "translateY(-50%)",
+                backgroundColor: "transparent",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              <img src={SearchIcon} alt="SearchIcon" />
+            </button>
           </div>
         </div>
 
         <div className={styles.sliderContainer}>
           <p>Featured Mentors</p>
           <div className={styles.slider}>
-            <ProfileCardTesting />
+            <Carousel
+              responsive={responsive}
+              swipeable={true}
+              draggable={true}
+              // showDots={true}
+              transitionDuration={500}
+              customTransition="all .5"
+              infinite={true}
+              containerClass={styles.slider}
+            >
+              {featuredMentors.map((item, idx) => {
+                return <ProfileCardTesting key={idx} mentor={item} />;
+              })}
+            </Carousel>
           </div>
         </div>
 

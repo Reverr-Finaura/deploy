@@ -10,11 +10,10 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-family: Poppins;
   font-weight: 600;
-  letter-spacing: 0.04rem;
-  line-height: 1.2;
+  line-height: 1;
   text-align: center;
 }
 .categoryCard > img {
@@ -22,3 +21,34 @@
   object-fit: cover;
   border-radius: 16.468px;
 }
+
+@media (max-width: 768px) {
+  .categoryCard {
+    width: 12rem;
+    margin-top: 1.5rem;
+  }
+
+  .categoryCard > p {
+    font-size: 1rem;
+  }
+
+  .categoryCard > img {
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .categoryCard {
+    width: 12rem;
+    margin-top: 1rem;
+  }
+
+  .categoryCard > p {
+    font-size: 1rem;
+  }
+
+  .categoryCard > img {
+    border-radius: 8px;
+  }
+}
+

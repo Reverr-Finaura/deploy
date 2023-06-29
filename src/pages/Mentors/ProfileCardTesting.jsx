@@ -6,11 +6,11 @@ import linkedinIcon from "../../images/LinkedinIcon.png";
 import twitterIcon from "../../images/TwitterIconn.png";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import DefaultDP from "../../images/Defaultdp.png"
 
 const ProfileCardTesting = ({ mentor }) => {
   const navigate = useNavigate();
   const userDoc = useSelector((state) => state.userDoc);
-  console.log(userDoc);
   const emailToId = (email) => {
     var id = "";
     for (var i = 0; i < email.length; i++) {
@@ -27,7 +27,7 @@ const ProfileCardTesting = ({ mentor }) => {
             src={
               mentor?.image
                 ? mentor.image
-                : "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6"
+                : {DefaultDP}
             }
             alt="MentorImage"
           />
@@ -53,7 +53,7 @@ const ProfileCardTesting = ({ mentor }) => {
       </div>
       <div className={styles.cardRightContent}>
         <div className={styles.rightCardMain}>
-          <p>{mentor?.about.slice(0, 100)}...</p>
+          <p>{mentor?.about.slice(0, 125)}...</p>
           <div className={styles.CardProfilekills}>
             {mentor?.domain?.slice(0, 2).map((item,idx) => {
               return <div key={idx} className={styles.skill}>{item}</div>;
