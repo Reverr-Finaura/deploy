@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+.outerCont{
+    width: 97.2%;
+    border-top-right-radius: 32px;
+    display: flex;
+   align-items: center;
+   padding: .5rem;
+   padding-left: 1rem;
+   height: 60px;
+   font-family: 'Source Sans Pro', sans-serif;
+   border-bottom: 1.8px solid #EEEEEE;
+}
+
+
+.userImg{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.userNameNStatus{
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+}
+
+.userName{
+    text-transform: capitalize;
+font-style: normal;
+font-weight: 600;
+font-size: 1.2rem;
+line-height: 15px;
+color: rgba(0, 0, 0, 0.85);
+width: max-content;
+}
+
+.userStatus{
+    font-style: normal;
+font-weight: 500;
+font-size: 1rem;
+line-height: 15px;
+color: #27AE60;
+margin-top: .25rem;
+}
+
+.infoIcon{
+    margin-left: auto;
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.45);
+    font-weight: 700;
+}

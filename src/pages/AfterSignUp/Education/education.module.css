@@ -1,0 +1,110 @@
+.education__container {
+  width: 85%;
+  margin: auto;
+}
+
+.big__heading {
+  font-size: 50px;
+  color: black;
+}
+.edu__name {
+  color: black;
+  font-size: 30px;
+}
+.education__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.education__cards {
+  display: flex;
+  justify-content: space-around;
+  margin: 100px;
+}
+.edu__img {
+  height: 300px;
+  width: 400px;
+}
+.btn1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height */
+
+  text-align: center;
+  padding: 6px 128px;
+
+  width: 299px;
+  height: 42px;
+  color: white;
+  background: #2a72de;
+  border: 2px solid #2a72de;
+  cursor: pointer;
+
+  border-radius: 4px;
+}
+.btn2 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height */
+
+  text-align: center;
+  padding: 6px 128px;
+  gap: 10px;
+
+  width: 299px;
+  height: 42px;
+  cursor: pointer;
+
+  background: #ffffff;
+  border: 2px solid #ffff;
+  border-radius: 4px;
+}
+
+.btns {
+  margin: 105px;
+  display: flex;
+  justify-content: space-around;
+}
+@media (max-width: 1024px) {
+  .btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn1 {
+    margin-bottom: 20px;
+  }
+  .big__heading {
+    text-align: center;
+  }
+  .edu__img {
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .edu__img {
+    width: 130%;
+  }
+  .edu__name {
+    font-size: 20px;
+  }
+}
+@media (max-width: 470px) {
+  .edu__img {
+    width: 200%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .education__cards {
+    flex-direction: column;
+  }
+}

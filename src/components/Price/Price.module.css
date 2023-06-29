@@ -1,0 +1,7 @@
+.price {
+  background: rgba(217, 217, 217, 1);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  width: fit-content;
+  font-weight: 600;
+}

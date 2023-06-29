@@ -1,0 +1,142 @@
+.chapter {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+  cursor: pointer;
+  /* background-color: var(--knowledge-card); */
+  background: linear-gradient(119.93deg, rgba(255, 255, 255, 0.35) 4.68%, rgba(255, 255, 255, 0.3) 91.73%);
+box-shadow: 0px 2.4417px 14.6502px -0.610425px rgba(0, 0, 0, 0.15);
+backdrop-filter: blur(6.10425px);
+  border-radius: 25px;
+  position: relative;
+}
+
+.idealValidationIcon{
+  position: absolute;
+  z-index: -1;
+  left: 150px;
+  top: -50px;
+}
+.fundRaisingIcon{
+  position: absolute;
+  z-index: -1;
+  right: 100px;
+  transform: scale(1.5) rotate(240deg);
+  top: -100px;
+ 
+}
+.betaTestingIcon{
+  position: absolute;
+  z-index: -1;
+  left: 100px;
+  top: -100px;
+  transform: scale(1);
+}
+.businessModalIcon{
+  position: absolute;
+  z-index: -1;
+  bottom: -200px;
+  left: 100px;
+}
+.businessPlaningIcon{
+  position: absolute;
+  z-index: -1;
+  right: 100px;
+  transform: scale(.8) rotate(240deg);
+  top: -50px;
+}
+.productDevIcon{
+  position: absolute;
+  z-index: -1;
+  right: 100px;
+  transform: rotate(-180deg);
+  top: -100px;
+}
+.thinkingStartupIcon{
+  position: absolute;
+  z-index: -1;
+  bottom: -30px;
+  left: 200px;
+}
+
+.chapter:hover {
+  padding: 1rem;
+  border-radius: 25px;
+  box-shadow: 0 0 10px var( --change-theme);
+}
+
+.details {
+  display: flex;
+  flex: 1;
+  gap: 5rem;
+}
+
+.details > img {
+  width: 15rem;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+.info {
+  width: 50%;
+}
+
+.name {
+  font-family: 'Exo';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 32px;
+letter-spacing: 0.06em;
+
+color: var(--main-text);
+margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  background-color: rgba(217, 217, 217, 1);
+  padding: 0.5rem 1.5rem;
+  padding-top: 0.8rem;
+  border-radius: 3rem;
+}
+
+.actions > div > img {
+  width: 2.5rem;
+  object-fit: contain;
+}
+
+@media (max-width: 1024px) {
+  .name {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .description {
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 950px) {
+  .chapter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}

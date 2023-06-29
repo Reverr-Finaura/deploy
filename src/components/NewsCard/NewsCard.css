@@ -1,0 +1,22 @@
+.news-box{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    /* border: solid 2px black; */
+    border-radius: 24px;
+    height: 175px;
+    width: 45%;
+    justify-content: center;
+    margin: 15px 30px;
+    align-items: center;
+    justify-content: space-evenly;
+    /* background-color: aqua; */
+    background-color: rgb(0, 0, 68);
+    border: 2px solid white;
+}
+
+
+.news-detail{
+    display: flex;
+    flex-direction: column;
+}
