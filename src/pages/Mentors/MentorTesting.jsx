@@ -4,6 +4,7 @@ import ProfileCardTesting from "./ProfileCardTesting";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../firebase";
 import industry from "./Industry.json";
+import categories from "./category.json";
 import IndustryCard from "../../components/IndustryCard/IndustryCard";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -12,11 +13,11 @@ import SearchIcon from "../../images/Search.svg";
 const MentorTesting = () => {
   const responsive = {
     superLargeDesktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 3000, min: 1000 },
       items: 2,
     },
     desktop: {
-      breakpoint: { max: 1024, min: 800 },
+      breakpoint: { max: 1000, min: 800 },
       items: 2,
     },
     tablet: {
@@ -33,7 +34,6 @@ const MentorTesting = () => {
   const [mentorArray, setMentorArray] = useState([]);
   const [filteredArray, setFilteredArray] = useState([]);
   const [featuredMentors, setFeaturedMentors] = useState([]);
-
 
   useEffect(() => {
     async function fetchMentorExpertise() {
@@ -103,6 +103,7 @@ const MentorTesting = () => {
   return (
     <div className={styles.mentor}>
       <div className={styles.wrapper}>
+        {/* --------------------Header---------------------- */}
         <div className={styles.header}>
           <div>
             Find the best <span>Mentors</span>
@@ -125,6 +126,9 @@ const MentorTesting = () => {
             </button>
           </div>
         </div>
+        {/* -----------------------Header End------------------------------- */}
+
+        {/* ----------------------Carousel------------------------------ */}
 
         <div className={styles.sliderContainer}>
           <p>Featured Mentors</p>
@@ -134,10 +138,13 @@ const MentorTesting = () => {
               swipeable={true}
               draggable={true}
               // showDots={true}
+              partialVisible={false}
               transitionDuration={500}
-              customTransition="all .5"
               infinite={true}
-              containerClass={styles.slider}
+              autoPlay={true}
+              autoPlaySpeed={3000}
+              keyBoardControl={true}
+              customTransition="transform 300ms ease-in-out"
             >
               {featuredMentors.map((item, idx) => {
                 return <ProfileCardTesting key={idx} mentor={item} />;
@@ -145,6 +152,7 @@ const MentorTesting = () => {
             </Carousel>
           </div>
         </div>
+        {/* ---------------Carousel End-------------------------------------- */}
 
         {/* ---------------Category Content------------------ */}
         <div className={styles.categoryWrapper}>
@@ -152,11 +160,12 @@ const MentorTesting = () => {
             Browse by <span>Categories</span>
           </p>
           <div className={styles.categoryContainer}>
-            {industry?.map((item, idx) => {
+            {categories?.map((item, idx) => {
               return <IndustryCard key={idx} item={item} />;
             })}
           </div>
         </div>
+        {/* ---------------Category Content End------------------ */}
       </div>
     </div>
   );

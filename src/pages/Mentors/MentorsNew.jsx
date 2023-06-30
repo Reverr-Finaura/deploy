@@ -42,7 +42,7 @@ const MentorsNew = () => {
   const [arrayToBeMapped, setArrayToBeMapped] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
 
-  console.log(selectedPriceOption);
+  // console.log(selectedPriceOption);
   // console.log("mentor array", mentorArray);
 
   const updateWidth = () => {

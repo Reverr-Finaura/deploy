@@ -8,7 +8,7 @@ import { db } from "../../firebase";
 
 const MentorSearch = () => {
   const navigate = useNavigate();
-  const { industry } = useParams();
+  const { category } = useParams();
   const [mentorArray, setMentorArray] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
 
@@ -38,6 +38,8 @@ const MentorSearch = () => {
     fetchMentorExpertise();
   }, []);
 
+
+
   useEffect(() => {
     mentorArray.map((item) => {
       const data = {
@@ -51,16 +53,41 @@ const MentorSearch = () => {
         image: item.image,
         plans: item.plans,
       };
-      setSearchResult((prev) => {
-        if (data.industry.includes(industry)) {
-          return [...prev, data];
-        } else {
-          return [...prev];
+      // console.log(data);
+      let matches = [];
+      let searchWords = category.toLowerCase().split(" ");
+      for (let i = 0; i < data.domain.length; i++) {
+        let string = data.domain[i].toLowerCase();
+        let isMatch = false;
+        for (let j = 0; j < searchWords.length; j++) {
+          if (string.includes(searchWords[j]) && searchWords[j] !== "and" && searchWords[j] !== "or") {
+            isMatch = true;
+            break;
+          }
         }
+
+        if (isMatch) {
+          matches.push(data);
+          break;
+        }
+      }
+      // setSearchResult((prev) => {
+      //   if (data.industry.includes(category)) {
+      //     return [...prev, data];
+      //   } else {
+      //     return [...prev];
+      //   }
+      // });
+      // console.log(matches);
+      setSearchResult((prev) => {
+        return [...prev, ...matches];
       });
     });
     // setArrayToBeMapped(mentorArray);
-  }, [mentorArray, industry]);
+  }, [mentorArray, category]);
+  // console.log(category);
+  // console.log(mentorArray);
+  // console.log(searchResult);
 
   return (
     <>
@@ -74,11 +101,11 @@ const MentorSearch = () => {
                 navigate("/mentors");
               }}
             />
-            {industry.charAt(0).toUpperCase() + industry.slice(1)}
+            {category.charAt(0).toUpperCase() + category.slice(1)}
           </p>
         </div>
         <div className={styles.searchResultContainer}>
-          {searchResult?.map((item,idx) => {
+          {searchResult?.map((item, idx) => {
             return <ProfileCardTesting key={idx} mentor={item} />;
           })}
         </div>

@@ -44,6 +44,13 @@
 .slider ::before {
   display: none;
 }
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* align-items: center; */
+}
 .search > button {
   position: absolute;
   top: "60%";
@@ -84,7 +91,7 @@
   background: var(--bg-primary-blue, #0c1631);
   margin: 1rem;
   display: flex;
-  width: 40rem;
+  width: 36rem;
   height: 20rem;
   font-size: 1rem;
   padding: 1.5rem 0rem;
@@ -226,7 +233,7 @@
     font-size: 1rem;
   }
   .card {
-    width: 100%;
+    width: 40rem;
   }
   .categoryCard {
     width: calc(50% - 0.5rem);
@@ -270,10 +277,11 @@
     font-size: 1.5rem;
   }
   .card {
+    width: 21rem;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    height: auto;
+    height: 37rem;
   }
   .cardLeftContent,
   .cardRightContent {
