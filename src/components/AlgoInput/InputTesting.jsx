@@ -27,6 +27,26 @@ const TextArea = ({ title, ...props }) => {
   );
 };
 
+const Radio = ({ title, ...props }) => {
+  return (
+    <div className={styles.radio}>
+      <p>
+        {title}
+        <span style={{ color: "red" }}>*</span>
+      </p>
+      <label className={styles.radioButton}>
+        <input type="radio" name={props.name} value="yes" />
+        <span className={styles.radioLabel}>Yes</span>
+      </label>
+
+      <label className={styles.radioButton}>
+        <input type="radio" name={props.name} value="no" />
+        <span className={styles.radioLabel}>No</span>
+      </label>
+    </div>
+  );
+};
+
 const DropDown = ({
   title,
   nonscored,
@@ -61,4 +81,4 @@ const DropDown = ({
   );
 };
 
-export { Input, TextArea, DropDown };
+export { Input, TextArea, DropDown, Radio };

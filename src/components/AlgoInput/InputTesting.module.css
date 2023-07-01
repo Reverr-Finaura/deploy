@@ -1,13 +1,15 @@
 .input,
 .textarea,
-.dropdown {
+.dropdown,
+.radio {
   width: 100%;
   margin-bottom: 1rem;
 }
 
 .input > p,
 .textarea > p,
-.dropdown > p {
+.dropdown > p,
+.radio > p {
   color: #fff;
   font-size: 14px;
   margin-bottom: 0.4rem;
@@ -20,14 +22,46 @@
   outline: none;
   width: 100%;
   /* color: var(--main-text); */
-  background: #F2F2F2;
-  color: #A7A7A7;
+  background: #f2f2f2;
+  color: #a7a7a7;
   border-radius: 5px;
 }
 .dropdown > select {
   padding: 0.5rem;
   width: 103%;
 }
+
+/* -------------Radio---------- */
+/* InputTesting.module.css */
+
+.radio {
+  margin-bottom: 16px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.radio p {
+  margin-bottom: 8px;
+}
+
+.radioButton {
+  display: inline-block;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.radioButton input[type="radio"] {
+  margin-right: 8px;
+}
+
+.radioButton .radioLabel {
+  color: #fff;
+}
+
+.radioButton input[type="radio"]:checked + .radioLabel {
+  /* color: blue; */
+}
+/* ---------------Radio ---------------- */
 
 .dropdown > select > option {
   padding: 4rem;
@@ -50,5 +84,5 @@
 .input > input::placeholder,
 .textarea > textarea::placeholder {
   /* color: var(--main-text); */
-  color: #A7A7A7;
+  color: #a7a7a7;
 }

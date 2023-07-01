@@ -6,6 +6,11 @@ import Team from "./stages/Team";
 import Market from "./stages/Market";
 import Done from "./stages/Done";
 import Result from "./stages/Result";
+import PnTTesting from "./stages/PnTTesting";
+import TeamTesting from "./stages/TeamTesting";
+import MarketTesting from "./stages/MarketTesting";
+import FinanceTesting from "./stages/FinanceTesting";
+import ResultTesting from "./stages/ResultTesting";
 
 const CheckYourScoreTesting = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -20,21 +25,28 @@ const CheckYourScoreTesting = () => {
   const [algoScore, setAlgoScore] = useState({ Pnt: 0, Team: 0, Market: 0 });
 
   const stages = [
-    <PnT
+    <PnTTesting
       setStage={setStage}
       data={startupScore}
       setData={setstartupScore}
       score={algoScore}
       setScore={setAlgoScore}
     />,
-    <Team
+    <TeamTesting
       setStage={setStage}
       data={startupScore}
       setData={setstartupScore}
       score={algoScore}
       setScore={setAlgoScore}
     />,
-    <Market
+    <MarketTesting
+      setStage={setStage}
+      data={startupScore}
+      setData={setstartupScore}
+      score={algoScore}
+      setScore={setAlgoScore}
+    />,
+    <FinanceTesting
       setStage={setStage}
       data={startupScore}
       setData={setstartupScore}
@@ -42,7 +54,11 @@ const CheckYourScoreTesting = () => {
       setScore={setAlgoScore}
     />,
     // <Done setStage={setStage} data={scoreData} setData={setScoreData} />,
-    <Result score={algoScore} data={startupScore} setData={setstartupScore} />,
+    <ResultTesting
+      score={algoScore}
+      data={startupScore}
+      setData={setstartupScore}
+    />,
   ];
 
   return (
@@ -62,19 +78,79 @@ const CheckYourScoreTesting = () => {
         <div className={styles.checkscore__container}>
           <h1>
             {" "}
-            Take Your Start-Up <span>Assessment</span>!
+            Take Your Start-Up <span>Assessment </span>today!
           </h1>
           <div className={styles.checkscore__content}>
             <div className={styles.stages}>
-              <span>Product</span>
-              <span>Team</span>
-              <span>Market</span>
-              <span>Finance</span>
-              <span>Done</span>
+              <div>
+                {stage >= 0 ? (
+                  <>
+                    <img src={"/images/blue_circle.svg"} alt="ProgressImg" />
+                    <img src={"/images/tick.svg"} alt="ProgressImg" />
+                  </>
+                ) : (
+                  <>
+                    <img src={"/images/empty_circle.svg"} alt="ProgressImg" />
+                  </>
+                )}
+                <span>Product</span>
+              </div>
+              <div>
+                {stage >= 1 ? (
+                  <>
+                    <img src={"/images/blue_circle.svg"} alt="ProgressImg" />
+                    <img src={"/images/tick.svg"} alt="ProgressImg" />
+                  </>
+                ) : (
+                  <>
+                    <img src={"/images/empty_circle.svg"} alt="ProgressImg" />
+                  </>
+                )}
+                <span>Team</span>
+              </div>
+              <div>
+                {stage >= 2 ? (
+                  <>
+                    <img src={"/images/blue_circle.svg"} alt="ProgressImg" />
+                    <img src={"/images/tick.svg"} alt="ProgressImg" />
+                  </>
+                ) : (
+                  <>
+                    <img src={"/images/empty_circle.svg"} alt="ProgressImg" />
+                  </>
+                )}
+                <span>Market</span>
+              </div>
+              <div>
+                {stage >= 3 ? (
+                  <>
+                    <img src={"/images/blue_circle.svg"} alt="ProgressImg" />
+                    <img src={"/images/tick.svg"} alt="ProgressImg" />
+                  </>
+                ) : (
+                  <>
+                    <img src={"/images/empty_circle.svg"} alt="ProgressImg" />
+                  </>
+                )}
+                <span>Finance</span>
+              </div>
+              <div>
+                {stage >= 4 ? (
+                  <>
+                    <img src={"/images/blue_circle.svg"} alt="ProgressImg" />
+                    <img src={"/images/tick.svg"} alt="ProgressImg" />
+                  </>
+                ) : (
+                  <>
+                    <img src={"/images/empty_circle.svg"} alt="ProgressImg" />
+                  </>
+                )}
+                <span>Done</span>
+              </div>
             </div>
-            <div className={styles.progress_bar}>
+            {/* <div className={styles.progress_bar}>
               <div style={{ width: `calc(${(stage + 1) / 4} * 100%)` }}></div>
-            </div>
+            </div> */}
             <div className={styles.stage}>{stages[0]}</div>
           </div>
         </div>

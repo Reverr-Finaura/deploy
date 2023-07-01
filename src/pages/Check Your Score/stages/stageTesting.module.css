@@ -1,6 +1,6 @@
 .stages_container {
   margin: 1rem 0;
-  border-radius: 1rem;
+  font-size: 15px;
 }
 
 .stages_container > h3,
@@ -41,7 +41,8 @@
 .input_flex {
   display: flex;
   align-items: center;
-  gap: 15%;
+  gap: 9%;
+  margin-right: 1rem;
 }
 
 .input_flex_radio {
@@ -63,13 +64,13 @@
 
 .btn_div {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 3rem;
 }
 
 .btn_div > button {
-  border: none;
-  border-radius: 4.35px;
+  /* border: none; */
+  border-radius: 6.25rem;
   cursor: pointer;
   padding: 10px 30px;
   font-size: 16px;
@@ -77,18 +78,58 @@
 }
 
 .nextbtn {
-  background-color: #2a72de;
-  color: #fff;
+  border: none;
+  border-radius: 6.25rem;
+  background: var(--blue, linear-gradient(97deg, #00b3ff 57.09%, #4cc9ff 100%));
 }
 
 .backbtn {
-  background-color: #cacaca;
+  border-radius: 6.25rem;
+  /* background: var(--white, #FFFFFF); */
+  background-color: transparent;
+  border: 1px solid var(--blue, #2a72de);
+  color: var(--blue, #2a72de);
 }
 
 .stages_done {
   display: flex;
   margin-top: 1rem;
+  border: 1px solid var(--blue, #2a72de);
+  border-radius: 1rem;
+  /* width: 35rem; */
+  padding: 3rem 4rem;
+  gap: 3rem;
+}
+.result_left {
+  display: flex;
+  flex: 2;
   align-items: center;
+  justify-content: center;
+  padding: auto 1rem;
+}
+.result_left > img {
+  width: 10rem;
+}
+.result_right {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+.result_right > h1 {
+  font-size: 1.50rem;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: #14b5fa;
+}
+.result_right > p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 25px;
+  color: #fff;
 }
 
 .result_score {

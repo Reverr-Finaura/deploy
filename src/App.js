@@ -103,6 +103,7 @@ import CommunityFinalDark from "./components/Community Dark Mood/Community Final
 import MentorTesting from "./pages/Mentors/MentorTesting";
 import MentorSearch from "./pages/MentorSearch/MentorSearch";
 import ScheduleTesting from "./pages/Schedule/ScheduleTesting";
+import CheckYourScoreTesting from "./pages/Check Your Score/CheckYourScoreTesting";
 
 function App() {
   const user = useSelector(selectUser);
@@ -290,7 +291,8 @@ function App() {
           path="/documentTemplates/:id"
           element={<DocumentTemplatesViewer />}
         ></Route>
-        <Route path="/start-up" element={<CheckYourScore />}></Route>
+        <Route path="/start-up" element={<CheckYourScoreTesting />}></Route>
+        {/* <Route path="/start-up" element={<CheckYourScore />}></Route> */}
         <Route
           path="/newcourses/EquityAndEverything"
           element={<EquityAndEverythingg />}
