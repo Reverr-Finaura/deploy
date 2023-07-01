@@ -4,7 +4,7 @@
   background-color: #1a1e28;
 }
 
-.container > div {
+.header {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -12,12 +12,12 @@
   margin-bottom: 10px;
 }
 
-.container > div > p > span {
+.header > p > span {
   font-size: 15px;
   font-weight: 600;
 }
 
-.container > div > span {
+.header > span {
   color: #00b3ff;
   font-size: 10px;
   text-decoration: underline;

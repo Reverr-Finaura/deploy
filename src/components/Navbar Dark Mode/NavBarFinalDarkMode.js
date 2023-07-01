@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./NavbarFinalDarkMode.module.css"
+import style from "./NavbarFinalDarkMode.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectChat, showChat } from "../../features/chatSlice";
 import { useNavigate } from "react-router-dom";
@@ -12,24 +12,40 @@ import { removeUserDoc, setUserDoc } from "../../features/userDocSlice";
 import { removeUserFundingDoc } from "../../features/userFundingDocSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { collection, doc, getDocs, query, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { useEffect } from "react";
 import { VscBellDot } from "react-icons/vsc";
-import { FaLightbulb,FaFacebookMessenger } from "react-icons/fa";
+import { FaLightbulb, FaFacebookMessenger } from "react-icons/fa";
 import { setTheme } from "../../features/themeSlice";
 import { DarkModeToggle } from "@anatoliygatt/dark-mode-toggle";
 import userIcon from "../../images/userIcon.png";
 import settingIcon from "../../images/Vector (3).png";
 import ReverrLightIcon from "../../images/Reverr Light.png";
 import ReverrDarkIcon from "../../images/Frame 6266720.png";
-import {AiFillBell, AiFillSetting ,AiFillMessage,AiOutlineMessage,AiOutlineGlobal,AiOutlineSearch} from "react-icons/ai"
-import {FaUserAlt} from "react-icons/fa"
-import {MdOutlineKeyboardArrowDown ,MdOutlineNotifications} from "react-icons/md"
-import {BiHomeAlt} from "react-icons/bi"
-import {HiOutlineTemplate} from "react-icons/hi"
+import {
+  AiFillBell,
+  AiFillSetting,
+  AiFillMessage,
+  AiOutlineMessage,
+  AiOutlineGlobal,
+  AiOutlineSearch,
+} from "react-icons/ai";
+import { FaUserAlt } from "react-icons/fa";
+import {
+  MdOutlineKeyboardArrowDown,
+  MdOutlineNotifications,
+} from "react-icons/md";
+import { BiHomeAlt } from "react-icons/bi";
+import { HiOutlineTemplate } from "react-icons/hi";
 import emailjs from "@emailjs/browser";
 import axios from "axios";
-
 
 const NavBarFinalDarkMode = () => {
   const user = useSelector((state) => state.user);
@@ -44,34 +60,83 @@ const NavBarFinalDarkMode = () => {
   const [notificationList, setNotificationList] = useState([]);
   const theme = useSelector((state) => state.themeColor);
   const [scroll, setScroll] = useState(0);
-  const[loading,setLoading]=useState(false)
+  const [loading, setLoading] = useState(false);
+  const [searchResult, setsearchResult] = useState(null);
+  const [userData, setUserData] = useState([]);
+  const userType = useSelector((state) => state.onboarding.userType);
   window.onscroll = () => {
     setScroll(window.scrollY);
   };
 
- // CHECK FOR USER PHOTO
- useEffect(() => {
-  if (userDoc?.image !== "") {
-    setUserImage(userDoc.image);
-    return;
+  // Start functionality for search bar
+  async function fetchUserDataFromFirebase(type) {
+    const userDataRef = collection(db, "Users");
+    let q;
+
+    if (type !== "") {
+      q = query(userDataRef, where("userType", "==", type));
+    } else {
+      q = query(userDataRef);
+    }
+
+    const querySnapshot = await getDocs(q);
+
+    const userData = [];
+    querySnapshot.forEach((doc) => {
+      userData.push({ ...doc.data(), id: doc.id });
+    });
+
+    return userData;
   }
-  if (user?.user?.photoURL !== null) {
-    setUserImage(user?.user?.photoURL);
-    return;
-  } else {
+
+  useEffect(() => {
+    async function fetchData() {
+      const userData = await fetchUserDataFromFirebase(userType);
+      setUserData(userData);
+    }
+    fetchData();
+  }, []);
+
+  const getFilterData = (data, input, key) => {
+    return data.filter((item) => {
+      return item[key].toLowerCase().includes(input);
+    });
+  };
+
+  const searchInputHandler = (e) => {
+    const input = e.target.value.toLowerCase();
+    if (input === "") {
+      setsearchResult(null);
+    } else {
+      const key = "name";
+      const filteredData = getFilterData(userData, input, key);
+      setsearchResult(filteredData);
+    }
+  };
+  // End functionality for search bar
+
+  // CHECK FOR USER PHOTO
+  useEffect(() => {
+    if (userDoc?.image !== "") {
+      setUserImage(userDoc.image);
+      return;
+    }
+    if (user?.user?.photoURL !== null) {
+      setUserImage(user?.user?.photoURL);
+      return;
+    } else {
+      setUserImage(
+        "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6"
+      );
+      return;
+    }
+  }, [userDoc]);
+
+  useEffect(() => {
     setUserImage(
       "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6"
     );
-    return;
-  }
-}, [userDoc]);
-
-useEffect(() => {
-  setUserImage(
-    "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6"
-  );
-}, []);
-
+  }, []);
 
   //CHECK FOR THEME
   useEffect(() => {
@@ -197,7 +262,7 @@ useEffect(() => {
         network: userWhoRequestedNewNetworkArray,
         notification: newNotificationArray,
       });
-      await createNetworkInMessagesDoc(userDoc.email,id);
+      await createNetworkInMessagesDoc(userDoc.email, id);
       toast("Accepted Follow Request");
       dispatch(setUserDoc(updatedUserDoc));
     } catch (error) {
@@ -266,7 +331,6 @@ useEffect(() => {
     }
   };
 
-
   function generateOTP(n) {
     var add = 1,
       max = 12 - add;
@@ -280,37 +344,38 @@ useEffect(() => {
     return ("" + number).substring(add);
   }
 
-const changePassBtnClick=async()=>{
-  setLoading(true)
-  const otp = generateOTP(6);
-  var templateParams = {
-    from_name: "Reverr",
-    to_name: userDoc.name,
-    to_email: userDoc.email,
-    otp,
+  const changePassBtnClick = async () => {
+    setLoading(true);
+    const otp = generateOTP(6);
+    var templateParams = {
+      from_name: "Reverr",
+      to_name: userDoc.name,
+      to_email: userDoc.email,
+      otp,
+    };
+    try {
+      await emailjs.send(
+        "service_lfmmz8k",
+        "template_n3pcht5",
+        templateParams,
+        "dVExxiI8hYMCyc0sY"
+      );
+      await axios.post("https://server.reverr.io/sendSmsCode", {
+        to: userDoc?.phone ? userDoc?.phone : userDoc?.mobile,
+        code: userDoc?.countryCode,
+        message: `Your Change Password OTP is ${otp}`,
+      });
+    } catch (error) {
+      console.log("FAILED...", error);
+      setLoading(false);
+      toast.error(error?.response?.data?.message);
+    }
+
+    navigate("/change-user-password", {
+      state: otp,
+    });
+    setLoading(false);
   };
-  try {
-    await emailjs.send(
-      "service_lfmmz8k",
-      "template_n3pcht5",
-      templateParams,
-      "dVExxiI8hYMCyc0sY"
-    )
-    await axios.post("https://server.reverr.io/sendSmsCode",
-    { to:userDoc?.phone?userDoc?.phone:userDoc?.mobile,code:userDoc?.countryCode,message:`Your Change Password OTP is ${otp}` })
-
-  } catch (error) {
-    console.log("FAILED...", error);
-    setLoading(false)
-    toast.error(error?.response?.data?.message)
-  }
-
-  navigate("/change-user-password", {
-    state: otp
-})
-  setLoading(false)
-}
-
 
   return (
     <>
@@ -331,47 +396,58 @@ const changePassBtnClick=async()=>{
             alt="brand-logo"
           />
         </div>
-       
-       <div className={style.navbarSearch}>
-        <AiOutlineSearch className={style.navbarSearchImg}/>
-        <input className={style.navbarSearchInput} placeholder="Search"/>
-       </div>
-     
 
-        <div className={style.navbarIconsCont}>
-        
-        <div className={style.allNavbarIconsImgName}>
-          <div className={style.navbarIconsImgName}>
-            <BiHomeAlt className={style.navbarIconsImg}/>
-            <p className={style.navbarIconsName}>Home</p>
-          </div>
-          <div className={style.navbarIconsImgName}>
-            <AiOutlineGlobal className={style.navbarIconsImg}/>
-            <p className={style.navbarIconsName}>Discover</p>
-          </div>
-          <div className={style.navbarIconsImgName}>
-            <HiOutlineTemplate className={style.navbarIconsImg}/>
-            <p className={style.navbarIconsName}>Products</p>
-          </div>
-          <div className={style.navbarIconsImgName}>
-             <AiOutlineMessage className={style.navbarIconsImg}/>
-            <p className={style.navbarIconsName}>Messages</p>
-          </div>
-          <div className={style.navbarIconsImgName}>
-            <MdOutlineNotifications className={style.navbarIconsImg}/>
-            <p className={style.navbarIconsName}>Notifications</p>
-          </div>
+        <div className={style.navbarSearch}>
+          <AiOutlineSearch className={style.navbarSearchImg} />
+          <input
+            className={style.navbarSearchInput}
+            onChange={searchInputHandler}
+            placeholder="Search"
+          />
+          {searchResult && <div className={style.navbarSearchResult}>
+            {searchResult.map((item) => (
+              <li key={item.id}>{item.name}</li>
+            ))}
+          </div>}
         </div>
 
+        <div className={style.navbarIconsCont}>
+          <div className={style.allNavbarIconsImgName}>
+            <div className={style.navbarIconsImgName}>
+              <BiHomeAlt className={style.navbarIconsImg} />
+              <p className={style.navbarIconsName}>Home</p>
+            </div>
+            <div className={style.navbarIconsImgName}>
+              <AiOutlineGlobal className={style.navbarIconsImg} />
+              <p className={style.navbarIconsName}>Discover</p>
+            </div>
+            <div className={style.navbarIconsImgName}>
+              <HiOutlineTemplate className={style.navbarIconsImg} />
+              <p className={style.navbarIconsName}>Products</p>
+            </div>
+            <div className={style.navbarIconsImgName}>
+              <AiOutlineMessage className={style.navbarIconsImg} />
+              <p className={style.navbarIconsName}>Messages</p>
+            </div>
+            <div className={style.navbarIconsImgName}>
+              <MdOutlineNotifications className={style.navbarIconsImg} />
+              <p className={style.navbarIconsName}>Notifications</p>
+            </div>
+          </div>
 
-            {!userDoc.hasUpgrade&&<button className={style.navbarFinalUpgradeBtn} onClick={()=>navigate("/upgrade")}>Get Premium</button>}
+          {!userDoc.hasUpgrade && (
+            <button
+              className={style.navbarFinalUpgradeBtn}
+              onClick={() => navigate("/upgrade")}
+            >
+              Get Premium
+            </button>
+          )}
 
           <div
             onClick={() => setRequestsbuttonClick((current) => !current)}
             className="navbar-topp-social-icon navbar_noOuterContCSS"
           >
-          
-
             {/* <AiFillBell
               className={
                 userDoc?.receivedRequests?.length === 0 &&
@@ -471,7 +547,16 @@ const changePassBtnClick=async()=>{
             ) : null}
           </div>
 
-          <img onClick={() => navigate("/userprofile")} className="navbar_final_user_Image" src={userImage?userImage:"https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"} alt="userimg" />
+          <img
+            onClick={() => navigate("/userprofile")}
+            className="navbar_final_user_Image"
+            src={
+              userImage
+                ? userImage
+                : "https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"
+            }
+            alt="userimg"
+          />
           {/* <div className="navbar-topp-social-icon">
           <FaUserAlt className="nabar-final-userProfile-Icon" onClick={() => navigate("/userprofile")}/>
           </div> */}
@@ -480,25 +565,36 @@ const changePassBtnClick=async()=>{
             onClick={() => setIsSettingbuttonClick((current) => !current)}
             className="navbar-topp-social-icon setting-social-icon-cont navbar_noOuterContCSS"
           >
-          {/* <AiFillSetting className="nabar-final-setting-Icon"/> */}
-          <MdOutlineKeyboardArrowDown className="nabar-final-setting-Icon"/>
+            {/* <AiFillSetting className="nabar-final-setting-Icon"/> */}
+            <MdOutlineKeyboardArrowDown className="nabar-final-setting-Icon" />
 
             {isSettingButtonClick ? (
               <div className={style.settingDropdownCont}>
-              
                 <button
                   onClick={() => navigate("/userprofile")}
                   className="setting-dropdown-button"
                 >
                   My Profile
                 </button>
-                
-                <button style={{cursor:loading?"default":"",height:"50px"}} disabled={loading}
-                  onClick={(e) =>{e.stopPropagation(); changePassBtnClick()}}
+
+                <button
+                  style={{ cursor: loading ? "default" : "", height: "50px" }}
+                  disabled={loading}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    changePassBtnClick();
+                  }}
                   className="setting-dropdown-button"
                 >
-                {loading?<img className="navbar_dropdown_changePassword_btn_img" src="https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Utils%2FWHITE%20Spinner-1s-343px.svg?alt=media&token=54b9d527-0969-41ff-a598-0fc389b2575a" alt="loader" />:"Change Password"}
-                  
+                  {loading ? (
+                    <img
+                      className="navbar_dropdown_changePassword_btn_img"
+                      src="https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Utils%2FWHITE%20Spinner-1s-343px.svg?alt=media&token=54b9d527-0969-41ff-a598-0fc389b2575a"
+                      alt="loader"
+                    />
+                  ) : (
+                    "Change Password"
+                  )}
                 </button>
 
                 {/* <button
@@ -531,9 +627,6 @@ const changePassBtnClick=async()=>{
               </div>
             ) : null}
           </div>
-
-
-
         </div>
       </section>
       {chat && <Chat />}
