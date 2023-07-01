@@ -1,6 +1,20 @@
 .container {
   /* padding: 20px; */
-  border-radius: 15px;
+  /* border-radius: 15px; */
+  /* height: 500px;
+  overflow-y: auto; */
+}
+
+.container::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.container::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 .container > div {
@@ -36,6 +50,7 @@
 .newsCard > img {
   width: 70px;
   height: 70px;
+  border-radius: 5px;
 }
 
 .newsCard > div {

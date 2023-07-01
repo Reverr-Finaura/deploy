@@ -43,7 +43,7 @@
   background-color: transparent;
 }
 
-.userCard {
+.mentorCard {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -54,7 +54,7 @@
   margin-right: 20px;
 }
 
-.userCard > button {
+.mentorCard > button {
   color: #000000;
   padding: 5px 10px;
   border-radius: 15px;
@@ -65,23 +65,25 @@
   cursor: pointer;
 }
 
-.user {
+.mentor {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 200px;
+  height: 100px;
 }
 
-.user > img {
+.mentor > img {
   width: 60px;
   height: 60px;
   border-radius: 30px;
 }
 
-.user > div {
+.mentor > div {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   margin-top: 10px;
   padding-left: 12px;
 }
