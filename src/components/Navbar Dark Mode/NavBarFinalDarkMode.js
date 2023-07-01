@@ -21,7 +21,7 @@ import { DarkModeToggle } from "@anatoliygatt/dark-mode-toggle";
 import userIcon from "../../images/userIcon.png";
 import settingIcon from "../../images/Vector (3).png";
 import ReverrLightIcon from "../../images/Reverr Light.png";
-import ReverrDarkIcon from "../../images/Frame 6266720.png";
+import ReverrDarkIcon from "../../images/new-dark-mode-logo.png"
 import {AiFillBell, AiFillSetting ,AiFillMessage,AiOutlineMessage,AiOutlineGlobal,AiOutlineSearch} from "react-icons/ai"
 import {FaUserAlt} from "react-icons/fa"
 import {MdOutlineKeyboardArrowDown ,MdOutlineNotifications} from "react-icons/md"
@@ -318,7 +318,7 @@ const changePassBtnClick=async()=>{
         <ToastContainer />
         <div
           onClick={() => navigate("/")}
-          className="navbar-brand-logo-img-cont"
+          className={style.navbarBrandLogoImgCont}
         >
           {/* <img
             className="navbar-final-brand-logo-img"
@@ -326,10 +326,11 @@ const changePassBtnClick=async()=>{
             alt="brand-logo"
           /> */}
           <img
-            className="navbar-final-brand-logo-img"
-            src={ReverrLightIcon}
+            className={style.navbarFinalBrandLogoImg}
+            src={ReverrDarkIcon}
             alt="brand-logo"
           />
+          <span className={style.reverrHeadingSpan}><p className={style.reverrHeading}>Reverr</p></span>
         </div>
        
        <div className={style.navbarSearch}>

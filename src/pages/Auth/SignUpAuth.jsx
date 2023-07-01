@@ -138,12 +138,7 @@ function Auth() {
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
       .then((userCredential) => {
-        console.log("---------------");
-        console.log("auth.currentUser.email", auth.currentUser.email);
-        console.log("auth.currentUser.uid", auth.currentUser.uid);
-        console.log("auth.currentUser.displayName",auth.currentUser.displayName );
-        console.log("---------------");
-
+    
                 
             dispatch(
               create({
@@ -155,7 +150,7 @@ function Auth() {
                 loginType: "google",
               })
               );
-     
+      
 
       })
       .then(async () => {

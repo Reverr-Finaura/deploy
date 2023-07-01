@@ -20,6 +20,8 @@ import { FiSend } from "react-icons/fi";
 import { BiCommentDots } from "react-icons/bi";
 import { AiFillHeart } from "react-icons/ai";
 import { BsBookmark } from "react-icons/bs";
+import eyeIcon from "../../../images/white-outline-eye.png"
+import commentIcon from "../../../images/white-outline-comment.png"
 
 export default function PostCardDark({
   postsData,
@@ -427,12 +429,19 @@ export default function PostCardDark({
             <div className={style.postCommentContainer}>
               <div className="commentContainer">
                 {/* <img src={commentIcon} alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIcon'/> */}
-                <FaRegCommentDots
+                <img
+                src={commentIcon}
+                onClick={() => {
+                  setCommentIconClick((current) => !current);
+                }}
+                className="commentPostIconn"
+                />
+                {/* <FaRegCommentDots
                   onClick={() => {
                     setCommentIconClick((current) => !current);
                   }}
                   className="commentPostIconn"
-                />
+                /> */}
 
                 {/* ;(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus() */}
               </div>
@@ -455,12 +464,17 @@ export default function PostCardDark({
             <div className={style.postCommentContainer}>
               <div className="commentContainer">
                 {/* <img src={commentIcon} alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIcon'/> */}
+                <img
+                src={eyeIcon}
+                 />
+              
+              {/* 
                 <FaBullseye
                   onClick={() => {
                     setCommentIconClick((current) => !current);
                   }}
                   className="commentPostIconn"
-                />
+                /> */}
 
                 {/* ;(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus() */}
               </div>
