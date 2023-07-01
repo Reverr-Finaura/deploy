@@ -7,8 +7,21 @@
   display: flex;
   align-items: center;
   z-index: 10000;
-  border-bottom: 0.3px solid #b4b4b4;
+  /* border-bottom: 0.3px solid #b4b4b4; */
   background-color: #0c1631;
+}
+.reverrHeadingSpan{
+ display: block;
+}
+.reverrHeading{
+  font-size: 24px;
+    font-family: Lora;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.352px;
+   
+      color: #3ec5ff;
 }
 
 .allNavbarIconsImgName {
@@ -56,16 +69,18 @@
   background-color: #0c1631;
 }
 
-.navbar-brand-logo-img-cont {
+.navbarBrandLogoImgCont {
   align-items: center;
   justify-content: center;
   display: flex;
   margin-left: 2rem;
+  height: -webkit-fill-available;
+  flex-direction: column;
 }
 
-.navbar-final-brand-logo-img {
+.navbarFinalBrandLogoImg {
   cursor: pointer;
-  width: 85%;
+  width: 100px;
 }
 
 .navbarIconsCont {
@@ -335,7 +350,7 @@
 
 .navbarSearchInput {
   width: 300px;
-  height: 20px;
+  height: 13px;
   border-radius: 30px;
   margin-left: 15px;
   outline: none;
