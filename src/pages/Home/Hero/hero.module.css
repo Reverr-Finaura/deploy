@@ -1,0 +1,116 @@
+.heroContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+}
+.hc_textContainer {
+  color: white;
+  width: 34.75rem;
+  padding: 4rem 0 0 0;
+}
+
+.hc_heroText {
+  font-size: 2.8125rem;
+}
+
+.hc_heroSubtext {
+  font-size: 1rem;
+  width: 26.43rem;
+  margin: 1.5rem 0 0 0;
+}
+
+.hc_signUpButton {
+  width: 11.25rem;
+  height: 3.375rem;
+  margin: 7rem 0 0 0;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  background-color: #0077b7;
+  box-shadow: none;
+  border-radius: 3.375rem;
+  white-space: nowrap;
+}
+
+.hc_scrollDownContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 5rem 0 0 0;
+}
+
+.hc_imageContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.hc_logoContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 4rem 0 0 0;
+}
+
+.hc_imStartUp {
+  font-family: "Rasputin";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #2a72de;
+}
+
+@media (max-width: 1278px) {
+  .hc_heroImage {
+    width: 90%;
+    height: 90%;
+  }
+  .hc_heroText {
+    font-size: 30px;
+  }
+  .hc_heroSubtext {
+    font-size: 20px;
+  }
+  .hc_imStartUp {
+    font-size: 100%;
+  }
+
+  .styles.heroImage {
+    width: 90%;
+  }
+  .hac_scrollDownText {
+    display: none;
+  }
+}
+
+@media (max-width: 769px) {
+  .heroContainer {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+  }
+  .hc_textContainer {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .hc_imageContainer {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .hc_signUpButton {
+    margin: auto;
+    margin-top: 30px;
+  }
+  .hc_heroSubtext {
+    text-align: center;
+    width: 100%;
+  }
+  .heroImage > img {
+    height: 7rem;
+  }
+}

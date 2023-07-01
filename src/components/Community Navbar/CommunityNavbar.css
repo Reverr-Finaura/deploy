@@ -1,0 +1,129 @@
+#navbar-final {
+  width: 100%;
+  height: 102px;
+  background-color: var(--navbar-clr);
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  z-index: 10000;
+  border-bottom: 0.3px solid #b4b4b4;
+}
+#navbar-finalScrolled {
+  width: 100%;
+  height: 102px;
+  background-color: var(--navbar-scroll-bg);
+  backdrop-filter: blur(7px);
+  box-shadow: rgba(0, 0, 0, 0.075);
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  z-index: 10000;
+}
+.navbar-brand-logo-img-cont {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-left: 2rem;
+}
+.navbar-final-brand-logo-img {
+  cursor: pointer;
+  width: 85%;
+}
+.navbar-icons-cont {
+  display: flex;
+  margin-left: auto;
+  margin-right: 5rem;
+}
+.nabar-final-setting-cont,
+.nabar-final-msg-cont,
+.nabar-final-userProfile-cont {
+  cursor: pointer;
+}
+
+.navbar-topp-social-icon {
+  background: var(--bg-sub-card);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 43.65px;
+  height: 43.65px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 3rem;
+  cursor: pointer;
+}
+.navbar-topp-social-icon:hover {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+.NavbarPostUploaddSquareCont {
+  background-color: var(--btnNewColorTheme);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+.NavbarPostUploaddSquareContAddImg {
+  font-size: 1.4rem;
+  color: var(--comment-card-div);
+}
+.setting-social-icon-cont {
+  position: relative;
+}
+
+.setting-dropdown-cont {
+  width: 200px;
+  /* height: 250px; */
+  height: 180px;
+  background-color: var(--bg-sub-card);
+  border-radius: 6px;
+  position: absolute;
+  bottom: -14.5rem;
+  /* bottom: -12.5rem; */
+  display: flex;
+  flex-direction: column;
+  cursor: default;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 1rem;
+}
+.setting-dropdown-button {
+  width: 77%;
+  margin: auto;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+
+  background: #2a72de;
+  border-radius: 6px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.nabar-final-notificationBell {
+  font-size: 1.7rem;
+  margin-left: -0.2rem;
+  color: var(--btnNewColorTheme);
+  /* color: #FEFF86; */
+}
+.nabar-final-notificationBell1 {
+  font-size: 1.7rem;
+  margin-left: -0.2rem;
+  /* color: red; */
+  /* color: #FEFF86; */
+  color: var(--btnNewColorTheme);
+}
+.navbar_dropdown_changePassword_btn_img{
+  width: 50px;
+    margin: auto;
+    margin-top: -.75rem;
+}

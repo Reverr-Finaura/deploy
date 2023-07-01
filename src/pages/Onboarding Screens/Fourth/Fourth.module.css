@@ -1,0 +1,131 @@
+/* FIRST */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+.outerCont{
+    max-width: 100vw;
+    min-height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+.top{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+}
+.top img{
+margin-left: 1rem;
+margin-top: 1rem;
+}
+.headingCont{
+    width: 78%;
+    margin: auto;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+.headingCont h1{
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3.5rem;
+    line-height: 68px;
+    text-transform: capitalize;
+    color: #0E0E0E;
+    margin: auto;
+}
+.dataCont{
+    display: grid;
+    grid-template-columns:50% 50%;
+    margin: auto;
+}
+.dataCont .left{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.socialMediaCont{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.linkedinCont,.twitterCont,.instaCont{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+}
+.inp{
+    padding: 1rem;
+    background: #E6E6E6;
+border-radius: 20px;
+width: 90%;
+margin-left: 1rem;
+
+color: rgba(0, 0, 0, 0.43);
+font-size: 1rem;
+}
+.inp:focus{
+    outline: none;
+}
+
+
+.buttonCnt{
+    display: flex;
+    width: 50%;
+    margin: auto;
+}
+.skipBtn{
+    width: 150px;
+    height: 50px;
+    background: transparent;
+    border: 1.57147px solid #BEBEBE;
+    border-radius: 24px;
+    font-family: 'Quicksand';
+    font-style: normal;
+    color: #BEBEBE;
+    font-size: 18px;
+    line-height: 14px;
+    margin: auto;
+    margin-top: 0;
+    cursor: pointer;  
+}
+.nextBtn{
+    width: 150px;
+height: 50px;
+background: #2A72DE;
+border: 1.57147px solid #2A72DE;
+border-radius: 24px;
+font-family: 'Quicksand';
+font-style: normal;
+color: #FFFFFF;
+font-size: 18px;
+line-height: 14px;
+margin: auto;
+margin-top: 0;
+cursor: pointer;
+}
+.right{
+    display: flex;
+}
+.right img{
+    margin: auto;
+    width: 90%;
+}
+
+@media(max-width:980px){
+    .dataCont,.first_third_dataCont{
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        margin-top: 2.5rem;
+    }
+    .left button{
+        margin-top: 1.5rem;
+    }
+    .right img{
+        margin: auto;
+        width: 40%;
+        margin-top: 2.5rem;
+    }
+}

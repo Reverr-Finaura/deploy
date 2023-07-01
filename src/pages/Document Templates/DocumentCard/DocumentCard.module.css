@@ -1,0 +1,99 @@
+.documentCard {
+  width: 300px;
+  height: 300px;
+
+  padding: 1.2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: space-between;
+  background: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  text-decoration: none;
+}
+
+.DocumentCard_top {
+  display: flex;
+  width: 100%;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.DocumentCard_top .icon {
+  width: 50px;
+  height: 50px;
+}
+
+.DocumentCard_top .icon > img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.DocumentCard_title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  word-break: break-all;
+  /* white-space: ;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+  width: 80%;
+  color: var(--main-text);
+}
+
+.DocumentCard_description {
+  text-decoration: none;
+  text-align: justify;
+  word-break: break-all;
+  /* white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+  color: var(--main-text);
+}
+
+.documentCard_tag {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--main-text);
+}
+
+.documentCard_tag .tag {
+  font-size: 0.9rem;
+}
+.tag_icon {
+  font-size: 1.1rem;
+}
+
+.DocumentCard_lower {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button_div {
+  display: flex;
+  gap: 1rem;
+}
+.edit_btn,
+.download_btn {
+  padding: 0.2rem;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* color: #ffff; */
+  cursor: pointer;
+}
+
+.edit_icon,
+.download_icon {
+  font-size: 1.6rem;
+}

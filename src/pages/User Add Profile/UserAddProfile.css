@@ -1,0 +1,606 @@
+#mentor-add-profile-page{
+   
+    margin-top: 8rem;
+    margin-left: 14rem;
+    width: 80%;
+    min-height: 100vh;
+    margin-bottom: 3rem;
+}
+
+/* PROFILE INFO SECTION */
+.profile-info-section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info-section-title{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 75px;
+text-align: center;
+color: #202020;
+width:fit-content;
+margin: auto;
+}
+.imageUploadInputContainer{
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 4px solid #2A72DE;
+    z-index: 1;
+    background: transparent;
+    position: relative;
+    margin: auto;
+    margin-top: 2rem;
+}
+input[name='imageUpload'] {
+   opacity: 0;
+   z-index: 10;
+   width: 140px;
+   height: 140px;
+   border-radius: 50%;
+   position: absolute;
+   cursor: pointer;
+}
+.userUploadedImagePreview{
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+}
+.imageUploadInputContainerImageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   width: 50%;
+   height: 50%;
+    position: absolute;
+    left: 25%;
+    top: 20%;
+}
+.imageUploadInputContainerImage{
+    width: 100%;
+    z-index: 2;  
+}
+.imageUploadInputContainerText{
+    width: 140%;
+    word-wrap: break-word;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+color: rgba(32, 32, 32, 0.5);
+text-align: center;
+}
+
+/* GENERAL PROFILE INFO FORM */
+
+
+
+.add-profile-info-form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.how-you-want-to-meet-people-title{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 40px;
+line-height: 60px;
+text-align: center;
+color: #202020;
+margin-bottom: 4rem;
+}
+
+.add-profile-input{
+    padding: 1px 21px;
+    gap: 140px;  
+background: #F6F6F6;
+border: 2px solid #2A72DE;
+border-radius: 8px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 36px;
+color: rgba(32, 32, 32, 0.5);
+margin-bottom: 1rem;
+}
+.add-profile-input:focus{
+    outline: none;
+}
+.add-profile-info-form-grid{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.DOB-input,.state-input{
+    margin-right: 1rem;
+}
+.Gender-input,.country-input{
+    margin-left: 1rem;
+}
+.about-input{
+    width: auto!important;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 36px;
+    color: rgba(32, 32, 32, 0.5);
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-right: 21px;
+    height: 20vh!important;
+}
+
+/* HOW DO YOU WANT TO MEET NEW PEOPLE */
+
+.how-you-want-to-meet-people{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    margin-top: 5rem;
+}
+.how-you-want-to-meet-people-form-input-cont{
+    position: relative;
+    align-items: center;
+    display: flex;
+}
+.social-link-input{
+    padding: 8px 21px;
+    gap: 140px;  
+background: #F6F6F6;
+border: 2px solid #2A72DE;
+border-radius: 8px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 36px;
+color: rgba(32, 32, 32, 0.5);
+margin-bottom: 1rem;
+padding-left: 4rem;
+width: 100%;
+}
+.social-link-input:focus{
+    outline: none;
+}
+
+.how-you-want-to-meet-people-form-social-icon-img{
+    position: absolute;
+    left: 1rem;
+    top: 20%; 
+}
+
+/* KNOW ABOUT YOUR EDUCATION */
+
+#know-about-your-education{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin: auto;
+    margin-top: 5rem;
+}
+.know-about-your-education-title{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 50px;
+line-height: 75px;
+color: #202020;
+text-align: center;
+}
+.know-about-your-education-form{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    margin: auto;
+    margin-top: 2rem;
+}
+.education-form-input{
+
+padding: 8px 21px;
+/* gap: 650px; */
+background: #F6F6F6;
+border: 2px solid #2A72DE;
+border-radius: 8px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 36px;
+color: rgba(32, 32, 32, 0.5);
+margin-bottom: 1rem;
+}
+.education-form-input:focus{
+    outline: none;
+}
+.add-more-form-image-container{
+    cursor: pointer;
+    margin-left: 5rem;
+    margin-top: 1.5rem;
+    width: fit-content;
+}
+.readOnlyInput{
+color: #202020;
+border: none;
+}
+.read-only-form{
+    border: 2px solid #2A72DE;  
+    border-radius: 11px;
+    padding-left: 2rem;
+}
+.delete-icon{
+    width: 8%;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+ 
+}
+
+/* PROFESSIONAL PROFILE SECTION */
+
+
+#professional-profile-section{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: auto;
+    margin-top: 7rem;
+}
+.professional-profile-section-title{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 50px;
+line-height: 75px;
+color: #202020;
+text-align: center;
+}
+.professional-profile-section-form{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: auto;
+    margin-top: 2rem;
+}
+.professional-profile-form-input{
+
+padding: 8px 21px;
+gap: 650px;
+background: #F6F6F6;
+border: 2px solid #2A72DE;
+border-radius: 8px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 36px;
+color: rgba(32, 32, 32, 0.5);
+margin-bottom: 1rem;
+}
+.educationprofessional-profile-form-input:focus{
+    outline: none;
+}
+.add-more-form-image-container{
+    cursor: pointer;
+    margin-left: 5rem;
+    margin-top: 1.5rem;
+    width: fit-content;
+}
+.readOnlyInput{
+color: #202020;
+border: none;
+}
+.read-only-form{
+    border: 2px solid #2A72DE;  
+    border-radius: 11px;
+    padding-left: 2rem;
+}
+.delete-icon{
+    width: 8%;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+ 
+}
+
+/* WHAT IS YOUR INDUSTRY SECTION */
+
+
+#what-is-your-industry-section{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: auto;
+    margin-top: 7rem;
+}
+.what-is-your-industry-title{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 75px;
+    color: #202020;
+    text-align: center; 
+}
+.what-is-your-industry-input{
+    width: 75%;
+    height: 36px;
+    margin: auto;
+    margin-top: 2rem;
+padding: 8px 21px;
+gap: 16px;
+background: #F6F6F6;
+border: 2px solid #2A72DE;
+border-radius: 6px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 36px;
+color: rgba(32, 32, 32, 0.5);
+}
+.what-is-your-industry-options-cont{
+    width: 80%;
+    margin: auto;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+}
+.what-is-your-industry-options{
+    width: 60%;  
+    height: 30px; 
+padding: 8px 21px;
+gap: 16px;
+background: #F6F6F6;
+border: 2px solid #2A72DE;
+border-radius: 6px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 36px;
+color: rgba(32, 32, 32, 0.5);
+text-align: center;
+margin-bottom: 1rem;
+cursor: pointer;
+}
+.pd-industry-option{
+    width: 110%;
+    text-align: left;
+    font-size: 18px;
+}
+
+
+/* DO YOU HAVE STARTUP */
+
+#doYouHaveAStartUp{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: auto;
+    margin-top: 7rem;
+}
+.doYouHaveAStartUp-title{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 50px;
+line-height: 75px;
+text-align: center;
+color: #202020;
+}
+.doYouHaveAStartUp-option-container{
+    display: flex;
+    margin-top: 2rem;
+}
+.doYouHaveAStartUp-yes-option,.doYouHaveAStartUp-no-option{
+   width: 20%;
+    gap: 10px;
+border-radius: 6px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 28px;
+line-height: 42px;
+    background: #F6F6F6 ;
+    color: #0077B7 ;
+border: 2px solid #0077B7;
+margin: auto;
+cursor: pointer;
+}
+.selected-option{
+    width: 20%;
+    gap: 10px;
+    background: #0077B7;
+border-radius: 6px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 28px;
+line-height: 42px;
+color: #F6F6F6;
+border: none;
+margin: auto;
+cursor: pointer; 
+}
+.doYouHaveAStartUp-verification-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 7rem;
+}
+.doYouHaveAStartUp-verification-container-title{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 50px;
+line-height: 75px;
+text-align: center;
+color: #202020;
+}
+.doYouHaveAStartUp-verification-container-sub-text{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 35px;
+line-height: 52px;
+color: rgba(32, 32, 32, 0.75);
+text-align: center;
+margin-top: 1.5rem;
+}
+input[name='startupDocumentUpload'] {
+  
+    z-index: 10;
+    position: absolute;
+    cursor: pointer;
+    left: 4%;
+    top: 15%;
+    cursor: pointer;
+ padding: 10px;
+ opacity: 0;
+ }
+.doYouHaveAStartUp-verification-upload-document-cont{
+    padding: 10px 130px;
+gap: 10px;
+background: #0077B7;
+border-radius: 6px;
+width: 5%;
+margin: auto;
+margin-top: 2rem;
+
+position: relative;
+
+}
+
+.uploadDocumentFileName{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 36px;
+color: rgba(32, 32, 32, 0.5);
+margin-top: 2rem;
+text-align: center;
+}
+.doYouHaveAStartUp-verification-form{
+    display: flex;
+    flex-direction: column;
+}
+.doYouHaveAStartUp-verification-form-input{
+    padding: 8px 21px;
+gap: 650px; 
+background: #F6F6F6;
+border: 2px solid #2A72DE;
+border-radius: 8px;
+margin: auto;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 36px;
+color: rgba(32, 32, 32, 0.5);
+margin-top: 1.5rem;
+width: 80%;
+
+}
+.doYouHaveAStartUp-verification-form-input:focus{
+    outline: none;
+}
+
+.mentor-add-profile-page-submit-button{
+    padding: 8px 128px;
+gap: 10px;
+background: #2A72DE;
+border-radius: 6px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 36px;
+color: #F6F6F6;
+border: none;
+margin: auto;
+margin-top: 5rem;
+cursor: pointer;
+}
+.mentor-add-profile-page-submit-button-sub-text{
+    margin-top: 1rem;
+    text-align: center;
+   font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+color: rgba(32, 32, 32, 0.5);
+}
+@media(max-width:1210px){
+    .what-is-your-industry-options-cont{
+        grid-template-columns: 50% 50%;
+    }
+    .pd-industry-option{
+        width: 78%;
+    }
+    .what-is-your-industry-options{
+        padding-left: 10px;
+        padding-right: 10px;
+        height: fit-content;
+    }
+}
+@media(max-width:1135px){
+    #mentor-add-profile-page{
+        width: 77%;
+    }
+    .add-profile-info-form-grid{
+        grid-template-columns: 100%;
+    }
+    .Gender-input,.country-input{
+        margin-left: 0;
+    }
+    .DOB-input, .state-input{
+        margin-right: 0;
+    }
+}
+@media(max-width:989px){
+    #mentor-add-profile-page{
+        width: 74%;
+    }
+}
+@media(max-width:980px){
+    .what-is-your-industry-options-cont{
+        grid-template-columns: 100%;
+    }
+}
+@media(max-width:800px){
+    #mentor-add-profile-page{
+        margin-left: 10rem;
+    }
+    .profile-info-section-title,.know-about-your-education-title,.professional-profile-section-title.what-is-your-industry-title,.doYouHaveAStartUp-title,.doYouHaveAStartUp-verification-container-title{
+        font-size: 40px;
+    }
+    .doYouHaveAStartUp-verification-container-sub-text{
+        font-size: 30px;
+    }
+    .profile-info-section-title{
+        width: 60%;
+    }
+    .mentor-add-profile-page-submit-button-sub-text{
+        width: 80%;
+    margin: auto;
+    margin-top: 1rem;
+    }
+
+}
+
+@media(max-width:600px){
+    #mentor-add-profile-page {
+        margin: auto;
+        width: 95%;
+    }
+}

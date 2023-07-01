@@ -1,0 +1,16 @@
+.outerCont{
+    display: flex;
+    align-items: center;
+    width: 93%;
+    padding: .5rem;
+    cursor: pointer;
+}
+.userCont{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-left: 1rem;
+}
+.time{
+    width: 15%;
+}

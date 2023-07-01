@@ -1,0 +1,20 @@
+.btn1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height */
+
+  text-align: center;
+  padding: 6px 128px;
+
+  width: 299px;
+  height: 42px;
+  color: white;
+  background: #2a72de;
+  border: 2px solid #2a72de;
+  cursor: pointer;
+
+  border-radius: 4px;
+}

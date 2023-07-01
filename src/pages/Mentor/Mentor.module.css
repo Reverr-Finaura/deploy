@@ -1,0 +1,135 @@
+.knowledge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.body {
+  width: 88.5%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.content {
+  width: 85%;
+  margin: auto 5rem auto 10rem;
+}
+
+.heading {
+  width: 80%;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.mentorofweek {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: space-around;
+}
+
+.search {
+  background-color: #d9d9d9;
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  flex: 1;
+  padding: 0.5rem 1rem;
+}
+
+.search > img {
+  width: 2rem;
+  object-fit: contain;
+}
+
+.search > input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.week {
+  margin: 2rem auto;
+}
+
+.selector {
+  width: 80%;
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.selectorButton {
+  cursor: pointer;
+}
+
+.option {
+  font-weight: 600;
+}
+
+.expertiseRow {
+  width: 100%;
+  display: flex;
+  margin: 1rem auto;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2.5rem;
+  margin: 3rem 0;
+}
+
+.prices {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2rem 0;
+}
+
+.mentorRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 600px) {
+  .body {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .content {
+    margin: 2rem auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mentorofweek {
+    flex-direction: column;
+  }
+
+  .week {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .expertiseRow {
+    flex-direction: column;
+  }
+
+  .prices {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .mentorRow {
+    flex-direction: column;
+    align-items: center;
+  }
+}
