@@ -1,16 +1,15 @@
 import React from "react";
-import vibeImg from "../../../images/Frame 6267617.svg";
-import styles from "./VibePatch.module.css";
+import styles from "./Patch.module.css";
 
-function VibePatch() {
+function Patch() {
   return (
     <div className={styles.container}>
-      <img src={vibeImg} alt="img" />
+      {/* <img src={vibeImg} alt="img" />
       <button onClick={() => console.log("vibe clicked")}>
         Explore VIBE &nbsp;&gt;
-      </button>
+      </button> */}
       <img
-        style={{ marginTop: 40 }}
+        // style={{ marginTop: 40 }}
         src={require("../../../images/image 827.png")}
         alt="img"
       />
@@ -40,4 +39,4 @@ function VibePatch() {
   );
 }
 
-export default VibePatch;
+export default Patch;

@@ -73,7 +73,7 @@
 .connection {
   display: flex;
   flex-direction: row;
-  margin-left: 20px;
+  /* margin-left: 20px; */
   align-items: center;
 }
 
@@ -126,6 +126,16 @@
 
 .spacesRowText {
   font-size: 12px;
+}
+
+.addSpaceButton {
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin-top: 10px;
+  border-color: #00B3FF;
+  background: transparent;
+  cursor: pointer;
 }
 
 .progressbar {
