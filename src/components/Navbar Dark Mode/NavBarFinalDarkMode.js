@@ -411,8 +411,51 @@ const NavBarFinalDarkMode = () => {
           />
           {searchResult && (
             <div className={style.navbarSearchResult}>
-              {searchResult.map((item) => (
-                <li key={item.id}>{item.name}</li>
+              <text style={{ color: "#00B3FF", fontSize: 15, marginBottom: 5 }}>
+                Search Results
+              </text>
+              {searchResult.map((item, index) => (
+                <div key={index}>
+                  <div>
+                    <img
+                      src={
+                        item?.image
+                          ? item.image
+                          : require("../../images/userIcon.png")
+                      }
+                      alt="img"
+                    />
+                    <div>
+                      <text
+                        style={{
+                          fontSize: 14,
+                          color: "#000000",
+                          display: "-webkit-box",
+                          WebkitLineClamp: 1,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        {item?.name}
+                      </text>
+                      <text
+                        style={{
+                          fontSize: 10,
+                          color: "#1A1E28",
+                          display: "-webkit-box",
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        {item?.designation}
+                      </text>
+                    </div>
+                  </div>
+                  <div className={style.divider}></div>
+                </div>
               ))}
             </div>
           )}
