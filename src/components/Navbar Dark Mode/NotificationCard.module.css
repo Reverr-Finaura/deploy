@@ -1,0 +1,56 @@
+.notificationCard{
+    display: flex;
+    flex-direction: row;
+    width: 409px;
+height: 100px;
+/* flex-shrink: 0; */
+border-radius: 5px;
+background: var(--card, #0D0F14);
+margin: 8px;
+    padding: 10px;
+}
+
+.notificationContent{
+    display: flex;
+    flex-direction: column;
+}
+.upperPart{
+    display: flex;
+    justify-content: space-between;
+}
+.heading{
+    color: #FFF;
+    font-size: 15px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.36px;
+    margin-bottom: 10px;
+
+}
+.para{
+    color: #FFF;
+    font-size: 10px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0.008px;
+
+}
+.date{
+    color: var(--gray, #A7A7A7);
+    font-size: 10px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.01px;
+}
+.notificationImg{
+    margin: 0px 22px 0px 15px;
+}
+.image{
+    width: 50px;
+}

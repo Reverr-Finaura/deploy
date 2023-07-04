@@ -38,6 +38,52 @@
   align-items: center;
   margin-left: 3em;
   color: #ffffff;
+  position: relative;
+  cursor: pointer;
+}
+.notificationBar{
+  position: absolute;
+  top: 90px;
+  /* left: 0px; */
+  border-radius: 16px;
+  background: var(--bg-secondary-gray, #1A1E28);
+  box-shadow: 0px 0px 30px 4px rgba(0, 0, 0, 0.25);
+  width: 480px;
+  /* height: 781px; */
+  flex-shrink: 0;
+  display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    
+    padding: 15px;
+
+}
+.notificationHeading{
+  color: #FFF;
+  font-size: 24px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.024px;
+  margin: 20px 0px 30px 0px;
+}
+.notificationSubHeading{
+  color: var(--white, #FFF);
+  font-size: 16px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20.113px;
+  letter-spacing: 0.016px;
+  margin: 10px 0px 3px 5px;
+}
+.notificationHeadings{
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  width:90%;
 }
 
 .navbarIconsImg {

@@ -73,7 +73,7 @@ function FeaturedMentors() {
   ];
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{marginBottom:'3.2em'}}>
       <div className={styles.header}>
         <p>
           <span style={{ color: "#ffffff" }}>Featured</span>
