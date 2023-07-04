@@ -28,14 +28,25 @@ import { DarkModeToggle } from "@anatoliygatt/dark-mode-toggle";
 import userIcon from "../../images/userIcon.png";
 import settingIcon from "../../images/Vector (3).png";
 import ReverrLightIcon from "../../images/Reverr Light.png";
-import ReverrDarkIcon from "../../images/new-dark-mode-logo.png"
-import {AiFillBell, AiFillSetting ,AiFillMessage,AiOutlineMessage,AiOutlineGlobal,AiOutlineSearch} from "react-icons/ai"
-import {FaUserAlt} from "react-icons/fa"
-import {MdOutlineKeyboardArrowDown ,MdOutlineNotifications} from "react-icons/md"
-import {BiHomeAlt} from "react-icons/bi"
-import {HiOutlineTemplate} from "react-icons/hi"
+import ReverrDarkIcon from "../../images/new-dark-mode-logo.png";
+import {
+  AiFillBell,
+  AiFillSetting,
+  AiFillMessage,
+  AiOutlineMessage,
+  AiOutlineGlobal,
+  AiOutlineSearch,
+} from "react-icons/ai";
+import { FaUserAlt } from "react-icons/fa";
+import {
+  MdOutlineKeyboardArrowDown,
+  MdOutlineNotifications,
+} from "react-icons/md";
+import { BiHomeAlt } from "react-icons/bi";
+import { HiOutlineTemplate } from "react-icons/hi";
 import emailjs from "@emailjs/browser";
 import axios from "axios";
+import NotificationCard from "./NotificationCard";
 
 const NavBarFinalDarkMode = () => {
   const user = useSelector((state) => state.user);
@@ -57,6 +68,7 @@ const NavBarFinalDarkMode = () => {
   window.onscroll = () => {
     setScroll(window.scrollY);
   };
+  const [notificationOpen, setNotificationOpen] = useState(false);
 
   // Start functionality for search bar
   async function fetchUserDataFromFirebase(type) {
@@ -385,7 +397,9 @@ const NavBarFinalDarkMode = () => {
             src={ReverrDarkIcon}
             alt="brand-logo"
           />
-          <span className={style.reverrHeadingSpan}><p className={style.reverrHeading}>Reverr</p></span>
+          <span className={style.reverrHeadingSpan}>
+            <p className={style.reverrHeading}>Reverr</p>
+          </span>
         </div>
 
         <div className={style.navbarSearch}>
@@ -395,11 +409,13 @@ const NavBarFinalDarkMode = () => {
             onChange={searchInputHandler}
             placeholder="Search"
           />
-          {searchResult && <div className={style.navbarSearchResult}>
-            {searchResult.map((item) => (
-              <li key={item.id}>{item.name}</li>
-            ))}
-          </div>}
+          {searchResult && (
+            <div className={style.navbarSearchResult}>
+              {searchResult.map((item) => (
+                <li key={item.id}>{item.name}</li>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className={style.navbarIconsCont}>
@@ -420,9 +436,34 @@ const NavBarFinalDarkMode = () => {
               <AiOutlineMessage className={style.navbarIconsImg} />
               <p className={style.navbarIconsName}>Messages</p>
             </div>
-            <div className={style.navbarIconsImgName}>
+            <div
+              onClick={() => setNotificationOpen(!notificationOpen)}
+              className={style.navbarIconsImgName}
+            >
               <MdOutlineNotifications className={style.navbarIconsImg} />
               <p className={style.navbarIconsName}>Notifications</p>
+              {notificationOpen && (
+                <>
+                  <div className={style.notificationBar}>
+                    {notificationList.length >= 1 ? (
+                      <>
+                        {" "}
+                        <div className={style.notificationHeadings}>
+                          <h1 className={style.notificationHeading}>
+                            Notifications
+                          </h1>
+                          {/* <h3 className={style.notificationSubHeading}>Today</h3> */}
+                        </div>
+                        <NotificationCard />
+                        <NotificationCard />
+                        <NotificationCard />
+                      </>
+                    ) : (
+                      <h4>No notification till Now !</h4>
+                    )}
+                  </div>
+                </>
+              )}
             </div>
           </div>
 

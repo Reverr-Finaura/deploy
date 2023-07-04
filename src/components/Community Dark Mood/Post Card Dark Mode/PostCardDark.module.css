@@ -362,9 +362,7 @@ letter-spacing: 0.42px;
   /* margin: auto; */
   margin-bottom: 2.5rem;
   padding: 1rem;
-  background-color: #e6e4e4dc;
-  background-color: var(--bg-card);
-  /* box-shadow: 0px 4px 4px rgb(0 0 0 / 25%); */
+  background-color: #0c1631;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   padding: 0;
 
@@ -372,7 +370,7 @@ letter-spacing: 0.42px;
 
 #postCommentContainer {
   height: 32px !important;
-  width: 84%;
+  width: 84% !important;
   padding-left: 3rem;
   font-size: 18px;
   /* background-color: var(--comment-card); */
@@ -387,17 +385,22 @@ letter-spacing: 0.42px;
 }
 
 #postCommentContainerExpanded {
-  height: fit-content;
-  width: 92%;
-  padding-left: 0.5rem;
+   padding-left: 0.5rem;
   font-size: 18px;
-  /* background-color: var(--comment-card); */
-  background-color: var(--bg-card);
-  /* border: 2px solid #2a72de; */
   border: 1px solid rgba(42, 114, 222, 0.92);
   padding-bottom: 0;
   margin-bottom: 0;
-  color: var(--main-text);
+
+  width: -webkit-fill-available;
+    height: 30px;
+    border-radius: 50px;
+    background: var(--white, #FFF);
+    color: var(--black, #000);
+    font-size: 16px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 #postCommentContainerExpanded::placeholder {
@@ -416,19 +419,26 @@ letter-spacing: 0.42px;
   margin-bottom: 1.5rem;
 }
 
-.community-newComment-cont-userImage {
+.communityNewCommentContUserImage {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin-top: 1.2rem;
-  margin-right: 1rem;
+  margin-top: 1rem;
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
 .newCommentAddImageAndUpload {
-  background-color: var(--bg-card);
+  background-color: #0c1631;
   border: none;
   width: 92%;
   padding-right: 16px;
+}
+.rightArrowImg{
+  position: absolute;
+    top: 15px;
+    right: 2px;
+    width: 10.1%;
 }
 
 .commented-by-comment {
@@ -443,7 +453,7 @@ letter-spacing: 0.42px;
   margin: auto;
   margin-bottom: 2.5rem;
   padding: 1rem;
-  background-color: var(--bg-card);
+  background-color: #0c1631;
 }
 
 .oldCommentSectionNothing {

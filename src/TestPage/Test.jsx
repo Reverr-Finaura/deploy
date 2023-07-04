@@ -155,13 +155,13 @@ function Test() {
 
         <div className={styles.middleSection}>
           <CommunityFinalDark />
-          <DiscoverEvents />
+          {/* <DiscoverEvents />
         <div style={{ marginTop: 50 }}></div>
         <DiscoverPerfectTools />
         <div style={{ marginTop: 50 }}></div>
         <FeaturedSuggestions />
         <div style={{ marginTop: 50 }}></div>
-        <FeaturedMentors />
+        <FeaturedMentors /> */}
         </div>
 
         <div className={styles.rightSidebar} style={{ marginTop: "10em" }}>
