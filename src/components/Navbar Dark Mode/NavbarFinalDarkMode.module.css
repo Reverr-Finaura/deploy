@@ -348,6 +348,31 @@
   z-index: 100000;
 }
 
+.navbarSearchResult > div > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.navbarSearchResult > div > div > img {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+}
+
+.navbarSearchResult > div > div > div {
+  display: flex;
+  flex-direction: column;
+  padding-left: 12px;
+}
+
+.divider {
+  width: 100%;
+  height: 0.1px;
+  background-color: #d9dde4;
+  margin: 6px 0px;
+}
+
 .navbarSearchInput {
   width: 300px;
   height: 13px;

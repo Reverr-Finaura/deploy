@@ -28,12 +28,22 @@ import { DarkModeToggle } from "@anatoliygatt/dark-mode-toggle";
 import userIcon from "../../images/userIcon.png";
 import settingIcon from "../../images/Vector (3).png";
 import ReverrLightIcon from "../../images/Reverr Light.png";
-import ReverrDarkIcon from "../../images/new-dark-mode-logo.png"
-import {AiFillBell, AiFillSetting ,AiFillMessage,AiOutlineMessage,AiOutlineGlobal,AiOutlineSearch} from "react-icons/ai"
-import {FaUserAlt} from "react-icons/fa"
-import {MdOutlineKeyboardArrowDown ,MdOutlineNotifications} from "react-icons/md"
-import {BiHomeAlt} from "react-icons/bi"
-import {HiOutlineTemplate} from "react-icons/hi"
+import ReverrDarkIcon from "../../images/new-dark-mode-logo.png";
+import {
+  AiFillBell,
+  AiFillSetting,
+  AiFillMessage,
+  AiOutlineMessage,
+  AiOutlineGlobal,
+  AiOutlineSearch,
+} from "react-icons/ai";
+import { FaUserAlt } from "react-icons/fa";
+import {
+  MdOutlineKeyboardArrowDown,
+  MdOutlineNotifications,
+} from "react-icons/md";
+import { BiHomeAlt } from "react-icons/bi";
+import { HiOutlineTemplate } from "react-icons/hi";
 import emailjs from "@emailjs/browser";
 import axios from "axios";
 
@@ -385,7 +395,9 @@ const NavBarFinalDarkMode = () => {
             src={ReverrDarkIcon}
             alt="brand-logo"
           />
-          <span className={style.reverrHeadingSpan}><p className={style.reverrHeading}>Reverr</p></span>
+          <span className={style.reverrHeadingSpan}>
+            <p className={style.reverrHeading}>Reverr</p>
+          </span>
         </div>
 
         <div className={style.navbarSearch}>
@@ -395,11 +407,56 @@ const NavBarFinalDarkMode = () => {
             onChange={searchInputHandler}
             placeholder="Search"
           />
-          {searchResult && <div className={style.navbarSearchResult}>
-            {searchResult.map((item) => (
-              <li key={item.id}>{item.name}</li>
-            ))}
-          </div>}
+          {searchResult && (
+            <div className={style.navbarSearchResult}>
+              <text style={{ color: "#00B3FF", fontSize: 15, marginBottom: 5 }}>
+                Search Results
+              </text>
+              {searchResult.map((item, index) => (
+                <div key={index}>
+                  <div>
+                    <img
+                      src={
+                        item?.image
+                          ? item.image
+                          : require("../../images/userIcon.png")
+                      }
+                      alt="img"
+                    />
+                    <div>
+                      <text
+                        style={{
+                          fontSize: 14,
+                          color: "#000000",
+                          display: "-webkit-box",
+                          WebkitLineClamp: 1,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        {item?.name}
+                      </text>
+                      <text
+                        style={{
+                          fontSize: 10,
+                          color: "#1A1E28",
+                          display: "-webkit-box",
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        {item?.designation}
+                      </text>
+                    </div>
+                  </div>
+                  <div className={style.divider}></div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className={style.navbarIconsCont}>
