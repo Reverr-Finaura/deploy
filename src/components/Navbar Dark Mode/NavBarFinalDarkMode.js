@@ -46,6 +46,7 @@ import { BiHomeAlt } from "react-icons/bi";
 import { HiOutlineTemplate } from "react-icons/hi";
 import emailjs from "@emailjs/browser";
 import axios from "axios";
+import NotificationCard from "./NotificationCard";
 
 const NavBarFinalDarkMode = () => {
   const user = useSelector((state) => state.user);
@@ -67,6 +68,7 @@ const NavBarFinalDarkMode = () => {
   window.onscroll = () => {
     setScroll(window.scrollY);
   };
+  const [notificationOpen, setNotificationOpen] = useState(false);
 
   // Start functionality for search bar
   async function fetchUserDataFromFirebase(type) {
@@ -477,9 +479,34 @@ const NavBarFinalDarkMode = () => {
               <AiOutlineMessage className={style.navbarIconsImg} />
               <p className={style.navbarIconsName}>Messages</p>
             </div>
-            <div className={style.navbarIconsImgName}>
+            <div
+              onClick={() => setNotificationOpen(!notificationOpen)}
+              className={style.navbarIconsImgName}
+            >
               <MdOutlineNotifications className={style.navbarIconsImg} />
               <p className={style.navbarIconsName}>Notifications</p>
+              {notificationOpen && (
+                <>
+                  <div className={style.notificationBar}>
+                    {notificationList.length >= 1 ? (
+                      <>
+                        {" "}
+                        <div className={style.notificationHeadings}>
+                          <h1 className={style.notificationHeading}>
+                            Notifications
+                          </h1>
+                          {/* <h3 className={style.notificationSubHeading}>Today</h3> */}
+                        </div>
+                        <NotificationCard />
+                        <NotificationCard />
+                        <NotificationCard />
+                      </>
+                    ) : (
+                      <h4>No notification till Now !</h4>
+                    )}
+                  </div>
+                </>
+              )}
             </div>
           </div>
 

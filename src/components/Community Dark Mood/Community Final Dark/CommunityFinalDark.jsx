@@ -58,6 +58,10 @@ import Events from "../../SidebarComponents/Events/Events";
 import Mentors from "../../SidebarComponents/Mentors/Mentors";
 import darkSparkle from "../../../images/black-sparkle.png";
 import { auth } from "../../../firebase";
+import DiscoverEvents from "../../DynamicComponents/DiscoverEvents/DiscoverEvents";
+import DiscoverPerfectTools from "../../DynamicComponents/DiscoverPerfectTools/DiscoverPerfectTools";
+import FeaturedSuggestions from "../../DynamicComponents/FeaturedSuggestions/FeaturedSuggestions";
+import FeaturedMentors from "../../DynamicComponents/FeaturedMentors/FeaturedMentors";
 
 const CommunityFinalDark = () => {
   const userSpace = useSelector((state) => state.user.userSpace);
@@ -208,7 +212,7 @@ const CommunityFinalDark = () => {
         })
       );
 
-       console.log("this is the filtered post ",postsData)
+      console.log("this is the filtered post ", postsData);
 
       let postDataAllLikesLength = 0;
       postsData.map((post) => {
@@ -220,13 +224,11 @@ const CommunityFinalDark = () => {
       );
       setWhatsHotCommunityPost(
         postsData.filter((post) => {
-          console.log("here is the post ",post)
+          console.log("here is the post ", post);
           return post.likes.length >= likesAverage;
         })
       );
       console.log("hot community posts ", whatsHotCommunityPost);
-
-
 
       if (sortOptionSelected.time === "") {
         setPostsData(
@@ -262,7 +264,7 @@ const CommunityFinalDark = () => {
       }
     }
     fetchPostsFromDb();
-   }, [sortOptionSelected,whatHotStatus]);
+  }, [sortOptionSelected, whatHotStatus,postsData]);
 
   //FURTHER SORT POST AFTER INITIAL SORT
   const furtherSortPost = () => {
@@ -550,6 +552,15 @@ const CommunityFinalDark = () => {
 
   return (
     <>
+      {/* raaya chat boot */}
+      <iframe
+        src="https://www.chatbase.co/chatbot-iframe/dpblbF2UGnrFPdqMPCxWb"
+        width="100%"
+        style={{ height: '100%', minHeight: '700px',display:"none" }}
+        frameborder="0"
+      ></iframe>
+
+      {/* userSpace modal */}
       <button onClick={openTheSpaceModal} className={style.spaceSectionButton}>
         <span className={style.spaceSectionButtonImg}>
           {" "}
@@ -825,9 +836,9 @@ const CommunityFinalDark = () => {
               <div>
                 <h2 className={style.reverrCommunityHeading}>
                   {" "}
-                  Welcome To Reverr{" "}
+                  Welcome To Reverr ,{" "}
                   <span style={{ color: "rgba(42, 114, 222, 1)" }}>
-                    ,Jahanvi Singh
+                    Jahanvi Singh
                   </span>
                 </h2>
                 {/* <p className="reverrCommunitySubbHeading">
@@ -1153,17 +1164,87 @@ const CommunityFinalDark = () => {
                     </>
                   ) : null}
                   {spaceFilteredPost.map((item, index) => {
-                    return (
-                      <PostCardDark
-                        postsData={postsData}
-                        setPostsData={setPostsData}
-                        item={item}
-                        key={index}
-                        handleEditPostButtonClick={handleEditPostButtonClick}
-                        setPostsAuthorIsClick={setPostsAuthorIsClick}
-                        setPostsAuthorInfo={setPostsAuthorInfo}
-                      />
-                    );
+                    if (index === 3) {
+                      return (
+                        <>
+                          <PostCardDark
+                            postsData={postsData}
+                            setPostsData={setPostsData}
+                            item={item}
+                            key={index}
+                            handleEditPostButtonClick={
+                              handleEditPostButtonClick
+                            }
+                            setPostsAuthorIsClick={setPostsAuthorIsClick}
+                            setPostsAuthorInfo={setPostsAuthorInfo}
+                          />
+                          <DiscoverEvents />
+                        </>
+                      );
+                    } else if (index === 7) {
+                      return (
+                        <>
+                          <PostCardDark
+                            postsData={postsData}
+                            setPostsData={setPostsData}
+                            item={item}
+                            key={index}
+                            handleEditPostButtonClick={
+                              handleEditPostButtonClick
+                            }
+                            setPostsAuthorIsClick={setPostsAuthorIsClick}
+                            setPostsAuthorInfo={setPostsAuthorInfo}
+                          />
+                          <DiscoverPerfectTools />
+                        </>
+                      );
+                    } else if (index === 11) {
+                      return (
+                        <>
+                          <PostCardDark
+                            postsData={postsData}
+                            setPostsData={setPostsData}
+                            item={item}
+                            key={index}
+                            handleEditPostButtonClick={
+                              handleEditPostButtonClick
+                            }
+                            setPostsAuthorIsClick={setPostsAuthorIsClick}
+                            setPostsAuthorInfo={setPostsAuthorInfo}
+                          />
+                          <FeaturedSuggestions />
+                        </>
+                      );
+                    } else if (index === 15) {
+                      return (
+                        <>
+                          <PostCardDark
+                            postsData={postsData}
+                            setPostsData={setPostsData}
+                            item={item}
+                            key={index}
+                            handleEditPostButtonClick={
+                              handleEditPostButtonClick
+                            }
+                            setPostsAuthorIsClick={setPostsAuthorIsClick}
+                            setPostsAuthorInfo={setPostsAuthorInfo}
+                          />
+                          <FeaturedMentors />
+                        </>
+                      );
+                    } else {
+                      return (
+                        <PostCardDark
+                          postsData={postsData}
+                          setPostsData={setPostsData}
+                          item={item}
+                          key={index}
+                          handleEditPostButtonClick={handleEditPostButtonClick}
+                          setPostsAuthorIsClick={setPostsAuthorIsClick}
+                          setPostsAuthorInfo={setPostsAuthorInfo}
+                        />
+                      );
+                    }
                   })}
                 </section>
               ) : (
