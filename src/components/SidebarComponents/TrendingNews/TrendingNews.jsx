@@ -14,7 +14,7 @@ function TrendingNews() {
     params: { q: "startup", safeSearch: "Off", textFormat: "Raw" },
     headers: {
       "Content-Type": "application/json",
-      "Ocp-Apim-Subscription-Key": "bd03e8f8f29b46479ee4c2004280308f",
+      "Ocp-Apim-Subscription-Key": "d7e17be6d66f494ea9c6cddf39825060",
     },
   };
 
