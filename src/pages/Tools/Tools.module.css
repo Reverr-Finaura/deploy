@@ -12,10 +12,10 @@
 }
 
 .outerCont{
-    width: 81%;
+    /* width: 81%; */
     min-height: 85vh;
-    margin-top: 7rem;
-    margin-left: 17rem;
+    /* margin-top: 192px; */
+    margin: 0px 102px;
     font-family: "Quicksand";
 }
 .title{
@@ -29,21 +29,59 @@ color: #202020;
 
 .chooser{
  
+
+    /* linear-gradient(
+    to right,
+    #060f2a 10%,
+    #000022 90%,
+    #021147 90%,
+    #0212C6 90%,
+    #051020 10%
+  ) */
     padding: 1rem;
-    background: linear-gradient( 119.93deg, rgba(255, 255, 255, 0.35) 4.68%, rgba(255, 255, 255, 0.3) 91.73% );
+    /* background: linear-gradient( 119.93deg, rgba(255, 255, 255, 0.35) 4.68%, rgba(255, 255, 255, 0.3) 91.73% ); */
+    /* background: linear-gradient(
+    to right,
+    #060f2a 10%,
+    #000022 90%,
+    #021147 90%,
+    #0212C6 90%,
+    #051020 10%
+  ); */
+
+
+
+
+  /* background: linear-gradient(
+    to right,
+    /* #060f2a 10%,
+    #000022 90%,
+    #021147 90%,
+    #0212C6 90%,
+    #051020 10% */
+    /* #111f4c 100%,
+    #0e0e32 0%,
+    #1a1e2c 0%,
+    #000540 0%,
+    #070c32 0% */
+      /* ); */ 
+      background: linear-gradient(90.57deg, rgba(76, 201, 255, 0.06) 0%, rgba(83, 125, 236, 0.24) 48.96%, rgba(76, 201, 255, 0.06) 100%);
+
+
     /* box-shadow: 0px 2.05973px 12.3584px -0.514933px rgb(0 0 0 / 15%); */
     display: flex;
     flex-direction: row;
+    white-space: nowrap;
     /* flex-wrap: wrap; */
     overflow-x: auto;
     gap: 1rem;
-    width: 95%;
+    width: 100%;
     /* box-shadow: 0 4px 4px rgb(0 0 0 / 25%); */
     border-radius: 15px;
     margin: auto;
-    margin-top: 2rem;
+    margin-top: 7rem;
     color: var(--main-text);
-    border-bottom: 2px solid #E1E1E1
+    /* border-bottom: 2px solid #E1E1E1 */
 
 }
 .chooser::-webkit-scrollbar-track {
@@ -83,6 +121,14 @@ color: #717171;
 
 }
 
+
+.toolspage{
+    background-color: rgb(0, 12, 31);
+}
+
+
+
+/* 
 @media(max-width:1300px){
     .outerCont{
         width: 75%;
@@ -105,4 +151,4 @@ color: #717171;
         margin: auto;
         width: 85%;
     }  
-}
+} */

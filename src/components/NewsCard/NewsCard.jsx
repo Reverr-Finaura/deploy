@@ -38,7 +38,7 @@ const NewsCard = (props) => {
           <img src={props.imgUrl} alt="newsImg" style={{height:'auto', width:'auto'}}/>
         </div>
           <div className='news-details'>
-            <p>{props.time}</p>
+            <p className='newsdate'>{props.time}</p>
             <h4 style={{color:'white'}}>{props.title}</h4>
             <div className='newslink'>
             <a href={props.url}>Read More</a>

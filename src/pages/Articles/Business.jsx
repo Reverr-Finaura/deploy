@@ -1,7 +1,7 @@
 import React from 'react'
 import NavBarFinalDarkMode from '../../components/Navbar Dark Mode/NavBarFinalDarkMode'
 import ArticlesLeftSideBar from '../../components/ArticlesLeftSideBar/ArticlesLeftSideBar'
-import { DiscoverPeople } from '../../components/DiscoverPeople/DiscoverPeople'
+import  DiscoverPeople  from '../../components/DiscoverPeople/DiscoverPeople'
 import DiscoverEvents from '../../components/DiscoverEvents/DiscoverEvents'
 import DiscoverSuggestions from '../../components/DiscoverSuggestions/DiscoverSuggestions'
 import DiscoverNews from '../../components/DiscoverNews/DiscoverNews'

@@ -52,9 +52,11 @@ text-transform: capitalize;
 }
 .doc{
     width: 337px;
-    height: 206px;
-    background: #F8F8F8;
-border: 0.370588px solid #B0B0B0;
+    height: 265px;
+    /* background: #F8F8F8; */
+    background-color: rgba(26, 30, 40, 1);
+
+    border: 0.370588px solid #B0B0B0;
 border-radius: 12px;
 padding: 1rem;
 display: flex;
@@ -67,7 +69,7 @@ font-weight: 700;
 font-size: 1.4rem;
 line-height: 28px;
 letter-spacing: 0.03em;
-color: #333333;
+color: white;
 text-transform: capitalize;
 }
 

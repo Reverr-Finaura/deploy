@@ -185,7 +185,7 @@ const DiscoverNews = () => {
     params: { q: "startup", safeSearch: "Off", textFormat: "Raw" },
     headers: {
       "Content-Type": "application/json",
-      "Ocp-Apim-Subscription-Key": "bd03e8f8f29b46479ee4c2004280308f",
+      "Ocp-Apim-Subscription-Key": "d7e17be6d66f494ea9c6cddf39825060",
     },
   };
 
@@ -203,7 +203,7 @@ const DiscoverNews = () => {
     }
   }
 
-
+console.log(newsData)
 
   const getTimeDifferenceInHours = (newsDate) => {
     const now = new Date();
@@ -226,7 +226,7 @@ const DiscoverNews = () => {
 
     {/* News */}
     <div className='news'>
-            <h3 style={{color:'white', marginTop:'10px'}}> Trending <span style={{color:'blue'}}>News</span> </h3>
+            <h3 style={{color:'white', marginTop:'10px', marginLeft:'12px'}}> Trending <span style={{color:'blue'}}>News</span> </h3>
     </div>
 
 
@@ -235,7 +235,7 @@ const DiscoverNews = () => {
     { newsData && newsData.slice(0, 4).map( (news) => {
         return(
           <div className='allCards' style={{display:'flex', flexDirection:'row'}}>
-            <NewsCard title={news.name} url={news.url} imgUrl={news?.image?.thumbnail?.contentUrl} time={news.datePublished}/>
+            <NewsCard title={news.name} url={news.url} imgUrl={news?.image?.thumbnail?.contentUrl} time={news.datePublished.slice(0,10)}/>
           </div>
 
           )
