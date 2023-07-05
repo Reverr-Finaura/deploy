@@ -1,0 +1,155 @@
+.firstback {
+  width: 100%;
+  background: #030b18;
+  height: 100%;
+  padding: 3rem 0rem;
+}
+.ideavalid {
+  display: flex;
+  flex-direction: row;
+  border-radius: 1.875rem;
+  background: var(--bg-primary-blue, #0c1631);
+  padding: 3rem 5rem 0rem 5rem;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.head {
+  font-size: 45px;
+  font-weight: 500;
+  margin-top: -5%;
+  color: white;
+}
+.sub {
+  color: #fff;
+  font-family: Poppins;
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.submit-button {
+  background-color: rgb(37, 178, 235);
+  padding: 15px 20px;
+  border-radius: 80px;
+  border: none;
+  cursor: pointer;
+  width: 35%;
+  padding: 1rem 0rem 1rem 0rem;
+  margin: 1rem 0rem 1rem 0rem;
+  color: #000;
+  font-size: 1.2rem;
+  font-family: Poppins;
+  font-weight: 500;
+  line-height: normal;
+}
+.rateing {
+  font-size: 15px;
+  /* padding-top: 2%; */
+  display: flex;
+  flex-direction: row;
+}
+.rat {
+  color: #fff;
+}
+.imgrev {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+}
+.rever {
+  padding-top: 3%;
+  margin-top: -10%;
+  color: rgb(37, 178, 235);
+  font-size: 40px;
+}
+.ideagirl {
+  margin-top: 20%;
+  /* margin-left: -5%; */
+}
+.sec {
+  display: flex;
+  flex-direction: row;
+
+  padding-top: -4%;
+
+  padding-right: -2%;
+
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 3rem;
+  border-radius: 5%;
+}
+.bout {
+  padding-top: 5%;
+  margin-left: -12%;
+  margin-top: -5%;
+  color: #fff;
+  font-size: 1rem;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 174%;
+}
+.aboutsyllabus {
+  display: flex;
+  flex-direction: column;
+
+  padding: 8%;
+  margin-top: 5%;
+  margin-left: -1%;
+
+  border-radius: 5%;
+}
+.learn {
+  margin-left: -13%;
+  padding: 6%;
+  margin-top: 1%;
+  background-color: rgb(31, 31, 55);
+  color: white;
+  font-size: 11px;
+  border-radius: 30px;
+  border: 2px solid rgb(37, 178, 235);
+  width: 92%;
+  margin-top: 2rem;
+  font-size: 1rem;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+}
+.imggraph {
+  justify-content: center;
+
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+}
+.bullet {
+  font-size: 8px;
+  padding: 2%;
+}
+.tab {
+  margin-top: -20%;
+  padding-bottom: 5%;
+  color: aliceblue;
+}
+.about {
+  font-size: 30px;
+  color: rgb(37, 178, 235);
+  margin-left: -12%;
+  text-decoration: underline;
+}
+.syllabus {
+  padding-left: 15%;
+  font-size: 30px;
+}
+.space {
+  color: #e1c92d;
+  padding-left: 5%;
+  padding-right: 4%;
+  font-size: 130%;
+}

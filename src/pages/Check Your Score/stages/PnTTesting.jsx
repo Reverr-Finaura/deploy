@@ -1,5 +1,10 @@
 import React from "react";
-import { DropDown, Input, Radio, TextArea } from "../../../components/AlgoInput/InputTesting";
+import {
+  DropDown,
+  Input,
+  Radio,
+  TextArea,
+} from "../../../components/AlgoInput/InputTesting";
 import { toast } from "react-toastify";
 import styles from "./stageTesting.module.css";
 // import styles from "./stages.module.css";
@@ -9,7 +14,12 @@ const PnTTesting = ({ setStage, setData, data, score, setScore }) => {
   const handleNext = () => {
     if (Object.keys(data["productTech"]).length < 18) {
       toast.error("Kindly Fill All Mandatory Fields");
+      console.log("Kindly Fill All Mandatory Fields");
     } else {
+      setScore((prev) => ({
+        ...prev,
+        ["Pnt"]: data["productTech"]["score"],
+      }));
       setData((prev) => ({
         ...prev,
         ["score"]: prev["score"] + prev["productTech"]["score"],
@@ -28,31 +38,60 @@ const PnTTesting = ({ setStage, setData, data, score, setScore }) => {
     });
   };
 
-  const handleDropdown = (e) => {
-    const { name, value } = e.target;
+  const getScore = (name, value) => {
     const score_of_var = scoredData[name].filter(
       (val) => val.value === value
     )[0].score;
-    setScore((prev) => ({
-      ...prev,
-      ["Pnt"]: score.Pnt + score_of_var,
-    }));
+    return score_of_var;
+  };
+
+  const findMaxScore = (name) => {
+    const max_score = scoredData[name].reduce((max, obj) =>
+      max.score > obj.score ? max : obj
+    );
+    return max_score.score;
+  };
+
+  const handleDropdown = (e) => {
+    const { name, value } = e.target;
+    const score_of_var = getScore(name, value);
+    // console.log("max Score", findMaxScore(name));
+    // console.log(score_of_var, name, value);
+    // setScore((prev) => ({
+    //   ...prev,
+    //   ["Pnt"]: score.Pnt - prev["Pnt"] + score_of_var,
+    // }));
+    // console.log(data["productTech"][name] ? data["productTech"][name] : value);
+    // console.log(
+    //   getScore(
+    //     name,
+    //     data["productTech"][name] ? data["productTech"][name] : value
+    //   )
+    // );
     setData((prev) => {
       return {
         ...prev,
         ["productTech"]: {
           ...prev["productTech"],
           [name]: value,
-          ["score"]: prev["productTech"]["score"] + score_of_var,
+          ["score"]:
+            prev["productTech"]["score"] -
+            (prev["productTech"][name]
+              ? getScore(name, prev["productTech"][name])
+              : 0) +
+            score_of_var,
+          ["totalScore"]:
+            prev["productTech"]["totalScore"] +
+            (prev["productTech"][name] ? 0 : findMaxScore(name)),
         },
       };
     });
   };
+  // console.log("data", data);
+  // console.log("score", score);
 
   return (
     <div className={styles.stages_container}>
-      {/* <ToastContainer /> */}
-      {/* <h3>Product & Technology</h3> */}
       <div className={styles.stage_form}>
         <div className={styles.input_flex}>
           <Input
@@ -119,24 +158,15 @@ const PnTTesting = ({ setStage, setData, data, score, setScore }) => {
           onChange={(e) => handleChange(e)}
           options={nonscoredData.tech_used}
         /> */}
-        {/* <DropDown
+        <DropDown
           defaultValue={"select"}
           name={"motivation"}
           options={scoredData.motivation}
           value={data?.productTech?.motivation}
           onChange={(e) => handleDropdown(e)}
           title={"What made you create the solution? (Share your motivation)"}
-        /> */}
-        <TextArea
-          name={"business_kw"}
-          value={data?.productTech?.business_kw}
-          onChange={(e) => handleChange(e)}
-          title={
-            "What made you create the solution? (Share your motivation)"
-          }
-          placeholder={"Start Typing..."}
         />
-        {/* <DropDown
+        <DropDown
           defaultValue={"select"}
           name={"tech_based"}
           value={data?.productTech?.tech_based}
@@ -145,15 +175,15 @@ const PnTTesting = ({ setStage, setData, data, score, setScore }) => {
           title={
             "If product/solution is tech-based in nature (e.g a platform/technology product), will it be developed in-house?"
           }
-        /> */}
-        <Radio
+        />
+        {/* <Radio
           name={"tech_based"}
           value={data?.productTech?.tech_based}
           onChange={(e) => handleChange(e)}
           title={
             "If product/solution is tech-based in nature (e.g a platform/technology product), will it be developed in-house?"
           }
-        />
+        /> */}
         <div className={styles.input_flex}>
           <DropDown
             defaultValue={"select"}
@@ -222,8 +252,8 @@ const PnTTesting = ({ setStage, setData, data, score, setScore }) => {
           }
           placeholder={"Enter here"}
         />
-        {/* <div className={styles.input_flex}> */}
-          {/* <DropDown
+        <div className={styles.input_flex}>
+          <DropDown
             defaultValue={"select"}
             name={"ismoat"}
             value={data?.productTech?.ismoat}
@@ -231,28 +261,28 @@ const PnTTesting = ({ setStage, setData, data, score, setScore }) => {
             title={"Does your business have a MOAT?"}
             nonscored={true}
             options={nonscoredData.ismoat}
-          /> */}
-          <Radio
-            name={"ismoat"}
-            value={data?.productTech?.ismoat}
-            onChange={(e) => handleChange(e)}
-            title={"Does your business have a MOAT?"}
           />
-          {/* <DropDown
+          {/* <Radio
+          name={"ismoat"}
+          value={data?.productTech?.ismoat}
+          onChange={(e) => handleChange(e)}
+          title={"Does your business have a MOAT?"}
+        /> */}
+          <DropDown
             defaultValue={"select"}
             name={"moat"}
             value={data?.productTech?.moat}
             onChange={(e) => handleDropdown(e)}
             title={"What MOAT's does your business have/will potentially have?"}
             options={scoredData.moat}
-          /> */}
-          <Radio
-            name={"moat"}
-            value={data?.productTech?.moat}
-            onChange={(e) => handleChange(e)}
-            title={"What MOAT's does your business have/will potentially have?"}
           />
-        {/* </div> */}
+          {/* <Radio
+          name={"moat"}
+          value={data?.productTech?.moat}
+          onChange={(e) => handleChange(e)}
+          title={"What MOAT's does your business have/will potentially have?"}
+        /> */}
+        </div>
         <DropDown
           defaultValue={"select"}
           name={"pro_risk"}

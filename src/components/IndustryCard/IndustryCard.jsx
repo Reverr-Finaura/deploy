@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 const IndustryCard = ({ item }) => {
   const navigate = useNavigate();
   const HandleClick = () => {
-    // navigate(`/mentors-search/${item.industryname}`);
     navigate(`/mentors-search/${item.categoryName}`);
   };
   return (

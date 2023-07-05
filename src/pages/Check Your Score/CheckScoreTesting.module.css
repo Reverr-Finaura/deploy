@@ -57,14 +57,14 @@
 
 .checkscore__content {
   /* background: var(--bg-clr); */
-  background-color: #0c1631;
   box-shadow: 0px 2.4417px 14.6502px -0.610425px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(6.10425px);
   border-radius: 10px;
   margin: 0 1rem;
   padding: 10px 30px;
   /* height: 200vh; */
-  /* width: 85%; */
+  width: 45rem;
+  margin: auto;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -176,7 +176,12 @@
   .checkscore__container {
     margin-left: 0;
   }
-
+  .checkscore__content {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
   .checkscore__content > h3 {
     font-size: 25px;
   }

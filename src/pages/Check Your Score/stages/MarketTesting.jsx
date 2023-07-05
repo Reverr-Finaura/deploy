@@ -12,8 +12,9 @@ import { nonscoredData, scoredData } from "./scores";
 const MarketTesting = ({ setStage, data, setData, score, setScore }) => {
   console.log(data);
   const handleNext = () => {
-    if (Object.keys(data["Market"]).length < 41) {
+    if (Object.keys(data["Market"]).length < 11) {
       toast.error("Kindly Fill All Mandatory Fields");
+      console.log("Kindly Fill All Mandatory Fields");
     } else {
       setData((prev) => ({
         ...prev,
@@ -35,26 +36,75 @@ const MarketTesting = ({ setStage, data, setData, score, setScore }) => {
     });
   };
 
-  const handleDropdown = (e) => {
-    const { name, value } = e.target;
+  // const handleDropdown = (e) => {
+  //   const { name, value } = e.target;
+  //   const score_of_var = scoredData[name].filter(
+  //     (val) => val.value === value
+  //   )[0].score;
+  //   setScore((prev) => ({
+  //     ...prev,
+  //     ["Market"]: score.Market + score_of_var,
+  //   }));
+  //   setData((prev) => {
+  //     return {
+  //       ...prev,
+  //       ["Market"]: {
+  //         ...prev["Market"],
+  //         [name]: value,
+  //         ["score"]: prev["Market"]["score"] + score_of_var,
+  //       },
+  //     };
+  //   });
+  // };
+
+  const getScore = (name, value) => {
     const score_of_var = scoredData[name].filter(
       (val) => val.value === value
     )[0].score;
-    setScore((prev) => ({
-      ...prev,
-      ["Market"]: score.Market + score_of_var,
-    }));
+    return score_of_var;
+  };
+
+  const findMaxScore = (name) => {
+    const max_score = scoredData[name].reduce((max, obj) =>
+      max.score > obj.score ? max : obj
+    );
+    return max_score.score;
+  };
+
+  const handleDropdown = (e) => {
+    const { name, value } = e.target;
+    const score_of_var = getScore(name, value);
+    console.log("max Score", findMaxScore(name));
+    // console.log(score_of_var, name, value);
+    // setScore((prev) => ({
+    //   ...prev,
+    //   ["Pnt"]: score.Pnt - prev["Pnt"] + score_of_var,
+    // }));
+    // console.log(data["productTech"][name] ? data["productTech"][name] : value);
+    // console.log(
+    //   getScore(
+    //     name,
+    //     data["productTech"][name] ? data["productTech"][name] : value
+    //   )
+    // );
     setData((prev) => {
       return {
         ...prev,
         ["Market"]: {
           ...prev["Market"],
           [name]: value,
-          ["score"]: prev["Market"]["score"] + score_of_var,
+          ["score"]:
+            prev["Market"]["score"] -
+            (prev["Market"][name] ? getScore(name, prev["Market"][name]) : 0) +
+            score_of_var,
+          ["totalScore"]:
+            prev["Market"]["totalScore"] +
+            (prev["Market"][name] ? 0 : findMaxScore(name)),
         },
       };
     });
   };
+  console.log("data", data);
 
   const handleRevenue = (e) => {
     const { name, value } = e.target;
@@ -127,7 +177,7 @@ const MarketTesting = ({ setStage, data, setData, score, setScore }) => {
             value={data?.Market?.interested_customer}
             onChange={handleChange}
             title={
-              "Of the INR Cr. market, what percentage of customers will be interested in your specific solution? (in %) "
+              "Of the INR Cr. market, what percentage of customers will be interested in your specific solution? (in %) "
             }
             placeholder={"Enter here"}
             type={"text"}
@@ -161,7 +211,7 @@ const MarketTesting = ({ setStage, data, setData, score, setScore }) => {
             type={"url"}
           />
         </div>
-        {/* <DropDown
+        <DropDown
           defaultValue={"select"}
           name="competitors"
           value={data?.Market?.competitors}
@@ -169,13 +219,13 @@ const MarketTesting = ({ setStage, data, setData, score, setScore }) => {
           title={"Do you have any competitors?"}
           options={["Yes", "No"]}
           nonscored={true}
-        /> */}
-        <Radio
+        />
+        {/* <Radio
           name={"competitors"}
           value={data?.Market?.competitors}
           onChange={handleChange}
           title={"Do you have any competitors?"}
-        />
+        /> */}
       </div>
       <div className={styles.btn_div}>
         <button className={styles.backbtn} onClick={handlePrev}>

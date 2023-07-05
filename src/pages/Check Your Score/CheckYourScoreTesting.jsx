@@ -1,28 +1,29 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./CheckScoreTesting.module.css";
-import PnT from "./stages/PnT";
-import Team from "./stages/Team";
-import Market from "./stages/Market";
-import Done from "./stages/Done";
-import Result from "./stages/Result";
 import PnTTesting from "./stages/PnTTesting";
 import TeamTesting from "./stages/TeamTesting";
 import MarketTesting from "./stages/MarketTesting";
 import FinanceTesting from "./stages/FinanceTesting";
 import ResultTesting from "./stages/ResultTesting";
+import DoneTesting from "./stages/DoneTesting";
 
 const CheckYourScoreTesting = () => {
-  const [width, setWidth] = useState(window.innerWidth);
   const [stage, setStage] = useState(0);
   const [startupScore, setstartupScore] = useState({
-    productTech: { totalScore: 49, score: 0 },
-    Team: { totalScore: 327, score: 0 },
-    Market: { totalScore: 177, score: 0 },
-    totalScore: 553,
+    productTech: { totalScore: 0, score: 0 },
+    Team: { totalScore: 0, score: 0 },
+    Market: { totalScore: 0, score: 0 },
+    Finance: { totalScore: 0, score: 0 },
+    totalScore: 0,
     score: 0,
   });
-  const [algoScore, setAlgoScore] = useState({ Pnt: 0, Team: 0, Market: 0 });
+  const [algoScore, setAlgoScore] = useState({
+    Pnt: 0,
+    Team: 0,
+    Market: 0,
+    Finance: 0,
+  });
 
   const stages = [
     <PnTTesting
@@ -53,7 +54,11 @@ const CheckYourScoreTesting = () => {
       score={algoScore}
       setScore={setAlgoScore}
     />,
-    // <Done setStage={setStage} data={scoreData} setData={setScoreData} />,
+    <DoneTesting
+      setStage={setStage}
+      // data={scoreData}
+      // setData={setScoreData}
+    />,
     <ResultTesting
       score={algoScore}
       data={startupScore}
@@ -151,7 +156,7 @@ const CheckYourScoreTesting = () => {
             {/* <div className={styles.progress_bar}>
               <div style={{ width: `calc(${(stage + 1) / 4} * 100%)` }}></div>
             </div> */}
-            <div className={styles.stage}>{stages[0]}</div>
+            <div className={styles.stage}>{stages[stage]}</div>
           </div>
         </div>
       </section>

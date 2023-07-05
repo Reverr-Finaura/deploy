@@ -41,9 +41,6 @@
   width: 15rem;
   height: 1.5rem;
 }
-.slider ::before {
-  display: none;
-}
 .carousel-container {
   display: flex;
   justify-content: center;
@@ -146,6 +143,9 @@
 }
 .cardRightContent {
   flex: 4;
+}
+text{
+  font-size: 1.2rem;
 }
 .rightCardMain {
   display: flex;

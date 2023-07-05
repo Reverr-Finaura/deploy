@@ -23,8 +23,9 @@
 }
 
 .stage_form > h3 {
-  color: var(--main-text);
-  font-size: 20px;
+  font-weight: 700;
+  color: #00b3ff;  
+  font-size: 25px;
   margin: 1rem auto;
   text-align: center;
 }
@@ -100,6 +101,36 @@
   padding: 3rem 4rem;
   gap: 3rem;
 }
+
+/* -------------Result----------- */
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+.result_CardLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.result_CardLeft > p:nth-child(1){
+  font-weight: 400;
+  font-size: 16px;
+  color: #fff;
+}
+.result_CardLeft > p:nth-child(2){
+  font-weight: bold;
+  font-size: 4rem;
+  color: #2a72de;
+}
+.result_CardLeft > p:nth-child(4){
+  font-weight: bold;
+  color: #2a72de;
+}
 .result_left {
   display: flex;
   flex: 2;
@@ -136,7 +167,7 @@
   display: flex;
   flex: 50%;
   align-items: center;
-  flex-direction: column;
+  /* flex-direction: column; */
 }
 .result_labels {
   margin: 2rem 0;
@@ -156,7 +187,8 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 25px;
-  color: var(--main-text);
+  /* color: var(--main-text); */
+  color: #fff;
 }
 
 .result_msg {
@@ -170,7 +202,8 @@
   font-weight: 700;
   font-size: 30px;
   line-height: 40px;
-  color: var(--main-text);
+  /* color: var(--main-text); */
+  color: #fff;
 }
 
 .msg_text > p {

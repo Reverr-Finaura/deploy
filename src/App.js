@@ -104,6 +104,10 @@ import MentorTesting from "./pages/Mentors/MentorTesting";
 import MentorSearch from "./pages/MentorSearch/MentorSearch";
 import ScheduleTesting from "./pages/Schedule/ScheduleTesting";
 import CheckYourScoreTesting from "./pages/Check Your Score/CheckYourScoreTesting";
+import KnowledgeTesting from "./pages/Knowledge/KnowledgeTesting";
+import ReachingOutToInvestorTesting from "./pages/AfterKnowledge/ReachingOutToInvestor/ReachingOutToInvestorTesting";
+import CourseContent from "./components/After knowledge/Course content/CourseContent";
+import CourcePageTesting from "./pages/AfterKnowledge/CourcesPage/CourcePageTesting";
 
 function App() {
   const user = useSelector(selectUser);
@@ -159,7 +163,8 @@ function App() {
         <Route path="/startup-review" element={<Review />} />
         <Route path="/startup-verification" element={<Verification />} />
         <Route path="/schedule" element={<Schedule />}></Route>
-        <Route path="/knowledge" element={<Knowledge />}></Route>
+        <Route path="/knowledge" element={<KnowledgeTesting />}></Route>
+        {/* <Route path="/knowledge" element={<Knowledge />}></Route> */}
         <Route path="/" element={<Dashboard />} />
         <Route path="/knowledge" element={<Knowledge />}></Route>
         {/* <Route path="/com" element={<BusinessPlanningSlides />}></Route> */}
@@ -242,7 +247,8 @@ function App() {
 
         <Route path="/esop" element={<ESOP />}></Route>
         <Route path="/esop-slides" element={<ESOP_Slides />}></Route>
-        <Route path="/idea-validation" element={<IdeaValidation />}></Route>
+        <Route path="/idea-validation" element={<CourcePageTesting/>}></Route>
+        {/* <Route path="/idea-validation" element={<IdeaValidation />}></Route> */}
         <Route path="/idea-validation-slides" element={<IV_Slides />}></Route>
         <Route
           path="/fundraising-and-means"
@@ -252,6 +258,10 @@ function App() {
           path="/fundraising-and-means-slides"
           element={<FundraisingSlides />}
         ></Route>
+        {/* <Route
+          path="/reaching-out-to-investor"
+          element={<ReachingOutToInvestorTesting />}
+        ></Route> */}
         <Route
           path="/reaching-out-to-investor"
           element={<ReachingOutToInvestor />}

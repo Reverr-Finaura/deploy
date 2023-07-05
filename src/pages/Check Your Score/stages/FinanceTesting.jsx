@@ -10,10 +10,10 @@ import { toast } from "react-toastify";
 import { nonscoredData, scoredData } from "./scores";
 
 const FinanceTesting = ({ setStage, data, setData, score, setScore }) => {
-  console.log(data);
   const handleNext = () => {
-    if (Object.keys(data["Market"]).length < 41) {
+    if (Object.keys(data["Finance"]).length < 12) {
       toast.error("Kindly Fill All Mandatory Fields");
+      console.log("kindly fill all mandatory fields");
     } else {
       setData((prev) => ({
         ...prev,
@@ -29,28 +29,76 @@ const FinanceTesting = ({ setStage, data, setData, score, setScore }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(data);
+    // console.log(data);
     setData((prev) => {
-      return { ...prev, ["Market"]: { ...prev["Market"], [name]: value } };
+      return { ...prev, ["Finance"]: { ...prev["Finance"], [name]: value } };
     });
+  };
+
+  // const handleDropdown = (e) => {
+  //   const { name, value } = e.target;
+  //   const score_of_var = scoredData[name].filter(
+  //     (val) => val.value === value
+  //   )[0].score;
+  //   setScore((prev) => ({
+  //     ...prev,
+  //     ["Market"]: score.Market + score_of_var,
+  //   }));
+  //   setData((prev) => {
+  //     return {
+  //       ...prev,
+  //       ["Market"]: {
+  //         ...prev["Market"],
+  //         [name]: value,
+  //         ["score"]: prev["Market"]["score"] + score_of_var,
+  //       },
+  //     };
+  //   });
+  // };
+  const getScore = (name, value) => {
+    const score_of_var = scoredData[name].filter(
+      (val) => val.value === value
+    )[0].score;
+    return score_of_var;
+  };
+
+  const findMaxScore = (name) => {
+    const max_score = scoredData[name].reduce((max, obj) =>
+      max.score > obj.score ? max : obj
+    );
+    return max_score.score;
   };
 
   const handleDropdown = (e) => {
     const { name, value } = e.target;
-    const score_of_var = scoredData[name].filter(
-      (val) => val.value === value
-    )[0].score;
-    setScore((prev) => ({
-      ...prev,
-      ["Market"]: score.Market + score_of_var,
-    }));
+    const score_of_var = getScore(name, value);
+    // console.log(score_of_var, name, value);
+    // setScore((prev) => ({
+    //   ...prev,
+    //   ["Pnt"]: score.Pnt - prev["Pnt"] + score_of_var,
+    // }));
+    // console.log(data["productTech"][name] ? data["productTech"][name] : value);
+    // console.log(
+    //   getScore(
+    //     name,
+    //     data["productTech"][name] ? data["productTech"][name] : value
+    //   )
+    // );
     setData((prev) => {
       return {
         ...prev,
-        ["Market"]: {
-          ...prev["Market"],
+        ["Finance"]: {
+          ...prev["Finance"],
           [name]: value,
-          ["score"]: prev["Market"]["score"] + score_of_var,
+          ["score"]:
+            prev["Finance"]["score"] -
+            (prev["Finance"][name]
+              ? getScore(name, prev["Finance"][name])
+              : 0) +
+            score_of_var,
+          ["totalScore"]:
+            prev["Finance"]["totalScore"] +
+            (prev["Finance"][name] ? 0 : findMaxScore(name)),
         },
       };
     });
@@ -68,13 +116,13 @@ const FinanceTesting = ({ setStage, data, setData, score, setScore }) => {
     setData((prev) => {
       return {
         ...prev,
-        ["Market"]: {
-          ...prev["Market"],
+        ["Finance"]: {
+          ...prev["Finance"],
           ["revenue_growth"]: {
-            ...prev["Market"]["revenue_growth"],
+            ...prev["Finance"]["revenue_growth"],
             [name]: value,
           },
-          ["score"]: prev["Market"]["score"] + score_of_var,
+          ["score"]: prev["Finance"]["score"] + score_of_var,
         },
       };
     });
@@ -106,7 +154,8 @@ const FinanceTesting = ({ setStage, data, setData, score, setScore }) => {
           <Input
             name={"revenue_growth"}
             value={data?.Market?.revenue_growth?.revenue_growth}
-            onChange={handleRevenue}
+            // onChange={handleRevenue}
+            onChange={handleChange}
             title={"What is you're revenue Growth Rate?"}
             placeholder={"Enter here"}
           />
@@ -157,21 +206,21 @@ const FinanceTesting = ({ setStage, data, setData, score, setScore }) => {
           options={scoredData.ltv}
         />
         <div className={styles.input_flex}>
-          {/* <DropDown
+          <DropDown
             defaultValue={"select"}
             name={"break_even"}
             value={data?.Market?.break_even}
             onChange={handleDropdown}
             title={"Have you achieved break-even?"}
             options={scoredData.break_even}
-          /> */}
-          <Radio
+          />
+          {/* <Radio
             name={"break_even"}
             value={data?.Market?.break_even}
             onChange={handleDropdown}
             title={"Have you achieved break-even?"}
             options={scoredData.break_even}
-          />
+          /> */}
           <DropDown
             defaultValue={"select"}
             name={"est_break_even"}
@@ -183,21 +232,21 @@ const FinanceTesting = ({ setStage, data, setData, score, setScore }) => {
         </div>
 
         <div className={styles.input_flex}>
-          {/* <DropDown
+          <DropDown
             defaultValue={"select"}
             name={"profitable"}
             value={data?.Market?.profitable}
             onChange={handleDropdown}
             title={"Are You profitable?"}
             options={scoredData.profitable}
-          /> */}
-          <Radio
+          />
+          {/* <Radio
             name={"profitable"}
             value={data?.Market?.profitable}
             onChange={handleDropdown}
             title={"Are You profitable?"}
             options={scoredData.profitable}
-          />
+          /> */}
           <DropDown
             defaultValue={"select"}
             name={"funds"}
