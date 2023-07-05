@@ -260,7 +260,6 @@ export default function PostCardDark({
   }, [userDoc]);
 
   //GET USER DATA FROM REFERENCE LINK WHO HAS COMMENTED
-
   useEffect(() => {
     item.comments.map((event) => {
       getUserDocByRef(event.commentedby).then((res) => {
@@ -271,8 +270,7 @@ export default function PostCardDark({
     });
   }, [item]);
 
-  // HANDLE POST SEND CLICK
-
+  // HANDLE POST SEND CLICK  
   const handleSendPostLinkClick = (id) => {
     var tempUrl = window.location.href;
     var url = `${tempUrl}/${id}`;
@@ -594,7 +592,11 @@ export default function PostCardDark({
                 : style.oldCommentSectionNothing
             }
           >
+            
             {item?.comments.map((list) => {
+           
+           console.log("this is item ", item)
+           console.log("this is list ", list)
               return (
                 <>
                   <div className="commentedByAndComment" key={list.commentid}>
@@ -625,7 +627,6 @@ export default function PostCardDark({
                         />
                       ) : null}
                       {/* <img onClick={()=>{setIsCommentThreeDotsClicked(current=>!current);setThreeDotsClickCommentId(list?.commentid)}} className='threeDotsPost commentThreeDotsPost' src="./images/dots.png" alt="3dots" /> */}
-
                       {isCommentThreeDotsClicked &&
                       list?.commentedby?.id === user?.user?.email &&
                       threeDotsClickCommentId === list?.commentid ? (

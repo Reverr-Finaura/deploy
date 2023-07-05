@@ -264,7 +264,7 @@ const CommunityFinalDark = () => {
       }
     }
     fetchPostsFromDb();
-  }, [sortOptionSelected, whatHotStatus,postsData]);
+  }, [sortOptionSelected, whatHotStatus]);
 
   //FURTHER SORT POST AFTER INITIAL SORT
   const furtherSortPost = () => {
@@ -519,8 +519,6 @@ const CommunityFinalDark = () => {
     }
   }
 
-  console.log("userSpaceArr ", userSpaceArr);
-  console.log("userSpace: ", userSpace);
 
   function openTheSpaceModal() {
     if (isOpen) {

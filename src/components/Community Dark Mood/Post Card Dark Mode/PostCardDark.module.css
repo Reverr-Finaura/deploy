@@ -439,6 +439,7 @@ letter-spacing: 0.42px;
     top: 15px;
     right: 2px;
     width: 10.1%;
+    cursor: pointer;
 }
 
 .commented-by-comment {
