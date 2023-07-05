@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
+.clicked {
+  background-color: #ffffff;
+}
+
 .infiniteScrollOuterDiv {
   width: 100%;
   /* margin-left: 4rem; */
@@ -36,6 +40,7 @@
   /* padding-right: 3.5rem; */
   /* margin-left: 5rem; */
   padding-top: 6em;
+  width: -webkit-fill-available;
 }
 
 #communityFinalPage::-webkit-scrollbar {
@@ -66,7 +71,7 @@
   padding: 1rem;
   /* --bg-light-blue */
   background-color: #0c1631;
-  border-radius: 12px;
+  border-radius: 14px;
 
 }
 
@@ -83,9 +88,11 @@
   font-family: 'Quicksand';
   font-style: normal;
   font-size: 2rem;
-  /* --main-text */
-  color: #ffffff;
   margin-bottom: 1.5rem;
+  color: #FFF;
+font-size: 28px;
+font-family: Reem Kufi;
+font-weight: 700;
 }
 
 .postUploaddSquareCont {
@@ -98,6 +105,7 @@
   width: 40px;
   height: 40px;
   cursor: pointer;
+  margin-bottom: 25px;
 }
 
 .postUploaddSquareContAddImg {
@@ -111,11 +119,12 @@
 }
 
 .communityUploadContUserImage {
-  width: 50px;
-  height: 50px;
   border-radius: 11px;
-  margin-top: 1rem;
-  margin-right: 1rem;
+    margin-top: 0.8rem;
+    margin-right: 1rem;
+      width: 48.873px;
+    height: 48.873px;
+    flex-shrink: 0;
 }
 
 .textAreaUploadContainer {
@@ -158,11 +167,12 @@
   transform: rotate(180deg);
 }
 
-.post_assets_icon_main {
+.postAssetsIconMain {
   margin-top: 1rem;
   display: flex;
   gap: 2.5rem;
   justify-content: space-around;
+  margin-right: 88px;
 }
 
 .post_assets_icon_main_div {
@@ -362,7 +372,7 @@
 /* SORT POST SECTION ENDS*/
 
 #postTextContainer {
-  height: 32px;
+  height: 23px;
   width: 90%;
   /* padding-left: 3rem; */
   /* color: var(--main-text); */
@@ -370,6 +380,11 @@
   /* border-color: var(--main-text); */
   border-color: #9C9C9C;
   background-color: var(--bg-clr);
+  color: var(--gray, #A7A7A7);
+  font-size: 14px;
+  font-family: Poppins;
+  font-weight: 500;
+  letter-spacing: 0.42px;
 }
 
 #postTextContainer::placeholder {
@@ -860,6 +875,17 @@ body::-webkit-scrollbar {
   color: #ffffff;
   font-weight: 600;
 }
+.communityNavbarBlockNav{
+  cursor: pointer;
+}
+.activeNav{
+  border-bottom: 3px solid #16b9ff;
+  padding-bottom: 5px;
+  
+}
+.activeNavHeading{
+  color:#16b9ff ;
+}
 
 
 /* userspace css */
@@ -922,6 +948,13 @@ body::-webkit-scrollbar {
 
 }
 
+.spaceMenuDataActive{
+   background-color: #ffffff;
+}
+.spaceMenuDataParaActive{
+   color: black;
+}
+
 .spaceModalHeading {
   color: var(--white, #FFF);
   font-size: 24px;
@@ -980,21 +1013,31 @@ body::-webkit-scrollbar {
 }
 .spaceSectionButton {
 
-  color: white;
   padding: 5px 20px;
   border-radius: 48px;
-  background: var(--blue, linear-gradient(97deg, #00B3FF 57.09%, #4CC9FF 100%));
-  box-shadow: 0px 0px 8px 0px rgba(76, 201, 255, 0.75), 0px 0px 8px 0px rgba(76, 201, 255, 0.75) inset;
-  border: none;
+    border: none;
   color: #030B18;
   font-size: 18px;
   font-family: Poppins;
   font-weight: 600;
   position: fixed;
-    bottom: 30px;
-    left: 64px;
-    z-index: 999999999;
-    cursor: pointer;
+  bottom: 30px;
+  left: 50px;
+  z-index: 999999999;
+  cursor: pointer;
+  border-radius: 48px;
+  background: #FFF;
+  box-shadow: 0px 0px 8px 0px rgba(76, 201, 255, 0.75), 0px 0px 8px 0px rgba(76, 201, 255, 0.75) inset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.spaceSectionButtonImg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1px 4px 1px 1px;
 }
 
 

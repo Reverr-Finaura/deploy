@@ -1,16 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.b45a664a.css",
-    "main.js": "/static/js/main.bca1b15a.js",
+    "main.css": "/static/css/main.d3632403.css",
+    "main.js": "/static/js/main.6d51618e.js",
+    "static/media/illustration.svg": "/static/media/illustration.19635081d007bb47015e1ef6f9599be3.svg",
     "static/media/community mockup.svg": "/static/media/community mockup.39e6b22b0621801842e4a5857e9af195.svg",
+    "static/media/Frame 6267617.svg": "/static/media/Frame 6267617.04a0b74d1c99a7ec17cff1fd791df479.svg",
     "static/media/Concept of unemployed woman searching for job in startup company.svg": "/static/media/Concept of unemployed woman searching for job in startup company.029a3e9e2e59b36ede45c5150f6fb24c.svg",
     "static/media/Data analysis Case Study.svg": "/static/media/Data analysis Case Study.cb30bc5846f5550320a54dae7f933eb5.svg",
     "static/media/Ellipse 401.svg": "/static/media/Ellipse 401.5afa25031db61865ff2f144b6fbe739d.svg",
     "static/media/Say hello to new people.svg": "/static/media/Say hello to new people.4a3a4fd45999f00d2299e1791b7f7d0e.svg",
+    "static/media/explore.png": "/static/media/explore.452c67c61d58ff2dc58b.png",
     "static/media/Girl doing online shopping.svg": "/static/media/Girl doing online shopping.cbd3aad379ef307ec25ded43a4d7e3cd.svg",
+    "static/media/image 827.png": "/static/media/image 827.1c46337d6f700c2e551a.png",
+    "static/media/Rectangle 1612.png": "/static/media/Rectangle 1612.87235452ce36bd4cd584.png",
     "static/media/Fintech Management.svg": "/static/media/Fintech Management.756f39b7ed7ab7998edd5c45f8483add.svg",
     "static/media/Arranging Files.png": "/static/media/Arranging Files.da2fd747d7a86b4bdd75.png",
     "static/media/Q and A about loan.svg": "/static/media/Q and A about loan.0f1b36cd1b063461b77fdbd2c4d49bba.svg",
+    "static/media/unsplash_5.png": "/static/media/unsplash_5.5e00b5f448b8f5f50803.png",
     "static/media/Searching data.svg": "/static/media/Searching data.bfb4bd2443546a95b8b246e273ae3791.svg",
     "static/media/Cloud Technology.svg": "/static/media/Cloud Technology.a69372b9c598171c6703975144f6cb2b.svg",
     "static/media/Charity.svg": "/static/media/Charity.c8f49e2a17a91fede347a1a19571c3e3.svg",
@@ -19,6 +25,7 @@
     "static/media/addExpandTextArea.png": "/static/media/addExpandTextArea.132696644e79a1f05c3b.png",
     "static/media/searching error.svg": "/static/media/searching error.7e11ef0ff799e73a191e904dea2665d3.svg",
     "static/media/Engineering Settings.svg": "/static/media/Engineering Settings.a2575ce4d2e252a9fd18b2966c882c59.svg",
+    "static/media/image 3.png": "/static/media/image 3.6fded568a4afc5edab9f.png",
     "static/media/paper-plane.png": "/static/media/paper-plane.94969f8dc18ef9d88a57.png",
     "static/media/Conversation.svg": "/static/media/Conversation.79d99e3fae608fa3a19ab5d5064fe99c.svg",
     "static/media/Job Change People.svg": "/static/media/Job Change People.d198259bf9f8a659139ed59343dd4c02.svg",
@@ -37,19 +44,25 @@
     "static/media/WHITE Spinner-1s-343px.svg": "/static/media/WHITE Spinner-1s-343px.8fbab404d174972f10208adf47c8de1e.svg",
     "static/media/marketing.svg": "/static/media/marketing.a4c1afa3fc465fdd9e4bc84645d8ca69.svg",
     "static/media/Camera.svg": "/static/media/Camera.4474956446cd70353f0554c888bad437.svg",
+    "static/media/people.svg": "/static/media/people.a00bbf0fed2c94d53095e9f215b3b5bb.svg",
+    "static/media/setting.svg": "/static/media/setting.fa351bb6e86fec5e35c8136eae9f5254.svg",
     "static/media/Layer 2.svg": "/static/media/Layer 2.ec634ce680a1132c855e80ac60f1c37d.svg",
     "static/media/Pulse-1s-200px.svg": "/static/media/Pulse-1s-200px.36853d114ba58c66e32d8a88f3de1b91.svg",
     "static/media/Twitter.svg": "/static/media/Twitter.201d34a3c81c7b071edf32b890f776b0.svg",
     "static/media/GroupLast.svg": "/static/media/GroupLast.b0e34ed869bda590c996bfca3560ddc7.svg",
-    "static/media/Linkedin.svg": "/static/media/Linkedin.aabc8504b623f976d83109d7f4167f2d.svg",
     "index.html": "/index.html",
+    "static/media/Linkedin.svg": "/static/media/Linkedin.aabc8504b623f976d83109d7f4167f2d.svg",
+    "static/media/profile2user.svg": "/static/media/profile2user.625caae89b02e8d48fb8b49622922ccb.svg",
+    "static/media/edit.svg": "/static/media/edit.6c897fd7108da853fa921885921b2ec3.svg",
     "static/media/Group 6267336.svg": "/static/media/Group 6267336.41842a3c1f5f4fd8097cf657bf145838.svg",
+    "static/media/eye.svg": "/static/media/eye.ebf8baa35afaef2664b77659c235ce79.svg",
+    "static/media/clock.svg": "/static/media/clock.b00de8004e0a399a2210cf56a282b9f0.svg",
     "static/media/PPT iconVector.svg": "/static/media/PPT iconVector.a0131fb78e7655bdc221733113bede5a.svg",
-    "main.b45a664a.css.map": "/static/css/main.b45a664a.css.map",
-    "main.bca1b15a.js.map": "/static/js/main.bca1b15a.js.map"
+    "main.d3632403.css.map": "/static/css/main.d3632403.css.map",
+    "main.6d51618e.js.map": "/static/js/main.6d51618e.js.map"
   },
   "entrypoints": [
-    "static/css/main.b45a664a.css",
-    "static/js/main.bca1b15a.js"
+    "static/css/main.d3632403.css",
+    "static/js/main.6d51618e.js"
   ]
 }

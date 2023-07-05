@@ -1,0 +1,118 @@
+.card_container {
+  min-width: 310px;
+  /* width: 310px; */
+  width: 80%;
+  height: 7rem;
+  margin: 1rem auto;
+  max-width: 100%;
+  background: #f2f2f2;
+  border: 0.370588px solid #b0b0b0;
+  border-radius: 30px;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1rem;
+  border-radius: 0.9375rem;
+  background: var(--bg-secondary-gray, #1a1e28);
+  box-shadow: 0px 2.441701650619507px 12px 0px rgba(0, 0, 0, 0.25) inset,
+    0px 2.441701650619507px 14.650209426879883px -0.6104254126548767px rgba(0, 0, 0, 0.15);
+}
+
+.card_img {
+  text-align: center;
+  height: 100%;
+  position: relative;
+  width: 10rem;
+  flex: 1;
+}
+.card_img > img {
+  /* aspect-ratio: 2; */
+  border-radius: 30px 30px 0 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.viewText {
+  /* width: 160px; */
+  height: 44px;
+  font-size: 13px;
+  margin: 3rem 1rem;
+  text-align: left;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.viewBtn {
+  border: 1.73282px solid #ffffff;
+  filter: drop-shadow(0px 3.46564px 20.7938px rgba(0, 0, 0, 0.25));
+  border-radius: 20.7938px;
+  width: 160px;
+  height: 44px;
+  margin: 5rem 1rem;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.card_img > img {
+  /* aspect-ratio: 2; */
+  border-radius: 30px 30px 0 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.card_titlenlikes {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 4rem;
+  margin: 0rem auto;
+  align-items: center;
+  padding: 1rem;
+  flex: 5;
+}
+
+.likesndwnld > p {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 28px;
+  color: #fff;
+  letter-spacing: 0.03em;
+}
+
+.likesndwnld_left {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.4rem;
+}
+
+.likesndwnld_left > div {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.7rem;
+  color: #D0D0D0;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.likesndwnld_right > img {
+  height: 2.4 rem;
+  cursor: pointer;
+  flex: 1;
+}
+
+@media (max-width: 990px) {
+  .card_titlenlikes {
+    justify-content: space-between;
+  }
+  .blackishCont {
+    width: 100%;
+  }
+  .card_container {
+    width: 100%;
+  }
+}

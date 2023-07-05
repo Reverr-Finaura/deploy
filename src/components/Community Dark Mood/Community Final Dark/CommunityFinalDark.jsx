@@ -51,18 +51,27 @@ import { IoLocationSharp } from "react-icons/io5";
 import { BsImages } from "react-icons/bs";
 import { RiFileSearchLine } from "react-icons/ri";
 // import SortingNavbarTwoOption from "./Sorting Navbar Two Options/SortingNavbarTwoOptions";
-import  {setUserSpace} from "../../../features/userSlice"
-import  Appoinments from "../../SidebarComponents/Appoinments/Appoinments"
+import { setUserSpace } from "../../../features/userSlice";
+import Appoinments from "../../SidebarComponents/Appoinments/Appoinments";
 import TrendingNews from "../../SidebarComponents/TrendingNews/TrendingNews";
 import Events from "../../SidebarComponents/Events/Events";
 import Mentors from "../../SidebarComponents/Mentors/Mentors";
+import darkSparkle from "../../../images/black-sparkle.png";
+import { auth } from "../../../firebase";
+import DiscoverEvents from "../../DynamicComponents/DiscoverEvents/DiscoverEvents";
+import DiscoverPerfectTools from "../../DynamicComponents/DiscoverPerfectTools/DiscoverPerfectTools";
+import FeaturedSuggestions from "../../DynamicComponents/FeaturedSuggestions/FeaturedSuggestions";
+import FeaturedMentors from "../../DynamicComponents/FeaturedMentors/FeaturedMentors";
 
 const CommunityFinalDark = () => {
-
   const userSpace = useSelector((state) => state.user.userSpace);
   const [userSpaceArr, setUserSpaceArr] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenPostUserspace, setIsOpenPostUserspace] = useState(false);
+  const [postSpaceArr, setPostSpaceArr] = useState([]);
+  const [postBtnVisible, setPostBtnVisible] = useState(false);
 
+  const [currentUserDoc, setCurrentUserDoc] = useState(null);
   const dispatch = useDispatch();
   const postData = [];
   const [width, setWidth] = useState(window.innerWidth);
@@ -95,7 +104,10 @@ const CommunityFinalDark = () => {
   const [singleNews, setSingleNews] = useState(null);
   const [blogArray, setBlogArray] = useState([]);
   const [seeAllNewsIsClicked, setSeeAllNewsIsClicked] = useState(false);
-  console.log("blogArray", blogArray);
+  const [mySpaceStatus, setMySpaceStatus] = useState(true);
+  const [whatHotStatus, setWhatHotStatus] = useState(false);
+  const [spaceFilteredPost, setSpaceFilteredPost] = useState([]);
+  const [whatsHotCommunityPost, setWhatsHotCommunityPost] = useState([]);
 
   //FETCH LATEST NEWS
   const options = {
@@ -165,6 +177,7 @@ const CommunityFinalDark = () => {
 
       querySnapshot.forEach((doc) => {
         if (doc.id === user?.user?.email) {
+          setCurrentUserDoc(doc.data());
           dispatch(setUserDoc(doc.data()));
         }
       });
@@ -190,6 +203,33 @@ const CommunityFinalDark = () => {
       querySnapshot.forEach((doc) => {
         postData.push({ ...doc.data(), id: doc.id });
       });
+
+      setSpaceFilteredPost(postData);
+
+      setPostsData(
+        postData.sort((a, b) => {
+          return b.createdAt.seconds - a.createdAt.seconds;
+        })
+      );
+
+      console.log("this is the filtered post ", postsData);
+
+      let postDataAllLikesLength = 0;
+      postsData.map((post) => {
+        postDataAllLikesLength += post.likes.length;
+      });
+
+      const likesAverage = Math.round(
+        postDataAllLikesLength / postsData.length
+      );
+      setWhatsHotCommunityPost(
+        postsData.filter((post) => {
+          console.log("here is the post ", post);
+          return post.likes.length >= likesAverage;
+        })
+      );
+      console.log("hot community posts ", whatsHotCommunityPost);
+
       if (sortOptionSelected.time === "") {
         setPostsData(
           postData.sort((a, b) => {
@@ -224,7 +264,7 @@ const CommunityFinalDark = () => {
       }
     }
     fetchPostsFromDb();
-  }, [sortOptionSelected]);
+  }, [sortOptionSelected, whatHotStatus,postsData]);
 
   //FURTHER SORT POST AFTER INITIAL SORT
   const furtherSortPost = () => {
@@ -245,6 +285,7 @@ const CommunityFinalDark = () => {
   const postsPerPage = 6;
   const pagesVisited = pageNumber * postsPerPage;
   const displayPosts = postsData.slice(0, pagesVisited + postsPerPage);
+  console.log("postData are here: ", postsData);
   // const pageCount=Math.ceil(postsData.length/notesPerPage)
   const fetchMorePosts = () => {
     setTimeout(() => {
@@ -316,6 +357,7 @@ const CommunityFinalDark = () => {
         likes: [],
         postedby: userRef,
         text: newPostText,
+        postSpace: postSpaceArr,
       });
       newPostId.push(timeId);
 
@@ -448,20 +490,29 @@ const CommunityFinalDark = () => {
   ];
 
   // below code is for the userspace
-  const handleCheckboxChange = (event) => {
-    const selectedValue = event.target.value;
-    if (event.target.checked) {
-      setUserSpaceArr((prevArr) => [...prevArr, selectedValue]);
+  const [activeIndex, setActiveIndex] = useState([]);
+
+  const handleSpaceMenuDataClick = (index, event, value) => {
+    if (activeIndex.includes(index)) {
+      setActiveIndex(activeIndex.filter((i) => i !== index)); // Remove the index if it's already active
     } else {
-      setUserSpaceArr((prevArr) =>
-        prevArr.filter((value) => value !== selectedValue)
-      );
+      setActiveIndex([...activeIndex, index]); // Add the index if it's not active
     }
+    // setIsSpaceMenuDataActive(!isSpaceMenuDataActive)
+    setUserSpaceArr((prevOptions) => {
+      if (prevOptions.includes(value)) {
+        return prevOptions.filter((option) => option !== value);
+      } else {
+        return [...prevOptions, value];
+      }
+    });
   };
+  const [selectedCommunitySpace, setSelectedCommunitySpace] = useState([]);
 
   function handleModalSubmit() {
     if (userSpaceArr.length >= 1) {
       dispatch(setUserSpace(userSpaceArr));
+      setSelectedCommunitySpace(userSpaceArr);
       setIsOpen(false);
     } else {
       window.alert("Please choose atleast one!");
@@ -471,25 +522,54 @@ const CommunityFinalDark = () => {
   console.log("userSpaceArr ", userSpaceArr);
   console.log("userSpace: ", userSpace);
 
- function openTheSpaceModal(){
-  if(isOpen){
-    setIsOpen(false)
+  function openTheSpaceModal() {
+    if (isOpen) {
+      setIsOpen(false);
+    } else {
+      setIsOpen(true);
+    }
   }
-  else{
-    setIsOpen(true)
+  function handleModalClose() {
+    setIsOpen(false);
   }
- }
- function handleModalClose(){
-   setIsOpen(false)
- }
 
+  useEffect(() => {
+    if (postsData.length >= 1 && selectedCommunitySpace.length >= 1) {
+      const filteredData = postsData.filter((eachElement) => {
+        if (Array.isArray(eachElement.postSpace)) {
+          return eachElement.postSpace.some((value) =>
+            selectedCommunitySpace.includes(value)
+          );
+          return false;
+        }
+      });
+      setSpaceFilteredPost(filteredData);
+    }
+    console.log("this is the space filted data: ", spaceFilteredPost);
+  }, [postsData, selectedCommunitySpace]);
+
+  // Output the filtered posts
 
   return (
     <>
-    <button onClick={openTheSpaceModal} className={style.spaceSectionButton}>Change your Space</button>
-    {isOpen && ( <div className={style.spaceSection}>
-        {/* <button className={style.spaceSectionButton} onClick={openModal}>Open Modal</button> */}
-     
+      {/* raaya chat boot */}
+      <iframe
+        src="https://www.chatbase.co/chatbot-iframe/dpblbF2UGnrFPdqMPCxWb"
+        width="100%"
+        style={{ height: '100%', minHeight: '700px',display:"none" }}
+        frameborder="0"
+      ></iframe>
+
+      {/* userSpace modal */}
+      <button onClick={openTheSpaceModal} className={style.spaceSectionButton}>
+        <span className={style.spaceSectionButtonImg}>
+          {" "}
+          <img src={darkSparkle} />
+        </span>
+        Change your Space
+      </button>
+      {isOpen && (
+        <div className={style.spaceSection}>
           <div className={style.spaceModal}>
             <div className={style.spaceModalContent}>
               {/* <span className="close" onClick={closeModal}>
@@ -497,321 +577,58 @@ const CommunityFinalDark = () => {
               </span> */}
 
               <p className={style.spaceModalHeading}>Select your space (s).</p>
-              {/* <p>Imagine the industry as a vibrant tapestry of possibilities—where does your thread weave its unique pattern?</p> */}
+
               <div className={style.spaceMenu}>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}                    
-                    type="checkbox"
-                    value="FinTech"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  FinTech
+                {currentUserDoc.userSpace.map((space, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className={`${style.spaceMenuData} ${
+                        activeIndex.includes(index)
+                          ? style.spaceMenuDataActive
+                          : ""
+                      }`}
+                      onClick={(event) =>
+                        handleSpaceMenuDataClick(
+                          index,
+                          event,
+                          event.target.innerText
+                        )
+                      }
+                    >
+                      <p
+                        className={`${style.spaceMenuDataPara} ${
+                          activeIndex.includes(index)
+                            ? style.spaceMenuDataParaActive
+                            : ""
+                        }`}
+                      >
+                        {space}
+                      </p>
+                    </div>
+                  );
+                })}
 
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="EdTech"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  EdTech
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="AgriTech"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  AgriTech
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="FoodTech"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  FoodTech
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="Ecommerce"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  Ecommerce
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="Logistics & Delivery"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  Logistics & Delivery
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="Cleantech & Renewable Energy"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  Cleantech & Renewable Energy
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="Ai & ML"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  Ai & ML
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="Web 3.0"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  Web 3.0
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="FashionTech"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  FashionTech
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="SpaceTech"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  SpaceTech
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="HealthTech"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  HealthTech
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="Cybersecurity"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  Cybersecurity
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="AR & VR"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  AR & VR
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="Internet of Things(IOT)"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  Internet of Things(IOT)
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="Biotech"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  Biotech
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="TravelTech"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  TravelTech
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="Real Estate-Tech"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  Real Estate-Tech
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="BeautyTech"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  BeautyTech
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="LegalTech"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  LegalTech
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="HR-Tech"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  HR-Tech
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="Personal fitness Tech"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  Personal fitness Tech
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="Waste Management Technologies"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  Waste Management Technologies
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="Online Marketplaces"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  Online Marketplaces
-
-                  </p>
-                </div>
-                <div className={style.spaceMenuData}>
-                  {/*<input 
-                   className={style.spaceMenuInput}
-                    type="checkbox"
-                    value="CloudTech"
-                    onChange={handleCheckboxChange}
-                  /> */}
-                  <p className={style.spaceMenuDataPara} >
-                  CloudTech
-
-                  </p>
-                </div>
-                <p>Selected Options: {userSpaceArr.join(", ")}</p>
+                {/* <p>Selected Options: {userSpaceArr.join(", ")}</p> */}
               </div>
               <div className={style.spaceDoneCloseBtn}>
-              <button className={style.spaceDoneBtn} onClick={handleModalSubmit}>Done</button>
-              <button className={style.spaceCloseBtn} onClick={handleModalClose}>Close</button>
+                <button
+                  className={style.spaceDoneBtn}
+                  onClick={handleModalSubmit}
+                >
+                  Done
+                </button>
+                <button
+                  className={style.spaceCloseBtn}
+                  onClick={handleModalClose}
+                >
+                  Close
+                </button>
               </div>
             </div>
           </div>
-     
-      </div>   )}
-
-
-
+        </div>
+      )}
 
       {width >= 600 ? (
         <>
@@ -828,7 +645,7 @@ const CommunityFinalDark = () => {
           <KnowledgeNavbar /> */}
         </>
       )}
-      
+
       <section
         style={{
           position: postsAuthorIsClick || postIdExist !== "" ? "fixed" : "",
@@ -904,6 +721,9 @@ const CommunityFinalDark = () => {
                             </div>
                           </div>
                         ) : null}
+
+                        {/* { && } */}
+
                         <div className="addImageandUploadPostIcon">
                           {/* <img
                             onClick={chooseFile}
@@ -916,6 +736,7 @@ const CommunityFinalDark = () => {
                             className="addImageInCommunityReactIcon"
                             onClick={chooseFile}
                           />
+
                           <button
                             onClick={uploadImageToFireBase}
                             className="uploadPostIconButton"
@@ -988,6 +809,7 @@ const CommunityFinalDark = () => {
                               </div>
                             </div>
                           ) : null}
+
                           <div className="addImageandUploadPostIcon">
                             {/* <img onClick={chooseFile} className='addImageInCommunityIcon' src="./images/add-image-icon.png" alt="addImageIcon" /> */}
 
@@ -1014,9 +836,9 @@ const CommunityFinalDark = () => {
               <div>
                 <h2 className={style.reverrCommunityHeading}>
                   {" "}
-                  Welcome To Reverr{" "}
+                  Welcome To Reverr ,{" "}
                   <span style={{ color: "rgba(42, 114, 222, 1)" }}>
-                    ,Jahanvi Singh
+                    Jahanvi Singh
                   </span>
                 </h2>
                 {/* <p className="reverrCommunitySubbHeading">
@@ -1038,8 +860,8 @@ const CommunityFinalDark = () => {
                     onClick={() =>
                       setNavbarPostButtonClick((current) => !current)
                     }
-                    id="postUploaddSquareCont"
-                    className="postUploaddSquareCont"
+                    id={style.postUploaddSquareCont}
+                    className={style.postUploaddSquareCont}
                   >
                     <img
                       className="postUploaddSquareContAddImg"
@@ -1052,8 +874,8 @@ const CommunityFinalDark = () => {
               {width < 600 ? (
                 <div
                   onClick={() => setTextAreaIsClick((current) => !current)}
-                  id="postUploaddSquareCont"
-                  className="postUploaddSquareCont"
+                  id={style.postUploaddSquareCont}
+                  className={style.postUploaddSquareCont}
                 >
                   <img
                     className="postUploaddSquareContAddImg"
@@ -1064,8 +886,8 @@ const CommunityFinalDark = () => {
               ) : scroll > 150 ? null : (
                 <div
                   onClick={() => setTextAreaIsClick((current) => !current)}
-                  id="postUploaddSquareCont"
-                  className="postUploaddSquareCont"
+                  id={style.postUploaddSquareCont}
+                  className={style.postUploaddSquareCont}
                 >
                   <img
                     className="postUploaddSquareContAddImg"
@@ -1105,8 +927,8 @@ const CommunityFinalDark = () => {
                       name="postText"
                       id={
                         textAreaIsClick
-                          ? "postTextContainerExpanded"
-                          : "postTextContainer"
+                          ? style.postTextContainerExpanded
+                          : style.postTextContainer
                       }
                       rows="3"
                       value={newPostText}
@@ -1117,8 +939,9 @@ const CommunityFinalDark = () => {
                         display: "inline-flex",
                         position: "absolute",
                         right: " 23px",
-                        top: "14px",
+                        top: "15px",
                         cursor: "pointer",
+                        height: "40px",
                       }}
                       src="./images/right-arraow-bg-blue.png"
                     />
@@ -1139,18 +962,98 @@ const CommunityFinalDark = () => {
                         </div>
                       </div>
                     ) : null}
+
+                    {postSpaceArr.map((space) => {
+                      return <p># {space}</p>;
+                    })}
+
                     {textAreaIsClick ? (
                       <div className="addImageandUploadPostIcon uploadNewPostaddImageandUploadPostIcon">
-                        <button
-                          onClick={uploadImageToFireBase}
-                          className="uploadPostIconButton"
-                        >
-                          Post
-                        </button>
+                        {!postBtnVisible && (
+                          <button
+                            onClick={() =>
+                              setIsOpenPostUserspace(!isOpenPostUserspace)
+                            }
+                            className="uploadPostIconButton"
+                          >
+                            Next
+                          </button>
+                        )}
+
+                        {isOpenPostUserspace && (
+                          <div className={style.spaceSection}>
+                            {/* <button className={style.spaceSectionButton} onClick={openModal}>Open Modal</button> */}
+
+                            <div className={style.spaceModal}>
+                              <div className={style.spaceModalContent}>
+                                <p className={style.spaceModalHeading}>
+                                  Select the Post Space (s).
+                                </p>
+                                {/* <p>Imagine the industry as a vibrant tapestry of possibilities—where does your thread weave its unique pattern?</p> */}
+                                <div className={style.spaceMenu}>
+                                  {currentUserDoc.userSpace.map((space) => {
+                                    return (
+                                      <div
+                                        className={style.spaceMenuData}
+                                        onClick={(event) =>
+                                          handleSpaceMenuDataClick(
+                                            event,
+                                            event.target.innerText
+                                          )
+                                        }
+                                      >
+                                        <p className={style.spaceMenuDataPara}>
+                                          {space}
+                                        </p>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                                <div className={style.spaceDoneCloseBtn}>
+                                  <button
+                                    className={style.spaceDoneBtn}
+                                    onClick={() => {
+                                      if (userSpaceArr.length >= 1) {
+                                        setPostSpaceArr(userSpaceArr);
+                                        setIsOpenPostUserspace(
+                                          !isOpenPostUserspace
+                                        );
+                                        setPostBtnVisible(true);
+                                      } else {
+                                        window.alert("choose atleast one.");
+                                      }
+                                    }}
+                                  >
+                                    Done
+                                  </button>
+                                  <button
+                                    className={style.spaceCloseBtn}
+                                    onClick={() =>
+                                      setIsOpenPostUserspace(
+                                        !isOpenPostUserspace
+                                      )
+                                    }
+                                  >
+                                    Close
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {postBtnVisible && (
+                          <button
+                            onClick={uploadImageToFireBase}
+                            className="uploadPostIconButton"
+                          >
+                            Post
+                          </button>
+                        )}
                       </div>
                     ) : null}
                   </div>
-                  <div className="post_assets_icon_main">
+                  <div className={style.postAssetsIconMain}>
                     <div
                       className="post_assets_icon_main_div"
                       onClick={chooseFile}
@@ -1158,22 +1061,22 @@ const CommunityFinalDark = () => {
                       <BsImages className={style.assest_icon} />
                       <span className={style.icon_text}>Images</span>
                     </div>
-                    <div className="post_assets_icon_main_div">
+                    {/* <div className="post_assets_icon_main_div">
                       <MdPoll className={style.assest_icon} />
                       <span className={style.icon_text}>Polls</span>
-                    </div>
+                    </div> */}
                     <div className="post_assets_icon_main_div">
                       <MdVideoCameraBack className={style.assest_icon} />
                       <span className={style.icon_text}>Video</span>
                     </div>
-                    <div className="post_assets_icon_main_div">
+                    {/* <div className="post_assets_icon_main_div">
                       <RiFileSearchLine className={style.assest_icon} />
                       <span className={style.icon_text}>Files</span>
-                    </div>
-                    <div className="post_assets_icon_main_div">
+                    </div> */}
+                    {/* <div className="post_assets_icon_main_div">
                       <MdLocationOn className={style.assest_icon} />
                       <span className={style.icon_text}>Location</span>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -1194,53 +1097,192 @@ const CommunityFinalDark = () => {
               }
             >
               <div className={style.communityNavbarBlock}>
-                <div className={style.communityNavbarBlockNav}>
-                  <h3 className={style.communityNavHeading} >My Space</h3>
+                <div
+                  onClick={(e) => {
+                    setMySpaceStatus(true);
+                    setWhatHotStatus(false);
+                  }}
+                  className={
+                    mySpaceStatus
+                      ? `${style.communityNavbarBlockNav} ${style.activeNav}`
+                      : style.communityNavbarBlockNav
+                  }
+                >
+                  <h3
+                    className={
+                      mySpaceStatus
+                        ? `${style.communityNavHeading} ${style.activeNavHeading}`
+                        : style.communityNavHeading
+                    }
+                  >
+                    My Space
+                  </h3>
                 </div>
-                <div className={style.communityNavbarBlockNav}>
-                  <h3 className={style.communityNavHeading} >What's Hot?</h3>
+
+                <div
+                  onClick={() => {
+                    setMySpaceStatus(false);
+                    setWhatHotStatus(true);
+                  }}
+                  className={
+                    whatHotStatus
+                      ? `${style.communityNavbarBlockNav} ${style.activeNav}`
+                      : style.communityNavbarBlockNav
+                  }
+                >
+                  <h3
+                    className={
+                      whatHotStatus
+                        ? `${style.communityNavHeading} ${style.activeNavHeading}`
+                        : style.communityNavHeading
+                    }
+                  >
+                    What's Hot?
+                  </h3>
                 </div>
-                <div className={style.communityNavbarBlockNav}>
-                  <h3 className={style.communityNavHeading} >Recent</h3>
-                </div>
+                {/* <div className={style.communityNavbarBlockNav}>
+                  <h3 className={style.communityNavHeading}>Recent</h3>
+                </div> */}
               </div>
 
-
-              <section className="posts-containerr">
-                {displayPosts.length === 0 &&
-                  sortOptionSelected.whose !== "People You Follow" && (
-                    <div>
-                      <PostSkeleton cards={2} />
-                    </div>
-                  )}
-                {userDoc?.network?.length === 0 &&
-                sortOptionSelected.whose === "People You Follow" ? (
-                  <>
-                    <NoFollowingCard
-                      setSortOptionSelected={setSortOptionSelected}
-                      setSortOptionClick={setSortOptionClick}
-                    />
-                  </>
-                ) : null}
-                {displayPosts.map((item, index) => {
-                  return (
-                    <PostCardDark
-                      postsData={postsData}
-                      setPostsData={setPostsData}
-                      item={item}
-                      key={index}
-                      handleEditPostButtonClick={handleEditPostButtonClick}
-                      setPostsAuthorIsClick={setPostsAuthorIsClick}
-                      setPostsAuthorInfo={setPostsAuthorInfo}
-                    />
-                  );
-                })}
-              </section>
+              {mySpaceStatus ? (
+                // myfeed posts-container
+                <section className="posts-containerr">
+                  {displayPosts.length === 0 &&
+                    sortOptionSelected.whose !== "People You Follow" && (
+                      <div>
+                        <PostSkeleton cards={2} />
+                      </div>
+                    )}
+                  {userDoc?.network?.length === 0 &&
+                  sortOptionSelected.whose === "People You Follow" ? (
+                    <>
+                      <NoFollowingCard
+                        setSortOptionSelected={setSortOptionSelected}
+                        setSortOptionClick={setSortOptionClick}
+                      />
+                    </>
+                  ) : null}
+                  {spaceFilteredPost.map((item, index) => {
+                    if (index === 3) {
+                      return (
+                        <>
+                          <PostCardDark
+                            postsData={postsData}
+                            setPostsData={setPostsData}
+                            item={item}
+                            key={index}
+                            handleEditPostButtonClick={
+                              handleEditPostButtonClick
+                            }
+                            setPostsAuthorIsClick={setPostsAuthorIsClick}
+                            setPostsAuthorInfo={setPostsAuthorInfo}
+                          />
+                          <DiscoverEvents />
+                        </>
+                      );
+                    } else if (index === 7) {
+                      return (
+                        <>
+                          <PostCardDark
+                            postsData={postsData}
+                            setPostsData={setPostsData}
+                            item={item}
+                            key={index}
+                            handleEditPostButtonClick={
+                              handleEditPostButtonClick
+                            }
+                            setPostsAuthorIsClick={setPostsAuthorIsClick}
+                            setPostsAuthorInfo={setPostsAuthorInfo}
+                          />
+                          <DiscoverPerfectTools />
+                        </>
+                      );
+                    } else if (index === 11) {
+                      return (
+                        <>
+                          <PostCardDark
+                            postsData={postsData}
+                            setPostsData={setPostsData}
+                            item={item}
+                            key={index}
+                            handleEditPostButtonClick={
+                              handleEditPostButtonClick
+                            }
+                            setPostsAuthorIsClick={setPostsAuthorIsClick}
+                            setPostsAuthorInfo={setPostsAuthorInfo}
+                          />
+                          <FeaturedSuggestions />
+                        </>
+                      );
+                    } else if (index === 15) {
+                      return (
+                        <>
+                          <PostCardDark
+                            postsData={postsData}
+                            setPostsData={setPostsData}
+                            item={item}
+                            key={index}
+                            handleEditPostButtonClick={
+                              handleEditPostButtonClick
+                            }
+                            setPostsAuthorIsClick={setPostsAuthorIsClick}
+                            setPostsAuthorInfo={setPostsAuthorInfo}
+                          />
+                          <FeaturedMentors />
+                        </>
+                      );
+                    } else {
+                      return (
+                        <PostCardDark
+                          postsData={postsData}
+                          setPostsData={setPostsData}
+                          item={item}
+                          key={index}
+                          handleEditPostButtonClick={handleEditPostButtonClick}
+                          setPostsAuthorIsClick={setPostsAuthorIsClick}
+                          setPostsAuthorInfo={setPostsAuthorInfo}
+                        />
+                      );
+                    }
+                  })}
+                </section>
+              ) : (
+                // what's hot posts-container
+                <section className="posts-containerr">
+                  {displayPosts.length === 0 &&
+                    sortOptionSelected.whose !== "People You Follow" && (
+                      <div>
+                        <PostSkeleton cards={2} />
+                      </div>
+                    )}
+                  {userDoc?.network?.length === 0 &&
+                  sortOptionSelected.whose === "People You Follow" ? (
+                    <>
+                      <NoFollowingCard
+                        setSortOptionSelected={setSortOptionSelected}
+                        setSortOptionClick={setSortOptionClick}
+                      />
+                    </>
+                  ) : null}
+                  {whatsHotCommunityPost.map((item, index) => {
+                    return (
+                      <PostCardDark
+                        postsData={postsData}
+                        setPostsData={setPostsData}
+                        item={item}
+                        key={index}
+                        handleEditPostButtonClick={handleEditPostButtonClick}
+                        setPostsAuthorIsClick={setPostsAuthorIsClick}
+                        setPostsAuthorInfo={setPostsAuthorInfo}
+                      />
+                    );
+                  })}
+                </section>
+              )}
             </InfiniteScroll>
           </div>
         </section>
-
-  
       </section>
 
       <CommunityUserProfilePopup

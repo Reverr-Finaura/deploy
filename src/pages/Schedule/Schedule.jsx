@@ -11,27 +11,26 @@ import "animate.css";
 import { db } from "../../firebase";
 import { collection, getDocs, query } from "firebase/firestore";
 
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import SidebarFinal from "../../components/Sidebar Final/SidebarFinal";
 import NavBarFinal from "../../components/Navbar/NavBarFinal";
 import PaymentMentorMeetingSchedule from "../../components/Payment For Mentor Meeting Schedule/PaymentMentorMeetingSchedule";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Schedule() {
   const [width, setWidth] = useState(window.innerWidth);
   // const user = useSelector(selectUser);
-  const { id,userEmail } = useParams();
+  const { id, userEmail } = useParams();
   const [mentorArray, setMentorArray] = useState([]);
-  const[tempUserArray,setTempUserArray]=useState([])
+  const [tempUserArray, setTempUserArray] = useState([]);
   const [currentMentor, setCurrentMentor] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [paymentModeOn, setPaymentModeOn] = useState(false);
   const [paymentMade, setPaymentMade] = useState(false);
-  console.log("userEmail",userEmail)
-console.log("currentUser",currentUser)
-console.log("currentMentor",currentMentor)
-
+  console.log("userEmail", userEmail);
+  console.log("currentUser", currentUser);
+  console.log("currentMentor", currentMentor);
 
   //FETCH MENTOR DATA FROM FIREBASE
   useEffect(() => {
@@ -49,9 +48,11 @@ console.log("currentMentor",currentMentor)
           setMentorArray((prev) => {
             return [...prev, doc.data()];
           });
-
         }
-        if(doc.data().userType === "individual"||doc.data().userType === "Individual"){
+        if (
+          doc.data().userType === "individual" ||
+          doc.data().userType === "Individual"
+        ) {
           setTempUserArray((prev) => {
             return [...prev, doc.data()];
           });
@@ -72,19 +73,15 @@ console.log("currentMentor",currentMentor)
   };
 
   useEffect(() => {
-    
     mentorArray.forEach((m) => {
       var temp = emailToId(m.email);
       if (temp == id) {
         setCurrentMentor({ ...m });
-   
       }
     });
- 
   }, [mentorArray]);
 
   useEffect(() => {
-    
     tempUserArray.forEach((m) => {
       var temp = emailToId(m.email);
       if (temp == userEmail) {
@@ -144,7 +141,7 @@ console.log("currentMentor",currentMentor)
       )}
       {paymentModeOn ? (
         <PaymentMentorMeetingSchedule
-        userDocc={currentUser}
+          userDocc={currentUser}
           item={currentMentor}
           setPaymentModeOn={setPaymentModeOn}
           setPaymentMade={setPaymentMade}
@@ -177,7 +174,6 @@ console.log("currentMentor",currentMentor)
                 borderRadius: "1rem",
               }}
             />
-          
           </div>
         </div>
       </div>

@@ -42,7 +42,7 @@ const MentorsNew = () => {
   const [arrayToBeMapped, setArrayToBeMapped] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
 
-  console.log(selectedPriceOption);
+  // console.log(selectedPriceOption);
   // console.log("mentor array", mentorArray);
 
   const updateWidth = () => {
@@ -53,7 +53,8 @@ const MentorsNew = () => {
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
-
+  console.log(uniqueExpertiseArray);
+  console.log("Mentor Array",mentorArray);
   //FETCH MENTOR DATA FROM FIREBASE
   useEffect(() => {
     async function fetchMentorExpertise() {

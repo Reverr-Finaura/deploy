@@ -1,30 +1,49 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { collection, getDocs, query } from "firebase/firestore";
+import { db } from "../../../firebase";
 import styles from "./FeaturedMentors.module.css";
 
 function FeaturedMentors() {
-  const users = [
-    {
-      name: "Theresa Webb",
-      role: "Founder, Abstergo",
-      profileImage: require("../../../images/userIcon.png"),
-    },
-    {
-      name: "Theresa Webb",
-      role: "Founder, Abstergo",
-      profileImage: require("../../../images/userIcon.png"),
-    },
-    {
-      name: "Theresa Webb",
-      role: "Founder, Abstergo",
-      profileImage: require("../../../images/userIcon.png"),
-    },
-    {
-      name: "Theresa Webb",
-      role: "Founder, Abstergo",
-      profileImage: require("../../../images/userIcon.png"),
-    },
-  ];
+  const navigate = useNavigate();
+  const [mentorArray, setMentorArray] = useState([]);
+  const userDoc = useSelector((state) => state.userDoc);
 
+  const emailToId = (email) => {
+    var id = "";
+    for (var i = 0; i < email.length; i++) {
+      if (email[i] === "@") break;
+      id += email[i];
+    }
+    return id;
+  };
+
+  //FETCH MENTOR DATA FROM FIREBASE
+  useEffect(() => {
+    async function fetchMentorExpertise() {
+      const mentorsRef = collection(db, "Users");
+      const q = query(mentorsRef);
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        if (
+          doc.data().userType === "Mentor" &&
+          doc.data().domain[0] !== "" &&
+          doc.data().industry !== ""
+        ) {
+          setMentorArray((prev) => {
+            return [...prev, doc.data()];
+          });
+
+          // var {email} =doc._document.data.value.mapValue.fields;
+          // console.log(email.stringValue);
+          // doc.data().id=email;
+          // console.log(doc.data());
+        }
+      });
+    }
+    fetchMentorExpertise();
+  }, []);
 
   const cardData = [
     {
@@ -42,7 +61,8 @@ function FeaturedMentors() {
     {
       title: "StartUp Algo",
       image: require("../../../images/unsplash_5.png"),
-    },    {
+    },
+    {
       title: "StartUp Algo",
       image: require("../../../images/unsplash_5.png"),
     },
@@ -52,37 +72,55 @@ function FeaturedMentors() {
     },
   ];
 
-
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{marginBottom:'3.2em'}}>
       <div className={styles.header}>
         <p>
           <span style={{ color: "#ffffff" }}>Featured</span>
           <span style={{ color: "#00B3FF" }}>&nbsp;Mentors</span>
           <span style={{ color: "#ffffff" }}>&nbsp;For You</span>
         </p>
-        <span onClick={() => console.log("see all clicked")}>See All</span>
+        <span onClick={() => navigate("/mentors")}>See All</span>
       </div>
       <div className={styles.cardContainer}>
-        {users.map((user, index) => (
-          <div className={styles.userCard}>
-            <div className={styles.user} key={index}>
-              <img src={user.profileImage} alt="Profile" />
-              <div>
-                <text style={{ fontSize: 14, color: "#ffffff" }}>
-                  {user.name}
-                </text>
-                <text style={{ fontSize: 10, color: "#A7A7A7" }}>
-                  {user.role}
-                </text>
+        {mentorArray
+          .filter((item) => {
+            return (
+              item.image !==
+              "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6"
+            );
+          })
+          .slice(0, 5)
+          .map((mentor, index) => (
+            <div className={styles.mentorCard} key={index}>
+              <div className={styles.mentor}>
+                <img src={mentor?.image} alt="Profile" />
+                <div>
+                  <text style={{ fontSize: 14, color: "#ffffff" }}>
+                    {mentor?.name}
+                  </text>
+                  <text style={{ fontSize: 10, color: "#A7A7A7" }}>
+                    {mentor?.designation}
+                  </text>
+                </div>
               </div>
+              <button
+                onClick={() => {
+                  navigate(
+                    `/schedule/${emailToId(mentor?.email)}/${emailToId(
+                      userDoc.email
+                    )}`
+                  );
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              >
+                Schedule
+              </button>
             </div>
-            <button>Schedule</button>
-          </div>
-        ))}
+          ))}
       </div>
 
-      <div className={styles.header} style={{marginTop: 20}}>
+      <div className={styles.header} style={{ marginTop: 20 }}>
         <p>
           <span style={{ color: "#ffffff" }}>Browse categories</span>
         </p>

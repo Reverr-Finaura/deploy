@@ -1,7 +1,7 @@
 #checkyourscore {
   min-height: 100vh;
   max-height: max-content;
-  width: 70%;
+  width: 55rem;
   margin: 8rem 20rem;
   display: flex;
   flex-direction: column;
@@ -49,7 +49,7 @@
   margin: 0 1rem;
   padding: 10px 30px;
   /* height: 200vh; */
-  /* width: 85%; */
+  /* width: 40rem; */
   display: flex;
   flex-direction: column;
   position: relative;

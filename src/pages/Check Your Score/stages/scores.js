@@ -1,5 +1,6 @@
 const nonscoredData = {
   tech_used: [
+    "Select",
     "3D Bioprinting",
     "3D Bioprinting Systems for Organ Transplant",
     "3D Printing",
@@ -158,12 +159,14 @@ const nonscoredData = {
     "Volatile - Jobs / Wozniak",
   ],
   team_apply: [
+    "Select",
     "Each member operates independently and is an expert in his/her field",
     "High skillset/role overlap between 2 team members, remaining member different skillsets",
     "No dependence, no interchanging of roles",
     "The team leader acts as the primary channel of commmunication between the other two",
   ],
   industry: [
+    "Select",
     "Advertising",
     "Aeronnautics Aerospace & Defense",
     "Agriculture & Allied Industries",
@@ -601,7 +604,6 @@ const scoredData = {
 
     { value: "Yes", score: 10 },
     { value: "No", score: 5 },
-    { value: "-", score: 0 },
   ],
   est_break_even: [
     { value: "select", score: 0 },

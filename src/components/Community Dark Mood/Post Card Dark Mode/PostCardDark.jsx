@@ -20,6 +20,10 @@ import { FiSend } from "react-icons/fi";
 import { BiCommentDots } from "react-icons/bi";
 import { AiFillHeart } from "react-icons/ai";
 import { BsBookmark } from "react-icons/bs";
+import eyeIcon from "../../../images/white-outline-eye.png"
+import commentIcon from "../../../images/white-outline-comment.png"
+import rightArrow from "../../../images/right-arraow-bg-blue.png"
+
 
 export default function PostCardDark({
   postsData,
@@ -239,6 +243,7 @@ export default function PostCardDark({
     } catch (error) {
       console.log(error.message);
     }
+
   };
 
   //GET USER DATA FROM REFERENCE LINK WHO HAS POSTED
@@ -343,7 +348,7 @@ export default function PostCardDark({
                     {user?.user?.email === item?.postedby?.id ? (
                       <div
                         onClick={() => handleDeletePostButtonClick(item.id)}
-                        className={style.threeDotsDeletePostOptio}
+                        className={style.threeDotsDeletePostOption}
                       >
                         Delete Post
                       </div>
@@ -405,17 +410,18 @@ export default function PostCardDark({
         <div className={style.postDivideLine_community}></div>
         <div className={style.postLikesAndCommentContainer}>
           <div style={{ display: "flex", alignItems: "center", width: "95%" }}>
+       
             <div className={style.postLikesContainer}>
               <div
                 onClick={() => {
                   getLikedPostIdFromFirebase(item.id, item);
                 }}
-                className="postLikesContainerLikeIcon"
+                className={style.postLikesContainerLikeIcon}
               >
                 {item?.likes.includes(user?.user?.email) ? (
-                  <AiFillHeart className="postLikesContainerLikedIconn" />
+                  <AiFillHeart className={style.postLikesContainerLikedIconn} />
                 ) : (
-                  <AiOutlineHeart className="postLikesContainerLikeIconn" />
+                  <AiOutlineHeart className={style.postLikesContainerLikeIconn} />
                 )}
               </div>
 
@@ -424,21 +430,28 @@ export default function PostCardDark({
               {/* <p className='postLikeCount postLikeCountText'>{item?.likes.length<=1?"Like":"Likes"}</p> */}
               <h3 className={style.postLikeCount}>{item?.likes.length}</h3>
             </div>
+            
+
             <div className={style.postCommentContainer}>
+              
               <div className="commentContainer">
                 {/* <img src={commentIcon} alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIcon'/> */}
-                <FaRegCommentDots
+                <img
                   onClick={() => {
-                    setCommentIconClick((current) => !current);
-                  }}
-                  className="commentPostIconn"
+                  setCommentIconClick((current) => !current);
+                }} 
+                 src={commentIcon}
+                 className="commentPostIconn"
                 />
+               
 
                 {/* ;(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus() */}
               </div>
               {/* <p className='postLikeCountText'>{item?.comments.length<=1?"Comment":"Comments"}</p> */}
               <h3 className={style.postCommentCount}>{item?.comments.length}</h3>
             </div>
+
+
 
             <div
               onClick={() => handleSendPostLinkClick(item.id)}
@@ -452,15 +465,22 @@ export default function PostCardDark({
                 {/* <h3 className='postSendText'>Share</h3> */}
               </div>
             </div>
+
+
             <div className={style.postCommentContainer}>
               <div className="commentContainer">
                 {/* <img src={commentIcon} alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIcon'/> */}
+                <img
+                src={eyeIcon}
+                 />
+              
+              {/* 
                 <FaBullseye
                   onClick={() => {
                     setCommentIconClick((current) => !current);
                   }}
                   className="commentPostIconn"
-                />
+                /> */}
 
                 {/* ;(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus() */}
               </div>
@@ -471,6 +491,186 @@ export default function PostCardDark({
           {/* saveCont */}
           <BsBookmark stlye={{color:"white"}} className="post_card_save_post_icon" />
         </div>
+      </section>
+
+      <section className={style.newCommentOnPostSection}>
+        {editCommentButtonIsClick ? (
+          <section className={style.uploadPostContainerrrrSection}>
+            <div className="newCommentContainerrrr">
+              <img
+                className="community-newComment-cont-userImage"
+                src={
+                  userDoc?.image
+                    ? userDoc.image
+                    : "https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"
+                }
+                alt="userImage"
+              />
+              <div className="textAreaUploadContainer">
+                <div>
+                  <textarea
+                    autoFocus
+                    onChange={(e) => setNewEdittedComment(e.target.value)}
+                    name="newEditComment"
+                    id={style.postCommentContainerExpanded}
+                    rows="3"
+                    placeholder="Share Your Thoughts"
+                    value={newEdittedComment}
+                  ></textarea>
+                  <div className={`${style.addImageandUploadPostIcon} ${style.newCommentAddImageAndUpload}`}>
+                    <button
+                      onClick={() => handleEditCommentonPost(item, item.id)}
+                      className="uploadPostIconButton"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        ) : (
+          <section
+            style={{ display: commentIconClick ? "" : "none" }}
+            className={style.uploadPostContainerrrrSection}
+          >
+            <div className="newCommentContainerrrr">
+              <img
+                className={style.communityNewCommentContUserImage}
+                src={
+                  userDoc?.image
+                    ? userDoc.image
+                    : "https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"
+                }
+                alt="userImage"
+              />
+              <div style={{position:"relative",width:"85%"}} className={style.textAreaUploadContainer}>
+                <textarea
+                  autoFocus
+                  className={item?.id}
+                  onClick={() => {
+                    setNewCommentTextAreaClick(true);
+                  }}
+                  onChange={(e) => setNewComment(e.target.value)}
+                  name="newComment"
+                  id={
+                    newCommentTextAreaClick
+                      ? "postCommentContainerExpanded"
+                      : "postCommentContainer"
+                  }
+                  rows="3"
+                  placeholder="Share Your Thoughts"
+                  value={newComment}
+                ></textarea>
+                 {newCommentTextAreaClick ? (
+                   <img onClick={() => handleNewCommentonPost(item, item.id)} class={style.rightArrowImg} src={rightArrow} />
+                   
+                   ) : null}
+
+                   <img onClick={() => handleNewCommentonPost(item, item.id)} class={style.rightArrowImg} src={rightArrow} />
+                
+                <GrAddCircle
+                  onClick={() =>
+                    setNewCommentTextAreaClick((current) => !current)
+                  }
+                  className={
+                    newCommentTextAreaClick
+                      ? "expandTextAreaIconExpanded"
+                      : "expandTextAreaIcon"
+                  }
+                />
+             
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* OLD COMMENT SECTION */}
+        {commentIconClick ? (
+          <section
+            className={
+              item?.comments.length !== 0
+                ? style.oldCommentSection
+                : style.oldCommentSectionNothing
+            }
+          >
+            {item?.comments.map((list) => {
+              return (
+                <>
+                  <div className="commentedByAndComment" key={list.commentid}>
+                    <div className="commented-by-and-edit-cont">
+                      <img
+                        className="commentedUserImage"
+                        src={
+                          commentedByUserDoc?.filter((it) => {
+                            return it.email === list?.commentedby?.id;
+                          })[0]?.image
+                        }
+                        alt="CommentedUserPhoto"
+                      />
+                      <p className="commented-by">
+                        {
+                          commentedByUserDoc?.filter((it) => {
+                            return it.email === list?.commentedby?.id;
+                          })[0]?.name
+                        }
+                      </p>
+                      {list?.commentedby?.id === user?.user?.email ? (
+                        <TfiMoreAlt
+                          className="threeDotsPost commentThreeDotsPost"
+                          onClick={() => {
+                            setIsCommentThreeDotsClicked((current) => !current);
+                            setThreeDotsClickCommentId(list?.commentid);
+                          }}
+                        />
+                      ) : null}
+                      {/* <img onClick={()=>{setIsCommentThreeDotsClicked(current=>!current);setThreeDotsClickCommentId(list?.commentid)}} className='threeDotsPost commentThreeDotsPost' src="./images/dots.png" alt="3dots" /> */}
+
+                      {isCommentThreeDotsClicked &&
+                      list?.commentedby?.id === user?.user?.email &&
+                      threeDotsClickCommentId === list?.commentid ? (
+                        <>
+                          <div className="threeDotsOptions commentThreeDotsOption">
+                            <div
+                              onClick={() =>
+                                handleDeleteCommentClick(
+                                  list.commentid,
+                                  item,
+                                  item.id
+                                )
+                              }
+                              className="threeDotsDeletePostOption"
+                            >
+                              Delete
+                            </div>
+                            <a
+                              style={{
+                                textDecoration: "none",
+                                color: "black",
+                                margin: "auto",
+                              }}
+                            >
+                              <div
+                                onClick={() => {
+                                  handleEditCommentClick(list.commentid, list);
+                                  setIsCommentThreeDotsClicked(false);
+                                }}
+                                className="threeDotsEditPostOption"
+                              >
+                                Edit
+                              </div>
+                            </a>
+                          </div>
+                        </>
+                      ) : null}
+                    </div>
+                    <p className="commented-by-comment">{list.comment}</p>
+                  </div>
+                </>
+              );
+            })}
+          </section>
+        ) : null}
       </section>
     </>
   );

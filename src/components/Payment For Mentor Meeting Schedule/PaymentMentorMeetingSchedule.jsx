@@ -1,5 +1,4 @@
 
-
 import { useState,useEffect } from 'react'
 import axios from 'axios'
 import React from 'react'
@@ -52,7 +51,7 @@ const bodyData={
     
 }
 
-axios.post("https://server.reverr.io/webcftoken",bodyData)
+axios.post("/webcftoken/",bodyData)
 .then((res)=>{setSessionIdTokken(res.data.token)})
 .catch((err)=>{toast.error(err.message)})
 }
