@@ -48,7 +48,6 @@ import { HiOutlineTemplate } from "react-icons/hi";
 import emailjs from "@emailjs/browser";
 import axios from "axios";
 import NotificationCard from "./NotificationCard";
-import { is } from "date-fns/locale";
 
 const NavBarFinalDarkMode = () => {
   const user = useSelector((state) => state.user);

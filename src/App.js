@@ -117,6 +117,7 @@ import MentorSearch from "./pages/MentorSearch/MentorSearch";
 import KnowledgeTesting from "./pages/Knowledge/KnowledgeTesting";
 import CheckYourScoreTesting from "./pages/Check Your Score/CheckYourScoreTesting";
 import CourcePageTesting from "./pages/AfterKnowledge/CourcesPage/CourcePageTesting";
+import HomeNotLoggedIn from "./pages/HomeNotLoggedIn/HomeNotLoggedIn";
 
 
 function App() {
