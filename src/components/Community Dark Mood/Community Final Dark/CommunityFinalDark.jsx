@@ -264,7 +264,7 @@ const CommunityFinalDark = () => {
       }
     }
     fetchPostsFromDb();
-  }, [sortOptionSelected, whatHotStatus,postsData]);
+  }, [sortOptionSelected, whatHotStatus]);
 
   //FURTHER SORT POST AFTER INITIAL SORT
   const furtherSortPost = () => {
@@ -540,7 +540,6 @@ const CommunityFinalDark = () => {
           return eachElement.postSpace.some((value) =>
             selectedCommunitySpace.includes(value)
           );
-          return false;
         }
       });
       setSpaceFilteredPost(filteredData);

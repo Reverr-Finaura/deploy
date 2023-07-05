@@ -91,6 +91,7 @@
 .categoriCard {
   position: relative;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .categoriCard > img {

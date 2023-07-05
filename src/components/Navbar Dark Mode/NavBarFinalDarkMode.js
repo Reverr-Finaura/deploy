@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import style from "./NavbarFinalDarkMode.module.css";
+import products from "../../assets/Products/products";
 import { useDispatch, useSelector } from "react-redux";
 import { selectChat, showChat } from "../../features/chatSlice";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -47,9 +48,14 @@ import { HiOutlineTemplate } from "react-icons/hi";
 import emailjs from "@emailjs/browser";
 import axios from "axios";
 import NotificationCard from "./NotificationCard";
+import { is } from "date-fns/locale";
 
 const NavBarFinalDarkMode = () => {
   const user = useSelector((state) => state.user);
+  const userTypeLower = useSelector((state) =>
+    state.onboarding.userType.toLowerCase()
+  );
+  const [isProductModalOpen, setIsProductModalOpen] = useState(false);
   const [userImage, setUserImage] = useState("");
   const [isSettingButtonClick, setIsSettingbuttonClick] = useState(false);
   const [isRequestsButtonClick, setRequestsbuttonClick] = useState(false);
@@ -69,6 +75,40 @@ const NavBarFinalDarkMode = () => {
     setScroll(window.scrollY);
   };
   const [notificationOpen, setNotificationOpen] = useState(false);
+
+  // code for product modal start
+  const elementsToCheck = ["VIBE", "PATCH", "KNOWLEDGE", "EVENTS"];
+  const filteredArray = elementsToCheck.filter((element) =>
+    products[userTypeLower].includes(element)
+  );
+  // console.log("filtered array" +filteredArray);
+  const modalRef = useRef(null);
+  const buttonRef = useRef(null);
+
+  const toggleProductModal = () => {
+    setIsProductModalOpen((prevIsOpen) => !prevIsOpen);
+  };
+
+  const handleOutsideClick = (event) => {
+    if (
+      isProductModalOpen &&
+      modalRef.current &&
+      !modalRef.current.contains(event.target) &&
+      !buttonRef.current.contains(event.target)
+    ) {
+      setIsProductModalOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [isProductModalOpen]);
+
+  // code for product modal end
 
   // Start functionality for search bar
   async function fetchUserDataFromFirebase(type) {
@@ -381,6 +421,110 @@ const NavBarFinalDarkMode = () => {
 
   return (
     <>
+      {isProductModalOpen ? (
+        <div className={style.productModalCont}>
+          <div className={style.productModal} ref={modalRef}>
+            <text style={{ color: "#A7A7A7", fontSize: 12 }}>KEY PRODUCTS</text>
+            <div className={style.productContainer}>
+              {filteredArray.includes("VIBE") ? (
+                <div>
+                  <img src={require("../../images/swipe.png")} alt="img" />
+                  <div>
+                    <text
+                      style={{
+                        fontSize: 14,
+                        color: "#ffffff",
+                      }}
+                    >
+                      Vibe
+                    </text>
+                    <text
+                      style={{
+                        fontSize: 10,
+                        color: "#A7A7A7",
+                      }}
+                    >
+                      Networking with a swipe.
+                    </text>
+                  </div>
+                </div>
+              ) : null}
+              {filteredArray.includes("KNOWLEDGE") ? (
+                <div>
+                  <img src={require("../../images/book1.png")} alt="img" />
+                  <div>
+                    <text
+                      style={{
+                        fontSize: 14,
+                        color: "#ffffff",
+                      }}
+                    >
+                      Knowledge
+                    </text>
+                    <text
+                      style={{
+                        fontSize: 10,
+                        color: "#A7A7A7",
+                      }}
+                    >
+                      Check out our tailor-made roadmap of courses.
+                    </text>
+                  </div>
+                </div>
+              ) : null}
+              {filteredArray.includes("PATCH") ? (
+                <div>
+                  <img
+                    src={require("../../images/peoplearrow.png")}
+                    alt="img"
+                  />
+                  <div>
+                    <text
+                      style={{
+                        fontSize: 14,
+                        color: "#ffffff",
+                      }}
+                    >
+                      Patch
+                    </text>
+                    <text
+                      style={{
+                        fontSize: 10,
+                        color: "#A7A7A7",
+                      }}
+                    >
+                      1:1 networking
+                    </text>
+                  </div>
+                </div>
+              ) : null}
+              {filteredArray.includes("EVENTS") ? (
+                <div>
+                  <img src={require("../../images/playbutton.png")} alt="img" />
+                  <div>
+                    <text
+                      style={{
+                        fontSize: 14,
+                        color: "#ffffff",
+                      }}
+                    >
+                      Events
+                    </text>
+                    <text
+                      style={{
+                        fontSize: 10,
+                        color: "#A7A7A7",
+                      }}
+                    >
+                      Join a plethora of exciting events!
+                    </text>
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      ) : null}
       <section id={scroll > 1 ? style.navbarFinalScrolled : style.navbarFinal}>
         <ToastContainer />
         <div
@@ -473,10 +617,16 @@ const NavBarFinalDarkMode = () => {
                 <p className={style.navbarIconsName}>Discover</p>
               </NavLink>
             </div>
-            <div className={style.navbarIconsImgName}>
-              <HiOutlineTemplate className={style.navbarIconsImg} />
-              <p className={style.navbarIconsName}>Products</p>
-            </div>
+            {filteredArray.length >= 1 ? (
+              <div
+                className={style.navbarIconsImgName}
+                onClick={toggleProductModal}
+                ref={buttonRef}
+              >
+                <HiOutlineTemplate className={style.navbarIconsImg} />
+                <p className={style.navbarIconsName}>Products</p>
+              </div>
+            ) : null}
             <div className={style.navbarIconsImgName}>
               <AiOutlineMessage className={style.navbarIconsImg} />
               <p className={style.navbarIconsName}>Messages</p>

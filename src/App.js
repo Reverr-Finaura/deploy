@@ -154,6 +154,9 @@ function App() {
             <Route path="/signup" element={<SignUpAuth />}></Route>
 
             <Route path="/login" element={<LoginNew />} />
+            <Route path="/community2" element={<HomeNotLoggedIn />}>
+              <Route path=":postId" element={<SharedCommunityPost />}></Route>
+            </Route>
           </>
         )}
         <Route path="/forgotpassword" element={<ForgotPassword />} />
@@ -186,9 +189,9 @@ function App() {
         <Route path="/funding" element={<Funding />}></Route>
         <Route path="/fundingform" element={<FundingForm />}></Route>
         <Route path="/mentor-profile" element={<MentorProfile />}></Route>
-        <Route path="/community" element={<Test/>}>
-        {/* <Route path="/community" element={<CommunityFinalDark />}> */}
-        {/* <Route path="/community" element={<CommunityFinal />}> */}
+        <Route path="/community" element={<Test />}>
+          {/* <Route path="/community" element={<CommunityFinalDark />}> */}
+          {/* <Route path="/community" element={<CommunityFinal />}> */}
           <Route path=":postId" element={<SharedCommunityPost />}></Route>
         </Route>
         <Route path="/schedule/:id/:userEmail" element={<Schedule />}></Route>
