@@ -111,6 +111,12 @@ import Design from "./pages/Articles/Design";
 import Enterpreneurship from "./pages/Articles/Enterpreneurship";
 import Finance from "./pages/Articles/Finance";
 import Healthcare from "./pages/Articles/Healthcare";
+import MentorTesting from "./pages/Mentors/MentorTesting";
+import ScheduleTesting from "./pages/Schedule/ScheduleTesting";
+import MentorSearch from "./pages/MentorSearch/MentorSearch";
+import KnowledgeTesting from "./pages/Knowledge/KnowledgeTesting";
+import CheckYourScoreTesting from "./pages/Check Your Score/CheckYourScoreTesting";
+import CourcePageTesting from "./pages/AfterKnowledge/CourcesPage/CourcePageTesting";
 
 
 function App() {
@@ -167,11 +173,13 @@ function App() {
         <Route path="/startup-review" element={<Review />} />
         <Route path="/startup-verification" element={<Verification />} />
         <Route path="/schedule" element={<Schedule />}></Route>
-        <Route path="/knowledge" element={<Knowledge />}></Route>
+        <Route path="/schedule/:id/:userEmail" element={<ScheduleTesting/>}></Route>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/knowledge" element={<Knowledge />}></Route>
+        {/* <Route path="/knowledge" element={<Knowledge />}></Route> */}
+        <Route path="/knowledge" element={<KnowledgeTesting />}></Route>
         {/* <Route path="/com" element={<BusinessPlanningSlides />}></Route> */}
-        <Route path="/mentors" element={<MentorsNew />}></Route>
+        <Route path="/mentors" element={<MentorTesting/>}></Route>
+        <Route path="/mentors-search/:category" element={<MentorSearch/>}></Route>
         <Route path="/mentor" element={<Mentor />}></Route>
         <Route path="/mentorform" element={<MentorForm />}></Route>
         <Route path="/mentordetails" element={<MentorMoreDetails />}></Route>
@@ -248,7 +256,8 @@ function App() {
 
         <Route path="/esop" element={<ESOP />}></Route>
         <Route path="/esop-slides" element={<ESOP_Slides />}></Route>
-        <Route path="/idea-validation" element={<IdeaValidation />}></Route>
+        {/* <Route path="/idea-validation" element={<IdeaValidation />}></Route> */}
+        <Route path="/idea-validation" element={<CourcePageTesting/>}></Route>
         <Route path="/idea-validation-slides" element={<IV_Slides />}></Route>
         <Route
           path="/fundraising-and-means"
@@ -297,7 +306,8 @@ function App() {
           path="/documentTemplates/:id"
           element={<DocumentTemplatesViewer />}
         ></Route>
-        <Route path="/start-up" element={<CheckYourScore />}></Route>
+        {/* <Route path="/start-up" element={<CheckYourScore />}></Route> */}
+        <Route path="/start-up" element={<CheckYourScoreTesting />}></Route>
         <Route
           path="/newcourses/EquityAndEverything"
           element={<EquityAndEverythingg />}

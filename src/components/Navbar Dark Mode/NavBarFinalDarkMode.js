@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import style from "./NavbarFinalDarkMode.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectChat, showChat } from "../../features/chatSlice";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Chat from "../Chat/Chat";
 import { signOut } from "firebase/auth";
 import { auth, createNetworkInMessagesDoc, db } from "../../firebase";
@@ -469,7 +469,9 @@ const NavBarFinalDarkMode = () => {
             </div>
             <div className={style.navbarIconsImgName}>
               <AiOutlineGlobal className={style.navbarIconsImg} />
-              <p className={style.navbarIconsName}>Discover</p>
+              <NavLink className="navlinks" to="/discover">
+                <p className={style.navbarIconsName}>Discover</p>
+              </NavLink>
             </div>
             <div className={style.navbarIconsImgName}>
               <HiOutlineTemplate className={style.navbarIconsImg} />
