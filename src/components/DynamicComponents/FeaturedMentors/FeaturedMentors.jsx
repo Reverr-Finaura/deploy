@@ -47,33 +47,29 @@ function FeaturedMentors() {
 
   const cardData = [
     {
-      title: "StartUp Algo",
+      title: "IT and Telecom",
       image: require("../../../images/unsplash_5.png"),
     },
     {
-      title: "StartUp Algo",
-      image: require("../../../images/unsplash_5.png"),
+      title: "Software and Tech",
+      image: require("../../../images/unsplash_6.png"),
     },
     {
-      title: "StartUp Algo",
-      image: require("../../../images/unsplash_5.png"),
+      title: "Consulting and Advisory",
+      image: require("../../../images/unsplash_7.png"),
     },
     {
-      title: "StartUp Algo",
-      image: require("../../../images/unsplash_5.png"),
+      title: "Legal",
+      image: require("../../../images/unsplash_8.png"),
     },
     {
-      title: "StartUp Algo",
-      image: require("../../../images/unsplash_5.png"),
-    },
-    {
-      title: "StartUp Algo",
-      image: require("../../../images/unsplash_5.png"),
+      title: "Strategy and Business Development",
+      image: require("../../../images/unsplash_6.png"),
     },
   ];
 
   return (
-    <div className={styles.container} style={{marginBottom:'3.2em'}}>
+    <div className={styles.container} style={{ marginBottom: "3.2em" }}>
       <div className={styles.header}>
         <p>
           <span style={{ color: "#ffffff" }}>Featured</span>
@@ -127,10 +123,18 @@ function FeaturedMentors() {
       </div>
       <div className={styles.cardContainer}>
         {cardData.map((card, index) => (
-          <div className={styles.categoriCard} key={index}>
+          <div
+            className={styles.categoriCard}
+            key={index}
+            onClick={() => navigate(`/mentors-search/${card.title}`)}
+          >
             <img src={card.image} alt="img" />
             <div>
-              <p style={{ fontSize: 12, color: "#ffffff" }}>{card.title}</p>
+              <p
+                style={{ fontSize: 12, color: "#ffffff", textAlign: "center" }}
+              >
+                {card.title}
+              </p>
             </div>
           </div>
         ))}

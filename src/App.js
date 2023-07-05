@@ -101,7 +101,7 @@ import DummyTest from "./pages/Dummy Test Page/DummyTest";
 // import BuildAudience from "./pages/New Courses/Courses/BuildAudience";
 import CommunityFinalDark from "./components/Community Dark Mood/Community Final Dark/CommunityFinalDark";
 import Test from "./TestPage/Test";
-
+import HomeNotLoggedIn from "./pages/HomeNotLoggedIn/HomeNotLoggedIn";
 
 function App() {
   const user = useSelector(selectUser);
@@ -138,6 +138,9 @@ function App() {
             <Route path="/signup" element={<SignUpAuth />}></Route>
 
             <Route path="/login" element={<LoginNew />} />
+            <Route path="/community2" element={<HomeNotLoggedIn />}>
+              <Route path=":postId" element={<SharedCommunityPost />}></Route>
+            </Route>
           </>
         )}
         <Route path="/forgotpassword" element={<ForgotPassword />} />
@@ -168,9 +171,9 @@ function App() {
         <Route path="/funding" element={<Funding />}></Route>
         <Route path="/fundingform" element={<FundingForm />}></Route>
         <Route path="/mentor-profile" element={<MentorProfile />}></Route>
-        <Route path="/community" element={<Test/>}>
-        {/* <Route path="/community" element={<CommunityFinalDark />}> */}
-        {/* <Route path="/community" element={<CommunityFinal />}> */}
+        <Route path="/community" element={<Test />}>
+          {/* <Route path="/community" element={<CommunityFinalDark />}> */}
+          {/* <Route path="/community" element={<CommunityFinal />}> */}
           <Route path=":postId" element={<SharedCommunityPost />}></Route>
         </Route>
         <Route path="/schedule/:id/:userEmail" element={<Schedule />}></Route>
