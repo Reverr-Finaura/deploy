@@ -1,5 +1,6 @@
 .stages_container {
   margin: 1rem 0;
+  border-radius: 1rem;
 }
 
 .stages_container > h3,

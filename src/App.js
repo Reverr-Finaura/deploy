@@ -100,6 +100,14 @@ import DummyTest from "./pages/Dummy Test Page/DummyTest";
 // import CompetitorAnalysis from "./pages/New Courses/Courses/CompetitorAnalysis";
 // import BuildAudience from "./pages/New Courses/Courses/BuildAudience";
 import CommunityFinalDark from "./components/Community Dark Mood/Community Final Dark/CommunityFinalDark";
+import MentorTesting from "./pages/Mentors/MentorTesting";
+import MentorSearch from "./pages/MentorSearch/MentorSearch";
+import ScheduleTesting from "./pages/Schedule/ScheduleTesting";
+import CheckYourScoreTesting from "./pages/Check Your Score/CheckYourScoreTesting";
+import KnowledgeTesting from "./pages/Knowledge/KnowledgeTesting";
+import ReachingOutToInvestorTesting from "./pages/AfterKnowledge/ReachingOutToInvestor/ReachingOutToInvestorTesting";
+import CourseContent from "./components/After knowledge/Course content/CourseContent";
+import CourcePageTesting from "./pages/AfterKnowledge/CourcesPage/CourcePageTesting";
 import Test from "./TestPage/Test";
 
 
@@ -157,11 +165,14 @@ function App() {
         <Route path="/startup-review" element={<Review />} />
         <Route path="/startup-verification" element={<Verification />} />
         <Route path="/schedule" element={<Schedule />}></Route>
-        <Route path="/knowledge" element={<Knowledge />}></Route>
+        <Route path="/knowledge" element={<KnowledgeTesting />}></Route>
+        {/* <Route path="/knowledge" element={<Knowledge />}></Route> */}
         <Route path="/" element={<Dashboard />} />
         <Route path="/knowledge" element={<Knowledge />}></Route>
         {/* <Route path="/com" element={<BusinessPlanningSlides />}></Route> */}
-        <Route path="/mentors" element={<MentorsNew />}></Route>
+        <Route path="/mentors" element={<MentorTesting/>}></Route>
+        {/* <Route path="/mentors" element={<MentorsNew/>}></Route> */}
+        <Route path="/mentors-search/:category" element={<MentorSearch/>}></Route>
         <Route path="/mentor" element={<Mentor />}></Route>
         <Route path="/mentorform" element={<MentorForm />}></Route>
         <Route path="/mentordetails" element={<MentorMoreDetails />}></Route>
@@ -173,7 +184,8 @@ function App() {
         {/* <Route path="/community" element={<CommunityFinal />}> */}
           <Route path=":postId" element={<SharedCommunityPost />}></Route>
         </Route>
-        <Route path="/schedule/:id/:userEmail" element={<Schedule />}></Route>
+        {/* <Route path="/schedule/:id/:userEmail" element={<Schedule />}></Route> */}
+        <Route path="/schedule/:id/:userEmail" element={<ScheduleTesting />}></Route>
         <Route path="/betaslide" element={<BetaSlide />}></Route>
         <Route path="/eeslides" element={<EESlides />}></Route>
         <Route
@@ -238,7 +250,8 @@ function App() {
 
         <Route path="/esop" element={<ESOP />}></Route>
         <Route path="/esop-slides" element={<ESOP_Slides />}></Route>
-        <Route path="/idea-validation" element={<IdeaValidation />}></Route>
+        <Route path="/idea-validation" element={<CourcePageTesting/>}></Route>
+        {/* <Route path="/idea-validation" element={<IdeaValidation />}></Route> */}
         <Route path="/idea-validation-slides" element={<IV_Slides />}></Route>
         <Route
           path="/fundraising-and-means"
@@ -248,6 +261,10 @@ function App() {
           path="/fundraising-and-means-slides"
           element={<FundraisingSlides />}
         ></Route>
+        {/* <Route
+          path="/reaching-out-to-investor"
+          element={<ReachingOutToInvestorTesting />}
+        ></Route> */}
         <Route
           path="/reaching-out-to-investor"
           element={<ReachingOutToInvestor />}
@@ -287,7 +304,8 @@ function App() {
           path="/documentTemplates/:id"
           element={<DocumentTemplatesViewer />}
         ></Route>
-        <Route path="/start-up" element={<CheckYourScore />}></Route>
+        <Route path="/start-up" element={<CheckYourScoreTesting />}></Route>
+        {/* <Route path="/start-up" element={<CheckYourScore />}></Route> */}
         <Route
           path="/newcourses/EquityAndEverything"
           element={<EquityAndEverythingg />}
