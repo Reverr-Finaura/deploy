@@ -195,7 +195,7 @@ function App() {
           {/* <Route path="/community" element={<CommunityFinal />}> */}
           <Route path=":postId" element={<SharedCommunityPost />}></Route>
         </Route>
-        <Route path="/schedule/:id/:userEmail" element={<Schedule />}></Route>
+        <Route path="/schedule/:id/:userEmail" element={<ScheduleTesting />}></Route>
         <Route path="/betaslide" element={<BetaSlide />}></Route>
         <Route path="/eeslides" element={<EESlides />}></Route>
         <Route

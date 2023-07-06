@@ -10,11 +10,12 @@ import PptCard from "../../components/Knowledge card/PptCard";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CardTesting from "../../components/Knowledge card/CardTesting";
+import NavBarFinalDarkMode from "../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 
 const knowledgeData = [
   {
     heading: "Idea Validation",
-    image: "./images/18915856 1.png",
+    image: "./images/idea_validate.png",
     description:
       "Is it worthwhile to pursue your fresh startup idea? Let's put it through our tried-and-true method to obtain opinions from experts, users, and the available research to determine whether it's worthwhile to construct.",
     url: "/idea-validation",
@@ -108,6 +109,7 @@ function KnowledgeTesting() {
   const [activeLink, setactiveLink] = useState("Courses");
   return (
     <>
+    <NavBarFinalDarkMode/>
       <div className={styles.knowledge}>
         <div className={styles.knowledge_heading}>
           <h3>

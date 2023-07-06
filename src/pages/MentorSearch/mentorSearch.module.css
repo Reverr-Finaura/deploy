@@ -6,6 +6,7 @@
   padding: 4rem 4rem;
   display: flex;
   flex-direction: column;
+  margin-top: 5rem;
 }
 .title {
   color: #4cc9ff;
@@ -37,9 +38,10 @@
 }
 .searchResultContainer {
     display:  flex;
-    justify-content: space-between;
-    
     flex-wrap: wrap;
+    gap: 4rem;
+    margin-left: 4rem;
+    margin-right: 3rem;
 }
 
 @media (max-width: 768px) {
@@ -73,6 +75,8 @@
 
   .searchResultContainer {
     padding: 0 1rem;
+    justify-content: center;
+    align-items: center;
   }
 }
 
