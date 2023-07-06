@@ -1,0 +1,28 @@
+.img {
+  width: 100% !important;
+}
+
+/* body {
+  width: 90%;
+} */
+
+.sec2 {
+  width: 90%;
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+}
+
+.rightbar {
+  border: 5px solid #2a72de;
+}
+
+.btns {
+  display: flex;
+  flex-direction: column;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+.outerCont{
+    width: 95%;
+    min-height: 40vh;
+    padding: 1rem;
+    margin: auto;
+    margin-top: 1.5rem;
+    font-family: "Quicksand";
+}
+
+.title{
+font-style: normal;
+font-weight: 700;
+font-size: 1.5rem;
+line-height: 36px;
+letter-spacing: 0.01em;
+color: #5B89CE;
+}
+
+.pptCont{
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    position: relative;
+}
+.loadMoreImg{
+    position: absolute;
+    right: 0;
+    top: -3rem;
+    /* width: 150px; */
+    cursor: pointer;
+    color: #2a72de;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+}
+.loadMoreImgIcon{
+    margin-left: .25rem;
+    font-weight: 900;
+    transform: rotate(-15deg);
+    font-size: 1.5rem;
+}
+.pptOuterCont{
+    width: 360px;
+    /* width: 30%; */
+height: 271px;
+border-radius: 29.6471px;
+background: #F2F2F2;
+}
+.imgCont{
+    border-top-left-radius:29.6471px ;
+    border-top-right-radius:29.6471px ; 
+    width: 100%;
+height: 200px; 
+position: relative; 
+}
+.img{
+width: 100%;
+height: 100%;
+border-top-left-radius:29.6471px ;
+border-top-right-radius:29.6471px ;
+}
+.blackishCont{
+    border-top-left-radius:29.6471px ;
+    border-top-right-radius:29.6471px ; 
+    width: 100%;
+height: 201px; 
+position: absolute;
+top: 0;
+filter: blur(.25px);
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.viewBtn{
+    border: 1.73282px solid #FFFFFF;
+    filter: drop-shadow(0px 3.46564px 20.7938px rgba(0, 0, 0, 0.25));
+    border-radius: 20.7938px;
+    width: 160px;
+height: 44px;
+background: transparent;
+color: white;
+cursor: pointer;
+}
+.infoCont{
+    width: 100%;
+    height: 70px;
+    border-bottom-left-radius:29.6471px ;
+    border-bottom-right-radius:29.6471px ;
+    display: flex;
+    flex-direction: column;
+}
+.pptName{
+    font-family: 'Quicksand';
+font-style: normal;
+font-weight: 700;
+font-size: 16.8954px;
+line-height: 28px;
+letter-spacing: 0.03em;
+color: #333333;
+padding-left: 1rem;
+padding-top: .25rem;
+text-transform: capitalize;
+
+}
+.btnCont{
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+padding-top: .5rem;
+width: 200px;
+}
+.icon{
+    font-size: 1.2rem;
+    cursor: pointer;
+
+}
+.icon2{
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 2rem;  
+}
+

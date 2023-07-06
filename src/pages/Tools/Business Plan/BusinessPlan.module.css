@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+.docSkeletonCont{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+.outerCont{
+    width: 95%;
+    min-height: 30vh;
+    padding: 1rem;
+    margin: auto;
+    margin-top: 1.5rem;
+    font-family: "Quicksand";
+}
+
+.title{
+font-style: normal;
+font-weight: 700;
+font-size: 1.5rem;
+line-height: 36px;
+letter-spacing: 0.01em;
+color: #5B89CE;
+text-transform: capitalize;
+}
+
+.docCont{
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    position: relative;
+}
+.loadMoreImg{
+    position: absolute;
+    right: 0;
+    top: -3rem;
+    /* width: 150px; */
+    cursor: pointer;
+    color: #2a72de;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+}
+.loadMoreImgIcon{
+    margin-left: .25rem;
+    font-weight: 900;
+    transform: rotate(-15deg);
+    font-size: 1.5rem;
+}
+.doc{
+    width: 337px;
+    height: 206px;
+    background: #F8F8F8;
+border: 0.370588px solid #B0B0B0;
+border-radius: 12px;
+padding: 1rem;
+display: flex;
+flex-direction: column;
+}
+.docHeading{
+    font-family: 'Quicksand';
+font-style: normal;
+font-weight: 700;
+font-size: 1.4rem;
+line-height: 28px;
+letter-spacing: 0.03em;
+color: #333333;
+text-transform: capitalize;
+}
+
+.info{
+    margin-top: 1rem;
+    font-family: 'Quicksand';
+font-style: normal;
+font-weight: 700;
+font-size: 12.5152px;
+line-height: 21px;
+letter-spacing: 0.03em;
+color: #8A8A8A;
+word-break: break-all;
+}
+
+.tagAndBtnCont{
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+}
+.tagCont{
+    display: flex;
+    align-items: center;
+    font-family: 'Quicksand';
+font-style: normal;
+font-weight: 700;
+font-size: 12.5152px;
+line-height: 21px;
+letter-spacing: 0.03em;
+
+color: #A7A7A7;
+}
+.tagIcon{
+    color: #2A2A2A;
+    margin-right: .5rem;
+}
+.btnCont{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+.btn1,.btn{
+    font-family: 'Quicksand';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+color: #2A72DE;
+border: 1px solid #2A72DE;
+background: transparent;
+padding: .5rem;
+border-radius: 20px;
+cursor: pointer;
+}
+.btn1{
+    margin-right: 1rem;
+}

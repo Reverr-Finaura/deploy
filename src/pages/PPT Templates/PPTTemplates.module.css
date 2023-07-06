@@ -1,0 +1,74 @@
+.outerCont{
+    max-width: 81%;
+    min-height: 100vh;
+    margin-top: 7rem;
+    margin-left: 17rem;
+}
+.title{
+    font-family: 'Exo';
+    font-weight: 600;
+    line-height: 1.2;
+    font-size: 2.2rem;
+    padding:1rem;
+    width: fit-content;
+}
+
+.chooser{
+    padding: 1rem;
+    background: linear-gradient( 119.93deg, rgba(255, 255, 255, 0.35) 4.68%, rgba(255, 255, 255, 0.3) 91.73% );
+    box-shadow: 0px 2.05973px 12.3584px -0.514933px rgb(0 0 0 / 15%);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 95%;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 2rem;
+
+}
+.underLine{
+    width: 120%;
+    height: 4px;
+    background-color: #2a72de;
+    margin: auto;
+    position: absolute;
+    bottom: -60%;
+    left: -8%;
+    border-radius: 5px;
+}
+.chooserLink{
+font-size: 1.1rem;
+  margin: auto;
+  font-weight: 600;
+  font-family: "Exo";
+  cursor: pointer;
+  position: relative;
+  padding: 0 1rem;
+  text-transform: uppercase;
+}
+
+
+.pptListCont{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 95%;
+    margin: auto;
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+    
+}
+
+
+
+
+
+@media(max-width:600px){
+    .outerCont{
+        margin: auto;
+        max-width: 85%;
+    }  
+}

@@ -1,0 +1,36 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: var(--main-text);
+}
+
+.main > div {
+  font-size: 10rem;
+  font-weight: 900;
+  font-family: "Philosopher", sans-serif;
+}
+
+.main > p {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.link {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #2a72de;
+}
+
+.link:hover {
+  opacity: 0.8;
+}
+
+@media screen and (width < 420px) {
+  .main > p {
+    margin: 0 1rem;
+  }
+}

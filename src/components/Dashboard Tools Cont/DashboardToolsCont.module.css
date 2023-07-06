@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+.outerCont{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Manrope';
+    position: relative;
+}
+.outerCont h1{
+    font-style: normal;
+font-weight: 700;
+font-size: 19px;
+line-height: 18px;
+letter-spacing: 0.05em;
+font-weight: bolder;
+color: #202020;
+}
+.loadMoreImg{
+    width: 100px;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+
+}
+.outerCont p{
+    font-style: normal;
+font-weight: 500;
+font-size: 11px;
+line-height: 149.01%;
+letter-spacing: 0.01em;
+color: #202020;
+margin-top: .25rem;
+}
+
+.pptCont{
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    flex-direction: row;
+}
+
+.pptCard{
+    width: 17.5rem;
+height: 11rem;
+border-radius: 16px;
+border: 0.199302px solid #B0B0B0;
+cursor: pointer;
+}
+.pptCard:hover{
+    transform: scale(1.1);
+}
+.pptImg{
+    width: 100%;
+    height: 9rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+.pptText{
+    font-style: normal;
+font-weight: 700;
+font-size: 11px;
+line-height: 15px;
+text-align: center;
+letter-spacing: 0.03em;
+color: black;
+}

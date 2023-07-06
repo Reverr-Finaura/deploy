@@ -1,0 +1,139 @@
+html {
+  background-color: var(--bg-clr);
+}
+
+.form_container {
+  background: #f6f6f6;
+  margin: 0;
+}
+
+.selection_div {
+  margin: auto;
+  width: 55%;
+}
+
+.h1_tag {
+  font-size: 50px;
+  color: #202020;
+  text-align: center;
+  font-weight: 600;
+}
+
+.search_div {
+  display: flex;
+  background: #f6f6f6;
+  border: 2px solid #2a72de;
+  border-radius: 6px;
+  align-items: center;
+  padding: 0 1rem;
+  height: 8vh;
+  margin: 1rem auto;
+}
+
+.search_div > img {
+  height: 1.6rem;
+}
+
+.search_div > input {
+  font-size: 24px;
+  border: none;
+  padding: auto;
+}
+
+.ex__btns {
+  width: 70%;
+}
+
+.ex__btns > button,
+.exp__btns > button {
+  margin: 0.5rem 0.3rem;
+  background: #f6f6f6;
+  border: 2px solid #2a72de;
+  border-radius: 6px;
+  font-size: 24px;
+  font-weight: 400;
+  color: rgba(32, 32, 32, 0.5);
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}
+
+.exp__btns > button {
+  width: 100%;
+}
+
+.next_div {
+  text-align: center;
+  margin: 2rem auto;
+}
+.next_btn {
+  border: none;
+  outline: none;
+  background: #2a72de;
+  border-radius: 6px;
+  font-size: 24px;
+  color: #f6f6f6;
+  padding: 0.4rem 5rem;
+  cursor: pointer;
+}
+
+.info_text {
+  color: rgba(32, 32, 32, 0.5);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* .img1 {
+  height: 13rem;
+  background-image: url("/public/images/Ellipse 424.svg");
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: 84%;
+
+  background-position: right center;
+  right: 0;
+  top: 50%;
+} */
+
+@media (max-width: 768px) {
+  .logo {
+    height: 4rem;
+  }
+  .h1_tag {
+    font-size: 35px;
+  }
+
+  h3 {
+    font-size: 28px;
+  }
+
+  .search_div {
+    height: 6vh;
+  }
+  .search_div > input {
+    font-size: 16px;
+  }
+
+  .search_div > img {
+    height: 1.2rem;
+  }
+
+  .ex__btns {
+    width: 100%;
+  }
+
+  .ex__btns > button,
+  .exp__btns > button,
+  .next_btn {
+    width: 100%;
+    font-size: 16px;
+  }
+  .info_text {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 425px) {
+  .selection_div {
+    width: 80%;
+  }
+}

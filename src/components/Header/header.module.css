@@ -1,0 +1,92 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem 15rem 3rem 15rem;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  box-shadow: none;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.logoImg {
+  margin: 0 0 0.2rem 0;
+  border: none;
+}
+
+.buttonRow {
+  display: flex;
+  align-items: center;
+  /* background-color: yellow; */
+  margin-left: 11rem;
+}
+
+.navButton {
+  background-color: transparent;
+  padding: 1rem 1rem 1rem 1rem;
+  /* color: white; */
+  font-weight: 600;
+  box-shadow: none;
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+}
+
+.authButton {
+  margin: 0 0.5rem 0 0.5rem;
+  position: relative;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  white-space: nowrap;
+  width: 11rem;
+  height: 3rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.authButtonTextContainer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 11rem;
+  height: 3rem;
+  top: 0;
+  background-color: transparent;
+}
+
+.authButtonText {
+  color: white;
+  border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .headerContainer {
+    flex-direction: column;
+    padding: 0.2rem;
+  }
+
+  .buttonRow {
+    flex-direction: column;
+    margin-left: 0;
+  }
+
+  .authButton {
+    margin-top: 1.3rem;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .buttonRow {
+    margin-left: 1.4rem;
+  }
+}
