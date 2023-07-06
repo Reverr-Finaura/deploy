@@ -6,7 +6,7 @@ import linkedinIcon from "../../images/LinkedinIcon.png";
 import twitterIcon from "../../images/TwitterIconn.png";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import DefaultDP from "../../images/Defaultdp.png"
+import DefaultDP from "../../images/Defaultdp.png";
 
 const ProfileCardTesting = ({ mentor }) => {
   const navigate = useNavigate();
@@ -19,15 +19,17 @@ const ProfileCardTesting = ({ mentor }) => {
     }
     return id;
   };
+  console.log(mentor);
+  console.log(
+    mentor?.image && mentor?.image !== "" ? mentor.image : { DefaultDP }
+  );
   return (
     <div className={styles.card}>
       <div className={styles.cardLeftContent}>
         <div className={styles.leftMainImage}>
           <img
             src={
-              mentor?.image
-                ? mentor.image
-                : {DefaultDP}
+              mentor?.image && mentor?.image !== "" ? mentor.image : DefaultDP
             }
             alt="MentorImage"
           />
@@ -55,8 +57,12 @@ const ProfileCardTesting = ({ mentor }) => {
         <div className={styles.rightCardMain}>
           <p>{mentor?.about.slice(0, 125)}...</p>
           <div className={styles.CardProfilekills}>
-            {mentor?.domain?.slice(0, 2).map((item,idx) => {
-              return <div key={idx} className={styles.skill}>{item}</div>;
+            {mentor?.domain?.slice(0, 2).map((item, idx) => {
+              return (
+                <div key={idx} className={styles.skill}>
+                  {item}
+                </div>
+              );
             })}
           </div>
           <div className={styles.amountToPay}>
@@ -80,7 +86,9 @@ const ProfileCardTesting = ({ mentor }) => {
             className={styles.schedule}
             onClick={() => {
               navigate(
-                `/schedule/${emailToId(mentor.email)}/${emailToId(userDoc.email)}`
+                `/schedule/${emailToId(mentor.email)}/${emailToId(
+                  userDoc.email
+                )}`
               );
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}

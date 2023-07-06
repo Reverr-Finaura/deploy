@@ -13,9 +13,9 @@ import { useParams } from "react-router-dom";
 import PaymentMentorMeetingSchedule from "../../components/Payment For Mentor Meeting Schedule/PaymentMentorMeetingSchedule";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NavBarFinalDarkMode from "../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 
 function ScheduleTesting() {
-  const [width, setWidth] = useState(window.innerWidth);
   // const user = useSelector(selectUser);
   const { id, userEmail } = useParams();
   const [mentorArray, setMentorArray] = useState([]);
@@ -107,21 +107,14 @@ function ScheduleTesting() {
     },
   });
 
-  const updateWidth = () => {
-    setWidth(window.innerWidth);
-  };
-
+  
   const prefill = {
     email: currentUser?.email,
     name: currentUser?.name,
     guests: [currentMentor?.email],
     date: new Date(Date.now() + 86400000),
   };
-
-  useEffect(() => {
-    window.addEventListener("resize", updateWidth);
-    return () => window.removeEventListener("resize", updateWidth);
-  }, []);
+  
   return (
     <>
       {paymentModeOn ? (
@@ -133,6 +126,7 @@ function ScheduleTesting() {
         />
       ) : null}
       {/* <PhnSidebar /> */}
+      <NavBarFinalDarkMode />
       <div className={styles.schedule}>
         {/* <KnowledgeNavbar /> */}
         <div className={styles.body}>

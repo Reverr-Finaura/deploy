@@ -14,8 +14,10 @@
 .checkscore__container {
   /* margin-left: 10%; */
   /* overflow-y: scroll; */
-  width: 45rem;
-  margin: 0 auto;
+  width: 60rem;
+  margin-top: 7rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .checkscore__container > h1 {
@@ -92,6 +94,7 @@
   border-radius: 10px;
   padding: 1rem 2rem;
   border-radius: 30px;
+  width: 100%;
 }
 
 .stages > div {
@@ -136,6 +139,7 @@
   background-color: #0c1631;
   padding: 0.5rem 2rem;
   border-radius: 20px;
+  width: 100%;
 }
 
 .checkscoreicon2 {

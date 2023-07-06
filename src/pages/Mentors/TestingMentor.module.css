@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   padding: 5rem 5rem;
+  margin-top: 4rem;
 }
 .header {
   display: flex;
@@ -86,7 +87,7 @@
 .card {
   border-radius: 16.468px;
   background: var(--bg-primary-blue, #0c1631);
-  margin: 1rem;
+  margin: 1rem 0rem;
   display: flex;
   width: 36rem;
   height: 20rem;

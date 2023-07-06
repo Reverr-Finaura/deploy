@@ -5,6 +5,7 @@ import ProfileCardTesting from "../Mentors/ProfileCardTesting";
 import { useNavigate, useParams } from "react-router-dom";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../firebase";
+import NavBarFinalDarkMode from "../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 
 const MentorSearch = () => {
   const navigate = useNavigate();
@@ -91,6 +92,7 @@ const MentorSearch = () => {
 
   return (
     <>
+    <NavBarFinalDarkMode/>
       <div className={styles.searchPageWrapper}>
         <div className={styles.title}>
           <p>

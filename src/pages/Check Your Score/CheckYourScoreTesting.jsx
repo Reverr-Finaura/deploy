@@ -7,6 +7,7 @@ import MarketTesting from "./stages/MarketTesting";
 import FinanceTesting from "./stages/FinanceTesting";
 import ResultTesting from "./stages/ResultTesting";
 import DoneTesting from "./stages/DoneTesting";
+import NavBarFinalDarkMode from "../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 
 const CheckYourScoreTesting = () => {
   const [stage, setStage] = useState(0);
@@ -69,6 +70,7 @@ const CheckYourScoreTesting = () => {
   return (
     <>
       <section id={styles.checkyourscore}>
+        <NavBarFinalDarkMode/>
         {/* <img
           className={styles.checkscoreicon1}
           src="/images/algo-bg1.png"

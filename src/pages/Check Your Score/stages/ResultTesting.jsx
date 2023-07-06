@@ -37,19 +37,19 @@ const ResultTesting = ({ score, data }) => {
   ];
   const COLORS = ["#FF17A8", "#F1F45E", "#41FA8B","#41A1FA", "#D9D9D9"];
 
-  // useEffect(() => {
-  //   const saveScore = async () => {
-  //     try {
-  //       await updateDoc(doc(db, "Users", user?.user?.email), {
-  //         startupScore: data,
-  //       });
-  //       console.log("done");
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   saveScore();
-  // }, []);
+  useEffect(() => {
+    const saveScore = async () => {
+      try {
+        await updateDoc(doc(db, "Users", user?.user?.email), {
+          startupScore: data,
+        });
+        console.log("done");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    saveScore();
+  }, []);
 
   return (
     <div className={styles.result}>

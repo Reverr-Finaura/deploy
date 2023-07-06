@@ -1,9 +1,11 @@
 import React from "react";
 import "./CourcePageTesting.css";
+import NavBarFinalDarkMode from "../../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 
 const CourcePageTesting = () => {
   return (
     <div className="firstback">
+      <NavBarFinalDarkMode/>
       <div className="ideavalid">
         <div className="content">
           <text className="head">IDEA VALIDATION</text>

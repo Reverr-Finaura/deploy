@@ -9,6 +9,7 @@ import IndustryCard from "../../components/IndustryCard/IndustryCard";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import SearchIcon from "../../images/Search.svg";
+import NavBarFinalDarkMode from "../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 
 const MentorTesting = () => {
   const responsive = {
@@ -102,6 +103,7 @@ const MentorTesting = () => {
 
   return (
     <div className={styles.mentor}>
+      <NavBarFinalDarkMode />
       <div className={styles.wrapper}>
         {/* --------------------Header---------------------- */}
         <div className={styles.header}>
