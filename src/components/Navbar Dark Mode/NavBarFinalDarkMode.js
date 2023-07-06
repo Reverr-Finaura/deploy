@@ -76,7 +76,13 @@ const NavBarFinalDarkMode = () => {
   const [notificationOpen, setNotificationOpen] = useState(false);
 
   // code for product modal start
-  const elementsToCheck = ["VIBE", "PATCH", "KNOWLEDGE", "EVENTS"];
+  const elementsToCheck = [
+    "TOOLS",
+    "MENTOR",
+    "KNOWLEDGE",
+    "FUNDING-APPLY",
+    "STARTUP SCORE",
+  ];
   const filteredArray = elementsToCheck.filter((element) =>
     products[userTypeLower].includes(element)
   );
@@ -425,9 +431,9 @@ const NavBarFinalDarkMode = () => {
           <div className={style.productModal} ref={modalRef}>
             <text style={{ color: "#A7A7A7", fontSize: 12 }}>KEY PRODUCTS</text>
             <div className={style.productContainer}>
-              {filteredArray.includes("VIBE") ? (
-                <div>
-                  <img src={require("../../images/swipe.png")} alt="img" />
+              {filteredArray.includes("TOOLS") ? (
+                <div onClick={() => navigate("/tools")}>
+                  <img src={require("../../images/rulepen.png")} alt="img" />
                   <div>
                     <text
                       style={{
@@ -435,7 +441,7 @@ const NavBarFinalDarkMode = () => {
                         color: "#ffffff",
                       }}
                     >
-                      Vibe
+                      Tools
                     </text>
                     <text
                       style={{
@@ -443,13 +449,41 @@ const NavBarFinalDarkMode = () => {
                         color: "#A7A7A7",
                       }}
                     >
-                      Networking with a swipe.
+                      Elevate your startup performance with our next-level
+                      online tools!
+                    </text>
+                  </div>
+                </div>
+              ) : null}
+              {filteredArray.includes("MENTOR") ? (
+                <div onClick={() => navigate("/mentors")}>
+                  <img
+                    src={require("../../images/securityuser.png")}
+                    alt="img"
+                  />
+                  <div>
+                    <text
+                      style={{
+                        fontSize: 14,
+                        color: "#ffffff",
+                      }}
+                    >
+                      Mentors
+                    </text>
+                    <text
+                      style={{
+                        fontSize: 10,
+                        color: "#A7A7A7",
+                      }}
+                    >
+                      Qualified mentors across multiple categories for all your
+                      needs.
                     </text>
                   </div>
                 </div>
               ) : null}
               {filteredArray.includes("KNOWLEDGE") ? (
-                <div>
+                <div onClick={() => navigate("/knowledge")}>
                   <img src={require("../../images/book1.png")} alt="img" />
                   <div>
                     <text
@@ -471,10 +505,10 @@ const NavBarFinalDarkMode = () => {
                   </div>
                 </div>
               ) : null}
-              {filteredArray.includes("PATCH") ? (
-                <div>
+              {filteredArray.includes("FUNDING-APPLY") ? (
+                <div onClick={() => navigate("/funding-page")}>
                   <img
-                    src={require("../../images/peoplearrow.png")}
+                    src={require("../../images/currencyusd.png")}
                     alt="img"
                   />
                   <div>
@@ -484,7 +518,7 @@ const NavBarFinalDarkMode = () => {
                         color: "#ffffff",
                       }}
                     >
-                      Patch
+                      Funding
                     </text>
                     <text
                       style={{
@@ -492,14 +526,17 @@ const NavBarFinalDarkMode = () => {
                         color: "#A7A7A7",
                       }}
                     >
-                      1:1 networking
+                      Find investors perfectly suited for you.
                     </text>
                   </div>
                 </div>
               ) : null}
-              {filteredArray.includes("EVENTS") ? (
-                <div>
-                  <img src={require("../../images/playbutton.png")} alt="img" />
+              {filteredArray.includes("STARTUP SCORE") ? (
+                <div onClick={() => navigate("/start-up")}>
+                  <img
+                    src={require("../../images/moneyreveive.png")}
+                    alt="img"
+                  />
                   <div>
                     <text
                       style={{
@@ -507,7 +544,7 @@ const NavBarFinalDarkMode = () => {
                         color: "#ffffff",
                       }}
                     >
-                      Events
+                      Startup Score
                     </text>
                     <text
                       style={{
@@ -515,7 +552,7 @@ const NavBarFinalDarkMode = () => {
                         color: "#A7A7A7",
                       }}
                     >
-                      Join a plethora of exciting events!
+                      Check your startup score.
                     </text>
                   </div>
                 </div>
@@ -612,9 +649,10 @@ const NavBarFinalDarkMode = () => {
             </div>
             <div className={style.navbarIconsImgName}>
               <AiOutlineGlobal className={style.navbarIconsImg} />
-              <NavLink className="navlinks" to="/discover">
+              <p className={style.navbarIconsName}>Discover</p>
+              {/* <NavLink className="navlinks" to="/discover">
                 <p className={style.navbarIconsName}>Discover</p>
-              </NavLink>
+              </NavLink> */}
             </div>
             {filteredArray.length >= 1 ? (
               <div

@@ -44,6 +44,7 @@ const products = {
     "INVESTOR FINDER",
     "DISCOVER",
     "MESSAGES & NOTIFICATIONS",
+    "STARTUP SCORE",
   ],
   individual: [
     "MENTOR",
@@ -62,6 +63,7 @@ const products = {
     "INVESTOR FINDER",
     "DISCOVER",
     "MESSAGES & NOTIFICATIONS",
+    "STARTUP SCORE",
   ],
   professionals: [
     "COMMUNITY",

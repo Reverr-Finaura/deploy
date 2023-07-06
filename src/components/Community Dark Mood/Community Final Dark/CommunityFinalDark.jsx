@@ -1135,24 +1135,25 @@ const CommunityFinalDark = () => {
                     </>
                   ) : null}
                   {spaceFilteredPost.map((item, index) => {
+                    // if (index === 3) {
+                    //   return (
+                    //     <>
+                    //       <PostCardDark
+                    //         postsData={postsData}
+                    //         setPostsData={setPostsData}
+                    //         item={item}
+                    //         key={index}
+                    //         handleEditPostButtonClick={
+                    //           handleEditPostButtonClick
+                    //         }
+                    //         setPostsAuthorIsClick={setPostsAuthorIsClick}
+                    //         setPostsAuthorInfo={setPostsAuthorInfo}
+                    //       />
+                    //       <DiscoverEvents />
+                    //     </>
+                    //   );
+                    // } else 
                     if (index === 3) {
-                      return (
-                        <>
-                          <PostCardDark
-                            postsData={postsData}
-                            setPostsData={setPostsData}
-                            item={item}
-                            key={index}
-                            handleEditPostButtonClick={
-                              handleEditPostButtonClick
-                            }
-                            setPostsAuthorIsClick={setPostsAuthorIsClick}
-                            setPostsAuthorInfo={setPostsAuthorInfo}
-                          />
-                          <DiscoverEvents />
-                        </>
-                      );
-                    } else if (index === 7) {
                       return (
                         <>
                           <PostCardDark
@@ -1169,7 +1170,7 @@ const CommunityFinalDark = () => {
                           <DiscoverPerfectTools />
                         </>
                       );
-                    } else if (index === 11) {
+                    } else if (index === 7) {
                       return (
                         <>
                           <PostCardDark
@@ -1186,7 +1187,7 @@ const CommunityFinalDark = () => {
                           <FeaturedSuggestions />
                         </>
                       );
-                    } else if (index === 15) {
+                    } else if (index === 11) {
                       return (
                         <>
                           <PostCardDark

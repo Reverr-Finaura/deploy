@@ -32,15 +32,17 @@
 }
 
 .cardContainer::-webkit-scrollbar {
-  width: 0.5rem;
+  width: 5px;
+  border-radius: 3px;
 }
 
 .cardContainer::-webkit-scrollbar-thumb {
-  background-color: transparent;
+  background-color: rgb(72, 71, 71);
 }
 
 .cardContainer::-webkit-scrollbar-track {
   background-color: transparent;
+  margin-top: 10px;
 }
 
 .card {
@@ -49,6 +51,7 @@
   flex-direction: column;
   background-color: #100f0f;
   padding: 15px;
+  margin-bottom: 10px;
   border-radius: 5px;
   object-fit: cover;
   margin-right: 20px;
