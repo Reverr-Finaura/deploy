@@ -1,0 +1,93 @@
+.auth {
+  margin: auto;
+  width: 60%;
+}
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  gap: 0.5rem;
+  width: 85%;
+  color: black;
+  border-radius: 12px;
+}
+
+.signup > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  width: 85%;
+  gap: 1rem;
+}
+
+.google_signup img {
+  height: 5vh;
+}
+
+.googleLoginBtn{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.signup > form > div > input {
+  background: rgba(95, 95, 95, 0.2);
+  border-radius: 4px;
+  height: 2.5rem;
+  outline: none;
+  border: none;
+  width: 20rem;
+  padding: 0 3rem;
+  color: var(--main-text);
+}
+
+.link {
+  text-decoration: none;
+  color: #2a72de;
+}
+.login_dontHaveAccountText{
+  color: var(--main-text);
+}
+@media (max-width: 768px) {
+  .signup > form > div > input {
+    width: 7.7rem;
+  }
+}
+
+/* css code for the modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+

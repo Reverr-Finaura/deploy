@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+.outerCont{
+    max-width: 100vw;
+    min-height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+.top{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+}
+.top img{
+margin-left: 1rem;
+margin-top: 1rem;
+}
+.dataCont{
+    display: grid;
+    grid-template-columns:50% 50%;
+    margin: auto;
+}
+.dataCont .left{
+    display: flex;
+    flex-direction: column;
+}
+.dataCont .left h1{
+    font-family: 'Quicksand';
+font-style: normal;
+font-weight: 700;
+font-size: 3.5rem;
+line-height: 68px;
+text-align: center;
+text-transform: capitalize;
+color: #0E0E0E;
+margin: auto;
+}
+.mobileNumberOuterCont{
+    position: relative;
+    width: 76%;
+    margin-bottom: .5rem;
+}
+.mobileNumberOuterCont textarea{
+    padding-left: 8.5rem;
+    width: 100%;
+    margin: 0;
+}
+.left button{
+    width: 150px;
+height: 50px;
+background: #2A72DE;
+border: 1.57147px solid #2A72DE;
+border-radius: 24px;
+font-family: 'Quicksand';
+font-style: normal;
+color: #FFFFFF;
+font-size: 18px;
+line-height: 14px;
+margin: auto;
+margin-top: 0;
+cursor: pointer;
+}
+.right{
+    display: flex;
+}
+.right img{
+    margin: auto;
+    width: 60%;
+}
+.left textarea{
+    height: 40px!important;
+}
+.left input{
+    font-family: "Poppins";
+    background: #f6f6f6;
+    border: 2px solid #2a72de;
+    border-radius: 8px;
+    outline: none;
+    padding: 0.4rem 1rem;
+    font-size: 24px;
+    resize: none;
+    width: 95%;
+    height: 40px;
+    margin: 1rem auto;
+}
+@media(max-width:980px){
+    .dataCont,.first_third_dataCont{
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        margin-top: 2.5rem;
+    }
+    .left button{
+        margin-top: 1.5rem;
+    }
+    .right img{
+        margin: auto;
+        width: 40%;
+        margin-top: 2.5rem;
+    }
+    .imageForShow_third{
+        position: relative;
+        width: 200px;
+        height: 200px;
+        margin: auto;
+    } 
+    .first_third_dataCont_left textarea{
+        width: 80%;
+    } 
+}
+@media(max-width:600px){
+    .mobileNumberOuterCont{
+        width: 71%;
+    }
+}

@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+.skeletonLoaingCont{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-left: 2rem;
+
+}
+
+.outerCont{
+    /* width: 81%; */
+    min-height: 85vh;
+    /* margin-top: 192px; */
+    margin: 0px 102px;
+    font-family: "Quicksand";
+}
+.title{
+    font-style: normal;
+font-weight: 800;
+font-size: 1.8rem;
+line-height: 30px;
+letter-spacing: 0.03em;
+color: #202020;
+}
+
+.chooser{
+ 
+
+    /* linear-gradient(
+    to right,
+    #060f2a 10%,
+    #000022 90%,
+    #021147 90%,
+    #0212C6 90%,
+    #051020 10%
+  ) */
+    padding: 1rem;
+    /* background: linear-gradient( 119.93deg, rgba(255, 255, 255, 0.35) 4.68%, rgba(255, 255, 255, 0.3) 91.73% ); */
+    /* background: linear-gradient(
+    to right,
+    #060f2a 10%,
+    #000022 90%,
+    #021147 90%,
+    #0212C6 90%,
+    #051020 10%
+  ); */
+
+
+
+
+  /* background: linear-gradient(
+    to right,
+    /* #060f2a 10%,
+    #000022 90%,
+    #021147 90%,
+    #0212C6 90%,
+    #051020 10% */
+    /* #111f4c 100%,
+    #0e0e32 0%,
+    #1a1e2c 0%,
+    #000540 0%,
+    #070c32 0% */
+      /* ); */ 
+      background: linear-gradient(90.57deg, rgba(76, 201, 255, 0.06) 0%, rgba(83, 125, 236, 0.24) 48.96%, rgba(76, 201, 255, 0.06) 100%);
+
+
+    /* box-shadow: 0px 2.05973px 12.3584px -0.514933px rgb(0 0 0 / 15%); */
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    /* flex-wrap: wrap; */
+    overflow-x: auto;
+    gap: 1rem;
+    width: 100%;
+    /* box-shadow: 0 4px 4px rgb(0 0 0 / 25%); */
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 7rem;
+    color: var(--main-text);
+    /* border-bottom: 2px solid #E1E1E1 */
+
+}
+.chooser::-webkit-scrollbar-track {
+    background-color: white!important;
+  }
+  
+.chooser::-webkit-scrollbar-thumb {
+    background-color: #d7dadc;
+
+  }
+.chooser::-webkit-scrollbar {
+    width: 4px!important;
+    
+  }
+.underLine{
+    width: 100%;
+    height: 4px;
+    background-color: #2a72de;
+    margin: auto;
+    position: absolute;
+    bottom: -60%;
+    left: 0%;
+    border-radius: 5px;
+}
+.chooserLink{
+  margin: auto;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  padding: 0 1rem;
+  text-transform: capitalize;
+  font-family: 'Poppins'!important;
+  font-weight: 600;
+font-size: .9rem;
+line-height: 22px;
+color: #717171;
+
+}
+
+
+.toolspage{
+    background-color: rgb(0, 12, 31);
+}
+
+
+
+/* 
+@media(max-width:1300px){
+    .outerCont{
+        width: 75%;
+    }  
+}
+@media(max-width:980px){
+    .outerCont{
+        width: 70%;
+    }  
+}
+
+@media(max-width:800px){
+    .outerCont{
+        width: 64%;
+    }  
+}
+
+@media(max-width:600px){
+    .outerCont{
+        margin: auto;
+        width: 85%;
+    }  
+} */

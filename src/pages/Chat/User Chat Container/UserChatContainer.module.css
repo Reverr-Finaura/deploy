@@ -1,0 +1,56 @@
+.outerCont{
+    width: 96.2%;
+    height: 395px;
+    background: #FAFAFA;
+    border-bottom: 1.8px solid #EEEEEE;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+.outerCont::-webkit-scrollbar {
+    display: none;
+}
+.chatCont{
+display: flex;
+/* width: 65%; */
+margin-bottom: 1.5rem;
+height: max-content;
+}
+.userImg{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.chatImg{
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    margin: .5rem auto;
+}
+.messNTimeCont{
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+    margin-left: .8rem;
+    margin-top: .5rem;
+    color: rgba(0, 0, 0, 0.85);
+    font-style: normal;
+font-weight: 400;
+font-size: 1rem;
+line-height: 16px;
+padding: .7rem 1rem;
+background: #F4F4F7;
+border-radius: 1rem;
+}
+.messNTimeCont p{
+    line-height: 23px;
+}
+.time{
+    margin-top: .5rem;
+    color: rgba(0, 0, 0, 0.45);
+    font-style: normal;
+font-weight: 300;
+font-size: .8rem;
+line-height: 15px;
+}

@@ -1,0 +1,45 @@
+.outerCont{
+    max-width: 98%;
+    min-height: 83.5vh;
+    margin-top: 7rem;
+    margin-left: 1rem;
+    
+}
+.outerContLoading{
+    max-width: 98%;
+    min-height: 100vh;
+    margin-top: 7rem;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+}
+.pptViewerOuterCont{
+    max-width: 100%;
+    min-height: 83.5vh;
+    margin-left: .5rem;
+    
+}
+.animatedSideBar{
+    transform: translateX(-260px);
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    transition: all .8s ease;
+}
+.arroww{
+    position: absolute;
+    top: 7.3rem;
+    right: -17.5rem;
+    width: fit-content;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+@media(max-width:600px){
+    .outerCont{
+        margin-top: -2rem;
+    }
+}

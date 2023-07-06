@@ -1,0 +1,94 @@
+.container-1{
+    /* background-color: rgb(0, 0, 68); */
+    background-color: rgb(0, 12, 31);
+}
+
+.container-2{
+    /* position: relative; */
+    /* margin-top: 100px;/ */
+    margin-left: 15px;
+    /* padding: 10px; */
+}
+
+.people{
+    position: relative;
+    margin-top: 100px;
+    /* margin-left: 15px; */
+    padding: 10px;
+}
+
+
+.people-card{
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+
+.events{
+    display: flex;
+}
+
+
+.explore-btn{
+    width: 150px;
+    border-radius: 24px;
+    background-color: rgb(6, 126, 238);
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.explore-btn:hover{
+    cursor: pointer;
+}
+
+
+.event-btn{
+    width: 100px;
+    border-radius: 24px;
+    border: solid 1px white;
+    background-color: rgb(0, 12, 31);
+    color: white;
+    margin: 0px 10px;
+    padding: 5px;
+}
+
+.event-btn:hover{
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+
+.event-card{
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;   
+}
+
+/* .news-box{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+} */
+
+
+.news-container{
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;   
+}
+
+.article-container{
+    display: flex;
+    flex-direction: row;
+    margin: 5px 5px;
+    height: 619px;
+}
+
+.right-container{
+    margin-left: 30px;
+}

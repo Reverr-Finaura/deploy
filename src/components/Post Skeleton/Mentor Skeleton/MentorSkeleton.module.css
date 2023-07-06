@@ -1,0 +1,39 @@
+.card{
+    height: 500px;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  width: 400px;
+  margin: auto;
+  margin-bottom: 2.5rem;
+  background-color: var(--bg-card);
+  border-radius: 21px;
+}
+.cardTop{
+    display: flex;
+    padding: 1rem;
+}
+.info{
+    width: 50%;
+    margin-right: 1rem;
+}
+.cardTopUserImage{
+    margin: auto;
+}
+.cardMid{
+    padding: 1rem;
+}
+.cardBottomTop{
+
+    padding: 1rem;
+}
+.cardBottom{
+    display: flex;
+    padding: 1rem;
+}
+.cardPrice{
+    width: 50%;
+    margin-right: 1rem; 
+}
+.cardButton{
+    width: 50%;
+}

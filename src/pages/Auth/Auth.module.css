@@ -1,0 +1,110 @@
+.auth {
+  margin: auto;
+  width: 60%;
+}
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  gap: 0.5rem;
+  width: 85%;
+  color: var(--main-text);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.signup h1 {
+  font-size: 40px;
+  text-align: center;
+}
+
+.signup > p {
+  margin: 0% auto;
+}
+
+.googleSignUpBtn{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.signup > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  width: 85%;
+  gap: 1rem;
+}
+
+.name {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.signup > form > div > input {
+  background: rgba(95, 95, 95, 0.2);
+  border-radius: 4px;
+  height: 2.5rem;
+  outline: none;
+  border: none;
+  width: 20rem;
+  padding: 0 3rem;
+  color: var(--main-text);
+}
+
+.signup > form > .name > input {
+  width: 6.7rem;
+}
+
+.google_signup img {
+  height: 5vh;
+}
+
+.signupBottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 auto;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  gap: 1rem;
+}
+
+.links > p {
+  text-align: center;
+}
+
+.login_link {
+  text-decoration: none;
+  color: #2a72de;
+  width: fit-content;
+}
+
+.apply_link {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  color: #2a72de;
+  padding: 0;
+  line-height: 1;
+  width: fit-content;
+  margin: 0;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+@media (max-width: 425px) {
+  .name {
+    flex-direction: column;
+  }
+  .signup > form > div > input {
+    width: 6.7rem;
+  }
+}

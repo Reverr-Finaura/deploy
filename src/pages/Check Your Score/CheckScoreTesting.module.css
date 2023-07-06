@@ -1,0 +1,195 @@
+#checkyourscore {
+  min-height: 100vh;
+  max-height: max-content;
+  width: 100%;
+  /* margin: 8rem 20rem; */
+  display: flex;
+  flex-direction: column;
+  /* position: absolute; */
+  color: #fff;
+  background-color: rgba(3, 11, 24, 1);
+  padding: 1rem 0rem;
+}
+
+.checkscore__container {
+  /* margin-left: 10%; */
+  /* overflow-y: scroll; */
+  width: 45rem;
+  margin: 0 auto;
+}
+
+.checkscore__container > h1 {
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 47px;
+  letter-spacing: 0.085em;
+  /* color: var(--main-text); */
+  margin-bottom: 2%;
+  text-align: center;
+  font-family: "Reem Kufi";
+}
+
+.checkscore__container > h1 > span {
+  background: linear-gradient(
+    to right,
+    rgba(0, 179, 255, 1),
+    rgba(76, 201, 255, 1)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.progress_bar {
+  width: 100%;
+  height: 15px;
+  border-radius: 7px;
+  margin: 1rem auto;
+  /* background-color: rgba(99, 139, 199, 0.38); */
+  background-color: #0c1631;
+}
+
+.progress_bar > div {
+  background-color: #2a72de;
+  transition: all 0.5s ease-in;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.checkscore__content {
+  /* background: var(--bg-clr); */
+  box-shadow: 0px 2.4417px 14.6502px -0.610425px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(6.10425px);
+  border-radius: 10px;
+  margin: 0 1rem;
+  padding: 10px 30px;
+  /* height: 200vh; */
+  width: 45rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 2rem;
+  z-index: 5;
+  /* position: fixed; */
+  background: transparent;
+  border: 8px solid
+    linear-gradient(#91c1ff 1.13%, #79c0db 28.23%, #a2e1c4 60%, #c7ffaf 100%);
+}
+
+.checkscore__content > h3 {
+  font-size: 30px;
+  line-height: 53px;
+  letter-spacing: 0.085em;
+  text-align: center;
+  color: #2a72de;
+}
+
+.stages {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  background-color: #0c1631;
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+}
+
+.stages > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+  width: 3rem;
+  padding: 1rem 1rem;
+  /* padding: 1rem 2rem; */
+}
+.stages > div > img:nth-child(1) {
+  width: 100%;
+}
+
+.stages > div > img:nth-child(2) {
+  position: absolute;
+  top: 20%; /* Adjust the value as needed to align the tick image properly */
+  z-index: 1; /* Set a higher z-index to ensure the tick image appears above the circle image */
+}
+
+.stages > div {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 26px;
+  text-align: center;
+  background: linear-gradient(
+    to right,
+    rgba(0, 179, 255, 1),
+    rgba(76, 201, 255, 1)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* color: var(--main-text); */
+}
+
+.stage {
+  margin: 0;
+  background-color: #0c1631;
+  padding: 0.5rem 2rem;
+  border-radius: 20px;
+}
+
+.checkscoreicon2 {
+  position: absolute;
+  z-index: -1;
+  transform: scale(0.6);
+  left: 0;
+  bottom: -10%;
+}
+.checkscoreicon1 {
+  position: absolute;
+  z-index: -1;
+  transform: scale(0.8);
+  right: 0%;
+}
+
+@media screen and (max-width: 600px) {
+  #checkyourscore {
+    margin: 0;
+    margin-left: 0;
+    width: 100%;
+  }
+  .checkscore__container {
+    width: 100%;
+  }
+  .checkscore__container > h1 {
+    font-size: 20px;
+  }
+  .checkscoreicon1,
+  .checkscoreicon2 {
+    display: none;
+  }
+
+  .checkscore__container > h1 {
+    font-size: 30px;
+    margin-left: 1rem;
+  }
+  .checkscore__container {
+    margin-left: 0;
+  }
+  .checkscore__content {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+  .checkscore__content > h3 {
+    font-size: 25px;
+  }
+}
+
+/* @media screen and (max-width: 1333px) and (min-width: 600px) {
+    #checkyourscore {
+      margin-left: 25%;
+      width: 70%;
+    }
+  } */

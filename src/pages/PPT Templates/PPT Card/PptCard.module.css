@@ -1,0 +1,139 @@
+.outerCont{
+    width: 370px;
+    height: 370px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all .5s ease ;
+    position: relative;
+    background: linear-gradient(119.93deg, rgba(255, 255, 255, 0.35) 4.68%, rgba(255, 255, 255, 0.3) 91.73%);
+}
+.outerCont:hover{
+transform: scale(1.02);
+box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+
+}
+
+.imageCont{
+    width: 90%;
+    height: 200px;
+    background-color: var(--bg-card);
+    /* border-top-right-radius: 15px;
+    border-top-left-radius: 15px; */
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 1rem;
+}
+.img{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    /* border-top-right-radius: 15px;
+    border-top-left-radius: 15px; */
+}
+.blackEffect{
+    width: 100%;
+    height: 230px;
+    background-color: rgb(0, 0, 0,.7);
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    transition: visibility .2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.outerCont:hover .blackEffect{
+visibility: visible;
+}
+
+.btnCont{
+    width: 95%;
+    margin: auto;
+    display: flex;
+}
+.btn{
+    padding: .2rem 1rem;
+border: none;
+    background: transparent;
+    font-family: "Poppns";
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: auto;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(95.64deg, #2A72DE -8.23%, rgba(42, 114, 222, 0.80125) 45.89%, rgba(42, 114, 222, 0.826094) 72.94%, rgba(42, 114, 222, 0.64) 100%);
+box-shadow: 0px 1.57353px 9.44118px -0.393382px rgba(0, 0, 0, 0.2);
+border-radius: 11.5182px;
+display: flex;
+align-items: center;
+}
+.btn span{
+    display: flex;
+    margin-left: .5rem;
+    padding-bottom: .1rem;
+}
+.btn:hover{
+    background-color: hsl(221deg 79% 95%);
+    
+}
+.infoCont{
+    width: 100%;
+    height: 140px;
+    background: linear-gradient(119.93deg, rgba(255, 255, 255, 0.35) 4.68%, rgba(255, 255, 255, 0.3) 91.73%);
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    cursor: default;
+}
+
+.pptTitle{
+    font-family: "Exo";
+    padding: .7rem 1rem 0 1rem  ;
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 1.7rem;
+    color: var(--main-text);
+}
+.generealInfoCont{
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+.usesText,.likesText{
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--main-text);
+}
+.Icon{
+  display: flex;
+  margin-right: .5rem;
+  
+}
+.Value{
+    margin-right: .5rem;
+       
+}
+
+.tagListCont{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    gap: .5rem;
+    margin: auto;
+  color: var(--main-text);
+}
+.tagCont{
+    display: flex;
+    align-items: center;
+}
+.tagIcon{
+    display: flex;
+    margin-right: .2rem;
+}
