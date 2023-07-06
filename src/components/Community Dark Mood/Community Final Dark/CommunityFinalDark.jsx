@@ -549,7 +549,7 @@ const CommunityFinalDark = () => {
               <p className={style.spaceModalHeading}>Select your space (s).</p>
 
               <div className={style.spaceMenu}>
-                {currentUserDoc.userSpaces.map((space, index) => {
+                {currentUserDoc.userSpace.map((space, index) => {
                   return (
                     <div
                       key={index}
@@ -962,7 +962,7 @@ const CommunityFinalDark = () => {
                                 </p>
                                 {/* <p>Imagine the industry as a vibrant tapestry of possibilities—where does your thread weave its unique pattern?</p> */}
                                 <div className={style.spaceMenu}>
-                                  {currentUserDoc.userSpaces.map((space) => {
+                                  {currentUserDoc.userSpace.map((space) => {
                                     return (
                                       <div
                                         className={style.spaceMenuData}

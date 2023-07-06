@@ -134,36 +134,36 @@ const ProfileSummary = () => {
         <img className={styles.spaceImage} src={edit} alt="eye" />
       </div>
 
-      {userDoc?.userSpaces?.length ? (
+      {userDoc?.userSpace?.length ? (
         <>
         <div className={styles.spacesRow}>
-          {userDoc.userSpaces.slice(0,2).map((item, index) => (
+          {userDoc.userSpace.slice(0,2).map((item, index) => (
             <div key={index} className={styles.spacesRowDiv}>
               <text className={styles.spacesRowText}>{item}</text>
             </div>
           ))}
         </div>
-        {userDoc.userSpaces.length>3?
+        {userDoc.userSpace.length>3?
         <div className={styles.spacesRow}>
-          {userDoc.userSpaces.slice(2,4).map((item, index) => (
-            <div key={index} className={styles.spacesRowDiv}>
-              <text className={styles.spacesRowText}>{item}</text>
-            </div>
-          ))}
-        </div>
-        :null}
-        {userDoc.userSpaces.length>5?
-        <div className={styles.spacesRow}>
-          {userDoc.userSpaces.slice(4,6).map((item, index) => (
+          {userDoc.userSpace.slice(2,4).map((item, index) => (
             <div key={index} className={styles.spacesRowDiv}>
               <text className={styles.spacesRowText}>{item}</text>
             </div>
           ))}
         </div>
         :null}
-        {userDoc.userSpaces.length>7?
+        {userDoc.userSpace.length>5?
         <div className={styles.spacesRow}>
-          {userDoc.userSpaces.slice(6,8).map((item, index) => (
+          {userDoc.userSpace.slice(4,6).map((item, index) => (
+            <div key={index} className={styles.spacesRowDiv}>
+              <text className={styles.spacesRowText}>{item}</text>
+            </div>
+          ))}
+        </div>
+        :null}
+        {userDoc.userSpace.length>7?
+        <div className={styles.spacesRow}>
+          {userDoc.userSpace.slice(6,8).map((item, index) => (
             <div key={index} className={styles.spacesRowDiv}>
               <text className={styles.spacesRowText}>{item}</text>
             </div>
