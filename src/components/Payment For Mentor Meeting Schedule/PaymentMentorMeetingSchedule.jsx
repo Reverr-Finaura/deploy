@@ -56,12 +56,43 @@ const requestOptions = {
     body: JSON.stringify(bodyData)
 };
 console.log("DATA👀")
-fetch('https://server.reverrapp.com/webcftoken', requestOptions)
-    .then(response => {
-        response.json()
-        .then(data=>setSessionIdTokken(data.token))
-        .catch((err)=>{toast.error(err.message)})
-    }).catch((err)=>{toast.error(err.message)});
+const { id, amount, currency, customer_id, customer_phone } = bodyData;
+	const options = {
+	  method: "POST",
+	  url: "https://api.cashfree.com/pg/orders",
+	  headers: {
+		accept: "application/json",
+		"x-client-id": "21235619dae90a7c71fa82b24c653212",
+		"x-client-secret": "b3fcd2aee2a93a9d7efedcd88936046a43506c5c",
+		"x-api-version": "2022-01-01",
+		"content-type": "application/json",
+        'Access-Control-Allow-Credentials':"true"
+	  },
+	  data: {
+		customer_details: {
+		  customer_id: customer_id,
+		  customer_phone: customer_phone,
+		},
+		order_id: id,
+		order_amount: amount,
+		order_currency: currency,
+	  },
+    };
+    axios
+	  .request(options)
+	  .then(function (response) {
+		console.log(response.data.order_token );
+	  })
+	  .catch(function (error) {
+        toast.error(error.message)
+		console.error(error);
+	  });
+// fetch('https://server.reverrapp.com/webcftoken', requestOptions)
+//     .then(response => {
+//         response.json()
+//         .then(data=>setSessionIdTokken(data.token))
+//         .catch((err)=>{toast.error(err.message)})
+//     }).catch((err)=>{toast.error(err.message)});
 // axios.post("https://server.reverrapp.com/webcftoken",bodyData)
 // .then((res)=>{setSessionIdTokken(res.data.token)})
 // .catch((err)=>{toast.error(err.message)})
