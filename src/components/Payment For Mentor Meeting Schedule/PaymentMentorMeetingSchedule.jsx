@@ -50,10 +50,21 @@ const bodyData={
     customer_phone:userDocc?.phone,
     
 }
-
-axios.post("https://server.reverrapp.com/webcftoken/",bodyData)
-.then((res)=>{setSessionIdTokken(res.data.token)})
-.catch((err)=>{toast.error(err.message)})
+const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(bodyData)
+};
+console.log("DATA👀")
+fetch('https://server.reverrapp.com/webcftoken', requestOptions)
+    .then(response => {
+        response.json()
+        .then(data=>setSessionIdTokken(data.token))
+        .catch((err)=>{toast.error(err.message)})
+    }).catch((err)=>{toast.error(err.message)});
+// axios.post("https://server.reverrapp.com/webcftoken",bodyData)
+// .then((res)=>{setSessionIdTokken(res.data.token)})
+// .catch((err)=>{toast.error(err.message)})
 }
 
 
