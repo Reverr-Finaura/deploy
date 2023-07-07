@@ -51,7 +51,7 @@ const bodyData={
     
 }
 
-axios.post("/webcftoken/",bodyData)
+axios.post("https://server.reverrapp.com/webcftoken/",bodyData)
 .then((res)=>{setSessionIdTokken(res.data.token)})
 .catch((err)=>{toast.error(err.message)})
 }
