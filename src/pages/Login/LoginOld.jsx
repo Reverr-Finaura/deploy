@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import styles from "./LoginNew.module.css";
+import React, { useState, useEffect } from "react";
+import styles from "./LoginOld.module.css";
 import { auth, db } from "../../firebase";
 import {
   signInWithPopup,
@@ -9,13 +9,17 @@ import {
 } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { login, setUserData } from "../../features/userSlice";
-import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
+import { AiFillCloseCircle } from "react-icons/ai";
 import axios from "axios";
+import CountryCodePicker from "../../Utils/Country Code Picker/CountryCodePicker";
 import useQuery from "../../Utils/useQuery";
-const LoginNew = () => {
+import linkedinLogin from "../../images/Sign-In-Large---Active.png";
+import whiteSpin from "../../images/WHITE Spinner-1s-343px.svg";
+
+function Auth() {
   const selectedCountry = useSelector((state) => state.countryCode);
   const [metaData, setMetaData] = useState([]);
   const [email, setEmail] = useState("");
@@ -348,64 +352,241 @@ const LoginNew = () => {
     window.open("https://server.reverr.io/api/linkedin/authorize", "_self");
   };
 
+
   return (
-    <div className={styles.PageWrapper}>
-      <div className={styles.leftContent}>
-        <div className={styles.leftHeading}>
-          Welcome to <span>Reverr</span>.
-        </div>
-        <form onSubmit={loginEmail} className={styles.form}>
-          <div>
-            <label htmlFor="email" className={styles.label}>
-              Email or Phone
-            </label>
-            <input
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              type="email"
-              placeholder="Your E-Mail"
+    <>
+         {signInWithOTPModal && (
+        <>
+          <section className={styles.outerCont}>
+            <div className={styles.innerCont}>
+              <AiFillCloseCircle
+                onClick={() => setSignInWithOTPModal(false)}
+                className={styles.closeIcon}
+              />
+              {!tempOtp && (
+                <>
+                  <h1>Enter below Your Mobile Number</h1>
+                  <div className={styles.inputContNumberContainer}>
+                    <input
+                      className={styles.inputCont}
+                      onChange={(e) => setMobileNumber(e.target.value)}
+                      type="text"
+                      placeholder="Mobile Number"
+                      value={mobileNumber}
+                    />
+                    <CountryCodePicker />
+                  </div>
+                  <button
+                    onClick={() => sendOTP()}
+                    disabled={loading}
+                    className={styles.createCampaignButton}
+                    style={{ marginTop: "2rem" }}
+                  >
+                    {loading ? (
+                      <img
+                        className={styles.loaderr}
+                        src="https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Utils%2FWHITE%20Spinner-1s-343px.svg?alt=media&token=54b9d527-0969-41ff-a598-0fc389b2575a"
+                        alt="loader"
+                      />
+                    ) : (
+                      "Send OTP"
+                    )}
+                  </button>
+                </>
+              )}
+
+              {tempOtp && (
+                <>
+                  <h1>Enter the OTP Below</h1>
+                  <p className={styles.otpSendTextMessage}>
+                    OTP has been send to <b>{mobileNumber}</b> . If you want to
+                    change the number{" "}
+                    <span
+                      onClick={() => {
+                        setTempOtp(null);
+                      }}
+                    >
+                      click here
+                    </span>
+                  </p>
+                  <input
+                    className={styles.writeOtpInputCont}
+                    onChange={(e) => setOtpValue(e.target.value)}
+                    type="text"
+                    placeholder="OTP"
+                    value={otpValue}
+                  />
+                  {seconds > 0 || minutes > 0 ? (
+                    <p className={styles.otp_timer}>
+                      Otp valid till: {minutes < 10 ? `0${minutes}` : minutes}:
+                      {seconds < 10 ? `0${seconds}` : seconds}
+                    </p>
+                  ) : (
+                    <p className={styles.otp_timer}>Didn't recieve code?</p>
+                  )}
+                  <div
+                    style={{
+                      display: "flex",
+                      // gap: "2rem",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <button
+                      onClick={() => confirmOtpNLogin()}
+                      disabled={loading}
+                      className={styles.createCampaignButton}
+                    >
+                      {loading ? (
+                        <img
+                          className={styles.loaderr}
+                          src="https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Utils%2FWHITE%20Spinner-1s-343px.svg?alt=media&token=54b9d527-0969-41ff-a598-0fc389b2575a"
+                          alt="loader"
+                        />
+                      ) : (
+                        "Login"
+                      )}
+                    </button>
+
+                    <button
+                      onClick={() => sendOTP()}
+                      disabled={loading || seconds > 0 || minutes > 0}
+                      className={styles.createCampaignButton}
+                    >
+                      {loading ? (
+                        <img
+                          className={styles.loaderr}
+                          src="https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Utils%2FWHITE%20Spinner-1s-343px.svg?alt=media&token=54b9d527-0969-41ff-a598-0fc389b2575a"
+                          alt="loader"
+                        />
+                      ) : (
+                        "Resend OTP"
+                      )}
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          </section>
+        </>
+      )}
+      <section className={styles.loginOuterCont}>
+        <div className={styles.leftCont}>
+          <div className={styles.brandLogoCont}>
+            <img
+              style={{ cursor: "pointer" }}
+              onClick={() => navigate("/")}
+              className={styles.brandLogo}
+              src={
+                theme === "light-theme"
+                  ? "/images/Reverr Black 1.png"
+                  : "/images/reaver-logo.svg"
+              }
+              alt=""
             />
+            <p className={styles.brandName}>REVERR</p>
           </div>
-          <div>
-            <label htmlFor="password" className={styles.label}>
-              Password
-            </label>
+          <div className={styles.leftMidCont}>
+            <h1 className={styles.leftMidContTopText}>YOUR DREAM</h1>
+            <h1 className={styles.leftMidContBottomText}>OUR RESPONSIBILITY</h1>
+          </div>
+          <div className={styles.leftBottomCont}>
+            <h1 className={styles.leftBottomContTopText}>
+              If you can dream it we can complete it.
+            </h1>
+            <h1 className={styles.leftBottomContBottomText}>
+              Because we very well believe in OUR MOTO
+            </h1>
+          </div>
+        </div>
+
+        <div className={styles.rightCont}>
+          <h1 className={styles.rightContHeading}>LOGIN</h1>
+          <div className={styles.optionButtonCont}>
+            <button onClick={signInWithGoogle} className={styles.googleBtn}>
+              <span className={styles.gIconCont}>
+                <img
+                  className={styles.gICon}
+                  src="/images/icons8-google-48 1.png"
+                  alt="gICon"
+                />
+              </span>
+              Log in with google{" "}
+            </button>
+            <button
+              onClick={() => setSignInWithOTPModal(true)}
+              className={styles.otpButton}
+            >
+              <span className={styles.gIconCont}>
+                <img
+                  className={styles.gICon}
+                  src="/images/business-and-finance.png"
+                  alt="gICon"
+                />
+              </span>
+              Log in with OTP{" "}
+            </button>
+          </div>
+          <div
+            onClick={handleLinkedinLogin}
+            className={styles.linkedinLoginCont}
+          >
+            <img src={linkedinLogin} alt="linkedinLogin" />
+          </div>
+          <p className={styles.orText}>-OR-</p>
+          <form onSubmit={loginEmail} className={styles.form}>
+            <div className={styles.inputPhoneContainer}>
+              <input
+                style={{ paddingLeft: showCodePicker ? "" : "1rem" }}
+                className={styles.inputPhoneNumber}
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                type="text"
+                placeholder="Enter Your Email / Mobile Number"
+                required
+              />
+              {showCodePicker && <CountryCodePicker />}
+            </div>
             <input
               onChange={(e) => setPassword(e.target.value)}
               value={password}
+              className={styles.input}
               type="password"
-              placeholder="Enter a password"
+              name="email"
+              placeholder="Password"
+              required
             />
-          </div>
-          <div className={styles.forgotPassword}>
-            <Link to="/forgot-password">Forgot Password?</Link>
-          </div>
-          <button type="submit">Login</button>
-        </form>
-        <div className={styles.leftBottom}>
-          <button onClick={signInWithGoogle} className={styles.googleBtn}>
-            <span className={styles.gIconCont}>
-              <img
-                className={styles.gICon}
-                src="/images/gIcon.png"
-                alt="gICon"
-              />
-            </span>
-            Continue with Google{" "}
-          </button>
-          <div className={styles.newUser}>
-            <span>New to Reverr?</span>
-            <Link to="/signup">Sign Up</Link>
-          </div>
+            <button
+              disabled={isLogginInUsingLinkedIn}
+              className={styles.Button}
+              type="submit"
+            >
+              {isLogginInUsingLinkedIn ? (
+                <img
+                  className={styles.loaderr}
+                  src="https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Utils%2FWHITE%20Spinner-1s-343px.svg?alt=media&token=54b9d527-0969-41ff-a598-0fc389b2575a"
+                  alt="loader"
+                />
+              ) : (
+                "Login Now"
+              )}
+            </button>
+          </form>
+          <p className={styles.randomtext}>
+            Need an account?{" "}
+            <Link className={styles.linkk} to="/signup">
+              Sign Up
+            </Link>
+          </p>
+          <p className={styles.randomtext}>
+            Forgot Password?{" "}
+            <Link to="/forgotpassword" className={styles.linkk}>
+              Click Here
+            </Link>
+          </p>
         </div>
-      </div>
-      <div className={styles.rightContent}>
-        <div className={styles.rightImage}>
-          <img src="/images/login_Image.png" alt="LoginImg" />
-        </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
-};
+}
 
-export default LoginNew;
+export default Auth;

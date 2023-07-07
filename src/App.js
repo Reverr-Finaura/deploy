@@ -11,7 +11,7 @@ import ForgotPassword from "./pages/Forgotpassword/ForgotPassword";
 import ForgotEmail from "./pages/Forgotemail/ForgotEmail";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
-import LoginNew from "./pages/Login/LoginNew";
+import LoginNew from "./pages/Login/LoginOld";
 import PasswordReset from "./pages/PasswordRecover/PasswordReset";
 import Experience from "./pages/AfterSignUp/Experience/Experience";
 import Industry from "./pages/AfterSignUp/Industry/Industry";
@@ -118,6 +118,7 @@ import KnowledgeTesting from "./pages/Knowledge/KnowledgeTesting";
 import CheckYourScoreTesting from "./pages/Check Your Score/CheckYourScoreTesting";
 import CourcePageTesting from "./pages/AfterKnowledge/CourcesPage/CourcePageTesting";
 import HomeNotLoggedIn from "./pages/HomeNotLoggedIn/HomeNotLoggedIn";
+import LoginTesting from "./pages/Login/LoginNew";
 
 
 function App() {
@@ -153,13 +154,13 @@ function App() {
             <Route path="/" element={<LoginNew />} />
             {/* <Route path="/signup" element={<Auth />} /> */}
             <Route path="/signup" element={<SignUpAuth />}></Route>
-
             <Route path="/login" element={<LoginNew />} />
             <Route path="/community2" element={<HomeNotLoggedIn />}>
               <Route path=":postId" element={<SharedCommunityPost />}></Route>
             </Route>
           </>
         )}
+        <Route path="/login-test" element={<LoginTesting />}/>
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/forgotemail" element={<ForgotEmail />} />
         <Route path="/password-reset" element={<PasswordReset />} />
