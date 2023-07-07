@@ -55,6 +55,7 @@ const requestOptions = {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(bodyData)
 };
+console.log(bodyData)
 console.log("DATA👀")
 // const { id, amount, currency, customer_id, customer_phone } = bodyData;
 // 	const options = {
