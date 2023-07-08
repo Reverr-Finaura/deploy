@@ -7,7 +7,7 @@ function Vibe() {
     <div className={styles.container}>
       <img src={vibeImg} alt="img" />
       <button onClick={() => console.log("vibe clicked")}>
-        Explore VIBE &nbsp;&gt;
+        Coming soon! 
       </button>
     </div>
   );

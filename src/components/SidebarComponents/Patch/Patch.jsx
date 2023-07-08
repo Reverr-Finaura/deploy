@@ -33,7 +33,7 @@ function Patch() {
         One-on-One Networking
       </text>
       <button onClick={() => console.log("patch clicked")}>
-        Explore PATCH &nbsp;&gt;
+        Coming Soon! 
       </button>
     </div>
   );

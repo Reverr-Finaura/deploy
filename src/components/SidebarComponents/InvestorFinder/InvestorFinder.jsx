@@ -1,8 +1,10 @@
 import React from "react";
 import illustration from "../../../images/illustration.svg";
 import styles from "./InvestorFinder.module.css";
+import { useNavigate } from "react-router-dom";
 
 function InvestorFinder() {
+  const navigate = useNavigate();
   return (
     <div className={styles.container}>
       <p style={{ fontWeight: 500, fontSize: 15 }}>
@@ -17,11 +19,10 @@ function InvestorFinder() {
         alt="img"
       />
       <span style={{ color: "#ffffff", fontSize: 10, display: "flex", textAlign: "center"}}>
-        Worry not, because Reverr is here to help you to find investors
-        perfectly suited for you.
+        Worry not, Apply on Reverr.
       </span>
-      <button onClick={() => console.log("Investor Finder clicked")}>
-        Investor Finder
+      <button onClick={() => navigate("/funding-page")}>
+        Raise Funds
       </button>
     </div>
   );

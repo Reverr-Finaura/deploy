@@ -149,7 +149,7 @@ function Test() {
           <div style={{ marginTop: 50 }}></div>
           <Journey />
           <div style={{ marginTop: 50 }}></div>
-          <GetPremium />
+          {/* <GetPremium /> */}
           <div style={{ marginTop: 50 }}></div>
         </div>
 
@@ -185,7 +185,7 @@ function Test() {
           ) : null}
           {products[userType].includes("EVENTS") ? (
             <>
-              <Events />
+              {/* <Events /> */}
           <div style={{ marginTop: 50 }}></div>
             </>
           ) : null}

@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { Input } from "../../components/Funding Inputs/Input";
 import uploadIcon from "../../images/Upload.png";
 import emailjs from "@emailjs/browser";
+import NavBarFinalDarkMode from "../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 
 const GetFundedPage = () => {
   const navigate = useNavigate();
@@ -219,8 +220,7 @@ const GetFundedPage = () => {
     <>
       {width >= 600 ? (
         <>
-          <SidebarFinal />
-          <NavBarFinal />
+          <NavBarFinalDarkMode />
         </>
       ) : (
         <>
@@ -230,7 +230,7 @@ const GetFundedPage = () => {
       )}
 
       <section id="getFundingPage">
-        <img
+        {/* <img
           className="getFundingPageOuterIcon1"
           src="/images/fundingIcon2.png"
           alt=""
@@ -239,10 +239,10 @@ const GetFundedPage = () => {
           className="getFundingPageOuterIcon2"
           src="/images/fundingIcon1.png"
           alt=""
-        />
-        <h1 className="getFundedMainTitle">
-          Apply For <span>Funding Now</span>{" "}
-        </h1>
+        /> */}
+        {/* <h1 className="getFundedMainTitle" style={{color:"white"}}>
+          Apply For Funding Now{" "}
+        </h1> */}
         <div className="getFundingPageOuter">
           <h1 className="getFundingPageTitle">Fill Up The Form</h1>
           <hr />

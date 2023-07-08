@@ -38,7 +38,7 @@ function HomeNotLoggedIn() {
           <div style={{ marginTop: 50 }}></div>
           <Journey />
           <div style={{ marginTop: 50 }}></div>
-          <GetPremium />
+          {/* <GetPremium /> */}
           <div style={{ marginTop: 50 }}></div>
         </div>
 
