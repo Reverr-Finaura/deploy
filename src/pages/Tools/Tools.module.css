@@ -111,13 +111,13 @@ color: #202020;
   font-weight: 600;
   cursor: pointer;
   position: relative;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   text-transform: capitalize;
   font-family: 'Poppins'!important;
   font-weight: 600;
 font-size: .9rem;
 line-height: 22px;
-color: #717171;
+color: white;
 
 }
 
