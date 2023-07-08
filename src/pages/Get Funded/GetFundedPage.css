@@ -1,3 +1,184 @@
+html {
+
+ 
+}
+
+.container {
+  height: 80%;
+  margin-top: 3%;
+  margin-left: 8%;
+  margin-right: 6%;
+  margin-bottom: 6%;
+  background-color: #0a3054;
+  display: flex;
+  flex-direction: column;
+  padding-left: 8%;
+  padding-right: 10%;
+  padding-bottom: 5%;
+   justify-content: center;
+   border-radius: 2%;
+   border-width: 60px;
+}
+.cheek{
+  padding: 5px;
+  font-size: 17px;
+}
+
+.name{
+  margin-right: 10px;
+  padding: 5px;
+  height: 24px;
+  width: 32.5%;
+  border-radius: 6px;
+  border: none;
+}
+.lay{
+  
+  padding: 1%;
+  justify-content: center;
+  background-color: black;
+
+}
+
+
+  input[type="checkbox"]{
+   height:18px;
+   width: 18px;
+   background-color: #0a3054;
+   background: #0a3054;
+   cursor: pointer;
+  }
+  .startup-types{
+    margin-left:-30px;
+    display: flex;
+    flex-direction:row ;
+    gap: 20px;
+  }
+.title {
+  margin-top: 3%;
+  color: white;
+  text-align: center;
+  margin-bottom: auto;
+  font-weight: 700;
+  font-size: 160%;
+  
+}
+
+.aspirations {
+  color: skyblue;
+}
+
+.subheading {
+  color: white;
+  font-size: 25;
+  
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 110%;
+}
+label {
+font-size: 55px;
+color: white;
+font-size: 80%;
+font-weight: 500;
+}
+
+.flexx{
+  display: flex;
+  flex-direction:row ;
+  gap: 40px;
+ }
+ .sec{
+  padding-left: 25%;
+
+ }
+ .rinput-field {
+  padding: 40px;
+  height: 50% ;
+  width: 200%;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 10px;
+}
+.cont{
+  padding: 5px;
+  height: 40% ;
+  width: 225%;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 10px;}
+
+.input-field {
+  padding: 5px;
+  height: 40% ;
+  width: 200%;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 10px;
+}
+.cityy{
+  padding: 5px;
+  height: 40% ;
+  width: 190%;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.web_input{
+  margin-right: 10px;
+  padding: 5px;
+  height: 25px;
+  width: 83%;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.submit-button {
+  background-color: rgb(37, 178, 235);
+  color: rgb(14, 14, 14);
+  padding: 10px 20px;
+  border-radius: 80px;
+  border: 10;
+  cursor: pointer;
+}
+
+.astrik{
+  color: crimson;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #getFundingPage {
   min-height: 100vh;
   /* width: 1140px; */
@@ -175,7 +356,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 28rem;
+  width: 100%;
   max-width: 100%;
   text-align: center;
   position: relative;
@@ -192,9 +373,7 @@
   left: 0px;
 }
 .uploadPitchDeckContainer {
-  display: flex;
-  margin: auto;
-  width: 80%;
+  width: 40%;
   flex-direction: column;
   background: #ffffff;
   border: 0.819921px solid #eff0f7;
