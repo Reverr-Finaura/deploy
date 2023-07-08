@@ -120,6 +120,7 @@ import CourcePageTesting from "./pages/AfterKnowledge/CourcesPage/CourcePageTest
 import HomeNotLoggedIn from "./pages/HomeNotLoggedIn/HomeNotLoggedIn";
 import LoginTesting from "./pages/Login/LoginNew";
 import UserProfileTesting from "./pages/User Profile/UserProfileTesting";
+import UserEditProfileTesting from "./pages/User Edit Page/UserEditProfileTesting";
 
 
 function App() {
@@ -289,7 +290,8 @@ function App() {
         ></Route>
         {/* <Route path="/userprofile" element={<UserProfile />}></Route> */}
         <Route path="/userprofile" element={<UserProfileTesting />}></Route>
-        <Route path="/user-edit-profile" element={<UserEditProfile />}></Route>
+        <Route path="/editProfile" element={<UserEditProfileTesting />}></Route>
+        {/* <Route path="/user-edit-profile" element={<UserEditProfile />}></Route> */}
         <Route
           path="/change-user-password"
           element={<ChangePassword />}

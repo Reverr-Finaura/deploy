@@ -15,6 +15,7 @@ import { toast } from "react-hot-toast";
 import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
 import axios from "axios";
 import useQuery from "../../Utils/useQuery";
+import NavBarFinalDarkMode from "../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 const LoginNew = () => {
   const selectedCountry = useSelector((state) => state.countryCode);
   const [metaData, setMetaData] = useState([]);
@@ -347,64 +348,67 @@ const LoginNew = () => {
   const handleLinkedinLogin = () => {
     window.open("https://server.reverr.io/api/linkedin/authorize", "_self");
   };
-
+  // userDoc.Vibe_Data.How_To_Meet - []
   return (
-    <div className={styles.PageWrapper}>
-      <div className={styles.leftContent}>
-        <div className={styles.leftHeading}>
-          Welcome to <span>Reverr</span>.
-        </div>
-        <form onSubmit={loginEmail} className={styles.form}>
-          <div>
-            <label htmlFor="email" className={styles.label}>
-              Email or Phone
-            </label>
-            <input
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              type="email"
-              placeholder="Your E-Mail"
-            />
+    <>
+      <NavBarFinalDarkMode />
+      <div className={styles.PageWrapper}>
+        <div className={styles.leftContent}>
+          <div className={styles.leftHeading}>
+            Welcome to <span>Reverr</span>.
           </div>
-          <div>
-            <label htmlFor="password" className={styles.label}>
-              Password
-            </label>
-            <input
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-              type="password"
-              placeholder="Enter a password"
-            />
-          </div>
-          <div className={styles.forgotPassword}>
-            <Link to="/forgot-password">Forgot Password?</Link>
-          </div>
-          <button type="submit">Login</button>
-        </form>
-        <div className={styles.leftBottom}>
-          <button onClick={signInWithGoogle} className={styles.googleBtn}>
-            <span className={styles.gIconCont}>
-              <img
-                className={styles.gICon}
-                src="/images/gIcon.png"
-                alt="gICon"
+          <form onSubmit={loginEmail} className={styles.form}>
+            <div>
+              <label htmlFor="email" className={styles.label}>
+                Email or Phone
+              </label>
+              <input
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                type="email"
+                placeholder="Your E-Mail"
               />
-            </span>
-            Continue with Google{" "}
-          </button>
-          <div className={styles.newUser}>
-            <span>New to Reverr?</span>
-            <Link to="/signup">Sign Up</Link>
+            </div>
+            <div>
+              <label htmlFor="password" className={styles.label}>
+                Password
+              </label>
+              <input
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                type="password"
+                placeholder="Enter a password"
+              />
+            </div>
+            <div className={styles.forgotPassword}>
+              <Link to="/forgot-password">Forgot Password?</Link>
+            </div>
+            <button type="submit">Login</button>
+          </form>
+          <div className={styles.leftBottom}>
+            {/* <button onClick={signInWithGoogle} className={styles.googleBtn}>
+              <span className={styles.gIconCont}>
+                <img
+                  className={styles.gICon}
+                  src="/images/gIcon.png"
+                  alt="gICon"
+                />
+              </span>
+              Continue with Google{" "}
+            </button> */}
+            <div className={styles.newUser}>
+              <span>New to Reverr?</span>
+              <Link to="/signup">Sign Up</Link>
+            </div>
+          </div>
+        </div>
+        <div className={styles.rightContent}>
+          <div className={styles.rightImage}>
+            <img src="/images/login_Image.png" alt="LoginImg" />
           </div>
         </div>
       </div>
-      <div className={styles.rightContent}>
-        <div className={styles.rightImage}>
-          <img src="/images/login_Image.png" alt="LoginImg" />
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

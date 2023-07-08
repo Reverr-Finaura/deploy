@@ -3,6 +3,7 @@
   display: flex;
   height: 100vh;
   background: var(--bg-main, #030b18);
+  padding-top: 5rem;
 }
 .leftContent {
   display: flex;

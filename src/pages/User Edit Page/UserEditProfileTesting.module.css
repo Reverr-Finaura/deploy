@@ -1,0 +1,517 @@
+.editWrapper {
+  width: 100%;
+  min-height: 100vh;
+  background: #030b18;
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+}
+.editContainer {
+  width: 55%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.editHeader {
+  color: #fff;
+  font-family: Reem Kufi;
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  align-self: flex-start;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+.profileImage {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  height: 150px;
+}
+.profileImage > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.passwordButton {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+.pswdBtn {
+  border-radius: 3.63638rem;
+  border: none;
+  background: #109cdc;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+}
+
+/* ----------------------------------------- */
+.profileContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.personalTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+  padding: 2rem;
+  padding-bottom: 0;
+}
+.personalTitle p:nth-child(1) {
+  font-family: Poppins;
+  font-size: 1.33331rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.04rem;
+  color: #109cdc;
+}
+.connect {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+  padding: 2rem;
+  padding-top: 1rem;
+}
+.connect p {
+  font-family: Poppins;
+  font-size: 1.33331rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.04rem;
+  color: #109cdc;
+}
+.connect button {
+  border-radius: 3.63638rem;
+  border: 0.582px solid var(--white, #fff);
+  background: var(--white, #fff);
+  width: 6rem;
+  height: 2rem;
+  color: #000;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------- */
+.pwdWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.contact {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+}
+.contact > p {
+  font-family: Poppins;
+  font-size: 1.33331rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.04rem;
+  color: #109cdc;
+}
+.contactItem {
+  display: flex;
+  gap: 1rem;
+}
+.spacesWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.spacesTitle {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+}
+.spacesTitle > p {
+  font-family: Poppins;
+  font-size: 1.33331rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.04rem;
+  color: #109cdc;
+}
+.spacesCategory {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.spacesCategory button {
+  border-radius: 3.63638rem;
+  border: none;
+  background: #fff;
+  padding: 0.5rem 1rem;
+  color: #000;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+}
+.spacesList {
+}
+.spacesListItem {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.spacesList > p {
+  font-family: Poppins;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.04rem;
+  color: #109cdc;
+  margin-bottom: 1rem;
+}
+.spacesList button {
+  border-radius: 3.63638rem;
+  border: 0.582px solid var(--white, #fff);
+  background: transparent;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+}
+/* --------------------ConnectWrapper ----------------------- */
+.connectWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.connectTitle {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+  padding-top: 1rem;
+}
+.connectTitle {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+}
+.connectTitle > p {
+  font-family: Poppins;
+  font-size: 1.33333rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.04rem;
+  color: #109cdc;
+}
+.connectList {
+  display: flex;
+  gap: 1rem;
+  border-radius: 20px;
+}
+/* .connectList button {
+  border-radius: 3.63638rem;
+  border: none;
+  background: #fff;
+  padding: 0.5rem 1rem;
+  color: #000;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+} */
+.connectButtonActive {
+  border-radius: 3.63638rem;
+  border: none;
+  background: #109cdc;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+}
+.connectButton {
+  border-radius: 3.63638rem;
+  border: none;
+  background: #fff;
+  padding: 0.5rem 1rem;
+  color: #000;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+}
+/* ---------------PRofessional Wrapper------------------- */
+.professionalWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.professionalContent {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+  padding-top: 1rem;
+}
+.professionalContent > p {
+  font-family: Poppins;
+  font-size: 1.33333rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.04rem;
+  color: #109cdc;
+}
+.hereFor {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.hereForSelected > p {
+  color: #fff;
+  font-family: Poppins;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2.25rem;
+  letter-spacing: 0.0375rem;
+}
+.selectedList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.selectedList button {
+  border-radius: 3.63638rem;
+  border: none;
+  background: #fff;
+  padding: 0.5rem 1rem;
+  color: #000;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  cursor: pointer;
+}
+.hereForList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.hereForList button {
+  border-radius: 3.63638rem;
+  border: 0.582px solid var(--white, #fff);
+  background: transparent;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+}
+/* -------------------------Work Experience--------------------- */
+.workWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.workContent {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+  padding-top: 1rem;
+}
+.workTop {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-between;
+}
+.workTop > p {
+  font-family: Poppins;
+  font-size: 1.33333rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.04rem;
+  color: #109cdc;
+}
+.workTop button {
+  border-radius: 3.63638rem;
+  border: 0.582px solid var(--white, #109cdc);
+  background: transparent;
+  padding: 0.5rem 1rem;
+  color: #109cdc;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+}
+/* -----------------------Education ------------------------- */
+.educationWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.educationContent {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+  padding-top: 1rem;
+}
+.educationTop {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-between;
+}
+.educationTop > p {
+  font-family: Poppins;
+  font-size: 1.33333rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.04rem;
+  color: #109cdc;
+}
+.educationTop button {
+  border-radius: 3.63638rem;
+  border: 0.582px solid var(--white, #109cdc);
+  background: transparent;
+  padding: 0.5rem 1rem;
+  color: #109cdc;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+}
+/* ---------------Footer------------------ */
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.footerContent {
+  padding: 2rem;
+  display: flex;
+  gap: 1rem;
+  color: #fff;
+  padding-top: 1rem;
+  justify-content: flex-end;
+}
+.footerContent button:nth-child(1) {
+  border-radius: 3.63638rem;
+  border: 0.582px solid var(--white, #109cdc);
+  background: transparent;
+  padding: 0.5rem 1rem;
+  color: #109cdc;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+}
+.footerContent button:nth-child(2) {
+  border-radius: 3.63638rem;
+  border: none;
+  background: #109cdc;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+}
