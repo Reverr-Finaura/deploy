@@ -1,25 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 .PostCardContainer {
-
   height: max-content;
   width: 93%;
   /* margin: auto; */
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  /* --bg-light-blue */
   background-color: #0c1631;
-
-  border-radius: 19px;
-  /* border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0; */
+  /* border-radius: 19px; */
   font-family: "Poppins";
   font-style: normal;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
   position: relative;
-  margin-bottom: 3em;
-
+  /* margin-bottom: 3em;*/
+ 
 }
 
 .postDivideLine_community {
@@ -153,6 +148,9 @@ letter-spacing: 0.42px;
   flex-direction: column;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
   z-index: 20;
+  
+  background-color: #1a1e28;
+
 }
 
 .commentThreeDotsPost {
@@ -416,7 +414,7 @@ letter-spacing: 0.42px;
 
 .newCommentContainerrrr {
   display: flex;
-  margin-bottom: 1.5rem;
+  /* margin-bottom: 1.5rem; */
 }
 
 .communityNewCommentContUserImage {
@@ -467,21 +465,28 @@ letter-spacing: 0.42px;
   height: 30px;
   border-radius: 50%;
 }
+.commentedByComment{
+  color:#fff;
+  margin-left: 45px;
+}
 
-.commented-by {
+.commentedBy {
   margin-right: 1rem;
   font-weight: 600;
+  color:"#fff"
 }
 
 .commentedByAndComment {
-  margin-bottom: 1.5rem;
+  /* margin-bottom: 1.5rem; */
+  margin-left: 47px;
 }
 
-.commented-by-and-edit-cont {
+.commentedByAndEditCont {
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem;
   position: relative;
+  color: #fff;
 }
 
 .commentThreeDotsOption {
@@ -506,11 +511,14 @@ letter-spacing: 0.42px;
 
 .commentedByAndComment {
   padding: 1rem;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   /* background-color: var(--comment-card-div); */
   background-color: var(--bg-card);
   color: var(--main-text);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); */
+  background-color: #0c1631;
+  border-bottom: 1px solid gray;
+
 }
 
 @media (max-width: 980px) {

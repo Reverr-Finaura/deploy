@@ -9,7 +9,7 @@ const PostSkeleton = ({ cards }) => {
     .map((item, index) => {
       return (
         <>
-          <SkeletonTheme baseColor="#e6e4e4dc" highlightColor="grey">
+          <SkeletonTheme baseColor="#1a1e28" highlightColor="#fff">
             <div className="post-skeleton-card" key={index}>
               <div className="post-skeleton-card-top">
                 <div className="post-skeleton-card-top-userImage">

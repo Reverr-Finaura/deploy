@@ -6,6 +6,7 @@ import { login, logout, selectUser } from "./features/userSlice";
 import Card from "./pages/AfterSignUp/Cards/Card";
 import Auth from "./pages/Auth/Auth";
 import SignUpAuth from "./pages/Auth/SignUpAuth";
+import SignupAuthUpdated from "./pages/Auth/SignupAuthUpdated";
 import EnterOtp from "./pages/EnterOtp/EnterOtp";
 import ForgotPassword from "./pages/Forgotpassword/ForgotPassword";
 import ForgotEmail from "./pages/Forgotemail/ForgotEmail";
@@ -101,6 +102,7 @@ import DummyTest from "./pages/Dummy Test Page/DummyTest";
 // import BuildAudience from "./pages/New Courses/Courses/BuildAudience";
 import CommunityFinalDark from "./components/Community Dark Mood/Community Final Dark/CommunityFinalDark";
 import Test from "./TestPage/Test";
+import EnterOtpUpdated from "./pages/EnterOtpUpdated/EnterOtpUpdated";
 
 
 function App() {
@@ -135,7 +137,7 @@ function App() {
           <>
             <Route path="/" element={<LoginNew />} />
             {/* <Route path="/signup" element={<Auth />} /> */}
-            <Route path="/signup" element={<SignUpAuth />}></Route>
+            <Route path="/signup" element={<SignupAuthUpdated />}></Route>
 
             <Route path="/login" element={<LoginNew />} />
           </>
@@ -143,9 +145,11 @@ function App() {
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/forgotemail" element={<ForgotEmail />} />
         <Route path="/password-reset" element={<PasswordReset />} />
+       
         {newUser ? (
-          <Route path="enterotp" element={<EnterOtp />}></Route>
+          <Route path="enterotp" element={<EnterOtpUpdated/>}></Route>
         ) : null}
+
         <Route path="/startup-list" element={<Card />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/industry" element={<Industry />} />
