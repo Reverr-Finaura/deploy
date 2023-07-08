@@ -3,7 +3,7 @@ import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../../firebase";
 import styles from "./ConnectSuggestion.module.css";
 
-function ConnectSuggestion({ isLoggedIn, buttonRef, openModal }) {
+function ConnectSuggestion({ isLoggedIn,  openModal }) {
   const [users, setUsers] = useState([]);
   // console.log("is log in7874: " + isLoggedIn);
 
@@ -100,10 +100,11 @@ function ConnectSuggestion({ isLoggedIn, buttonRef, openModal }) {
                 onClick={() => {
                   console.log("connect clicked111111111");
                   if (!isLoggedIn) {
-                    console.log("connect clicked");
-                    // return openModal();
+                    return openModal();
+                  }else{
+                    //normal code
+                    console.log("user logged!")
                   }
-                  console.log("connect clicked67");
                 }}
                 // ref={buttonRef}
               >
@@ -125,4 +126,4 @@ ConnectSuggestion.defaultProps = {
   openModal: () => {},
 };
 
-export default React.memo(React.forwardRef(ConnectSuggestion));
+export default ConnectSuggestion;

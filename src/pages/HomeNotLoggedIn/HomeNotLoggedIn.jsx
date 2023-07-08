@@ -26,27 +26,27 @@ function HomeNotLoggedIn() {
   const buttonRef = useRef(null);
   console.log("isLogInModalOpen: 1" + isLogInModalOpen)
 
-  const handleOutsideClick = (event) => {
-    console.log("isLogInModalOpen: 2" + isLogInModalOpen)
-    if (
-      isLogInModalOpen &&
-      modalRef.current &&
-      !modalRef.current.contains(event.target) &&
-      !buttonRef.current.contains(event.target)
-    ) {
-      setIsLogInModalOpen(false);
-      console.log("isLogInModalOpen: 3" + isLogInModalOpen)
-    }
-  };
+  // const handleOutsideClick = (event) => {
+  //   console.log("isLogInModalOpen: 2" + isLogInModalOpen)
+  //   if (
+  //     isLogInModalOpen &&
+  //     modalRef.current &&
+  //     !modalRef.current.contains(event.target) &&
+  //     !buttonRef.current.contains(event.target)
+  //   ) {
+  //     setIsLogInModalOpen(false);
+  //     console.log("isLogInModalOpen: 3" + isLogInModalOpen)
+  //   }
+  // };
 
-  useEffect(() => {
-    document.addEventListener("click", handleOutsideClick);
-    console.log("issue fixed")
+  // useEffect(() => {
+  //   // document.addEventListener("click", handleOutsideClick);
+  //   console.log("issue fixed")
 
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, [isLogInModalOpen]);
+  //   return () => {
+  //     document.removeEventListener("click", handleOutsideClick);
+  //   };
+  // }, [isLogInModalOpen]);
 
   const openModal = React.useCallback(() => {
     console.log("openModal clicked");
@@ -60,11 +60,9 @@ function HomeNotLoggedIn() {
           <div className={styles.logInModal} ref={modalRef}>
             <img src={require("../../images/userIcon.png")} alt="img" />
             <text style={{ color: "#ffffff", fontSize: 20, marginTop: 10 }}>
-              Sign in to view your
+              Sign in to Continue
             </text>
-            <text style={{ color: "#ffffff", fontSize: 20 }}>
-              full Reverr profile
-            </text>
+           
             <button
               className={styles.signInButton}
               onClick={() => console.log("Sign in clicked")}
@@ -108,7 +106,7 @@ function HomeNotLoggedIn() {
           {/* <ProfileSummary />
           <div style={{ marginTop: 50 }}></div> */}
 
-          <ConnectSuggestion onClick={openModal} isLoggedIn={false} buttonRef={buttonRef} openModal={openModal} />
+          <ConnectSuggestion isLoggedIn={false}  openModal={openModal} />
           <div style={{ marginTop: 50 }}></div>
           <Vibe />
           <div style={{ marginTop: 50 }}></div>
