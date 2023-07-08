@@ -23,7 +23,7 @@ import Patch from "../../components/SidebarComponents/Patch/Patch";
 function HomeNotLoggedIn() {
   return (
     <>
-      <NavBarFinalDarkMode />
+      <NavBarFinalDarkMode isLoggedIn={false} />
       <div className={styles.container}>
         <div className={styles.leftSidebar} style={{ marginTop: "10em" }}>
           {/* <ProfileSummary />
@@ -38,7 +38,7 @@ function HomeNotLoggedIn() {
           <div style={{ marginTop: 50 }}></div>
           <Journey />
           <div style={{ marginTop: 50 }}></div>
-          <GetPremium />
+          {/* <GetPremium /> */}
           <div style={{ marginTop: 50 }}></div>
         </div>
 

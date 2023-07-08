@@ -158,7 +158,8 @@ function App() {
             <Route path="/signup" element={<SignUpAuth />}></Route>
             <Route path="/login" element={<LoginTesting />} />
             {/* <Route path="/login" element={<LoginNew />} /> */}
-            <Route path="/community2" element={<HomeNotLoggedIn />}>
+            <Route path="/gallery" element={<HomeNotLoggedIn />}>
+              
               <Route path=":postId" element={<SharedCommunityPost />}></Route>
             </Route>
           </>

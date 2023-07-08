@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "./ExploreTools.module.css";
+import { useNavigate } from "react-router-dom";
 
 function ExploreTools() {
+  const navigate = useNavigate();
   return (
     <div className={styles.container}>
       <p style={{ fontWeight: 500, fontSize: 15 }}>
@@ -19,7 +21,7 @@ function ExploreTools() {
         src={require("../../../images/peoplediscussion.png")}
         alt="img"
       />
-      <button onClick={() => console.log("explore tools clicked")}>
+      <button onClick={() => navigate("/tools")}>
         Explore Tools
       </button>
     </div>

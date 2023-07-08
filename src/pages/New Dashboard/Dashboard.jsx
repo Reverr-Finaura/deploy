@@ -83,6 +83,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
+    navigate("/community")
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
   }, []);

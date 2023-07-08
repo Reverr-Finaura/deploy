@@ -43,13 +43,15 @@ import {
   MdOutlineKeyboardArrowDown,
   MdOutlineNotifications,
 } from "react-icons/md";
-import { BiHomeAlt } from "react-icons/bi";
+// import { IoMdLogOut } from "react-icons/io";
+import {GiArchiveRegister} from "react-icons/gi"
+import { BiHomeAlt, BiLogIn} from "react-icons/bi";
 import { HiOutlineTemplate } from "react-icons/hi";
 import emailjs from "@emailjs/browser";
 import axios from "axios";
 import NotificationCard from "./NotificationCard";
 
-const NavBarFinalDarkMode = () => {
+const NavBarFinalDarkMode = ({ isLoggedIn}) => {
   const user = useSelector((state) => state.user);
   const userTypeLower = useSelector((state) =>
     state.onboarding.userType.toLowerCase()
@@ -79,7 +81,6 @@ const NavBarFinalDarkMode = () => {
   const elementsToCheck = [
     "TOOLS",
     "MENTOR",
-    "KNOWLEDGE",
     "FUNDING-APPLY",
     "STARTUP SCORE",
   ];
@@ -643,18 +644,37 @@ const NavBarFinalDarkMode = () => {
 
         <div className={style.navbarIconsCont}>
           <div className={style.allNavbarIconsImgName}>
-            <div className={style.navbarIconsImgName}>
+            <div className={style.navbarIconsImgName} onClick={() => isLoggedIn? navigate("/") : navigate("/gallery") }>
               <BiHomeAlt className={style.navbarIconsImg} />
               <p className={style.navbarIconsName}>Home</p>
             </div>
             <div className={style.navbarIconsImgName}>
-              <AiOutlineGlobal className={style.navbarIconsImg} />
+              <AiOutlineGlobal className={style.navbarIconsImg} onClick={() => navigate("/discover")}/>
               <p className={style.navbarIconsName}>Discover</p>
               {/* <NavLink className="navlinks" to="/discover">
                 <p className={style.navbarIconsName}>Discover</p>
               </NavLink> */}
             </div>
-            {filteredArray.length >= 1 ? (
+            
+            {!isLoggedIn? 
+            <div className={style.navbarIconsImgName}>
+              <GiArchiveRegister className={style.navbarIconsImg} onClick={() => navigate("/signup")}/>
+              <p className={style.navbarIconsName}>Signup</p>
+              {/* <NavLink className="navlinks" to="/discover">
+                <p className={style.navbarIconsName}>Discover</p>
+              </NavLink> */}
+            </div>
+            :null}
+            {!isLoggedIn? 
+            <div className={style.navbarIconsImgName}>
+              <BiLogIn className={style.navbarIconsImg} onClick={() => navigate("/login")}/>
+              <p className={style.navbarIconsName}>Login</p>
+              {/* <NavLink className="navlinks" to="/discover">
+                <p className={style.navbarIconsName}>Discover</p>
+              </NavLink> */}
+            </div>
+            :null}
+            {isLoggedIn? filteredArray.length >= 1 ? (
               <div
                 className={style.navbarIconsImgName}
                 onClick={toggleProductModal}
@@ -663,11 +683,14 @@ const NavBarFinalDarkMode = () => {
                 <HiOutlineTemplate className={style.navbarIconsImg} />
                 <p className={style.navbarIconsName}>Products</p>
               </div>
-            ) : null}
+            ) : null: null}
+            {isLoggedIn?
             <div className={style.navbarIconsImgName}>
-              <AiOutlineMessage className={style.navbarIconsImg} />
+              <AiOutlineMessage className={style.navbarIconsImg} onClick={() => navigate("/messages")} />
               <p className={style.navbarIconsName}>Messages</p>
             </div>
+            :null}
+            {isLoggedIn?
             <div
               onClick={() => setNotificationOpen(!notificationOpen)}
               className={style.navbarIconsImgName}
@@ -697,16 +720,17 @@ const NavBarFinalDarkMode = () => {
                 </>
               )}
             </div>
+            :null}
           </div>
 
-          {!userDoc.hasUpgrade && (
+          {/* {!userDoc.hasUpgrade && (
             <button
               className={style.navbarFinalUpgradeBtn}
               onClick={() => navigate("/upgrade")}
             >
               Get Premium
             </button>
-          )}
+          )} */}
 
           <div
             onClick={() => setRequestsbuttonClick((current) => !current)}
@@ -810,7 +834,8 @@ const NavBarFinalDarkMode = () => {
               </div>
             ) : null}
           </div>
-
+          {isLoggedIn?      
+          <>
           <img
             onClick={() => navigate("/userprofile")}
             className="navbar_final_user_Image"
@@ -891,11 +916,16 @@ const NavBarFinalDarkMode = () => {
               </div>
             ) : null}
           </div>
+          </>
+          :null}
         </div>
       </section>
       {chat && <Chat />}
     </>
   );
+};
+NavBarFinalDarkMode.defaultProps = {
+  isLoggedIn: true,
 };
 
 export default NavBarFinalDarkMode;

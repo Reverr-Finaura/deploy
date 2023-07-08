@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "./Journey.module.css";
+import { useNavigate } from "react-router-dom";
 
 function Journey() {
+  const navigate = useNavigate();
   return (
     <div className={styles.container}>
       <p style={{ fontWeight: 500, fontSize: 15 }}>
@@ -12,7 +14,7 @@ function Journey() {
       </p>
       <div>
         <img src={require("../../../images/Rectangle 1612.png")} alt="img" />
-        <button onClick={() => console.log("patch clicked")}>
+        <button onClick={() => navigate("/knowledge")}>
         The Journey &nbsp;&gt;
         </button>
       </div>
