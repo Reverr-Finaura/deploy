@@ -132,6 +132,7 @@ const CommunityFinalDark = () => {
 
   useEffect(() => {
     getNews();
+
   }, []);
 
   window.onscroll = () => {

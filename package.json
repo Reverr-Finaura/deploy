@@ -2,7 +2,6 @@
   "name": "reverrreactweb",
   "version": "0.1.0",
   "private": true,
-  "proxy":"https://server.reverr.io",
   "dependencies": {
     "@anatoliygatt/dark-mode-toggle": "^1.0.1",
     "@emailjs/browser": "^3.6.2",
