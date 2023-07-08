@@ -82,6 +82,7 @@ const UserEditProfileTesting = () => {
 
   const [formData, setFormData] = useState({
     userReason: [],
+    linkedin:"",
     Vibe_Data: {
       How_to_Meet: [],
     },
@@ -108,7 +109,7 @@ const UserEditProfileTesting = () => {
     }
   }, [userDoc]);
 
-//   console.log("formData", formData);
+  //   console.log("formData", formData);
 
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -279,8 +280,8 @@ const UserEditProfileTesting = () => {
 
   async function UploadData() {
     updateDoc(doc(db, "Users", user?.user?.email), {
-        ...formData,
-    })
+      ...formData,
+    });
     navigate("/userProfile");
   }
   // ---------------------------------------------
@@ -301,7 +302,7 @@ const UserEditProfileTesting = () => {
                 ? userDoc.image
                 : DefaultDP
             }
-            alt="Linkedin"
+            alt="User_Image"
           />
         </div>
         <div className={styles.profileContent}>
@@ -723,9 +724,9 @@ const UserEditProfileTesting = () => {
                   <input
                     type="text"
                     id="linkedinLink"
-                    name="linkedinLink"
+                    name="linkedin"
                     placeholder="Enter your linkedin link"
-                    value={formData?.linkedinLink}
+                    value={formData?.linkedin}
                     onChange={handleChange}
                   />
                   {/* <button>Edit</button> */}
