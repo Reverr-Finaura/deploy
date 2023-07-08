@@ -1,0 +1,505 @@
+#mentors-page-new {
+  width: fit-content;
+  min-height: 100vh;
+  margin-left: 15.5rem;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+  display: flex;
+}
+.MentorstitleAndFilterCont {
+  display: flex;
+  align-items: center;
+  width: 78%;
+  margin-top: 11rem;
+  margin-left: 18rem;
+  color: var(--main-text);
+}
+.mentorFilterCardCont {
+  margin-left: auto;
+  position: relative;
+}
+.MentorsFilterButton,
+.mentorsSearchFilter {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 0.05rem;
+  border: none;
+  background: #2a72de;
+  box-shadow: 0px 4px 4px rgb(255 255 255 / 25%);
+  border-radius: 4px;
+  width: fit-content;
+}
+.mentorsSearchFilter {
+  margin-left: 3rem;
+  height: 53px;
+}
+.priceAndExpertiseFilterCont {
+  background-color: transparent;
+  width: fit-content;
+  /* margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 15rem; */
+  display: flex;
+}
+.sortContainer {
+  display: flex;
+}
+.ByExpertiseFilterCont {
+  margin-left: 2rem;
+  position: relative;
+}
+.ByPriceFilterCont {
+  position: relative;
+}
+.down-triangle-image {
+  width: 10%;
+  margin: auto;
+}
+.down-triangle-image-expertise {
+  width: 7%;
+  margin: auto;
+}
+.ByPriceFilter {
+  padding: 1rem;
+  background-color: var(--bg-sub-card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 150px;
+}
+.price-filter-option-cont {
+  border-radius: 7px;
+  background-color: var(--bg-sub-card);
+  z-index: 1;
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+
+  align-items: flex-start;
+  padding: 1rem;
+  padding-top: 0.5rem;
+  position: absolute;
+  left: -10rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.price-filter-option {
+  border: 1px solid var(--main-text);
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.price-filter-option-selected {
+  border: 1px solid #2a72de;
+  border: none;
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  color: #ffffff;
+  background-color: #2a72de;
+}
+.ByExpertiseFilter {
+  padding: 1rem;
+  background-color: var(--bg-sub-card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
+.expertise-filter-option-cont {
+  width: 300px;
+  height: 285px;
+  border-radius: 7px;
+  background-color: var(--bg-sub-card);
+  z-index: 1;
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  position: absolute;
+}
+.expertise-filter-option {
+  width: fit-content;
+  float: left;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid var(--main-text);
+  padding: 0.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.expertise-filter-option-selected {
+  width: fit-content;
+  float: left;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  padding: 0.2rem 0.3rem;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #2a72de;
+}
+.loadingAnimationContainer {
+  margin-left: 15rem;
+  margin-top: 2rem;
+  display: flex;
+}
+.MentorslinkedInSocialLink {
+  width: fit-content;
+  height: fit-content;
+  margin-right: 1rem;
+}
+.mentors-page-card-container {
+  width: 94%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  gap: 1.6rem;
+}
+.mentors-page-card {
+  height: 500px;
+  /* margin-right: 1rem; */
+  /* margin-bottom: 1rem; */
+  width: 380px;
+  /* margin: auto; */
+  margin-bottom: 0rem;
+  /* box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0px 4px 14px -1px rgba(0, 0, 0, 0.25);
+  /* margin-left: .25rem; */
+  border-radius: 16px;
+}
+
+.mentor-cardd {
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-card);
+  padding: 2rem;
+  height: 450px;
+  margin-left: 1rem;
+  padding-bottom: .5rem;
+  padding-left: .5rem;
+}
+.mentor-cardd-top-part {
+  display: flex;
+  height: 180px;
+}
+.mentor-cardd-top-part-left-col-name-icon-cont {
+  display: flex;
+  position: relative;
+}
+.mentor-cardd-top-part-left-col-title {
+  font-family: "Poppins";
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+  margin-right: 1rem;
+  color: var(--main-text);
+}
+.mentor-cardd-top-part-left-col-sub-title {
+  font-size: 0.8rem;
+  font-family: "Poppins";
+  /* color: hsl(221, 18%, 49%); */
+  color: var(--main-text);
+  margin-bottom: 1rem;
+}
+.mentor-cardd-top-part-right-col {
+  width: fit-content;
+  margin-left: auto;
+}
+.mentor-cardd-top-part-right-col-image {
+  width: 6rem;
+  border-radius: 50%;
+  height: 6rem;
+}
+
+.mentor-cardd-middle-part {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: 150px;
+}
+.mentor-cardd-middle-part-intro {
+  font-family: "Poppins";
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--main-text);
+}
+.mentor-cardd-skill-part {
+  height: 150px;
+}
+.mentor-cardd-skill-part-skill-cont {
+  display: flex;
+  width: fit-content;
+  float: left;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+}
+.mentor-cardd-skill-part-skill-cont-skill-tag {
+  width: 0.7rem;
+  margin-right: 0.7rem;
+  padding-top: 0.05rem;
+}
+.mentor-cardd-skill-part-skill-cont-skill {
+  font-family: "Poppins";
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--main-text);
+  /* color: hsl(221, 18%, 49%); */
+  margin: auto;
+}
+
+.mentor-cardd-bottom-part-left-col-price-cont {
+  font-family: "Poppins";
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+  color: var(--main-text);
+}
+
+.mentor-cardd-bottom-part {
+  display: flex;
+  margin-top: 2rem;
+}
+
+.mentor-cardd-bottom-part-left-col {
+  display: flex;
+  align-items: center;
+}
+.mentor-cardd-bottom-part-left-col-per-time {
+  /* color: hsl(221, 18%, 49%); */
+  color: var(--main-text);
+}
+.mentor-cardd-bottom-part-right-col {
+  width: fit-content;
+  margin-left: auto;
+}
+
+.mentor-cardd-bottom-part-right-col-schedule-btn {
+  padding: 4px 6px;
+  gap: 10px;
+  /* color: #2a72de; */
+  color: var(--main-text);
+  background: transparent;
+  border-radius: 6px;
+  /* border: 2px solid #2a72de; */
+  border: 2px solid var(--main-text);
+  font-family: "Poppins";
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filterOptionsShowCont {
+  margin-left: 17rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 78%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+.priceAndExpertiseOptionCont {
+  display: flex;
+  width: 70%;
+  height: 100px;
+  overflow: auto;
+  align-items: center;
+  background: var(--bg-sub-card);
+  border-radius: 11px;
+  padding: 1rem;
+}
+/* .price-filter-optionss{
+    display: flex;
+    overflow: auto;
+    width: 25%;
+    align-items: center;
+} */
+.price-filter-optionsselecteddd {
+  padding: 1rem;
+  color: #ffffff;
+  font-size: 16px;
+  border: none;
+  background: #2a72de;
+  box-shadow: 0px 4px 4px rgb(255 255 255 / 25%);
+  margin-left: 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  width: max-content;
+}
+.deleteFilterOption {
+  padding-left: 0.5rem;
+  font-weight: bold;
+}
+/* .expertise-filter-optionss{
+    display: flex;
+    overflow: auto;
+    width: 75%;
+    align-items: center;
+} */
+.saveNewFilterChanges,
+.resetFilter {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 0.05rem;
+  border: none;
+  background: #2a72de;
+  box-shadow: 0px 4px 4px rgb(255 255 255 / 25%);
+  border-radius: 4px;
+  width: fit-content;
+  margin-left: auto;
+}
+.resetFilter {
+  margin-left: 1rem !important;
+}
+.saveChangesAndResetButtonCont {
+  display: flex;
+  width: fit-content;
+  margin-left: auto;
+}
+@media (max-width: 1248px) {
+  .MentorstitleAndFilterCont {
+    flex-direction: column;
+  }
+  .mentorFilterCardCont {
+    margin: auto;
+    margin-top: 2rem;
+  }
+  .priceAndExpertiseFilterCont {
+    margin-top: 2rem;
+  }
+}
+@media (max-width: 1217px) {
+  .MentorstitleAndFilterCont {
+    width: 70%;
+  }
+  .price-filter-option-cont {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    left: 0rem;
+  }
+}
+@media (max-width: 1180px) {
+  .filterOptionsShowCont {
+    display: block;
+  }
+  .saveChangesAndResetButtonCont {
+    display: flex;
+    width: fit-content;
+    margin-left: 1rem;
+    margin-top: 2rem;
+  }
+  .filterOptionsShowCont {
+    width: 70%;
+  }
+  .priceAndExpertiseOptionCont {
+    width: 95%;
+  }
+  .mentors-page-card{
+    margin: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mentorsSearchFilter {
+    margin-left: 1rem;
+  }
+  .ByExpertiseFilterCont {
+    margin-left: 1rem;
+  }
+  .priceAndExpertiseFilterCont {
+    flex-direction: column;
+  }
+  .mentorsSearchFilter {
+    margin: auto;
+    margin-top: 1.5rem;
+  }
+}
+@media (max-width: 870px) {
+  .filterOptionsShowCont {
+    width: 60%;
+  }
+  .priceAndExpertiseOptionCont {
+    width: 95%;
+  }
+}
+@media (max-width: 816px) {
+  .MentorstitleAndFilterCont {
+    width: 65%;
+    margin-left: 14rem;
+  }
+  /* .sortContainer{
+    flex-direction: column;
+   }  */
+  .ByExpertiseFilterCont {
+    margin-left: 0;
+    margin-top: 1.5rem;
+  }
+  .ByExpertiseFilter {
+    margin: auto;
+  }
+  .ByPriceFilterCont {
+    margin: auto;
+  }
+  .priceAndExpertiseFilterCont {
+    width: 95%;
+  }
+  .ByExpertiseFilterCont {
+    margin-top: 0;
+  }
+}
+@media (max-width: 680px) {
+  #mentors-page-new {
+    margin-left: 11rem;
+  }
+  .MentorstitleAndFilterCont {
+    margin-left: 12.5rem;
+  }
+}
+@media (max-width: 634px) {
+  #mentors-page-new {
+    margin-left: 12.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  #mentors-page-new {
+    margin: auto;
+    margin-top: 3rem;
+  }
+  .mentors-page-card{
+    margin: auto;
+  }
+  .MentorstitleAndFilterCont {
+    margin: auto;
+    width: 85%;
+  }
+
+  .priceAndExpertiseFilterCont {
+    margin: auto;
+    margin-top: 1.5rem;
+  }
+
+  .filterOptionsShowCont {
+    margin: auto;
+    margin-top: 2rem;
+    width: 80%;
+  }
+}

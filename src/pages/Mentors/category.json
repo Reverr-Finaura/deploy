@@ -1,0 +1,70 @@
+[
+  {
+    "categoryName": "IT and Telecom",
+    "image": "/images/categoryImages/ITnTelecom.png"
+  },
+  {
+    "categoryName": "Software and Tech",
+    "image": "/images/categoryImages/SoftwareAndTech.png"
+  },
+  {
+    "categoryName": "Consulting and Advisory",
+    "image": "/images/categoryImages/Consulting.png"
+  },
+  {
+    "categoryName": "Legal",
+    "image": "/images/categoryImages/Legal.png"
+  },
+  {
+    "categoryName": "Strategy and Business Development",
+    "image": "/images/categoryImages/Strategy.png"
+  },
+  {
+    "categoryName": "Professional & Commerical Services",
+    "image": "/images/categoryImages/Professional.png"
+  },
+  {
+    "categoryName": "Ed Tech",
+    "image": "/images/categoryImages/EdTech.png"
+  },
+  {
+    "categoryName": "Food Tech",
+    "image": "/images/categoryImages/FoodTech.png"
+  },
+  {
+    "categoryName": "Consumer-Based Businesses",
+    "image": "/images/categoryImages/Consumer.png"
+  },
+  {
+    "categoryName": "Logistics",
+    "image": "/images/categoryImages/Logistics.png"
+  },
+  {
+    "categoryName": "Healthcare and Life Sciences",
+    "image": "/images/categoryImages/Healthcare.png"
+  },
+  {
+    "categoryName": "Travel and Tourism",
+    "image": "/images/categoryImages/Travel.png"
+  },
+  {
+    "categoryName": "Agriculture and Allied",
+    "image": "/images/categoryImages/Agriculture.png"
+  },
+  {
+    "categoryName": "FinTech",
+    "image": "/images/categoryImages/Fintech.png"
+  },
+  {
+    "categoryName": "Media and Entertainment",
+    "image": "/images/categoryImages/Media.png"
+  },
+  {
+    "categoryName": "Fashion",
+    "image": "/images/categoryImages/Fashion.png"
+  },
+  {
+    "categoryName": "Other Categories",
+    "image": "/images/categoryImages/Other.png"
+  }
+]

@@ -1,0 +1,42 @@
+.hero {
+  display: flex;
+  margin: auto;
+  padding: auto;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.heroImg {
+  /* width: 44rem; */
+  width: 100%;
+}
+
+.heroText {
+  color: #3474e2;
+  font-size: 72px;
+  font-weight: 600;
+  width: 37%;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .heroImg {
+    height: 20rem;
+    width: 100%;
+  }
+
+  .heroText {
+    width: 100%;
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 425px) {
+  .heroImg {
+    height: max-content;
+  }
+}

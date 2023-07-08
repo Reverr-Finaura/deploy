@@ -1,0 +1,74 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+.outerCont{
+    width: 100%;
+    max-height: 380px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    margin-top: .5rem;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.outerCont::-webkit-scrollbar {
+    display: none;
+}
+
+.chatCont{
+    display: flex;
+    align-items: center;
+    width: 93%;
+    padding: .5rem 1rem;
+    cursor: pointer;
+
+}
+.chatCont:hover{
+    background: #EEEEEE;
+}
+
+.chatImg{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.userCont{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-left: 1rem;
+
+}
+.userName{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: 15px;    
+    color: rgba(0, 0, 0, 0.85);
+    text-transform: capitalize;
+}
+.userLastTextCont{
+    display: flex;
+    align-items: center;
+}
+.userLastText{
+    font-style: normal;
+font-weight: 500;
+font-size: .9rem;
+margin-top: .25rem;
+color: rgba(0, 0, 0, 0.45);
+}
+
+.chatTime{
+    font-style: normal;
+font-weight: 600;
+font-size: 1.1rem;
+line-height: 15px;
+color: rgba(0, 0, 0, 0.65);
+}
+
+.noChatsMesssage{
+    padding: 1rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+}

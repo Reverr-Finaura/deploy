@@ -1,0 +1,74 @@
+/* Form.css */
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+label {
+  margin-bottom: 5px;
+  color: var(--text-primary-color, #ffffff);
+  flex: 1;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 0.8rem;
+  font-style: normal;
+  margin: 1rem 1.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+  background-color: var(--bg-secondary-gray, #1a1e28);
+  color: var(--text-primary-color, #ffffff);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  /* width: 60%; */
+  flex: 4;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  background-color: var(--button-primary-bg, #007bff);
+  color: var(--button-primary-text-color, #ffffff);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--button-primary-hover-bg, #0069d9);
+}
+.form-row button {
+  border-radius: 3.63638rem;
+  border: 0.582px solid var(--white, #109cdc);
+  background: transparent;
+  padding: 0.5rem 1rem;
+  color: #109cdc;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+  margin-left: 2rem;
+}
+.form-row img {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 1rem;
+}

@@ -1,0 +1,32 @@
+.selectTime {
+  background: linear-gradient(
+    129.9deg,
+    rgba(42, 115, 222, 0.9) 0%,
+    rgba(0, 102, 255, 0.405) 73.5%
+  );
+  box-shadow: -4px 6px 12px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(1000px);
+  padding: 5rem 5rem;
+  border-radius: 30px;
+  color: white;
+}
+
+.picker {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+.pickhour {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  max-height: 10rem;
+  overflow-y: scroll;
+}
+
+.hour {
+  font-size: 24px;
+}

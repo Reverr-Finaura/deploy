@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+.PostCardContainer {
+
+  height: max-content;
+  width: 93%;
+  /* margin: auto; */
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: var(--bg-card);
+  border-radius: 19px;
+  /* border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0; */
+  font-family: "Poppins";
+  font-style: normal;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+
+}
+.postDivideLine_community{
+  border: 0.1px solid #9C9C9C;
+  opacity: .3;
+}
+.postUploadDateContainer {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  font-family: "Poppins";
+  font-style: normal;
+  /* font-weight: 600; */
+  font-size: 18px;
+  line-height: 30px;
+  color: var(--main-text);
+}
+.postLikeCount,
+.postCommentCount {
+  /* font-size: 1.2rem !important;
+  margin: auto;
+  margin-left: .25rem; */
+  font-family: 'Quicksand';
+font-style: normal;
+font-weight: 600;
+font-size: 1rem;
+line-height: 18px;
+color: #202020;
+margin: auto;
+margin-left: .25rem;
+}
+.postLikeCountText {
+  margin: auto;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+/* .postLikeCount {
+  margin-top: 0.2rem;
+} */
+.postAuthorDetails {
+  display: flex;
+  width: 100%;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.postAuthorName {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  color: var(--main-text);
+}
+.postAuthorDesignation {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--main-text);
+}
+.threeDotsMainCont {
+  /* margin: auto; */
+  margin-left: auto;
+  margin-left: 1rem;
+}
+.threeDotsContainer {
+  margin-left: auto;
+  width: fit-content;
+  position: relative;
+  color: var(--main-text);
+}
+.threeDotsPost {
+  width: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.threeDotsPostt {
+  font-size: 1.7rem;
+  cursor: pointer;
+  margin: auto;
+}
+.standardThreeDotsOption {
+  width: 110px;
+  height: 50px;
+  background-color: var(--bg-clr);
+  border-radius: 7px;
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  z-index: 20;
+}
+.threeDotsOptions {
+  width: 100px;
+  height: 100px;
+  background-color: var(--bg-clr);
+  border-radius: 7px;
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  z-index: 20;
+}
+.commentThreeDotsPost {
+  margin-left: auto;
+  font-size: 1.3rem;
+}
+.threeDotsDeletePostOption {
+  color: red;
+  margin: auto;
+  cursor: pointer;
+}
+.threeDotsEditPostOption,
+.threeDotsReportPostOption {
+  margin: auto;
+  cursor: pointer;
+  color: var(--main-text);
+}
+.postImageContainer {
+  width: 80%;
+  margin: auto;
+  display: flex;
+}
+.postImage {
+  width: 90%;
+  margin: auto;
+}
+.postTextContainer {
+  width: 100%;
+  word-break: break-all;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  font-weight: 600;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.postText {
+  font-weight: lighter;
+  font-size: 1.2rem !important;
+  color: var(--main-text);
+}
+.morePostTextButton {
+  color: #2a72de;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.postLikesAndCommentContainer {
+  display: flex;
+  margin-top: 2.5rem;
+  gap: 0.5rem;
+}
+.postLikesContainer {
+  display: flex;
+  margin: auto;
+  color: var(--main-text);
+}
+.postLikesContainerLikeIcon {
+  width: fit-content;
+  cursor: pointer;
+  display: flex;
+}
+.postLikesContainerLikedIconn {
+  font-size: 1.8rem;
+  margin: auto;
+  color: red;
+  display: flex;
+  margin-right: .25rem;
+}
+.postLikesContainerLikeIconn {
+  font-size: 1.8rem;
+  margin: auto;
+  margin-right: .25rem;
+}
+.heartPostLiked {
+  font-size: 30px;
+  color: red;
+  margin-right: 0.5rem;
+  cursor: pointer;
+
+}
+.heartPostNotLiked {
+  font-size: 30px;
+  color: rgb(50.2, 50.2, 50.2, 0.2);
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.postCommentContainer {
+  display: flex;
+  margin: auto;
+  color: var(--main-text);
+}
+.commentPostIcon {
+  width: 30px;
+  margin-right: 0.2rem;
+  cursor: pointer;
+}
+.commentPostIconn {
+  font-size: 2rem;
+  cursor: pointer;
+}
+.commentContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: .25rem;
+}
+.comment-box {
+  width: 400px;
+  height: fit-content;
+  background-color: white;
+  border-radius: 11px;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+}
+.moreRandomText {
+  display: flex;
+  align-items: center;
+  margin-left: 0.25rem;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.1rem !important;
+}
+.postSendLinkContainer {
+  margin: auto;
+  cursor: pointer;
+  color: var(--main-text);
+}
+.postSendCont {
+  display: flex;
+}
+.postSendIcon {
+  width: 28px;
+  height: 28px;
+}
+.postSendText {
+  margin-left: 0.25rem;
+  font-family: "Poppins";
+  font-size: 1.1rem !important;
+  font-style: normal;
+}
+.post_card_save_post_icon{
+  /* margin: auto; */
+  margin-left: auto;
+  margin-right: 2rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+margin-top: .25rem;
+cursor: pointer;
+color: var(--main-text);
+}
+.closeCommentBox {
+  font-size: 2rem;
+  position: absolute;
+  right: 1.5rem;
+  top: 0rem;
+  cursor: pointer;
+}
+
+.editIconComment {
+  display: flex;
+  cursor: pointer;
+}
+.newCommentBox {
+  display: flex;
+}
+/* NEW COMMENT SECTION */
+.newCommentOnPostSection {
+  width: 97.7%;
+  height: max-content;
+  border-bottom-left-radius: 19px;
+  border-bottom-right-radius: 19px;
+  /* margin: auto; */
+  margin-bottom: 2.5rem;
+  padding: 1rem;
+  background-color: #e6e4e4dc;
+  background-color: var(--bg-card);
+  /* box-shadow: 0px 4px 4px rgb(0 0 0 / 25%); */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);  
+  padding: 0;
+
+}
+#postCommentContainer {
+  height: 32px !important;
+  width: 84%;
+  padding-left: 3rem;
+  font-size: 18px;
+  /* background-color: var(--comment-card); */
+  background-color: var(--bg-card);
+  /* border: 2px solid #2a72de; */
+  border: 1px solid #9C9C9C;
+  color: var(--comment-card-placeHolder);
+}
+#postCommentContainer::placeholder {
+  color: var(--comment-card-placeHolder);
+}
+#postCommentContainerExpanded {
+  height: fit-content;
+  width: 92%;
+  padding-left: 0.5rem;
+  font-size: 18px;
+  /* background-color: var(--comment-card); */
+  background-color: var(--bg-card);
+  /* border: 2px solid #2a72de; */
+  border: 1px solid rgba(42, 114, 222, 0.92);
+  padding-bottom: 0;
+  margin-bottom: 0;
+  color: var(--main-text);
+}
+#postCommentContainerExpanded::placeholder {
+  color: var(--comment-card-placeHolder);
+}
+#postCommentContainerExpanded:focus {
+  /* border: 2px solid #2a72de; */
+  border: 1px solid rgba(42, 114, 222, 0.92);
+  /* outline: 2px solid var(--main-text); */
+  /* outline: 2px solid #2a72de; */
+}
+.newCommentContainerrrr {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+.community-newComment-cont-userImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-top: 1.2rem;
+  margin-right: 1rem;
+}
+.newCommentAddImageAndUpload {
+  background-color: var(--bg-card);
+  border: none;
+  width: 92%;
+  padding-right: 16px;
+}
+.commented-by-comment {
+  word-break: break-all;
+}
+/* OLD COMMENT SECTION */
+.oldCommentSection {
+  width: 90%;
+  height: max-content;
+  border-radius: 19px;
+  margin: auto;
+  margin-bottom: 2.5rem;
+  padding: 1rem;
+  background-color: var(--bg-card);
+}
+.oldCommentSectionNothing {
+  display: none;
+}
+.commentedUserImage {
+  margin-right: 1rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.commented-by {
+  margin-right: 1rem;
+  font-weight: 600;
+}
+.commentedByAndComment {
+  margin-bottom: 1.5rem;
+}
+.commented-by-and-edit-cont {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+.commentThreeDotsOption {
+  top: 1.7rem;
+  background-color: var(--bg-sub-card);
+  z-index: 2;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  height: 84px;
+}
+.edit-del-Comment-cont {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+}
+.deleteCommentIconButton {
+  cursor: pointer;
+  width: 20px;
+  margin-left: 1rem;
+}
+.commentedByAndComment {
+  padding: 1rem;
+  border-radius: 10px;
+  /* background-color: var(--comment-card-div); */
+  background-color: var(--bg-card);
+  color: var(--main-text);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 980px) {
+  .postLikeCountText,
+  .moreRandomText,
+  .postSendText {
+    display: none;
+  }
+  .commentPostIconn {
+    margin-right: 0.25rem;
+  }
+}

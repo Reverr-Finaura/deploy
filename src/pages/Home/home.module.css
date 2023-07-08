@@ -1,0 +1,257 @@
+/* Reverr stats section */
+
+.main_div {
+  background: linear-gradient(167.37deg, #020e2c 9.15%, #09245e 64.83%);
+}
+
+.hero {
+  margin: 4% auto;
+  width: 100%;
+}
+
+.rever_stats {
+  margin: 4% auto;
+  width: 70%;
+  color: #fff;
+}
+
+.rs_heading {
+  text-align: center;
+  font-size: 45px;
+}
+
+.rs_stats {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10% auto;
+}
+
+.rs_stat_no {
+  position: relative;
+  font-size: 56px;
+  font-weight: 600;
+  left: -20%;
+  top: -26px;
+}
+
+.rs_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rs_card p {
+  font-size: 24px;
+  text-align: center;
+}
+
+.rs_btn {
+  display: flex;
+  justify-content: center;
+}
+
+/* Reverr founder section */
+
+.rever_founder {
+  margin: 4% auto;
+  /* width: 70%; */
+  color: #fff;
+}
+
+.rf_div {
+  display: flex;
+  flex-direction: column;
+  /* width: 80%; */
+  margin: auto;
+  justify-content: center;
+}
+
+.rf_heading {
+  font-size: 45px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.rf_para {
+  font-size: 16px;
+  text-align: center;
+  font-weight: 300;
+}
+
+.rf_founder_card {
+  display: flex;
+  gap: 2%;
+  margin: 7% auto;
+}
+
+.rf_card p {
+  font-size: 28px;
+  color: #2a72de;
+  font-weight: 600;
+  text-align: center;
+}
+
+.rf_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rf_btn {
+  display: flex;
+  justify-content: center;
+}
+
+/* Reverr deal section */
+
+.rever_deal {
+  margin: 4% auto;
+  color: #fff;
+  display: flex;
+  width: 80%;
+}
+
+.rd_intro {
+  display: flex;
+  flex-direction: column;
+}
+
+.rd_intro_heading {
+  font-size: 45px;
+  font-weight: 700;
+}
+
+.rd_intro_para {
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 15%;
+}
+
+.rd_img > img {
+  margin-left: 9%;
+}
+
+/* Testimonials */
+
+.rever_testimonials {
+  margin: 4% auto;
+  color: #fff;
+  width: 80%;
+}
+
+.rt_heading {
+  font-size: 56px;
+  color: #2a72de;
+  font-weight: 600;
+  text-align: center;
+}
+
+.rt_cards {
+  display: flex;
+  gap: 6%;
+  margin: 10% auto;
+}
+
+.rt_card {
+  background: linear-gradient(167.37deg, #020e2c 9.15%, #09245e 64.83%);
+  border-radius: 8px;
+  width: 366px;
+  height: 310px;
+  text-align: center;
+}
+
+.rt_card > img {
+  position: relative;
+  top: -25%;
+  object-fit: contain;
+}
+
+.card_name {
+  position: relative;
+  font-size: 24px;
+  top: -25%;
+  font-weight: 600;
+}
+
+.card_para {
+  position: relative;
+  font-size: 16px;
+  width: 80%;
+  margin: auto;
+  top: -25%;
+}
+
+/* media queries */
+
+@media (max-width: 1024px) {
+  .rs_heading,
+  .rf_heading,
+  .rd_intro_heading,
+  .rt_heading {
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .rs_stats {
+    flex-direction: column;
+  }
+
+  .rs_stat_no {
+    font-size: 32px;
+  }
+
+  .rever_founder {
+    width: 80%;
+  }
+
+  .rf_founder_card {
+    flex-direction: column;
+  }
+
+  .rf_card > img {
+    height: 12rem;
+  }
+
+  .rever_deal {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rd_img > img {
+    height: 50vh;
+    margin-left: 0;
+  }
+
+  .rd_intro_para {
+    text-align: center;
+  }
+
+  .rd_btn {
+    display: flex;
+    justify-content: center;
+  }
+
+  .rt_cards {
+    flex-direction: column;
+  }
+
+  .rt_card {
+    margin: 10% auto;
+  }
+
+  .rt_card > img {
+    height: 18vh;
+  }
+}
+
+@media (max-width: 425px) {
+  .rt_card {
+    width: 280px;
+    margin-top: 18%;
+  }
+
+  .rs_card {
+    /* margin-left: 20%; */
+    align-items: flex-end;
+  }
+}

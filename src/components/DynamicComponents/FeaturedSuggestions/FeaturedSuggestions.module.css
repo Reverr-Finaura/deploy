@@ -1,0 +1,102 @@
+.container {
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #1a1e28;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.header > p > span {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.header > span {
+  color: #00b3ff;
+  font-size: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cardContainer {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.cardContainer::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 3px;
+}
+
+.cardContainer::-webkit-scrollbar-thumb {
+  background-color: rgb(72, 71, 71);
+}
+
+.cardContainer::-webkit-scrollbar-track {
+  background-color: transparent;
+  margin-top: 10px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #100f0f;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.userRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 200px;
+}
+
+.userRow > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.userRow > div > img {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+}
+
+.userRow > div > div {
+  display: flex;
+  flex-direction: column;
+  padding-left: 12px;
+}
+
+.userRow > span {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #ffffff;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.card > button {
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin-top: 20px;
+  border-color: #00B3FF;
+  background: transparent;
+  cursor: pointer;
+}

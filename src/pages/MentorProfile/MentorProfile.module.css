@@ -1,0 +1,361 @@
+.background{
+  background-color: var(--bg-clr);
+}
+.body {
+  width: 88.5%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.knowledge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* width: 80%; */
+  width: 72%;
+  /* margin: auto; */
+  margin-top: 10rem;
+  margin-left: 14rem;
+}
+
+.content {
+  width: 85%;
+  margin: auto 5rem auto 10rem;
+}
+
+.search {
+  background-color: #d9d9d9;
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  flex: 1;
+  padding: 0.5rem 1rem;
+}
+
+.search > img {
+  width: 2rem;
+  object-fit: contain;
+}
+
+.search > input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.profile_container {
+  width: 80%;
+  margin: 2% auto;
+}
+
+.mentor_intro {
+  display: flex;
+  margin: 1rem auto;
+  justify-content: space-around;
+}
+
+.mentor_intro > img {
+  height: 16rem;
+}
+
+.h1_tag {
+  font-size: 45px;
+  color: var(--main-text);
+  font-weight: 600;
+  margin: 0 auto;
+  text-align: inherit;
+}
+
+.about_mentor > p {
+  color: var(--main-text);
+  text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.12);
+  font-size: 35px;
+  font-weight: 500;
+  margin-top: 0;
+}
+
+.mentor_details {
+  display: flex;
+  gap: 2.8rem;
+  text-align: center;
+}
+
+.detail > h5 {
+  color: var(--main-text);
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 auto;
+}
+
+.detail > p {
+  color: #878787;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.detail > p > img {
+  height: 1.3rem;
+}
+
+.mentor_bio {
+  text-align: center;
+  margin: 7% auto;
+}
+
+.mentor_bio > p {
+  color: var(--main-text);
+  text-align: justify;
+  padding-left: 5%;
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 3rem;
+}
+
+.mentor_bio span {
+  font-weight: 700;
+}
+
+.areaofExpertise {
+  padding-left: 5%;
+}
+
+.mentor_expertise {
+  margin: 3% auto;
+}
+
+.expertise {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin: 2.5% auto;
+}
+
+.expertise > img {
+  height: 4rem;
+}
+
+.expertise > p {
+  font-size: 18px;
+  line-height: 10px;
+  font-weight: 600;
+  color: var(--main-text);
+}
+
+.mentor_contact {
+  text-align: center;
+  margin: 6rem auto;
+}
+
+.mentor_contact > button {
+  background: #2a72de;
+  box-shadow: 2px 3px 11px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  font-size: 27px;
+  font-weight: 500;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 3rem;
+  cursor: pointer;
+  margin-bottom: 4rem;
+}
+
+.mentor_contact > p {
+  color: var(--main-text);
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.contact_option {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+}
+
+.contact_option > img {
+  height: 3rem;
+  cursor: pointer;
+}
+
+.mentor_subscribe {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 7rem;
+  text-align: center;
+}
+
+.mentor_subscribe > img {
+  height: 12rem;
+  margin-bottom: 2rem;
+}
+
+.mentor_subscribe > p {
+  color: rgba(32, 32, 32, 0.75);
+  font-size: 27px;
+  font-weight: 500;
+  width: 90%;
+}
+
+.subscribe {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.subscribe > input {
+  border: 3px solid #2a72de;
+  filter: drop-shadow(2px 3px 11px rgba(0, 0, 0, 0.4));
+  border-radius: 10px;
+  padding: 0.5rem 2rem;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.subscribe > button {
+  background: rgba(42, 114, 222, 0.75);
+  box-shadow: 2px 3px 11px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  color: #fff;
+  padding: 0.4rem 2rem;
+}
+
+
+@media (max-width: 600px) {
+  .body {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile_container{
+    margin-left: auto;
+    width: 80%;
+      }
+
+  .content {
+    margin: 2rem auto;
+  }
+  .knowledge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+ 
+    margin: auto;
+    margin-top: 0;
+   
+  }
+  .mentor_bio {
+    margin: 3rem auto;
+  }
+  .expertise {
+    display: block;
+    margin: 4.5% auto;
+  }
+  
+  .contact_option {
+    flex-wrap: wrap;
+  }
+
+  .mentor_subscribe {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mentor_intro {
+    display: block;
+    text-align: center;
+  }
+
+  .mentor_intro > img {
+    height: 9rem;
+  }
+
+  .h1_tag {
+    font-size: 32px;
+  }
+  .about_mentor > p {
+    font-size: 25px;
+  }
+
+  .mentor_details {
+    display: block;
+  }
+
+  .detail > h5 {
+    font-size: 17px;
+  }
+  .detail > p {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .detail > p > img {
+    height: 0.8rem;
+  }
+
+  .mentor_bio {
+    margin-left: 5%;
+  }
+
+  .mentor_bio > p {
+    font-size: 19px;
+    padding: 1rem;
+  }
+
+  .areaofExpertise {
+    text-align: center;
+  }
+  .expertise {
+    justify-content: center;
+  }
+  .expertise > img {
+    height: 2rem;
+  }
+
+  .expertise > p {
+    font-size: 16px;
+  }
+
+  .mentor_contact > button,
+  .mentor_contact > p {
+    font-size: 25px;
+  }
+
+  .contact_option > img {
+    height: 2rem;
+  }
+
+  .mentor_subscribe > img {
+    height: 9rem;
+  }
+
+  .mentor_subscribe > p {
+    font-size: 23px;
+  }
+
+  .mentor_subscribe > h1 {
+    font-size: 27px;
+  }
+  .subscribe {
+    flex-direction: column;
+  }
+  .subscribe > input {
+    font-size: 19px;
+    padding: 0.6rem 1rem;
+  }
+
+  .subscribe > button {
+    font-size: 19px;
+  }
+}

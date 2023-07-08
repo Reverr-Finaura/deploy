@@ -1,0 +1,87 @@
+.meeting-item-container{
+    display: grid;
+    grid-template-columns: 20% 50% 30%;
+    background: #FAFAFF;
+border-radius: 10px;
+padding: 16px 32px;
+margin-top: 1.5rem;
+}
+.meeting-person-photo{
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    
+}
+.meeting-person-name-date{
+    display: flex;
+    flex-direction: column;
+}
+.meeting-person-name{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 21px;
+color: #000000;
+width: fit-content;
+}
+.meeting-person-date{
+
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 18px;  
+color: #C4C4C4;
+margin-top: .5rem;
+width: fit-content;
+}
+.send-invite-btn{
+    background: #2A72DE;
+    width: 120px;
+height: 34px;
+border-radius: 32px;
+padding: 4px 20px;
+border: none;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 18px;
+color: white;
+margin: auto;
+cursor: pointer;
+}
+
+.wait-for-confirmation{
+    width: 120px;
+    height: 34px;
+    border-radius: 32px;
+    padding: 4px 12px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: black;
+    margin: auto;  
+    background-color: rgb(222, 221, 221);
+
+}
+
+
+@media(max-width:600px){
+    .meeting-container{
+        padding: 25px 15.5px;
+    }
+}
+@media(max-width:570px){
+    .meeting-item-container{
+        padding: 16px 6px;  
+    }
+    .wait-for-confirmation,.send-invite-btn{
+        width: 102px;
+    height: 45px;
+    }
+}

@@ -1,0 +1,142 @@
+.PageWrapper {
+  width: 100%;
+  display: flex;
+  height: 100vh;
+  background: var(--bg-main, #030b18);
+  padding-top: 5rem;
+}
+.leftContent {
+  display: flex;
+  flex-direction: column;
+  flex: 4;
+  gap: 1rem;
+  /* padding: 5rem 2rem; */
+  /* margin-left: 4rem; */
+  margin: 5rem 2rem 0 4rem;
+}
+.leftHeading {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-main, #fff);
+}
+.leftHeading > span {
+  color: #00b3ff;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  gap: 2rem;
+  width: 15rem;
+}
+.googleBtn {
+  cursor: pointer;
+  width: 65%;
+  margin-top: 1rem;
+  display: flex;
+  align-items: left;
+  justify-content: flex-start;
+  padding: 0.7rem 3rem;
+  background: transparent;
+  font-family: Poppins;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  border-radius: 5.45456rem;
+  color: var(--white, #fff);
+  border: 1.745px solid var(--white, #fff);
+}
+.gIconCont {
+  /* margin: auto; */
+  margin-right: 0.5rem;
+  width: 25px;
+  height: 25px;
+}
+.gICon {
+  width: 100%;
+  height: 100%;
+}
+
+.forgotPassword {
+  font-family: Poppins;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5rem;
+  letter-spacing: 0.001rem;
+  text-decoration-line: underline;
+}
+.forgotPassword > a {
+  color: var(--blue, #00b3ff);
+}
+.form button {
+  margin-top: 1rem;
+  width: 100%;
+  height: 2.5rem;
+  border: none;
+  outline: none;
+  color: var(--main-text);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5.45456rem;
+  background: var(--blue, linear-gradient(97deg, #00b3ff 57.09%, #4cc9ff 100%));
+}
+input {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 4rem;
+  outline: none;
+  border: none;
+  padding: 0 3rem;
+  color: var(--main-text);
+}
+input ::placeholder {
+  color: var(--gray, #a7a7a7);
+  font-family: Poppins;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.02rem;
+}
+.label {
+  color: rgba(255, 255, 255, 0.81);
+  font-family: Poppins;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5rem;
+  letter-spacing: 0.001rem;
+}
+.leftBottom {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.newUser {
+    font-family: Poppins;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5rem;
+    letter-spacing: 0.001rem;
+    color: #fff;
+    margin: 0 3rem;
+}
+.newUser > a {
+  color: var(--blue, #00b3ff);
+}
+
+.rightContent {
+  display: flex;
+  flex: 6;
+}
+.rightImage {
+  margin: 0rem auto;
+}
+.rightImage > img {
+  width: 100%;
+  height: 100%;
+  /* margin-right: 7rem; */
+}

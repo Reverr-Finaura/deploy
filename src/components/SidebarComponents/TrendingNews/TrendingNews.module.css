@@ -1,0 +1,63 @@
+.container {
+  /* padding: 20px; */
+  /* border-radius: 15px; */
+  /* height: 500px;
+  overflow-y: auto; */
+}
+
+.container::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.container > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+
+.container > div > p > span {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.container > div > span {
+  color: #00b3ff;
+  font-size: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.newsCard {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+  background-color: #1a1e28;
+}
+
+.newsCard > img {
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
+}
+
+.newsCard > div {
+  display: flex;
+  flex-direction: column;
+  padding-left: 12px;
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; */
+}

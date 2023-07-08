@@ -1,0 +1,245 @@
+html {
+  background-color: #f6f6f6;
+}
+
+.form_container {
+  background: #f6f6f6;
+  margin: 0;
+}
+
+.logo {
+  height: 6rem;
+}
+
+/* .bg_img1 {
+  position: absolute;
+  right: 0;
+  top: 40rem;
+  height: 12rem;
+  background-image: url("../../../public/images/Ellipse 241.svg");
+  background-position: center;
+} */
+
+.personal_details,
+.education_details,
+.professional_details,
+.additional_details,
+.startup_details {
+  margin: 0rem auto 3rem auto;
+  width: 55%;
+  text-align: center;
+}
+
+.heading {
+  font-size: 50px;
+  color: #202020;
+  font-weight: 600;
+}
+
+.sub_heading {
+  font-size: 40px;
+  font-weight: 500;
+  color: #202020;
+}
+
+.personal_details > label > img {
+  height: 8rem;
+  cursor: pointer;
+}
+
+.input,
+.select {
+  background: #f6f6f6;
+  border: 2px solid #2a72de;
+  border-radius: 8px;
+  outline: none;
+  padding: 0.4rem 1rem;
+  font-size: 24px;
+  width: 95%;
+  margin: 1rem auto;
+}
+
+.input_flex {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+textarea {
+  font-family: "Poppins";
+  background: #f6f6f6;
+  border: 2px solid #2a72de;
+  border-radius: 8px;
+  outline: none;
+  padding: 0.4rem 1rem;
+  font-size: 24px;
+  resize: none;
+  width: 95%;
+  height: 30vh;
+  margin: 1rem auto;
+}
+
+.select {
+  width: 100%;
+}
+
+.social_icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+.social_icons > a > img {
+  height: 3rem;
+  margin-right: 2rem;
+  background-color: #fff;
+  border-radius: 100%;
+  padding: 0.6rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.add_btn {
+  height: 3rem;
+  display: flex;
+  cursor: pointer;
+}
+
+.yesno_btns {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+
+.yesno_btns > button {
+  border: none;
+  outline: none;
+  background: #0077b7;
+  border-radius: 6px;
+  font-size: 28px;
+  color: #f6f6f6;
+  width: 100%;
+  font-weight: 600;
+  padding: 1rem 3rem;
+  cursor: pointer;
+}
+
+.upload_btn {
+  background: #0077b7;
+  border-radius: 6px;
+  padding: 1rem 9rem;
+  cursor: pointer;
+}
+
+.next_btn {
+  border: none;
+  outline: none;
+  background: #2a72de;
+  border-radius: 6px;
+  font-size: 24px;
+  color: #f6f6f6;
+  padding: 0.4rem 5rem;
+  cursor: pointer;
+}
+
+.info_text {
+  color: rgba(32, 32, 32, 0.5);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* fundingform */
+.form__heading {
+  font-size: 35px;
+}
+.heading {
+  font-size: 25px;
+  opacity: 0.75;
+}
+.social__flex {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+.social__icons {
+  padding-right: 20px;
+}
+
+.apply__btn {
+  margin-bottom: 30px !important;
+  display: block;
+
+  text-align: center;
+  margin: auto;
+  border: none;
+  outline: none;
+  background: #2a72de;
+  border-radius: 6px;
+  font-size: 24px;
+  color: #f6f6f6;
+  padding: 0.4rem 5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    height: 4rem;
+  }
+  .heading {
+    font-size: 35px;
+  }
+
+  .sub_heading {
+    font-size: 28px;
+  }
+  .input_flex {
+    display: block;
+  }
+  .input,
+  textarea,
+  .select {
+    font-size: 16px;
+  }
+  .social_icons > a > img {
+    height: 2rem;
+  }
+  .add_btn {
+    height: 2rem;
+  }
+
+  .yesno_btns > button,
+  .next_btn {
+    font-size: 18px;
+  }
+
+  .upload_btn {
+    height: 1.2rem;
+  }
+
+  .info_text {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 425px) {
+  .personal_details,
+  .education_details,
+  .professional_details,
+  .additional_details,
+  .startup_details {
+    width: 80%;
+  }
+  .social_icons {
+    display: block;
+  }
+  .social_icons > a > img {
+    margin-bottom: 1rem;
+  }
+  .yesno_btns {
+    display: block;
+  }
+  .yesno_btns > button {
+    margin-bottom: 5%;
+  }
+}

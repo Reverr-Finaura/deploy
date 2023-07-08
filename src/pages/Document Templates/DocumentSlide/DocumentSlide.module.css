@@ -1,0 +1,11 @@
+.documentTemplates_main {
+  margin-top: 1.5rem;
+}
+
+.Document_Template_title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--main-text);
+  padding-left: 1rem;
+}
