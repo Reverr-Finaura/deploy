@@ -4,7 +4,7 @@
     width: 95%;
     height: 100%;
     border-radius: 20px;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     background-color: #0a2458;
 }
@@ -23,7 +23,7 @@
 {
      background-color: #0a2458;
      width: 95%;
-     height: 100vh;
+     height: 100%;
      margin-left: 25px;
      border-radius: 20px;
      display: flex;
@@ -55,7 +55,7 @@
     
     display: flex;
     align-items: center;
-    margin-top: 1rem;
+    margin-top: "1%";
     background-color: #0a2458;
 }
 

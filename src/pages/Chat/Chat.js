@@ -59,9 +59,9 @@ const Chat = () => {
 
   return (
     <>
-      <NavBarFinalDarkMode />
       <div className={styles.chat_main_Cont}>
-        <div style={{ width: "465px" }}>
+      <NavBarFinalDarkMode />
+        <div style={{ width: "465px" , paddingLeft:"1%", height:"80%"}}>
           <MessagesCont />
         </div>
         <SelectedUserCont />

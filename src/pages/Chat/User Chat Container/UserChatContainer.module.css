@@ -1,6 +1,7 @@
 .outerCont{
     width: 96.2%;
-    height: 395px;
+    /* height: 295px; */
+    height: 65%;
     background: #1a1e28;
     
     padding: 1rem;
@@ -16,6 +17,7 @@ display: flex;
 /* width: 65%; */
 margin-bottom: 1.5rem;
 height: max-content;
+/* height: 70%; */
 }
 .userImg{
     width: 30px;

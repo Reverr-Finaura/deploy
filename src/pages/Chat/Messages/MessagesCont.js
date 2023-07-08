@@ -13,9 +13,9 @@ const MessagesCont = () => {
       <h2 className={styles.message}>Messages</h2>
     </div>
     <div className={styles.sorterCont}>
-    <p className={styles.sorterText}>Sort by</p>
+    <p className={styles.sorterText} >Sort by</p>
     <div className={styles.messageSorterCont}>
-      <select onChange={(e)=>setSorter(e.target.value)} className={styles.sorter} name="sortBy" value={sorter}>
+      <select onChange={(e)=>setSorter(e.target.value)}  className={styles.sorter} name="sortBy" value={sorter}>
         <option className={styles.options} value="Newest">Newest</option>
         <option value="Oldest">Oldest</option>
       </select>
