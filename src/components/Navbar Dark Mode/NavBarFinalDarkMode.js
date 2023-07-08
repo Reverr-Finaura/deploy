@@ -81,7 +81,6 @@ const NavBarFinalDarkMode = ({ isLoggedIn}) => {
   const elementsToCheck = [
     "TOOLS",
     "MENTOR",
-    "KNOWLEDGE",
     "FUNDING-APPLY",
     "STARTUP SCORE",
   ];

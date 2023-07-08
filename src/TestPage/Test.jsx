@@ -147,7 +147,7 @@ function Test() {
             </>
           ) : null}
           <div style={{ marginTop: 50 }}></div>
-          <Journey />
+          {/* <Journey /> */}
           <div style={{ marginTop: 50 }}></div>
           {/* <GetPremium /> */}
           <div style={{ marginTop: 50 }}></div>
