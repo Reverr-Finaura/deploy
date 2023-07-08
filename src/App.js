@@ -11,7 +11,7 @@ import ForgotPassword from "./pages/Forgotpassword/ForgotPassword";
 import ForgotEmail from "./pages/Forgotemail/ForgotEmail";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
-import LoginNew from "./pages/Login/LoginNew";
+import LoginNew from "./pages/Login/LoginOld";
 import PasswordReset from "./pages/PasswordRecover/PasswordReset";
 import Experience from "./pages/AfterSignUp/Experience/Experience";
 import Industry from "./pages/AfterSignUp/Industry/Industry";
@@ -118,6 +118,8 @@ import KnowledgeTesting from "./pages/Knowledge/KnowledgeTesting";
 import CheckYourScoreTesting from "./pages/Check Your Score/CheckYourScoreTesting";
 import CourcePageTesting from "./pages/AfterKnowledge/CourcesPage/CourcePageTesting";
 import HomeNotLoggedIn from "./pages/HomeNotLoggedIn/HomeNotLoggedIn";
+import LoginTesting from "./pages/Login/LoginNew";
+import UserProfileTesting from "./pages/User Profile/UserProfileTesting";
 
 
 function App() {
@@ -150,16 +152,17 @@ function App() {
       <Routes>
         {!user && (
           <>
-            <Route path="/" element={<LoginNew />} />
+            <Route path="/" element={<LoginTesting />} />
             {/* <Route path="/signup" element={<Auth />} /> */}
             <Route path="/signup" element={<SignUpAuth />}></Route>
-
-            <Route path="/login" element={<LoginNew />} />
+            <Route path="/login" element={<LoginTesting />} />
+            {/* <Route path="/login" element={<LoginNew />} /> */}
             <Route path="/community2" element={<HomeNotLoggedIn />}>
               <Route path=":postId" element={<SharedCommunityPost />}></Route>
             </Route>
           </>
         )}
+        {/* <Route path="/login-test" element={<LoginTesting />}/> */}
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/forgotemail" element={<ForgotEmail />} />
         <Route path="/password-reset" element={<PasswordReset />} />
@@ -284,7 +287,8 @@ function App() {
           path="/social-media-slides"
           element={<SocialMediaSlides />}
         ></Route>
-        <Route path="/userprofile" element={<UserProfile />}></Route>
+        {/* <Route path="/userprofile" element={<UserProfile />}></Route> */}
+        <Route path="/userprofile" element={<UserProfileTesting />}></Route>
         <Route path="/user-edit-profile" element={<UserEditProfile />}></Route>
         <Route
           path="/change-user-password"

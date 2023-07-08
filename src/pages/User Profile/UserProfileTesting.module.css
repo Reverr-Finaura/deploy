@@ -1,0 +1,301 @@
+.profileWrapper {
+  width: 100%;
+  min-height: 100vh;
+  background: #030b18;
+  padding-top: 8rem;
+  padding-bottom: 3rem;
+}
+.profileContainer {
+  width: 55%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.profileHeader {
+  color: #fff;
+  font-family: Reem Kufi;
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  align-self: flex-start;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+.profileHeader > img {
+  cursor: pointer;
+}
+.profileUser {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.profileUserIcon {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+.profileImage {
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  top: 15%;
+  left: 8%;
+}
+.profileImage > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.profileBackground {
+  width: 100%;
+  height: 6rem;
+  background: #034e80;
+}
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+  background-color: #0c1631;
+  padding: 2rem;
+}
+.profileInfoName {
+  color: var(--white, #fff);
+  font-family: Poppins;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.profileDesignation {
+  color: var(--white-gray, #d4d4d4);
+  font-family: Poppins;
+  font-size: 0.83331rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.025rem;
+}
+.profileLocation {
+  color: var(--white-gray, #d4d4d4);
+  font-family: Poppins;
+  font-size: 0.66669rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.02rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.profilePost {
+  font-family: Poppins;
+  font-size: 0.83331rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.025rem;
+  color: #109cdc;
+}
+.profileUser button {
+  background: transparent;
+  border: 2px solid #109cdc;
+  color: #109cdc;
+  border-radius: 10px;
+  width: 6rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.01rem;
+  cursor: pointer;
+}
+
+/* ---------profile Content---------------- */
+.profileContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  background-color: #0c1631;
+}
+.aboutMe {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+  padding: 2rem;
+  padding-bottom: 0;
+}
+.aboutMe p:nth-child(1) {
+  font-family: Poppins;
+  font-size: 1.33331rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.04rem;
+  color: #109cdc;
+}
+.aboutMe p:nth-child(2) {
+  color: var(--white-gray, #d4d4d4);
+  font-family: Poppins;
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 400;
+}
+.connect {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+  padding: 2rem;
+  padding-top: 1rem;
+}
+.connect p {
+  font-family: Poppins;
+  font-size: 1.33331rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.04rem;
+  color: #109cdc;
+}
+.connect button {
+  border-radius: 3.63638rem;
+  border: 0.582px solid var(--white, #fff);
+  background: var(--white, #fff);
+  width: 6rem;
+  height: 2rem;
+  color: #000;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+}
+
+/*---------------------------- Education------------------------------------ */
+.profileEducation {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  background-color: #0c1631;
+}
+.education {
+  padding: 2rem;
+  padding-bottom: 0rem;
+}
+.education > p {
+  font-family: Poppins;
+  font-size: 1.33331rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.04rem;
+  color: #109cdc;
+}
+.educationInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+  padding: 2rem;
+  padding-top: 1rem;
+}
+.experience {
+  padding: 2rem;
+  padding-bottom: 0rem;
+  padding-top: 0;
+}
+.experience > p {
+  font-family: Poppins;
+  font-size: 1.33331rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.04rem;
+  color: #109cdc;
+}
+.experienceConnect {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+  padding: 2rem;
+  padding-top: 0rem;
+}
+.experienceConnect p {
+  font-family: Poppins;
+  font-size: 1.33331rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.04rem;
+  color: #109cdc;
+}
+.experienceBtn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.experienceConnect button {
+  border-radius: 3.63638rem;
+  border: 0.582px solid var(--white, #fff);
+  background: var(--white, #fff);
+  width: 10rem;
+  /* height: 2rem; */
+  color: #000;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+}
+
+/* -----------------Profile COnnect---------------- */
+.profileContact {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  background-color: #0c1631;
+}
+.contact {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+}
+.contact > p {
+  font-family: Poppins;
+  font-size: 1.33331rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.04rem;
+  color: #109cdc;
+}
+.contactItem {
+  display: flex;
+  gap: 1rem;
+}
