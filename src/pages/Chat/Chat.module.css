@@ -9,6 +9,7 @@
   display: flex;
   margin: 10px;
   background-color: black;
+  padding-top: 6rem;
 }
 @media(max-width:600px){
   .chat_main_Cont{
