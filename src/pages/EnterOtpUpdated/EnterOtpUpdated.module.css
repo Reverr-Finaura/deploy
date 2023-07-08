@@ -1,0 +1,132 @@
+.otp {
+    width: -webkit-fill-available;
+    /* margin: auto; */
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    padding-top: 5em;
+    background-color: #030b18;
+    justify-content: space-between;
+}
+
+.getStarted {
+    width: -webkit-fill-available;
+}
+
+.leftPart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    width: 50%;
+    /* margin-top: 4em; */
+}
+
+.getStarted>h1 {
+    font-size: 50px;
+    font-weight: 500;
+    line-height: 75px;
+    color: var(--white, #FFF);
+    font-family: Reem Kufi;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal; 
+    margin-bottom: .6em;
+}
+
+.getStarted>h1>span {
+    font-family: "Philosopher", sans-serif;
+    color: rgba(42, 114, 222, 1);
+}
+
+.para {
+    width: 67%;
+    text-align: left;
+}
+
+.para>p {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.otpForm {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: baseline;
+    margin-top: 2em;
+}
+
+.otpForm>.otpInputs>input {
+    width: 41px;
+    height: 44px;
+    background: rgb(3 11 23);
+    color: black;
+    font-size: large;
+    /* border-radius: 4px; */
+    border: none;
+    outline: none;
+    text-align: center;
+    border-bottom: 3px solid #ffffff;
+    border-radius: unset;
+    color: white;
+    font-weight: 600;
+    font-size: 30px;
+    margin: 0px 5px;
+    padding: 10px 10px;
+}
+
+.otpInputs {
+    display: flex;
+    gap: 1rem;
+}
+
+.resend {
+    font-family: Poppins;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.44px;
+    text-decoration-line: underline;
+    color: #10b7ff;
+    cursor: pointer;
+}
+
+.resend:disabled {
+    background: #69a5ff;
+    cursor: not-allowed;
+}
+
+
+.otpRightImg {
+    width: 42em;
+}
+
+.verifyBtn{
+    margin-top: 1em;
+    background: #2a72de;
+    box-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
+    border-radius: 50px;
+    padding: 0.5rem 5rem;
+    cursor: pointer;
+    color: #fff;
+    font-size: 24px;
+    /* line-height: 36px; */
+    outline: none;
+    border: none;
+    font-family: Poppins;
+    margin-bottom: 1em;
+
+}
+.buttonWrap{
+
+    width: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

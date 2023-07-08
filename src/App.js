@@ -6,6 +6,7 @@ import { login, logout, selectUser } from "./features/userSlice";
 import Card from "./pages/AfterSignUp/Cards/Card";
 import Auth from "./pages/Auth/Auth";
 import SignUpAuth from "./pages/Auth/SignUpAuth";
+import SignupAuthUpdated from "./pages/Auth/SignupAuthUpdated";
 import EnterOtp from "./pages/EnterOtp/EnterOtp";
 import ForgotPassword from "./pages/Forgotpassword/ForgotPassword";
 import ForgotEmail from "./pages/Forgotemail/ForgotEmail";
@@ -118,6 +119,8 @@ import KnowledgeTesting from "./pages/Knowledge/KnowledgeTesting";
 import CheckYourScoreTesting from "./pages/Check Your Score/CheckYourScoreTesting";
 import CourcePageTesting from "./pages/AfterKnowledge/CourcesPage/CourcePageTesting";
 import HomeNotLoggedIn from "./pages/HomeNotLoggedIn/HomeNotLoggedIn";
+import EnterOtpUpdated from "./pages/EnterOtpUpdated/EnterOtpUpdated";
+
 
 
 function App() {
@@ -152,7 +155,7 @@ function App() {
           <>
             <Route path="/" element={<LoginNew />} />
             {/* <Route path="/signup" element={<Auth />} /> */}
-            <Route path="/signup" element={<SignUpAuth />}></Route>
+            <Route path="/signup" element={<SignupAuthUpdated />}></Route>
 
             <Route path="/login" element={<LoginNew />} />
             <Route path="/community2" element={<HomeNotLoggedIn />}>
@@ -163,9 +166,11 @@ function App() {
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/forgotemail" element={<ForgotEmail />} />
         <Route path="/password-reset" element={<PasswordReset />} />
+       
         {newUser ? (
-          <Route path="enterotp" element={<EnterOtp />}></Route>
+          <Route path="enterotp" element={<EnterOtpUpdated/>}></Route>
         ) : null}
+
         <Route path="/startup-list" element={<Card />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/industry" element={<Industry />} />

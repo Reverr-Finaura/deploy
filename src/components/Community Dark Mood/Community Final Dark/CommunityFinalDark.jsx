@@ -108,6 +108,8 @@ const CommunityFinalDark = () => {
   const [whatHotStatus, setWhatHotStatus] = useState(false);
   const [spaceFilteredPost, setSpaceFilteredPost] = useState([]);
   const [whatsHotCommunityPost, setWhatsHotCommunityPost] = useState([]);
+  const [postSpaceFilled,setPostSpaceFilled] = useState(false);
+  const [postSpaceData , setPostSpaceData]=  useState();
 
   //FETCH LATEST NEWS
   const options = {
@@ -193,8 +195,8 @@ const CommunityFinalDark = () => {
     }
   }, [userDoc]);
 
-  //FETCH POSTS DATA FROM FIREBASE
 
+  //FETCH POSTS DATA FROM FIREBASE
   useEffect(() => {
     async function fetchPostsFromDb() {
       const postRef = collection(db, "Posts");
@@ -224,11 +226,11 @@ const CommunityFinalDark = () => {
       );
       setWhatsHotCommunityPost(
         postsData.filter((post) => {
-          console.log("here is the post ", post);
+        
           return post.likes.length >= likesAverage;
         })
       );
-      console.log("hot community posts ", whatsHotCommunityPost);
+    
 
       if (sortOptionSelected.time === "") {
         setPostsData(
@@ -346,6 +348,7 @@ const CommunityFinalDark = () => {
   const createNewPost = async (item) => {
     const userRef = doc(db, "Users", user?.user?.email);
     toast("Processing Your Request");
+  
     try {
       const timeId = new Date().getTime().toString();
       let newPostId = [...newPostdataId];
@@ -357,7 +360,7 @@ const CommunityFinalDark = () => {
         likes: [],
         postedby: userRef,
         text: newPostText,
-        postSpace: postSpaceArr,
+        postSpace: postSpaceData,
       });
       newPostId.push(timeId);
 
@@ -519,8 +522,6 @@ const CommunityFinalDark = () => {
     }
   }
 
-  console.log("userSpaceArr ", userSpaceArr);
-  console.log("userSpace: ", userSpace);
 
   function openTheSpaceModal() {
     if (isOpen) {
@@ -544,10 +545,12 @@ const CommunityFinalDark = () => {
       });
       setSpaceFilteredPost(filteredData);
     }
-    console.log("this is the space filted data: ", spaceFilteredPost);
+    
   }, [postsData, selectedCommunitySpace]);
 
-  // Output the filtered posts
+  const handleOptionChange = (event) => {
+    setPostSpaceData(event.target.value);
+  };
 
   return (
     <>
@@ -578,7 +581,8 @@ const CommunityFinalDark = () => {
               <p className={style.spaceModalHeading}>Select your space (s).</p>
 
               <div className={style.spaceMenu}>
-                {currentUserDoc.userSpace.map((space, index) => {
+                {currentUserDoc.userSpace.length >= 1 ?  
+                currentUserDoc.userSpace.map((space, index) => {
                   return (
                     <div
                       key={index}
@@ -606,7 +610,8 @@ const CommunityFinalDark = () => {
                       </p>
                     </div>
                   );
-                })}
+                }): <p style={{color:"#fff"}}>data is not present</p> }
+               
 
                 {/* <p>Selected Options: {userSpaceArr.join(", ")}</p> */}
               </div>
@@ -691,7 +696,7 @@ const CommunityFinalDark = () => {
                       alt="userImage"
                     />
                     <div className="textAreaUploadContainer">
-                      <div className="navbarUploadPostOuterBoxContainer">
+                      <div className={style.navbarUploadPostOuterBoxContainer}>
                         <textarea
                           className="navbarUploadPostContainerTextArea"
                           onChange={(e) => setNewPostText(e.target.value)}
@@ -708,14 +713,14 @@ const CommunityFinalDark = () => {
                               src={tempImageURL}
                               alt="postFile"
                             />
-                            <div className="edit_Delete_Btn">
+                            <div className={style.editDeleteBtn}>
                               <RxCrossCircled
                                 onClick={RemoveFile}
                                 className="delete_Btn"
                               />
                               <FiEdit
                                 onClick={chooseFile}
-                                className="edit_Btn"
+                                className={style.editBtn}
                               />
                             </div>
                           </div>
@@ -742,6 +747,7 @@ const CommunityFinalDark = () => {
                           >
                             Post
                           </button>
+
                         </div>
                       </div>
                     </div>
@@ -780,7 +786,7 @@ const CommunityFinalDark = () => {
                         alt="userImage"
                       />
                       <div className="textAreaUploadContainer">
-                        <div className="navbarUploadPostOuterBoxContainer">
+                        <div className={style.navbarUploadPostOuterBoxContainer}>
                           <textarea
                             onChange={(e) => setNewEditText(e.target.value)}
                             name="postText"
@@ -914,9 +920,9 @@ const CommunityFinalDark = () => {
                 <div className="textAreaUploadContainer">
                   <div
                     className={
-                      textAreaIsClick
-                        ? "navbarUploadPostOuterBoxContainer"
-                        : "UploadPostOuterBoxContainerNotExpanded"
+                      `textAreaIsClick
+                        ? ${style.navbarUploadPostOuterBoxContainer}
+                        : ${style.UploadPostOuterBoxContainerNotExpanded}`
                     }
                   >
                     <textarea
@@ -933,7 +939,7 @@ const CommunityFinalDark = () => {
                       value={newPostText}
                       placeholder="What Would You Like To Post?"
                     ></textarea>
-                    <img
+                    {!textAreaIsClick ? ( <img
                       style={{
                         display: "inline-flex",
                         position: "absolute",
@@ -943,52 +949,41 @@ const CommunityFinalDark = () => {
                         height: "40px",
                       }}
                       src="./images/right-arraow-bg-blue.png"
-                    />
+                    />): null}
+                   
 
                     {tempImageURL ? (
-                      <div className="communityPostImage-cont">
+                      <div className={style.communityPostImageCont}>
                         <img
-                          className="communityPostImage"
+                          className={style.communityPostImage}
                           src={tempImageURL}
                           alt="postFile"
                         />
-                        <div className="edit_Delete_Btn">
+                        <div className={style.editDeleteBtn}>
                           <RxCrossCircled
                             onClick={RemoveFile}
                             className="delete_Btn"
                           />
-                          <FiEdit onClick={chooseFile} className="edit_Btn" />
+                          <FiEdit onClick={chooseFile} className={style.editBtn} />
                         </div>
                       </div>
                     ) : null}
 
-                    {postSpaceArr.map((space) => {
-                      return <p># {space}</p>;
-                    })}
+                    {postSpaceData ? <p className={style.spaceTag} >{postSpaceData}</p> : null}
 
-                    {textAreaIsClick ? (
+                    {/* {textAreaIsClick ? (
                       <div className="addImageandUploadPostIcon uploadNewPostaddImageandUploadPostIcon">
-                        {!postBtnVisible && (
-                          <button
-                            onClick={() =>
-                              setIsOpenPostUserspace(!isOpenPostUserspace)
-                            }
-                            className="uploadPostIconButton"
-                          >
-                            Next
-                          </button>
-                        )}
-
+                      
                         {isOpenPostUserspace && (
                           <div className={style.spaceSection}>
-                            {/* <button className={style.spaceSectionButton} onClick={openModal}>Open Modal</button> */}
+                            
 
                             <div className={style.spaceModal}>
                               <div className={style.spaceModalContent}>
                                 <p className={style.spaceModalHeading}>
                                   Select the Post Space (s).
                                 </p>
-                                {/* <p>Imagine the industry as a vibrant tapestry of possibilities—where does your thread weave its unique pattern?</p> */}
+                                
                                 <div className={style.spaceMenu}>
                                   {currentUserDoc.userSpace.map((space) => {
                                     return (
@@ -1041,20 +1036,21 @@ const CommunityFinalDark = () => {
                           </div>
                         )}
 
-                        {postBtnVisible && (
-                          <button
+                        
+                          {/* <button
                             onClick={uploadImageToFireBase}
                             className="uploadPostIconButton"
                           >
                             Post
-                          </button>
-                        )}
-                      </div>
-                    ) : null}
+                          </button> */}
+                        
+                      {/* </div>
+                    ) : null} */} 
+                    
                   </div>
                   <div className={style.postAssetsIconMain}>
                     <div
-                      className="post_assets_icon_main_div"
+                      className={style.postAssetsIconMaindiv}
                       onClick={chooseFile}
                     >
                       <BsImages className={style.assest_icon} />
@@ -1064,18 +1060,27 @@ const CommunityFinalDark = () => {
                       <MdPoll className={style.assest_icon} />
                       <span className={style.icon_text}>Polls</span>
                     </div> */}
-                    <div className="post_assets_icon_main_div">
+                    <div className={style.postAssetsIconMaindiv}>
                       <MdVideoCameraBack className={style.assest_icon} />
                       <span className={style.icon_text}>Video</span>
                     </div>
-                    {/* <div className="post_assets_icon_main_div">
-                      <RiFileSearchLine className={style.assest_icon} />
-                      <span className={style.icon_text}>Files</span>
-                    </div> */}
-                    {/* <div className="post_assets_icon_main_div">
-                      <MdLocationOn className={style.assest_icon} />
-                      <span className={style.icon_text}>Location</span>
-                    </div> */}
+
+                    
+                      <select className={style.userSpaceSelect}  onChange={handleOptionChange} >
+                        <option className={style.userSpaceOption} value="">Select Spaces</option>                      
+                        {  currentUserDoc?.userSpace?.map((item)=>{
+                          return   <option  className={style.userSpaceOption} value={item}>{item}</option>     
+                        })}
+
+                      </select>
+                      <button
+                            onClick={uploadImageToFireBase}
+                            className="uploadPostIconButton"
+                          >
+                            Post
+                      </button>
+                    
+                
                   </div>
                 </div>
               </div>

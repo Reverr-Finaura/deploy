@@ -260,7 +260,6 @@ export default function PostCardDark({
   }, [userDoc]);
 
   //GET USER DATA FROM REFERENCE LINK WHO HAS COMMENTED
-
   useEffect(() => {
     item.comments.map((event) => {
       getUserDocByRef(event.commentedby).then((res) => {
@@ -271,8 +270,7 @@ export default function PostCardDark({
     });
   }, [item]);
 
-  // HANDLE POST SEND CLICK
-
+  // HANDLE POST SEND CLICK  
   const handleSendPostLinkClick = (id) => {
     var tempUrl = window.location.href;
     var url = `${tempUrl}/${id}`;
@@ -340,9 +338,9 @@ export default function PostCardDark({
                 {isThreeDotsClicked ? (
                   <div
                     className={
-                      user?.user?.email === item?.postedby?.id
-                        ? "threeDotsOptions"
-                        : "standardThreeDotsOption"
+                      `user?.user?.email === item?.postedby?.id
+                        ? ${style.threeDotsOptions}
+                        : ${style.standardThreeDotsOption}`
                     }
                   >
                     {user?.user?.email === item?.postedby?.id ? (
@@ -357,7 +355,7 @@ export default function PostCardDark({
                       <a
                         style={{
                           textDecoration: "none",
-                          color: "black",
+                          color: "#fff",
                           margin: "auto",
                         }}
                       >
@@ -372,7 +370,7 @@ export default function PostCardDark({
                         </div>
                       </a>
                     ) : null}
-                    <div className={style.threeDotsReportPostOption}>Report Post</div>
+                    <div style={{color:"#fff"}} className={style.threeDotsReportPostOption}>Report Post</div>
                   </div>
                 ) : null}
               </div>
@@ -496,7 +494,7 @@ export default function PostCardDark({
       <section className={style.newCommentOnPostSection}>
         {editCommentButtonIsClick ? (
           <section className={style.uploadPostContainerrrrSection}>
-            <div className="newCommentContainerrrr">
+            <div className={style.newCommentContainerrrr}>
               <img
                 className="community-newComment-cont-userImage"
                 src={
@@ -534,7 +532,7 @@ export default function PostCardDark({
             style={{ display: commentIconClick ? "" : "none" }}
             className={style.uploadPostContainerrrrSection}
           >
-            <div className="newCommentContainerrrr">
+            <div className={style.newCommentContainerrrr}>
               <img
                 className={style.communityNewCommentContUserImage}
                 src={
@@ -594,11 +592,13 @@ export default function PostCardDark({
                 : style.oldCommentSectionNothing
             }
           >
-            {item?.comments.map((list) => {
-              return (
-                <>
-                  <div className="commentedByAndComment" key={list.commentid}>
-                    <div className="commented-by-and-edit-cont">
+            
+            {item?.comments.map((list,index) => {
+              if(index === item.comments.length - 1 ){
+                  console.log("i am the last")
+                 
+                 return (<div style={{border:"unset"}} className={style.commentedByAndComment} key={list.commentid}>
+                    <div className={style.commentedByAndEditCont}>
                       <img
                         className="commentedUserImage"
                         src={
@@ -608,7 +608,7 @@ export default function PostCardDark({
                         }
                         alt="CommentedUserPhoto"
                       />
-                      <p className="commented-by">
+                      <p className={style.commentedBy}>
                         {
                           commentedByUserDoc?.filter((it) => {
                             return it.email === list?.commentedby?.id;
@@ -625,7 +625,79 @@ export default function PostCardDark({
                         />
                       ) : null}
                       {/* <img onClick={()=>{setIsCommentThreeDotsClicked(current=>!current);setThreeDotsClickCommentId(list?.commentid)}} className='threeDotsPost commentThreeDotsPost' src="./images/dots.png" alt="3dots" /> */}
-
+                      {isCommentThreeDotsClicked &&
+                      list?.commentedby?.id === user?.user?.email &&
+                      threeDotsClickCommentId === list?.commentid ? (
+                        <>
+                          <div className={`${style.threeDotsOptions} ${style.commentThreeDotsOption}`}>
+                            <div
+                              onClick={() =>
+                                handleDeleteCommentClick(
+                                  list.commentid,
+                                  item,
+                                  item.id
+                                )
+                              }
+                              className="threeDotsDeletePostOption"
+                            >
+                              Delete
+                            </div>
+                            <a
+                              style={{
+                                textDecoration: "none",
+                                color: "black",
+                                margin: "auto",
+                              }}
+                            >
+                              <div
+                                onClick={() => {
+                                  handleEditCommentClick(list.commentid, list);
+                                  setIsCommentThreeDotsClicked(false);
+                                }}
+                                style={{color:"#fff"}}
+                                className="threeDotsEditPostOption"
+                              >
+                                Edit
+                              </div>
+                            </a>
+                          </div>
+                        </>
+                      ) : null}
+                    </div>
+                    <p className={style.commentedByComment}>{list.comment}</p>
+                       </div>)
+              }
+           
+          return (
+                <>
+                  <div className={style.commentedByAndComment} key={list.commentid}>
+                    <div className={style.commentedByAndEditCont}>
+                      <img
+                        className="commentedUserImage"
+                        src={
+                          commentedByUserDoc?.filter((it) => {
+                            return it.email === list?.commentedby?.id;
+                          })[0]?.image
+                        }
+                        alt="CommentedUserPhoto"
+                      />
+                      <p className={style.commentedBy}>
+                        {
+                          commentedByUserDoc?.filter((it) => {
+                            return it.email === list?.commentedby?.id;
+                          })[0]?.name
+                        }
+                      </p>
+                      {list?.commentedby?.id === user?.user?.email ? (
+                        <TfiMoreAlt
+                          className="threeDotsPost commentThreeDotsPost"
+                          onClick={() => {
+                            setIsCommentThreeDotsClicked((current) => !current);
+                            setThreeDotsClickCommentId(list?.commentid);
+                          }}
+                        />
+                      ) : null}
+                      {/* <img onClick={()=>{setIsCommentThreeDotsClicked(current=>!current);setThreeDotsClickCommentId(list?.commentid)}} className='threeDotsPost commentThreeDotsPost' src="./images/dots.png" alt="3dots" /> */}
                       {isCommentThreeDotsClicked &&
                       list?.commentedby?.id === user?.user?.email &&
                       threeDotsClickCommentId === list?.commentid ? (
@@ -664,7 +736,7 @@ export default function PostCardDark({
                         </>
                       ) : null}
                     </div>
-                    <p className="commented-by-comment">{list.comment}</p>
+                    <p className={style.commentedByComment}>{list.comment}</p>
                   </div>
                 </>
               );
