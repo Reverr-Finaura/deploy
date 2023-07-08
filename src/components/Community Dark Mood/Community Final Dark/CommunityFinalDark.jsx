@@ -195,8 +195,8 @@ const CommunityFinalDark = () => {
     }
   }, [userDoc]);
 
-  //FETCH POSTS DATA FROM FIREBASE
 
+  //FETCH POSTS DATA FROM FIREBASE
   useEffect(() => {
     async function fetchPostsFromDb() {
       const postRef = collection(db, "Posts");
@@ -360,7 +360,7 @@ const CommunityFinalDark = () => {
         likes: [],
         postedby: userRef,
         text: newPostText,
-        postSpace: postSpaceArr,
+        postSpace: postSpaceData,
       });
       newPostId.push(timeId);
 
@@ -582,7 +582,8 @@ const CommunityFinalDark = () => {
               <p className={style.spaceModalHeading}>Select your space (s).</p>
 
               <div className={style.spaceMenu}>
-                {currentUserDoc.userSpace.map((space, index) => {
+                {currentUserDoc.userSpace.length >= 1 ?  
+                currentUserDoc.userSpace.map((space, index) => {
                   return (
                     <div
                       key={index}
@@ -610,7 +611,8 @@ const CommunityFinalDark = () => {
                       </p>
                     </div>
                   );
-                })}
+                }): <p style={{color:"#fff"}}>data is not present</p> }
+               
 
                 {/* <p>Selected Options: {userSpaceArr.join(", ")}</p> */}
               </div>
