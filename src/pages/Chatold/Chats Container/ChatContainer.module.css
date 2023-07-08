@@ -2,18 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 .outerCont{
     width: 100%;
-    height: 100%;
+    max-height: 380px;
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
     margin-top: .5rem;
     font-family: 'Source Sans Pro', sans-serif;
 }
-.userBorder
-{
-    width: 100%;
-    height: 1px;
-}
+
 .outerCont::-webkit-scrollbar {
     display: none;
 }
@@ -24,14 +20,11 @@
     width: 93%;
     padding: .5rem 1rem;
     cursor: pointer;
-    background-color:#0a2458;
-    border-bottom: 1px solid white;
-    margin-top: 10px;
 
 }
-/* .chatCont:hover{
+.chatCont:hover{
     background: #EEEEEE;
-} */
+}
 
 .chatImg{
     height: 50px;
@@ -44,66 +37,26 @@
     flex-direction: column;
     width: 60%;
     margin-left: 1rem;
-}
-.chatButton
-{
-background-color: white;
-color: #0a2458;
-font-weight: bold;
-border: none;
-padding:7px 10px;
-border-radius: 20px 0px 0px 20px ;
-width:130px;
-}
-.chatButton.clicked 
-{
-    background-color: #0a2458;
-    color: white;
-}
-.matchButton.chatButton.clicked{
-    background-color:white ;
-    color: #0a2458;
-}
-.matchButton
-{
-    background-color: #0a2458;
-    color: white;
-    font-weight: bold;
-    border: 0.5px solid white;
-    padding:7px 10px;
-    border-radius: 0px 20px 20px 0px ;
-    width:130px;
-}
-.messageGroup
-{
-    position: relative;bottom: 415px;
-}
-.buttonsGroup
-{
-    margin: auto;
-    position: relative;bottom: 200px;
+
 }
 .userName{
     font-style: normal;
     font-weight: 600;
     font-size: 1.3rem;
     line-height: 15px;    
-    color: white;
+    color: rgba(0, 0, 0, 0.85);
     text-transform: capitalize;
 }
 .userLastTextCont{
     display: flex;
     align-items: center;
-    color: white;
-    
 }
 .userLastText{
     font-style: normal;
 font-weight: 500;
 font-size: .9rem;
 margin-top: .25rem;
-
-color: white;
+color: rgba(0, 0, 0, 0.45);
 }
 
 .chatTime{
@@ -111,12 +64,11 @@ color: white;
 font-weight: 600;
 font-size: 1.1rem;
 line-height: 15px;
-color: white;
+color: rgba(0, 0, 0, 0.65);
 }
 
 .noChatsMesssage{
     padding: 1rem;
     font-weight: 600;
     font-size: 1.2rem;
-    color: white;
 }

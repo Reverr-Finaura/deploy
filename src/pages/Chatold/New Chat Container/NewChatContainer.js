@@ -1,13 +1,12 @@
 import React from 'react'
 import styles from "./NewChatContainer.module.css"
-import {ImAttachment} from "react-icons/im"
+import {GrAttachment} from "react-icons/gr"
 import { useRef } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SendMessage, uploadMedia } from '../../../firebase';
 import { setRedeploy } from '../../../features/reDeploySlice';
-import {AiFillCloseCircle,AiOutlineSend} from "react-icons/ai"
-import {BsEmojiFrown} from "react-icons/bs"
+import {AiFillCloseCircle} from "react-icons/ai"
 
 
 
@@ -77,10 +76,9 @@ saveChatToDatabase(null)
             className="postImageUpload"
             accept='image/*'
           />
-    <ImAttachment onClick={chooseFile} className={styles.attachmentIcon}/>
-    <BsEmojiFrown className={styles.emoji} />
-    <input value={newMsg} onChange={(e)=>{setNewMsg(e.target.value)}} className={styles.textInp} type="text" placeholder='Send Message...' />
-    <AiOutlineSend  onClick={handleSendMessage} className={styles.sendMessageBtn}/>
+    <GrAttachment onClick={chooseFile} className={styles.attachmentIcon}/>
+    <input value={newMsg} onChange={(e)=>{setNewMsg(e.target.value)}} className={styles.textInp} type="text" placeholder='Type your message here..' />
+    <button onClick={handleSendMessage} className={styles.sendMessageBtn}>{sending?"Sending....":"Send Message"}</button>
   </section>
   )
 }

@@ -1,17 +1,15 @@
 import React, { useState } from 'react'
 import ChatsContainer from '../Chats Container/ChatsContainer'
+import UserSearch from '../User Search/UserSearch'
 import styles from "./MessagesCont.module.css"
-import { useSelector } from 'react-redux'
 
 const MessagesCont = () => {
   const[sorter,setSorter]=useState("Newest")
-
   return (
-  
    <section className={styles.outerCont}>
-    <div>
-      <h2 className={styles.message}>Messages</h2>
-    </div>
+    <h1 className={styles.title}>Messsages</h1>
+  
+    {/* <UserSearch/> */}
     <div className={styles.sorterCont}>
     <p className={styles.sorterText}>Sort by</p>
     <div className={styles.messageSorterCont}>

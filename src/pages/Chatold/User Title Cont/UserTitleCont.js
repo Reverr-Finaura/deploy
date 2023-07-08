@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from "./UserTitleCont.module.css"
-import {BiDotsVerticalRounded} from "react-icons/bi"
+import {AiOutlineInfoCircle} from "react-icons/ai"
 import { useSelector } from 'react-redux'
 
 const UserTitleCont = () => {
@@ -15,7 +15,7 @@ const UserTitleCont = () => {
             {/* <p className={styles.userStatus}>Online</p> */}
         </div>
 
-        <BiDotsVerticalRounded className={styles.infoIcon}/>
+        <AiOutlineInfoCircle className={styles.infoIcon}/>
     </section>
   )
 }

@@ -2,17 +2,15 @@
     display: flex;
     align-items: center;
     padding: 1rem;
-    border-bottom-right-radius: 1px;
+    border-bottom-right-radius: 32px;
     height: 45px;
-    /* border-top:1.6px solid #EEEEEE; */
+    border-top:1.6px solid #EEEEEE;
     position: relative;
-    top: 150px;
-    border-top: 1px solid #EEEEEE;
 }
 .tempImgCont{
     width: 170px;
     height: 170px;
-    z-index: 0;
+    z-index: 1;
     position: absolute;
     top: -180px;
     border-radius: 15px;
@@ -25,7 +23,6 @@
     font-size: 1.5rem;
     right: 0;
     cursor: pointer;
-    
 }
 .tempImg{
     width: 100%;
@@ -35,17 +32,15 @@
 .attachmentIcon{
     font-size: 1.2rem;
     cursor: pointer;
-    color: black;
-    position: relative;left: 80px;
-    font-size: x-large;
 }
 
 .textInp{
     margin-left: 1rem;
     background: #FAFAFA;
 border-radius: 12px;
-width: 150%;
-padding: 0.5rem;
+width: 70%;
+padding: 1rem;
+border: 1.6px solid #EEEEEE;
 font-style: normal;
 font-weight: 500;
 font-size: 1rem;
@@ -53,29 +48,23 @@ line-height: 16px;
 color: black;
 
 }
-.emoji
-{
-    font-size: x-large;
-    position: relative;left: 35px;
-    color: black;
-}
 .textInp::placeholder{
-    color: rgba(0, 0, 0, 0.45);
-    position: relative;left: 50px; 
+    color: rgba(0, 0, 0, 0.45);  
 }
 .textInp:focus{
     outline: none;
 }
 
 .sendMessageBtn{
-    padding: 10px;
+    padding: 1rem;
     border: none;
-    color: white;
+    color: #27AE60;
     font-style: normal;
 font-weight: 500;
 font-size: 1rem;
+line-height: 16px;
 cursor: pointer;
-border-radius: 10px;
-background-color: #47c8ff;
-position: relative;right: 20px;
+width: 200px;
+border-radius: 12px;
+background-color: transparent;
 }
