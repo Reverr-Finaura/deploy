@@ -158,6 +158,7 @@ function App() {
             <Route path="/login" element={<LoginTesting />} />
             {/* <Route path="/login" element={<LoginNew />} /> */}
             <Route path="/community2" element={<HomeNotLoggedIn />}>
+              
               <Route path=":postId" element={<SharedCommunityPost />}></Route>
             </Route>
           </>
