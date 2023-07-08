@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../../firebase";
 import styles from "./ConnectSuggestion.module.css";
 
-function ConnectSuggestion() {
+function ConnectSuggestion({ isLoggedIn, buttonRef, openModal }) {
   const [users, setUsers] = useState([]);
+  // console.log("is log in7874: " + isLoggedIn);
 
   //FETCH USER DATA FROM FIREBASE
   useEffect(() => {
@@ -44,7 +45,13 @@ function ConnectSuggestion() {
           <text style={{ color: "#00B3FF" }}>Suggested </text>
           <text style={{ color: "#FFFFFF" }}>For You</text>
         </div>
-        <span onClick={() => console.log("see all clicked")}>See All</span>
+        <span
+          onClick={() => {
+            console.log("see all clicked");
+          }}
+        >
+          See All
+        </span>
       </div>
       <div>
         {randomUsers.map((user, index) => (
@@ -89,7 +96,17 @@ function ConnectSuggestion() {
                   </text>
                 </div>
               </div>
-              <button onClick={() => console.log("connect clicked")}>
+              <button
+                onClick={() => {
+                  console.log("connect clicked111111111");
+                  if (!isLoggedIn) {
+                    console.log("connect clicked");
+                    // return openModal();
+                  }
+                  console.log("connect clicked67");
+                }}
+                // ref={buttonRef}
+              >
                 Connect
               </button>
             </div>
@@ -101,4 +118,11 @@ function ConnectSuggestion() {
   );
 }
 
-export default ConnectSuggestion;
+// Set default props using defaultProps property
+ConnectSuggestion.defaultProps = {
+  isLoggedIn: true,
+  buttonRef: null,
+  openModal: () => {},
+};
+
+export default React.memo(React.forwardRef(ConnectSuggestion));

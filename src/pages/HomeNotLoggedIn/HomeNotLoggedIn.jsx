@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import styles from "./HomeNotLoggedIn.module.css";
 import ConnectSuggestion from "../../components/SidebarComponents/ConnectSuggestion/ConnectSuggestion";
@@ -21,14 +21,94 @@ import NavBarFinalDarkMode from "../../components/Navbar Dark Mode/NavBarFinalDa
 import Patch from "../../components/SidebarComponents/Patch/Patch";
 
 function HomeNotLoggedIn() {
+  const [isLogInModalOpen, setIsLogInModalOpen] = useState(false);
+  const modalRef = useRef(null);
+  const buttonRef = useRef(null);
+  console.log("isLogInModalOpen: 1" + isLogInModalOpen)
+
+  const handleOutsideClick = (event) => {
+    console.log("isLogInModalOpen: 2" + isLogInModalOpen)
+    if (
+      isLogInModalOpen &&
+      modalRef.current &&
+      !modalRef.current.contains(event.target) &&
+      !buttonRef.current.contains(event.target)
+    ) {
+      setIsLogInModalOpen(false);
+      console.log("isLogInModalOpen: 3" + isLogInModalOpen)
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+    console.log("issue fixed")
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [isLogInModalOpen]);
+
+  const openModal = React.useCallback(() => {
+    console.log("openModal clicked");
+    setIsLogInModalOpen(true);
+  }, []);
+
   return (
     <>
+      {isLogInModalOpen ? (
+        <div className={styles.logInModalCont}>
+          <div className={styles.logInModal} ref={modalRef}>
+            <img src={require("../../images/userIcon.png")} alt="img" />
+            <text style={{ color: "#ffffff", fontSize: 20, marginTop: 10 }}>
+              Sign in to view your
+            </text>
+            <text style={{ color: "#ffffff", fontSize: 20 }}>
+              full Reverr profile
+            </text>
+            <button
+              className={styles.signInButton}
+              onClick={() => console.log("Sign in clicked")}
+            >
+              Sign in
+            </button>
+            <div className={styles.dividerRow}>
+              <div className={styles.dividerLine}></div>
+              <span style={{ marginInline: 5, color: "#999b9e" }}>or</span>
+              <div className={styles.dividerLine}></div>
+            </div>
+            <button
+              className={styles.signInWithGoogleButton}
+              onClick={() => console.log("signInWithGoogleButton clicked")}
+            >
+              <img src={require("../../images/google.png")} alt={"img"} />
+              <span>Sign in with Google</span>
+            </button>
+            <div style={{ marginTop: 10 }}>
+              <span style={{ color: "#999b9e", fontSize: 10 }}>
+                New to Reverr?&nbsp;
+              </span>
+              <span
+                style={{
+                  color: "#00b3ff",
+                  fontSize: 10,
+                  cursor: "pointer",
+                  textDecoration: "underline",
+                }}
+              >
+                Sign up
+              </span>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       <NavBarFinalDarkMode />
       <div className={styles.container}>
         <div className={styles.leftSidebar} style={{ marginTop: "10em" }}>
           {/* <ProfileSummary />
           <div style={{ marginTop: 50 }}></div> */}
-          <ConnectSuggestion />
+
+          <ConnectSuggestion onClick={openModal} isLoggedIn={false} buttonRef={buttonRef} openModal={openModal} />
           <div style={{ marginTop: 50 }}></div>
           <Vibe />
           <div style={{ marginTop: 50 }}></div>
