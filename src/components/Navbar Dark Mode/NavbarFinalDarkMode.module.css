@@ -126,7 +126,7 @@
 
 .navbarFinalBrandLogoImg {
   cursor: pointer;
-  width: 100px;
+  width: 80px;
 }
 
 .navbarIconsCont {
@@ -421,7 +421,7 @@
 
 .navbarSearchInput {
   width: 300px;
-  height: 13px;
+  height: 45px;
   border-radius: 30px;
   margin-left: 15px;
   outline: none;

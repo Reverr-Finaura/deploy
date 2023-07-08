@@ -643,12 +643,12 @@ const NavBarFinalDarkMode = () => {
 
         <div className={style.navbarIconsCont}>
           <div className={style.allNavbarIconsImgName}>
-            <div className={style.navbarIconsImgName}>
+            <div className={style.navbarIconsImgName} onClick={() => navigate("/")}>
               <BiHomeAlt className={style.navbarIconsImg} />
               <p className={style.navbarIconsName}>Home</p>
             </div>
             <div className={style.navbarIconsImgName}>
-              <AiOutlineGlobal className={style.navbarIconsImg} />
+              <AiOutlineGlobal className={style.navbarIconsImg} onClick={() => navigate("/discover")}/>
               <p className={style.navbarIconsName}>Discover</p>
               {/* <NavLink className="navlinks" to="/discover">
                 <p className={style.navbarIconsName}>Discover</p>
@@ -665,7 +665,7 @@ const NavBarFinalDarkMode = () => {
               </div>
             ) : null}
             <div className={style.navbarIconsImgName}>
-              <AiOutlineMessage className={style.navbarIconsImg} />
+              <AiOutlineMessage className={style.navbarIconsImg} onClick={() => navigate("/messages")} />
               <p className={style.navbarIconsName}>Messages</p>
             </div>
             <div
@@ -699,14 +699,14 @@ const NavBarFinalDarkMode = () => {
             </div>
           </div>
 
-          {!userDoc.hasUpgrade && (
+          {/* {!userDoc.hasUpgrade && (
             <button
               className={style.navbarFinalUpgradeBtn}
               onClick={() => navigate("/upgrade")}
             >
               Get Premium
             </button>
-          )}
+          )} */}
 
           <div
             onClick={() => setRequestsbuttonClick((current) => !current)}
