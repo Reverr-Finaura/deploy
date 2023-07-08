@@ -80,8 +80,8 @@ const UserProfileTesting = () => {
       <NavBarFinalDarkMode />
       <div className={styles.profileWrapper}>
         <div className={styles.profileContainer}>
-          <div className={styles.profileHeader}>
-            <img src="/images/profileArrowLeft.svg" alt="Linkedin" />
+          <div className={styles.profileHeader} style={{cursor:"pointer"}} onClick={() => navigate("/")}>
+            <img src="/images/profileArrowLeft.svg" alt="back" />
             <p>My Profile</p>
           </div>
           <div className={styles.profileUser}>
@@ -99,44 +99,43 @@ const UserProfileTesting = () => {
             </div>
             <div className={styles.profileInfo}>
               <div className={styles.profileUserIcon}>
-                <img src="/images/fluent_call-24-regular.svg" alt="Linkedin" />
-                <img src="/images/logos_google-gmail.svg" alt="Linkedin" />
+                <img src="/images/fluent_call-24-regular.svg" alt="Linkedin" onClick={()=>navigator.clipboard.writeText(userDoc.phone)}/>
+                <img src="/images/logos_google-gmail.svg" alt="Linkedin" onClick={()=>navigator.clipboard.writeText(userDoc.email)} />
                 <img src="/images/skill-icons_linkedin.svg" alt="Linkedin" />
               </div>
               <div className={styles.profileInfoName}>
-                <p>{userDoc?.name}</p>
+                <p style={{textTransform:"capitalize"}}>{userDoc?.name}</p>
               </div>
               <div className={styles.profileDesignation}>
-                <p>Software Engineer</p>
+              <p>{userDoc?.designation?userDoc.designation:"Add your Designation"}</p>
               </div>
               <div className={styles.profileLocation}>
                 <img
                   src="/images/basil_location-outline.svg"
                   alt="ProfileImage"
                 />
-                <p>San Francisco, CA</p>
+                <p>{userDoc?.state?userDoc.country?userDoc.state+ ", " + userDoc.country:"Add your country" :"Add your location"}</p>
               </div>
               <div className={styles.profilePost}>
-                <p>10 Posts . 130 Connections</p>
+                <p>{userDoc?.network ? userDoc.network.length : 0} Connections</p>
               </div>
-              <button>Edit Profile</button>
+              <button onClick={() => navigate("/editprofile")} >Edit Profile</button>
             </div>
           </div>
           <div className={styles.profileContent}>
             <div className={styles.aboutMe}>
               <p>About Me</p>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur.
+              {userDoc?.about?userDoc.about:"Add your Bio"}
               </p>
             </div>
             <div className={styles.connect}>
               <p>How can we connect?</p>
-              <button>Video Call</button>
+              <div style={{flexDirection:"column"}}>
+              {userDoc?.Vibe_Data?.How_To_Meet? userDoc.Vibe_Data.How_To_Meet.map((item)=>{
+               return <button style={{marginRight:"25px"}}>{item}</button>
+              }):"Update your How to connect"}
+              </div>
             </div>
           </div>
           <div className={styles.profileEducation}>
@@ -144,8 +143,15 @@ const UserProfileTesting = () => {
               <p>Education</p>
               <div className={styles.educationInfo}>
                 <ul>
-                  <li>BTech, IIT Delhi</li>
-                  <li>MSc., Harvard</li>
+                  {userDoc?.education? 
+                  userDoc.education.map((item)=>{
+                    return <li>{item.degree? item.degree : null}, {item.institute?item.institute:null} {item.year? item.year: null}</li>
+                  })
+                  :
+                  <li>Add your Education</li>
+                  }
+                  
+                  
                 </ul>
               </div>
             </div>
@@ -153,26 +159,32 @@ const UserProfileTesting = () => {
               <p>My Work Experience</p>
               <div className={styles.educationInfo}>
                 <ul>
-                  <li>CEO at Reverr</li>
-                  <li>Lorem ipsum hgvfc vhvjub </li>
-                  <li>Lorem ipsum hgvfc vhvjub vgvfcfg szd</li>
+                {userDoc?.experience? 
+                  userDoc.experience.map((item)=>{
+                    return <li>{item.designation? item.designation : null} at {item.company?item.company:null} <span style={{fontSize:"14px", color:"gray"}}>{item.tenure? item.tenure: null}</span></li>
+                  })
+                  :
+                  <li>Add your Experience</li>
+                  }
                 </ul>
               </div>
             </div>
             <div className={styles.experienceConnect}>
-              <p>I am here to </p>
+              <p>I am here </p>
               <div className={styles.experienceBtn}>
-                <button>Find a Mentor</button>
-                <button>Raise Investment</button>
+              {userDoc?.Vibe_Data?.Here_for? userDoc.Vibe_Data.Here_for.map((item)=>{
+               return <button style={{marginRight:"25px"}}>{item}</button>
+              }):"Update your How for"}
+
               </div>
             </div>
           </div>
           <div className={styles.profileContact}>
             <div className={styles.contact}>
-              <p>My Connections</p>
+              <p>Social Handles</p>
               <div className={styles.contactItem}>
                 <img src="/images/skill-icons_linkedin.svg" alt="Linkedin" />
-                <p>Connect with me on Linkedin</p>
+                <p>{userDoc?.linkedin?userDoc.linkedin:"Add your linkedin"}</p>
               </div>
             </div>
           </div>
