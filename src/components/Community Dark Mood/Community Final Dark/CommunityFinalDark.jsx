@@ -132,29 +132,7 @@ const CommunityFinalDark = () => {
 
   useEffect(() => {
     getNews();
-    const bodyData = {
-      amount: "1000",
-      currency: "INR",
-      customer_id: "ljsavuq6q2fqpsjvgfh",
-      customer_phone: "9599341246",
-      id: "order_ljsavuq6n256suho36ygha53r"
-    }
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(bodyData)
-  };
-  console.log("DATA👀")
-  fetch('https://server.reverrapp.com/webcftoken', requestOptions)
-    .then(response => {
-        response.json()
-        .then(data=>console.log(data.token))
-        .catch((err)=>{
-          console.log(err)
-          toast.error(err.message)})
-    }).catch((err)=>{
-      console.log(err)
-      toast.error(err.message)});
+
   }, []);
 
   window.onscroll = () => {
