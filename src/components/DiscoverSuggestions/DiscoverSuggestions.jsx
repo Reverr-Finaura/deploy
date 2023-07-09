@@ -161,7 +161,7 @@ import React, { useState, useEffect } from "react";
 import ProfileCard from '../../components/ProfileCard/ProfileCard'
 import { collection, doc, getDocs, query } from "firebase/firestore";
 import { db } from "../../firebase";
-
+import styles from "./Suggestion.css";
 const DiscoverSuggestions = () => {
   const [users, setUsers] = useState([]);
   const [randomUsers, setRandomUsers] = useState([]);
@@ -210,15 +210,18 @@ const DiscoverSuggestions = () => {
   return (
     <section className='suggest-section'>
       {/* Suggestions */}
+      <div className="align">
       <div className='people-suggest'>
-        <h3 style={{ color: 'white', marginTop: '10px', marginLeft: '20px' }}> More <span style={{ color: 'blue' }}>Suggestions</span> </h3>
+        <h3 style={{ color: 'white', marginTop: '10px', marginLeft: '20px' }}> More Suggestions </h3>
       </div>
+      
       <div className='people-card'>
         {randomUsers.length === 4 && randomUsers.map(user => (
           <div key={user.id}>
             <ProfileCard name={user.name} post={user.designation} imgUrl={user.image} />
           </div>
         ))}
+      </div>
       </div>
     </section>
   )

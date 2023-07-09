@@ -30,6 +30,7 @@
 import NewsCard from '../../components/NewsCard/NewsCard'
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
+import styles from "./News.css";
 
 // export class DiscoverNews extends Component {
 
@@ -226,13 +227,13 @@ console.log(newsData)
 
     {/* News */}
     <div className='news'>
-            <h3 style={{color:'white', marginTop:'10px', marginLeft:'12px'}}> Trending <span style={{color:'blue'}}>News</span> </h3>
+            <h3 style={{color:'white', marginTop:'10px', marginLeft:'12px'}}> Trending News </h3>
     </div>
 
-
+    <div className='align'>
   <div className='row' style={{display:'flex', flexDirection:'row', flexWrap:'wrap'}}>
     
-    { newsData && newsData.slice(0, 4).map( (news) => {
+    { newsData && newsData.slice(0,6).map( (news) => {
         return(
           <div className='allCards' style={{display:'flex', flexDirection:'row'}}>
             <NewsCard title={news.name} url={news.url} imgUrl={news?.image?.thumbnail?.contentUrl} time={news.datePublished.slice(0,10)}/>
@@ -244,6 +245,7 @@ console.log(newsData)
       )
     }
 
+  </div>
   </div>
 
 

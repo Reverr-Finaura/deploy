@@ -351,7 +351,7 @@ const LoginNew = () => {
   // userDoc.Vibe_Data.How_To_Meet - []
   return (
     <>
-      <NavBarFinalDarkMode />
+      <NavBarFinalDarkMode isLoggedIn={false}/>
       <div className={styles.PageWrapper}>
         <div className={styles.leftContent}>
           <div className={styles.leftHeading}>
@@ -360,7 +360,7 @@ const LoginNew = () => {
           <form onSubmit={loginEmail} className={styles.form}>
             <div>
               <label htmlFor="email" className={styles.label}>
-                Email or Phone
+                Email
               </label>
               <input
                 onChange={(e) => setEmail(e.target.value)}

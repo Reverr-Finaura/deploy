@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ProfileCard from '../../components/ProfileCard/ProfileCard'
 import { collection, doc, getDocs, query } from "firebase/firestore";
 import { db } from "../../firebase";
-
+import styles from "./Discoverpeople.css";
 
 // export const DiscoverPeople = () => {
 
@@ -116,11 +116,14 @@ const DiscoverPeople = () => {
 
 
     {/* People */}
+    
+    <div className="aling">
+    
                 <div className='people'>
-                    <h3 className='discover-headings' style={{color:'white', marginLeft:'20px', marginTop:'15px'}}> <span style={{color:'blue'}}>People </span> you May Know</h3>
+                    <h3 className='discover-headings' style={{color:'white', marginLeft:'20px', marginTop:'15px'}}> People  you May Know</h3>
                 </div>
-
-
+             
+                 
                 <div className='people-card'>
                   {randomUsers.length === 8 && randomUsers.map(user => (
                     <div key={user.id}>
@@ -130,7 +133,7 @@ const DiscoverPeople = () => {
                     )
                   }               
                   </div>
-
+                 </div>
 
             </section>
     )

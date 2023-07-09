@@ -121,6 +121,13 @@ import HomeNotLoggedIn from "./pages/HomeNotLoggedIn/HomeNotLoggedIn";
 import LoginTesting from "./pages/Login/LoginNew";
 import UserProfileTesting from "./pages/User Profile/UserProfileTesting";
 import UserEditProfileTesting from "./pages/User Edit Page/UserEditProfileTesting";
+import First from "./pages/OnboardingNew/First/First";
+import Second from "./pages/OnboardingNew/Second/Second";
+import Third from "./pages/OnboardingNew/Third/Third";
+import Fourth from "./pages/OnboardingNew/Fourth/Fourth";
+import Fifth from "./pages/OnboardingNew/Fifth/Fifth";
+import SignupAuthUpdated from "./pages/Auth/SignupAuthUpdated";
+import EnterOtpUpdated from "./pages/EnterOtpUpdated/EnterOtpUpdated";
 
 
 function App() {
@@ -155,11 +162,15 @@ function App() {
           <>
             <Route path="/" element={<LoginTesting />} />
             {/* <Route path="/signup" element={<Auth />} /> */}
-            <Route path="/signup" element={<SignUpAuth />}></Route>
+            <Route path="/signup" element={<SignupAuthUpdated />}></Route>
             <Route path="/login" element={<LoginTesting />} />
             {/* <Route path="/login" element={<LoginNew />} /> */}
             <Route path="/gallery" element={<HomeNotLoggedIn />}>
-              
+            <Route path="/onboarding-first" element={<First />}></Route>
+        <Route path="/onboarding-second" element={<Second />}></Route>
+        <Route path="/onboarding-third" element={<Third />}></Route>
+        <Route path="/onboarding-fourth" element={<Fourth />}></Route>
+        <Route path="/onboarding-fifth" element={<Fifth />}></Route>
               <Route path=":postId" element={<SharedCommunityPost />}></Route>
             </Route>
           </>
@@ -169,8 +180,20 @@ function App() {
         <Route path="/forgotemail" element={<ForgotEmail />} />
         <Route path="/password-reset" element={<PasswordReset />} />
         {newUser ? (
-          <Route path="enterotp" element={<EnterOtp />}></Route>
+          <>
+          <Route path="enterotp" element={<EnterOtpUpdated />}></Route>
+          {/* <Route path="/onboarding-first" element={<First />}></Route>
+          <Route path="/onboarding-second" element={<Second />}></Route>
+          <Route path="/onboarding-third" element={<Third />}></Route>
+          <Route path="/onboarding-fourth" element={<Fourth />}></Route>
+          <Route path="/onboarding-fifth" element={<Fifth />}></Route> */}
+          </>
         ) : null}
+         <Route path="/onboarding-first" element={<First />}></Route>
+        <Route path="/onboarding-second" element={<Second />}></Route>
+        <Route path="/onboarding-third" element={<Third />}></Route>
+        <Route path="/onboarding-fourth" element={<Fourth />}></Route>
+        <Route path="/onboarding-fifth" element={<Fifth />}></Route>
         <Route path="/startup-list" element={<Card />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/industry" element={<Industry />} />

@@ -7,7 +7,7 @@ const NewSkeleton = ({cards}) => {
     return (
       Array(cards).fill(0).map((item,index)=>{
   return (<>
-    <SkeletonTheme baseColor="#e6e4e4dc" highlightColor="grey">
+    <SkeletonTheme baseColor="rgb(0, 12, 31)" highlightColor="#fff">
       <div className={styles.card} key={index}>
           <div className={styles.cardTop}>
               <div className={styles.cardTopUserImage}>

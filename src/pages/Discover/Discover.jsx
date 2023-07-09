@@ -168,17 +168,18 @@ console.log(randomEvents)
     <>
       <div className='container-1'>
         <NavBarFinalDarkMode />
+        
         <DiscoverPeople />
         { randomEvents.length>0 && <DiscoverEvents />}
         <DiscoverSuggestions />
-
+        
         {/* Articles */}
         <div className='article'>
-          <h3 style={{ color: 'white', marginTop: '10px', marginLeft: '20px' }}>
-            <span style={{ color: 'blue' }}>Articles</span> for you
+          <h3 style={{ color: 'white', marginTop: '10px', marginLeft:'7%' }}>
+           Articles  for you
           </h3>
         </div>
-
+<div className='align'>
         <div className='article-container'>
           <ArticlesLeftSideBar />
           <div className='right-container'>
@@ -187,7 +188,7 @@ console.log(randomEvents)
             {/* </NavLink> */}
           </div>
         </div>
-
+</div>
         {/* Conditionally render DiscoverNews */}
         {newsData.length >= 4 && <DiscoverNews />}
       </div>

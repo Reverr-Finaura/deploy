@@ -1,0 +1,105 @@
+.container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  background-color: #030b18;
+}
+
+.navbarBrandLogoImgCont {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  margin-left: 50px;
+  margin-top: 25px;
+  flex-direction: column;
+}
+
+.navbarFinalBrandLogoImg {
+  cursor: pointer;
+  width: 70px;
+}
+
+.reverrHeadingSpan {
+  display: flex;
+  justify-content: center;
+}
+
+.reverrHeading {
+  font-size: 14px;
+  font-family: Lora;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.352px;
+  color: #3ec5ff;
+}
+
+.mainContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.leftComponent {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+.spaceContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; /* Two columns with equal width */
+  grid-gap: 20px; /* Spacing between columns and rows */
+  grid-auto-flow: row; /* Fill div elements row-wise */
+  margin-top: 15px;
+  margin-bottom: 35px;
+}
+
+.spaceItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  background-color: #0c1631;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #00B3FF; 
+}
+
+.spaceItem > text {
+  font-size: 10px;
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+.spaceItem > img {
+  width: 45px;
+  height: 45px;
+}
+
+
+
+.nextButton {
+  padding: 10px 50px;
+  border-radius: 25px;
+  background: linear-gradient(to right, #00b3ff, #4cc9ff);
+  cursor: pointer;
+  font-weight: 700;
+  color: #000000;
+}
+
+
+.mainContent > img {
+  display: flex;
+  position: absolute;
+  right: 50px;
+  height: 80vh;
+}

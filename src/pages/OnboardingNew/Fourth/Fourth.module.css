@@ -1,0 +1,126 @@
+.container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  background-color: #030b18;
+}
+
+.navbarBrandLogoImgCont {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  margin-left: 50px;
+  margin-top: 25px;
+  flex-direction: column;
+}
+
+.navbarFinalBrandLogoImg {
+  cursor: pointer;
+  width: 70px;
+}
+
+.reverrHeadingSpan {
+  display: flex;
+  justify-content: center;
+}
+
+.reverrHeading {
+  font-size: 14px;
+  font-family: Lora;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.352px;
+  color: #3ec5ff;
+}
+
+.mainContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.leftComponent {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+.textInputContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns with equal width */
+  grid-gap: 10px 30px; /* Spacing between columns and rows */
+  grid-auto-flow: row; /* Fill div elements row-wise */
+  margin-top: 15px;
+  margin-bottom: 35px;
+}
+
+.textInput {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.textInput > input {
+  margin-top: 8px;
+  width: 350px;
+  height: 20px;
+  font-size: 15px;
+  border-radius: 25px;
+  background-color: #ffffff;
+  border: none;
+  outline: none;
+  padding-left: 20px;
+  color: #100f0f;
+}
+
+.textInput > select {
+  margin-top: 8px;
+  width: 385px;
+  height: 40px;
+  font-size: 15px;
+  border-radius: 25px;
+  background-color: #ffffff;
+  border: none;
+  outline: none;
+  padding-left: 20px;
+  color: #100f0f;
+}
+
+.leftButton {
+  color: #ffffff;
+  padding: 10px 50px;
+  border-radius: 25px;
+  margin-right: 20px;
+  border-color: #00b3ff;
+  background: transparent;
+  cursor: pointer;
+}
+
+.rightButton {
+  padding: 10px 50px;
+  border-radius: 25px;
+  background: linear-gradient(to right, #00b3ff, #4cc9ff);
+  cursor: pointer;
+  font-weight: 700;
+  color: #000000;
+}
+
+.skipButton {
+  color: #ffffff;
+  padding: 10px 50px;
+  border-radius: 25px;
+  float: right;
+  border-color: #00b3ff;
+  background: transparent;
+  cursor: pointer;
+}
+
+.mainContent > img {
+  display: flex;
+  position: absolute;
+  right: 50px;
+  height: 80vh;
+}

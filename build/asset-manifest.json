@@ -1,9 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.4c3792cb.css",
-    "main.js": "/static/js/main.cb40cc82.js",
+    "main.css": "/static/css/main.2fe9d947.css",
+    "main.js": "/static/js/main.d8323ed5.js",
     "static/media/illustration.svg": "/static/media/illustration.06dac15c5c8a9959bd974b6f7402f49e.svg",
     "static/media/community mockup.svg": "/static/media/community mockup.d47191fd9055d09c607ffe204aff1674.svg",
+    "static/media/otp-picture.png": "/static/media/otp-picture.5cb0ee7255ecdd929577.png",
+    "static/media/signup-img.png": "/static/media/signup-img.74787731d726efbbde7a.png",
     "static/media/Frame 6267617.svg": "/static/media/Frame 6267617.ca2a7203a04d9f12ba6b18b0bbc9a626.svg",
     "static/media/Concept of unemployed woman searching for job in startup company.svg": "/static/media/Concept of unemployed woman searching for job in startup company.2c525be148de09549d9bded0d44125a0.svg",
     "static/media/Data analysis Case Study.svg": "/static/media/Data analysis Case Study.2e478d8b32dc6d0138942b2633cfb005.svg",
@@ -69,11 +71,11 @@
     "static/media/clock.svg": "/static/media/clock.279129a02d403f9ce3572349a0e6300d.svg",
     "static/media/Search.svg": "/static/media/Search.5a36e73388534ad90a9f77c64c27622d.svg",
     "static/media/PPT iconVector.svg": "/static/media/PPT iconVector.2ff4c4c3a388336f6e446eda1d36f319.svg",
-    "main.4c3792cb.css.map": "/static/css/main.4c3792cb.css.map",
-    "main.cb40cc82.js.map": "/static/js/main.cb40cc82.js.map"
+    "main.2fe9d947.css.map": "/static/css/main.2fe9d947.css.map",
+    "main.d8323ed5.js.map": "/static/js/main.d8323ed5.js.map"
   },
   "entrypoints": [
-    "static/css/main.4c3792cb.css",
-    "static/js/main.cb40cc82.js"
+    "static/css/main.2fe9d947.css",
+    "static/js/main.d8323ed5.js"
   ]
 }
