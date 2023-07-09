@@ -203,7 +203,7 @@ function Fourth() {
             <button className={styles.skipButton}>Skip</button>
           </div>
         </div>
-        <img src={require(window.location.origin+"/images/onboardingforth.png")} alt="img" />
+        <img src={require("../../../images/onboardingforth.png")} alt="img" />
       </div>
     </div>
   );

@@ -18,51 +18,51 @@ function First() {
   };
 
   const spaceItems = [
-    { image: require(window.location.origin+"/images/onboarding11.png"), text: "FinTech" },
-    { image: require(window.location.origin+"/images/onboarding12.png"), text: "EdTech" },
-    { image: require(window.location.origin+"/images/onboarding13.png"), text: "FoodTech" },
-    { image: require(window.location.origin+"/images/onboarding14.png"), text: "AgriTech" },
-    { image: require(window.location.origin+"/images/onboarding15.png"), text: "E-Commerce" },
+    { image: require("../../../images/onboarding11.png"), text: "FinTech" },
+    { image: require("../../../images/onboarding12.png"), text: "EdTech" },
+    { image: require("../../../images/onboarding13.png"), text: "FoodTech" },
+    { image: require("../../../images/onboarding14.png"), text: "AgriTech" },
+    { image: require("../../../images/onboarding15.png"), text: "E-Commerce" },
     {
-      image: require(window.location.origin+"/images/onboarding16.png"),
+      image: require("../../../images/onboarding16.png"),
       text: "Logistics & Delivery",
     },
     {
-      image: require(window.location.origin+"/images/onboarding17.png"),
+      image: require("../../../images/onboarding17.png"),
       text: "CleanTech & RE",
     },
-    { image: require(window.location.origin+"/images/onboarding18.png"), text: "AI & ML" },
-    { image: require(window.location.origin+"/images/onboarding19.png"), text: "Web 3.0" },
+    { image: require("../../../images/onboarding18.png"), text: "AI & ML" },
+    { image: require("../../../images/onboarding19.png"), text: "Web 3.0" },
     {
-      image: require(window.location.origin+"/images/onboarding110.png"),
+      image: require("../../../images/onboarding110.png"),
       text: "FashionTech",
     },
-    { image: require(window.location.origin+"/images/onboarding111.png"), text: "HealthTech" },
-    { image: require(window.location.origin+"/images/onboarding112.png"), text: "SpaceTech" },
+    { image: require("../../../images/onboarding111.png"), text: "HealthTech" },
+    { image: require("../../../images/onboarding112.png"), text: "SpaceTech" },
     {
-      image: require(window.location.origin+"/images/onboarding113.png"),
+      image: require("../../../images/onboarding113.png"),
       text: "Cybersecurity",
     },
-    { image: require(window.location.origin+"/images/onboarding114.png"), text: "AR & VR" },
+    { image: require("../../../images/onboarding114.png"), text: "AR & VR" },
     {
-      image: require(window.location.origin+"/images/onboarding115.png"),
+      image: require("../../../images/onboarding115.png"),
       text: "Internet of Things(IOT)",
     },
-    { image: require(window.location.origin+"/images/onboarding116.png"), text: "Biotech" },
-    { image: require(window.location.origin+"/images/onboarding117.png"), text: "RealEstate" },
-    { image: require(window.location.origin+"/images/onboarding118.png"), text: "TravelTech" },
-    { image: require(window.location.origin+"/images/onboarding119.png"), text: "BeautyTech" },
-    { image: require(window.location.origin+"/images/onboarding120.png"), text: "LegalTech" },
-    { image: require(window.location.origin+"/images/onboarding121.png"), text: "HR-Tech" },
+    { image: require("../../../images/onboarding116.png"), text: "Biotech" },
+    { image: require("../../../images/onboarding117.png"), text: "RealEstate" },
+    { image: require("../../../images/onboarding118.png"), text: "TravelTech" },
+    { image: require("../../../images/onboarding119.png"), text: "BeautyTech" },
+    { image: require("../../../images/onboarding120.png"), text: "LegalTech" },
+    { image: require("../../../images/onboarding121.png"), text: "HR-Tech" },
     {
-      image: require(window.location.origin+"/images/onboarding122.png"),
+      image: require("../../../images/onboarding122.png"),
       text: "Personal Fitness Tech",
     },
     {
-      image: require(window.location.origin+"/images/onboarding123.png"),
+      image: require("../../../images/onboarding123.png"),
       text: "Waste Management",
     },
-    { image: require(window.location.origin+"/images/onboarding124.png"), text: "CloudTech" },
+    { image: require("../../../images/onboarding124.png"), text: "CloudTech" },
   ];
 
   return (
@@ -113,7 +113,7 @@ function First() {
             </button>
           </div>
         </div>
-        <img src={require(window.location.origin+"/images/onboardingfirst.png")} alt="img" />
+        <img src={require("../../../images/onboardingfirst.png")} alt="img" />
       </div>
     </div>
   );

@@ -51,7 +51,7 @@ function Third() {
             ) : (
               <>
                 <img
-                  src={require(window.location.origin+"/images/uploadphoto.png")}
+                  src={require("../../../images/uploadphoto.png")}
                   alt="img"
                 />
                 <div>
@@ -106,7 +106,7 @@ function Third() {
             </button>
           </div>
         </div>
-        <img src={require(window.location.origin+"/images/onboardingthird.png")} alt="img" />
+        <img src={require("../../../images/onboardingthird.png")} alt="img" />
       </div>
     </div>
   );

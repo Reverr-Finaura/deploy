@@ -15,27 +15,27 @@ function Second() {
     {
       text: "I’m a Founder",
       type: "founder",
-      image: require(window.location.origin+"/images/onboardingfounder.png"),
+      image: require("../../../images/onboardingfounder.png"),
     },
     {
       text: "I’m a Mentor",
       type: "mentor",
-      image: require(window.location.origin+"/images/onboardingmentor.png"),
+      image: require("../../../images/onboardingmentor.png"),
     },
     {
       text: "I’m an Investor",
       type: "investor",
-      image: require(window.location.origin+"/images/onboardinginvester.png"),
+      image: require("../../../images/onboardinginvester.png"),
     },
     {
       text: "I’m a Professional",
       type: "professionals",
-      image: require(window.location.origin+"/images/onboardingprofessional.png"),
+      image: require("../../../images/onboardingprofessional.png"),
     },
     // {
     //   text: "I’m a Service Provider",
     //   type: "serviceproviders",
-    //   image: require(window.location.origin+"/images/onboardingprovider.png"),
+    //   image: require("../../../images/onboardingprovider.png"),
     // },
   ];
 
@@ -93,7 +93,7 @@ function Second() {
             </button>
           </div>
         </div>
-        <img src={require(window.location.origin+"/images/onboardingsecond.png")} alt="img" />
+        <img src={require("../../../images/onboardingsecond.png")} alt="img" />
       </div>
     </div>
   );

@@ -19,39 +19,39 @@ function Fifth() {
 
   const objectives = [
     {
-      imageSrc: require(window.location.origin+"/images/onboarding41.png"),
+      imageSrc: require("../../../images/onboarding41.png"),
       text: "Raise Investments",
     },
     {
-      imageSrc: require(window.location.origin+"/images/onboarding42.png"),
+      imageSrc: require("../../../images/onboarding42.png"),
       text: "Find your CoFounder",
     },
     {
-      imageSrc: require(window.location.origin+"/images/onboarding43.png"),
+      imageSrc: require("../../../images/onboarding43.png"),
       text: "Grow my Team",
     },
     {
-      imageSrc: require(window.location.origin+"/images/onboarding44.png"),
+      imageSrc: require("../../../images/onboarding44.png"),
       text: "Find a Mentor",
     },
     {
-      imageSrc: require(window.location.origin+"/images/onboarding45.png"),
+      imageSrc: require("../../../images/onboarding45.png"),
       text: "Networking",
     },
     {
-      imageSrc: require(window.location.origin+"/images/onboarding46.png"),
+      imageSrc: require("../../../images/onboarding46.png"),
       text: "Collaborations & Partnerships",
     },
     {
-      imageSrc: require(window.location.origin+"/images/onboarding47.png"),
+      imageSrc: require("../../../images/onboarding47.png"),
       text: "Brainstorm Ideas",
     },
     {
-      imageSrc: require(window.location.origin+"/images/onboarding48.png"),
+      imageSrc: require("../../../images/onboarding48.png"),
       text: "Gain Insights",
     },
     {
-      imageSrc: require(window.location.origin+"/images/onboarding49.png"),
+      imageSrc: require("../../../images/onboarding49.png"),
       text: "Increase my knowledge",
     },
   ];
@@ -105,7 +105,7 @@ function Fifth() {
             <button className={styles.skipButton} onClick={() => navigate("/")} >Skip</button>
           </div>
         </div>
-        <img src={require(window.location.origin+"/images/onboardingfifth.png")} alt="img" />
+        <img src={require("../../../images/onboardingfifth.png")} alt="img" />
       </div>
     </div>
   );

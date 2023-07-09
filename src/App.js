@@ -165,14 +165,14 @@ function App() {
             <Route path="/signup" element={<SignupAuthUpdated />}></Route>
             <Route path="/login" element={<LoginTesting />} />
             {/* <Route path="/login" element={<LoginNew />} /> */}
-            <Route path="/gallery" element={<HomeNotLoggedIn />}>
+            <Route path="/gallery" element={<HomeNotLoggedIn />}></Route>
             <Route path="/onboarding-first" element={<First />}></Route>
         <Route path="/onboarding-second" element={<Second />}></Route>
         <Route path="/onboarding-third" element={<Third />}></Route>
         <Route path="/onboarding-fourth" element={<Fourth />}></Route>
         <Route path="/onboarding-fifth" element={<Fifth />}></Route>
               <Route path=":postId" element={<SharedCommunityPost />}></Route>
-            </Route>
+            
           </>
         )}
         {/* <Route path="/login-test" element={<LoginTesting />}/> */}
@@ -182,11 +182,6 @@ function App() {
         {newUser ? (
           <>
           <Route path="enterotp" element={<EnterOtpUpdated />}></Route>
-          {/* <Route path="/onboarding-first" element={<First />}></Route>
-          <Route path="/onboarding-second" element={<Second />}></Route>
-          <Route path="/onboarding-third" element={<Third />}></Route>
-          <Route path="/onboarding-fourth" element={<Fourth />}></Route>
-          <Route path="/onboarding-fifth" element={<Fifth />}></Route> */}
           </>
         ) : null}
          <Route path="/onboarding-first" element={<First />}></Route>
