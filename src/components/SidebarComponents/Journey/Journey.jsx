@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Journey.module.css";
 import { useNavigate } from "react-router-dom";
 
-function Journey() {
+function Journey({ isLoggedIn, openModal }) {
   const navigate = useNavigate();
   return (
     <div className={styles.container}>
@@ -14,12 +14,27 @@ function Journey() {
       </p>
       <div>
         <img src={require("../../../images/Rectangle 1612.png")} alt="img" />
-        <button onClick={() => navigate("/knowledge")}>
-        The Journey &nbsp;&gt;
+        <button
+          onClick={() => {
+            if (!isLoggedIn) {
+              return openModal();
+            } else {
+              //normal code
+              navigate("/knowledge");
+              // console.log("user logged!");
+            }
+          }}
+        >
+          The Journey &nbsp;&gt;
         </button>
       </div>
     </div>
   );
 }
+
+Journey.defaultProps = {
+  isLoggedIn: true,
+  openModal: () => {},
+};
 
 export default Journey;

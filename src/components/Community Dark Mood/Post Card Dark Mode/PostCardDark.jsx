@@ -2,7 +2,7 @@ import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { db } from "../../../firebase";
-import style from "./PostCardDark.module.css"
+import style from "./PostCardDark.module.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
@@ -20,10 +20,9 @@ import { FiSend } from "react-icons/fi";
 import { BiCommentDots } from "react-icons/bi";
 import { AiFillHeart } from "react-icons/ai";
 import { BsBookmark } from "react-icons/bs";
-import eyeIcon from "../../../images/white-outline-eye.png"
-import commentIcon from "../../../images/white-outline-comment.png"
-import rightArrow from "../../../images/right-arraow-bg-blue.png"
-
+import eyeIcon from "../../../images/white-outline-eye.png";
+import commentIcon from "../../../images/white-outline-comment.png";
+import rightArrow from "../../../images/right-arraow-bg-blue.png";
 
 export default function PostCardDark({
   postsData,
@@ -32,6 +31,8 @@ export default function PostCardDark({
   handleEditPostButtonClick,
   setPostsAuthorIsClick,
   setPostsAuthorInfo,
+  isLoggedIn,
+  openModal,
 }) {
   const userDoc = useSelector((state) => state.userDoc);
   const [isThreeDotsClicked, setIsThreeDotsClicked] = useState(false);
@@ -243,7 +244,6 @@ export default function PostCardDark({
     } catch (error) {
       console.log(error.message);
     }
-
   };
 
   //GET USER DATA FROM REFERENCE LINK WHO HAS POSTED
@@ -294,11 +294,18 @@ export default function PostCardDark({
   return (
     <>
       <section className={style.PostCardContainer} id={item.id}>
-        <div style={{ alignItems: "center" }} className={style.postAuthorDetails}>
+        <div
+          style={{ alignItems: "center" }}
+          className={style.postAuthorDetails}
+        >
           <img
             onClick={() => {
-              setPostsAuthorIsClick(true);
-              setPostsAuthorInfo(postedByUserDoc);
+              if (!isLoggedIn) {
+                return openModal();
+              } else {
+                setPostsAuthorIsClick(true);
+                setPostsAuthorInfo(postedByUserDoc);
+              }
             }}
             style={{
               width: "40px",
@@ -312,8 +319,13 @@ export default function PostCardDark({
           <div className={style.postAuthorNameAndDesignationCont}>
             <h3
               onClick={() => {
-                setPostsAuthorIsClick(true);
-                setPostsAuthorInfo(postedByUserDoc);
+                console.log("postcard click: ", isLoggedIn);
+                if (!isLoggedIn) {
+                  return openModal();
+                } else {
+                  setPostsAuthorIsClick(true);
+                  setPostsAuthorInfo(postedByUserDoc);
+                }
               }}
               className={style.postAuthorName}
             >
@@ -332,7 +344,13 @@ export default function PostCardDark({
               <div className={style.threeDotsContainer}>
                 <div style={{ display: "flex", transform: "rotate(90deg)" }}>
                   <TfiMoreAlt
-                    onClick={() => setIsThreeDotsClicked((current) => !current)}
+                    onClick={() => {
+                      if (!isLoggedIn) {
+                        return openModal();
+                      } else {
+                        setIsThreeDotsClicked((current) => !current);
+                      }
+                    }}
                     className={style.threeDotsPost}
                   />
                 </div>
@@ -372,7 +390,9 @@ export default function PostCardDark({
                         </div>
                       </a>
                     ) : null}
-                    <div className={style.threeDotsReportPostOption}>Report Post</div>
+                    <div className={style.threeDotsReportPostOption}>
+                      Report Post
+                    </div>
                   </div>
                 ) : null}
               </div>
@@ -389,7 +409,7 @@ export default function PostCardDark({
                 <>
                   {item?.text.slice(0, 100)}
                   <span
-                    style={{ color: "#00b2ff"}}
+                    style={{ color: "#00b2ff", cursor: "pointer" }}
                     onClick={() => setShowMorePostTextClick(true)}
                     className={style.morePostTextButto}
                   >
@@ -403,14 +423,18 @@ export default function PostCardDark({
           )}
         </div>
         {item?.image ? (
-          <div className="postImageContainer" style={{width:"100%"}}>
-            <img className="postImage" style={{aspectRatio:"7/3", width:"100%"}} src={item?.image} alt="postImage" />
+          <div className="postImageContainer" style={{ width: "100%" }}>
+            <img
+              className="postImage"
+              style={{ aspectRatio: "7/3", width: "100%" }}
+              src={item?.image}
+              alt="postImage"
+            />
           </div>
         ) : null}
         <div className={style.postDivideLine_community}></div>
         <div className={style.postLikesAndCommentContainer}>
           <div style={{ display: "flex", alignItems: "center", width: "95%" }}>
-       
             <div className={style.postLikesContainer}>
               <div
                 onClick={() => {
@@ -421,48 +445,61 @@ export default function PostCardDark({
                 {item?.likes.includes(user?.user?.email) ? (
                   <AiFillHeart className={style.postLikesContainerLikedIconn} />
                 ) : (
-                  <AiOutlineHeart className={style.postLikesContainerLikeIconn} />
+                  <AiOutlineHeart
+                    className={style.postLikesContainerLikeIconn}
+                  />
                 )}
               </div>
 
               {/* <i onClick={()=>{getLikedPostIdFromFirebase(item.id,item)}} className={"fa fa-heart "+ (item?.likes.includes(user?.user?.email)?"heartPostLiked":"heartPostNotLiked")}></i> */}
 
               {/* <p className='postLikeCount postLikeCountText'>{item?.likes.length<=1?"Like":"Likes"}</p> */}
-              <h3 
-               onClick={() => {
-                getLikedPostIdFromFirebase(item.id, item);
-              }}
-              style={{cursor:"pointer"}} className={style.postLikeCount}>{item?.likes.length} Like</h3>
+              <h3
+                onClick={() => {
+                  if (!isLoggedIn) {
+                    return openModal();
+                  } else {
+                    getLikedPostIdFromFirebase(item.id, item);
+                  }
+                }}
+                style={{ cursor: "pointer" }}
+                className={style.postLikeCount}
+              >
+                {item?.likes.length} Like
+              </h3>
             </div>
-            
 
-            <div className={style.postCommentContainer}>
-              
+            <div
+              className={style.postCommentContainer}
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                if (!isLoggedIn) {
+                  return openModal();
+                } else {
+                  setCommentIconClick((current) => !current);
+                }
+              }}
+            >
               <div className="commentContainer">
                 {/* <img src={commentIcon} alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIcon'/> */}
-                <img
-                  onClick={() => {
-                  setCommentIconClick((current) => !current);
-                }} 
-                 src={commentIcon}
-                 className="commentPostIconn"
-                />
-               
+                <img src={commentIcon} alt="img" className="commentPostIconn" />
 
                 {/* ;(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus() */}
               </div>
               {/* <p className='postLikeCountText'>{item?.comments.length<=1?"Comment":"Comments"}</p> */}
-              <h3 
-              onClick={() => {
-                setCommentIconClick((current) => !current);
-              }} 
-              className={style.postCommentCount} style={{cursor:"pointer"}}>{item?.comments.length} Comment</h3>
+              <h3 className={style.postCommentCount}>
+                {item?.comments.length} Comment
+              </h3>
             </div>
 
-
-
             <div
-              onClick={() => handleSendPostLinkClick(item.id)}
+              onClick={() => {
+                if (!isLoggedIn) {
+                  return openModal();
+                } else {
+                  handleSendPostLinkClick(item.id);
+                }
+              }}
               className={style.postSendLinkContainer}
             >
               <div className="postSendCont">
@@ -470,19 +507,21 @@ export default function PostCardDark({
                   {/* <img style={{width:"100%",height:"100%"}} src="./images/paper-plane.png" alt="sendIcon" /> */}
                   <RiShareForwardLine style={{ fontSize: "1.8rem" }} />
                 </div>
-                <h3 style={{cursor:"pointer"}} className={style.postCommentCount}>Share</h3>
+                <h3
+                  style={{ cursor: "pointer" }}
+                  className={style.postCommentCount}
+                >
+                  Share
+                </h3>
               </div>
             </div>
-
 
             <div className={style.postCommentContainer}>
               <div className="commentContainer">
                 {/* <img src={commentIcon} alt='commentIcon' onClick={()=>{setCommentIconClick(current=>!current)}} className='commentPostIcon'/> */}
-                <img
-                src={eyeIcon}
-                 />
-              
-              {/* 
+                <img src={eyeIcon} />
+
+                {/* 
                 <FaBullseye
                   onClick={() => {
                     setCommentIconClick((current) => !current);
@@ -493,11 +532,23 @@ export default function PostCardDark({
                 {/* ;(document.getElementsByClassName(`${item.id}`)[0]).click();(document.getElementsByClassName(`${item.id}`)[0]).focus() */}
               </div>
               {/* <p className='postLikeCountText'>{item?.comments.length<=1?"Comment":"Comments"}</p> */}
-              <h3 className={style.postCommentCount}>{item?.comments.length+item.likes.length+2} </h3>
+              <h3 className={style.postCommentCount}>
+                {item?.comments.length + item.likes.length + 2}{" "}
+              </h3>
             </div>
           </div>
           {/* saveCont */}
-          <BsBookmark stlye={{color:"white"}} className="post_card_save_post_icon" />
+          <BsBookmark
+            onClick={() => {
+              if (!isLoggedIn) {
+                return openModal();
+              } else {
+                console.log("user logged!");
+              }
+            }}
+            stlye={{ color: "white" }}
+            className="post_card_save_post_icon"
+          />
         </div>
       </section>
 
@@ -525,7 +576,9 @@ export default function PostCardDark({
                     placeholder="Share Your Thoughts"
                     value={newEdittedComment}
                   ></textarea>
-                  <div className={`${style.addImageandUploadPostIcon} ${style.newCommentAddImageAndUpload}`}>
+                  <div
+                    className={`${style.addImageandUploadPostIcon} ${style.newCommentAddImageAndUpload}`}
+                  >
                     <button
                       onClick={() => handleEditCommentonPost(item, item.id)}
                       className="uploadPostIconButton"
@@ -552,7 +605,10 @@ export default function PostCardDark({
                 }
                 alt="userImage"
               />
-              <div style={{position:"relative",width:"85%"}} className={style.textAreaUploadContainer}>
+              <div
+                style={{ position: "relative", width: "85%" }}
+                className={style.textAreaUploadContainer}
+              >
                 <textarea
                   autoFocus
                   className={item?.id}
@@ -570,13 +626,20 @@ export default function PostCardDark({
                   placeholder="Share Your Thoughts"
                   value={newComment}
                 ></textarea>
-                 {newCommentTextAreaClick ? (
-                   <img onClick={() => handleNewCommentonPost(item, item.id)} class={style.rightArrowImg} src={rightArrow} />
-                   
-                   ) : null}
+                {newCommentTextAreaClick ? (
+                  <img
+                    onClick={() => handleNewCommentonPost(item, item.id)}
+                    class={style.rightArrowImg}
+                    src={rightArrow}
+                  />
+                ) : null}
 
-                   <img onClick={() => handleNewCommentonPost(item, item.id)} class={style.rightArrowImg} src={rightArrow} />
-                
+                <img
+                  onClick={() => handleNewCommentonPost(item, item.id)}
+                  class={style.rightArrowImg}
+                  src={rightArrow}
+                />
+
                 <GrAddCircle
                   onClick={() =>
                     setNewCommentTextAreaClick((current) => !current)
@@ -587,7 +650,6 @@ export default function PostCardDark({
                       : "expandTextAreaIcon"
                   }
                 />
-             
               </div>
             </div>
           </section>
@@ -683,3 +745,8 @@ export default function PostCardDark({
     </>
   );
 }
+
+PostCardDark.defaultProps = {
+  isLoggedIn: true,
+  openModal: () => {},
+};

@@ -3,7 +3,7 @@ import axios from "axios";
 import NewSkeleton from "../../../components/Post Skeleton/News Skeleton/NewSkeleton";
 import styles from "./TrendingNews.module.css";
 
-function TrendingNews() {
+function TrendingNews({ isLoggedIn, openModal }) {
   const [newsData, setNewsData] = useState();
   const [seeAllNewsIsClicked, setSeeAllNewsIsClicked] = useState(false);
 
@@ -35,7 +35,6 @@ function TrendingNews() {
     getNews();
   }, []);
 
-
   return (
     <div className={styles.container}>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -46,7 +45,18 @@ function TrendingNews() {
         {seeAllNewsIsClicked ? (
           <span onClick={() => setSeeAllNewsIsClicked(false)}>Collapse</span>
         ) : (
-          <span onClick={() => setSeeAllNewsIsClicked(true)}>View more</span>
+          <span
+            onClick={() => {
+              if (!isLoggedIn) {
+                return openModal();
+              } else {
+                //normal code
+                setSeeAllNewsIsClicked(true);
+              }
+            }}
+          >
+            View more
+          </span>
         )}
       </div>
 
@@ -112,5 +122,10 @@ function TrendingNews() {
     </div>
   );
 }
+
+TrendingNews.defaultProps = {
+  isLoggedIn: true,
+  openModal: () => {},
+};
 
 export default TrendingNews;

@@ -3,7 +3,7 @@ import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../../firebase";
 import styles from "./ConnectSuggestion.module.css";
 
-function ConnectSuggestion() {
+function ConnectSuggestion({ isLoggedIn,  openModal }) {
   const [users, setUsers] = useState([]);
 
   //FETCH USER DATA FROM FIREBASE
@@ -89,7 +89,16 @@ function ConnectSuggestion() {
                   </text>
                 </div>
               </div>
-              <button onClick={() => console.log("connect clicked")}>
+              <button
+                onClick={() => {
+                  if (!isLoggedIn) {
+                    return openModal();
+                  }else{
+                    //normal code
+                    console.log("user logged!")
+                  }
+                }}
+              >
                 Connect
               </button>
             </div>
@@ -101,4 +110,14 @@ function ConnectSuggestion() {
   );
 }
 
+
+// Set default props using defaultProps property
+ConnectSuggestion.defaultProps = {
+  isLoggedIn: true,
+  openModal: () => {},
+};
+
+
 export default ConnectSuggestion;
+// export default React.memo(React.forwardRef(ConnectSuggestion));
+

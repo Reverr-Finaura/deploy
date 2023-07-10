@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "./HomeNotLoggedIn.module.css";
 import ConnectSuggestion from "../../components/SidebarComponents/ConnectSuggestion/ConnectSuggestion";
@@ -21,29 +21,85 @@ import NavBarFinalDarkMode from "../../components/Navbar Dark Mode/NavBarFinalDa
 import Patch from "../../components/SidebarComponents/Patch/Patch";
 
 function HomeNotLoggedIn() {
+  const [isLogInModalOpen, setIsLogInModalOpen] = useState(false);
+
+  const openModal = React.useCallback(() => {
+    setIsLogInModalOpen(true);
+  }, []);
   return (
     <>
-      <NavBarFinalDarkMode isLoggedIn={false} />
+      {isLogInModalOpen ? (
+        <div className={styles.logInModalCont}>
+          <div className={styles.logInModal}>
+            <span
+              className={styles.closeIcon}
+              onClick={() => setIsLogInModalOpen(false)}
+            >
+              X
+            </span>
+            <img src={require("../../images/userIcon.png")} alt="img" />
+            <text style={{ color: "#ffffff", fontSize: 20, marginTop: 10 }}>
+              Sign in to Continue
+            </text>
+
+            <button
+              className={styles.signInButton}
+              onClick={() => console.log("Sign in clicked")}
+            >
+              Sign in
+            </button>
+            <div className={styles.dividerRow}>
+              <div className={styles.dividerLine}></div>
+              <span style={{ marginInline: 5, color: "#999b9e" }}>or</span>
+              <div className={styles.dividerLine}></div>
+            </div>
+            <button
+              className={styles.signUpButton}
+              onClick={() => console.log("signUpButton clicked")}
+            >
+              {/* <img src={require("../../images/google.png")} alt={"img"} /> */}
+              <span>Sign up</span>
+            </button>
+            {/* <div style={{ marginTop: 10 }}>
+              <span style={{ color: "#999b9e", fontSize: 10 }}>
+                New to Reverr?&nbsp;
+              </span>
+              <span
+                style={{
+                  color: "#00b3ff",
+                  fontSize: 10,
+                  cursor: "pointer",
+                  textDecoration: "underline",
+                }}
+              >
+                Sign up
+              </span>
+            </div> */}
+          </div>
+        </div>
+      ) : null}
+
+      <NavBarFinalDarkMode isLoggedIn={false} openModal={openModal} />
       <div className={styles.container}>
         <div className={styles.leftSidebar} style={{ marginTop: "10em" }}>
           {/* <ProfileSummary />
           <div style={{ marginTop: 50 }}></div> */}
-          <ConnectSuggestion />
+          <ConnectSuggestion isLoggedIn={false} openModal={openModal} />
           <div style={{ marginTop: 50 }}></div>
-          <Vibe />
+          <Vibe isLoggedIn={false} openModal={openModal} />
           <div style={{ marginTop: 50 }}></div>
-          <Patch />
+          <Patch isLoggedIn={false} openModal={openModal} />
           <div style={{ marginTop: 50 }}></div>
-          <ExploreTools />
+          <ExploreTools isLoggedIn={false} openModal={openModal} />
           <div style={{ marginTop: 50 }}></div>
-          <Journey />
+          <Journey isLoggedIn={false} openModal={openModal} />
           <div style={{ marginTop: 50 }}></div>
           {/* <GetPremium /> */}
           <div style={{ marginTop: 50 }}></div>
         </div>
 
         <div className={styles.middleSection}>
-          <CommunityFinalDark />
+          <CommunityFinalDark isLoggedIn={false} openModal={openModal}/>
           {/* <DiscoverEvents />
         <div style={{ marginTop: 50 }}></div>
         <DiscoverPerfectTools />
@@ -56,13 +112,13 @@ function HomeNotLoggedIn() {
         <div className={styles.rightSidebar} style={{ marginTop: "10em" }}>
           {/* <Appoinments />
           <div style={{ marginTop: 50 }}></div> */}
-          <TrendingNews />
+          <TrendingNews isLoggedIn={false} openModal={openModal} />
           <div style={{ marginTop: 50 }}></div>
-          <InvestorFinder />
+          <InvestorFinder isLoggedIn={false} openModal={openModal} />
           <div style={{ marginTop: 50 }}></div>
-          <Events />
+          <Events isLoggedIn={false} openModal={openModal} />
           <div style={{ marginTop: 50 }}></div>
-          <Mentors />
+          <Mentors isLoggedIn={false} openModal={openModal} />
         </div>
       </div>
     </>

@@ -44,14 +44,14 @@ import {
   MdOutlineNotifications,
 } from "react-icons/md";
 // import { IoMdLogOut } from "react-icons/io";
-import {GiArchiveRegister} from "react-icons/gi"
-import { BiHomeAlt, BiLogIn} from "react-icons/bi";
+import { GiArchiveRegister } from "react-icons/gi";
+import { BiHomeAlt, BiLogIn } from "react-icons/bi";
 import { HiOutlineTemplate } from "react-icons/hi";
 import emailjs from "@emailjs/browser";
 import axios from "axios";
 import NotificationCard from "./NotificationCard";
 
-const NavBarFinalDarkMode = ({ isLoggedIn}) => {
+const NavBarFinalDarkMode = ({ isLoggedIn, openModal }) => {
   const user = useSelector((state) => state.user);
   const userTypeLower = useSelector((state) =>
     state.onboarding.userType.toLowerCase()
@@ -78,12 +78,7 @@ const NavBarFinalDarkMode = ({ isLoggedIn}) => {
   const [notificationOpen, setNotificationOpen] = useState(false);
 
   // code for product modal start
-  const elementsToCheck = [
-    "TOOLS",
-    "MENTOR",
-    "FUNDING-APPLY",
-    "STARTUP SCORE",
-  ];
+  const elementsToCheck = ["TOOLS", "MENTOR", "FUNDING-APPLY", "STARTUP SCORE"];
   const filteredArray = elementsToCheck.filter((element) =>
     products[userTypeLower].includes(element)
   );
@@ -644,83 +639,108 @@ const NavBarFinalDarkMode = ({ isLoggedIn}) => {
 
         <div className={style.navbarIconsCont}>
           <div className={style.allNavbarIconsImgName}>
-            <div className={style.navbarIconsImgName} onClick={() => isLoggedIn? navigate("/") : navigate("/gallery") }>
+            <div
+              className={style.navbarIconsImgName}
+              onClick={() =>
+                isLoggedIn ? navigate("/") : navigate("/gallery")
+              }
+            >
               <BiHomeAlt className={style.navbarIconsImg} />
               <p className={style.navbarIconsName}>Home</p>
             </div>
             <div className={style.navbarIconsImgName}>
-              <AiOutlineGlobal className={style.navbarIconsImg} onClick={() => navigate("/discover")}/>
+              <AiOutlineGlobal
+                className={style.navbarIconsImg}
+                onClick={() => {
+                  if (!isLoggedIn) {
+                    return openModal();
+                  } else {
+                    navigate("/discover");
+                  }
+                }}
+              />
               <p className={style.navbarIconsName}>Discover</p>
               {/* <NavLink className="navlinks" to="/discover">
                 <p className={style.navbarIconsName}>Discover</p>
               </NavLink> */}
             </div>
-            
-            {!isLoggedIn? 
-            <div className={style.navbarIconsImgName}>
-              <GiArchiveRegister className={style.navbarIconsImg} onClick={() => navigate("/signup")}/>
-              <p className={style.navbarIconsName}>Signup</p>
-              {/* <NavLink className="navlinks" to="/discover">
+
+            {!isLoggedIn ? (
+              <div className={style.navbarIconsImgName}>
+                <GiArchiveRegister
+                  className={style.navbarIconsImg}
+                  onClick={() => navigate("/signup")}
+                />
+                <p className={style.navbarIconsName}>Signup</p>
+                {/* <NavLink className="navlinks" to="/discover">
                 <p className={style.navbarIconsName}>Discover</p>
               </NavLink> */}
-            </div>
-            :null}
-            {!isLoggedIn? 
-            <div className={style.navbarIconsImgName}>
-              <BiLogIn className={style.navbarIconsImg} onClick={() => navigate("/login")}/>
-              <p className={style.navbarIconsName}>Login</p>
-              {/* <NavLink className="navlinks" to="/discover">
-                <p className={style.navbarIconsName}>Discover</p>
-              </NavLink> */}
-            </div>
-            :null}
-            {isLoggedIn? filteredArray.length >= 1 ? (
-              <div
-                className={style.navbarIconsImgName}
-                onClick={toggleProductModal}
-                ref={buttonRef}
-              >
-                <HiOutlineTemplate className={style.navbarIconsImg} />
-                <p className={style.navbarIconsName}>Products</p>
               </div>
-            ) : null: null}
-            {isLoggedIn?
-            <div className={style.navbarIconsImgName}>
-              <AiOutlineMessage className={style.navbarIconsImg} onClick={() => navigate("/messages")} />
-              <p className={style.navbarIconsName}>Messages</p>
-            </div>
-            :null}
-            {isLoggedIn?
-            <div
-              onClick={() => setNotificationOpen(!notificationOpen)}
-              className={style.navbarIconsImgName}
-            >
-              <MdOutlineNotifications className={style.navbarIconsImg} />
-              <p className={style.navbarIconsName}>Notifications</p>
-              {notificationOpen && (
-                <>
-                  <div className={style.notificationBar}>
-                    {notificationList.length >= 1 ? (
-                      <>
-                        {" "}
-                        <div className={style.notificationHeadings}>
-                          <h1 className={style.notificationHeading}>
-                            Notifications
-                          </h1>
-                          {/* <h3 className={style.notificationSubHeading}>Today</h3> */}
-                        </div>
-                        <NotificationCard />
-                        <NotificationCard />
-                        <NotificationCard />
-                      </>
-                    ) : (
-                      <h4>No notification till Now !</h4>
-                    )}
-                  </div>
-                </>
-              )}
-            </div>
-            :null}
+            ) : null}
+            {!isLoggedIn ? (
+              <div className={style.navbarIconsImgName}>
+                <BiLogIn
+                  className={style.navbarIconsImg}
+                  onClick={() => navigate("/login")}
+                />
+                <p className={style.navbarIconsName}>Login</p>
+                {/* <NavLink className="navlinks" to="/discover">
+                <p className={style.navbarIconsName}>Discover</p>
+              </NavLink> */}
+              </div>
+            ) : null}
+            {isLoggedIn ? (
+              filteredArray.length >= 1 ? (
+                <div
+                  className={style.navbarIconsImgName}
+                  onClick={toggleProductModal}
+                  ref={buttonRef}
+                >
+                  <HiOutlineTemplate className={style.navbarIconsImg} />
+                  <p className={style.navbarIconsName}>Products</p>
+                </div>
+              ) : null
+            ) : null}
+            {isLoggedIn ? (
+              <div className={style.navbarIconsImgName}>
+                <AiOutlineMessage
+                  className={style.navbarIconsImg}
+                  onClick={() => navigate("/messages")}
+                />
+                <p className={style.navbarIconsName}>Messages</p>
+              </div>
+            ) : null}
+            {isLoggedIn ? (
+              <div
+                onClick={() => setNotificationOpen(!notificationOpen)}
+                className={style.navbarIconsImgName}
+              >
+                <MdOutlineNotifications className={style.navbarIconsImg} />
+                <p className={style.navbarIconsName}>Notifications</p>
+                {notificationOpen && (
+                  <>
+                    <div className={style.notificationBar}>
+                      {notificationList.length >= 1 ? (
+                        <>
+                          {" "}
+                          <div className={style.notificationHeadings}>
+                            <h1 className={style.notificationHeading}>
+                              Notifications
+                            </h1>
+                            {/* <h3 className={style.notificationSubHeading}>Today</h3> */}
+                          </div>
+                          <NotificationCard />
+                          <NotificationCard />
+                          <NotificationCard />
+                        </>
+                      ) : (
+                        <h4>No notification till Now !</h4>
+                      )}
+                    </div>
+                  </>
+                )}
+              </div>
+            ) : null}
           </div>
 
           {/* {!userDoc.hasUpgrade && (
@@ -834,90 +854,93 @@ const NavBarFinalDarkMode = ({ isLoggedIn}) => {
               </div>
             ) : null}
           </div>
-          {isLoggedIn?      
-          <>
-          <img
-            onClick={() => navigate("/userprofile")}
-            className="navbar_final_user_Image"
-            src={
-              userImage
-                ? userImage
-                : "https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"
-            }
-            alt="userimg"
-          />
-          {/* <div className="navbar-topp-social-icon">
+          {isLoggedIn ? (
+            <>
+              <img
+                onClick={() => navigate("/userprofile")}
+                className="navbar_final_user_Image"
+                src={
+                  userImage
+                    ? userImage
+                    : "https://media.giphy.com/media/KG4PMQ0jyimywxNt8i/giphy.gif"
+                }
+                alt="userimg"
+              />
+              {/* <div className="navbar-topp-social-icon">
           <FaUserAlt className="nabar-final-userProfile-Icon" onClick={() => navigate("/userprofile")}/>
           </div> */}
 
-          <div
-            onClick={() => setIsSettingbuttonClick((current) => !current)}
-            className="navbar-topp-social-icon setting-social-icon-cont navbar_noOuterContCSS"
-          >
-            {/* <AiFillSetting className="nabar-final-setting-Icon"/> */}
-            <MdOutlineKeyboardArrowDown className="nabar-final-setting-Icon" />
+              <div
+                onClick={() => setIsSettingbuttonClick((current) => !current)}
+                className="navbar-topp-social-icon setting-social-icon-cont navbar_noOuterContCSS"
+              >
+                {/* <AiFillSetting className="nabar-final-setting-Icon"/> */}
+                <MdOutlineKeyboardArrowDown className="nabar-final-setting-Icon" />
 
-            {isSettingButtonClick ? (
-              <div className={style.settingDropdownCont}>
-                <button
-                  onClick={() => navigate("/userprofile")}
-                  className="setting-dropdown-button"
-                >
-                  My Profile
-                </button>
+                {isSettingButtonClick ? (
+                  <div className={style.settingDropdownCont}>
+                    <button
+                      onClick={() => navigate("/userprofile")}
+                      className="setting-dropdown-button"
+                    >
+                      My Profile
+                    </button>
 
-                <button
-                  style={{ cursor: loading ? "default" : "", height: "50px" }}
-                  disabled={loading}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    changePassBtnClick();
-                  }}
-                  className="setting-dropdown-button"
-                >
-                  {loading ? (
-                    <img
-                      className="navbar_dropdown_changePassword_btn_img"
-                      src="https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Utils%2FWHITE%20Spinner-1s-343px.svg?alt=media&token=54b9d527-0969-41ff-a598-0fc389b2575a"
-                      alt="loader"
-                    />
-                  ) : (
-                    "Change Password"
-                  )}
-                </button>
+                    <button
+                      style={{
+                        cursor: loading ? "default" : "",
+                        height: "50px",
+                      }}
+                      disabled={loading}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        changePassBtnClick();
+                      }}
+                      className="setting-dropdown-button"
+                    >
+                      {loading ? (
+                        <img
+                          className="navbar_dropdown_changePassword_btn_img"
+                          src="https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Utils%2FWHITE%20Spinner-1s-343px.svg?alt=media&token=54b9d527-0969-41ff-a598-0fc389b2575a"
+                          alt="loader"
+                        />
+                      ) : (
+                        "Change Password"
+                      )}
+                    </button>
 
-                {/* <button
+                    {/* <button
                   onClick={() => navigate("/user-edit-profile")}
                   className="setting-dropdown-button"
                 >
                   Edit Profile
                 </button> */}
-                <button
-                  onClick={
-                    user
-                      ? () =>
-                          signOut(auth)
-                            .then(() => {
-                              dispatch(logout());
-                              dispatch(remove());
-                              dispatch(removeUserDoc());
-                              dispatch(removeUserFundingDoc());
-                            })
-                            .then(() => {
-                              toast.success("Sucessfully logged out");
-                              navigate("/");
-                            })
-                      : () => navigate("/login")
-                  }
-                  className="setting-dropdown-button"
-                >
-                  Logout
-                </button>
+                    <button
+                      onClick={
+                        user
+                          ? () =>
+                              signOut(auth)
+                                .then(() => {
+                                  dispatch(logout());
+                                  dispatch(remove());
+                                  dispatch(removeUserDoc());
+                                  dispatch(removeUserFundingDoc());
+                                })
+                                .then(() => {
+                                  toast.success("Sucessfully logged out");
+                                  navigate("/");
+                                })
+                          : () => navigate("/login")
+                      }
+                      className="setting-dropdown-button"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                ) : null}
               </div>
-            ) : null}
-          </div>
-          </>
-          :null}
+            </>
+          ) : null}
         </div>
       </section>
       {chat && <Chat />}
@@ -926,6 +949,7 @@ const NavBarFinalDarkMode = ({ isLoggedIn}) => {
 };
 NavBarFinalDarkMode.defaultProps = {
   isLoggedIn: true,
+  openModal: () => {},
 };
 
 export default NavBarFinalDarkMode;

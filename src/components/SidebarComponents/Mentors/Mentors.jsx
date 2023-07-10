@@ -5,7 +5,7 @@ import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../../firebase";
 import styles from "./Mentors.module.css";
 
-function Mentors() {
+function Mentors({ isLoggedIn, openModal }) {
   const navigate = useNavigate();
   const [mentorArray, setMentorArray] = useState([]);
   const userDoc = useSelector((state) => state.userDoc);
@@ -52,7 +52,18 @@ function Mentors() {
           <span style={{ color: "#00B3FF" }}>Featured</span>
           <span style={{ color: "#ffffff" }}>&nbsp;Mentors</span>
         </p>
-        <span onClick={() => navigate("/mentors")}>See All</span>
+        <span
+          onClick={() => {
+            if (!isLoggedIn) {
+              return openModal();
+            } else {
+              //normal code
+              navigate("/mentors");
+            }
+          }}
+        >
+          See All
+        </span>
       </div>
       {mentorArray
         .filter((item) => {
@@ -98,12 +109,18 @@ function Mentors() {
               </div>
               <button
                 onClick={() => {
-                  navigate(
-                    `/schedule/${emailToId(mentor?.email)}/${emailToId(
-                      userDoc.email
-                    )}`
-                  );
-                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  if (!isLoggedIn) {
+                    return openModal();
+                  } else {
+                    //normal code
+                    // console.log("user logged!");
+                    navigate(
+                      `/schedule/${emailToId(mentor?.email)}/${emailToId(
+                        userDoc.email
+                      )}`
+                    );
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
                 }}
               >
                 Connect
@@ -115,5 +132,10 @@ function Mentors() {
     </div>
   );
 }
+
+Mentors.defaultProps = {
+  isLoggedIn: true,
+  openModal: () => {},
+};
 
 export default Mentors;

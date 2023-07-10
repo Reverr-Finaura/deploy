@@ -63,4 +63,94 @@
   background-color: transparent;
 }
 
+.logInModalCont {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: 100px;
+  padding-top: 100px;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 99999999;
+}
 
+.logInModal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 100px;
+  width: 20%;
+  border-radius: 15px;
+  background: var(--bg-secondary-gray, #1a1e28);
+  box-shadow: 0px 6.817999839782715px 34.09000015258789px 0px
+    rgba(0, 0, 0, 0.25);
+}
+
+.logInModal > img {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  margin-top: 15px;
+}
+
+.closeIcon {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.signInButton {
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 25px;
+  margin-top: 40px;
+  background: linear-gradient(to right, #00b3ff, #4cc9ff);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 15px;
+  color: #000000;
+}
+
+.dividerRow {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0px 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.dividerLine {
+  width: 100%;
+  height: 1px;
+  background-color: #999b9e;
+  margin: 10px 0px;
+}
+
+.signUpButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 25px;
+  margin-top: 10px;
+  border-color: #00b3ff;
+  background: transparent;
+  cursor: pointer;
+}
+
+.signUpButton > img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}

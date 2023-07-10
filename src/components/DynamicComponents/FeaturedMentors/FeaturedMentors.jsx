@@ -5,7 +5,7 @@ import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../../firebase";
 import styles from "./FeaturedMentors.module.css";
 
-function FeaturedMentors() {
+function FeaturedMentors({ isLoggedIn, openModal }) {
   const navigate = useNavigate();
   const [mentorArray, setMentorArray] = useState([]);
   const userDoc = useSelector((state) => state.userDoc);
@@ -76,7 +76,17 @@ function FeaturedMentors() {
           <span style={{ color: "#00B3FF" }}>&nbsp;Mentors</span>
           <span style={{ color: "#ffffff" }}>&nbsp;For You</span>
         </p>
-        <span onClick={() => navigate("/mentors")}>See All</span>
+        <span
+          onClick={() => {
+            if (!isLoggedIn) {
+              return openModal();
+            } else {
+              navigate("/mentors");
+            }
+          }}
+        >
+          See All
+        </span>
       </div>
       <div className={styles.cardContainer}>
         {mentorArray
@@ -102,12 +112,16 @@ function FeaturedMentors() {
               </div>
               <button
                 onClick={() => {
-                  navigate(
-                    `/schedule/${emailToId(mentor?.email)}/${emailToId(
-                      userDoc.email
-                    )}`
-                  );
-                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  if (!isLoggedIn) {
+                    return openModal();
+                  } else {
+                    navigate(
+                      `/schedule/${emailToId(mentor?.email)}/${emailToId(
+                        userDoc.email
+                      )}`
+                    );
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
                 }}
               >
                 Schedule
@@ -126,7 +140,13 @@ function FeaturedMentors() {
           <div
             className={styles.categoriCard}
             key={index}
-            onClick={() => navigate(`/mentors-search/${card.title}`)}
+            onClick={() => {
+              if (!isLoggedIn) {
+                return openModal();
+              } else {
+                navigate(`/mentors-search/${card.title}`);
+              }
+            }}
           >
             <img src={card.image} alt="img" />
             <div>
@@ -142,5 +162,10 @@ function FeaturedMentors() {
     </div>
   );
 }
+
+FeaturedMentors.defaultProps = {
+  isLoggedIn: true,
+  openModal: () => {},
+};
 
 export default FeaturedMentors;

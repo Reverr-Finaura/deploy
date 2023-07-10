@@ -63,7 +63,7 @@ import DiscoverPerfectTools from "../../DynamicComponents/DiscoverPerfectTools/D
 import FeaturedSuggestions from "../../DynamicComponents/FeaturedSuggestions/FeaturedSuggestions";
 import FeaturedMentors from "../../DynamicComponents/FeaturedMentors/FeaturedMentors";
 
-const CommunityFinalDark = () => {
+const CommunityFinalDark = ({ isLoggedIn, openModal }) => {
   const userSpace = useSelector((state) => state.user.userSpace);
   const [userSpaceArr, setUserSpaceArr] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -108,7 +108,7 @@ const CommunityFinalDark = () => {
   const [whatHotStatus, setWhatHotStatus] = useState(false);
   const [spaceFilteredPost, setSpaceFilteredPost] = useState([]);
   const [whatsHotCommunityPost, setWhatsHotCommunityPost] = useState([]);
-  const [postSpaceData , setPostSpaceData]=  useState();
+  const [postSpaceData, setPostSpaceData] = useState();
 
   //FETCH LATEST NEWS
   const options = {
@@ -133,7 +133,6 @@ const CommunityFinalDark = () => {
 
   useEffect(() => {
     getNews();
-
   }, []);
 
   window.onscroll = () => {
@@ -479,7 +478,7 @@ const CommunityFinalDark = () => {
       }
     });
   };
-  
+
   const [selectedCommunitySpace, setSelectedCommunitySpace] = useState([]);
 
   function handleModalSubmit() {
@@ -532,12 +531,21 @@ const CommunityFinalDark = () => {
       <iframe
         src="https://www.chatbase.co/chatbot-iframe/dpblbF2UGnrFPdqMPCxWb"
         width="100%"
-        style={{ height: '100%', minHeight: '700px',display:"none" }}
+        style={{ height: "100%", minHeight: "700px", display: "none" }}
         frameborder="0"
       ></iframe>
 
       {/* userSpace modal */}
-      <button onClick={openTheSpaceModal} className={style.spaceSectionButton}>
+      <button
+        onClick={() => {
+          if (!isLoggedIn) {
+            return openModal();
+          } else {
+            openTheSpaceModal();
+          }
+        }}
+        className={style.spaceSectionButton}
+      >
         <span className={style.spaceSectionButtonImg}>
           {" "}
           <img src={darkSparkle} />
@@ -555,37 +563,41 @@ const CommunityFinalDark = () => {
               <p className={style.spaceModalHeading}>Select your space (s).</p>
 
               <div className={style.spaceMenu}>
-                {currentUserDoc.userSpace.length >= 1 ?  
-                currentUserDoc.userSpace.map((space, index) => {
-                  return (
-                    <div
-                      key={index}
-                      className={`${style.spaceMenuData} ${
-                        activeIndex.includes(index)
-                          ? style.spaceMenuDataActive
-                          : ""
-                      }`}
-                      onClick={(event) =>
-                        handleSpaceMenuDataClick(
-                          index,
-                          event,
-                          event.target.innerText
-                        )
-                      }
-                    >
-                      <p
-                        className={`${style.spaceMenuDataPara} ${
+                {currentUserDoc.userSpace.length >= 1 ? (
+                  currentUserDoc.userSpace.map((space, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className={`${style.spaceMenuData} ${
                           activeIndex.includes(index)
-                            ? style.spaceMenuDataParaActive
+                            ? style.spaceMenuDataActive
                             : ""
                         }`}
+                        onClick={(event) =>
+                          handleSpaceMenuDataClick(
+                            index,
+                            event,
+                            event.target.innerText
+                          )
+                        }
                       >
-                        {space}
-                      </p>
-                    </div>
-                  );
-                }): <p style={{color:"#fff"}}>No spaces found please add from edit profile</p> }
-               
+                        <p
+                          className={`${style.spaceMenuDataPara} ${
+                            activeIndex.includes(index)
+                              ? style.spaceMenuDataParaActive
+                              : ""
+                          }`}
+                        >
+                          {space}
+                        </p>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <p style={{ color: "#fff" }}>
+                    No spaces found please add from edit profile
+                  </p>
+                )}
 
                 {/* <p>Selected Options: {userSpaceArr.join(", ")}</p> */}
               </div>
@@ -721,7 +733,6 @@ const CommunityFinalDark = () => {
                           >
                             Post
                           </button>
-
                         </div>
                       </div>
                     </div>
@@ -759,7 +770,9 @@ const CommunityFinalDark = () => {
                         alt="userImage"
                       />
                       <div className="textAreaUploadContainer">
-                        <div className={style.navbarUploadPostOuterBoxContainer}>
+                        <div
+                          className={style.navbarUploadPostOuterBoxContainer}
+                        >
                           <textarea
                             onChange={(e) => setNewEditText(e.target.value)}
                             name="postText"
@@ -808,15 +821,19 @@ const CommunityFinalDark = () => {
           ) : null}
 
           {/* UPLOAD NEW POST SECTION */}
-
           <div className={style.reverrCommunityUploadContainerrr}>
             <div className="reverrCommunityHeadingAndPostUploadIcon">
               <div>
-                <h2 className={style.reverrCommunityHeading} >
+                <h2 className={style.reverrCommunityHeading}>
                   {" "}
                   Welcome To Reverr ,{" "}
-                  <span style={{ color: "rgba(42, 114, 222, 1)", textTransform:"capitalize" }}>
-                    {userDoc?.name? userDoc.name : ""}
+                  <span
+                    style={{
+                      color: "rgba(42, 114, 222, 1)",
+                      textTransform: "capitalize",
+                    }}
+                  >
+                    {userDoc?.name ? userDoc.name : ""}
                   </span>
                 </h2>
                 {/* <p className="reverrCommunitySubbHeading">
@@ -835,9 +852,13 @@ const CommunityFinalDark = () => {
                       zIndex: "10000",
                       right: "1rem",
                     }}
-                    onClick={() =>
-                      setNavbarPostButtonClick((current) => !current)
-                    }
+                    onClick={() => {
+                      if (!isLoggedIn) {
+                        return openModal();
+                      } else {
+                        setTextAreaIsClick((current) => !current);
+                      }
+                    }}
                     id={style.postUploaddSquareCont}
                     className={style.postUploaddSquareCont}
                   >
@@ -851,7 +872,13 @@ const CommunityFinalDark = () => {
               )}
               {width < 600 ? (
                 <div
-                  onClick={() => setTextAreaIsClick((current) => !current)}
+                  onClick={() => {
+                    if (!isLoggedIn) {
+                      return openModal();
+                    } else {
+                      setTextAreaIsClick((current) => !current);
+                    }
+                  }}
                   id={style.postUploaddSquareCont}
                   className={style.postUploaddSquareCont}
                 >
@@ -863,7 +890,13 @@ const CommunityFinalDark = () => {
                 </div>
               ) : scroll > 150 ? null : (
                 <div
-                  onClick={() => setTextAreaIsClick((current) => !current)}
+                  onClick={() => {
+                    if (!isLoggedIn) {
+                      return openModal();
+                    } else {
+                      setTextAreaIsClick((current) => !current);
+                    }
+                  }}
                   id={style.postUploaddSquareCont}
                   className={style.postUploaddSquareCont}
                 >
@@ -892,15 +925,19 @@ const CommunityFinalDark = () => {
                 />
                 <div className="textAreaUploadContainer">
                   <div
-                    className={
-                      `textAreaIsClick
+                    className={`textAreaIsClick
                         ? ${style.navbarUploadPostOuterBoxContainer}
-                        : ${style.UploadPostOuterBoxContainerNotExpanded}`
-                    }
+                        : ${style.UploadPostOuterBoxContainerNotExpanded}`}
                   >
                     <textarea
                       style={{ borderRadius: "30px" }}
-                      onClick={() => setTextAreaIsClick(true)}
+                      onClick={() => {
+                        if (!isLoggedIn) {
+                          return openModal();
+                        } else {
+                          setTextAreaIsClick(true);
+                        }
+                      }}
                       onChange={(e) => setNewPostText(e.target.value)}
                       name="postText"
                       id={
@@ -912,18 +949,27 @@ const CommunityFinalDark = () => {
                       value={newPostText}
                       placeholder="What Would You Like To Post?"
                     ></textarea>
-                    {!textAreaIsClick ? ( <img
-                      style={{
-                        display: "inline-flex",
-                        position: "absolute",
-                        right: " 23px",
-                        top: "15px",
-                        cursor: "pointer",
-                        height: "40px",
-                      }}
-                      src="./images/right-arraow-bg-blue.png"
-                    />): null}
-                   
+                    {!textAreaIsClick ? (
+                      <img
+                        style={{
+                          display: "inline-flex",
+                          position: "absolute",
+                          right: " 23px",
+                          top: "15px",
+                          cursor: "pointer",
+                          height: "40px",
+                        }}
+                        src="./images/right-arraow-bg-blue.png"
+                        alt="img"
+                        onClick={() => {
+                          if (!isLoggedIn) {
+                            return openModal();
+                          } else {
+                            console.log("user logged!");
+                          }
+                        }}
+                      />
+                    ) : null}
 
                     {tempImageURL ? (
                       <div className={style.communityPostImageCont}>
@@ -937,12 +983,17 @@ const CommunityFinalDark = () => {
                             onClick={RemoveFile}
                             className="delete_Btn"
                           />
-                          <FiEdit onClick={chooseFile} className={style.editBtn} />
+                          <FiEdit
+                            onClick={chooseFile}
+                            className={style.editBtn}
+                          />
                         </div>
                       </div>
                     ) : null}
 
-                    {postSpaceData ? <p className={style.spaceTag} >{postSpaceData}</p> : null}
+                    {postSpaceData ? (
+                      <p className={style.spaceTag}>{postSpaceData}</p>
+                    ) : null}
 
                     {/* {textAreaIsClick ? (
                       <div className="addImageandUploadPostIcon uploadNewPostaddImageandUploadPostIcon">
@@ -1016,15 +1067,20 @@ const CommunityFinalDark = () => {
                           >
                             Post
                           </button> */}
-                        
-                      {/* </div>
-                    ) : null} */} 
-                    
+
+                    {/* </div>
+                    ) : null} */}
                   </div>
                   <div className={style.postAssetsIconMain}>
                     <div
                       className={style.postAssetsIconMaindiv}
-                      onClick={chooseFile}
+                      onClick={() => {
+                        if (!isLoggedIn) {
+                          return openModal();
+                        } else {
+                          chooseFile();
+                        }
+                      }}
                     >
                       <BsImages className={style.assest_icon} />
                       <span className={style.icon_text}>Images</span>
@@ -1033,27 +1089,58 @@ const CommunityFinalDark = () => {
                       <MdPoll className={style.assest_icon} />
                       <span className={style.icon_text}>Polls</span>
                     </div> */}
-                    <div className={style.postAssetsIconMaindiv}>
+                    <div
+                      className={style.postAssetsIconMaindiv}
+                      onClick={() => {
+                        if (!isLoggedIn) {
+                          return openModal();
+                        } else {
+                          console.log("user logged!");
+                        }
+                      }}
+                    >
                       <MdVideoCameraBack className={style.assest_icon} />
                       <span className={style.icon_text}>Video</span>
                     </div>
 
-                    
-                      <select className={style.userSpaceSelect}  onChange={handleOptionChange} >
-                        <option className={style.userSpaceOption} value="">Select Spaces</option>                      
-                        {  currentUserDoc?.userSpace?.map((item)=>{
-                          return   <option  className={style.userSpaceOption} value={item}>{item}</option>     
-                        })}
-
-                      </select>
-                      <button
-                            onClick={uploadImageToFireBase}
-                            className="uploadPostIconButton"
+                    <select
+                      className={style.userSpaceSelect}
+                      onClick={() => {
+                        if (!isLoggedIn) {
+                          return openModal();
+                        } else {
+                          console.log("user logged!");
+                        }
+                      }}
+                      onChange={handleOptionChange}
+                      // disabled={!isLoggedIn}
+                    >
+                      <option className={style.userSpaceOption} value="">
+                        Select Spaces
+                      </option>
+                      {currentUserDoc?.userSpace?.map((item) => {
+                        return (
+                          <option
+                            className={style.userSpaceOption}
+                            value={item}
                           >
-                            Post
-                      </button>
-                    
-                
+                            {item}
+                          </option>
+                        );
+                      })}
+                    </select>
+                    <button
+                      onClick={() => {
+                        if (!isLoggedIn) {
+                          return openModal();
+                        } else {
+                          uploadImageToFireBase();
+                        }
+                      }}
+                      className="uploadPostIconButton"
+                    >
+                      Post
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1154,11 +1241,16 @@ const CommunityFinalDark = () => {
                     //         }
                     //         setPostsAuthorIsClick={setPostsAuthorIsClick}
                     //         setPostsAuthorInfo={setPostsAuthorInfo}
+                    //         isLoggedIn = { isLoggedIn };
+                    //         openModal = { openModal };
                     //       />
-                    //       <DiscoverEvents />
+                    //       <DiscoverEvents 
+                    //         isLoggedIn={isLoggedIn}
+                    //         openModal={openModal}
+                    //       />
                     //     </>
                     //   );
-                    // } else 
+                    // } else
                     if (index === 3) {
                       return (
                         <>
@@ -1172,8 +1264,13 @@ const CommunityFinalDark = () => {
                             }
                             setPostsAuthorIsClick={setPostsAuthorIsClick}
                             setPostsAuthorInfo={setPostsAuthorInfo}
+                            isLoggedIn={isLoggedIn}
+                            openModal={openModal}
                           />
-                          <DiscoverPerfectTools />
+                          <DiscoverPerfectTools
+                            isLoggedIn={isLoggedIn}
+                            openModal={openModal}
+                          />
                         </>
                       );
                     } else if (index === 7) {
@@ -1189,8 +1286,13 @@ const CommunityFinalDark = () => {
                             }
                             setPostsAuthorIsClick={setPostsAuthorIsClick}
                             setPostsAuthorInfo={setPostsAuthorInfo}
+                            isLoggedIn={isLoggedIn}
+                            openModal={openModal}
                           />
-                          <FeaturedSuggestions />
+                          <FeaturedSuggestions
+                            isLoggedIn={isLoggedIn}
+                            openModal={openModal}
+                          />
                         </>
                       );
                     } else if (index === 11) {
@@ -1206,8 +1308,13 @@ const CommunityFinalDark = () => {
                             }
                             setPostsAuthorIsClick={setPostsAuthorIsClick}
                             setPostsAuthorInfo={setPostsAuthorInfo}
+                            isLoggedIn={isLoggedIn}
+                            openModal={openModal}
                           />
-                          <FeaturedMentors />
+                          <FeaturedMentors
+                            isLoggedIn={isLoggedIn}
+                            openModal={openModal}
+                          />
                         </>
                       );
                     } else {
@@ -1220,6 +1327,8 @@ const CommunityFinalDark = () => {
                           handleEditPostButtonClick={handleEditPostButtonClick}
                           setPostsAuthorIsClick={setPostsAuthorIsClick}
                           setPostsAuthorInfo={setPostsAuthorInfo}
+                          isLoggedIn={isLoggedIn}
+                          openModal={openModal}
                         />
                       );
                     }
@@ -1253,6 +1362,8 @@ const CommunityFinalDark = () => {
                         handleEditPostButtonClick={handleEditPostButtonClick}
                         setPostsAuthorIsClick={setPostsAuthorIsClick}
                         setPostsAuthorInfo={setPostsAuthorInfo}
+                        isLoggedIn={isLoggedIn}
+                        openModal={openModal}
                       />
                     );
                   })}
@@ -1276,6 +1387,11 @@ const CommunityFinalDark = () => {
       <Outlet />
     </>
   );
+};
+
+CommunityFinalDark.defaultProps = {
+  isLoggedIn: true,
+  openModal: () => {},
 };
 
 export default CommunityFinalDark;

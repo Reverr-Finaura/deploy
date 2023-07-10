@@ -2,7 +2,7 @@ import React from "react";
 import peopleGroup from "../../../images/profile2user.svg";
 import styles from "./Events.module.css";
 
-function Events() {
+function Events({ isLoggedIn, openModal }) {
   const items = [
     {
       date: "23rd June, 2023",
@@ -50,7 +50,16 @@ function Events() {
               &nbsp; {item.attending} people attending
             </text>
           </div>
-          <button onClick={() => console.log("Register clicked")}>
+          <button
+            onClick={() => {
+              if (!isLoggedIn) {
+                return openModal();
+              } else {
+                //normal code
+                console.log("user logged!");
+              }
+            }}
+          >
             Register
           </button>
         </div>
@@ -58,5 +67,10 @@ function Events() {
     </div>
   );
 }
+
+Events.defaultProps = {
+  isLoggedIn: true,
+  openModal: () => {},
+};
 
 export default Events;

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Patch.module.css";
 
-function Patch() {
+function Patch({ isLoggedIn, openModal }) {
   return (
     <div className={styles.container}>
       {/* <img src={vibeImg} alt="img" />
@@ -32,11 +32,25 @@ function Patch() {
       >
         One-on-One Networking
       </text>
-      <button onClick={() => console.log("patch clicked")}>
-        Coming Soon! 
+      <button
+        onClick={() => {
+          if (!isLoggedIn) {
+            return openModal();
+          } else {
+            //normal code
+            console.log("user logged!");
+          }
+        }}
+      >
+        Coming Soon!
       </button>
     </div>
   );
 }
+
+Patch.defaultProps = {
+  isLoggedIn: true,
+  openModal: () => {},
+};
 
 export default Patch;

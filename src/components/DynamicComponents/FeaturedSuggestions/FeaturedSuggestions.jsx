@@ -3,7 +3,7 @@ import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../../firebase";
 import styles from "./FeaturedSuggestions.module.css";
 
-function FeaturedSuggestions() {
+function FeaturedSuggestions({ isLoggedIn, openModal }) {
   const [users, setUsers] = useState([]);
 
   //FETCH USER DATA FROM FIREBASE
@@ -38,13 +38,23 @@ function FeaturedSuggestions() {
   }
 
   return (
-    <div className={styles.container} style={{marginBottom:'3.2em'}}>
+    <div className={styles.container} style={{ marginBottom: "3.2em" }}>
       <div className={styles.header}>
         <p>
           <span style={{ color: "#ffffff" }}>Featured</span>
           <span style={{ color: "#00B3FF" }}>&nbsp;Suggestions</span>
         </p>
-        <span onClick={() => console.log("see all clicked")}>See All</span>
+        <span
+          onClick={() => {
+            if (!isLoggedIn) {
+              return openModal();
+            } else {
+              console.log("user logged!");
+            }
+          }}
+        >
+          See All
+        </span>
       </div>
       <div className={styles.cardContainer}>
         {randomUsers.map((user, index) => (
@@ -88,14 +98,39 @@ function FeaturedSuggestions() {
                   </text>
                 </div>
               </div>
-              <span onClick={() => console.log("cancel clicked")}>X</span>
+              <span
+                onClick={() => {
+                  if (!isLoggedIn) {
+                    return openModal();
+                  } else {
+                    console.log("user logged!");
+                  }
+                }}
+              >
+                X
+              </span>
             </div>
-            <button>Message</button>
+            <button
+              onClick={() => {
+                if (!isLoggedIn) {
+                  return openModal();
+                } else {
+                  console.log("user logged!");
+                }
+              }}
+            >
+              Message
+            </button>
           </div>
         ))}
       </div>
     </div>
   );
 }
+
+FeaturedSuggestions.defaultProps = {
+  isLoggedIn: true,
+  openModal: () => {},
+};
 
 export default FeaturedSuggestions;

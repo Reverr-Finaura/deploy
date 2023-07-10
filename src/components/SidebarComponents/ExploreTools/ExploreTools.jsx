@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ExploreTools.module.css";
 import { useNavigate } from "react-router-dom";
 
-function ExploreTools() {
+function ExploreTools({ isLoggedIn, openModal }) {
   const navigate = useNavigate();
   return (
     <div className={styles.container}>
@@ -21,11 +21,25 @@ function ExploreTools() {
         src={require("../../../images/peoplediscussion.png")}
         alt="img"
       />
-      <button onClick={() => navigate("/tools")}>
+      <button
+        onClick={() => {
+          if (!isLoggedIn) {
+            return openModal();
+          } else {
+            //normal code
+            console.log("user logged!");
+          }
+        }}
+      >
         Explore Tools
       </button>
     </div>
   );
 }
+
+ExploreTools.defaultProps = {
+  isLoggedIn: true,
+  openModal: () => {},
+};
 
 export default ExploreTools;

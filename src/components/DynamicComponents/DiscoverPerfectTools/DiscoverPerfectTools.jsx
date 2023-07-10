@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./DiscoverPerfectTools.module.css";
 import { useNavigate } from "react-router-dom";
 
-function DiscoverPerfectTools() {
+function DiscoverPerfectTools({ isLoggedIn, openModal }) {
   const navigate = useNavigate();
 
   const cardData = [
@@ -31,14 +31,30 @@ function DiscoverPerfectTools() {
           <span style={{ color: "#00B3FF" }}>&nbsp;perfect tools</span>
           <span style={{ color: "#ffffff" }}>&nbsp;for your startup !</span>
         </p>
-        <span onClick={() => navigate("/tools")}>See All</span>
+        <span
+          onClick={() => {
+            if (!isLoggedIn) {
+              return openModal();
+            } else {
+              navigate("/tools");
+            }
+          }}
+        >
+          See All
+        </span>
       </div>
       <div className={styles.cardContainer}>
         {cardData.map((card, index) => (
           <div
             className={styles.card}
             key={index}
-            onClick={() => navigate(card.route)}
+            onClick={() => {
+              if (!isLoggedIn) {
+                return openModal();
+              } else {
+                navigate(card.route);
+              }
+            }}
           >
             <img src={card.image} alt="img" />
             <div>
@@ -50,5 +66,10 @@ function DiscoverPerfectTools() {
     </div>
   );
 }
+
+DiscoverPerfectTools.defaultProps = {
+  isLoggedIn: true,
+  openModal: () => {},
+};
 
 export default DiscoverPerfectTools;

@@ -3,7 +3,7 @@ import illustration from "../../../images/illustration.svg";
 import styles from "./InvestorFinder.module.css";
 import { useNavigate } from "react-router-dom";
 
-function InvestorFinder() {
+function InvestorFinder({ isLoggedIn, openModal }) {
   const navigate = useNavigate();
   return (
     <div className={styles.container}>
@@ -18,14 +18,36 @@ function InvestorFinder() {
         src={illustration}
         alt="img"
       />
-      <span style={{ color: "#ffffff", fontSize: 10, display: "flex", textAlign: "center"}}>
+      <span
+        style={{
+          color: "#ffffff",
+          fontSize: 10,
+          display: "flex",
+          textAlign: "center",
+        }}
+      >
         Worry not, Apply on Reverr.
       </span>
-      <button onClick={() => navigate("/funding-page")}>
+      <button
+        onClick={() => {
+          if (!isLoggedIn) {
+            return openModal();
+          } else {
+            //normal code
+            // console.log("user logged!");
+            navigate("/funding-page");
+          }
+        }}
+      >
         Raise Funds
       </button>
     </div>
   );
 }
+
+InvestorFinder.defaultProps = {
+  isLoggedIn: true,
+  openModal: () => {},
+};
 
 export default InvestorFinder;
