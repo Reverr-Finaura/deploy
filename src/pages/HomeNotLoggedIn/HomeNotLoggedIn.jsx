@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styles from "./HomeNotLoggedIn.module.css";
 import ConnectSuggestion from "../../components/SidebarComponents/ConnectSuggestion/ConnectSuggestion";
 import ProfileSummary from "../../components/SidebarComponents/ProfileSummary/ProfileSummary";
@@ -22,6 +23,7 @@ import Patch from "../../components/SidebarComponents/Patch/Patch";
 
 function HomeNotLoggedIn() {
   const [isLogInModalOpen, setIsLogInModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const openModal = React.useCallback(() => {
     setIsLogInModalOpen(true);
@@ -44,7 +46,7 @@ function HomeNotLoggedIn() {
 
             <button
               className={styles.signInButton}
-              onClick={() => console.log("Sign in clicked")}
+              onClick={() => navigate("/login")}
             >
               Sign in
             </button>
@@ -55,7 +57,7 @@ function HomeNotLoggedIn() {
             </div>
             <button
               className={styles.signUpButton}
-              onClick={() => console.log("signUpButton clicked")}
+              onClick={() => navigate("/signup")}
             >
               {/* <img src={require("../../images/google.png")} alt={"img"} /> */}
               <span>Sign up</span>
