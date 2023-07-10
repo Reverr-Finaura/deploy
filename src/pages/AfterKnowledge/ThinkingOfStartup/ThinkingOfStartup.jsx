@@ -11,6 +11,7 @@ import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar
 import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import NavBarFinal from "../../../components/Navbar/NavBarFinal";
+import NavBarFinalDarkMode from "../../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 
 const ThinkingOfStartup = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -29,17 +30,7 @@ const ThinkingOfStartup = () => {
   };
   return (
     <>
-      {width >= 600 ? (
-        <>
-          <SidebarFinal />
-          <NavBarFinal />
-        </>
-      ) : (
-        <>
-          <PhnSidebar />
-          <KnowledgeNavbar />
-        </>
-      )}
+      <NavBarFinalDarkMode />
       <div className={styles.knowledge}>
         {/* <KnowledgeNavbar /> */}
         <div className={styles.body}>

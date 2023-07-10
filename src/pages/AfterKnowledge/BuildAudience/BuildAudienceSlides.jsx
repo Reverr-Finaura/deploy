@@ -6,6 +6,7 @@ import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import styles from "./Knowledge.module.css";
 import { useNavigate } from "react-router-dom";
+import NavBarFinalDarkMode from "../../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 const BuildAudienceSlides = () => {
   const obj = [
     {
@@ -81,17 +82,7 @@ const BuildAudienceSlides = () => {
 
   return (
     <>
-      {width >= 600 ? (
-        <>
-          <SidebarFinal />
-          <NavBarFinal />
-        </>
-      ) : (
-        <>
-          <PhnSidebar />
-          <KnowledgeNavbar />
-        </>
-      )}
+      <NavBarFinalDarkMode />
       <div className={styles.knowledge}>
         <div className={styles.body}>
           {obj.map((slide, index) => (

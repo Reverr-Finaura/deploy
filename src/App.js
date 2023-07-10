@@ -265,7 +265,7 @@ function App() {
 
         <Route path="/esop" element={<ESOP />}></Route>
         <Route path="/esop-slides" element={<ESOP_Slides />}></Route>
-        {/* <Route path="/idea-validation" element={<IdeaValidation />}></Route> */}
+        <Route path="/idea-validation-old" element={<IdeaValidation />}></Route>
         <Route path="/idea-validation" element={<CourcePageTesting/>}></Route>
         <Route path="/idea-validation-slides" element={<IV_Slides />}></Route>
         <Route

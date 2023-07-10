@@ -24,7 +24,7 @@ const UserEditProfileTesting = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [reasonList, setReasonList] = useState([]);
 
-  const connectVia = ["Video Call", "Phone Call", "Meet at Coffee"];
+  const connectVia = ["Video Call", "Phone Call", "At Coffee"];
 
   useEffect(() => {
     async function fetchUserDocFromFirebase() {
@@ -82,9 +82,9 @@ const UserEditProfileTesting = () => {
 
   const [formData, setFormData] = useState({
     userReason: [],
-    linkedin:"",
+    linkedin: "",
     Vibe_Data: {
-      How_to_Meet: [],
+      How_To_Meet: [],
     },
   });
   const [workCount, setWorkCount] = useState(1);
@@ -103,13 +103,15 @@ const UserEditProfileTesting = () => {
       setFormData((prev) => {
         return {
           ...prev,
+          Vibe_Data: {
+            ...prev.Vibe_Data,
+            ...userDoc?.Vibe_Data,
+          },
           ...userDoc,
         };
       });
     }
   }, [userDoc]);
-
-  //   console.log("formData", formData);
 
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -141,6 +143,24 @@ const UserEditProfileTesting = () => {
       alert("Current Password is incorrect");
     }
   };
+
+  // Remove Same spaces Is Not Same spaces
+  useEffect(() => {
+    setCategoryList((prev) => {
+      return prev.filter((category) => {
+        return !formData?.userSpace?.includes(category.categoryName);
+      });
+    });
+  }, [formData?.userSpace]);
+
+  // Remove Same reasons Is Not Same reasons
+  useEffect(() => {
+    setReasonList((prev) => {
+      return prev.filter((reason) => {
+        return !formData?.userReason?.includes(reason.reason);
+      });
+    });
+  }, [formData?.userReason]);
   const addSpace = (item) => {
     setFormData((prev) => {
       return {
@@ -248,12 +268,14 @@ const UserEditProfileTesting = () => {
     setEducationCount((prev) => prev - 1);
   };
   const handleConnectVia = (item) => {
-    if (formData.Vibe_Data.How_to_Meet.includes(item)) {
+    const howToMeet = formData?.Vibe_Data?.How_To_Meet;
+
+    if (Array.isArray(howToMeet) && howToMeet.includes(item)) {
       // Remove from How to Meet
       setFormData((prev) => {
         const updatedVibeData = {
           ...prev.Vibe_Data,
-          How_to_Meet: prev.Vibe_Data.How_to_Meet.filter(
+          How_To_Meet: prev.Vibe_Data.How_To_Meet.filter(
             (vibe) => vibe !== item
           ),
         };
@@ -265,10 +287,11 @@ const UserEditProfileTesting = () => {
       });
       return;
     }
+
     setFormData((prev) => {
       const updatedVibeData = {
         ...prev.Vibe_Data,
-        How_to_Meet: [...prev.Vibe_Data.How_to_Meet, item],
+        How_To_Meet: [...(prev.Vibe_Data.How_To_Meet || []), item],
       };
 
       return {
@@ -291,7 +314,13 @@ const UserEditProfileTesting = () => {
       <NavBarFinalDarkMode />
       <div className={styles.editContainer}>
         <div className={styles.editHeader}>
-          <img src="/images/profileArrowLeft.svg" alt="Linkedin" />
+          <img
+            src="/images/profileArrowLeft.svg"
+            alt="Linkedin"
+            onClick={() => {
+              navigate("/userProfile");
+            }}
+          />
           <p>Edit Profile</p>
         </div>
         <div className={styles.profileImage}>
@@ -485,8 +514,8 @@ const UserEditProfileTesting = () => {
                     <button
                       key={idx}
                       className={
-                        formData?.Vibe_Data?.How_to_Meet &&
-                        formData?.Vibe_Data?.How_to_Meet?.includes(item)
+                        formData?.Vibe_Data?.How_To_Meet &&
+                        formData?.Vibe_Data?.How_To_Meet?.includes(item)
                           ? styles.connectButtonActive
                           : styles.connectButton
                       }
@@ -526,14 +555,14 @@ const UserEditProfileTesting = () => {
                   />
                 </div>
                 <div className="form-row">
-                  <label htmlFor="about">About Me</label>
-                  <input
-                    type="text"
+                  <label htmlFor="about">About:</label>
+                  <textarea
                     id="about"
                     name="about"
                     placeholder="Enter about yourself"
                     value={formData?.about}
                     onChange={handleChange}
+                    className="about"
                   />
                 </div>
               </form>
@@ -761,7 +790,13 @@ const UserEditProfileTesting = () => {
           </div>
           <div className={styles.footer}>
             <div className={styles.footerContent}>
-              <button>Cancel</button>
+              <button
+                onClick={() => {
+                  navigate("/userProfile");
+                }}
+              >
+                Cancel
+              </button>
               <button onClick={UploadData}>Save changes</button>
             </div>
           </div>

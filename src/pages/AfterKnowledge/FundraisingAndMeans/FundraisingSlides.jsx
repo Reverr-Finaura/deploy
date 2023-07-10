@@ -7,6 +7,7 @@ import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
 import styles from "./Knowledge.module.css";
 import { useNavigate } from "react-router-dom";
+import NavBarFinalDarkMode from "../../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 
 const FundraisingSlides = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -193,17 +194,7 @@ const FundraisingSlides = () => {
   const navigate = useNavigate();
   return (
     <>
-      {width >= 600 ? (
-        <>
-          <SidebarFinal />
-          <NavBarFinal />
-        </>
-      ) : (
-        <>
-          <PhnSidebar />
-          <KnowledgeNavbar />
-        </>
-      )}
+      <NavBarFinalDarkMode />
       <div className={styles.knowledge}>
         <div className={styles.body}>
           {obj.map((slide, index) => (

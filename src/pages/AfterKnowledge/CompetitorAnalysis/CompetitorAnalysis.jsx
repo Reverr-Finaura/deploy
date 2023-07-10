@@ -11,6 +11,7 @@ import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar
 import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import NavBarFinal from "../../../components/Navbar/NavBarFinal";
+import NavBarFinalDarkMode from "../../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 
 const CompetitorAnalysis = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -29,8 +30,7 @@ const CompetitorAnalysis = () => {
   };
   return (
     <>
-   {width>=600?<><SidebarFinal /><NavBarFinal /></>:<><PhnSidebar />
-    <KnowledgeNavbar /></>}
+      <NavBarFinalDarkMode />
       <div className={styles.knowledge}>
         {/* <KnowledgeNavbar /> */}
         <div className={styles.body}>
@@ -40,10 +40,20 @@ const CompetitorAnalysis = () => {
               imgUrl="competitor1.png"
               // heading="Idea validation and elevator pitch"
             />
-            <CourseIntro url="/competitoranalysisslides" courseDetails={courseDetails} />
-            <CourseContent points={["Why competitor analysis is important?","Who is a true competitor?","What you should do after discovering a competitor?"]} imgUrl="competitor2.png" />
+            <CourseIntro
+              url="/competitoranalysisslides"
+              courseDetails={courseDetails}
+            />
+            <CourseContent
+              points={[
+                "Why competitor analysis is important?",
+                "Who is a true competitor?",
+                "What you should do after discovering a competitor?",
+              ]}
+              imgUrl="competitor2.png"
+            />
             {/* <CourseReview /> */}
-            </div>
+          </div>
         </div>
       </div>
       {/* <Footer /> */}

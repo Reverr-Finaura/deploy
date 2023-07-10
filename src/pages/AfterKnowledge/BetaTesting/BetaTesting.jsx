@@ -11,6 +11,7 @@ import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar
 import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import NavBarFinal from "../../../components/Navbar/NavBarFinal";
+import NavBarFinalDarkMode from "../../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 
 const BetaTesting = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -28,20 +29,30 @@ const BetaTesting = () => {
     para: "Prior to releasing your MVP, become proficient at conducting a beta test. Also read about how to get ready for obstacles both known and unknown while beta testing the product of your firm.",
   };
   return (
-    <>{width>=600?<><SidebarFinal /><NavBarFinal /></>:<><PhnSidebar />
-    <KnowledgeNavbar /></>}
+    <>
+      <NavBarFinalDarkMode />
       <div className={styles.knowledge}>
         {/* <KnowledgeNavbar /> */}
         <div className={styles.body}>
-        {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
+          {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
           <div className={styles.content}>
-          <Hero
-            imgUrl="betatesting.png"
-            // heading="Idea validation and elevator pitch"
-          />
-          <CourseIntro url="/betatestingslides" courseDetails={courseDetails} />
-          <CourseContent points={["Why should you not be in a hurry to launch your MVP?","Why beta test?","A/B testing?"]} imgUrl="betaimg2.png" />
-          {/* <CourseReview /> */}
+            <Hero
+              imgUrl="betatesting.png"
+              // heading="Idea validation and elevator pitch"
+            />
+            <CourseIntro
+              url="/betatestingslides"
+              courseDetails={courseDetails}
+            />
+            <CourseContent
+              points={[
+                "Why should you not be in a hurry to launch your MVP?",
+                "Why beta test?",
+                "A/B testing?",
+              ]}
+              imgUrl="betaimg2.png"
+            />
+            {/* <CourseReview /> */}
           </div>
         </div>
       </div>

@@ -1,16 +1,24 @@
 import React from "react";
 import "./CourcePageTesting.css";
 import NavBarFinalDarkMode from "../../../components/Navbar Dark Mode/NavBarFinalDarkMode";
+import { useNavigate } from "react-router-dom";
 
 const CourcePageTesting = () => {
+  const navigate = useNavigate();
   return (
     <div className="firstback">
-      <NavBarFinalDarkMode/>
+      <NavBarFinalDarkMode />
       <div className="ideavalid">
         <div className="content">
           <text className="head">IDEA VALIDATION</text>
           <div className="rateing">
-            <img src="./images/Star.svg" alt="" height={20} width={120} />
+            {/* <img src="./images/Star.svg" alt="" height={20} width={120} /> */}
+            <span className="star">
+              <img src="/images/star.png" alt="" />
+              <img src="/images/star.png" alt="" />
+              <img src="/images/star.png" alt="" />
+              <img src="/images/star.png" alt="" />
+            </span>
             <span className="space">4.8</span>
             <text className="rat"> 1,980 s ratings | 97%</text>
           </div>
@@ -22,14 +30,26 @@ const CourcePageTesting = () => {
             to determine whether it's worthwhile to construct.
           </p>
           <br />
-          <button className="submit-button">Enroll Now</button>
+          <button
+            className="submit-button"
+            onClick={() => {
+              navigate("/idea-validation-slides");
+            }}
+          >
+            Enroll Now
+          </button>
           <p className="sub">2,768 already enrolled</p>
         </div>
         <div className="imgrev">
           <p className="sub">Offered by </p>
           <p className="rever">REVERR</p>
           <div className="ideagirl">
-            <img src="/images/idea-validation1.png" alt="" height={280} width={250} />
+            <img
+              src="/images/idea-validation1.png"
+              alt=""
+              height={280}
+              width={250}
+            />
           </div>
         </div>
       </div>
@@ -68,7 +88,12 @@ const CourcePageTesting = () => {
           </div>
         </div>
         <div className="imggraph">
-          <img src="./images/idea-validation2.png" alt="" height={300} width={250} />
+          <img
+            src="./images/idea-validation2.png"
+            alt=""
+            height={300}
+            width={250}
+          />
         </div>
       </div>
     </div>

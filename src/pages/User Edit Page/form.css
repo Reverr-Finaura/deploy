@@ -10,6 +10,10 @@
   margin-bottom: 15px;
   align-items: center;
 }
+.about {
+  height: 100px; /* Adjust the height as per your requirement */
+  resize: vertical; /* Optional: Allow vertical resizing */
+}
 
 label {
   margin-bottom: 5px;
@@ -26,6 +30,17 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="date"] {
+  background-color: var(--bg-secondary-gray, #1a1e28);
+  color: var(--text-primary-color, #ffffff);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  /* width: 60%; */
+  flex: 4;
+  box-sizing: border-box;
+}
+.about {
   background-color: var(--bg-secondary-gray, #1a1e28);
   color: var(--text-primary-color, #ffffff);
   border: none;

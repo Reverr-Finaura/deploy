@@ -14,13 +14,16 @@
 .course_details > h1 {
   font-size: 36px;
   font-weight: 500;
-  color: var(--main-text);
+  /* color: var(--main-text); */
+  color: #2a72de;
+
 }
 
 .course_details > p {
   font-size: 24px;
   font-weight: 400;
-  color: var(--main-text);
+  /* color: var(--main-text); */
+  color: #fff;
 }
 
 .course_img > img {

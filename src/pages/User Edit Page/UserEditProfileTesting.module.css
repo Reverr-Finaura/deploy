@@ -25,6 +25,9 @@
   display: flex;
   gap: 1rem;
 }
+.editHeader > img {
+  cursor: pointer;
+}
 .profileImage {
   display: flex;
   justify-content: flex-end;
@@ -37,10 +40,10 @@
   border-radius: 50%;
 }
 .passwordButton {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
 }
 .pswdBtn {
   border-radius: 3.63638rem;

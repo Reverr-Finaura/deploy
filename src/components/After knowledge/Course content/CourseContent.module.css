@@ -6,11 +6,15 @@
   width: 95%;
   justify-content: space-around;
   align-items: center;
-  color: var(--main-text);
+  /* color: var(--main-text); */
+  color: #fff;
+
 }
 
 .cc_details > h1 {
-  color: var(--main-text);
+  /* color: var(--main-text); */
+  color: #2a72de;
+
   font-size: 48px;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -19,19 +23,25 @@
 .cc_details > h3 {
   font-size: 40px;
   font-weight: 500;
-  color: var(--main-text);
+  /* color: var(--main-text); */
+  color: #fff;
+
   /* margin: 0.2rem auto; */
 }
 
 .cc_details > p {
   font-size: 28px;
-  color: var(--main-text);
+  /* color: var(--main-text); */
+  color: #fff;
+
   font-weight: 500;
 }
 
 .cc_details > ul > li {
   font-size: 24px;
-  color: var(--main-text);
+  /* color: var(--main-text); */
+  color: #fff;
+
   line-height: 36px;
 }
 .cc_img{

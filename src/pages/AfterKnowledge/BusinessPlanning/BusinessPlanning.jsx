@@ -11,6 +11,7 @@ import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar
 import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import NavBarFinal from "../../../components/Navbar/NavBarFinal";
+import NavBarFinalDarkMode from "../../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 
 const BusinessPlanning = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -29,20 +30,29 @@ const BusinessPlanning = () => {
   };
   return (
     <>
-    {width>=600?<><SidebarFinal /><NavBarFinal /></>:<><PhnSidebar />
-    <KnowledgeNavbar /></>}
+      <NavBarFinalDarkMode />
       <div className={styles.knowledge}>
         {/* <KnowledgeNavbar /> */}
         <div className={styles.body}>
           {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
           <div className={styles.content}>
-          <Hero
-            imgUrl="businessplan1.png"
-            // heading="Idea validation and elevator pitch"
-          />
-          <CourseIntro url="/buisnessplanningslides" courseDetails={courseDetails} />
-          <CourseContent points={["What is a business plan?","How to draft a business plan?"," What are the elements of business plan and how to define each one of them?"]} imgUrl="businessplan2.png" />
-          {/* <CourseReview /> */}
+            <Hero
+              imgUrl="businessplan1.png"
+              // heading="Idea validation and elevator pitch"
+            />
+            <CourseIntro
+              url="/buisnessplanningslides"
+              courseDetails={courseDetails}
+            />
+            <CourseContent
+              points={[
+                "What is a business plan?",
+                "How to draft a business plan?",
+                " What are the elements of business plan and how to define each one of them?",
+              ]}
+              imgUrl="businessplan2.png"
+            />
+            {/* <CourseReview /> */}
           </div>
         </div>
       </div>

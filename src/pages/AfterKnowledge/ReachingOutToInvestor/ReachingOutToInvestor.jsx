@@ -11,6 +11,7 @@ import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar
 import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import NavBarFinal from "../../../components/Navbar/NavBarFinal";
+import NavBarFinalDarkMode from "../../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 
 const ReachingOutToInvestor = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -29,20 +30,26 @@ const ReachingOutToInvestor = () => {
   };
   return (
     <>
-    {width>=600?<><SidebarFinal /><NavBarFinal /></>:<><PhnSidebar />
-    <KnowledgeNavbar /></>}
+      <NavBarFinalDarkMode />
       <div className={styles.knowledge}>
         {/* <KnowledgeNavbar /> */}
         <div className={styles.body}>
-        {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
+          {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
           <div className={styles.content}>
-          <Hero imgUrl="ReachingOutToInvestor.png" />
-          <CourseIntro
-            courseDetails={courseDetails}
-            url="/reaching-out-to-investor-slides"
-          />
-          <CourseContent points={["Why family is not smart money?","What are the places to lookout for investors for?","What are the requirements in order to win over an investor?"]} imgUrl="reachingOut2.png" />
-          {/* <CourseReview /> */}
+            <Hero imgUrl="ReachingOutToInvestor.png" />
+            <CourseIntro
+              courseDetails={courseDetails}
+              url="/reaching-out-to-investor-slides"
+            />
+            <CourseContent
+              points={[
+                "Why family is not smart money?",
+                "What are the places to lookout for investors for?",
+                "What are the requirements in order to win over an investor?",
+              ]}
+              imgUrl="reachingOut2.png"
+            />
+            {/* <CourseReview /> */}
           </div>
         </div>
       </div>

@@ -4,22 +4,25 @@
   /* width: 95%; */
   justify-content: space-around;
   align-items: center;
-  color: var(--main-text);
+  /* color: var(--main-text); */
+  color: #fff;
 }
 
 .course_left {
   width: 50%;
-  color: var(--main-text);
+  color: #fff;
 }
 
 .course_left > h1 {
   font-size: 48px;
   font-weight: 600;
+  color: #2a72de;
 }
 
 .course_para {
   font-size: 27px;
   font-weight: 400;
+  color: #fff;
 }
 
 .course_rating {
@@ -33,7 +36,9 @@
 }
 
 .course_left > p {
-  color: var(--main-text);
+  /* color: var(--main-text); */
+  color: #fff;
+
   font-size: 18px;
   font-weight: 500;
 }
@@ -48,7 +53,7 @@
   font-size: 32px;
   margin: 0;
   font-weight: 500;
-  color: #202020;
+  color: #fff;
   /* margin-left: 1rem; */
 }
 

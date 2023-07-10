@@ -6,6 +6,7 @@ import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
 import NavBarFinal from "../../../components/Navbar/NavBarFinal";
 import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar";
 import { useNavigate } from "react-router-dom";
+import NavBarFinalDarkMode from "../../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 const BusinessPlanningSlides = () => {
   // eslint-disable-next-line no-sparse-arrays
   const obj = [
@@ -353,17 +354,7 @@ const BusinessPlanningSlides = () => {
   }, []);
   return (
     <>
-      {width >= 600 ? (
-        <>
-          <SidebarFinal />
-          <NavBarFinal />
-        </>
-      ) : (
-        <>
-          <PhnSidebar />
-          <KnowledgeNavbar />
-        </>
-      )}
+      <NavBarFinalDarkMode />
       <div className={styles.knowledge}>
         <div className={styles.body}>
           {obj.map((slide, index) => (

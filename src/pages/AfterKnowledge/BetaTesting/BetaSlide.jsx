@@ -7,6 +7,7 @@ import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar
 import NavBarFinal from "../../../components/Navbar/NavBarFinal";
 import styles from "./Knowledge.module.css";
 import { useNavigate } from "react-router-dom";
+import NavBarFinalDarkMode from "../../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 
 const BetaSlide = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -82,17 +83,7 @@ const BetaSlide = () => {
   const navigate = useNavigate();
   return (
     <>
-      {width >= 600 ? (
-        <>
-          <SidebarFinal />
-          <NavBarFinal />
-        </>
-      ) : (
-        <>
-          <PhnSidebar />
-          <KnowledgeNavbar />
-        </>
-      )}
+      <NavBarFinalDarkMode />
       <div className={styles.knowledge}>
         <div className={styles.body}>
           {obj.map((slide, index) => (

@@ -202,7 +202,8 @@
 .content {
   width: 85%;
   /* margin: auto 5rem auto 10rem; */
-  margin: auto 3rem auto 12rem;
+  /* margin: auto 3rem auto 12rem; */
+  margin: auto;
 }
 
 .search {

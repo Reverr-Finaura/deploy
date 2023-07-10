@@ -11,6 +11,7 @@ import KnowledgeNavbar from "../../../components/KnowledgeNavbar/KnowledgeNavbar
 import SidebarFinal from "../../../components/Sidebar Final/SidebarFinal";
 import PhnSidebar from "../../../components/PhnSidebar/PhnSidebar";
 import NavbarFinal from "../../../components/Navbar/NavBarFinal";
+import NavBarFinalDarkMode from "../../../components/Navbar Dark Mode/NavBarFinalDarkMode";
 
 const FundraisingAndMeans = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -28,20 +29,27 @@ const FundraisingAndMeans = () => {
     para: "How are businesses supported in reality? From the various funding sources accessible to locating investors and creating the ideal pitch, we'll walk you through everything you could possible want to know.",
   };
   return (
-    <>{width>=600?<><SidebarFinal /><NavbarFinal /></>:<><PhnSidebar />
-    <KnowledgeNavbar /></>}
+    <>
+      <NavBarFinalDarkMode />
       <div className={styles.knowledge}>
         {/* <KnowledgeNavbar /> */}
         <div className={styles.body}>
-        {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
+          {/* <Sidebar isVisible={width >= 600 ? true : false} /> */}
           <div className={styles.content}>
-          <Hero imgUrl="FundraisingandMeans.png" />
-          <CourseIntro
-            courseDetails={courseDetails}
-            url="/fundraising-and-means-slides"
-          />
-          <CourseContent points={["What is Fundraising and why is it important?","What are the different means to raise funds?","What is the role of a pitchdeck in fundraising?"]} imgUrl="fundraising2.png" />
-          {/* <CourseReview /> */}
+            <Hero imgUrl="FundraisingandMeans.png" />
+            <CourseIntro
+              courseDetails={courseDetails}
+              url="/fundraising-and-means-slides"
+            />
+            <CourseContent
+              points={[
+                "What is Fundraising and why is it important?",
+                "What are the different means to raise funds?",
+                "What is the role of a pitchdeck in fundraising?",
+              ]}
+              imgUrl="fundraising2.png"
+            />
+            {/* <CourseReview /> */}
           </div>
         </div>
       </div>
